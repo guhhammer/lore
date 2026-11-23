@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#
+# clean — remove the build output in target/ (cargo clean). Nothing else:
+# app/ and every source file stay.
+#
+#   cli/clean       cargo clean
+#   cli/clean -h    this text
+#
+# Exit status: 0 done, 1 cargo clean failed, 2 a usage error.
+
+set -euo pipefail
+
+case "${1:-}" in
+  "") ;;
+  -h|--help) awk 'NR > 1 && /^#/ { sub(/^# ?/, ""); print; next } NR > 1 { exit }' "$0"; exit 0 ;;
+  *) echo "clean: unknown argument '$1' (try -h)" >&2; exit 2 ;;
+esac
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+cargo clean
