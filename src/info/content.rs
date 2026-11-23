@@ -22,14 +22,16 @@
 
 use std::collections::HashSet;
 use std::fs;
+use std::io::Read;
 
 use crate::compile_config::{
     CONTENT_DIRS, FORBIDDEN_FILE_CHARS, LOCALE_VARS, NO_TRANSLATION_LOCALES,
 };
 use crate::interface::paths;
 
-// EMBEDDED: the built-in pages, sorted by name; EMBEDDED_I18N: their
-// translations, (language, name, text), sorted by language then name
+// EMBEDDED: the built-in pages, (name, byte range in EMBEDDED_TEXT), sorted by
+// name; EMBEDDED_I18N: their translations, (language, name, range), sorted by
+// language then name; EMBEDDED_TEXT: every page, unpacked on first use
 include!(concat!(env!("OUT_DIR"), "/content.rs"));
 
 /// One command's page, parsed.
@@ -98,13 +100,31 @@ pub fn find(name: &str) -> Option<Content> {
     Some(content)
 }
 
+/// The built-in pages, packed by build.rs with zstd, as one text. A pack
+/// that does not unpack (it cannot happen with a build that passed its
+/// tests) leaves lore with no built-in pages rather than stopping it.
+fn unpack(packed: &[u8]) -> String {
+    let mut text = String::new();
+    if let Ok(mut decoder) = ruzstd::decoding::StreamingDecoder::new(packed) {
+        if decoder.read_to_string(&mut text).is_err() {
+            text.clear();
+        }
+    }
+    text
+}
+
+/// The text at `range` in the built-in pages; empty if it is not there.
+fn embedded((start, end): (usize, usize)) -> &'static str {
+    EMBEDDED_TEXT.get(start..end).unwrap_or_default()
+}
+
 /// The page built into lore for `name`, if any.
 pub fn built_in(name: &str) -> Option<&'static str> {
     // sorted by build.rs, so a binary search: this runs for every command
     EMBEDDED
         .binary_search_by(|(n, _)| (*n).cmp(name))
         .ok()
-        .map(|i| EMBEDDED[i].1)
+        .map(|i| embedded(EMBEDDED[i].1))
 }
 
 /// The built-in translation of `name`'s page into `lang` (`pt_BR`), if any.
@@ -112,7 +132,7 @@ pub fn translation(lang: &str, name: &str) -> Option<&'static str> {
     EMBEDDED_I18N
         .binary_search_by(|(l, n, _)| (*l, *n).cmp(&(lang, name)))
         .ok()
-        .map(|i| EMBEDDED_I18N[i].2)
+        .map(|i| embedded(EMBEDDED_I18N[i].2))
 }
 
 /// The reader's languages, most specific first, from `LC_ALL`,
@@ -172,9 +192,9 @@ pub fn names() -> HashSet<String> {
 /// The titles of the built-in pages that are subcommands: those whose `#`
 /// title has a space (`# git commit` in git-commit.md).
 pub fn subcommand_titles() -> impl Iterator<Item = &'static str> {
-    EMBEDDED.iter().filter_map(|(name, text)| {
-        let title = text.lines().next()?.strip_prefix("# ")?.trim();
-        (title.contains(' ') && page_key(title) == *name).then_some(title)
+    EMBEDDED.iter().filter_map(|&(name, range)| {
+        let title = embedded(range).lines().next()?.strip_prefix("# ")?.trim();
+        (title.contains(' ') && page_key(title) == name).then_some(title)
     })
 }
 

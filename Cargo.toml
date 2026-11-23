@@ -1,6 +1,6 @@
 [package]
 name = "lore-tui"
-version = "0.1.0"
+version = "0.1.3"
 edition = "2024"
 rust-version = "1.85"
 description = "A terminal list of every command you can type (programs, shell builtins, aliases), grouped A to Z. Linux and macOS; bash, zsh, fish."
@@ -21,6 +21,16 @@ path = "src/main.rs"
 
 [dependencies]
 ratatui = "0.30.2"
+ruzstd = "0.8.2"
 # How many columns a character takes (2 for Chinese, Japanese, Korean). Already
 # built as a dependency of ratatui; named here so the text fits by columns.
 unicode-width = "0.2"
+
+# A smaller release binary: the whole program optimised as one unit. Most of
+# the size is the built-in pages, which these settings do not touch.
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[build-dependencies]
+zstd = "0.14.4"

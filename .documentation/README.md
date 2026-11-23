@@ -51,7 +51,7 @@ lore/
 │   └── utils/
 │       ├── manual.rs       running man and whatis, cleaning their output
 │       └── text.rs         fitting text to columns (`...`, wrapping)
-├── build.rs                builds content/ into the binary
+├── build.rs                packs content/ into the binary (zstd)
 ├── content/                the pages (~9,100) and i18n/<language>/ (~32,200)
 ├── man/lore.1              lore's own manual
 ├── scripts/content/        the scripts that make content/ (their README has the order)

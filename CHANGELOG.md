@@ -13,6 +13,13 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+### Changed
+
+- The built-in pages are packed with zstd at build time and unpacked once
+  when lore starts (about 50 ms), and the release build optimises the whole
+  program as one unit (thin LTO, one codegen unit): the binary goes from
+  27.0 MB to 8.2 MB.
+
 ## [0.1.0] - 2026-11-23
 
 ### Added
@@ -88,8 +95,12 @@ the version in `Cargo.toml`, and its subject starts with that version
 - `@` at the start of a search keeps only the commands that have a lore
   page.
 - Leaving the search bar (Esc) keeps its text and filter; `/` returns to it.
+- `scripts/content/`: the scripts that make the pages from tldr-pages and
+  the local man pages, in seven steps (their README), and
+  `examples/commands.rs` to list the commands they start from. Every
+  `mkfs.*` page is now marked `danger`.
 - `cli/make` (fmt, clippy, test, build, release, copy to `app/`) and
-  `cli/clean` (`cargo clean`).
+  `cli/clean` (all of `target/`, and the page drafts in `.content-draft/`).
 - The MIT licence, and the repository's pages: the README, `SECURITY.md`,
   `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, issue and pull-request templates,
   and the workflows, which only pass for now.
