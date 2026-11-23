@@ -1,9 +1,9 @@
-//! Tests for the app's state: moving, searching, closing the search
-//! (src/app.rs). Each test name says the rule it checks.
+//! Tests for the app's state: moving, searching, leaving the search, the
+//! page (src/app.rs). Each test name says the rule it checks.
 
 use lore_tui::app::{App, Mode};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::rows::Row;
+use lore_tui::interface::rows::Row;
 
 /// An app over these names, all as programs.
 fn app(names: &[&str]) -> App {
@@ -111,11 +111,56 @@ fn a_search_with_no_match_shows_no_rows_and_selects_nothing() {
 }
 
 #[test]
-fn closing_the_search_empties_it_and_brings_back_the_whole_list() {
+fn leaving_the_search_keeps_its_text_and_its_filter() {
     let mut app = app(&["awk", "bash"]);
     typed(&mut app, "ba");
-    app.close_search();
+    app.leave_search();
     assert_eq!(app.mode, Mode::Browse);
-    assert_eq!(app.query, "");
-    assert_eq!(app.shown_count(), 2);
+    assert_eq!(app.query, "ba");
+    assert_eq!(app.shown_count(), 1);
+}
+
+#[test]
+fn opening_the_search_again_continues_the_text_left_in_it() {
+    let mut app = app(&["bash", "basename"]);
+    typed(&mut app, "bas");
+    app.leave_search();
+    typed(&mut app, "e");
+    assert_eq!(app.query, "base");
+    assert_eq!(labels(&app), ["[B]", "basename"]);
+}
+
+#[test]
+fn the_page_opens_on_a_command_and_closes_back_to_the_list() {
+    let mut app = app(&["awk"]);
+    app.open_info();
+    assert_eq!(app.mode, Mode::Info);
+    app.close_info();
+    assert_eq!(app.mode, Mode::Browse);
+}
+
+#[test]
+fn the_page_opens_from_the_search_bar_and_the_search_text_stays() {
+    let mut app = app(&["awk", "bash"]);
+    typed(&mut app, "aw");
+    app.open_info();
+    assert_eq!(app.mode, Mode::Info);
+    app.close_info();
+    assert_eq!(app.query, "aw");
+}
+
+#[test]
+fn the_page_does_not_open_when_nothing_matches() {
+    let mut app = app(&["awk"]);
+    typed(&mut app, "zzz");
+    app.open_info();
+    assert_eq!(app.mode, Mode::Search);
+}
+
+#[test]
+fn scrolling_up_past_the_top_stops_at_the_top() {
+    let mut app = app(&["awk"]);
+    app.scroll_by(5);
+    app.scroll_by(-20);
+    assert_eq!(app.scroll, 0);
 }

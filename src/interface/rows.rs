@@ -2,7 +2,7 @@
 //! section, then that section's commands.
 
 use crate::commands::Command;
-use crate::section::Section;
+use crate::interface::section::Section;
 
 /// One line of the list.
 pub enum Row {

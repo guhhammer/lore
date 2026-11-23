@@ -4,7 +4,7 @@
 use super::shell::Shell;
 use super::{Command, Kind};
 use crate::compile_config::FISH_FUNCTION_FILES;
-use crate::paths;
+use crate::interface::paths;
 
 /// The user's functions for `shell`; none for bash and zsh.
 pub fn scan(shell: Shell) -> Vec<Command> {

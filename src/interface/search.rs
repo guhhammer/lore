@@ -2,7 +2,7 @@
 //! are searched for now; command info will be searched here too.
 
 use crate::commands::Command;
-use crate::section::Section;
+use crate::interface::section::Section;
 
 /// True if the name contains the query, ignoring case; an empty query matches all.
 pub fn matches(command: &Command, query: &str) -> bool {

@@ -1,5 +1,5 @@
 //! Turns terminal events (keys, resizes) into `Action`s. What a key means
-//! depends on the mode; Ctrl+C quits in both.
+//! depends on the mode; Ctrl+C quits in all of them.
 
 use std::io;
 
@@ -14,7 +14,17 @@ pub enum Action {
     Up,
     Down,
     OpenSearch,
-    CloseSearch,
+    /// Leaves the search bar, keeping its text.
+    LeaveSearch,
+    /// Opens the selected command's page.
+    OpenInfo,
+    CloseInfo,
+    /// Scrolls the page one line up or down.
+    LineUp,
+    LineDown,
+    /// Scrolls the page a screen up or down.
+    PageUp,
+    PageDown,
     /// A character typed into the search bar.
     Type(char),
     /// Backspace in the search bar.
@@ -54,11 +64,20 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         (_, KeyCode::Char('c')) if key.modifiers.contains(KeyModifiers::CONTROL) => {
             Some(Action::Quit)
         }
+        // reading a page, the arrows scroll it; the list moves again once
+        // the page is closed
+        (Mode::Info, KeyCode::Up) => Some(Action::LineUp),
+        (Mode::Info, KeyCode::Down) => Some(Action::LineDown),
         (_, KeyCode::Up) => Some(Action::Up),
         (_, KeyCode::Down) => Some(Action::Down),
+        // the page opens from the list and from the search bar alike
+        (Mode::Browse | Mode::Search, KeyCode::Right | KeyCode::Enter) => Some(Action::OpenInfo),
         (Mode::Browse, KeyCode::Esc) => Some(Action::Quit),
         (Mode::Browse, KeyCode::Char('/')) if plain => Some(Action::OpenSearch),
-        (Mode::Search, KeyCode::Esc) => Some(Action::CloseSearch),
+        (Mode::Info, KeyCode::Left | KeyCode::Esc) => Some(Action::CloseInfo),
+        (Mode::Info, KeyCode::PageUp) => Some(Action::PageUp),
+        (Mode::Info, KeyCode::PageDown) => Some(Action::PageDown),
+        (Mode::Search, KeyCode::Esc) => Some(Action::LeaveSearch),
         (Mode::Search, KeyCode::Backspace) => Some(Action::Erase),
         (Mode::Search, KeyCode::Char(c)) if plain => Some(Action::Type(c)),
         _ => None, // any other key does nothing

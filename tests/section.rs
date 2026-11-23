@@ -1,7 +1,7 @@
-//! Tests for which section a name goes under (src/section.rs).
+//! Tests for which section a name goes under (src/interface/section.rs).
 //! Each test name says the rule it checks.
 
-use lore_tui::section::Section;
+use lore_tui::interface::section::Section;
 
 #[test]
 fn a_name_goes_under_its_first_letter_upper_cased() {

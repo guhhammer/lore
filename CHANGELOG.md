@@ -29,6 +29,12 @@ release. A release is an entry here.
   A single character puts its own section first. The keys of the current
   mode are always shown on the bottom line. ↑/↓
   move; Esc (when not searching) and Ctrl+C quit.
+- A command's manual page: → or Enter opens it beside the list, laid out by
+  `man` at the panel's width and laid out again when the terminal is
+  resized; ↑/↓ scroll it a line, PgUp/PgDn a screen, ← or Esc close it.
+  With no page, the likely reasons are shown. While a page is open the list
+  takes a tenth of the width; names too long for any row end in `...`.
+- Leaving the search bar (Esc) keeps its text and filter; `/` returns to it.
 - `cli/make` (fmt, clippy, test, build, release, copy to `app/`) and
   `cli/clean` (`cargo clean`).
 - The MIT licence, and the repository's pages: the README, `SECURITY.md`,

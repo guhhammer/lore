@@ -7,7 +7,7 @@ use std::path::PathBuf;
 
 use super::Command;
 use super::shell::Shell;
-use crate::paths;
+use crate::interface::paths;
 
 /// Every alias of `shell` in its files, as commands.
 pub fn scan(shell: Shell) -> Vec<Command> {

@@ -45,11 +45,17 @@ A search bar sits on top, the list below it, and the keys you can press are
 always shown on the bottom line:
 
 - ↑ and ↓ move through the commands (the letter headers are skipped).
+- → or Enter opens the selected command's manual page (`man`) beside the
+  list, laid out to fit the space left; the list narrows to a tenth of the
+  width, and names too long for it end in `...`. ↑ and ↓ scroll the page a
+  line, PgUp and PgDn a screen; ← or Esc close it, and the arrows move
+  through the commands again. A command with no page shows the likely reasons why.
 - `/` opens the search bar; typing keeps only the names that contain what
   you typed, ignoring case. A single character puts its own section first
-  (`h` shows the commands starting with `h` on top). Esc closes the search
-  and brings the whole list back.
-- Esc, when not searching, quits. Ctrl+C quits at any time.
+  (`h` shows the commands starting with `h` on top). Esc leaves the search
+  bar but keeps its text and its filter; `/` goes back to it, and Backspace
+  empties it.
+- Esc, when not searching or reading, quits. Ctrl+C quits at any time.
 
 ## Building
 

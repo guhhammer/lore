@@ -1,26 +1,24 @@
 //! lore: a terminal list of every command you can type, grouped A to Z.
 //!
-//! Flow: `commands` finds the names → `app` holds the state → `ui` draws it →
-//! `input` turns keys into actions → back to `app`. Modules are `pub` so the
+//! Flow: `commands` finds the names → `app` holds the state → `interface::ui`
+//! draws it → `interface::input` turns keys into actions → back to `app`. Modules are `pub` so the
 //! tests in tests/ can use them.
 
 use std::io::{self, IsTerminal};
+use std::time::Duration;
 
 use ratatui::DefaultTerminal;
+use ratatui::crossterm::event;
 
 pub mod app; // state: commands, search text, rows, selection
 pub mod commands; // where the names come from (programs, shell, aliases)
 pub mod compile_config; // hardcoded lists and paths
-pub mod input; // keys and resizes → Action
-pub mod paths; // `~/` and `*` in the configured paths
-pub mod rows; // commands grouped under section headers
-pub mod search; // what matches the search text
-pub mod section; // which letter a name goes under
-
-mod ui; // drawing; only run() needs it
+pub mod interface; // keys, rows, search, drawing
+pub mod utils; // helpers: man pages, fitting text
 
 use app::App;
-use input::Action;
+use interface::input::{self, Action};
+use interface::ui;
 
 /// Runs lore until Esc or Ctrl+C, then gives the terminal back. Fails, with
 /// a message for the user, when there is no terminal to draw on.
@@ -42,17 +40,29 @@ pub fn run() -> io::Result<()> {
 
 /// Draw, wait for an action, apply it; repeat until Quit.
 fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
+    let mut draw = true;
     loop {
-        terminal.draw(|frame| ui::draw(frame, app))?;
+        if draw {
+            terminal.draw(|frame| ui::draw(frame, app))?;
+        }
         match input::next_action(app.mode)? {
             Action::Quit => return Ok(()),
             Action::Up => app.up(),
             Action::Down => app.down(),
             Action::OpenSearch => app.open_search(),
-            Action::CloseSearch => app.close_search(),
+            Action::LeaveSearch => app.leave_search(),
+            Action::OpenInfo => app.open_info(),
+            Action::CloseInfo => app.close_info(),
+            Action::LineUp => app.scroll_by(-1),
+            Action::LineDown => app.scroll_by(1),
+            Action::PageUp => app.scroll_by(-compile_config::PAGE_STEP),
+            Action::PageDown => app.scroll_by(compile_config::PAGE_STEP),
             Action::Type(c) => app.type_char(c),
             Action::Erase => app.erase(),
             Action::Resize => {} // nothing to change: the loop redraws at the new size
         }
+        // More keys already waiting (an arrow held down): apply them before
+        // drawing, so a held key does not lag behind on a slow terminal.
+        draw = !event::poll(Duration::ZERO)?;
     }
 }

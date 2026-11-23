@@ -9,7 +9,7 @@ use std::path::PathBuf;
 
 use super::{Command, Kind};
 use crate::compile_config::{PATH_LIST_FILES, PROGRAM_DIRS};
-use crate::paths;
+use crate::interface::paths;
 
 /// Every executable file found, unsorted; duplicates are removed later by `merge`.
 pub fn scan() -> Vec<Command> {

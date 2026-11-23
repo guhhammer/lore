@@ -6,6 +6,15 @@
 //! Path syntax: `~/` is the user's home (skipped if `$HOME` is unset), and a
 //! `*` stands for any name within one path component (`/opt/*/bin`).
 
+// ── screen ──────────────────────────────────────────────────────────────────
+
+/// The list's share of the width, in percent, while a page is open; the page
+/// gets the rest.
+pub const INFO_LIST_PERCENT: u16 = 10;
+
+/// Lines that PgUp and PgDn scroll the page by.
+pub const PAGE_STEP: isize = 20;
+
 // ── programs ────────────────────────────────────────────────────────────────
 
 /// Always scanned for programs, besides `$PATH`, which is often cut down

@@ -1,19 +1,32 @@
 //! The app's state and the moves on it. No drawing, no keys: those are in
-//! ui.rs and input.rs.
+//! interface/ui.rs and interface/input.rs.
 
 use ratatui::widgets::ListState;
 
 use crate::commands::Command;
-use crate::rows::{self, Row};
-use crate::search;
+use crate::interface::rows::{self, Row};
+use crate::interface::search;
+use crate::utils::manual;
 
 /// What the keys do right now.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Mode {
-    /// Arrows move, `/` opens the search, Esc quits.
+    /// Arrows move, `/` opens the search, → or Enter opens the page, Esc quits.
     Browse,
-    /// Typing filters the list, Esc closes the search.
+    /// Typing filters the list, Esc leaves the search bar (the text stays).
     Search,
+    /// The selected command's page beside a narrow list: ↑↓ and PgUp/PgDn
+    /// scroll the page, ← or Esc close it (the list moves again after).
+    Info,
+}
+
+/// The page on show, kept so a redraw does not run `man` again; reloaded when
+/// the command or the panel's width changes.
+pub struct Page {
+    pub name: String,
+    pub width: u16,
+    /// The manual's lines; None when there is none (see `manual::NO_PAGE`).
+    pub lines: Option<Vec<String>>,
 }
 
 /// Everything the screen shows.
@@ -27,6 +40,10 @@ pub struct App {
     pub rows: Vec<Row>,
     /// The selected row and the list's scroll position.
     pub list: ListState,
+    /// The last page loaded, if any.
+    pub page: Option<Page>,
+    /// How many lines the page is scrolled down.
+    pub scroll: usize,
 }
 
 impl App {
@@ -38,6 +55,8 @@ impl App {
             mode: Mode::Browse,
             rows: Vec::new(),
             list: ListState::default(),
+            page: None,
+            scroll: 0,
         };
         app.refilter(); // builds the rows from the empty query
         app
@@ -48,16 +67,59 @@ impl App {
         self.rows.iter().filter(|r| r.is_selectable()).count()
     }
 
-    /// Enters the search bar.
+    /// Enters the search bar, its text as it was left.
     pub fn open_search(&mut self) {
         self.mode = Mode::Search;
     }
 
-    /// Leaves the search bar and empties it, bringing the whole list back.
-    pub fn close_search(&mut self) {
+    /// Leaves the search bar. Its text, and the filter, stay: emptying it is
+    /// the user's to do (Backspace), so a search can be read and refined.
+    pub fn leave_search(&mut self) {
         self.mode = Mode::Browse;
-        self.query.clear();
-        self.refilter();
+    }
+
+    /// The selected command, if a command is selected.
+    pub fn selected(&self) -> Option<&Command> {
+        match self.rows.get(self.list.selected()?)? {
+            Row::Command(command) => Some(command),
+            Row::Header(_) => None,
+        }
+    }
+
+    /// Opens the selected command's page; does nothing on an empty list.
+    pub fn open_info(&mut self) {
+        if self.selected().is_some() {
+            self.mode = Mode::Info;
+            self.scroll = 0;
+        }
+    }
+
+    /// Closes the page, back to the list.
+    pub fn close_info(&mut self) {
+        self.mode = Mode::Browse;
+    }
+
+    /// Scrolls the page by `lines` (negative: up); `ui` stops it at the end.
+    pub fn scroll_by(&mut self, lines: isize) {
+        self.scroll = self.scroll.saturating_add_signed(lines);
+    }
+
+    /// Makes `page` the selected command's, `width` columns wide, running
+    /// `man` only when the command or the width changed since the last call.
+    pub fn load_page(&mut self, width: u16) {
+        let Some(name) = self.selected().map(|c| c.name.clone()) else {
+            return;
+        };
+        if let Some(page) = &self.page {
+            if page.name == name && page.width == width {
+                return; // already loaded
+            }
+            if page.name != name {
+                self.scroll = 0; // a new page starts at its top
+            }
+        }
+        let lines = manual::page(&name, width);
+        self.page = Some(Page { name, width, lines });
     }
 
     /// Adds a character to the search and filters again.

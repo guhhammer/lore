@@ -1,8 +1,8 @@
-//! Tests for what each key and event does in each mode (src/input.rs).
+//! Tests for what each key and event does in each mode (src/interface/input.rs).
 //! Each test name says the rule it checks.
 
 use lore_tui::app::Mode;
-use lore_tui::input::{Action, action_for, action_for_event};
+use lore_tui::interface::input::{Action, action_for, action_for_event};
 use ratatui::crossterm::event::{Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 
 /// A key press with no Ctrl or Alt.
@@ -24,21 +24,69 @@ fn slash_opens_the_search_while_browsing() {
 }
 
 #[test]
-fn esc_quits_while_browsing_and_closes_the_search_while_searching() {
+fn esc_quits_while_browsing_leaves_the_search_and_closes_the_page() {
     assert_eq!(
         action_for(key(KeyCode::Esc), Mode::Browse),
         Some(Action::Quit)
     );
     assert_eq!(
         action_for(key(KeyCode::Esc), Mode::Search),
-        Some(Action::CloseSearch)
+        Some(Action::LeaveSearch)
     );
+    assert_eq!(
+        action_for(key(KeyCode::Esc), Mode::Info),
+        Some(Action::CloseInfo)
+    );
+}
+
+#[test]
+fn right_and_enter_open_the_page_from_the_list_and_the_search_bar() {
+    for mode in [Mode::Browse, Mode::Search] {
+        for code in [KeyCode::Right, KeyCode::Enter] {
+            assert_eq!(action_for(key(code), mode), Some(Action::OpenInfo));
+        }
+    }
+}
+
+#[test]
+fn left_closes_the_page_and_page_keys_scroll_it() {
+    assert_eq!(
+        action_for(key(KeyCode::Left), Mode::Info),
+        Some(Action::CloseInfo)
+    );
+    assert_eq!(
+        action_for(key(KeyCode::PageUp), Mode::Info),
+        Some(Action::PageUp)
+    );
+    assert_eq!(
+        action_for(key(KeyCode::PageDown), Mode::Info),
+        Some(Action::PageDown)
+    );
+}
+
+#[test]
+fn arrows_scroll_the_page_while_reading_and_do_not_move_the_list() {
+    assert_eq!(
+        action_for(key(KeyCode::Up), Mode::Info),
+        Some(Action::LineUp)
+    );
+    assert_eq!(
+        action_for(key(KeyCode::Down), Mode::Info),
+        Some(Action::LineDown)
+    );
+}
+
+#[test]
+fn slash_and_letters_do_nothing_while_reading_a_page() {
+    assert_eq!(action_for(key(KeyCode::Char('/')), Mode::Info), None);
+    assert_eq!(action_for(key(KeyCode::Char('q')), Mode::Info), None);
 }
 
 #[test]
 fn ctrl_c_quits_in_every_mode() {
     assert_eq!(action_for(ctrl_c(), Mode::Browse), Some(Action::Quit));
     assert_eq!(action_for(ctrl_c(), Mode::Search), Some(Action::Quit));
+    assert_eq!(action_for(ctrl_c(), Mode::Info), Some(Action::Quit));
 }
 
 #[test]
@@ -51,7 +99,7 @@ fn letters_type_into_the_search_and_do_nothing_while_browsing() {
 }
 
 #[test]
-fn arrows_move_in_every_mode() {
+fn arrows_move_the_list_while_browsing_and_searching() {
     for mode in [Mode::Browse, Mode::Search] {
         assert_eq!(action_for(key(KeyCode::Up), mode), Some(Action::Up));
         assert_eq!(action_for(key(KeyCode::Down), mode), Some(Action::Down));
@@ -60,7 +108,7 @@ fn arrows_move_in_every_mode() {
 
 #[test]
 fn a_resize_is_an_action_in_every_mode_so_the_screen_redraws_at_once() {
-    for mode in [Mode::Browse, Mode::Search] {
+    for mode in [Mode::Browse, Mode::Search, Mode::Info] {
         assert_eq!(
             action_for_event(Event::Resize(80, 24), mode),
             Some(Action::Resize)

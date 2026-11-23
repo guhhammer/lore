@@ -1,9 +1,9 @@
-//! Tests for turning configured path patterns into real paths (src/paths.rs).
+//! Tests for turning configured path patterns into real paths (src/interface/paths.rs).
 //! Each test name says the rule it checks.
 
 use std::path::{Path, PathBuf};
 
-use lore_tui::paths::expand;
+use lore_tui::interface::paths::expand;
 
 /// A fresh folder holding these empty files, under cargo's temp dir.
 fn temp_with(name: &str, files: &[&str]) -> PathBuf {

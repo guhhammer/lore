@@ -1,9 +1,9 @@
-//! Tests for grouping commands under section headers (src/rows.rs).
+//! Tests for grouping commands under section headers (src/interface/rows.rs).
 //! Each test name says the rule it checks.
 
 use lore_tui::commands::{Command, Kind};
-use lore_tui::rows::{self, Row};
-use lore_tui::section::Section;
+use lore_tui::interface::rows::{self, Row};
+use lore_tui::interface::section::Section;
 
 /// The rows as text: headers as `[A]`, commands by name.
 fn labels(rows: &[Row]) -> Vec<String> {

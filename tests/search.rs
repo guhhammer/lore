@@ -1,8 +1,8 @@
-//! Tests for the search rules (src/search.rs).
+//! Tests for the search rules (src/interface/search.rs).
 //! Each test name says the rule it checks.
 
-use lore_tui::search::first_section;
-use lore_tui::section::Section;
+use lore_tui::interface::search::first_section;
+use lore_tui::interface::section::Section;
 
 #[test]
 fn a_single_letter_asks_for_its_section_first_whatever_its_case() {
