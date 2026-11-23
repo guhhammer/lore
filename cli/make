@@ -29,5 +29,8 @@ step cargo build
 step cargo build --release
 
 mkdir -p app
-step cp target/release/lore app/lore
+# Copy, then rename: a running app/lore cannot be overwritten ("Text file
+# busy"), but it can be replaced; the running one keeps the old file.
+step cp target/release/lore app/lore.new
+step mv -f app/lore.new app/lore
 echo "✓ app/lore"

@@ -13,9 +13,22 @@ release. A release is an entry here.
 
 ### Added
 
-- `lore`: a terminal list of every executable on `$PATH`, sorted A to Z under
-  section letters (`#` for names that do not start with a letter). ↑/↓ move,
-  Ctrl+C quits. Symlinked commands are included.
+- `lore`: a terminal list of every command you can type, for Linux and macOS
+  — the executables on `$PATH` and in the directories it often leaves out
+  (`/usr/sbin`, Homebrew, MacPorts, Nix, Snap, Flatpak, `~/bin`, language
+  tools, `/opt/*/bin`, macOS's `/etc/paths`; symlinked ones too), the
+  builtins and keywords of the user's shell (bash, zsh or fish), and the
+  user's aliases from the shell's system-wide and own startup files (fish
+  functions too), shown with what they run and what they hide — each name
+  once, sorted A to Z under section letters (`#` for names that do not start
+  with a letter). Missing places are skipped; the lists live in
+  `src/compile_config.rs`.
+- Without a terminal (a pipe, cron, `ssh` without `-t`) it says so in one
+  line and exits with status 1, instead of crashing.
+- A search bar on top: `/` opens it, typing filters by name, Esc closes it.
+  A single character puts its own section first. The keys of the current
+  mode are always shown on the bottom line. ↑/↓
+  move; Esc (when not searching) and Ctrl+C quit.
 - `cli/make` (fmt, clippy, test, build, release, copy to `app/`) and
   `cli/clean` (`cargo clean`).
 - The MIT licence, and the repository's pages: the README, `SECURITY.md`,

@@ -12,3 +12,33 @@
 # The owner's open-work notes stay out of the public repository.
 .todo
 .todo.distros
+.todo.context
+
+# AI tooling stays local: the agents' instruction files and their folders.
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+AGENT.md
+GEMINI.md
+CODEX.md
+.cursorrules
+.windsurfrules
+.github/copilot-instructions.md
+.mcp.json
+.claude/
+.codex/
+.agents/
+.gemini/
+.cursor/
+.windsurf/
+.continue/
+.aider*
+
+# Local knowledge tools: the code graph and the memory palace (and what their
+# setup writes next to them). Never pushed.
+graphify-out/
+.graphify*
+.mempalace/
+mempalace.yaml
+mempalace.yml
+entities.json

@@ -24,8 +24,9 @@ listings and draw them.
 
 **In scope:**
 
-- The names of files in the `$PATH` directories: they are drawn to the
-  terminal as they are, so a name holding terminal escape sequences is in scope.
+- The names of files in the program directories, and the aliases in the
+  shell's startup files: they are drawn to the terminal as they are, so a
+  name or an alias holding terminal escape sequences is in scope.
 - `lore` must never run, open or write any of the files it lists.
 
 **Out of scope:**
@@ -41,6 +42,10 @@ Nothing in it listens on a port.
 
 ## Handling secrets
 
-`lore` reads no credentials, no configuration and no environment beyond
-`$PATH`, and writes nothing. If a change ever makes it read a secret, this
+`lore` reads no credentials and writes nothing. What it reads: `$PATH`,
+`$HOME` and `$SHELL`; the listings of the program directories; `/etc/paths`
+and `/etc/paths.d/*` (macOS); the shell's startup files (system-wide and the
+user's), of which it keeps only the `alias` lines; and, for fish, the names
+of the files in `~/.config/fish/functions/`. Every path is listed in
+`src/compile_config.rs`. If a change ever makes it read a secret, this
 section says where it lives and how it is kept out of the repository.

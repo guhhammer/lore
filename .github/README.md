@@ -1,18 +1,35 @@
 # lore
 
-A terminal list of every command on your PATH, grouped A to Z.
+A terminal list of every command you can type, grouped A to Z. For Linux
+and macOS, with bash, zsh or fish.
 
-`lore` reads every directory on your `$PATH`, collects the executables in
-them, and shows them in one scrollable list, sorted alphabetically under the
-section letters `A` to `Z` (names that start with a digit or a symbol go under
-`#`). It is for anyone who wants to see what commands their machine has.
+`lore` lists every command you can type, each name once, in one scrollable
+list sorted alphabetically under the section letters `A` to `Z` (names that
+start with a digit or a symbol go under `#`). It is for anyone who wants to
+see what commands their machine has, with no internet needed:
 
-It is one Rust binary built on [ratatui](https://ratatui.rs): `src/main.rs`
-scans `$PATH` once at start, builds the rows, and draws them.
+- **Programs:** the executables on your `$PATH`, plus the places a `$PATH`
+  often leaves out — `/usr/sbin` (where `reboot`, `fdisk` and `useradd` live),
+  Homebrew, MacPorts, Nix, Snap, Flatpak, `~/bin`, `~/.cargo/bin`, `~/go/bin`
+  and `/opt/*/bin` — and, on macOS, the directories in `/etc/paths`.
+- **Your shell's own commands:** the builtins and keywords of bash, zsh or
+  fish (`cd`, `export`, `if`…), for the shell in your `$SHELL`.
+- **Your aliases,** from your shell's startup files, system-wide and your
+  own, each shown with what it runs and, when it shares a name with a
+  command, the fact that it hides it. Fish users' functions are listed too.
+
+None of these places has to exist: a missing one is skipped. Every path and
+list lives in `src/compile_config.rs`.
+
+It is one Rust binary built on [ratatui](https://ratatui.rs). Aliases are read
+from the startup files as text, not by running the shell, so one defined in
+a file they load from elsewhere (an oh-my-zsh plugin, say) is not seen; bash
+and zsh functions are not listed.
 
 ```text
 lore/
-├── src/main.rs          the whole program: scan $PATH, group, draw, read keys
+├── src/                 the program: lib.rs runs it, commands/ finds the commands
+├── tests/               the tests, which reach the program through src/lib.rs
 ├── cli/                 make (fmt, clippy, test, build, release → app/) and clean
 ├── app/                 where cli/make copies the release binary
 └── .github/             this page, the policies, the templates, the workflows (paused)
@@ -24,8 +41,15 @@ lore/
 cargo run --release
 ```
 
-A bordered list titled `commands (<count>)` fills the terminal. ↑ and ↓ move
-through the commands (the letter headers are skipped); Ctrl+C quits.
+A search bar sits on top, the list below it, and the keys you can press are
+always shown on the bottom line:
+
+- ↑ and ↓ move through the commands (the letter headers are skipped).
+- `/` opens the search bar; typing keeps only the names that contain what
+  you typed, ignoring case. A single character puts its own section first
+  (`h` shows the commands starting with `h` on top). Esc closes the search
+  and brings the whole list back.
+- Esc, when not searching, quits. Ctrl+C quits at any time.
 
 ## Building
 
