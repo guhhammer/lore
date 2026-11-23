@@ -74,3 +74,12 @@ fn the_collected_list_has_every_name_once_in_order_with_the_shell_and_sbin_ones(
         assert!(all.iter().any(|c| c.name == name), "{name} is missing");
     }
 }
+
+#[test]
+fn a_subcommand_runs_its_program_but_a_program_with_a_space_is_itself() {
+    assert_eq!(
+        Command::new("git commit", Kind::Subcommand).program(),
+        "git"
+    );
+    assert_eq!(Command::new("my tool", Kind::Program).program(), "my tool");
+}

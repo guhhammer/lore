@@ -20,7 +20,7 @@ rebuilding, put it in `~/.local/share/lore/content/` (or, for every user,
 - tldr's Windows, FreeBSD, OpenBSD, NetBSD, SunOS and Android pages are
   included too, for names no other page already uses.
 - Pages for commands tldr does not cover were written from each command's
-  local manual page, and some were revised or written by hand.
+  local manual page, and a few were written for lore directly.
 
 Corrections are welcome: a page is one small Markdown file.
 

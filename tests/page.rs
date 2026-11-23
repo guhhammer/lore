@@ -4,9 +4,10 @@
 use std::path::PathBuf;
 
 use lore_tui::commands::{Command, Kind};
+use lore_tui::compile_config::LINK_WARNING;
 use lore_tui::info::content::parse;
 use lore_tui::info::package::Package;
-use lore_tui::info::page::{Facts, LINK_WARNING, PageLine, Style, render};
+use lore_tui::info::page::{Facts, PageLine, Style, render};
 
 fn texts(lines: &[PageLine]) -> Vec<&str> {
     lines.iter().map(|l| l.text.as_str()).collect()

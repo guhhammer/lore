@@ -37,6 +37,16 @@ pub struct Command {
 }
 
 impl Command {
+    /// The program a name runs: the name itself, or a subcommand's first
+    /// word (`git commit` → `git`), whose file, package and version it has.
+    /// Only a subcommand is split: a program's file name may hold a space.
+    pub fn program(&self) -> &str {
+        match self.kind {
+            Kind::Subcommand => self.name.split(' ').next().unwrap_or_default(),
+            _ => &self.name,
+        }
+    }
+
     /// A command with nothing extra.
     pub fn new(name: impl Into<String>, kind: Kind) -> Self {
         Self {

@@ -596,6 +596,7 @@ name = "lore-tui"
 version = "0.1.0"
 dependencies = [
  "ratatui",
+ "unicode-width",
 ]
 
 [[package]]

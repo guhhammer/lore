@@ -3,6 +3,8 @@
 
 use std::fmt;
 
+use crate::compile_config::SYMBOL_SECTION;
+
 /// A section. `Symbol` is declared first, so it sorts before every letter.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Section {
@@ -26,7 +28,7 @@ impl Section {
 impl fmt::Display for Section {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Self::Symbol => write!(f, "#"),
+            Self::Symbol => write!(f, "{SYMBOL_SECTION}"),
             Self::Letter(c) => write!(f, "{c}"),
         }
     }

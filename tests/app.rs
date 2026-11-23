@@ -301,3 +301,15 @@ fn a_command_named_by_a_word_of_the_search_comes_first() {
     typed(&mut app, "cut files");
     assert_eq!(labels(&app)[0], "cut");
 }
+
+#[test]
+fn a_page_searched_from_is_laid_out_again_at_a_new_width_and_stays_the_same_page() {
+    let mut app = app(&["awk", "bash"]);
+    app.open_info();
+    app.load_page(80);
+    typed(&mut app, "bash"); // the search now selects bash
+    app.relayout_page(40);
+    let page = app.page.as_ref().unwrap();
+    assert_eq!(page.command.name, "awk");
+    assert_eq!(page.width, 40);
+}

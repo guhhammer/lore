@@ -10,19 +10,17 @@ use super::danger;
 use super::links;
 use super::package::{self, Package};
 use crate::commands::{self, Command, Kind};
+use crate::compile_config::{
+    DANGER_EXAMPLE_NOTE, DANGER_MARK, DANGER_WARNING, EXAMPLE_INDENT, EXAMPLE_PROMPT,
+    FIELD_INSTALLED, FIELD_LABEL_WIDTH, FIELD_LOCATION, FIELD_NEWEST, FIELD_PACKAGE, FIELD_UPDATE,
+    HEADING_LINKS, HEADING_MANUAL, HEADING_NOTES, HEADING_RELATED, HEADING_SUBCOMMANDS,
+    HEADING_USAGE, HEADING_VERSION, IS_ALIAS, IS_BUILTIN, IS_FUNCTION, IS_KEYWORD, IS_SUBCOMMAND,
+    LINK_HINT, LINK_WARNING, NEWEST_SAME, NEWEST_UPDATE, NO_EXAMPLES, NO_PAGE, NO_PAGE_REASONS,
+    NO_SUMMARY, PAGE_INDENT, REASON_INDENT, RELATED_HINT, SUBCOMMANDS_HINT, VERSION_ALIAS,
+    VERSION_FUNCTION, VERSION_NOT_FOUND, VERSION_SHELL, VERSION_UNPACKAGED,
+};
 use crate::utils::manual;
-use crate::utils::text::wrap;
-
-/// Always under the links: the content can come from anyone.
-pub const LINK_WARNING: &str = "Check every link before you open it: anyone can add pages to \
-lore. lore will never ask you to log in anywhere, or for any account.";
-
-/// Under the summary of a command whose page is in the `danger` category.
-pub const DANGER_WARNING: &str = "! Can destroy data or stop the system, with no undo. Read each \
-example, and check what it acts on, before you run it.";
-
-/// How to open a link; the terminal does it, not lore.
-pub const LINK_HINT: &str = "Ctrl+click a link to open it in your browser.";
+use crate::utils::text::{self, wrap};
 
 /// What a line is, so the drawing can style it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -66,9 +64,8 @@ pub struct Facts {
 /// file and package. Runs `whatis` and the package manager; never fails.
 pub fn facts(command: &Command) -> Facts {
     // a subcommand's file and package are its program's (`git commit` → git)
-    let program_name = command.name.split(' ').next().unwrap_or_default();
     let location = is_program(command)
-        .then(|| commands::locate(program_name))
+        .then(|| commands::locate(command.program()))
         .flatten();
     Facts {
         content: content::find(&command.name),
@@ -100,44 +97,32 @@ pub fn render(
         lines: Vec::new(),
         width,
     };
+    let empty = Content::default();
+    let content = facts.content.as_ref().unwrap_or(&empty); // no page: every part empty
     let name = &command.name;
     page.add(name, Style::Title);
-    let categories = facts
-        .content
-        .as_ref()
-        .map(|c| c.categories.as_slice())
-        .unwrap_or_default();
-    if !categories.is_empty() {
-        page.add(&format!("[{}]", categories.join(" ")), Style::Categories);
+    if !content.categories.is_empty() {
+        page.add(
+            &format!("[{}]", content.categories.join(" ")),
+            Style::Categories,
+        );
     }
     page.blank();
 
     // what it is
-    match command.kind {
-        Kind::Alias => page.wrapped(
-            &format!(
-                "Your alias: typing it runs `{}`.",
-                command.runs.as_deref().unwrap_or("")
-            ),
-            Style::Text,
-            "",
-        ),
-        Kind::Builtin => page.wrapped("Built into your shell.", Style::Text, ""),
-        Kind::Keyword => page.wrapped("A word of your shell's language.", Style::Text, ""),
-        Kind::Function => page.wrapped("A shell function you defined.", Style::Text, ""),
-        Kind::Subcommand => {
-            let program = command.name.split(' ').next().unwrap_or_default();
-            page.wrapped(&format!("A subcommand of {program}."), Style::Text, "");
-        }
-        Kind::Program => {}
+    let what = match command.kind {
+        Kind::Alias => Some(IS_ALIAS.replace("{runs}", command.runs.as_deref().unwrap_or(""))),
+        Kind::Builtin => Some(IS_BUILTIN.to_owned()),
+        Kind::Keyword => Some(IS_KEYWORD.to_owned()),
+        Kind::Function => Some(IS_FUNCTION.to_owned()),
+        Kind::Subcommand => Some(IS_SUBCOMMAND.replace("{program}", command.program())),
+        Kind::Program => None,
+    };
+    if let Some(what) = what {
+        page.wrapped(&what, Style::Text, "");
     }
-    let summary = facts
-        .content
-        .as_ref()
-        .map(|c| c.summary.as_slice())
-        .unwrap_or_default();
-    if !summary.is_empty() {
-        for (i, paragraph) in summary.iter().enumerate() {
+    if !content.summary.is_empty() {
+        for (i, paragraph) in content.summary.iter().enumerate() {
             if i > 0 {
                 page.blank();
             }
@@ -146,100 +131,88 @@ pub fn render(
     } else if let Some(line) = &facts.whatis {
         page.wrapped(&capitalized(line), Style::Text, "");
     } else if is_program(command) {
-        page.wrapped(&format!("No summary yet for {name}."), Style::Dim, "");
+        page.wrapped(&NO_SUMMARY.replace("{name}", name), Style::Dim, "");
     }
 
-    if facts.content.as_ref().is_some_and(danger::command) {
+    if danger::command(content) {
         page.blank();
         page.wrapped(DANGER_WARNING, Style::Danger, "");
     }
 
-    page.heading("VERSION");
+    page.heading(HEADING_VERSION);
     version(&mut page, command, facts);
 
-    page.heading("HOW TO USE");
-    let usage = facts
-        .content
-        .as_ref()
-        .map(|c| c.usage.as_slice())
-        .unwrap_or_default();
-    if usage.is_empty() {
+    page.heading(HEADING_USAGE);
+    if content.usage.is_empty() {
         page.wrapped(
-            &format!("No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository."),
+            &NO_EXAMPLES.replace("{name}", name),
             Style::Dim,
-            "  ",
+            PAGE_INDENT,
         );
     }
-    for (typed, what) in usage {
+    let mut any_dangerous = false;
+    for (typed, what) in &content.usage {
         if danger::example(typed) {
-            page.wrapped(&format!("! $ {typed}"), Style::Danger, "  ");
+            any_dangerous = true;
+            page.wrapped(
+                &format!("{DANGER_MARK}{EXAMPLE_PROMPT}{typed}"),
+                Style::Danger,
+                PAGE_INDENT,
+            );
         } else {
-            page.wrapped(&format!("$ {typed}"), Style::Code, "  ");
+            page.wrapped(
+                &format!("{EXAMPLE_PROMPT}{typed}"),
+                Style::Code,
+                PAGE_INDENT,
+            );
         }
-        page.wrapped(what, Style::Text, "      ");
+        page.wrapped(what, Style::Text, EXAMPLE_INDENT);
     }
-    if usage.iter().any(|(typed, _)| danger::example(typed)) {
-        page.wrapped(
-            "! marks an example that can destroy data or stop the system: check what it acts on first.",
-            Style::Dim,
-            "  ",
-        );
+    if any_dangerous {
+        page.wrapped(DANGER_EXAMPLE_NOTE, Style::Dim, PAGE_INDENT);
     }
 
     let related = related(command, facts, man);
     if !related.is_empty() {
-        page.heading("RELATED");
-        page.wrapped("Open one with / or `lore NAME`.", Style::Dim, "  ");
-        page.wrapped(&related.join(", "), Style::Text, "  ");
+        page.heading(HEADING_RELATED);
+        page.wrapped(RELATED_HINT, Style::Dim, PAGE_INDENT);
+        page.wrapped(&related.join(", "), Style::Text, PAGE_INDENT);
     }
 
     if !facts.subcommands.is_empty() {
-        page.heading("SUBCOMMANDS");
+        page.heading(HEADING_SUBCOMMANDS);
         page.wrapped(
-            &format!(
-                "Each has its own page: find it in the list, or run `lore {}`.",
-                facts.subcommands[0]
-            ),
+            &SUBCOMMANDS_HINT.replace("{first}", &facts.subcommands[0]),
             Style::Dim,
-            "  ",
+            PAGE_INDENT,
         );
-        page.wrapped(&facts.subcommands.join(", "), Style::Text, "  ");
+        page.wrapped(&facts.subcommands.join(", "), Style::Text, PAGE_INDENT);
     }
 
-    let notes = facts
-        .content
-        .as_ref()
-        .map(|c| c.notes.as_slice())
-        .unwrap_or_default();
-    if !notes.is_empty() {
-        page.heading("NOTES");
-        for note in notes {
-            page.wrapped(note, Style::Text, "  ");
+    if !content.notes.is_empty() {
+        page.heading(HEADING_NOTES);
+        for note in &content.notes {
+            page.wrapped(note, Style::Text, PAGE_INDENT);
         }
     }
 
-    page.heading("LINKS");
-    page.wrapped(LINK_HINT, Style::Dim, "  ");
-    let own = facts
-        .content
-        .as_ref()
-        .map(|c| c.links.clone())
-        .unwrap_or_default();
-    for (label, url) in own.into_iter().chain(links::searches(name)) {
+    page.heading(HEADING_LINKS);
+    page.wrapped(LINK_HINT, Style::Dim, PAGE_INDENT);
+    for (label, url) in content.links.iter().cloned().chain(links::searches(name)) {
         page.blank();
-        page.wrapped(&label, Style::Text, "  ");
-        page.add(&format!("  {url}"), Style::Url); // whole, or the terminal opens half
+        page.wrapped(&label, Style::Text, PAGE_INDENT);
+        page.add(&format!("{PAGE_INDENT}{url}"), Style::Url); // whole, or the terminal opens half
     }
     page.blank();
-    page.wrapped(LINK_WARNING, Style::Warning, "  ");
+    page.wrapped(LINK_WARNING, Style::Warning, PAGE_INDENT);
 
-    page.heading("MANUAL");
+    page.heading(HEADING_MANUAL);
     match man {
         Some(lines) => lines.iter().for_each(|l| page.add(l, Style::Text)),
         None => {
-            page.wrapped(manual::NO_PAGE, Style::Dim, "  ");
-            for reason in manual::NO_PAGE_REASONS {
-                page.wrapped(&format!("- {reason}"), Style::Dim, "    ");
+            page.wrapped(NO_PAGE, Style::Dim, PAGE_INDENT);
+            for reason in NO_PAGE_REASONS {
+                page.wrapped(&format!("- {reason}"), Style::Dim, REASON_INDENT);
             }
         }
     }
@@ -250,41 +223,40 @@ pub fn render(
 fn version(page: &mut Page, command: &Command, facts: &Facts) {
     if !is_program(command) {
         let why = match command.kind {
-            Kind::Alias => {
-                "An alias has no version of its own: it is the one of the command it runs."
-            }
-            Kind::Function => "A function you wrote has no version.",
-            _ => {
-                "Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`)."
-            }
+            Kind::Alias => VERSION_ALIAS,
+            Kind::Function => VERSION_FUNCTION,
+            _ => VERSION_SHELL,
         };
-        page.wrapped(why, Style::Text, "  ");
+        page.wrapped(why, Style::Text, PAGE_INDENT);
         return;
     }
     match &facts.package {
         Some(package) => {
-            page.field("Package", &format!("{} ({})", package.name, package.manager));
+            page.field(
+                FIELD_PACKAGE,
+                &format!("{} ({})", package.name, package.manager),
+            );
             if let Some(installed) = &package.installed {
-                page.field("Installed", installed);
+                page.field(FIELD_INSTALLED, installed);
             }
             match (&package.installed, &package.newest) {
                 (Some(installed), Some(newest)) if installed == newest => {
-                    page.field("Newest", &format!("{newest}, up to date as of your last package list update"));
+                    page.field(FIELD_NEWEST, &NEWEST_SAME.replace("{newest}", newest));
                 }
-                (_, Some(newest)) => page.field("Newest", &format!("{newest}: an update is available")),
+                (_, Some(newest)) => {
+                    page.field(FIELD_NEWEST, &NEWEST_UPDATE.replace("{newest}", newest))
+                }
                 _ => {}
             }
-            page.field("Update", &package.update);
+            page.field(FIELD_UPDATE, &package.update);
         }
-        None if facts.location.is_some() => page.wrapped(
-            "Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.",
-            Style::Text,
-            "  ",
-        ),
-        None => page.wrapped("Not installed on this machine, or not in a folder lore looks in.", Style::Dim, "  "),
+        None if facts.location.is_some() => {
+            page.wrapped(VERSION_UNPACKAGED, Style::Text, PAGE_INDENT)
+        }
+        None => page.wrapped(VERSION_NOT_FOUND, Style::Dim, PAGE_INDENT),
     }
     if let Some(location) = &facts.location {
-        page.field("Location", &location.display().to_string());
+        page.field(FIELD_LOCATION, &location.display().to_string());
     }
 }
 
@@ -328,7 +300,7 @@ impl Page {
 
     /// `text` wrapped to the width, every line starting with `indent`.
     fn wrapped(&mut self, text: &str, style: Style, indent: &str) {
-        let room = self.width.saturating_sub(indent.chars().count());
+        let room = self.width.saturating_sub(text::width(indent));
         for line in wrap(text, room) {
             self.add(&format!("{indent}{line}"), style);
         }
@@ -336,14 +308,13 @@ impl Page {
 
     /// "  Label      value", the values lined up, wrapped under themselves.
     fn field(&mut self, label: &str, value: &str) {
-        let indent = "  ";
-        let label = format!("{indent}{label:<11}");
-        let room = self.width.saturating_sub(label.chars().count());
+        let label = format!("{PAGE_INDENT}{label:<FIELD_LABEL_WIDTH$}");
+        let room = self.width.saturating_sub(text::width(&label));
         for (i, line) in wrap(value, room).into_iter().enumerate() {
             let lead = if i == 0 {
                 label.clone()
             } else {
-                " ".repeat(label.chars().count())
+                " ".repeat(text::width(&label))
             };
             self.add(&format!("{lead}{line}"), Style::Text);
         }
@@ -357,7 +328,7 @@ pub fn related(command: &Command, facts: &Facts, man: Option<&[String]>) -> Vec<
         .content
         .as_ref()
         .map(|c| c.see_also.clone())
-        .unwrap_or_default();
+        .unwrap_or_default(); // no page: only the man page's references
     found.extend(man.map(see_also_in_man).unwrap_or_default());
     let mut seen = std::collections::HashSet::new();
     found.retain(|name| *name != command.name && seen.insert(name.clone()));

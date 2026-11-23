@@ -5,7 +5,7 @@ use std::collections::HashSet;
 use std::env;
 use std::fs;
 use std::os::unix::fs::PermissionsExt;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 use super::{Command, Kind};
 use crate::compile_config::{PATH_LIST_FILES, PROGRAM_DIRS};
@@ -19,13 +19,7 @@ pub fn scan() -> Vec<Command> {
             continue; // missing or unreadable directory
         };
         for entry in entries.flatten() {
-            // fs::metadata follows symlinks; DirEntry::metadata would not, and most
-            // commands (python3, vi, everything in /etc/alternatives) are symlinks.
-            let Ok(meta) = fs::metadata(entry.path()) else {
-                continue; // broken symlink
-            };
-            // 0o111 = any execute bit (owner, group or others)
-            if meta.is_file() && meta.permissions().mode() & 0o111 != 0 {
+            if is_executable(&entry.path()) {
                 commands.push(Command::new(
                     entry.file_name().to_string_lossy(),
                     Kind::Program,
@@ -42,9 +36,18 @@ pub fn locate(name: &str) -> Option<PathBuf> {
     if name.contains('/') || name.is_empty() {
         return None; // a name, never a path
     }
-    dirs().into_iter().map(|dir| dir.join(name)).find(|file| {
-        fs::metadata(file).is_ok_and(|m| m.is_file() && m.permissions().mode() & 0o111 != 0)
-    })
+    dirs()
+        .into_iter()
+        .map(|dir| dir.join(name))
+        .find(|file| is_executable(file))
+}
+
+/// A file anyone may run. fs::metadata follows symlinks (DirEntry::metadata
+/// would not), and most commands are symlinks (python3, vi, everything in
+/// /etc/alternatives); a broken one is not executable. 0o111 = any execute
+/// bit: owner, group or others.
+fn is_executable(path: &Path) -> bool {
+    fs::metadata(path).is_ok_and(|m| m.is_file() && m.permissions().mode() & 0o111 != 0)
 }
 
 /// The directories to scan: `$PATH`'s, the listed ones, then `PROGRAM_DIRS`,

@@ -6,6 +6,169 @@
 //! Path syntax: `~/` is the user's home (skipped if `$HOME` is unset), and a
 //! `*` stands for any name within one path component (`/opt/*/bin`).
 
+use ratatui::style::{Color, Modifier, Style};
+
+// ── texts ───────────────────────────────────────────────────────────────────
+
+/// `lore --help`.
+pub const HELP: &str = "\
+lore: every command you can type, and what each one does. Offline.
+
+Usage:
+  lore               the list of every command, A to Z
+  lore NAME          NAME's page straight away (like `man NAME`)
+  lore git commit    a subcommand's page
+  lore --help        this text
+  lore --version     lore's version
+
+In the list: arrows move, / searches (start with @ for only the commands
+that have a lore page), right arrow or Enter opens a page, Esc quits.
+On a page: arrows and PgUp/PgDn scroll, / finds another command, left
+arrow or Esc close it.
+`man lore` has the rest.";
+
+/// How to open a link; the terminal does it, not lore.
+pub const LINK_HINT: &str = "Ctrl+click a link to open it in your browser.";
+
+/// Always under the links: the content can come from anyone.
+pub const LINK_WARNING: &str = "Check every link before you open it: anyone can add pages to \
+lore. lore will never ask you to log in anywhere, or for any account.";
+
+/// The category that marks a whole command.
+pub const DANGER: &str = "danger";
+
+/// Under the summary of a command whose page is in the `danger` category.
+pub const DANGER_WARNING: &str = "! Can destroy data or stop the system, with no undo. Read each \
+example, and check what it acts on, before you run it.";
+
+/// Said when a command has no manual page; `NO_PAGE_REASONS` follow it.
+pub const NO_PAGE: &str = "No manual page for this command. Probable reasons:";
+
+/// Why there may be no manual page. One general list for now, since `man`
+/// does not say which one it is.
+pub const NO_PAGE_REASONS: &[&str] = &[
+    "it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)",
+    "it is one of your aliases: its page is the one of the command it runs",
+    "the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)",
+    "manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)",
+    "`man` itself is not installed",
+];
+
+/// The app's name, first on the key bar.
+pub const KEY_BAR_NAME: &str = "lore";
+
+/// The key bar, per mode: (key, what it does).
+pub const KEYS_BROWSE: &[(&str, &str)] = &[
+    ("↑↓", "Move"),
+    ("→/Enter", "Page"),
+    ("/", "Search"),
+    ("Esc", "Quit"),
+    ("^C", "Quit"),
+];
+pub const KEYS_SEARCH: &[(&str, &str)] = &[
+    ("type", "Filter"),
+    ("Bksp", "Erase"),
+    ("↑↓", "Move"),
+    ("→/Enter", "Page"),
+    ("@", "Lore pages"),
+    ("Esc", "Leave search"),
+    ("^C", "Quit"),
+];
+pub const KEYS_PAGE: &[(&str, &str)] = &[
+    ("↑↓ PgUp/PgDn", "Scroll"),
+    ("/", "Search"),
+    ("←/Esc", "Back"),
+    ("^C", "Quit"),
+];
+/// A page opened as `lore NAME`: closing it quits.
+pub const KEYS_PAGE_DIRECT: &[(&str, &str)] = &[
+    ("↑↓ PgUp/PgDn", "Scroll"),
+    ("/", "Search"),
+    ("←/Esc", "Quit"),
+    ("^C", "Quit"),
+];
+
+/// The search bar: its title, the hint when empty, the hint after leaving it.
+pub const SEARCH_TITLE: &str = " search ";
+pub const SEARCH_HINT: &str = "press / to search";
+pub const SEARCH_KEPT_HINT: &str = "   (/ to edit)";
+
+/// The list's title: `{total}` commands, or `{shown}` of them while searching.
+pub const LIST_TITLE: &str = " commands ({total}) ";
+pub const LIST_TITLE_SEARCHING: &str = " commands ({shown} of {total}) ";
+
+/// When nothing matches the search `{query}`.
+pub const NO_MATCH: &str = " no command matches \"{query}\"";
+
+/// Errors printed in the shell (after `lore: `).
+pub const ERROR_NO_TERMINAL: &str =
+    "needs a terminal; run it directly, not through a pipe (over ssh: ssh -t)";
+pub const ERROR_NOTHING_NAMED: &str = "no command or page named {name}";
+pub const ERROR_UNKNOWN_OPTION: &str = "unknown option {option}; see lore --help";
+pub const ERROR_OPTIONS_ALONE: &str = "options go alone: lore NAME, or see lore --help";
+
+// ── page texts ──────────────────────────────────────────────────────────────
+
+/// The page's section headings, in the order they appear.
+pub const HEADING_VERSION: &str = "VERSION";
+pub const HEADING_USAGE: &str = "HOW TO USE";
+pub const HEADING_RELATED: &str = "RELATED";
+pub const HEADING_SUBCOMMANDS: &str = "SUBCOMMANDS";
+pub const HEADING_NOTES: &str = "NOTES";
+pub const HEADING_LINKS: &str = "LINKS";
+pub const HEADING_MANUAL: &str = "MANUAL";
+
+/// What a name is, under its title, when it is not a program.
+pub const IS_ALIAS: &str = "Your alias: typing it runs `{runs}`.";
+pub const IS_BUILTIN: &str = "Built into your shell.";
+pub const IS_KEYWORD: &str = "A word of your shell's language.";
+pub const IS_FUNCTION: &str = "A shell function you defined.";
+pub const IS_SUBCOMMAND: &str = "A subcommand of {program}.";
+
+/// When a program has no page and `whatis` knows nothing of it.
+pub const NO_SUMMARY: &str = "No summary yet for {name}.";
+/// When a page has no examples.
+pub const NO_EXAMPLES: &str =
+    "No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository.";
+/// Under the examples, when one of them is marked dangerous.
+pub const DANGER_EXAMPLE_NOTE: &str =
+    "! marks an example that can destroy data or stop the system: check what it acts on first.";
+/// Above the related commands and the subcommands.
+pub const RELATED_HINT: &str = "Open one with / or `lore NAME`.";
+pub const SUBCOMMANDS_HINT: &str =
+    "Each has its own page: find it in the list, or run `lore {first}`.";
+
+/// VERSION when there is no package to read it from.
+pub const VERSION_ALIAS: &str =
+    "An alias has no version of its own: it is the one of the command it runs.";
+pub const VERSION_FUNCTION: &str = "A function you wrote has no version.";
+pub const VERSION_SHELL: &str = "Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`).";
+pub const VERSION_UNPACKAGED: &str = "Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.";
+pub const VERSION_NOT_FOUND: &str =
+    "Not installed on this machine, or not in a folder lore looks in.";
+
+/// VERSION's fields, and the newest version's two cases.
+pub const FIELD_PACKAGE: &str = "Package";
+pub const FIELD_INSTALLED: &str = "Installed";
+pub const FIELD_NEWEST: &str = "Newest";
+pub const FIELD_UPDATE: &str = "Update";
+pub const FIELD_LOCATION: &str = "Location";
+pub const NEWEST_SAME: &str = "{newest}, up to date as of your last package list update";
+pub const NEWEST_UPDATE: &str = "{newest}: an update is available";
+
+/// How wide a field's label is, so the values line up.
+pub const FIELD_LABEL_WIDTH: usize = 11;
+
+/// A page's indents: of a section's text, of what an example does, of the
+/// reasons there is no manual.
+pub const PAGE_INDENT: &str = "  ";
+pub const EXAMPLE_INDENT: &str = "      ";
+pub const REASON_INDENT: &str = "    ";
+
+/// Before an example, and before one that can destroy data.
+pub const EXAMPLE_PROMPT: &str = "$ ";
+pub const DANGER_MARK: &str = "! ";
+
 // ── screen ──────────────────────────────────────────────────────────────────
 
 /// The list's share of the width, in percent, while a page is open; the page
@@ -14,6 +177,39 @@ pub const INFO_LIST_PERCENT: u16 = 10;
 
 /// Lines that PgUp and PgDn scroll the page by.
 pub const PAGE_STEP: isize = 20;
+
+/// The list's indents: of a command, of a letter header; beside a page,
+/// where a tenth of the width is all there is, less.
+pub const LIST_INDENT: &str = "   ";
+pub const LIST_HEADER_INDENT: &str = " ";
+pub const LIST_INDENT_NARROW: &str = " ";
+
+/// The header of names that start with a digit or a symbol.
+pub const SYMBOL_SECTION: &str = "#";
+
+/// Lines the bordered search bar takes; the key bar takes one.
+pub const SEARCH_BAR_HEIGHT: u16 = 3;
+pub const KEY_BAR_HEIGHT: u16 = 1;
+
+/// The ending that marks text cut short.
+pub const ELLIPSIS: &str = "...";
+
+/// Colours and styles, plain for now (they will be restyled).
+pub const STYLE_CATEGORY: Style = Style::new().fg(Color::Magenta);
+pub const STYLE_SNIPPET: Style = Style::new().fg(Color::Cyan);
+pub const STYLE_DANGER: Style = Style::new().fg(Color::Red).add_modifier(Modifier::BOLD);
+pub const STYLE_HEADING: Style = Style::new().add_modifier(Modifier::BOLD);
+pub const STYLE_CODE: Style = Style::new().fg(Color::Green);
+pub const STYLE_DIM: Style = Style::new().add_modifier(Modifier::DIM);
+pub const STYLE_URL: Style = Style::new().fg(Color::Cyan);
+pub const STYLE_WARNING: Style = Style::new().fg(Color::Yellow);
+/// A letter header in the list.
+pub const STYLE_SECTION: Style = Style::new().fg(Color::Cyan).add_modifier(Modifier::BOLD);
+/// The search bar's border while typing goes to it.
+pub const STYLE_SEARCHING: Style = Style::new().fg(Color::Yellow);
+/// The selected row, and each key on the key bar.
+pub const STYLE_SELECTED: Style = Style::new().add_modifier(Modifier::REVERSED);
+pub const STYLE_KEY: Style = Style::new().add_modifier(Modifier::REVERSED);
 
 // ── content pages ───────────────────────────────────────────────────────────
 
@@ -64,6 +260,35 @@ pub const SEARCH_LINKS: &[(&str, &str)] = &[
 
 // ── search ──────────────────────────────────────────────────────────────────
 
+/// Starts a search that keeps only the commands with a lore page.
+pub const PAGES_ONLY: char = '@';
+
+/// A search needs this many characters (spaces not counted) before pages
+/// are searched too: fewer would match nearly every page.
+pub const CONTENT_MIN_CHARS: usize = 3;
+
+/// What starts a word inside a name: "commit" in `git commit`, "get" in
+/// `apt-get`.
+pub const NAME_WORD_SEPARATORS: [char; 5] = [' ', '-', '_', '.', ':'];
+
+/// Points for where on a page a search word is: its categories (whole, or
+/// part of one), summary, examples' descriptions, examples; the word as
+/// typed counts `SCORE_TYPED` times one counting as it; the whole search
+/// found as typed adds `SCORE_PHRASE`.
+pub const SCORE_CATEGORY: u32 = 6;
+pub const SCORE_CATEGORY_PART: u32 = 4;
+pub const SCORE_SUMMARY: u32 = 3;
+pub const SCORE_DESCRIPTION: u32 = 2;
+pub const SCORE_EXAMPLE: u32 = 1;
+pub const SCORE_TYPED: u32 = 2;
+pub const SCORE_PHRASE: u32 = 5;
+
+/// A word this long or longer ending in `s` also finds its singular.
+pub const PLURAL_MIN_CHARS: usize = 4;
+
+/// Characters of context kept each side of a search result's matched line.
+pub const SNIPPET_CONTEXT: usize = 12;
+
 /// Words that mean the same in a search by content: typing one finds pages
 /// that use any of its group. The pages are written in tldr's and the man
 /// pages' words ("directory", "remove"); a learner types their own
@@ -95,6 +320,33 @@ pub const SYNONYMS: &[&[&str]] = &[
     &["process", "program", "task"],
 ];
 
+// ── man and the reader's language ───────────────────────────────────────────
+
+/// `man` gives up below this width.
+pub const MAN_MIN_WIDTH: u16 = 20;
+
+/// The width `lore NAME` asks `man` at to learn whether a page exists.
+pub const MAN_PROBE_WIDTH: u16 = 80;
+
+/// Locales whose reader gets the pages as written (English).
+pub const NO_TRANSLATION_LOCALES: [&str; 3] = ["en", "C", "POSIX"];
+
+/// Where the reader's language is read from, the first one set winning.
+pub const LOCALE_VARS: [&str; 3] = ["LC_ALL", "LC_MESSAGES", "LANG"];
+
+/// Characters Windows forbids in file names: a page's file name has them
+/// as `%XX`, so the repository checks out and packages everywhere.
+pub const FORBIDDEN_FILE_CHARS: [char; 8] = ['<', '>', ':', '"', '\\', '|', '?', '*'];
+
+// ── packages ────────────────────────────────────────────────────────────────
+
+/// How each package manager updates a package (`{name}`), shown on its page.
+pub const UPDATE_DPKG: &str = "sudo apt update && sudo apt install --only-upgrade {name}";
+pub const UPDATE_RPM: &str = "sudo dnf upgrade {name}";
+/// Arch upgrades as a whole, never one package.
+pub const UPDATE_PACMAN: &str = "sudo pacman -Syu";
+pub const UPDATE_HOMEBREW: &str = "brew update && brew upgrade {name}";
+
 // ── danger ──────────────────────────────────────────────────────────────────
 
 /// Examples marked dangerous on a page: (program, what in the rest of the
@@ -119,6 +371,10 @@ pub const DANGEROUS_EXAMPLES: &[(&str, &str)] = &[
     // Windows
     ("format", ""), ("diskpart", ""), ("del", ""), ("rd", "/s"), ("rmdir", "/s"),
 ];
+
+/// Words before a command that run it as another user: skipped when
+/// judging an example (`sudo rm …` is judged as `rm …`).
+pub const RUN_AS: [&str; 2] = ["sudo", "doas"];
 
 /// Anywhere in an example, these make it dangerous whatever the program:
 /// writing straight onto a disk device.

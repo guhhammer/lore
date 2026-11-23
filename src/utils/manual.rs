@@ -4,18 +4,7 @@
 
 use std::process::{Command, Stdio};
 
-/// Said when a command has no manual page; `NO_PAGE_REASONS` follow it.
-pub const NO_PAGE: &str = "No manual page for this command. Probable reasons:";
-
-/// Why there may be no manual page. One general list for now, since `man`
-/// does not say which one it is.
-pub const NO_PAGE_REASONS: &[&str] = &[
-    "it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)",
-    "it is one of your aliases: its page is the one of the command it runs",
-    "the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)",
-    "manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)",
-    "`man` itself is not installed",
-];
+use crate::compile_config::MAN_MIN_WIDTH;
 
 /// `name`'s manual laid out `width` columns wide, or None when there is no
 /// page (or no `man`). Never fails otherwise: a page is a nice-to-have.
@@ -23,7 +12,7 @@ pub fn page(name: &str, width: u16) -> Option<Vec<String>> {
     let output = Command::new("man")
         .arg("--") // a name starting with `-` is a name, not an option
         .arg(name)
-        .env("MANWIDTH", width.max(20).to_string()) // too narrow and man gives up
+        .env("MANWIDTH", width.max(MAN_MIN_WIDTH).to_string()) // too narrow and man gives up
         .env("MANPAGER", "cat") // piped output skips the pager anyway; belt and braces
         .env("PAGER", "cat")
         .stdin(Stdio::null())

@@ -1,8 +1,8 @@
 //! lore: a terminal list of every command you can type, grouped A to Z.
 //!
 //! Flow: `commands` finds the names → `app` holds the state → `interface::ui`
-//! draws it → `interface::input` turns keys into actions → back to `app`. Modules are `pub` so the
-//! tests in tests/ can use them.
+//! draws it → `interface::input` turns keys into actions → back to `app`.
+//! Modules are `pub` so the tests in tests/ can use them.
 
 use std::io::{self, IsTerminal};
 use std::time::Duration;
@@ -30,7 +30,7 @@ pub fn run() -> io::Result<()> {
     let start = args::parse(std::env::args().skip(1)).map_err(io::Error::other)?;
     let page = match start {
         Start::Help => {
-            println!("{}", args::HELP);
+            println!("{}", compile_config::HELP);
             return Ok(());
         }
         Start::Version => {
@@ -45,14 +45,14 @@ pub fn run() -> io::Result<()> {
         // checked first, as man does, and before the screen is taken, so the
         // message lands in the shell
         if !app.open_direct(&name) {
-            return Err(io::Error::other(format!("no command or page named {name}")));
+            return Err(io::Error::other(
+                compile_config::ERROR_NOTHING_NAMED.replace("{name}", &name),
+            ));
         }
     }
     // piped, from cron, or `ssh host lore` without -t: there is no screen
     if !io::stdout().is_terminal() {
-        return Err(io::Error::other(
-            "needs a terminal; run it directly, not through a pipe (over ssh: ssh -t)",
-        ));
+        return Err(io::Error::other(compile_config::ERROR_NO_TERMINAL));
     }
     // full-screen mode, keys come raw; try_init returns an error instead of
     // panicking if the terminal cannot be set up

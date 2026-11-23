@@ -46,3 +46,9 @@ fn rm_and_dd_pages_are_marked_dangerous() {
     assert!(command(&parse(built_in("rm").unwrap())));
     assert!(command(&parse(built_in("dd").unwrap())));
 }
+
+#[test]
+fn a_command_run_as_another_user_is_judged_as_the_command() {
+    assert!(example("doas rm -rf /tmp/x"));
+    assert!(!example("sudo ls"));
+}

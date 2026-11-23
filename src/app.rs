@@ -5,7 +5,8 @@ use std::collections::{HashMap, HashSet};
 
 use ratatui::widgets::ListState;
 
-use crate::commands::Command;
+use crate::commands::{self, Command, Kind};
+use crate::compile_config::MAN_PROBE_WIDTH;
 use crate::info::content;
 use crate::info::page::{self, Facts, PageLine};
 use crate::interface::rows::{self, Row};
@@ -27,7 +28,9 @@ pub enum Mode {
 /// The page on show, kept so a redraw does not look things up again: the
 /// facts once per command, the layout again when the panel's width changes.
 pub struct Page {
-    pub name: String,
+    /// The command it is about: kept, so the page can be laid out again
+    /// (a resize) even while the search beside it selects others.
+    pub command: Command,
     pub width: u16,
     pub facts: Facts,
     /// The page laid out for `width`.
@@ -154,8 +157,22 @@ impl App {
         let Some(command) = self.selected().cloned() else {
             return;
         };
+        self.show_page(command, width);
+    }
+
+    /// Lays the page on show out again at `width`, if it is not already:
+    /// while searching from a page the selection is the search's, but the
+    /// page shown is still the one being read.
+    pub fn relayout_page(&mut self, width: u16) {
+        if let Some(command) = self.page.as_ref().map(|p| p.command.clone()) {
+            self.show_page(command, width);
+        }
+    }
+
+    /// Makes `page` `command`'s at `width`; see `load_page`.
+    fn show_page(&mut self, command: Command, width: u16) {
         let facts = match self.page.take() {
-            Some(page) if page.name == command.name => {
+            Some(page) if page.command.name == command.name => {
                 if page.width == width {
                     self.page = Some(page); // nothing changed
                     return;
@@ -170,7 +187,7 @@ impl App {
         let man = manual::page(&content::page_key(&command.name), width); // `man git-commit`
         let lines = page::render(&command, &facts, man.as_deref(), usize::from(width));
         self.page = Some(Page {
-            name: command.name,
+            command,
             width,
             facts,
             lines,
@@ -217,16 +234,16 @@ impl App {
     pub fn open_direct(&mut self, name: &str) -> bool {
         if !self.commands.iter().any(|c| c.name == name) {
             let key = content::page_key(name);
-            if !self.pages.contains(&key) && manual::page(&key, 80).is_none() {
+            if !self.pages.contains(&key) && manual::page(&key, MAN_PROBE_WIDTH).is_none() {
                 return false;
             }
             let kind = if name.contains(' ') {
-                crate::commands::Kind::Subcommand
+                Kind::Subcommand
             } else {
-                crate::commands::Kind::Program
+                Kind::Program
             };
             self.commands.push(Command::new(name, kind));
-            self.commands = crate::commands::merge(std::mem::take(&mut self.commands));
+            self.commands = commands::merge(std::mem::take(&mut self.commands));
             self.refilter();
         }
         let Some(row) = self
@@ -257,21 +274,18 @@ impl App {
         } else {
             // a search: best first, never alphabetical. Names that match come
             // first (an exact name on top), then pages that match by content.
+            let terms = search::Terms::new(query); // None: too short for pages
             let mut by_name: Vec<((u8, usize, usize), &Command)> = Vec::new();
-            let mut by_page: Vec<(u32, &Command)> = Vec::new();
+            // (named by a word of the query, score): a command named in the
+            // query ("cut files") goes first among the page matches
+            let mut by_page: Vec<((bool, u32), &Command)> = Vec::new();
             for command in allowed {
                 if let Some(rank) = search::name_rank(&command.name, query) {
                     by_name.push((rank, command));
-                } else if let Some(doc) = self.docs.get(&command.name) {
-                    let score = search::content_score(doc, query);
+                } else if let (Some(terms), Some(doc)) = (&terms, self.docs.get(&command.name)) {
+                    let score = search::content_score(doc, terms);
                     if score > 0 {
-                        // its name typed as one of the words: it is the one meant
-                        let named = if search::names_a_word(&command.name, query) {
-                            1000
-                        } else {
-                            0
-                        };
-                        by_page.push((score + named, command));
+                        by_page.push(((terms.names(&command.name), score), command));
                     }
                 }
             }
@@ -282,13 +296,15 @@ impl App {
                 .map(|(_, c)| c.clone())
                 .chain(by_page.into_iter().map(|(_, c)| c.clone()))
                 .collect();
-            self.snippets = ranked
-                .iter()
-                .filter_map(|c: &Command| {
-                    let doc = self.docs.get(&c.name)?;
-                    Some((c.name.clone(), search::snippet(doc, query)?))
-                })
-                .collect();
+            if let Some(terms) = &terms {
+                self.snippets = ranked
+                    .iter()
+                    .filter_map(|c| {
+                        let doc = self.docs.get(&c.name)?;
+                        Some((c.name.clone(), search::snippet(doc, terms)?))
+                    })
+                    .collect();
+            }
             self.rows = rows::ranked(ranked);
         }
         self.list = ListState::default(); // back to the top of the list

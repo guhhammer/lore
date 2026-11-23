@@ -2,10 +2,7 @@
 //! `danger` category) or one example (`DANGEROUS_EXAMPLES`).
 
 use super::content::Content;
-use crate::compile_config::{DANGEROUS_ANYWHERE, DANGEROUS_EXAMPLES};
-
-/// The category that marks a whole command.
-pub const DANGER: &str = "danger";
+use crate::compile_config::{DANGER, DANGEROUS_ANYWHERE, DANGEROUS_EXAMPLES, RUN_AS};
 
 /// Whether the page marks its command as dangerous.
 pub fn command(content: &Content) -> bool {
@@ -19,7 +16,7 @@ pub fn example(example: &str) -> bool {
     }
     let mut words = example.split_whitespace();
     let mut program = words.next().unwrap_or_default();
-    if program == "sudo" {
+    if RUN_AS.contains(&program) {
         program = words.next().unwrap_or_default(); // the command sudo runs
     }
     let rest = example

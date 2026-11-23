@@ -41,7 +41,17 @@ fn an_at_sign_first_asks_for_only_commands_with_a_lore_page() {
 }
 
 use lore_tui::info::content::parse;
-use lore_tui::interface::search::{Doc, content_score};
+use lore_tui::interface::search::{Doc, Terms, content_score};
+
+/// A page's score for a query; 0 when the query is too short to search by.
+fn score(doc: &Doc, query: &str) -> u32 {
+    Terms::new(query).map_or(0, |terms| content_score(doc, &terms))
+}
+
+/// A page's snippet for a query; None when the query is too short.
+fn snip(doc: &Doc, query: &str) -> Option<String> {
+    Terms::new(query).and_then(|terms| lore_tui::interface::search::snippet(doc, &terms))
+}
 
 fn doc(page: &str) -> Doc {
     Doc::of(&parse(page))
@@ -51,9 +61,9 @@ const TAR: &str = "# tar\n\nPacks files into an archive, and compresses it.\n\n#
 
 #[test]
 fn a_page_is_found_by_the_words_it_contains() {
-    assert!(content_score(&doc(TAR), "compress folder") > 0);
+    assert!(score(&doc(TAR), "compress folder") > 0);
     assert_eq!(
-        content_score(&doc(TAR), "compress spreadsheet"),
+        score(&doc(TAR), "compress spreadsheet"),
         0,
         "every word must be there"
     );
@@ -61,22 +71,20 @@ fn a_page_is_found_by_the_words_it_contains() {
 
 #[test]
 fn a_category_counts_more_than_a_word_in_the_text() {
-    let by_category = content_score(&doc(TAR), "archives");
-    let by_example = content_score(&doc(TAR), "czf");
+    let by_category = score(&doc(TAR), "archives");
+    let by_example = score(&doc(TAR), "czf");
     assert!(by_category > by_example);
 }
 
 #[test]
 fn the_whole_phrase_as_typed_scores_more_than_its_words_apart() {
     let apart = doc("# x\n\nA folder to compress.\n");
-    assert!(
-        content_score(&doc(TAR), "compress a folder") > content_score(&apart, "compress a folder")
-    );
+    assert!(score(&doc(TAR), "compress a folder") > score(&apart, "compress a folder"));
 }
 
 #[test]
 fn queries_too_short_do_not_search_pages() {
-    assert_eq!(content_score(&doc(TAR), "ar"), 0);
+    assert_eq!(score(&doc(TAR), "ar"), 0);
 }
 
 #[test]
@@ -84,8 +92,8 @@ fn a_word_meaning_the_same_finds_the_page_but_counts_less_than_the_word_itself()
     use lore_tui::interface::search::alternatives;
     assert!(alternatives("folder").iter().any(|w| w == "directory"));
     let page = doc("# x\n\nCompresses a directory.\n");
-    let same = content_score(&page, "compress directory");
-    let synonym = content_score(&page, "compress folder");
+    let same = score(&page, "compress directory");
+    let synonym = score(&page, "compress folder");
     assert!(synonym > 0 && synonym < same);
 }
 
@@ -98,16 +106,15 @@ fn a_plural_also_matches_its_singular() {
         !alternatives("class").contains(&"clas".to_owned()),
         "a double s is not a plural"
     );
-    assert!(content_score(&doc(TAR), "archive files") > 0);
+    assert!(score(&doc(TAR), "archive files") > 0);
 }
 
 #[test]
 fn the_snippet_is_the_page_line_with_the_most_query_words_cut_around_them() {
-    use lore_tui::interface::search::snippet;
     let cut = doc(
         "# cut\n\nCut out fields from STDIN or files, and print them in a long sentence that goes on.\n\n## Usage\n- `cut -c 1-10 file` : print a range of characters of each line of a file\n",
     );
-    let found = snippet(&cut, "cut files").unwrap();
+    let found = snip(&cut, "cut files").unwrap();
     assert!(found.starts_with('[') && found.ends_with(']'), "{found}");
     assert!(
         found.contains("Cut out fields from STDIN or files"),
@@ -118,9 +125,8 @@ fn the_snippet_is_the_page_line_with_the_most_query_words_cut_around_them() {
 
 #[test]
 fn no_snippet_when_the_page_has_none_of_the_words_or_the_query_is_short() {
-    use lore_tui::interface::search::snippet;
-    assert_eq!(snippet(&doc(TAR), "spreadsheet"), None);
-    assert_eq!(snippet(&doc(TAR), "ar"), None);
+    assert_eq!(snip(&doc(TAR), "spreadsheet"), None);
+    assert_eq!(snip(&doc(TAR), "ar"), None);
 }
 
 #[test]
@@ -134,8 +140,7 @@ fn a_word_matches_at_the_start_of_words_only() {
 
 #[test]
 fn a_command_named_by_one_of_the_words_is_recognised() {
-    use lore_tui::interface::search::names_a_word;
-    assert!(names_a_word("cut", "cut files"));
-    assert!(names_a_word("Cut", "files CUT"));
-    assert!(!names_a_word("cut", "cutting files"));
+    assert!(Terms::new("cut files").unwrap().names("cut"));
+    assert!(Terms::new("files CUT").unwrap().names("Cut"));
+    assert!(!Terms::new("cutting files").unwrap().names("cut"));
 }

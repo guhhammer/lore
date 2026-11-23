@@ -1,6 +1,8 @@
 //! The command line: `lore` opens the list, `lore NAME` opens NAME's page
 //! straight away, like `man NAME`.
 
+use crate::compile_config::{ERROR_OPTIONS_ALONE, ERROR_UNKNOWN_OPTION};
+
 /// What lore was asked to do.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Start {
@@ -11,23 +13,6 @@ pub enum Start {
     Help,
     Version,
 }
-
-/// `lore --help`.
-pub const HELP: &str = "\
-lore: every command you can type, and what each one does. Offline.
-
-Usage:
-  lore               the list of every command, A to Z
-  lore NAME          NAME's page straight away (like `man NAME`)
-  lore git commit    a subcommand's page
-  lore --help        this text
-  lore --version     lore's version
-
-In the list: arrows move, / searches (start with @ for only the commands
-that have a lore page), right arrow or Enter opens a page, Esc quits.
-On a page: arrows and PgUp/PgDn scroll, / finds another command, left
-arrow or Esc close it.
-`man lore` has the rest.";
 
 /// The arguments after the program's name, read. The error is the message
 /// to show.
@@ -40,11 +25,11 @@ pub fn parse(args: impl IntoIterator<Item = String>) -> Result<Start, String> {
         // `--` ends the options: `lore -- -x` is the page of `-x`
         [dashes, name] if dashes == "--" => Ok(Start::Page(name.clone())),
         [option] if option.starts_with('-') => {
-            Err(format!("unknown option {option}; see lore --help"))
+            Err(ERROR_UNKNOWN_OPTION.replace("{option}", option))
         }
         [name] => Ok(Start::Page(name.clone())),
         // `lore git commit`: a subcommand's page
         names if names.iter().all(|n| !n.starts_with('-')) => Ok(Start::Page(names.join(" "))),
-        _ => Err("options go alone: lore NAME, or see lore --help".to_owned()),
+        _ => Err(ERROR_OPTIONS_ALONE.to_owned()),
     }
 }

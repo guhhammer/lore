@@ -4,34 +4,30 @@
 
 use ratatui::Frame;
 use ratatui::layout::{Constraint, Layout, Position, Rect};
-use ratatui::style::{Color, Modifier, Style, Stylize};
+use ratatui::style::Style;
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{Block, List, ListItem, Paragraph};
 
 use crate::app::{App, Mode};
 use crate::commands::{Command, Kind};
-use crate::compile_config::INFO_LIST_PERCENT;
-use crate::info::danger::DANGER;
+use crate::compile_config::{
+    DANGER, INFO_LIST_PERCENT, KEY_BAR_HEIGHT, KEY_BAR_NAME, KEYS_BROWSE, KEYS_PAGE,
+    KEYS_PAGE_DIRECT, KEYS_SEARCH, LIST_HEADER_INDENT, LIST_INDENT, LIST_INDENT_NARROW, LIST_TITLE,
+    LIST_TITLE_SEARCHING, NO_MATCH, SEARCH_BAR_HEIGHT, SEARCH_HINT, SEARCH_KEPT_HINT, SEARCH_TITLE,
+    STYLE_CATEGORY, STYLE_CODE, STYLE_DANGER, STYLE_DIM, STYLE_HEADING, STYLE_KEY, STYLE_SEARCHING,
+    STYLE_SECTION, STYLE_SELECTED, STYLE_SNIPPET, STYLE_URL, STYLE_WARNING,
+};
 use crate::info::page::Style as PageStyle;
 use crate::interface::rows::Row;
 use crate::utils::text;
 
-/// The categories after a name, and on a page under its name.
-const CATEGORY: Style = Style::new().fg(Color::Magenta);
-
-/// The page line that matched a search, after the name.
-const SNIPPET: Style = Style::new().fg(Color::Cyan);
-
-/// What can destroy data or stop the system.
-const DANGER_STYLE: Style = Style::new().fg(Color::Red).add_modifier(Modifier::BOLD);
-
 /// Draws the whole screen; called once per loop in lib.rs.
 pub fn draw(frame: &mut Frame, app: &mut App) {
-    // 3 lines for the bordered search bar, 1 for the keys, the body gets the rest
+    // the search bar on top, the keys at the bottom, the body gets the rest
     let [search, body, keys] = Layout::vertical([
-        Constraint::Length(3),
+        Constraint::Length(SEARCH_BAR_HEIGHT),
         Constraint::Min(0),
-        Constraint::Length(1),
+        Constraint::Length(KEY_BAR_HEIGHT),
     ])
     .areas(frame.area());
     draw_search(frame, app, search);
@@ -54,25 +50,25 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
 fn draw_search(frame: &mut Frame, app: &App, area: Rect) {
     let searching = app.mode == Mode::Search;
     let block = Block::bordered()
-        .title(" search ")
+        .title(SEARCH_TITLE)
         .border_style(if searching {
-            Style::new().fg(Color::Yellow) // yellow = keys go to the search bar
+            STYLE_SEARCHING // keys go to the search bar
         } else {
             Style::new()
         });
     let text = match (searching, app.query.is_empty()) {
         (true, _) => Line::from(app.query.as_str()),
-        (false, true) => Line::from("press / to search").dim(),
+        (false, true) => Line::from(Span::styled(SEARCH_HINT, STYLE_DIM)),
         // left with text in it: the filter still applies, `/` goes back to it
         (false, false) => Line::from(vec![
             Span::raw(app.query.as_str()),
-            Span::raw("   (/ to edit)").dim(),
+            Span::styled(SEARCH_KEPT_HINT, STYLE_DIM),
         ]),
     };
     frame.render_widget(Paragraph::new(text).block(block), area);
     if searching {
         // cursor right after the text; +1 skips the left border and the top one
-        let typed = u16::try_from(app.query.chars().count()).unwrap_or(u16::MAX);
+        let typed = u16::try_from(text::width(&app.query)).unwrap_or(u16::MAX);
         frame.set_cursor_position(Position::new(area.x + 1 + typed, area.y + 1));
     }
 }
@@ -84,12 +80,19 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
     let block = if narrow {
         Block::bordered() // a title would not fit in a tenth of the screen
     } else if app.query.is_empty() {
-        Block::bordered().title(format!(" commands ({total}) "))
+        Block::bordered().title(LIST_TITLE.replace("{total}", &total.to_string()))
     } else {
-        Block::bordered().title(format!(" commands ({} of {total}) ", app.shown_count()))
+        Block::bordered().title(
+            LIST_TITLE_SEARCHING
+                .replace("{shown}", &app.shown_count().to_string())
+                .replace("{total}", &total.to_string()),
+        )
     };
     if app.rows.is_empty() {
-        let none = Line::from(format!(" no command matches \"{}\"", app.query)).dim();
+        let none = Line::from(Span::styled(
+            NO_MATCH.replace("{query}", &app.query),
+            STYLE_DIM,
+        ));
         frame.render_widget(Paragraph::new(none).block(block), area);
         return;
     }
@@ -99,12 +102,12 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
         .iter()
         .map(|row| match row {
             Row::Header(section) => {
-                let header = if narrow {
-                    format!("{section}")
-                } else {
-                    format!(" {section}")
-                };
-                ListItem::new(Line::from(text::fit(&header, width)).bold().cyan())
+                let indent = if narrow { "" } else { LIST_HEADER_INDENT };
+                let header = format!("{indent}{section}");
+                ListItem::new(Line::from(Span::styled(
+                    text::fit(&header, width),
+                    STYLE_SECTION,
+                )))
             }
             Row::Command(command) => {
                 let categories = app
@@ -119,7 +122,7 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
         .collect();
     let list = List::new(items)
         .block(block)
-        .highlight_style(Style::new().add_modifier(Modifier::REVERSED)); // the selected row
+        .highlight_style(STYLE_SELECTED);
     // stateful: ratatui reads the selection and scrolls to keep it visible
     frame.render_stateful_widget(list, area, &mut app.list);
 }
@@ -134,27 +137,31 @@ fn command_line(
     width: usize,
     narrow: bool,
 ) -> Line<'static> {
-    let indent = if narrow { " " } else { "   " };
+    let indent = if narrow {
+        LIST_INDENT_NARROW
+    } else {
+        LIST_INDENT
+    };
     let mut parts = vec![(format!("{indent}{}", command.name), Style::new())];
     if !narrow {
         if let Some(snippet) = snippet {
-            parts.push((format!("  {snippet}"), SNIPPET));
+            parts.push((format!("  {snippet}"), STYLE_SNIPPET));
         }
         if !categories.is_empty() {
             // `danger` in red, so it is seen before the command is run
-            parts.push(("  [".to_owned(), CATEGORY));
+            parts.push(("  [".to_owned(), STYLE_CATEGORY));
             for (i, category) in categories.iter().enumerate() {
                 let style = if category == DANGER {
-                    DANGER_STYLE
+                    STYLE_DANGER
                 } else {
-                    CATEGORY
+                    STYLE_CATEGORY
                 };
                 let space = if i == 0 { "" } else { " " };
                 parts.push((format!("{space}{category}"), style));
             }
-            parts.push(("]".to_owned(), CATEGORY));
+            parts.push(("]".to_owned(), STYLE_CATEGORY));
         }
-        let dim = Style::new().add_modifier(Modifier::DIM);
+        let dim = STYLE_DIM;
         if let Some(runs) = &command.runs {
             parts.push((format!("  = {runs}"), dim));
         }
@@ -175,7 +182,7 @@ fn command_line(
     let mut left = width;
     let mut spans = Vec::new();
     for (part, style) in parts {
-        let length = part.chars().count();
+        let length = text::width(&part);
         if length <= left {
             left -= length;
             spans.push(Span::styled(part, style));
@@ -197,6 +204,8 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
     // command's page loads when it is opened, not on every key typed
     if app.mode == Mode::Info {
         app.load_page(width);
+    } else {
+        app.relayout_page(width); // the same page, fitted to a new width
     }
     let Some(page) = &app.page else {
         return; // nothing selected: open_info does not allow it, but be safe
@@ -208,7 +217,12 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
         .iter()
         .map(|line| Line::styled(line.text.as_str(), style_of(line.style)))
         .collect();
-    let title = format!(" {}  {}/{} ", page.name, app.scroll + 1, rows.max(1));
+    let title = format!(
+        " {}  {}/{} ",
+        page.command.name,
+        app.scroll + 1,
+        rows.max(1)
+    );
     let paragraph = Paragraph::new(lines)
         .block(Block::bordered().title(title))
         .scroll((u16::try_from(app.scroll).unwrap_or(u16::MAX), 0));
@@ -218,58 +232,29 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
 /// How each kind of page line looks. Plain for now; restyled later.
 fn style_of(style: PageStyle) -> Style {
     match style {
-        PageStyle::Title | PageStyle::Heading => Style::new().add_modifier(Modifier::BOLD),
-        PageStyle::Code => Style::new().fg(Color::Green),
-        PageStyle::Dim => Style::new().add_modifier(Modifier::DIM),
-        PageStyle::Url => Style::new().fg(Color::Cyan),
-        PageStyle::Warning => Style::new().fg(Color::Yellow),
+        PageStyle::Title | PageStyle::Heading => STYLE_HEADING,
+        PageStyle::Code => STYLE_CODE,
+        PageStyle::Dim => STYLE_DIM,
+        PageStyle::Url => STYLE_URL,
+        PageStyle::Warning => STYLE_WARNING,
         PageStyle::Text => Style::new(),
-        PageStyle::Categories => CATEGORY,
-        PageStyle::Danger => DANGER_STYLE,
+        PageStyle::Categories => STYLE_CATEGORY,
+        PageStyle::Danger => STYLE_DANGER,
     }
 }
 
 /// The bottom line, nano-style: each key highlighted, then what it does.
 fn draw_keys(frame: &mut Frame, mode: Mode, direct: bool, area: Rect) {
-    let keys: &[(&str, &str)] = match mode {
-        Mode::Browse => &[
-            ("↑↓", "Move"),
-            ("→/Enter", "Page"),
-            ("/", "Search"),
-            ("Esc", "Quit"),
-            ("^C", "Quit"),
-        ],
-        Mode::Search => &[
-            ("type", "Filter"),
-            ("Bksp", "Erase"),
-            ("↑↓", "Move"),
-            ("→/Enter", "Page"),
-            ("@", "Lore pages"),
-            ("Esc", "Leave search"),
-            ("^C", "Quit"),
-        ],
-        // opened as `lore NAME`: closing the page quits
-        // opened as `lore NAME`: closing the page quits
-        Mode::Info if direct => &[
-            ("↑↓ PgUp/PgDn", "Scroll"),
-            ("/", "Search"),
-            ("←/Esc", "Quit"),
-            ("^C", "Quit"),
-        ],
-        Mode::Info => &[
-            ("↑↓ PgUp/PgDn", "Scroll"),
-            ("/", "Search"),
-            ("←/Esc", "Back"),
-            ("^C", "Quit"),
-        ],
+    let keys = match mode {
+        Mode::Browse => KEYS_BROWSE,
+        Mode::Search => KEYS_SEARCH,
+        Mode::Info if direct => KEYS_PAGE_DIRECT, // opened as `lore NAME`
+        Mode::Info => KEYS_PAGE,
     };
     // the app's name first, on every line of keys; styled later
-    let mut spans = vec![Span::raw("lore   ")];
+    let mut spans = vec![Span::raw(format!("{KEY_BAR_NAME}   "))];
     for (key, label) in keys {
-        spans.push(Span::styled(
-            *key,
-            Style::new().add_modifier(Modifier::REVERSED),
-        ));
+        spans.push(Span::styled(*key, STYLE_KEY));
         spans.push(Span::raw(format!(" {label}   ")));
     }
     frame.render_widget(Paragraph::new(Line::from(spans)), area);

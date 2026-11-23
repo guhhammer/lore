@@ -5,11 +5,15 @@ Every notable change to this repository, newest first. The format follows
 [semantic](https://semver.org/spec/v2.0.0.html) in shape, but everything below
 1.0.0 is prototype work: nothing here is stable yet.
 
-Every commit subject starts with its series and a running count,
-`v<x.y>.<N>` — so `v0.1.7` is the seventh commit of the 0.1 series, not a
-release. A release is an entry here.
+Up to 0.1.0, commit subjects carried a running count (`v0.0.9` was the
+ninth commit before the first version). From 0.1.0 on, every commit raises
+the version in `Cargo.toml`, and its subject starts with that version
+(`v0.1.1 - …`). Each version's record is in
+[`.documentation/versions/`](.documentation/versions/).
 
 ## [Unreleased]
+
+## [0.1.0] - 2026-11-23
 
 ### Added
 

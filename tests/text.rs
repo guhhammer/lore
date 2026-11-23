@@ -41,3 +41,20 @@ fn a_word_longer_than_the_width_is_split() {
 fn an_empty_text_wraps_to_one_empty_line() {
     assert_eq!(wrap("", 10), [""]);
 }
+
+#[test]
+fn wide_characters_take_two_columns_when_fitting() {
+    use lore_tui::utils::text::width;
+    // 归档实用程序: six characters, twelve columns
+    assert_eq!(width("归档实用程序"), 12);
+    assert_eq!(fit("归档实用程序", 7), "归档...");
+    assert!(width(&fit("归档实用程序", 7)) <= 7);
+}
+
+#[test]
+fn a_sentence_without_spaces_wraps_by_columns_not_characters() {
+    use lore_tui::utils::text::width;
+    let lines = wrap("通常与压缩方法结合使用", 10);
+    assert!(lines.iter().all(|l| width(l) <= 10), "{lines:?}");
+    assert_eq!(lines.concat(), "通常与压缩方法结合使用", "nothing lost");
+}

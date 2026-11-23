@@ -6,6 +6,8 @@
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
+use crate::compile_config::{UPDATE_DPKG, UPDATE_HOMEBREW, UPDATE_PACMAN, UPDATE_RPM};
+
 /// What lore could learn about a program's package.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Package {
@@ -62,7 +64,7 @@ fn dpkg(file: &Path) -> Option<Package> {
     let newest = run("apt-cache", &["policy", &name]).and_then(|p| apt_candidate(&p));
     Some(Package {
         manager: "dpkg",
-        update: format!("sudo apt update && sudo apt install --only-upgrade {name}"),
+        update: UPDATE_DPKG.replace("{name}", &name),
         name,
         installed,
         newest,
@@ -112,7 +114,7 @@ fn rpm(file: &Path) -> Option<Package> {
         name: name.to_owned(),
         installed: Some(version.to_owned()),
         newest: None,
-        update: format!("sudo dnf upgrade {name}"),
+        update: UPDATE_RPM.replace("{name}", name),
     })
 }
 
@@ -120,7 +122,7 @@ fn pacman(file: &Path) -> Option<Package> {
     let (name, version) = pacman_owner(&run("pacman", &["-Qo", file.to_str()?])?)?;
     Some(Package {
         manager: "pacman",
-        update: "sudo pacman -Syu".to_owned(), // Arch upgrades as a whole, never one package
+        update: UPDATE_PACMAN.to_owned(),
         name,
         installed: Some(version),
         newest: None,
@@ -138,7 +140,7 @@ fn homebrew(file: &Path) -> Option<Package> {
     let (name, version) = homebrew_cellar(file)?;
     Some(Package {
         manager: "Homebrew",
-        update: format!("brew update && brew upgrade {name}"),
+        update: UPDATE_HOMEBREW.replace("{name}", &name),
         name,
         installed: Some(version),
         newest: None,

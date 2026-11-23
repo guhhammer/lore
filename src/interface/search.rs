@@ -4,11 +4,12 @@
 //! categories, summary and examples), so "compress folder" finds tar and
 //! zip. A query starting with `@` keeps only the commands that have a page.
 
-use crate::compile_config::SYNONYMS;
+use crate::compile_config::{
+    CONTENT_MIN_CHARS, NAME_WORD_SEPARATORS, PAGES_ONLY, PLURAL_MIN_CHARS, SCORE_CATEGORY,
+    SCORE_CATEGORY_PART, SCORE_DESCRIPTION, SCORE_EXAMPLE, SCORE_PHRASE, SCORE_SUMMARY,
+    SCORE_TYPED, SNIPPET_CONTEXT, SYNONYMS,
+};
 use crate::info::content::Content;
-
-/// Starts a query that keeps only the commands with a lore page.
-pub const PAGES_ONLY: char = '@';
 
 /// (only commands with a lore page?, the name part): `@gr` → (true, "gr").
 pub fn split(query: &str) -> (bool, &str) {
@@ -29,7 +30,7 @@ pub fn name_rank(name: &str, query: &str) -> Option<(u8, usize, usize)> {
     let position = name.find(&query)?;
     let at_word_start = name
         .match_indices(&query)
-        .any(|(i, _)| i > 0 && name[..i].ends_with([' ', '-', '_', '.', ':']));
+        .any(|(i, _)| i > 0 && name[..i].ends_with(NAME_WORD_SEPARATORS));
     let tier = if name == query {
         0
     } else if position == 0 {
@@ -41,10 +42,6 @@ pub fn name_rank(name: &str, query: &str) -> Option<(u8, usize, usize)> {
     };
     Some((tier, name.chars().count(), position))
 }
-
-/// A query needs this many characters (spaces not counted) before pages are
-/// searched too: fewer would match nearly every page.
-pub const CONTENT_MIN_CHARS: usize = 3;
 
 /// What a page offers the search, lower-cased once.
 #[derive(Debug, Clone, Default)]
@@ -90,34 +87,66 @@ impl Doc {
     }
 }
 
-/// How well a page matches `query`: 0 when some word of it is nowhere on
-/// the page; else higher for words in its categories, then its summary,
-/// then its examples' descriptions, then the examples, plus a bonus when the
-/// whole query appears as typed.
-pub fn content_score(doc: &Doc, query: &str) -> u32 {
-    let query = query.trim().to_lowercase();
-    if query.chars().filter(|c| !c.is_whitespace()).count() < CONTENT_MIN_CHARS {
-        return 0;
+/// A query, read once per keystroke for every page it is compared with:
+/// its words, each with the words that count as it, lower-cased.
+pub struct Terms {
+    /// The whole query, for the phrase bonus.
+    phrase: String,
+    /// Each word first, then its synonyms and singular (`alternatives`).
+    words: Vec<Vec<String>>,
+}
+
+impl Terms {
+    /// None when the query is too short to search pages by
+    /// (`CONTENT_MIN_CHARS`): it would match nearly all of them.
+    pub fn new(query: &str) -> Option<Self> {
+        let phrase = query.trim().to_lowercase();
+        if phrase.chars().filter(|c| !c.is_whitespace()).count() < CONTENT_MIN_CHARS {
+            return None;
+        }
+        let words = phrase
+            .split_whitespace()
+            .map(|word| {
+                std::iter::once(word.to_owned())
+                    .chain(alternatives(word))
+                    .collect()
+            })
+            .collect();
+        Some(Self { phrase, words })
     }
+
+    /// Whether `name` is one of the words: "cut files" names `cut`, which
+    /// then goes first among the results found by their pages.
+    pub fn names(&self, name: &str) -> bool {
+        let name = name.to_lowercase();
+        self.words.iter().any(|forms| forms[0] == name)
+    }
+}
+
+/// How well a page matches: 0 when some word (or one counting as it) is
+/// nowhere on the page; else higher for words in its categories, then its
+/// summary, then its examples' descriptions, then the examples, plus a
+/// bonus when the whole query appears as typed.
+pub fn content_score(doc: &Doc, terms: &Terms) -> u32 {
     let mut score = 0;
-    for word in query.split_whitespace() {
+    for forms in &terms.words {
         // the word as typed counts most; a word that means the same, a bit less
-        let found = word_score(doc, word) * 2
-            + alternatives(word)
-                .iter()
-                .map(|other| word_score(doc, other))
-                .max()
-                .unwrap_or(0);
-        if found == 0 {
+        let typed = word_score(doc, &forms[0]) * SCORE_TYPED;
+        let other = forms[1..]
+            .iter()
+            .map(|w| word_score(doc, w))
+            .max()
+            .unwrap_or(0);
+        if typed + other == 0 {
             return 0; // every word (or one meaning the same) must be somewhere
         }
-        score += found;
+        score += typed + other;
     }
-    if query.contains(' ')
-        && (find_word(&doc.summary, &query).is_some()
-            || find_word(&doc.descriptions, &query).is_some())
+    if terms.words.len() > 1
+        && (find_word(&doc.summary, &terms.phrase).is_some()
+            || find_word(&doc.descriptions, &terms.phrase).is_some())
     {
-        score += 5;
+        score += SCORE_PHRASE;
     }
     score
 }
@@ -127,18 +156,18 @@ pub fn content_score(doc: &Doc, query: &str) -> u32 {
 fn word_score(doc: &Doc, word: &str) -> u32 {
     let mut found = 0;
     if doc.categories.iter().any(|c| c == word) {
-        found += 6;
+        found += SCORE_CATEGORY;
     } else if doc.categories.iter().any(|c| c.contains(word)) {
-        found += 4;
+        found += SCORE_CATEGORY_PART;
     }
     if find_word(&doc.summary, word).is_some() {
-        found += 3;
+        found += SCORE_SUMMARY;
     }
     if find_word(&doc.descriptions, word).is_some() {
-        found += 2;
+        found += SCORE_DESCRIPTION;
     }
     if find_word(&doc.examples, word).is_some() {
-        found += 1;
+        found += SCORE_EXAMPLE;
     }
     found
 }
@@ -154,16 +183,6 @@ pub fn find_word(text: &str, word: &str) -> Option<usize> {
     })
 }
 
-/// Whether `name` is one of the query's words: "cut files" names `cut`,
-/// which then goes first among the results found by their pages.
-pub fn names_a_word(name: &str, query: &str) -> bool {
-    let name = name.to_lowercase();
-    query
-        .to_lowercase()
-        .split_whitespace()
-        .any(|word| word == name)
-}
-
 /// Words that count as `word`: the rest of its `SYNONYMS` groups, and its
 /// singular when it looks plural ("files" → "file", "directories" →
 /// "directory"), so a search need not guess the page's wording.
@@ -174,7 +193,7 @@ pub fn alternatives(word: &str) -> Vec<String> {
         .flat_map(|group| group.iter().map(|w| (*w).to_owned()))
         .filter(|other| other != word)
         .collect();
-    if word.chars().count() > 3 {
+    if word.chars().count() >= PLURAL_MIN_CHARS {
         if let Some(stem) = word.strip_suffix("ies") {
             found.push(format!("{stem}y"));
         } else if let Some(stem) = word.strip_suffix('s').filter(|s| !s.ends_with('s')) {
@@ -187,21 +206,8 @@ pub fn alternatives(word: &str) -> Vec<String> {
 /// The page line that best matches `query`, cut around the match:
 /// `[... cut out fields from a file ...]`. The line with the most query
 /// words (or words counting as them) wins; descriptions before examples
-/// on a tie. None when no line has any, or the query is too short.
-pub fn snippet(doc: &Doc, query: &str) -> Option<String> {
-    let query = query.trim().to_lowercase();
-    if query.chars().filter(|c| !c.is_whitespace()).count() < CONTENT_MIN_CHARS {
-        return None;
-    }
-    // each query word with the words that count as it
-    let words: Vec<Vec<String>> = query
-        .split_whitespace()
-        .map(|w| {
-            std::iter::once(w.to_owned())
-                .chain(alternatives(w))
-                .collect()
-        })
-        .collect();
+/// on a tie. None when no line has any.
+pub fn snippet(doc: &Doc, terms: &Terms) -> Option<String> {
     let mut best: Option<(usize, usize, usize, usize)> = None; // (matched, line, first, last)
     for (index, line) in doc.lines.iter().enumerate() {
         // one lower-case char per char, so char positions map back to `line`
@@ -212,7 +218,7 @@ pub fn snippet(doc: &Doc, query: &str) -> Option<String> {
         let lower: String = lower.into_iter().collect();
         let mut matched = 0;
         let (mut first, mut last) = (usize::MAX, 0);
-        for forms in &words {
+        for forms in &terms.words {
             let hit = forms
                 .iter()
                 .find_map(|form| find_word(&lower, form).map(|at| (at, form)));
@@ -243,6 +249,3 @@ pub fn snippet(doc: &Doc, query: &str) -> Option<String> {
     let after = if end < chars.len() { " ..." } else { "" };
     Some(format!("[{before}{}{after}]", text.trim()))
 }
-
-/// Characters of context kept on each side of a snippet's match.
-const SNIPPET_CONTEXT: usize = 12;

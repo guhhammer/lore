@@ -23,7 +23,9 @@
 use std::collections::HashSet;
 use std::fs;
 
-use crate::compile_config::CONTENT_DIRS;
+use crate::compile_config::{
+    CONTENT_DIRS, FORBIDDEN_FILE_CHARS, LOCALE_VARS, NO_TRANSLATION_LOCALES,
+};
 use crate::interface::paths;
 
 // EMBEDDED: the built-in pages, sorted by name; EMBEDDED_I18N: their
@@ -57,9 +59,7 @@ pub fn page_key(name: &str) -> String {
     for c in name.chars() {
         match c {
             ' ' => key.push('-'),
-            '<' | '>' | ':' | '"' | '\\' | '|' | '?' | '*' => {
-                key.push_str(&format!("%{:02X}", c as u32))
-            }
+            c if FORBIDDEN_FILE_CHARS.contains(&c) => key.push_str(&format!("%{:02X}", c as u32)),
             _ => key.push(c),
         }
     }
@@ -120,7 +120,7 @@ pub fn translation(lang: &str, name: &str) -> Option<&'static str> {
 /// `["pt_BR", "pt"]`. English, `C` and `POSIX` give none: the pages are
 /// English already.
 pub fn languages() -> Vec<String> {
-    let value = ["LC_ALL", "LC_MESSAGES", "LANG"]
+    let value = LOCALE_VARS
         .iter()
         .find_map(|var| std::env::var(var).ok().filter(|v| !v.is_empty()))
         .unwrap_or_default();
@@ -132,7 +132,10 @@ pub fn languages_of(locale: &str) -> Vec<String> {
     // "pt_BR.UTF-8@euro" → "pt_BR"
     let code = locale.split(['.', '@']).next().unwrap_or_default();
     let base = code.split('_').next().unwrap_or_default();
-    if base.is_empty() || base == "en" || code == "C" || code == "POSIX" {
+    if base.is_empty()
+        || NO_TRANSLATION_LOCALES.contains(&base)
+        || NO_TRANSLATION_LOCALES.contains(&code)
+    {
         return Vec::new();
     }
     let mut found = vec![code.to_owned()];
