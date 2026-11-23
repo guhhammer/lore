@@ -1,0 +1,20 @@
+version: 2
+
+# Monthly. Minor and patch bumps arrive as one PR per ecosystem; a major bump
+# arrives alone, because it is the one that can break the build.
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      cargo:
+        update-types: [minor, patch]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        update-types: [minor, patch]

@@ -1,0 +1,17 @@
+name: docs
+
+# Paused for now: it runs only when started by hand from the Actions tab,
+# and then only prints a line. Add push and pull_request back under `on:`
+# once it runs a real check.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "docs is paused for now"
