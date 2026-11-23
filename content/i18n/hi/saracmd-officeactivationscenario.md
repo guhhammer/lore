@@ -1,0 +1,6 @@
+# saracmd officeactivationscenario
+
+यह आदेश `GetHelpCmd.exe -S OfficeActivationScenario` का उपनाम है।
+
+## Usage
+- `tldr gethelpcmd-officeactivationscenario` : मूल आदेश के लिए प्रलेखन देखें

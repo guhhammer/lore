@@ -1,0 +1,6 @@
+# qm move_disk
+
+यह आदेश `qm disk move` का उपनाम है।
+
+## Usage
+- `tldr qm disk` : मूल आदेश के लिए प्रलेखन देखें

@@ -1,0 +1,15 @@
+# rc-service
+
+매개변수를 사용하여 OpenRC 서비스를 찾아 실행합니다.
+
+## Usage
+- `rc-service 서비스_이름 status` : 서비스 상태 표시
+- `sudo rc-service 서비스_이름 start` : 서비스 시작
+- `sudo rc-service 서비스_이름 stop` : 서비스 중지
+- `sudo rc-service 서비스_이름 restart` : 서비스 재시작
+- `sudo rc-service -Z 서비스_이름 명령_이름` : 서비스의 사용자 지정 명령을 실행 시뮬레이션
+- `sudo rc-service 서비스_이름 명령_이름` : 서비스의 사용자 지정 명령 실제 실행
+- `sudo rc-service -r 서비스_이름` : 디스크에서 서비스 정의 위치 확인
+
+## Links
+- More information: https://manned.org/rc-service

@@ -1,0 +1,6 @@
+# gwc
+
+此命令為 `wc` 的別名。
+
+## Usage
+- `tldr -p common wc` : 檢視原命令的文件

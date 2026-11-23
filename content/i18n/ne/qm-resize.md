@@ -1,0 +1,6 @@
+# qm resize
+
+यो आदेश `qm disk resize` को उपनाम हो।
+
+## Usage
+- `tldr qm disk` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

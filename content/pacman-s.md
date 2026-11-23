@@ -1,0 +1,14 @@
+# pacman-s
+
+This command is an alias of `pacman --sync`.
+
+## Usage
+- `sync` : flush all pending write operations on all disks
+- `sync path/to/file` : flush all pending write operations on a single file to disk
+- `sync; echo 3 | sudo tee /proc/sys/vm/drop_caches` : flush writes and drop filesystem caches
+
+## Categories
+disks, files, shell
+
+## Links
+- tldr page: https://tldr.inbrowser.app/pages/linux/pacman-s

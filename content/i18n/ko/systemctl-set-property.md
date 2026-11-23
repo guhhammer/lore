@@ -1,0 +1,10 @@
+# systemctl set-property
+
+특정 유닛 속성을 런타임에 설정.
+
+## Usage
+- `systemctl set-property 유닛 속성=값` : 실행 중인 서비스의 속성 설정
+- `systemctl set-property 유닛 속성_1=값_1 속성_2=값_2 ...` : 여러 속성을 한 번에 설정
+- `systemctl set-property 유닛 속성=값 --runtime` : 현재 런타임 세션에만 적용 (영구 저장 아님)
+- `systemctl set-property 유닛 속성=` : 속성을 기본값으로 초기화
+- `systemctl set-property 유닛 속성_1= 속성_2= ...` : 여러 속성을 기본값으로 초기화

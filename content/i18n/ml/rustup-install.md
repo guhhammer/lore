@@ -1,0 +1,6 @@
+# rustup install
+
+ഈ കമാൻഡ് `rustup toolchain install` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr rustup toolchain` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

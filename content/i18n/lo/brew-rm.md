@@ -1,0 +1,6 @@
+# brew rm
+
+ຄຳສັ່ງນີ້ເປັນອີກຊື່ໜຶ່ງຂອງຄຳສັ່ງ `brew uninstall`.
+
+## Usage
+- `tldr brew uninstall` : ເປີດເບິ່ງລາຍລະອຽດຂອງຄຳສັ່ງແບບເຕັມ

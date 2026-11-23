@@ -1,0 +1,6 @@
+# pio init
+
+এই কমান্ডটি `pio project init` - এর একটি উপনাম।
+
+## Usage
+- `tldr pio project` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

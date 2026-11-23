@@ -1,0 +1,8 @@
+# grub-install
+
+安装 GRUB 到设备。
+
+## Usage
+- `grub-install --target=i386-pc /dev/sdX` : 安装 GRUB 到基于 BIOS 的系统
+- `grub-install --target=x86_64-efi --efi-directory=path/to/efi_directory --bootloader-id=GRUB` : 安装 GRUB 到基于 UEFI 的系统
+- `grub-install --target=x86_64-efi --efi-directory=path/to/efi_directory --modules="part_gpt part_msdos"` : 安装预置指定模块的 GRUB

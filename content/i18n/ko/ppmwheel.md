@@ -1,0 +1,11 @@
+# ppmwheel
+
+색상환(color wheel) PPM 이미지를 생성.
+
+## Usage
+- `ppmwheel 지름 >경로/대상/출력파일.ppm` : `Ppmcirc` 타입의 색상환 생성
+- `ppmwheel -huev 지름 >경로/대상/출력파일.ppm` : `Hue-value` 타입의 색상환 생성
+- `ppmwheel -hues 지름 >경로/대상/출력파일.ppm` : `Hue-saturation` 타입의 색상환 생성
+
+## Links
+- More information: https://netpbm.sourceforge.net/doc/ppmwheel.html

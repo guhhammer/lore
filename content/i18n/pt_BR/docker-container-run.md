@@ -1,0 +1,16 @@
+# docker container run
+
+Executa um comando em um novo container Docker.
+
+## Usage
+- `docker run imagem:tag comando` : executa um comando em um novo container de uma imagem tagueada
+- `docker run -d image command` : executa um comando em um novo container em background e exibe o ID
+- `docker run --rm -it image command` : executa um comando em um novo container que será removido após a execução em um modo interativo e com um terminal TTY
+- `docker run -e 'variável=valor' -e variável imagem comando` : executa um comando em um novo container com variáveis de ambiente
+- `docker run -v /caminho/no/host_local:/caminho/no/container imagem comando` : executa um comando em um novo container montando volumes nos caminhos específicos
+- `docker run -p porta_do_host_local:porta_do_container imagem comando` : executa um comando em um novo container e abre as portas para acesso
+- `docker run --entrypoint comando imagem` : executa um comando em um novo container sobrescrevendo o entrypoint da imagem
+- `docker run --network rede imagem` : executa um comando em um novo container conectando-o a rede
+
+## Links
+- More information: https://docs.docker.com/reference/cli/docker/container/run/

@@ -1,0 +1,12 @@
+# xcv
+
+명령줄에서 자르기, 복사 및 붙여넣기.
+
+## Usage
+- `xcv x 입력_파일` : 파일 자르기
+- `xcv c 입력_파일` : 파일 복사
+- `xcv v 출력_파일` : 파일 붙여넣기
+- `xcv l` : 붙여넣기 가능한 파일 나열
+
+## Links
+- More information: https://github.com/busterc/xcv#xcv

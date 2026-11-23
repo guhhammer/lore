@@ -1,0 +1,6 @@
+# pnmtoplainpnm
+
+இக்கட்டளை `pamtopnm -plain` கட்டளையின் மற்றொருப் பெயர்.
+
+## Usage
+- `tldr pamtopnm` : அக்கட்டளையின் விளக்கத்தைக் காண

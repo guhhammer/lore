@@ -1,0 +1,6 @@
+# nmtui-hostname
+
+ഈ കമാൻഡ് `nmtui hostname` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr nmtui` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

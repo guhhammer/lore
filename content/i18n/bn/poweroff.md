@@ -1,0 +1,13 @@
+# poweroff
+
+সিস্টেমের পাওয়ার বন্ধ করুন।
+
+## Usage
+- `poweroff` : সিস্টেমের পাওয়ার বন্ধ করুন
+- `poweroff --halt` : সিস্টেম থামান (`halt` এর মতোই)
+- `poweroff --reboot` : সিস্টেম রিবুট করুন (`reboot` এর মতোই)
+- `poweroff -f` : সিস্টেম ম্যানেজারকে না জানিয়েই অবিলম্বে শাট ডাউন করুন
+- `poweroff -w` : সিস্টেম শাট ডাউন না করে wtmp শাটডাউন এন্ট্রি লিখুন
+
+## Links
+- More information: https://manned.org/poweroff

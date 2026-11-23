@@ -1,0 +1,10 @@
+# psversiontable
+
+Una variable de solo lectura (como `$PSVersionTable`) para obtener la versión actual de PowerShell. Este comando solo se puede ejecutar en PowerShell.
+
+## Usage
+- `$PSVersionTable` : imprime un resumen de la versión y edición de PowerShell actualmente instaladas
+- `$PSVersionTable.PSVersion` : obtiene el número de versión detallado (mayor, menor, compilación y revisión) de PowerShell
+- `$PSVersionTable.PSCompatibleVersions` : lista todas las versiones de script de PowerShell compatibles que esta versión de PowerShell admite
+- `$PSVersionTable.GitCommitId` : obtiene el ID del último commit de Git en el que se basa la versión de PowerShell actualmente instalada (funciona en PowerShell 6.0 y posteriores)
+- `$PSVersionTable.PSEdition` : verifica si el usuario está ejecutando PowerShell Core (6.0 o posterior) o la "Windows PowerShell" original (versión 5.1 o anterior)

@@ -1,0 +1,15 @@
+# ppmchange
+
+Change all pixels of one color in a PPM image to another color.
+
+## Usage
+- `ppmchange oldcolor1 newcolor1 oldcolor2 newcolor2 ... path/to/input.ppm >path/to/output.ppm` : exchange the first color in each `oldcolor` - `newcolor` pair with the second color
+- `ppmchange -closeness percentage oldcolor1 newcolor1 oldcolor2 newcolor2 ... path/to/input.ppm >path/to/output.ppm` : specify how similar colors must be in order to be considered the same
+- `ppmchange -r color oldcolor1 newcolor1 oldcolor2 newcolor2 ... path/to/input.ppm >path/to/output.ppm` : replace all pixels not specified in the arguments by a color
+
+## Categories
+media, files, containers
+
+## Links
+- More information: https://netpbm.sourceforge.net/doc/ppmchange.html
+- tldr page: https://tldr.inbrowser.app/pages/common/ppmchange

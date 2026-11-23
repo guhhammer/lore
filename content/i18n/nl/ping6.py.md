@@ -1,0 +1,10 @@
+# ping6.py
+
+Controleer of een IPv6-host bereikbaar is door gebruik te maken van ICMPv6. Stuurt ICMPv6 echo requests en luistert naar echo replies. Opmerking: Vereist root privileges voor raw socket toegang (bijvoorbeeld draaien met `sudo`). Onderdeel van de Impacket-suite.
+
+## Usage
+- `ping6.py bron_ipv6 bestemmings_ipv6` : ping een IPv6-host vanaf een opgegeven IPv6-bronadres
+- `ping6.py 2001:db8::1 2001:db8::2` : ping 2001:db8::2 vanaf 2001:db8::1
+
+## Links
+- More information: https://github.com/fortra/impacket

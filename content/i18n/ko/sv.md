@@ -1,0 +1,13 @@
+# sv
+
+실행 중인 runsv 서비스를 제어.
+
+## Usage
+- `sudo sv up 경로/대상/서비스` : 서비스 시작
+- `sudo sv down 경로/대상/서비스` : 서비스 중지
+- `sudo sv status 경로/대상/서비스` : 서비스 상태 확인
+- `sudo sv reload 경로/대상/서비스` : 서비스 다시 로드
+- `sudo sv once 경로/대상/서비스` : 서비스를 시작하되, 실행 중이지 않은 경우에만 시작하고 중지되면 다시 시작하지 않음
+
+## Links
+- More information: https://manned.org/sv

@@ -1,0 +1,6 @@
+# fgrep
+
+यो आदेश `grep --fixed-strings` को उपनाम हो।
+
+## Usage
+- `tldr grep` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

@@ -1,0 +1,12 @@
+# odpscmd tunnel
+
+ODPS(Open Data Processing Service)에서의 데이터 터널.
+
+## Usage
+- `tunnel download 테이블_이름 경로/대상/파일;` : [대화형] 테이블을 로컬 파일로 다운로드
+- `tunnel upload 경로/대상/파일 테이블_이름/파티션_사양;` : [대화형] 로컬 파일을 테이블 파티션에 업로드
+- `tunnel upload 경로/대상/파일 테이블_이름 -fd 필드_구분자 -rd 레코드_구분자;` : [대화형] 필드 및 레코드 구분자를 지정하여 테이블 업로드
+- `tunnel upload 경로/대상/파일 테이블_이름 -threads 스레드_수;` : [대화형] 여러 스레드를 사용하여 테이블 업로드
+
+## Links
+- More information: https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-client

@@ -1,0 +1,11 @@
+# fallocate
+
+파일에 디스크 공간을 예약하거나 할당 해제. 이 도구는 공간을 할당할 때 0으로 초기화하지 않습니다.
+
+## Usage
+- `fallocate -l 700M 경로/대상/파일` : 700 MiB의 디스크 공간을 차지하는 파일 예약
+- `fallocate -c -l 200MB 경로/대상/파일` : 이미 할당된 파일을 200 MB 줄이기
+- `fallocate -c -o 100M -l 20M 경로/대상/파일` : 파일에서 100 MiB 이후의 20 MB 공간 줄이기
+
+## Links
+- More information: https://manned.org/fallocate

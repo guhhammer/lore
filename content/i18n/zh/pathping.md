@@ -1,0 +1,13 @@
+# pathping
+
+一种结合了`ping`和`tracert`功能的跟踪路由工具。
+
+## Usage
+- `pathping 主机名` : ping 并追踪主机的路由
+- `pathping 主机名 -n` : 不要对主机名执行 IP 地址的反向查找
+- `pathping 主机名 -h 最大跃点数` : 指定要搜索目标的最大跃点数（默认值为 30）
+- `pathping 主机名 -p 时间` : 指定 ping 之间等待的毫秒数（默认值为 240）
+- `pathping 主机名 -q 查询语句` : 指定每跳的查询数（默认值为 100）
+- `pathping 主机名 -4` : 强制使用 IPV4
+- `pathping 主机名 -6` : 强制使用 IPV6
+- `pathping /?` : 显示帮助

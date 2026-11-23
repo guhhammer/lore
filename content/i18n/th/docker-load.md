@@ -1,0 +1,6 @@
+# docker load
+
+คำสั่งนี้เป็นอีกชื่อหนึ่งของคำสั่ง `docker image load`
+
+## Usage
+- `tldr docker image load` : เรียกดูรายละเอียดสำหรับคำสั่งตัวเต็ม

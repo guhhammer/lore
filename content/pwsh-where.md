@@ -1,0 +1,15 @@
+# pwsh where
+
+This command is an alias of `Where-Object`.
+
+## Usage
+- `tldr Where-Object` : view documentation for the original command
+
+## Notes
+A Windows command: this page is for reference, it does not run on Linux or macOS.
+
+## Categories
+shell, windows
+
+## Links
+- tldr page: https://tldr.inbrowser.app/pages/windows/pwsh-where

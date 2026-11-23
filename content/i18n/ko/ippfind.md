@@ -1,0 +1,12 @@
+# ippfind
+
+DNS 서버에 등록되었거나 로컬 장치에서 사용할 수 있는 서비스를 검색하는 도구.
+
+## Usage
+- `ippfind -l` : 네트워크에 등록된 IPP 프린터와 상태 목록 출력
+- `ippfind --txt-pdl application/postscript -x ipptool -f 경로/대상/문서.ps '{}' print-job.test \;` : 네트워크의 모든 PostScript 프린터에 특정 문서 전송
+- `ippfind --txt-pdl application/postscript -x ipptool -f onepage-letter.ps '{}' print-job.test \;` : 네트워크의 모든 PostScript 프린터에 테스트 문서 전송
+- `ippfind --txt-pdl application/postscript -h regex -x ipptool -f onepage-letter.ps '{}' print-job.test \;` : 이름이 특정 `regex`와 일치하는 PostScript 프린터에 테스트 문서 전송
+
+## Links
+- More information: https://openprinting.github.io/cups/doc/man-ippfind.html

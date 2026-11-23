@@ -1,0 +1,6 @@
+# gh a11y
+
+यह आदेश `gh accessibility` का उपनाम है।
+
+## Usage
+- `tldr gh accessibility` : मूल आदेश के लिए प्रलेखन देखें

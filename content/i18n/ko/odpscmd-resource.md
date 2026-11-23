@@ -1,0 +1,14 @@
+# odpscmd resource
+
+ODPS(Open Data Processing Service)에서 리소스를 관리.
+
+## Usage
+- `list resources;` : [대화형] 현재 프로젝트의 리소스 표시
+- `add file 파일명 as 별칭;` : [대화형] 파일 리소스 추가
+- `add archive 아카이브.tar.gz as 별칭;` : [대화형] 아카이브 리소스 추가
+- `add jar 패키지.jar;` : [대화형] `.jar` 리소스 추가
+- `add py 스크립트.py;` : [대화형] `.py` 리소스 추가
+- `drop resource 리소스_이름;` : [대화형] 리소스 삭제
+
+## Links
+- More information: https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-client

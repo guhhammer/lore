@@ -1,0 +1,6 @@
+# qm unlink
+
+यह आदेश `qm disk unlink` का उपनाम है।
+
+## Usage
+- `tldr qm disk` : मूल आदेश के लिए प्रलेखन देखें

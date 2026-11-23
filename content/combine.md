@@ -1,0 +1,19 @@
+# combine
+
+Perform set operations on lines of two files. The order of the output lines is determined by the order of the lines in the first file.
+
+## Usage
+- `combine path/to/file1 and path/to/file2` : output lines that are in both specified files
+- `combine path/to/file1 not path/to/file2` : output lines that are in the first but not in the second file
+- `combine path/to/file1 or path/to/file2` : output lines that in are in either of the specified files
+- `combine path/to/file1 xor path/to/file2` : output lines that are in exactly one of the specified files
+
+## See also
+- diff
+
+## Categories
+text, files
+
+## Links
+- More information: https://manned.org/combine
+- tldr page: https://tldr.inbrowser.app/pages/common/combine

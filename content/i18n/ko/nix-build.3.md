@@ -1,0 +1,12 @@
+# nix-build.3
+
+Nix 표현식을 빌드합니다 (가능할 경우 캐시에서 다운로드).
+
+## Usage
+- `nix build nixpkgs#pkg` : nixpkgs에서 패키지를 빌드하고 결과를 `./result`에 심볼릭 링크
+- `nix build -L .#pkg` : 현재 디렉토리의 flake에서 패키지를 빌드하고 빌드 로그를 표시
+- `nix build ./경로/대상/폴더` : 특정 디렉토리의 flake에서 기본 패키지 빌드
+- `nix build --no-link --print-out-paths` : `result` 심볼릭 링크를 생성하지 않고 패키지를 빌드하며 대신 저장소 경로를 `stdout`에 출력
+
+## Links
+- More information: https://nix.dev/manual/nix/stable/command-ref/new-cli/nix3-build.html

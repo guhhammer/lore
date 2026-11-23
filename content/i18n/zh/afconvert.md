@@ -1,0 +1,10 @@
+# afconvert
+
+在 AFF 和 raw 文件格式之间进行转换。
+
+## Usage
+- `afconvert -a 扩展名 路径/到/输入文件 路径/到/输出文件1 路径/到/输出文件2 ...` : 使用一个特定的扩展名（默认：`aff`）
+- `afconvert -X0..7 路径/到/输入文件 路径/到/输出文件1 路径/到/输出文件2 ...` : 使用一个特定的压缩级别（默认：`7`）
+
+## Links
+- More information: https://manned.org/afconvert

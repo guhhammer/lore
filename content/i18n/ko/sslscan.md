@@ -1,0 +1,11 @@
+# sslscan
+
+서버에서 지원하는 SSL/TLS 프로토콜 및 암호를 검사.
+
+## Usage
+- `sslscan example.com` : 포트 443에서 서버 테스트
+- `sslscan example.com:465` : 지정된 포트에서 테스트
+- `sslscan --show-certificate example.com` : 인증서 정보 표시
+
+## Links
+- More information: https://manned.org/sslscan

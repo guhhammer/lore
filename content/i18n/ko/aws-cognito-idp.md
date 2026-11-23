@@ -1,0 +1,14 @@
+# aws cognito-idp
+
+Amazon Cognito 사용자 풀과 해당 사용자 및 그룹을 구성하고 인증.
+
+## Usage
+- `aws cognito-idp create-user-pool --pool-name 이름` : 새로운 Cognito 사용자 풀 생성
+- `aws cognito-idp list-user-pools --max-results 10` : 모든 사용자 풀 나열
+- `aws cognito-idp delete-user-pool --user-pool-id 사용자_풀_아이디` : 특정 사용자 풀 삭제
+- `aws cognito-idp admin-create-user --username 사용자명 --user-pool-id 사용자_풀_아이디` : 특정 풀에 사용자 생성
+- `aws cognito-idp list-users --user-pool-id 사용자_풀_아이디` : 특정 풀의 사용자 나열
+- `aws cognito-idp admin-delete-user --username 사용자명 --user-pool-id 사용자_풀_아이디` : 특정 풀에서 사용자 삭제
+
+## Links
+- More information: https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/

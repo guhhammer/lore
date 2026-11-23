@@ -1,0 +1,11 @@
+# zdb
+
+ZFS 调试器。
+
+## Usage
+- `zdb` : 显示所有已挂载 ZFS 存储池的详细配置
+- `zdb -C 存储池名称` : 显示特定 ZFS 存储池的详细配置
+- `zdb -b 存储池名称` : 显示关于块的数量、大小和重复数据删除的统计信息
+
+## Links
+- More information: https://manned.org/zdb

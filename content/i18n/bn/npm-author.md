@@ -1,0 +1,6 @@
+# npm author
+
+এই কমান্ডটি `npm owner` - এর একটি উপনাম।
+
+## Usage
+- `tldr npm owner` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

@@ -1,0 +1,6 @@
+# ptpython3
+
+यह आदेश `ptpython` का उपनाम है।
+
+## Usage
+- `tldr ptpython` : मूल आदेश के लिए प्रलेखन देखें

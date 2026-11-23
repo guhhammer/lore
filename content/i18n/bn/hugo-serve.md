@@ -1,0 +1,6 @@
+# hugo serve
+
+এই কমান্ডটি `hugo server` - এর একটি উপনাম।
+
+## Usage
+- `tldr hugo server` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

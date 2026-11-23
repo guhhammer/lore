@@ -1,0 +1,13 @@
+# gpasswd
+
+`/etc/group` 및 `/etc/gshadow`를 관리합니다.
+
+## Usage
+- `sudo gpasswd -A 사용자1,사용자2 그룹` : 그룹 관리자 정의
+- `sudo gpasswd -M 사용자1,사용자2 그룹` : 그룹 구성원 목록 설정
+- `gpasswd 그룹` : 지정된 그룹에 비밀번호 생성
+- `gpasswd -a 사용자 그룹` : 지정된 그룹에 사용자 추가
+- `gpasswd -d 사용자 그룹` : 지정된 그룹에서 사용자 제거
+
+## Links
+- More information: https://manned.org/gpasswd

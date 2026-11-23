@@ -1,0 +1,11 @@
+# git pull
+
+원격 저장소에서 브랜치를 가져와 로컬 저장소에 병합합니다.
+
+## Usage
+- `git pull` : 기본 원격 저장소에서 변경 사항 다운로드 및 병합
+- `git pull -r` : 기본 원격 저장소에서 변경 사항 다운로드 후 패스트-포워드 사용
+- `git pull 원격_이름 브랜치` : 지정된 원격 저장소와 브랜치에서 변경 사항 다운로드 후 다음 HEAD에 병합
+
+## Links
+- More information: https://git-scm.com/docs/git-pull

@@ -1,0 +1,12 @@
+# dropbearkey
+
+Dropbear 형식으로 SSH 키를 생성합니다.
+
+## Usage
+- `dropbearkey -t ed25519 -f 경로/대상/키_파일` : t유형 ed25519의 SSH 키를 생성하여 키 f파일에 저장
+- `dropbearkey -t ecdsa -f 경로/대상/키_파일` : t유형 ecdsa의 SSH 키를 생성하여 키 f파일에 저장
+- `dropbearkey -t rsa -s 4096 -f 경로/대상/키_파일` : 4096비트 키 s크기의 t유형 RSA SSH 키를 생성하여 키 f파일에 저장
+- `dropbearkey -y -f 경로/대상/키_파일` : 키 f파일의 개인 키 지문과 공개 키 출력
+
+## Links
+- More information: https://manned.org/dropbearkey

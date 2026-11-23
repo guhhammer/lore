@@ -1,0 +1,18 @@
+# duplicity
+
+Create incremental, compressed, encrypted, and versioned backups. Can also upload the backups to a variety of backend services. Note: Depending on the version, some options may not be available (e.g. `--gio` in 2.0.0).
+
+## Usage
+- `FTP_PASSWORD=ftp_login_password PASSPHRASE=encryption_password duplicity path/to/source_directory ftps://user@hostname/path/to/target_directory/` : back up a directory via FTPS to a remote machine, encrypting it with a password
+- `duplicity --full-if-older-than 1M s3://bucket_name/prefix` : back up a directory to Amazon S3, doing a full backup every month
+- `FTP_PASSWORD=webdav_login_password duplicity remove-older-than 1Y --force webdav://user@hostname:port/some_directory` : delete versions older than 1 year from a backup stored on a WebDAV share
+- `duplicity collection-status "file://absolute/path/to/backup_directory"` : list the available backups
+- `duplicity list-current-files -t YYYY-MM-DD scp://user@hostname/path/to/backup_directory` : list the files in a backup stored on a remote machine, via SSH
+- `PASSPHRASE=gpg_key_password duplicity restore --encrypt-key gpg_key_id --path-to-restore path/to/restore_directory file://absolute/path/to/backup_directory path/to/directory_to_restore_to` : restore a subdirectory from a GnuPG-encrypted local backup to a given location
+
+## Categories
+files, network, users
+
+## Links
+- More information: https://duplicity.gitlab.io/stable/duplicity.1.html#name
+- tldr page: https://tldr.inbrowser.app/pages/common/duplicity

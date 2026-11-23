@@ -1,0 +1,12 @@
+# ripmime
+
+MIME 인코딩된 이메일 패키지에서 첨부 파일 추출.
+
+## Usage
+- `ripmime -i 경로/대상/파일` : 현재 디렉토리에 파일 내용 추출
+- `ripmime -i 경로/대상/파일 -d 경로/대상/폴더` : 특정 디렉토리에 파일 내용 추출
+- `ripmime -i 경로/대상/파일 -v` : 파일 내용을 추출하고 자세한 출력 표시
+- `ripmime -i 경로/대상/파일 --debug` : 전체 디코딩 과정에 대한 자세한 정보 얻기
+
+## Links
+- More information: https://pldaniels.com/ripmime/

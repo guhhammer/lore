@@ -1,0 +1,12 @@
+# hexdump
+
+一个 ASCII、十进制、十六进制、八进制转换查看工具。
+
+## Usage
+- `hexdump 路径/到/文件` : 打印文件的十六进制表示形式，重复的行用 '*' 替代
+- `hexdump -C 路径/到/文件` : 以十六进制显示输入偏移量，并在最后两列中显示其 ASCII 表示形式
+- `hexdump -C -n 字节数 路径/到/文件` : 显示文件的十六进制表示，但只解释输入的指定字节数
+- `hexdump -v 路径/到/文件` : 不使用 '*' 替换重复的行
+
+## Links
+- More information: https://manned.org/hexdump

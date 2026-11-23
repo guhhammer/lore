@@ -1,0 +1,6 @@
+# tlmgr arch
+
+यह आदेश `tlmgr platform` का उपनाम है।
+
+## Usage
+- `tldr tlmgr platform` : मूल आदेश के लिए प्रलेखन देखें

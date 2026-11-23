@@ -1,0 +1,14 @@
+# aa-cleanprof
+
+অ্যাপআর্মর (AppArmor) সিকিউরিটি প্রোফাইলগুলো থেকে অপ্রয়োজনীয় রুল (rule) সরিয়ে প্রোফাইল পরিষ্কার করার জন্য ব্যবহৃত কমান্ড।
+
+## Usage
+- `sudo aa-cleanprof প্রোফাইলের_নাম` : কোনো প্রোফাইল পরিষ্কার করে অপ্রয়োজনীয় রুল সরাতে
+- `sudo aa-cleanprof প্রোফাইল1 প্রোফাইল2 ...` : একাধিক প্রোফাইল একসাথে পরিষ্কার করতে
+- `sudo aa-cleanprof -d /প্রোফাইল/এর/পাথ প্রোফাইলের_নাম` : প্রোফাইলসমূহ যেই ডিরেক্টরিতে আছে তা নির্দিষ্ট করতে
+- `sudo aa-cleanprof -s প্রোফাইলের_নাম` : প্রম্পট (prompt) ছাড়াই নীরবে (silent mode) চালাতে
+- `sudo aa-cleanprof --no-reload প্রোফাইলের_নাম` : পরিষ্কারের পর প্রোফাইল রিলোড হওয়া বন্ধ করতে
+- `aa-cleanprof -h` : সাহায্য প্রদর্শন
+
+## Links
+- More information: https://gitlab.com/apparmor/apparmor/-/wikis/manpage_aa-cleanprof.8

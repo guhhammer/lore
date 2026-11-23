@@ -1,0 +1,6 @@
+# impacket-mssqlclient
+
+ഈ കമാൻഡ് `mssqlclient.py` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr mssqlclient.py` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

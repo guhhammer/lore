@@ -1,0 +1,6 @@
+# pacinstall
+
+यो आदेश `pactrans --install` को उपनाम हो।
+
+## Usage
+- `tldr pactrans` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

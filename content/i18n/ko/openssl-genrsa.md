@@ -1,0 +1,11 @@
+# openssl genrsa
+
+RSA 개인 키를 생성하는 OpenSSL 명령어.
+
+## Usage
+- `openssl genrsa` : 2048비트 RSA 개인 키를 `stdout`에 생성
+- `openssl genrsa -out 출력_파일.key 1234` : 임의 비트 수의 RSA 개인 키를 출력 파일에 저장
+- `openssl genrsa -aes256` : RSA 개인 키를 생성하고 AES256으로 암호화 (암호를 입력하라는 메시지가 표시됨)
+
+## Links
+- More information: https://docs.openssl.org/master/man1/openssl-genrsa/

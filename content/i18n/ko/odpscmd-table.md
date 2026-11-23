@@ -1,0 +1,13 @@
+# odpscmd table
+
+ODPS(Open Data Processing Service)에서 테이블을 생성하고 수정.
+
+## Usage
+- `create table 테이블_이름 (열 타입) partitioned by (열 타입) lifecycle 일수;` : [대화형] 파티션과 수명 주기가 있는 테이블 생성
+- `create table 테이블_이름 like 다른_테이블;` : [대화형] 다른 테이블의 정의를 기반으로 테이블 생성
+- `alter table 테이블_이름 add partition (파티션_명세);` : [대화형] 테이블에 파티션 추가
+- `alter table 테이블_이름 drop partition (파티션_명세);` : [대화형] 테이블에서 파티션 삭제
+- `drop table 테이블_이름;` : [대화형] 테이블 삭제
+
+## Links
+- More information: https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-client

@@ -1,0 +1,14 @@
+# crush
+
+소프트웨어 개발 작업을 위한 AI 기반 터미널 어시스턴트. AI 기능, 코드 분석, LSP 통합을 포함한 대화형 인터페이스를 제공.
+
+## Usage
+- `crush` : 대화형 모드를 시작
+- `crush -d` : 디버그 로깅을 활성화하여 실행
+- `crush -d -c 경로/대상/프로젝트` : 특정 디렉터리에서 디버그 로깅을 활성화하여 실행
+- `crush run "Go의 컨텍스트 사용에 대해 설명해줘"` : 대화형 모드 없이 단일 프롬프트를 실행
+- `crush -y` : 위험 모드로 실행 (모든 권한 자동승인)
+- `crush -v` : 버전 표시
+
+## Links
+- More information: https://github.com/charmbracelet/crush

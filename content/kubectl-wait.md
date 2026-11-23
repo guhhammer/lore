@@ -1,0 +1,16 @@
+# kubectl wait
+
+Wait for resource(s) to reach a certain state.
+
+## Usage
+- `kubectl wait --for condition=available deployment/deployment_name` : wait for a deployment to become available
+- `kubectl wait --for condition=ready po -l label_key=label_value` : wait for all pods with a certain label to be ready
+- `kubectl wait --for delete po pod_name` : wait for a pod to be deleted
+- `kubectl wait --for condition=complete job/job_name --timeout 120s` : wait for a job to complete, within 120 seconds (if the condition isn't met on time, the exit status will be unsuccessful)
+
+## Categories
+containers
+
+## Links
+- More information: https://kubernetes.io/docs/reference/kubectl/generated/kubectl_wait/
+- tldr page: https://tldr.inbrowser.app/pages/common/kubectl-wait

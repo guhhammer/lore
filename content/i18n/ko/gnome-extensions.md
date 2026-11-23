@@ -1,0 +1,15 @@
+# gnome-extensions
+
+터미널에서 GNOME 확장 관리.
+
+## Usage
+- `gnome-extensions list` : 설치된 모든 확장 나열
+- `gnome-extensions info "확장_id"` : 특정 확장에 대한 정보 표시
+- `gnome-extensions enable "확장_id"` : 특정 확장 활성화
+- `gnome-extensions disable "확장_id"` : 특정 확장 비활성화
+- `gnome-extensions uninstall "확장_id"` : 특정 확장 제거
+- `gnome-extensions help 하위_명령` : 특정 하위 명령(예: `list`)에 대한 도움말 표시
+- `gnome-extensions version` : 버전 표시
+
+## Links
+- More information: https://wiki.gnome.org/Projects/GnomeShell/Extensions

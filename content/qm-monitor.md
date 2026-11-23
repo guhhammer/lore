@@ -1,0 +1,13 @@
+# qm monitor
+
+Enter the QEMU Monitor interface.
+
+## Usage
+- `qm mo 100` : enter the QEMU Monitor interface of a specific virtual machine
+
+## Categories
+monitoring, network
+
+## Links
+- More information: https://pve.proxmox.com/pve-docs/qm.1.html#cli_qm_monitor
+- tldr page: https://tldr.inbrowser.app/pages/linux/qm-monitor

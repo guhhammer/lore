@@ -1,0 +1,6 @@
+# npm run-script
+
+यह आदेश `npm run` का उपनाम है।
+
+## Usage
+- `tldr npm run` : मूल आदेश के लिए प्रलेखन देखें

@@ -1,0 +1,6 @@
+# xzegrep
+
+Denne kommando er et alias af `xzgrep --extended-regexp`.
+
+## Usage
+- `tldr xzgrep` : se dokumentation for den oprindelige kommando

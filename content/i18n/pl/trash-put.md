@@ -1,0 +1,6 @@
+# trash-put
+
+To polecenie jest aliasem `trash`.
+
+## Usage
+- `tldr trash` : zobacz dokumentację oryginalnego polecenia

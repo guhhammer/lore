@@ -1,0 +1,14 @@
+# cd
+
+更改当前工作目录。
+
+## Usage
+- `cd 路径/到/目录` : 转到指定目录
+- `cd ..` : 转到当前目录的父目录
+- `cd` : 转到当前用户的主（home）目录
+- `cd ~用户名` : 转到指定用户的主（home）目录
+- `cd -` : 转到刚才选择的目录
+- `cd /` : 转到根目录
+
+## Links
+- More information: https://www.gnu.org/software/bash/manual/bash.html#index-cd

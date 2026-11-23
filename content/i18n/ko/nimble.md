@@ -1,0 +1,14 @@
+# nimble
+
+Nim 프로그래밍 언어를 위한 패키지 관리자. Nim 프로젝트 및 그 의존성을 관리.
+
+## Usage
+- `nimble search 검색_문자열` : 패키지 검색
+- `nimble install 패키지` : 패키지 설치
+- `nimble list -i` : 설치된 패키지 나열
+- `nimble init` : 현재 디렉토리에 새로운 Nimble 패키지 생성
+- `nimble build` : nimble 패키지 빌드
+- `nimble install` : nimble 패키지 설치
+
+## Links
+- More information: https://github.com/nim-lang/nimble

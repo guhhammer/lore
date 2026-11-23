@@ -1,0 +1,10 @@
+# openssl prime
+
+소수를 계산하기 위한 OpenSSL 명령어.
+
+## Usage
+- `openssl prime -generate -bits 2048 -hex` : 2048비트 소수를 생성하고 16진수로 표시
+- `openssl prime 숫자` : 주어진 숫자가 소수인지 확인
+
+## Links
+- More information: https://docs.openssl.org/master/man1/openssl-prime/

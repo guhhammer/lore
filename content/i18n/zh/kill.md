@@ -1,0 +1,15 @@
+# kill
+
+向进程发送信号，通常用于停止进程。 除了 `SIGKILL` 和 `SIGSTOP`，所有信号都可以被进程拦截，以便进行正常退出。
+
+## Usage
+- `kill 进程id` : 使用默认的 `SIGTERM`（终止）信号来结束一个程序
+- `kill -l` : 列出可用的信号名称（使用时无需加 `SIG` 前缀）
+- `kill -1 进程id` : 使用 `SIGHUP`（挂起）信号终止一个程序。许多守护进程接收到此信号后会重新加载而不是终止
+- `kill -2 进程id` : 使用 `SIGINT`（中断）信号终止一个程序。通常由用户按下 `<Ctrl c>` 发起
+- `kill -9 进程id` : 向操作系统发送信号，立即终止一个程序（程序无机会捕获信号）
+- `kill -STOP 进程id` : 向操作系统发送信号，暂停一个程序，直到收到 `SIGCONT`（继续）信号
+- `kill -USR1 -组id` : 向所有具有指定 GID（组 ID）的进程发送 `SIGUSR1` 信号
+
+## Links
+- More information: https://manned.org/kill.1posix

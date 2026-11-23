@@ -1,0 +1,12 @@
+# md5
+
+计算 MD5 加密和校验。
+
+## Usage
+- `md5 路径/到/文件` : 计算一个文件的 MD5 校验值
+- `md5 路径/到/文件1 路径/到/文件2 ...` : 计算多个文件的 MD5 校验值
+- `md5 -q 路径/到/文件` : 仅输出 MD5 校验值（无文件名）
+- `md5 -s "字符串"` : 打印给定字符串的 MD5 校验值
+
+## Links
+- More information: https://keith.github.io/xcode-man-pages/md5.1.html

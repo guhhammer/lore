@@ -1,0 +1,16 @@
+# obabel
+
+Translate chemistry-related data.
+
+## Usage
+- `obabel path/to/file.mol -O path/to/output_file.xyz` : convert a `.mol` file to XYZ coordinates
+- `obabel -:"smiles_string" -O path/to/output_file.png -xp 500` : convert a Simplified Molecular Input Line Entry System string to a 500x500 picture
+- `obabel path/to/file.smi -O path/to/output_file.mol --gen3D -m` : convert a file of SMILES string to separate 3D `.mol` files
+- `obabel path/to/file1 path/to/file2 ... -O path/to/output_file.png` : render multiple inputs into one picture
+
+## Categories
+files, text
+
+## Links
+- More information: https://open-babel.readthedocs.io/en/latest/Command-line_tools/babel.html
+- tldr page: https://tldr.inbrowser.app/pages/linux/obabel

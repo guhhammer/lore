@@ -1,0 +1,6 @@
+# glink
+
+此命令為 `link` 的別名。
+
+## Usage
+- `tldr link` : 檢視原命令的文件

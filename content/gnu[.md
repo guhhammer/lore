@@ -1,0 +1,19 @@
+# gnu[
+
+This command is an alias of GNU `[`.
+
+## Usage
+- `[ "$variable" = "string" ]` : test if a given variable is equal to the specified string
+- `[ "$variable" != "string" ]` : test if a given variable is not equal to the specified string
+- `[ "$variable" -eq|ne|gt|lt|ge|le integer ]` : test if a given variable is [eq]ual/not equal/greater than/less than/greater than or equal/less than or equal to the specified number
+- `[ -n "$variable" ]` : test if the specified variable has a non-empty value
+- `[ -z "$variable" ]` : test if the specified variable has an empty value (zero length)
+- `[ -f path/to/file ]` : test if the specified file exists
+- `[ -d path/to/directory ]` : test if the specified directory exists
+- `[ -e path/to/file_or_directory ]` : test if the specified file or directory exists
+
+## Categories
+files, development, text
+
+## Links
+- tldr page: https://tldr.inbrowser.app/pages/linux/gnu[

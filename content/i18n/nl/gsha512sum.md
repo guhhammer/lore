@@ -1,0 +1,6 @@
+# gsha512sum
+
+Dit commando is een alias van GNU `sha512sum`.
+
+## Usage
+- `tldr sha512sum` : bekijk de documentatie van het originele commando

@@ -1,0 +1,6 @@
+# nmtui-hostname
+
+यो आदेश `nmtui hostname` को उपनाम हो।
+
+## Usage
+- `tldr nmtui` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

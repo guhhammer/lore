@@ -1,0 +1,17 @@
+# bedtools
+
+A swiss-army knife of tools for genomic-analysis tasks. Used to intersect, group, convert, and count data in BAM, BED, GFF/GTF, VCF format.
+
+## Usage
+- `bedtools intersect -a path/to/file_A -b path/to/file_B1 path/to/file_B2 ... -s >path/to/output_file` : intersect file a and file(s) b regarding the sequences' strand and save the result to a specific file
+- `bedtools intersect -a path/to/file1 -b path/to/file2 -loj >path/to/output_file` : intersect two files with a left outer join, i.e. report each feature from `file1` and NULL if no overlap with `file2`
+- `bedtools intersect -a path/to/file1 -b path/to/file2 -sorted >path/to/output_file` : use a more efficient algorithm to intersect two pre-sorted files
+- `bedtools groupby -i path/to/file -c 1-3,5 -g 6 -o sum` : group a file based on the first three and the fifth column and apply the sum operation on the sixth column
+- `bedtools bamtobed -i path/to/file.bam >path/to/file.bed` : convert bam-formatted input file to a bed-formatted one
+- `bedtools closest -a path/to/file1.bed -b path/to/file2.bed -d` : find for all features in `file1.bed` the closest one in `file2.bed` and write their distance in an extra column (input files must be sorted)
+
+## Categories
+files, users, text
+
+## Links
+- tldr page: https://tldr.inbrowser.app/pages/common/bedtools

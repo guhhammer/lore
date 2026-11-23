@@ -1,0 +1,6 @@
+# saracmd outlookcalendarchecktask
+
+ຄຳສັ່ງນີ້ເປັນອີກຊື່ໜຶ່ງຂອງຄຳສັ່ງ `GetHelpCmd.exe -S OutlookCalendarCheckTask`.
+
+## Usage
+- `tldr gethelpcmd-outlookcalendarchecktask` : ເປີດເບິ່ງລາຍລະອຽດຂອງຄຳສັ່ງແບບເຕັມ

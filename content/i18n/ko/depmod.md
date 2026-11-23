@@ -1,0 +1,14 @@
+# depmod
+
+Linux 커널 모듈의 `modules.dep` 및 매핑 파일을 생성.
+
+## Usage
+- `depmod` : 현재 커널의 의존성 및 매핑 파일 생성
+- `depmod -o 경로/대상/디렉터리` : 지정한 디렉터리에 의존성 및 매핑 파일 생성
+- `depmod 커널_버전` : 지정한 커널 버전의 의존성 및 매핑 파일 생성
+- `depmod 커널_버전 /경로/대상/모듈.ko` : 모든 모듈 대신 지정한 모듈만 검사하여 의존성 및 매핑 정보 생성
+- `depmod -b 경로/대상/루트_디렉터리` : 대체 루트 파일 시스템 디렉터리 사용
+- `depmod -n` : 파일에 저장하지 않고 의존성 정보를 `stdout`으로 출력
+
+## Links
+- More information: https://manned.org/depmod

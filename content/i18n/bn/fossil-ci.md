@@ -1,0 +1,6 @@
+# fossil ci
+
+এই কমান্ডটি `fossil commit` - এর একটি উপনাম।
+
+## Usage
+- `tldr fossil commit` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

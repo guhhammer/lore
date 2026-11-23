@@ -1,0 +1,12 @@
+# fileicon
+
+사용자 지정 파일 및 폴더 아이콘 관리.
+
+## Usage
+- `fileicon set 경로/대상/파일_또는_폴더 경로/대상/아이콘_파일.png` : 특정 파일이나 폴더에 사용자 지정 아이콘 설정
+- `fileicon rm 경로/대상/파일_또는_폴더` : 특정 파일이나 폴더에서 사용자 지정 아이콘 제거
+- `fileicon get 경로/대상/파일_또는_폴더` : 파일이나 폴더의 사용자 지정 아이콘을 현재 디렉토리에 `.icns` 파일로 저장
+- `fileicon test 경로/대상/파일_또는_폴더` : 특정 파일이나 폴더에 사용자 지정 아이콘이 있는지 테스트
+
+## Links
+- More information: https://github.com/mklement0/fileicon

@@ -1,0 +1,6 @@
+# apt-add-repository
+
+এই কমান্ডটি `add-apt-repository` - এর একটি উপনাম।
+
+## Usage
+- `tldr add-apt-repository` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

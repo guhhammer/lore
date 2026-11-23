@@ -1,0 +1,6 @@
+# impacket-machine_role
+
+यो आदेश `machine_role.py` को उपनाम हो।
+
+## Usage
+- `tldr machine_role.py` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

@@ -1,0 +1,6 @@
+# ii
+
+यह आदेश `Invoke-Item` का उपनाम है।
+
+## Usage
+- `tldr invoke-item` : मूल आदेश के लिए प्रलेखन देखें

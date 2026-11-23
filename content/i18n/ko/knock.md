@@ -1,0 +1,12 @@
+# knock
+
+방화벽의 특정 포트를 열기 위한 포트 노킹 클라이언트.
+
+## Usage
+- `knock 호스트명 포트번호:프로토콜` : 다른 프로토콜을 사용하여 포트 노킹
+- `knock -u 호스트명 포트번호` : UDP를 사용하여 포트 노킹
+- `knock -4|-6 호스트명 포트번호` : IPv4/IPv6 강제 사용
+- `knock -v 호스트명 포트번호` : 연결 오류 및 세부 정보 표시
+
+## Links
+- More information: https://manned.org/knock

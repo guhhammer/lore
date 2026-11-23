@@ -1,0 +1,6 @@
+# gcb
+
+यो आदेश `Get-Clipboard` को उपनाम हो।
+
+## Usage
+- `tldr get-clipboard` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

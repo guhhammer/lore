@@ -1,0 +1,6 @@
+# systemctl reload-or-try-restart
+
+Această comandă este un alias al `systemctl try-reload-or-restart`.
+
+## Usage
+- `tldr systemctl try-reload-or-restart` : vizualizați documentația pentru comanda originală

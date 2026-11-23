@@ -1,0 +1,11 @@
+# unflatten
+
+调整有向图以改善布局的纵横比。
+
+## Usage
+- `unflatten 路径/到/输入1.gv 路径/到/输入2.gv ... >路径/到/输出.gv` : 调整一个或多个有向图以改善布局的纵横比
+- `unflatten 路径/到/输入.gv | dot -T png 路径/到/输出.png` : 将 `unflatten` 作为 `dot` 布局的预处理器以改善纵横比
+- `unflatten -?` : 显示帮助
+
+## Links
+- More information: https://www.graphviz.org/pdf/unflatten.1.pdf

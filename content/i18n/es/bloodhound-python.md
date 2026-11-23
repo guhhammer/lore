@@ -1,0 +1,13 @@
+# bloodhound-python
+
+Un ingestor Python para BloodHound, utilizado para enumerar las relaciones de Active Directory.
+
+## Usage
+- `bloodhound-python --username usuario --password contraseña --domain dominio` : recopila todos los datos utilizando los métodos de recopilación predeterminados (incluye grupos, sesiones y fideicomisos)
+- `bloodhound-python --collectionmethod Todos --kerberos --domain dominio` : recopila datos utilizando la autenticación Kerberos sin requerir una contraseña en texto plano
+- `bloodhound-python --collectionmethod Todos --username usuario --hashes LM:NTLM --domain dominio` : se autentica utilizando hashes NTLM en lugar de una contraseña
+- `bloodhound-python --collectionmethod Todos --username usuario --password contraseña --domain dominio --nameserver nombre_de_servidor` : especifica un servidor de nombres personalizado para consultas DNS
+- `bloodhound-python --collectionmethod Todos --username usuario --password contraseña --domain dominio --zip` : guarde los archivos de salida como un archivo ZIP comprimido
+
+## Links
+- More information: https://github.com/dirkjanm/BloodHound.py#usage

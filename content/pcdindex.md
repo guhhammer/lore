@@ -1,0 +1,16 @@
+# pcdindex
+
+This command has been renamed to `pcdovtoppm`.
+
+## Usage
+- `pcdovtoppm path/to/file.pcd >path/to/output.ppm` : create a PPM index image from a PCD overview file
+- `pcdovtoppm -m width -s size path/to/file.pcd >path/to/output.ppm` : specify the maximum width of the output image and the maximum size of each of the images contained in the output
+- `pcdovtoppm -a n_images -c n_colors path/to/file.pcd >path/to/output.ppm` : specify the maximum number of images across and the maximum number of colors
+- `pcdovtoppm -f font -w path/to/file.pcd >path/to/output.ppm` : use the specified font for annotations and paint the background white
+
+## Categories
+files, media, containers
+
+## Links
+- More information: https://netpbm.sourceforge.net/doc/pcdindex.html
+- tldr page: https://tldr.inbrowser.app/pages/common/pcdindex

@@ -1,0 +1,13 @@
+# pwqgen
+
+무작위 암호문을 생성.
+
+## Usage
+- `pwqgen` : 암호문 생성
+- `pwqgen random=24..136` : 지정한 비트 크기(24~136비트)의 암호문 생성
+- `pwqgen config=경로/대상/설정_파일` : 설정 파일을 사용하여 암호 생성 방식 제어
+- `pwqgen -h` : 도움말 표시
+- `pwqgen --version` : 버전 표시
+
+## Links
+- More information: https://manned.org/pwqgen

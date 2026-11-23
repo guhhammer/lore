@@ -1,0 +1,13 @@
+# killall
+
+프로세스 이름으로 모든 인스턴스에 종료 신호를 보냅니다 (정확한 이름이어야 함). `SIGKILL` 및 `SIGSTOP`을 제외한 모든 신호는 프로세스에 의해 가로채어져 클린 종료가 가능합니다.
+
+## Usage
+- `killall 프로세스_이름` : 기본 `SIGTERM` (종료) 신호를 사용하여 프로세스 종료
+- `killall -l` : 사용 가능한 신호 이름 list 보기 (`SIG` 접두사 없이 사용)
+- `killall -i 프로세스_이름` : 종료 전에 인터랙티브하게 확인 요청
+- `killall -2 프로세스_이름` : `SIGINT` (인터럽트) 신호를 사용하여 프로세스 종료, 이는 `<Ctrl c>`로 전송되는 신호와 동일
+- `killall -9 프로세스_이름` : 프로세스를 강제로 종료
+
+## Links
+- More information: https://manned.org/killall

@@ -1,0 +1,13 @@
+# zstd
+
+Zstandard 압축을 사용하여 파일을 압축하거나 압축 해제.
+
+## Usage
+- `zstd 경로/대상/파일` : 파일을 `.zst` 확장자로 새 파일로 압축
+- `zstd --decompress 경로/대상/파일.zst` : 파일 압축 해제
+- `zstd --decompress --stdout 경로/대상/파일.zst` : `stdout`으로 압축 해제
+- `zstd -수준 경로/대상/파일` : 압축 수준을 지정하여 파일 압축 (1=가장 빠름, 19=가장 느림, 3=기본)
+- `zstd --ultra -수준 경로/대상/파일` : 더 많은 메모리를 사용하여 더 높은 압축 수준(최대 22) 잠금 해제 (압축 및 압축 해제 모두)
+
+## Links
+- More information: https://manned.org/zstd

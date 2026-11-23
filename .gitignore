@@ -42,3 +42,6 @@ graphify-out/
 mempalace.yaml
 mempalace.yml
 entities.json
+
+# Drafts of command pages, reviewed before they move into content/.
+/.content-draft/

@@ -1,0 +1,6 @@
+# pwsh where
+
+இக்கட்டளை `Where-Object` கட்டளையின் மற்றொருப் பெயர்.
+
+## Usage
+- `tldr Where-Object` : அக்கட்டளையின் விளக்கத்தைக் காண

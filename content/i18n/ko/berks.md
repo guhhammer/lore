@@ -1,0 +1,12 @@
+# berks
+
+Chef 자세한 설명서 의존 관리자.
+
+## Usage
+- `berks install` : 로컬 저장소에 자세한 설명서 종속성 설치
+- `berks update 자세한 설명서` : 특정 자세한 설명서와 그 종속성을 업데이트
+- `berks upload 자세한 설명서` : 자세한 설명서를 Chef server에 업로드
+- `berks contingent 자세한 설명서` : 자세한 설명서의 종속성 확인
+
+## Links
+- More information: https://docs.chef.io/workstation/latest/tools/berkshelf/#berkshelf-cli

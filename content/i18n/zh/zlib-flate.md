@@ -1,0 +1,11 @@
+# zlib-flate
+
+原始 zlib 压缩和解压缩程序。 `qpdf` 的一部分。
+
+## Usage
+- `zlib-flate <路径/到/输入_文件 -compress >路径/到/压缩.zlib` : 压缩一个文件
+- `zlib-flate <路径/到/压缩.zlib -uncompress >路径/到/输出_文件` : 解压缩一个文件
+- `zlib-flate <路径/到/输入_文件 -compress=0..9 >路径/到/压缩.zlib` : 使用指定的压缩级别压缩文件。0=最快（最差），9=最慢（最佳）
+
+## Links
+- More information: https://manned.org/zlib-flate

@@ -1,0 +1,6 @@
+# scb
+
+यो आदेश `Set-Clipboard` को उपनाम हो।
+
+## Usage
+- `tldr Set-Clipboard` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

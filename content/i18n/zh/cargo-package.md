@@ -1,0 +1,10 @@
+# cargo package
+
+将一个本地软件包打包成一个可分发的 tarball（`.crate` 文件）。 类似于 `cargo publish --dry-run`，但具有更多选项。
+
+## Usage
+- `cargo package` : 执行检查并创建一个 `.crate` 文件（相当于 `cargo publish --dry-run`）
+- `cargo package -l` : 显示将包含在 tarball 中的文件，而不实际创建它
+
+## Links
+- More information: https://doc.rust-lang.org/cargo/commands/cargo-package.html

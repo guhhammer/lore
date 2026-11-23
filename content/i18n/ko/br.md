@@ -1,0 +1,6 @@
+# br
+
+이 명령은 `broot`의 별칭입니다.
+
+## Usage
+- `tldr broot` : 원래 명령의 문서 보기

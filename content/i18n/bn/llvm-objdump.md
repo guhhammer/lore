@@ -1,0 +1,6 @@
+# llvm-objdump
+
+এই কমান্ডটি `objdump` - এর একটি উপনাম।
+
+## Usage
+- `tldr objdump` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

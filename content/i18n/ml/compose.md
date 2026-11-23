@@ -1,0 +1,6 @@
+# compose
+
+ഈ കമാൻഡ് `run-mailcap --action=compose` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr run-mailcap` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

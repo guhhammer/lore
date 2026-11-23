@@ -1,0 +1,152 @@
+.TH LORE 1 "2026-11-23" "lore 0.1.0" "User Commands"
+.SH NAME
+lore \- every command you can type, and what each one does, offline
+.SH SYNOPSIS
+.B lore
+.br
+.B lore
+.I NAME
+.br
+.B lore
+.BR \-\-help " | " \-\-version
+.SH DESCRIPTION
+.B lore
+lists every command you can type, each name once, sorted A to Z under
+section letters (names that start with a digit or a symbol go under
+.BR # ).
+It needs no internet.
+.PP
+The list holds the programs on your
+.B $PATH
+and in the places a
+.B $PATH
+often leaves out (/usr/sbin, Homebrew, MacPorts, Nix, Snap, Flatpak,
+~/bin, ~/.cargo/bin, ~/go/bin, /opt/*/bin and, on macOS, the directories
+in /etc/paths), the builtins and keywords of your shell (bash, zsh or fish,
+from
+.BR $SHELL ),
+and your aliases, each shown with what it runs.
+.PP
+A command's page shows, top to bottom: what it is and does; VERSION, its
+package, the installed and the newest known version and how to update it,
+read offline from the package manager (dpkg and apt, rpm, pacman or
+Homebrew's folders); HOW TO USE, its most common uses; NOTES; LINKS, to its
+own site and to Stack Overflow, GeeksforGeeks and Google searches; and its
+manual page.
+.SH OPTIONS
+.TP
+.I NAME
+Open
+.IR NAME 's
+page straight away, as
+.B man
+.I NAME
+would. Closing the page quits. A name not found on this machine still
+opens if lore or
+.B man
+has a page for it.
+.TP
+.I "PROGRAM SUBCOMMAND"
+Open a subcommand's page, such as
+.BR "lore git commit" .
+.TP
+.BR \-h ", " \-\-help
+Print a short usage text.
+.TP
+.BR \-V ", " \-\-version
+Print lore's version.
+.SH KEYS
+.SS In the list
+.TP
+.B Up, Down
+Move through the commands; the letter headers are skipped.
+.TP
+.B Right, Enter
+Open the selected command's page.
+.TP
+.B /
+Go to the search bar. Typing keeps the names that contain the text,
+ignoring case, ranked best first instead of A to Z: the exact name, then
+names starting with the text (shorter first), then names with it at the
+start of a word (git rm), then anywhere. From three characters on, the
+pages are searched too, by their categories, summary and examples, and
+their matches follow: "compress folder" lists tar and zip, and a command
+named by one of the words ("cut files") comes first among them. Words
+match at the start of words ("cut" finds "cuts", not "execute"), and a
+plural also finds its singular. Each result shows, after its name, the
+page line that matched, cut around the match
+.RB ( "[Cut out fields from stdin or files.]" ),
+then its categories. With the search empty, the list is A to Z again. Common words count as their usual equivalents
+(folder as directory, delete as remove). Start
+with
+.B @
+to keep only the commands that have a lore page
+.RB ( @gr ).
+Esc leaves the search bar and keeps its text; Backspace erases it.
+.TP
+.B Esc
+Quit.
+.SS On a page
+.TP
+.B Up, Down, PgUp, PgDn
+Scroll.
+.TP
+.B /
+Search other commands without leaving the page: the list beside it
+filters as you type, and Enter or Right opens the chosen command's page in
+place. Esc leaves the search for the full list.
+.TP
+.B Left, Esc
+Back to the list, or quit when the page was opened as
+.B lore
+.IR NAME .
+.SS Anywhere
+.TP
+.B Ctrl+C
+Quit.
+.SH CATEGORIES AND DANGER
+In the list, each command is followed by its categories, such as
+.BR "[archives files]" .
+.B danger
+marks a command that can destroy data or stop the system; its page warns
+under the summary, and every example that can is marked with
+.BR ! .
+.SH LANGUAGES
+Pages are shown in the language of
+.BR LC_ALL ,
+.B LC_MESSAGES
+or
+.B LANG
+when lore has a translation (from tldr-pages, 41 languages); otherwise in
+English.
+.SH LINKS
+Every URL is shown whole, on a line of its own, so the terminal can open
+it: Ctrl+click in Konsole and most terminals. lore never opens a link
+itself, shows only https links, and never asks you to log in anywhere or
+for any account. Check a link before you open it: anyone can add pages.
+.SH FILES
+.TP
+.I ~/.local/share/lore/content/NAME.md
+.TQ
+.I /usr/local/share/lore/content/NAME.md
+.TQ
+.I /usr/share/lore/content/NAME.md
+A page for
+.IR NAME ,
+checked in this order before the pages built into lore; the first one
+found is shown. None of these folders needs to exist: lore carries its own
+pages. The format is in content/README.md in lore's repository.
+.SH EXIT STATUS
+0 on a normal quit; 1 when there is no terminal to draw on (a pipe, or
+.B ssh
+without
+.BR \-t ),
+on an unknown option, or when
+.I NAME
+has no command, lore page or manual page.
+.SH SEE ALSO
+.BR man (1),
+.BR whatis (1),
+.BR apropos (1)
+.PP
+https://github.com/guhhammer/lore

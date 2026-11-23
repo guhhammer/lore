@@ -1,0 +1,6 @@
+# impacket-sambapipe
+
+यह आदेश `sambaPipe.py` का उपनाम है।
+
+## Usage
+- `tldr sambaPipe.py` : मूल आदेश के लिए प्रलेखन देखें

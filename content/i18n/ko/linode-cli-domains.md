@@ -1,0 +1,13 @@
+# linode-cli domains
+
+Linode 도메인 및 DNS 구성 관리.
+
+## Usage
+- `linode-cli domains list` : 관리되는 모든 도메인 나열
+- `linode-cli domains create --domain 도메인_이름 --type master|slave --soa-email 이메일` : 새 관리 도메인 생성
+- `linode-cli domains view 도메인_id` : 특정 도메인의 세부 정보 보기
+- `linode-cli domains delete 도메인_id` : 관리 도메인 삭제
+- `linode-cli domains records-list 도메인_id` : 특정 도메인의 레코드 나열
+- `linode-cli domains records-create 도메인_id --type A|AAAA|CNAME|MX|... --name 서브도메인 --target 대상_값` : 도메인에 DNS 레코드 추가
+- `linode-cli domains records-update 도메인_id 레코드_id --target 새로운_대상_값` : 도메인의 DNS 레코드 업데이트
+- `linode-cli domains records-delete 도메인_id 레코드_id` : 도메인에서 DNS 레코드 삭제

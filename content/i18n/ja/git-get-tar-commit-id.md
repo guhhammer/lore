@@ -1,0 +1,9 @@
+# git get-tar-commit-id
+
+`git archive` で作成されたアーカイブからコミットIDを抽出する。
+
+## Usage
+- `git <ディレクトリ/サブディレクトリ/archive.tar get-tar-commit-id` : コミットハッシュIDを抽出するか、何も出力せずリターンコード1で終了する
+
+## Links
+- More information: https://git-scm.com/docs/git-get-tar-commit-id

@@ -1,0 +1,10 @@
+# git cp
+
+기존 파일을 새로운 위치로 복사하면서 기록을 보존. `git-extras`의 일부.
+
+## Usage
+- `git cp 파일 새_파일` : git 저장소에서 기존 파일을 동일한 디렉토리에 복사
+- `git cp 경로/대상/파일 경로/대상/새_파일` : git 저장소에서 기존 파일을 다른 위치에 복사
+
+## Links
+- More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-cp

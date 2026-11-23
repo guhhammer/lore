@@ -1,0 +1,12 @@
+# arp-scan
+
+Envia pacotes ARP para máquinas (identificadas por endereço IP ou por nome de domínio) em uma rede local, identificando as máquinas ativas de acordo com as respostas.
+
+## Usage
+- `arp-scan -l` : verifica as máquinas da rede local
+- `arp-scan 192.168.1.1/24` : verifica as máquinas de uma rede IP especificando a máscara de bit
+- `arp-scan 127.0.0.0-127.0.0.31` : verifica as máquinas de uma rede IP que estão em uma faixa de valores
+- `arp-scan 10.0.0.0:255.255.255.0` : verifica as máquinas de uma rede IP especificando a máscara de rede
+
+## Links
+- More information: https://github.com/royhills/arp-scan

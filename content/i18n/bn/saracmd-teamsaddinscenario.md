@@ -1,0 +1,6 @@
+# saracmd teamsaddinscenario
+
+এই কমান্ডটি `GetHelpCmd.exe -S TeamsAddinScenario` - এর একটি উপনাম।
+
+## Usage
+- `tldr gethelpcmd-teamsaddinscenario` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

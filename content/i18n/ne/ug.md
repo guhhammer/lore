@@ -1,0 +1,6 @@
+# ug
+
+यो आदेश `ugrep --config --pretty --sort` को उपनाम हो।
+
+## Usage
+- `tldr ugrep` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

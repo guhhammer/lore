@@ -1,0 +1,16 @@
+# winget
+
+विंडोज़ पैकेज प्रबंधक।
+
+## Usage
+- `winget add पैकेज` : एक पैकेज इनस्टॉल करें
+- `winget rm पैकेज` : एक पैकेज निकालें (अनइंस्टॉल करें): (नोट: `uninstall` की जगह `remove` का भी इस्तेमाल किया जा सकता है)
+- `winget show पैकेज` : पैकेज के बारे में जानकारी प्रदर्शित करें
+- `winget search पैकेज` : पैकेज की खोज करें
+- `winget upgrade -r` : सभी पैकेज़ को नवीनतम संस्करणों में अपग्रेड करें
+- `winget ls -s winget` : `winget` के साथ प्रबंधित इन्सटाल्ड पैकेजों की सूची बनाएं
+- `winget import|export --import-file|--output फ़ाइल\का\पथ` : किसी फ़ाइल से पैकेज आयात करें, या स्थापित पैकेज़ को किसी फ़ाइल में निर्यात करें
+- `winget validate प्रकट\का\पथ` : विंगेट-पीकेजीएस(winget-pkgs) रिपॉजिटरी में पीआर(PR) सबमिट करने से पहले मैनिफ़ेस्ट को सत्यापित करें
+
+## Links
+- More information: https://learn.microsoft.com/windows/package-manager/winget

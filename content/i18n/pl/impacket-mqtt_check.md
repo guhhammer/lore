@@ -1,0 +1,6 @@
+# impacket-mqtt_check
+
+To polecenie jest aliasem `mqtt_check.py`.
+
+## Usage
+- `tldr mqtt_check.py` : zobacz dokumentację oryginalnego polecenia

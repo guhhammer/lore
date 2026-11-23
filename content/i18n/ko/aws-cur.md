@@ -1,0 +1,11 @@
+# aws cur
+
+AWS 사용 보고서 정의 파일 생성, 쿼리 및 삭제.
+
+## Usage
+- `aws cur put-report-definition --report-definition file://경로/대상/리포트_정의파일.json` : JSON 파일에서 AWS 비용 및 사용 보고서 정의 파일 생성
+- `aws cur describe-report-definitions` : 로그인 한 계정에 대해 정의된 사용 보고서 정의 나열
+- `aws cur --region aws_리전 delete-report-definition --report-name 레포트` : 사용 보고서 정의 삭제
+
+## Links
+- More information: https://docs.aws.amazon.com/cli/latest/reference/cur/

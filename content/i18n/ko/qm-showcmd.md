@@ -1,0 +1,11 @@
+# qm showcmd
+
+VM을 시작하는 데 사용된 명령줄을 표시 (디버그 정보).
+
+## Usage
+- `qm sho 100` : 특정 가상 머신의 명령줄 표시
+- `qm sho 100 --pretty true` : 각 옵션을 새 줄에 배치하여 가독성 향상
+- `qm sho 100 --snapshot string` : 특정 스냅샷에서 구성 값 가져오기
+
+## Links
+- More information: https://pve.proxmox.com/pve-docs/qm.1.html#cli_qm_showcmd

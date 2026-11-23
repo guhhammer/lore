@@ -1,0 +1,6 @@
+# gh a11y
+
+ഈ കമാൻഡ് `gh accessibility` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr gh accessibility` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

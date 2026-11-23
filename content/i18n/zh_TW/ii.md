@@ -1,0 +1,6 @@
+# ii
+
+此命令為 `Invoke-Item` 的別名。
+
+## Usage
+- `tldr invoke-item` : 檢視原命令的文件

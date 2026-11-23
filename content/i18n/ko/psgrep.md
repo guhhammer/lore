@@ -1,0 +1,11 @@
+# psgrep
+
+실행 중인 프로세스를 `grep`으로 검색.
+
+## Usage
+- `psgrep 프로세스_이름` : 특정 문자열이 포함된 프로세스 라인 찾기
+- `psgrep -n 프로세스_이름` : 헤더를 제외하고 특정 문자열이 포함된 프로세스 라인 찾기
+- `psgrep -s 프로세스_이름` : 간단한 형식으로 검색 (PID, 사용자, 명령어)
+
+## Links
+- More information: https://jvz.github.io/psgrep/

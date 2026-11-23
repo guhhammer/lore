@@ -1,0 +1,15 @@
+# acme.sh
+
+实现了 ACME 客户端协议的 shell 脚本，是 `certbot` 的替代品。
+
+## Usage
+- `acme.sh --issue -d example.com -w /路径/到/网站根目录` : 使用网站根目录模式签发证书
+- `acme.sh --issue --standalone -d example.com -d www.example.com` : 使用独立模式和 80 端口为多个域名签发证书
+- `acme.sh --issue --alpn -d example.com` : 使用独立 TLS 模式和 443 端口签发证书
+- `acme.sh --issue --nginx -d example.com` : 使用运行中的 `nginx` 的配置来签发证书
+- `acme.sh --issue --apache -d example.com` : 使用运行中的 Apache 的配置来签发证书
+- `acme.sh --issue --dns dns_cf -d *.example.com` : 使用自动 DNS API 模式签发一个通配符（\*）证书
+- `acme.sh -i -d example.com --key-file /路径/到/example.com.key --fullchain-file /路径/到/example.com.cer --reloadcmd "systemctl force-reload nginx"` : 将证书文件安装到指定位置（对自动更新证书很有用）
+
+## Links
+- More information: https://github.com/acmesh-official/acme.sh#2-just-issue-a-cert

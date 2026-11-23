@@ -1,0 +1,14 @@
+# brew info
+
+Homebrew ইনস্টলেশন এবং ফর্মুলার জন্য তথ্য প্রদর্শন করুন।
+
+## Usage
+- `brew info` : homebrew ইনস্টলেশনের পরিসংখ্যান প্রদর্শন করুন
+- `brew info ফর্মুলা|ক্যাস্ক` : একটি ফর্মুলা বা ক্যাস্কের জন্য তথ্য প্রদর্শন করুন
+- `brew info -v ফর্মুলা|ক্যাস্ক` : একটি ফর্মুলা বা ক্যাস্কের জন্য ভার্বোস (verbose) তথ্য প্রদর্শন করুন
+- `brew info --json ফর্মুলা|ক্যাস্ক` : একটি ফর্মুলা বা ক্যাস্কের তথ্য JSON ফরম্যাটে প্রদর্শন করুন
+- `brew info --json --installed` : বর্তমানে ইনস্টল করা ফর্মুলাগুলোর JSON ফরম্যাটে প্রিন্ট করুন
+- `brew info -h` : সাহায্য প্রদর্শন
+
+## Links
+- More information: https://docs.brew.sh/Manpage#info-abv-options-formulacask-

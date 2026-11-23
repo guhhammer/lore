@@ -1,0 +1,6 @@
+# gtraceroute
+
+ഈ കമാൻഡ് GNU `traceroute` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr traceroute` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

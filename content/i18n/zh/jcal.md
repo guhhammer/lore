@@ -1,0 +1,12 @@
+# jcal
+
+以贾拉里历格式显示日历信息，并突出显示当前日期。
+
+## Usage
+- `jcal` : 显示当前月份的日历
+- `jcal -3` : 显示上个月、当前月份和下个月的日历
+- `jcal 年份` : 显示特定年份（4 位数字） 的日历
+- `jcal 年份 月份` : 显示特定年份和月份的日历
+
+## Links
+- More information: https://www.nongnu.org/jcal/jcal.html

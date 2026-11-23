@@ -1,0 +1,6 @@
+# zstdcat
+
+এই কমান্ডটি `zstd --decompress --stdout --force` - এর একটি উপনাম।
+
+## Usage
+- `tldr zstd` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

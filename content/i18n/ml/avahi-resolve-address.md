@@ -1,0 +1,6 @@
+# avahi-resolve-address
+
+ഈ കമാൻഡ് `avahi-resolve --address` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr avahi-resolve` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

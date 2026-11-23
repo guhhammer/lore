@@ -1,0 +1,12 @@
+# pacman4console
+
+அசல் பேக்மேனால் ஈர்க்கப்பட்ட உரை அடிப்படையிலான கன்சோல் கேம்.
+
+## Usage
+- `pacman4console` : நிலை 1 இல் ஒரு விளையாட்டைத் தொடங்கவும்
+- `pacman4console --level=1..9` : ஒரு குறிப்பிட்ட மட்டத்தில் ஒரு விளையாட்டைத் தொடங்கவும் (ஒன்பது அதிகாரப்பூர்வ நிலைகள் உள்ளன)
+- `pacman4consoleedit நிலை_கோப்பு/பாதை` : pacman4console நிலை எடிட்டரைத் தொடங்கவும், குறிப்பிட்ட உரைக் கோப்பில் சேமிக்கவும்
+- `pacman4console --level=நிலை_கோப்பு/பாதை` : தனிப்பயன் மட்டத்தை விளையாடுங்கள்
+
+## Links
+- More information: https://github.com/YoctoForBeaglebone/pacman4console

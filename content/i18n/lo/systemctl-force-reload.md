@@ -1,0 +1,6 @@
+# systemctl force-reload
+
+ຄຳສັ່ງນີ້ເປັນອີກຊື່ໜຶ່ງຂອງຄຳສັ່ງ `systemctl try-reload-or-restart`.
+
+## Usage
+- `tldr systemctl try-reload-or-restart` : ເປີດເບິ່ງລາຍລະອຽດຂອງຄຳສັ່ງແບບເຕັມ

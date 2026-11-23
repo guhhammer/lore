@@ -1,0 +1,14 @@
+# docker service
+
+Bir Docker daemon'unun üzerindeki servisleri yönet.
+
+## Usage
+- `docker service ls` : bir Docker daeomon'unun üzerindeki servisleri listele
+- `docker service create --name servis_ismi imge:etiket` : yeni bir servis yarat
+- `docker service inspect servis_ismi|id` : boşluk ile ayrılmış bir servis listesinin detaylı bilgisini görüntüle
+- `docker service ps servis_ismi|id` : boşluk ile ayrılmış bir servis listesinin görevlerini sırala
+- `docker service scale servis_ismi=replika_miktarı` : boşluk ile ayrılmış bir servis listesi için belirli bir replika miktarına yüksel
+- `docker service rm servis_ismi|id` : boşluk ile ayrılmış bir servis listesini sil
+
+## Links
+- More information: https://docs.docker.com/reference/cli/docker/service/

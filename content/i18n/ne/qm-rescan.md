@@ -1,0 +1,6 @@
+# qm rescan
+
+यो आदेश `qm disk rescan` को उपनाम हो।
+
+## Usage
+- `tldr qm disk` : मौलिक आदेशको लागि कागजात हेर्नुहोस्

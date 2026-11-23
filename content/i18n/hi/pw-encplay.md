@@ -1,0 +1,6 @@
+# pw-encplay
+
+यह आदेश `pw-cat --playback --encoded` का उपनाम है।
+
+## Usage
+- `tldr pw-cat` : मूल आदेश के लिए प्रलेखन देखें

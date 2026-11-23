@@ -1,0 +1,12 @@
+# lli
+
+LLVM 비트코드에서 프로그램을 직접 실행.
+
+## Usage
+- `lli 경로/대상/파일.ll` : 비트코드 또는 IR 파일 실행
+- `lli 경로/대상/파일.ll 인수1 인수2 ...` : 명령줄 인수와 함께 실행
+- `lli -O3 경로/대상/파일.ll` : 모든 최적화 활성화
+- `lli --dlopen=경로/대상/라이브러리.dll 경로/대상/파일.ll` : 링크 전에 동적 라이브러리 로드
+
+## Links
+- More information: https://www.llvm.org/docs/CommandGuide/lli.html

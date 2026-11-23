@@ -1,0 +1,6 @@
+# gpwd
+
+此命令為 `pwd` 的別名。
+
+## Usage
+- `tldr pwd` : 檢視原命令的文件

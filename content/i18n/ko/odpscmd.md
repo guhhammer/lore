@@ -1,0 +1,14 @@
+# odpscmd
+
+Aliyun ODPS (Open Data Processing Service) 명령줄 도구. `inst`와 같은 일부 하위 명령에는 자체 사용 설명서가 있습니다.
+
+## Usage
+- `odpscmd --config=odps_config.ini` : 사용자 지정 구성 파일로 명령줄 시작
+- `use 프로젝트_이름;` : [대화형] 현재 프로젝트 변경
+- `show tables;` : [대화형] 현재 프로젝트의 테이블 표시
+- `desc 테이블_이름;` : [대화형] 테이블 설명
+- `show partitions 테이블_이름;` : [대화형] 테이블 파티션 표시
+- `desc 테이블_이름 partition (파티션_명세);` : [대화형] 파티션 설명
+
+## Links
+- More information: https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-client

@@ -1,0 +1,6 @@
+# gcksum
+
+此命令為 `cksum` 的別名。
+
+## Usage
+- `tldr cksum` : 檢視原命令的文件

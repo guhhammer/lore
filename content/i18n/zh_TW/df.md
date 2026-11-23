@@ -1,0 +1,13 @@
+# df
+
+概述檔案系統的磁碟空間的使用情況。
+
+## Usage
+- `df` : 顯示所有檔案系統及磁碟使用情況
+- `df -h` : 以人類可讀的形式顯示所有檔案系統及磁碟使用情況
+- `df 檔案或目錄/完整/路徑` : 顯示包含給定檔案或目錄的檔案系統及其磁碟的使用情況
+- `df -i` : 顯示未被使用的 inode 數量的統計資訊
+- `df -x squashfs -x tmpfs` : 顯示檔案系統但排除指定類型
+
+## Links
+- More information: https://manned.org/df.1posix

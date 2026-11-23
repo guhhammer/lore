@@ -1,0 +1,16 @@
+# pacstrap
+
+Arch Linux 설치 스크립트로, 지정된 새로운 루트 디렉터리에 패키지를 설치합니다.
+
+## Usage
+- `pacstrap 경로/대상/새로운/루트 base linux linux-firmware` : `base` 패키지, 리눅스 커널 및 일반 하드웨어용 펌웨어 설치
+- `pacstrap 경로/대상/새로운/루트 base base-devel linux-lts` : `base` 패키지, 리눅스 LTS 커널 및 `base-devel` 빌드 도구 설치
+- `pacstrap -M 경로/대상/새로운/루트 패키지들` : 호스트의 미러리스트를 대상에 복사하지 않고 패키지 설치
+- `pacstrap -C 경로/대상/pacman.conf 경로/대상/새로운/루트 패키지들` : pacman의 대체 설정 파일 사용
+- `pacstrap -c 경로/대상/새로운/루트 패키지들` : 대상이 아닌 호스트의 패키지 캐시를 사용하여 패키지 설치
+- `pacstrap -K 경로/대상/새로운/루트 패키지들` : 호스트에서 복사하지 않고 대상에서 빈 `pacman` 키링 초기화
+- `pacstrap -i 경로/대상/새로운/루트 패키지들` : 대화형 모드로 패키지 설치 (확인 요청)
+- `pacstrap -U 경로/대상/새로운/루트 경로/대상/패키지1 경로/대상/패키지2` : 패키지 파일을 사용하여 패키지 설치
+
+## Links
+- More information: https://manned.org/pacstrap

@@ -1,0 +1,15 @@
+# kitex
+
+Code generation tool provided by the Go RPC framework Kitex. Kitex accepts both thrift and protobuf IDLs, and supports generating a skeleton of a server side project.
+
+## Usage
+- `kitex path/to/IDL_file.thrift` : generate client codes when a project is in `$GOPATH`
+- `kitex -module github.com/xx-org/xx-name path/to/IDL_file.thrift` : generate client codes when a project is not in `$GOPATH`
+- `kitex -type protobuf path/to/IDL_file.proto` : generate client codes with protobuf IDL
+- `kitex -service svc_name path/to/IDL_file.thrift` : generate server codes
+
+## Categories
+development, files
+
+## Links
+- tldr page: https://tldr.inbrowser.app/pages/common/kitex

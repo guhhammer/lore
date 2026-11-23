@@ -1,0 +1,6 @@
+# npm test
+
+यह आदेश `npm run test` का उपनाम है।
+
+## Usage
+- `tldr npm run` : मूल आदेश के लिए प्रलेखन देखें

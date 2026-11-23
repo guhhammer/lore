@@ -1,0 +1,11 @@
+# tracert
+
+컴퓨터와 대상 사이의 경로에서 각 단계에 대한 정보를 받습니다.
+
+## Usage
+- `tracert ip_address` : 경로 추적
+- `tracert /d ip_address` : `tracert`가 IP 주소를 호스트 이름으로 확인하지 않도록 방지
+- `tracert /4 ip_address` : `tracert`가 IPv4만 사용하도록 강제
+- `tracert /6 ip_address` : `tracert`가 IPv6만 사용하도록 강제
+- `tracert /h 최대_홉_수 ip_address` : 대상을 찾기 위한 검색에서 최대 홉 수 지정
+- `tracert /?` : 도움말 표시

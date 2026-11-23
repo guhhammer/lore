@@ -1,0 +1,6 @@
+# docker load
+
+此命令为 `docker image load` 的别名。
+
+## Usage
+- `tldr docker image load` : 查看原命令的文档

@@ -1,0 +1,11 @@
+# nix develop
+
+运行一个提供派生构建环境的 Bash 终端。
+
+## Usage
+- `nix develop nixpkgs#程序包名` : 启动一个包含 nixpkgs 中某个程序包所有依赖项的终端
+- `nix develop` : 在当前目录的 flake 中启动默认程序包的开发终端
+- `configurePhase; buildPhase` : 在该终端中配置并构建源代码
+
+## Links
+- More information: https://nix.dev/manual/nix/stable/command-ref/new-cli/nix3-develop.html

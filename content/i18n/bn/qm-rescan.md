@@ -1,0 +1,6 @@
+# qm rescan
+
+এই কমান্ডটি `qm disk rescan` - এর একটি উপনাম।
+
+## Usage
+- `tldr qm disk` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

@@ -1,0 +1,16 @@
+# conda
+
+프로그래밍 언어에 대한 패키지, 의존성 및 환경 관리. `create`와 같은 일부 하위 명령에는 자체 사용 설명서가 있습니다.
+
+## Usage
+- `conda create -n 환경_이름 python=3.9 matplotlib` : 새로운 환경을 생성합니다, 이름이 주어진 패키지로 설치합니다
+- `conda info -e` : 모든 환경의 리스트를 보여줍니다
+- `conda activate 환경_이름` : 환경을 불러오거나
+- `conda deactivate` : 환경을 비활성화
+- `conda remove -n 환경_이름 --all` : 모든 환경을 제거합니다 (모든 패키지 제거)
+- `conda install python=3.4 numpy` : 현재 환경의 패키지를 설치합니다
+- `conda list` : 현재 혼경의 설치된 패키지의 리스트를 보여줍니다
+- `conda clean -a` : 사용하지 않는 패키지나 캐시를 제거합니다
+
+## Links
+- More information: https://docs.conda.io/projects/conda/en/latest/commands/index.html

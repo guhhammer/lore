@@ -1,0 +1,16 @@
+# pico
+
+Alpine Composer 스타일의 텍스트 편집기.
+
+## Usage
+- `pico 경로/대상/파일` : 편집기 시작
+- `pico +n 경로/대상/파일` : 파일의 n번째 출에 커서를 위치시켜 편집기 시작
+- `pico -g 경로/대상/파일` : 현재 선택 영역 이전 위치에 커서를 표시하며 편집기 시작
+- `pico -Q "인용_문자열" 경로/대상/파일` : 이메일 같은 파일용 인용 문자열(quote string) 정의
+- `pico -m 경로/대상/파일` : `xterm` 창에서 실행 시 마우스 기능 활성화
+- `pico -o 경로/대상/디렉터리` : `pico`의 작업 디렉터리 설정
+- `pico -v 경로/대상/파일` : 편집이 불가능한 읽기 전용(view only) 모드 활성화
+- `pico -a` : 점(.)으로 시작하는 숨김 파일까지 모두 표시
+
+## Links
+- More information: https://manned.org/pico

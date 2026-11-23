@@ -1,0 +1,14 @@
+# twurl
+
+Twitter API에 특화된 Curl과 유사한 명령어.
+
+## Usage
+- `twurl authorize -c 트위터_api_키 -s 트위터_api_비밀` : twitter 계정에 대한 접근을 승인
+- `twurl -X GET 트위터_api_엔드포인트` : API 엔드포인트에 GET 요청 수행
+- `twurl -X POST -d '엔드포인트_파라미터' 트위터_api_엔드포인트` : API 엔드포인트에 POST 요청 수행
+- `twurl -H "트위터_업로드_url" -X POST "트위터_업로드_엔드포인트" -f "경로/대상/미디어.jpg" -F "media"` : twitter에 미디어 업로드
+- `twurl -H 트위터_api_url -X GET 트위터_api_엔드포인트` : 다른 Twitter API 호스트에 접근
+- `twurl alias 별칭_이름 리소스` : 요청한 리소스에 대한 별칭 생성
+
+## Links
+- More information: https://github.com/twitter/twurl#getting-started

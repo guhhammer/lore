@@ -1,0 +1,10 @@
+# return
+
+Sale de una función o un script si se ejecuta con `source`.
+
+## Usage
+- `nombre_de_la_función() { echo "Se ha alcanzado"; return; echo "No se ha alcanzado"; }` : sale prematuramente de una función
+- `nombre_de_la_función() { return N; }` : especifica el valor de retorno de la función
+
+## Links
+- More information: https://www.gnu.org/software/bash/manual/bash.html#index-return

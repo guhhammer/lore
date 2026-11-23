@@ -1,0 +1,6 @@
+# impacket-secretsdump
+
+এই কমান্ডটি `secretsdump.py` - এর একটি উপনাম।
+
+## Usage
+- `tldr secretsdump.py` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

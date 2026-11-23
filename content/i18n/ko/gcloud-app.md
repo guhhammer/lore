@@ -1,0 +1,13 @@
+# gcloud app
+
+관리형 서버리스 플랫폼에서 확장 가능한 애플리케이션 구축.
+
+## Usage
+- `gcloud app deploy 배포물들` : 애플리케이션의 코드와 구성을 App Engine 서버에 배포
+- `gcloud app versions list` : app Engine 서버에 배포된 모든 서비스의 모든 버전 나열
+- `gcloud app browse` : 현재 애플리케이션을 웹 브라우저에서 열기
+- `gcloud app create` : 현재 프로젝트 내에서 App Engine 애플리케이션 생성
+- `gcloud app logs read` : 최신 App Engine 애플리케이션 로그 표시
+
+## Links
+- More information: https://docs.cloud.google.com/sdk/gcloud/reference/app

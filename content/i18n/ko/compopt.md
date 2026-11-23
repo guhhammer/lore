@@ -1,0 +1,12 @@
+# compopt
+
+명령어 자동완성 옵션을 출력하거나 변경. `-o`는 활성화, `+o`는 비활성화를 의미.
+
+## Usage
+- `compopt 명령어` : 지정한 명령의 자동완성 옵션을 표시
+- `compopt -o|+o option1 -o|+o option2 명령어` : 명령의 자동완성 옵션을 활성화하거나 비활성화
+- `compopt` : 현재 실행 중인 자동완성의 옵션을 표시
+- `compopt -o|+o 옵션1 -o|+o 옵션2` : 현재 명령의 자동완성 옵션을 활성화하거나 비활성화
+
+## Links
+- More information: https://www.gnu.org/software/bash/manual/bash.html#index-compopt

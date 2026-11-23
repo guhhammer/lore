@@ -1,0 +1,11 @@
+# bchunk
+
+CD 이미지를 `.iso` 및 `.cdr` 트랙 세트로 변환.
+
+## Usage
+- `bchunk 경로/대상/이미지.bin 경로/대상/이미지.cue 경로/대상/출력` : 바이너리 CD를 표준 iso9960 이미지 파일로 변환
+- `bchunk -v 경로/대상/이미지.bin 경로/대상/이미지.cue 경로/대상/출력` : 자세히 보기 모드로 변환
+- `bchunk -w 경로/대상/이미지.bin 경로/대상/이미지.cue 경로/대상/출력` : 오디오 파일을 WAV 형식으로 출력
+
+## Links
+- More information: https://manned.org/bchunk

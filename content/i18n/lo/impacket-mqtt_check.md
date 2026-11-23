@@ -1,0 +1,6 @@
+# impacket-mqtt_check
+
+ຄຳສັ່ງນີ້ເປັນອີກຊື່ໜຶ່ງຂອງຄຳສັ່ງ `mqtt_check.py`.
+
+## Usage
+- `tldr mqtt_check.py` : ເປີດເບິ່ງລາຍລະອຽດຂອງຄຳສັ່ງແບບເຕັມ

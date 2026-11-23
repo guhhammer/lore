@@ -1,0 +1,13 @@
+# ppmtoyuvsplit
+
+Convert a PPM image to three subsampled Abekas YUV files.
+
+## Usage
+- `ppmtoyuvsplit basename path/to/input_file.ppm` : read a PPM image from the input file, convert it to three subsampled Abekas YUV image, and store these images to output files starting with the specified basename
+
+## Categories
+containers, media
+
+## Links
+- More information: https://netpbm.sourceforge.net/doc/ppmtoyuvsplit.html
+- tldr page: https://tldr.inbrowser.app/pages/common/ppmtoyuvsplit

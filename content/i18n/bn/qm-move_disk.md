@@ -1,0 +1,6 @@
+# qm move_disk
+
+এই কমান্ডটি `qm disk move` - এর একটি উপনাম।
+
+## Usage
+- `tldr qm disk` : মূল কমান্ডের ডকুমেন্টেশন দেখুন

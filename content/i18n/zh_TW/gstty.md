@@ -1,0 +1,6 @@
+# gstty
+
+此命令為 `stty` 的別名。
+
+## Usage
+- `tldr stty` : 檢視原命令的文件

@@ -1,0 +1,9 @@
+# pkgctl release
+
+빌드 아티팩트를 커밋, 태그 및 업로드하는 릴리스 단계.
+
+## Usage
+- `pkgctl release --repo 저장소 --message 커밋_메시지` : 빌드 아티팩트를 릴리스
+
+## Links
+- More information: https://manned.org/pkgctl-release

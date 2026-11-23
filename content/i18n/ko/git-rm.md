@@ -1,0 +1,11 @@
+# git rm
+
+저장소 인덱스와 로컬 파일 시스템에서 파일을 제거합니다.
+
+## Usage
+- `git rm 경로/대상/파일` : 저장소 인덱스와 파일 시스템에서 파일 제거
+- `git rm -r 경로/대상/폴더` : 디렉토리 제거
+- `git rm --cached 경로/대상/파일` : 저장소 인덱스에서 파일 제거하되 로컬에서는 그대로 유지
+
+## Links
+- More information: https://git-scm.com/docs/git-rm

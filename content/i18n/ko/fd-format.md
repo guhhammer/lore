@@ -1,0 +1,14 @@
+# fd-format
+
+파일 검색 결과의 출력 형식을 지정.
+
+## Usage
+- `fd --format "{/}"` : 파일 이름만 출력
+- `fd --format "{//}"` : 상위 디렉터리 출력
+- `fd --format "{.}"` : 파일 확장자를 제외한 경로 출력
+- `fd --format "{/.}"` : 확장자를 제외한 파일 이름만 출력
+- `fd --format "\{\{{}\}\}"` : 검색 결과 앞뒤에 `{`와 `}` 추가
+- `fd --format "텍스트{}"` : 검색 결과 앞에 지정한 텍스트 추가
+
+## Links
+- More information: https://manned.org/fd

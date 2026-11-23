@@ -25,6 +25,16 @@ Green means every step passed.
 - **Comments say why, not what.**
 - **`CHANGELOG.md`** gets a line under `## [Unreleased]`.
 
+## Adding or improving a command's page
+
+The pages lore shows beside the list are Markdown files in
+[`content/`](../content/), one per command, built into lore when it is
+compiled. [`content/README.md`](../content/README.md) has the format and
+what a page must meet before it is sent: links over https only, no log-in
+or sign-up asked of anyone, and examples that are safe or say plainly when
+they are not. A pull request that adds pages is one change per command, or
+one for a small related set.
+
 ## Reporting a bug, asking for a change
 
 Open an issue from one of the two templates. A vulnerability is not an

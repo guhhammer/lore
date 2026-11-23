@@ -1,0 +1,6 @@
+# pw-encplay
+
+ഈ കമാൻഡ് `pw-cat --playback --encoded` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr pw-cat` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

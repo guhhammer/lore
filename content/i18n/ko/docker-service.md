@@ -1,0 +1,14 @@
+# docker service
+
+Docker 데몬에서 서비스를 관리합니다.
+
+## Usage
+- `docker service ls` : docker 데몬에서 서비스 목록 나열
+- `docker service create --name 서비스_이름 이미지:태그` : 새 서비스 생성
+- `docker service inspect 서비스_이름_또는_id1 서비스_이름_또는_id2 ...` : 하나 이상의 서비스에 대한 자세한 정보 표시
+- `docker service ps 서비스_이름_또는_id1 서비스_이름_또는_id2 ...` : 하나 이상의 서비스에 대한 작업 목록 나열
+- `docker service scale 서비스_이름=복제본_수` : 공백으로 구분된 서비스 목록에 대해 특정 복제본 수로 확장
+- `docker service rm 서비스_이름_또는_id1 서비스_이름_또는_id2 ...` : 하나 이상의 서비스 제거
+
+## Links
+- More information: https://docs.docker.com/reference/cli/docker/service/

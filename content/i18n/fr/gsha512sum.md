@@ -1,0 +1,6 @@
+# gsha512sum
+
+Cette commande est un alias de `sha512sum`.
+
+## Usage
+- `tldr sha512sum` : affiche la documentation de la commande originale

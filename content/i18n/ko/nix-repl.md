@@ -1,0 +1,13 @@
+# nix repl
+
+Nix 표현식을 평가하기 위한 대화형 환경 시작.
+
+## Usage
+- `nix repl` : nix 표현식을 평가하기 위한 대화형 환경 시작
+- `:lf nixpkgs` : [대화형] 플레이크(예: `nixpkgs`)의 모든 패키지를 스코프로 불러오기
+- `:b 표현식` : [대화형] 표현식에서 패키지 빌드
+- `:u 표현식` : [대화형] 표현식에서 패키지를 사용할 수 있는 셸 시작
+- `:s 표현식` : [대화형] 표현식에서 패키지의 종속성을 사용할 수 있는 셸 시작
+
+## Links
+- More information: https://nixos.org/manual/nix/stable/language/index.html

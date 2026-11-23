@@ -1,0 +1,15 @@
+# ping
+
+向网络主机发送 ICMP (ECHO_REQUEST) 数据包。
+
+## Usage
+- `ping 主机地址` : ping 主机
+- `ping -c 次数 主机地址` : 仅 Ping 主机特定次数
+- `ping -i 间隔秒数 主机地址` : ping 主机，指定请求之间的间隔（以秒为单位）（默认为 1 秒）
+- `ping -n 主机地址` : ping 主机而不尝试查找地址的符号名称
+- `ping -a 主机地址` : ping 主机并在收到数据包时响铃（如果您的终端支持）
+- `ping -O 主机地址` : 如果没有收到响应，也显示一条消息
+- `ping -c 次数 -W 响应超时秒数 -w 总的等待超时秒数 主机地址` : ping 主机，指定 ping 次数、每个数据包的响应超时 (`-W`)和整个 ping 运行的总时间限制 (`-w`)
+
+## Links
+- More information: https://manned.org/ping

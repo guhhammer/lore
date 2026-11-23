@@ -1,0 +1,13 @@
+# x11vnc
+
+기존 디스플레이 서버에서 VNC를 활성화하는 VNC 서버. 기본적으로, 서버는 모든 클라이언트가 연결을 끊으면 자동으로 종료됩니다.
+
+## Usage
+- `x11vnc -shared` : 여러 클라이언트가 연결할 수 있도록 VNC 서버 시작
+- `x11vnc -forever -viewonly` : 뷰 전용 모드로 VNC 서버를 시작하고 마지막 클라이언트가 연결을 끊어도 종료되지 않도록 설정
+- `x11vnc -display :디스플레이.화면` : 특정 디스플레이와 화면에서 VNC 서버 시작 (둘 다 색인 0부터 시작)
+- `x11vnc -display :2` : 세 번째 디스플레이의 기본 화면에서 VNC 서버 시작
+- `x11vnc -display :0.1` : 첫 번째 디스플레이의 두 번째 화면에서 VNC 서버 시작
+
+## Links
+- More information: https://manned.org/x11vnc

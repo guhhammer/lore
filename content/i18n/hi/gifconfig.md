@@ -1,0 +1,6 @@
+# gifconfig
+
+यह आदेश `ifconfig` का उपनाम है।
+
+## Usage
+- `tldr ifconfig` : मूल आदेश के लिए प्रलेखन देखें

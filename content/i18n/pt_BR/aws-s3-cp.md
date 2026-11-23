@@ -1,0 +1,13 @@
+# aws s3 cp
+
+Copia arquivos locais ou objetos do S3 para outros diretórios locais ou no S3.
+
+## Usage
+- `aws s3 cp caminho/para/arquivo s3://nome_do_bucket/caminho/para/o/arquivo_remoto` : copia um arquivo local para um bucket específico
+- `aws s3 cp s3://nome_do_bucket1/caminho/para/arquivo s3://nome_do_bucket2/caminho/para/o/destino` : copia um objeto específico para outro bucket dentro do S3
+- `aws s3 cp s3://nome_do_bucket1/caminho/para/arquivo s3://nome_do_bucket2` : copia um objeto específico do S3 para outro bucket mantendo seu nome original
+- `aws s3 cp s3://nome_do_bucket . --recursive` : copia objetos do S3 para um diretório local recursivamente
+- `aws s3 cp help` : mostra ajuda
+
+## Links
+- More information: https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html

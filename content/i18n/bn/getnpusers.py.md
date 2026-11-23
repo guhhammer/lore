@@ -1,0 +1,13 @@
+# getnpusers.py
+
+Kerberos প্রি-অথেন্টিকেশন নিষ্ক্রিয় থাকা Active Directory অ্যাকাউন্টগুলো তালিকাভুক্ত করুন, যেগুলো AS-REP roasting আক্রমণের জন্য ঝুঁকিপূর্ণ হতে পারে। Impacket স্যুইটের অংশ।
+
+## Usage
+- `GetNPUsers.py ডোমেইন/ -usersfile ইউজারলিস্ট/এর/পাথ -dc-ip domain_controller_ip -no-pass` : kerberos প্রি-অথেন্টিকেশন নিষ্ক্রিয় থাকা ব্যবহারকারীদের তালিকাভুক্ত করুন (ডিফল্ট অ্যানোনিমাস enumeration)
+- `GetNPUsers.py ডোমেইন/ -usersfile ইউজারলিস্ট/এর/পাথ -dc-ip domain_controller_ip -no-pass -request` : AS-REP roasting চালান এবং অফলাইন ক্র্যাকিং-এর জন্য ক্র্যাকযোগ্য হ্যাশ ডাম্প করুন
+- `GetNPUsers.py ডোমেইন/ইউজারনেম:পাসওয়ার্ড -usersfile ইউজারলিস্ট/এর/পাথ -dc-ip domain_controller_ip` : বৈধ ক্রেডেনশিয়াল দিয়ে অথেন্টিকেট করুন (যদি অ্যানোনিমাস binding নিষ্ক্রিয় থাকে)
+- `GetNPUsers.py ডোমেইন/ইউজারনেম -hashes LM_Hash:NT_Hash -usersfile ইউজারলিস্ট/এর/পাথ -dc-ip domain_controller_ip` : পাসওয়ার্ডের পরিবর্তে pass-the-hash অথেন্টিকেশন ব্যবহার করুন
+- `GetNPUsers.py ডোমেইন/ -usersfile ইউজারলিস্ট/এর/পাথ -dc-ip domain_controller_ip -request >pathname` : পরবর্তী বিশ্লেষণের জন্য আউটপুট একটি ফাইলে সংরক্ষণ করুন
+
+## Links
+- More information: https://github.com/fortra/impacket

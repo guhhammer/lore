@@ -1,0 +1,6 @@
+# linux64
+
+यह आदेश `setarch linux64` का उपनाम है।
+
+## Usage
+- `tldr setarch` : मूल आदेश के लिए प्रलेखन देखें

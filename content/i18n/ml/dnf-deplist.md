@@ -1,0 +1,6 @@
+# dnf deplist
+
+ഈ കമാൻഡ് `dnf repoquery --deplist` എന്നതിന്റെ അപരനാമമാണ്.
+
+## Usage
+- `tldr dnf repoquery` : യഥാർത്ഥ കമാൻഡിനായി ഡോക്യുമെന്റേഷൻ കാണുക

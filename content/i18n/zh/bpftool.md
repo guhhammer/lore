@@ -1,0 +1,16 @@
+# bpftool
+
+以简单的方式检查和操作 eBPF 程序和映射
+
+## Usage
+- `bpftool prog list` : 列出已加载的 `eBPF` 程序信息
+- `bpftool net list` : 列出内核网络子系统中的 `eBPF` 程序附加点
+- `bpftool link list` : 列出所有活动链接
+- `bpftool perf list` : 列出系统中所有的 `raw_tracepoint`、`tracepoint`、`kprobe` 附加点
+- `bpftool btf list` : 列出 BPF 类型格式（BTF）数据
+- `bpftool map list` : 列出已加载映射的信息
+- `bpftool feature probe dev eth0` : 探测网络设备 "eth0" 支持的 eBPF 功能
+- `bpftool batch file 文件` : 从文件以批处理模式运行命令
+
+## Links
+- More information: https://manned.org/bpftool

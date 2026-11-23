@@ -1,0 +1,13 @@
+# sxiv
+
+Simple X Image Viewer.
+
+## Usage
+- `sxiv 경로/대상/이미지` : 이미지 열기
+- `sxiv -f 경로/대상/파일` : 전체 화면 모드로 이미지 열기
+- `echo 경로/대상/파일 | sxiv -i` : `stdin`에서 파일명을 읽어 개행으로 구분된 이미지 목록 열기
+- `sxiv -S 초 경로/대상/이미지1 경로/대상/이미지2` : 하나 이상의 이미지를 슬라이드쇼로 열기
+- `sxiv -t 경로/대상/이미지1 경로/대상/이미지2` : 하나 이상의 이미지를 썸네일 모드로 열기
+
+## Links
+- More information: https://manned.org/sxiv

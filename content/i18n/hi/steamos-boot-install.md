@@ -1,0 +1,6 @@
+# steamos-boot-install
+
+यह आदेश `steamos-finalize-install` का उपनाम है।
+
+## Usage
+- `tldr steamos-finalize-install` : मूल आदेश के लिए प्रलेखन देखें

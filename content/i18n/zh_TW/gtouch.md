@@ -1,0 +1,6 @@
+# gtouch
+
+此命令為 `touch` 的別名。
+
+## Usage
+- `tldr touch` : 檢視原命令的文件

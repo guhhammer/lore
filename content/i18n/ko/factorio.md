@@ -1,0 +1,10 @@
+# factorio
+
+헤드리스 Factorio 서버를 생성하고 시작합니다.
+
+## Usage
+- `경로/대상/factorio --create 경로/대상/저장_파일.zip` : 새 저장 파일 생성
+- `경로/대상/factorio --start-server 경로/대상/저장_파일.zip` : factorio 서버 시작
+
+## Links
+- More information: https://wiki.factorio.com/Multiplayer

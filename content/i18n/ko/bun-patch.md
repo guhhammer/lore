@@ -1,0 +1,13 @@
+# bun patch
+
+패키지를 수정할 수 있도록 준비하거나, 패치 파일을 생성 .
+
+## Usage
+- `bun patch 패키지` : 패키지를 수정할 수 있도록 준비
+- `bun patch 패키지@버전` : 특정 버전의 패키지를 수정할 수 있도록 준비
+- `bun patch 경로/대상/패키지` : 특정 경로에 있는 패키지를 수정할 수 있도록 준비
+- `bun patch --commit 경로/대상/패키지` : 패키지에 적용한 변경 사항으로 패치 파일 생성
+- `bun patch --commit 경로/대상/패키지 --patches-dir 경로/대상/디렉토리` : 패치 파일을 생성하고 사용자 지정 디렉토리에 저장
+
+## Links
+- More information: https://bun.com/docs/pm/cli/patch

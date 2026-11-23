@@ -1,0 +1,6 @@
+# unzstd
+
+此命令为 `zstd --decompress` 的别名。
+
+## Usage
+- `tldr zstd` : 查看原命令的文档

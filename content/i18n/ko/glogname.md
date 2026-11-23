@@ -1,0 +1,6 @@
+# glogname
+
+이 명령은 `logname`의 별칭입니다.
+
+## Usage
+- `tldr logname` : 원래 명령의 문서 보기

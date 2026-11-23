@@ -1,0 +1,7 @@
+# powershell
+
+Dit commando kan verward worden met de cross-platform versie van PowerShell (vroeger bekend als PowerShell Core), welke gebruikmaakt van `pwsh` in plaats van `powershell`. Het originele `powershell` commando in Windows is nog steeds beschikbaar om gebruik te maken van de legacy Windows versie van PowerShell (versie 5.1 en lager).
+
+## Usage
+- `tldr pwsh` : bekijk de documentatie voor het commando dat refereert naar de laatste, cross-platform versie van PowerShell (versie 6 en hoger)
+- `tldr powershell -p windows` : bekijk de documentatie voor het commando dat refereert naar de legacy Windows PowerShell (versie 5.1 en lager)

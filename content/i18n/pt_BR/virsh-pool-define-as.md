@@ -1,0 +1,9 @@
+# virsh pool-define-as
+
+Cria um arquivo de configuração em `/etc/libvirt/storage` para um pool de armazenamento persistente de máquina virtual a partir dos argumentos fornecidos.
+
+## Usage
+- `virsh pool-define-as --name nome_do_pool --type dir --target /var/vms` : cria o arquivo de configuração para um pool de armazenamento chamado pool_name usando `/var/vms` como o sistema de armazenamento subjacente
+
+## Links
+- More information: https://manned.org/virsh

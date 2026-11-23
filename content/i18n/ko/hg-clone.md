@@ -1,0 +1,13 @@
+# hg clone
+
+기존 저장소의 복사본을 새 디렉터리에 생성.
+
+## Usage
+- `hg clone 원격_저장소_소스 대상_경로` : 저장소를 지정한 디렉터리에 클론
+- `hg clone -b 브랜치 원격_저장소_소스` : 특정 브랜치의 헤드로 저장소를 클론하고 이후 커밋 무시
+- `hg clone -U 원격_저장소_소스` : 파일을 체크아웃하지 않고 `.hg` 디렉터리만으로 저장소를 클론
+- `hg clone -u 리비전 원격_저장소_소스` : 특정 리비전, 태그 또는 브랜치로 저장소를 클론하며 전체 기록 유지
+- `hg clone -r 리비전 원격_저장소_소스` : 특정 리비전까지만 저장소를 클론하고 이후 기록 무시
+
+## Links
+- More information: https://www.mercurial-scm.org/help/commands/clone

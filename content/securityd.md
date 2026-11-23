@@ -1,0 +1,13 @@
+# securityd
+
+This manages security contexts and cryptographic operations. Works with secd for keychain access. Note: It should not be invoked manually.
+
+## Usage
+- `securityd` : start the daemon
+
+## Categories
+macos
+
+## Links
+- More information: https://keith.github.io/xcode-man-pages/securityd.1.html
+- tldr page: https://tldr.inbrowser.app/pages/osx/securityd
