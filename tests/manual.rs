@@ -33,3 +33,8 @@ fn a_page_is_laid_out_to_the_width_asked_when_man_is_there() {
         lines.len()
     );
 }
+
+#[test]
+fn other_control_characters_are_dropped_but_newlines_and_tabs_stay() {
+    assert_eq!(clean("a\u{7}b\r\n\tc"), "ab\n\tc");
+}

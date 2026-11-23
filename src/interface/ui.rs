@@ -6,14 +6,24 @@ use ratatui::Frame;
 use ratatui::layout::{Constraint, Layout, Position, Rect};
 use ratatui::style::{Color, Modifier, Style, Stylize};
 use ratatui::text::{Line, Span};
-use ratatui::widgets::{Block, List, ListItem, Paragraph, Wrap};
+use ratatui::widgets::{Block, List, ListItem, Paragraph};
 
 use crate::app::{App, Mode};
 use crate::commands::{Command, Kind};
 use crate::compile_config::INFO_LIST_PERCENT;
+use crate::info::danger::DANGER;
+use crate::info::page::Style as PageStyle;
 use crate::interface::rows::Row;
-use crate::utils::manual;
 use crate::utils::text;
+
+/// The categories after a name, and on a page under its name.
+const CATEGORY: Style = Style::new().fg(Color::Magenta);
+
+/// The page line that matched a search, after the name.
+const SNIPPET: Style = Style::new().fg(Color::Cyan);
+
+/// What can destroy data or stop the system.
+const DANGER_STYLE: Style = Style::new().fg(Color::Red).add_modifier(Modifier::BOLD);
 
 /// Draws the whole screen; called once per loop in lib.rs.
 pub fn draw(frame: &mut Frame, app: &mut App) {
@@ -25,7 +35,7 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
     ])
     .areas(frame.area());
     draw_search(frame, app, search);
-    if app.mode == Mode::Info {
+    if app.page_shown() {
         let [list, page] = Layout::horizontal([
             Constraint::Percentage(INFO_LIST_PERCENT),
             Constraint::Min(0),
@@ -36,7 +46,7 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
     } else {
         draw_list(frame, app, body, false);
     }
-    draw_keys(frame, app.mode, keys);
+    draw_keys(frame, app.mode, app.direct, keys);
 }
 
 /// The search bar: its text (kept after leaving it), a cursor while typing,
@@ -96,7 +106,15 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
                 };
                 ListItem::new(Line::from(text::fit(&header, width)).bold().cyan())
             }
-            Row::Command(command) => ListItem::new(command_line(command, width, narrow)),
+            Row::Command(command) => {
+                let categories = app
+                    .docs
+                    .get(&command.name)
+                    .map(|d| d.categories.as_slice())
+                    .unwrap_or_default();
+                let snippet = app.snippets.get(&command.name).map(String::as_str);
+                ListItem::new(command_line(command, snippet, categories, width, narrow))
+            }
         })
         .collect();
     let list = List::new(items)
@@ -106,12 +124,36 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
     frame.render_stateful_widget(list, area, &mut app.list);
 }
 
-/// One command's row, cut to `width`: the name, then (dimmed, not when
-/// `narrow`) what an alias runs and what it hides.
-fn command_line(command: &Command, width: usize, narrow: bool) -> Line<'static> {
+/// One command's row, cut to `width`: the name, then (not when `narrow`,
+/// where the name is all there is) the page line that matched the search,
+/// if any, then its `[categories]`, what an alias runs and what it hides.
+fn command_line(
+    command: &Command,
+    snippet: Option<&str>,
+    categories: &[String],
+    width: usize,
+    narrow: bool,
+) -> Line<'static> {
     let indent = if narrow { " " } else { "   " };
     let mut parts = vec![(format!("{indent}{}", command.name), Style::new())];
     if !narrow {
+        if let Some(snippet) = snippet {
+            parts.push((format!("  {snippet}"), SNIPPET));
+        }
+        if !categories.is_empty() {
+            // `danger` in red, so it is seen before the command is run
+            parts.push(("  [".to_owned(), CATEGORY));
+            for (i, category) in categories.iter().enumerate() {
+                let style = if category == DANGER {
+                    DANGER_STYLE
+                } else {
+                    CATEGORY
+                };
+                let space = if i == 0 { "" } else { " " };
+                parts.push((format!("{space}{category}"), style));
+            }
+            parts.push(("]".to_owned(), CATEGORY));
+        }
         let dim = Style::new().add_modifier(Modifier::DIM);
         if let Some(runs) = &command.runs {
             parts.push((format!("  = {runs}"), dim));
@@ -123,6 +165,7 @@ fn command_line(command: &Command, width: usize, narrow: bool) -> Line<'static> 
                 Kind::Function => "a function",
                 Kind::Builtin => "a builtin",
                 Kind::Program => "a program",
+                Kind::Subcommand => "a subcommand",
             };
             parts.push((format!("  (hides {what})"), dim));
         }
@@ -144,40 +187,54 @@ fn command_line(command: &Command, width: usize, narrow: bool) -> Line<'static> 
     Line::from(spans)
 }
 
-/// The selected command's manual page, or the reasons there is none. The
-/// page is laid out by `man` at this panel's width, so it fits as it is;
-/// wrapping only catches what `man` could not narrow (wide tables).
+/// The selected command's page (info::page). It is laid out for this
+/// panel's width already, so every line is one row: no wrapping here, which
+/// also keeps each URL whole for the terminal to open.
 fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
     let width = area.width.saturating_sub(2); // inside the borders
     let height = usize::from(area.height.saturating_sub(2));
-    app.load_page(width);
+    // while searching from a page, it stays the one being read: the chosen
+    // command's page loads when it is opened, not on every key typed
+    if app.mode == Mode::Info {
+        app.load_page(width);
+    }
     let Some(page) = &app.page else {
         return; // nothing selected: open_info does not allow it, but be safe
     };
-    let lines: Vec<Line> = match &page.lines {
-        Some(lines) => lines.iter().map(|l| Line::from(l.as_str())).collect(),
-        None => manual::NO_PAGE.lines().map(Line::from).collect(),
-    };
-    // rows the lines take once wrapped, so scrolling stops at the end
-    let rows: usize = lines
-        .iter()
-        .map(|l| l.width().div_ceil(usize::from(width.max(1))).max(1))
-        .sum();
+    let rows = page.lines.len();
     app.scroll = app.scroll.min(rows.saturating_sub(height));
+    let lines: Vec<Line> = page
+        .lines
+        .iter()
+        .map(|line| Line::styled(line.text.as_str(), style_of(line.style)))
+        .collect();
     let title = format!(" {}  {}/{} ", page.name, app.scroll + 1, rows.max(1));
     let paragraph = Paragraph::new(lines)
         .block(Block::bordered().title(title))
-        .wrap(Wrap { trim: false }) // trim would eat man's indentation
         .scroll((u16::try_from(app.scroll).unwrap_or(u16::MAX), 0));
     frame.render_widget(paragraph, area);
 }
 
+/// How each kind of page line looks. Plain for now; restyled later.
+fn style_of(style: PageStyle) -> Style {
+    match style {
+        PageStyle::Title | PageStyle::Heading => Style::new().add_modifier(Modifier::BOLD),
+        PageStyle::Code => Style::new().fg(Color::Green),
+        PageStyle::Dim => Style::new().add_modifier(Modifier::DIM),
+        PageStyle::Url => Style::new().fg(Color::Cyan),
+        PageStyle::Warning => Style::new().fg(Color::Yellow),
+        PageStyle::Text => Style::new(),
+        PageStyle::Categories => CATEGORY,
+        PageStyle::Danger => DANGER_STYLE,
+    }
+}
+
 /// The bottom line, nano-style: each key highlighted, then what it does.
-fn draw_keys(frame: &mut Frame, mode: Mode, area: Rect) {
+fn draw_keys(frame: &mut Frame, mode: Mode, direct: bool, area: Rect) {
     let keys: &[(&str, &str)] = match mode {
         Mode::Browse => &[
             ("↑↓", "Move"),
-            ("→/Enter", "Manual"),
+            ("→/Enter", "Page"),
             ("/", "Search"),
             ("Esc", "Quit"),
             ("^C", "Quit"),
@@ -186,12 +243,22 @@ fn draw_keys(frame: &mut Frame, mode: Mode, area: Rect) {
             ("type", "Filter"),
             ("Bksp", "Erase"),
             ("↑↓", "Move"),
-            ("→/Enter", "Manual"),
+            ("→/Enter", "Page"),
+            ("@", "Lore pages"),
             ("Esc", "Leave search"),
+            ("^C", "Quit"),
+        ],
+        // opened as `lore NAME`: closing the page quits
+        // opened as `lore NAME`: closing the page quits
+        Mode::Info if direct => &[
+            ("↑↓ PgUp/PgDn", "Scroll"),
+            ("/", "Search"),
+            ("←/Esc", "Quit"),
             ("^C", "Quit"),
         ],
         Mode::Info => &[
             ("↑↓ PgUp/PgDn", "Scroll"),
+            ("/", "Search"),
             ("←/Esc", "Back"),
             ("^C", "Quit"),
         ],

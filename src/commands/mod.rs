@@ -6,6 +6,7 @@ pub mod functions; // the user's shell functions (fish only)
 mod path; // programs in $PATH and the program directories
 pub mod shell; // the user's shell, its builtins and keywords
 
+pub use path::locate;
 use shell::Shell;
 
 /// What a name is in the shell. The order matters: when one name is several
@@ -18,6 +19,9 @@ pub enum Kind {
     Function,
     Builtin,
     Program,
+    /// A program's subcommand with a lore page (`git commit`). Its name has
+    /// a space, so it never shares a name with anything else.
+    Subcommand,
 }
 
 /// One entry of the list.
@@ -61,7 +65,24 @@ pub fn collect() -> Vec<Command> {
     all.extend(shell.keywords());
     all.extend(shell.builtins());
     all.extend(path::scan());
+    let mut all = merge(all);
+    all.extend(subcommands(&all));
     merge(all)
+}
+
+/// A row for every subcommand lore has a page for (`git commit`) whose
+/// program is in the list: a subcommand of a program not installed would
+/// only be noise.
+fn subcommands(commands: &[Command]) -> Vec<Command> {
+    let installed: std::collections::HashSet<&str> =
+        commands.iter().map(|c| c.name.as_str()).collect();
+    crate::info::content::subcommand_titles()
+        .filter(|title| {
+            let parent = title.split(' ').next().unwrap_or_default();
+            installed.contains(parent)
+        })
+        .map(|title| Command::new(title, Kind::Subcommand))
+        .collect()
 }
 
 /// Sorts A to Z ignoring case and keeps one entry per name: the one bash

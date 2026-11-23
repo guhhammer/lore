@@ -77,8 +77,11 @@ fn arrows_scroll_the_page_while_reading_and_do_not_move_the_list() {
 }
 
 #[test]
-fn slash_and_letters_do_nothing_while_reading_a_page() {
-    assert_eq!(action_for(key(KeyCode::Char('/')), Mode::Info), None);
+fn slash_searches_from_a_page_and_letters_do_nothing_there() {
+    assert_eq!(
+        action_for(key(KeyCode::Char('/')), Mode::Info),
+        Some(Action::OpenSearch)
+    );
     assert_eq!(action_for(key(KeyCode::Char('q')), Mode::Info), None);
 }
 

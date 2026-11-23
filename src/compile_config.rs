@@ -15,6 +15,115 @@ pub const INFO_LIST_PERCENT: u16 = 10;
 /// Lines that PgUp and PgDn scroll the page by.
 pub const PAGE_STEP: isize = 20;
 
+// ── content pages ───────────────────────────────────────────────────────────
+
+/// Optional folders of extra pages (`<command>.md`), checked in this order
+/// before the pages built into lore; the first page found wins. None has to
+/// exist: lore carries its own pages and needs no folder.
+pub const CONTENT_DIRS: &[&str] = &[
+    "~/.local/share/lore/content",
+    "/usr/local/share/lore/content",
+    "/usr/share/lore/content",
+];
+
+/// Searches linked on every page, after the page's own links: (label, URL
+/// with `{}` where the command's name goes). The places people look for a
+/// command's help: Q&A sites, wikis, man page archives, cheat sheets. Short
+/// on purpose: a URL wider than the panel is cut, and the terminal would
+/// open the cut one. Sites without a search URL of their own go through
+/// Google's `site:`.
+pub const SEARCH_LINKS: &[(&str, &str)] = &[
+    (
+        "Stack Overflow",
+        "https://stackoverflow.com/search?q={}+command",
+    ),
+    (
+        "Unix & Linux Stack Exchange",
+        "https://unix.stackexchange.com/search?q={}",
+    ),
+    ("Ask Ubuntu", "https://askubuntu.com/search?q={}"),
+    ("Super User", "https://superuser.com/search?q={}"),
+    ("ArchWiki", "https://wiki.archlinux.org/index.php?search={}"),
+    ("explainshell", "https://explainshell.com/explain?cmd={}"),
+    ("cheat.sh", "https://cheat.sh/{}"),
+    ("Debian man pages", "https://manpages.debian.org/{}"),
+    (
+        "man7.org (Linux man pages)",
+        "https://www.google.com/search?q={}+site:man7.org",
+    ),
+    (
+        "SS64 (bash, macOS, Windows)",
+        "https://www.google.com/search?q={}+site:ss64.com",
+    ),
+    (
+        "GeeksforGeeks",
+        "https://www.google.com/search?q={}+site:geeksforgeeks.org",
+    ),
+    ("Google", "https://www.google.com/search?q={}+command"),
+];
+
+// ── search ──────────────────────────────────────────────────────────────────
+
+/// Words that mean the same in a search by content: typing one finds pages
+/// that use any of its group. The pages are written in tldr's and the man
+/// pages' words ("directory", "remove"); a learner types their own
+/// ("folder", "delete").
+#[rustfmt::skip]
+pub const SYNONYMS: &[&[&str]] = &[
+    &["folder", "directory", "dir"],
+    &["delete", "remove", "erase", "rm"],
+    &["copy", "duplicate", "cp"],
+    &["move", "rename", "mv"],
+    &["find", "search", "locate", "look for"],
+    &["show", "display", "print", "list", "view"],
+    &["compress", "zip", "archive", "pack"],
+    &["extract", "unzip", "unpack", "decompress", "uncompress"],
+    &["download", "fetch", "get"],
+    &["upload", "send", "transfer"],
+    &["stop", "kill", "terminate", "end"],
+    &["start", "launch", "run", "execute"],
+    &["disk", "drive", "storage"],
+    &["size", "space", "usage"],
+    &["edit", "modify", "change"],
+    &["install", "add"],
+    &["uninstall", "remove", "purge"],
+    &["password", "passphrase", "credentials"],
+    &["internet", "network", "online"],
+    &["picture", "image", "photo"],
+    &["permission", "permissions", "access", "mode"],
+    &["user", "account"],
+    &["process", "program", "task"],
+];
+
+// ── danger ──────────────────────────────────────────────────────────────────
+
+/// Examples marked dangerous on a page: (program, what in the rest of the
+/// line makes it so; "" = always). A program ending in `*` is a prefix
+/// (`mkfs*` covers mkfs.ext4). A leading `sudo` is skipped. Whole commands
+/// are marked by their page's `danger` category instead.
+#[rustfmt::skip]
+pub const DANGEROUS_EXAMPLES: &[(&str, &str)] = &[
+    // delete or overwrite, with no undo
+    ("rm", ""), ("shred", ""), ("wipefs", ""), ("srm", ""), ("truncate", ""),
+    ("dd", "of="), ("mkfs*", ""), ("mke2fs", ""), ("mkswap", ""),
+    ("fdisk", ""), ("sfdisk", ""), ("sgdisk", ""), ("gdisk", ""), ("parted", ""),
+    ("find", "-delete"), ("find", "-exec rm"), ("rsync", "--delete"),
+    ("git", "reset --hard"), ("git", "clean -f"), ("git", "push --force"), ("git", "push -f"),
+    ("git", "branch -D"), ("git", "checkout -- "), ("git", "restore "),
+    ("chmod", "-R"), ("chown", "-R"), ("crontab", "-r"), ("userdel", ""), ("deluser", ""),
+    ("docker", "prune"), ("docker", " rm"), ("kubectl", "delete"), ("terraform", "destroy"),
+    ("iptables", "-F"), ("mv", "-f"), ("cp", "-f"),
+    // stop the machine or processes
+    ("reboot", ""), ("shutdown", ""), ("poweroff", ""), ("halt", ""),
+    ("kill", "-9"), ("killall", ""), ("pkill", ""),
+    // Windows
+    ("format", ""), ("diskpart", ""), ("del", ""), ("rd", "/s"), ("rmdir", "/s"),
+];
+
+/// Anywhere in an example, these make it dangerous whatever the program:
+/// writing straight onto a disk device.
+pub const DANGEROUS_ANYWHERE: &[&str] = &["of=/dev/sd", "of=/dev/nvme", "> /dev/sd", "> /dev/nvme"];
+
 // ── programs ────────────────────────────────────────────────────────────────
 
 /// Always scanned for programs, besides `$PATH`, which is often cut down

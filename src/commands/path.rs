@@ -36,6 +36,17 @@ pub fn scan() -> Vec<Command> {
     commands
 }
 
+/// Where the program `name` lives: the first directory, in scan order, that
+/// has an executable file by that name.
+pub fn locate(name: &str) -> Option<PathBuf> {
+    if name.contains('/') || name.is_empty() {
+        return None; // a name, never a path
+    }
+    dirs().into_iter().map(|dir| dir.join(name)).find(|file| {
+        fs::metadata(file).is_ok_and(|m| m.is_file() && m.permissions().mode() & 0o111 != 0)
+    })
+}
+
 /// The directories to scan: `$PATH`'s, the listed ones, then `PROGRAM_DIRS`,
 /// each real directory once (on Debian /bin is a link to /usr/bin).
 fn dirs() -> Vec<PathBuf> {

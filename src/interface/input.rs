@@ -75,6 +75,8 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         (Mode::Browse, KeyCode::Esc) => Some(Action::Quit),
         (Mode::Browse, KeyCode::Char('/')) if plain => Some(Action::OpenSearch),
         (Mode::Info, KeyCode::Left | KeyCode::Esc) => Some(Action::CloseInfo),
+        // search other commands without leaving the page
+        (Mode::Info, KeyCode::Char('/')) if plain => Some(Action::OpenSearch),
         (Mode::Info, KeyCode::PageUp) => Some(Action::PageUp),
         (Mode::Info, KeyCode::PageDown) => Some(Action::PageDown),
         (Mode::Search, KeyCode::Esc) => Some(Action::LeaveSearch),

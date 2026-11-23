@@ -18,15 +18,12 @@ impl Row {
     }
 }
 
-/// Groups already-sorted commands under their headers, in section order;
-/// `first`, if given, goes on top. Order inside a section is kept.
-pub fn build(mut commands: Vec<Command>, first: Option<Section>) -> Vec<Row> {
-    // key (false, _) sorts before (true, _), so `first` lands on top;
+/// The whole list, with no search: already-sorted commands grouped under
+/// their A-Z headers (`#` first), order inside a section kept.
+pub fn build(mut commands: Vec<Command>) -> Vec<Row> {
+    // by section first: `{` sorts after `z` by name, but belongs under `#`;
     // sort_by_key is stable, so names keep their order within a section
-    commands.sort_by_key(|c| {
-        let section = Section::of(&c.name);
-        (Some(section) != first, section)
-    });
+    commands.sort_by_key(|c| Section::of(&c.name));
     let mut rows = Vec::new();
     let mut current = None; // the section of the last header pushed
     for command in commands {
@@ -38,4 +35,9 @@ pub fn build(mut commands: Vec<Command>, first: Option<Section>) -> Vec<Row> {
         rows.push(Row::Command(command));
     }
     rows
+}
+
+/// Search results: no headers, in the order given (best match first).
+pub fn ranked(commands: Vec<Command>) -> Vec<Row> {
+    commands.into_iter().map(Row::Command).collect()
 }

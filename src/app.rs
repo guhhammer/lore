@@ -1,9 +1,13 @@
 //! The app's state and the moves on it. No drawing, no keys: those are in
 //! interface/ui.rs and interface/input.rs.
 
+use std::collections::{HashMap, HashSet};
+
 use ratatui::widgets::ListState;
 
 use crate::commands::Command;
+use crate::info::content;
+use crate::info::page::{self, Facts, PageLine};
 use crate::interface::rows::{self, Row};
 use crate::interface::search;
 use crate::utils::manual;
@@ -20,13 +24,14 @@ pub enum Mode {
     Info,
 }
 
-/// The page on show, kept so a redraw does not run `man` again; reloaded when
-/// the command or the panel's width changes.
+/// The page on show, kept so a redraw does not look things up again: the
+/// facts once per command, the layout again when the panel's width changes.
 pub struct Page {
     pub name: String,
     pub width: u16,
-    /// The manual's lines; None when there is none (see `manual::NO_PAGE`).
-    pub lines: Option<Vec<String>>,
+    pub facts: Facts,
+    /// The page laid out for `width`.
+    pub lines: Vec<PageLine>,
 }
 
 /// Everything the screen shows.
@@ -44,11 +49,35 @@ pub struct App {
     pub page: Option<Page>,
     /// How many lines the page is scrolled down.
     pub scroll: usize,
+    /// The names that have a lore page, for the `@` search.
+    pub pages: HashSet<String>,
+    /// Opened as `lore NAME`: closing the page quits, like man.
+    pub direct: bool,
+    /// Searching from a page (`/` while reading): the page stays beside the
+    /// list until another one is opened.
+    pub beside_page: bool,
+    /// What each listed command's page says, for searching by content and
+    /// for its categories in the list.
+    pub docs: HashMap<String, search::Doc>,
+    /// For each search result whose page has a line matching the search,
+    /// that line cut around the match: shown after the name.
+    pub snippets: HashMap<String, String>,
 }
 
 impl App {
     /// Starts in Browse mode with the whole list and the first command selected.
     pub fn new(commands: Vec<Command>) -> Self {
+        Self::with_pages(commands, content::names())
+    }
+
+    /// Like `new`, with the set of names that have a lore page given.
+    pub fn with_pages(commands: Vec<Command>, pages: HashSet<String>) -> Self {
+        // read once at start: a page per listed command that has one
+        let docs = commands
+            .iter()
+            .filter(|c| pages.contains(&content::page_key(&c.name)))
+            .filter_map(|c| Some((c.name.clone(), search::Doc::of(&content::find(&c.name)?))))
+            .collect();
         let mut app = Self {
             commands,
             query: String::new(),
@@ -57,6 +86,11 @@ impl App {
             list: ListState::default(),
             page: None,
             scroll: 0,
+            pages,
+            direct: false,
+            beside_page: false,
+            docs,
+            snippets: HashMap::new(),
         };
         app.refilter(); // builds the rows from the empty query
         app
@@ -67,15 +101,23 @@ impl App {
         self.rows.iter().filter(|r| r.is_selectable()).count()
     }
 
-    /// Enters the search bar, its text as it was left.
+    /// Enters the search bar, its text as it was left. From a page, the
+    /// page stays on screen while the list beside it filters.
     pub fn open_search(&mut self) {
+        self.beside_page = self.mode == Mode::Info;
         self.mode = Mode::Search;
+    }
+
+    /// True while the screen is split: a page open, or a search from one.
+    pub fn page_shown(&self) -> bool {
+        self.mode == Mode::Info || (self.mode == Mode::Search && self.beside_page)
     }
 
     /// Leaves the search bar. Its text, and the filter, stay: emptying it is
     /// the user's to do (Backspace), so a search can be read and refined.
     pub fn leave_search(&mut self) {
         self.mode = Mode::Browse;
+        self.beside_page = false;
     }
 
     /// The selected command, if a command is selected.
@@ -91,6 +133,7 @@ impl App {
         if self.selected().is_some() {
             self.mode = Mode::Info;
             self.scroll = 0;
+            self.beside_page = false;
         }
     }
 
@@ -104,22 +147,34 @@ impl App {
         self.scroll = self.scroll.saturating_add_signed(lines);
     }
 
-    /// Makes `page` the selected command's, `width` columns wide, running
-    /// `man` only when the command or the width changed since the last call.
+    /// Makes `page` the selected command's, `width` columns wide. Looks the
+    /// command up only when it changed, and runs `man` again only when the
+    /// command or the width changed.
     pub fn load_page(&mut self, width: u16) {
-        let Some(name) = self.selected().map(|c| c.name.clone()) else {
+        let Some(command) = self.selected().cloned() else {
             return;
         };
-        if let Some(page) = &self.page {
-            if page.name == name && page.width == width {
-                return; // already loaded
+        let facts = match self.page.take() {
+            Some(page) if page.name == command.name => {
+                if page.width == width {
+                    self.page = Some(page); // nothing changed
+                    return;
+                }
+                page.facts // same command, new width: only the layout changes
             }
-            if page.name != name {
+            _ => {
                 self.scroll = 0; // a new page starts at its top
+                page::facts(&command)
             }
-        }
-        let lines = manual::page(&name, width);
-        self.page = Some(Page { name, width, lines });
+        };
+        let man = manual::page(&content::page_key(&command.name), width); // `man git-commit`
+        let lines = page::render(&command, &facts, man.as_deref(), usize::from(width));
+        self.page = Some(Page {
+            name: command.name,
+            width,
+            facts,
+            lines,
+        });
     }
 
     /// Adds a character to the search and filters again.
@@ -156,15 +211,86 @@ impl App {
         }
     }
 
+    /// Opens `name`'s page at start (`lore NAME`), so that closing it quits.
+    /// A name lore did not find on this machine is added to the list for the
+    /// page to show. False if neither lore nor man has anything on it.
+    pub fn open_direct(&mut self, name: &str) -> bool {
+        if !self.commands.iter().any(|c| c.name == name) {
+            let key = content::page_key(name);
+            if !self.pages.contains(&key) && manual::page(&key, 80).is_none() {
+                return false;
+            }
+            let kind = if name.contains(' ') {
+                crate::commands::Kind::Subcommand
+            } else {
+                crate::commands::Kind::Program
+            };
+            self.commands.push(Command::new(name, kind));
+            self.commands = crate::commands::merge(std::mem::take(&mut self.commands));
+            self.refilter();
+        }
+        let Some(row) = self
+            .rows
+            .iter()
+            .position(|r| matches!(r, Row::Command(c) if c.name == name))
+        else {
+            return false;
+        };
+        self.list.select(Some(row));
+        self.open_info();
+        self.direct = true;
+        true
+    }
+
     /// Rebuilds `rows` from `query` and selects the first match.
     fn refilter(&mut self) {
-        let matching = self
+        let (pages_only, query) = search::split(&self.query);
+        let allowed: Vec<&Command> = self
             .commands
             .iter()
-            .filter(|c| search::matches(c, &self.query))
-            .cloned()
+            .filter(|c| !pages_only || self.pages.contains(&content::page_key(&c.name)))
             .collect();
-        self.rows = rows::build(matching, search::first_section(&self.query));
+        self.snippets.clear();
+        if query.trim().is_empty() {
+            // no search: the whole list, A to Z under its letters
+            self.rows = rows::build(allowed.into_iter().cloned().collect());
+        } else {
+            // a search: best first, never alphabetical. Names that match come
+            // first (an exact name on top), then pages that match by content.
+            let mut by_name: Vec<((u8, usize, usize), &Command)> = Vec::new();
+            let mut by_page: Vec<(u32, &Command)> = Vec::new();
+            for command in allowed {
+                if let Some(rank) = search::name_rank(&command.name, query) {
+                    by_name.push((rank, command));
+                } else if let Some(doc) = self.docs.get(&command.name) {
+                    let score = search::content_score(doc, query);
+                    if score > 0 {
+                        // its name typed as one of the words: it is the one meant
+                        let named = if search::names_a_word(&command.name, query) {
+                            1000
+                        } else {
+                            0
+                        };
+                        by_page.push((score + named, command));
+                    }
+                }
+            }
+            by_name.sort_by(|(a, x), (b, y)| a.cmp(b).then_with(|| x.name.cmp(&y.name)));
+            by_page.sort_by(|(a, x), (b, y)| b.cmp(a).then_with(|| x.name.cmp(&y.name)));
+            let ranked: Vec<Command> = by_name
+                .into_iter()
+                .map(|(_, c)| c.clone())
+                .chain(by_page.into_iter().map(|(_, c)| c.clone()))
+                .collect();
+            self.snippets = ranked
+                .iter()
+                .filter_map(|c: &Command| {
+                    let doc = self.docs.get(&c.name)?;
+                    Some((c.name.clone(), search::snippet(doc, query)?))
+                })
+                .collect();
+            self.rows = rows::ranked(ranked);
+        }
         self.list = ListState::default(); // back to the top of the list
         self.list
             .select(self.rows.iter().position(Row::is_selectable));

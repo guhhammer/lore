@@ -24,3 +24,20 @@ fn a_column_narrower_than_the_dots_gets_only_dots() {
 fn characters_beyond_ascii_are_counted_as_one_each() {
     assert_eq!(fit("ééééé", 4), "é...");
 }
+
+use lore_tui::utils::text::wrap;
+
+#[test]
+fn wrapping_breaks_at_spaces_within_the_width() {
+    assert_eq!(wrap("one two three four", 9), ["one two", "three", "four"]);
+}
+
+#[test]
+fn a_word_longer_than_the_width_is_split() {
+    assert_eq!(wrap("abcdefgh", 3), ["abc", "def", "gh"]);
+}
+
+#[test]
+fn an_empty_text_wraps_to_one_empty_line() {
+    assert_eq!(wrap("", 10), [""]);
+}
