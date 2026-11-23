@@ -1,0 +1,12 @@
+# LF in the repository, always: a CRLF arriving through a Windows checkout
+# turns the shebang of a script in cli/ into a "bad interpreter" error.
+* text=auto eol=lf
+
+*.rs    text eol=lf diff=rust
+*.md    text eol=lf diff=markdown
+*.toml  text eol=lf
+*.yml   text eol=lf
+cli/*   text eol=lf
+
+# Generated, not authored.
+Cargo.lock linguist-generated=true

@@ -1,6 +1,14 @@
-/target
+# Cargo.lock is NOT ignored, on purpose: lore is an application, and its
+# lockfile records which dependency versions went into the shipped binary.
 
+# Build output; cli/clean removes it.
+/target/
+
+# cli/make copies the release binary here. The folder is tracked through its
+# .gitkeep; the binaries never are.
+/app/*
+!/app/.gitkeep
+
+# The owner's open-work notes stay out of the public repository.
 .todo
 .todo.distros
-
-.references
