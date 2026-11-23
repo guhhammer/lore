@@ -1,9 +1,23 @@
 [package]
-name = "lore"
+name = "lore-tui"
 version = "0.1.0"
 edition = "2024"
+rust-version = "1.85"
+description = "A terminal list of every command on your PATH, grouped A to Z."
 license = "MIT"
 readme = ".github/README.md"
+repository = "https://github.com/guhhammer/lore"
+keywords = ["terminal", "tui", "path", "commands", "ratatui"]
+categories = ["command-line-utilities"]
+# Only what builds the crate goes into the package, whatever else sits in the
+# checkout.
+include = ["/src/**", "/Cargo.toml", "/Cargo.lock", "/LICENSE", "/CHANGELOG.md", "/.github/README.md"]
+# Not yet: remove this line when the first version is ready for crates.io.
+publish = false
+
+[[bin]]
+name = "lore"
+path = "src/main.rs"
 
 [dependencies]
 ratatui = "0.30.2"
