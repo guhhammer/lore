@@ -7,7 +7,7 @@ Create a ROM filesystem inside a partition.
 - `sudo mkfs.cramfs -n volume_name path/to/directory /dev/sdXY` : create a ROM filesystem with a volume-name
 
 ## Categories
-disks, files
+danger, disks, files
 
 ## Links
 - More information: https://manned.org/mkfs.cramfs

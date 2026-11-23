@@ -10,7 +10,7 @@ Create an MS-DOS filesystem inside a partition.
 - `sudo mkfs.fat -F 12|16|32 /dev/sdXY` : specify filesystem type
 
 ## Categories
-disks, users
+danger, disks, users
 
 ## Links
 - More information: https://manned.org/mkfs.fat

@@ -9,7 +9,7 @@ Create an EROFS filesystem in an image.
 - `mkfs.erofs --all-root image.erofs root/` : create an EROFS image where all files are owned by root
 
 ## Categories
-containers, media, disks
+danger, containers, media, disks
 
 ## Links
 - More information: https://manned.org/mkfs.erofs

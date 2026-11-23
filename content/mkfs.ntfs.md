@@ -8,7 +8,7 @@ Create an NTFS filesystem inside a partition.
 - `sudo mkfs.ntfs -U uuid /dev/sdXY` : create filesystem with specific UUID
 
 ## Categories
-disks, users
+danger, disks, users
 
 ## Links
 - More information: https://manned.org/mkfs.ntfs

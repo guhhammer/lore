@@ -6,7 +6,7 @@ Create a Minix filesystem inside a partition.
 - `sudo mkfs.minix /dev/sdXY` : create a Minix filesystem inside partition Y on device X
 
 ## Categories
-disks
+danger, disks
 
 ## Links
 - More information: https://manned.org/mkfs.minix

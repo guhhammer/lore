@@ -10,7 +10,7 @@ This command is an alias of `mkfs.fat`.
 - `sudo mkfs.fat -F 12|16|32 /dev/sdXY` : specify filesystem type
 
 ## Categories
-disks, users, shell
+danger, disks, users, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/mkfs.vfat

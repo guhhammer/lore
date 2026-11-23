@@ -45,3 +45,6 @@ entities.json
 
 # Drafts of command pages, reviewed before they move into content/.
 /.content-draft/
+
+# Python bytecode from scripts/content.
+__pycache__/

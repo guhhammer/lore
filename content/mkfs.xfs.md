@@ -7,7 +7,7 @@ Create an XFS filesystem inside a partition.
 - `sudo mkfs.xfs -L volume_label /dev/sdXY` : create an XFS filesystem with a volume label
 
 ## Categories
-disks
+danger, disks
 
 ## Links
 - More information: https://manned.org/mkfs.xfs

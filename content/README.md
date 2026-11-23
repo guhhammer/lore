@@ -22,7 +22,8 @@ rebuilding, put it in `~/.local/share/lore/content/` (or, for every user,
 - Pages for commands tldr does not cover were written from each command's
   local manual page, and a few were written for lore directly.
 
-Corrections are welcome: a page is one small Markdown file.
+Corrections are welcome: a page is one small Markdown file. The scripts
+that made them are in [`scripts/content/`](../scripts/content/).
 
 ## The format
 

@@ -7,7 +7,7 @@ Create an F2FS filesystem inside a partition.
 - `sudo mkfs.f2fs -l volume_label /dev/sdXY` : create an F2FS filesystem with a volume label
 
 ## Categories
-disks
+danger, disks
 
 ## Links
 - More information: https://manned.org/mkfs.f2fs

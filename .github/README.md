@@ -92,7 +92,7 @@ always shown on the bottom line:
 
 ```bash
 cli/make     # cargo fmt, clippy, test, build, build --release, then copies app/lore
-cli/clean    # cargo clean
+cli/clean    # removes all of target/ and the page drafts
 ```
 
 Needs Rust stable, edition 2024 (rustc 1.85 or newer).

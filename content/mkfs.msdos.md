@@ -10,4 +10,4 @@ Create an MS-DOS FAT filesystem.
 - `mkfs.msdos -l FILENAME` : read the bad blocks list from FILENAME
 
 ## Categories
-disks
+danger, disks

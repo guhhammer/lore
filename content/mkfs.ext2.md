@@ -9,4 +9,4 @@ Create an ext2/ext3/ext4 file system.
 - `mkfs.ext2 -e error-behavior` : change the behavior of the kernel code when errors are detected
 
 ## Categories
-disks, files
+danger, disks, files

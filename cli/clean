@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 #
-# clean — remove the build output in target/ (cargo clean). Nothing else:
-# app/ and every source file stay.
+# clean — remove everything built or downloaded that can be made again:
+#   target/          all of it (cargo clean, then whatever cargo left behind)
+#   .content-draft/  the page drafts and the tldr download (scripts/content
+#                    makes them again)
+# app/ and every tracked file stay.
 #
-#   cli/clean       cargo clean
+#   cli/clean       remove them
 #   cli/clean -h    this text
 #
-# Exit status: 0 done, 1 cargo clean failed, 2 a usage error.
+# Exit status: 0 done, 2 a usage error.
 
 set -euo pipefail
 
@@ -17,4 +20,14 @@ case "${1:-}" in
 esac
 
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
-cargo clean
+
+# cargo clean first (it knows a custom target dir), then the folder itself:
+# cargo can leave files behind (cargo package's output, a lock), and a
+# missing cargo must not stop the clean
+cargo clean 2>/dev/null || true
+for dir in target .content-draft; do
+  if [ -e "$dir" ]; then
+    rm -rf -- "$dir"
+    echo "removed $dir/"
+  fi
+done

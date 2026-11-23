@@ -8,7 +8,7 @@ Create an ext4 filesystem inside a partition.
 - `sudo mkfs.ext4 -E root_owner=user_id:group_id /dev/sdXY` : create an ext4 filesystem owned by a specific user and group
 
 ## Categories
-disks, users
+danger, disks, users
 
 ## Links
 - More information: https://manned.org/mkfs.ext4

@@ -10,7 +10,7 @@ Create a BTRFS filesystem. Defaults to `raid1`, which specifies 2 copies of a da
 - `sudo mkfs.btrfs -f /dev/sdX` : overwrite existing filesystem if one is detected
 
 ## Categories
-disks, hardware, users
+danger, disks, hardware, users
 
 ## Links
 - More information: https://btrfs.readthedocs.io/en/latest/mkfs.btrfs.html

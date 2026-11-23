@@ -8,7 +8,7 @@ Create an exfat filesystem inside a partition.
 - `sudo mkfs.exfat -U volume_id /dev/sdXY` : create filesystem with a volume-id
 
 ## Categories
-disks, users
+danger, disks, users
 
 ## Links
 - More information: https://manned.org/mkfs.exfat

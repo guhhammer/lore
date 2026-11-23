@@ -54,6 +54,8 @@ lore/
 ├── build.rs                builds content/ into the binary
 ├── content/                the pages (~9,100) and i18n/<language>/ (~32,200)
 ├── man/lore.1              lore's own manual
+├── scripts/content/        the scripts that make content/ (their README has the order)
+├── examples/commands.rs    prints every command lore lists, for scripts/content
 ├── tests/                  every test, through src/lib.rs
 ├── cli/make, cli/clean     the build gate and cleaning
 └── app/                    where cli/make copies the release binary (ignored)
@@ -118,7 +120,7 @@ lore/
 
 ```bash
 cli/make      # cargo fmt, clippy (warnings fail), test, build, build --release, copy to app/lore
-cli/clean     # cargo clean
+cli/clean     # removes all of target/ and .content-draft/ (drafts and the tldr download)
 ```
 
 The drawing and the keys are not covered by the tests. Check them by hand

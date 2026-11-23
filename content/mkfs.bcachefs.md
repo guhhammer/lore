@@ -10,7 +10,7 @@ Create a `bcachefs` filesystem inside a partition.
 - bcachefs
 
 ## Categories
-disks
+danger, disks
 
 ## Links
 - More information: https://bcachefs-docs.readthedocs.io/en/latest/mgmt-formatting.html

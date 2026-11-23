@@ -10,7 +10,7 @@ Make an SCO bfs filesystem.
 - `mkfs.bfs -c` : this option is silently ignored
 
 ## Categories
-disks
+danger, disks
 
 ## Links
 - Documentation: https://www.kernel.org/pub/linux/utils/util-linux/
