@@ -6,13 +6,14 @@ use std::collections::{HashMap, HashSet};
 use ratatui::widgets::ListState;
 
 use crate::commands::{self, Command, Kind};
-use crate::compile_config::{COPIED, MAN_PROBE_WIDTH, MOST_USED_MAX, NOTHING_TO_COPY, RECENT_MAX};
+use crate::compile_config::{
+    COPIED, MAN_PROBE_WIDTH, MOST_USED_MAX, NOTHING_TO_COPY, RECENT_MAX, TOPIC_NAMES,
+};
 use crate::info::page::{self, Facts, PageLine};
 use crate::info::{content, recipes};
 use crate::interface::palette::{self, Palette};
 use crate::interface::rows::{self, Row};
 use crate::interface::search;
-use crate::interface::section::Section;
 use crate::utils::manual;
 
 /// What the keys do right now.
@@ -34,6 +35,41 @@ pub enum Mode {
     /// The about screen (`+`): what lore is, where it keeps things, and
     /// the settings: ↑↓ choose one, Enter changes it.
     About,
+}
+
+/// A topic: one list of its own, chosen in the bar under the search bar
+/// with ← and →. More kinds of lore will be topics of their own.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Topic {
+    /// Every command on this machine, A to Z (recipes not among them).
+    Commands,
+    /// The task pages, A to Z.
+    Recipes,
+    /// The commands your shell history runs most, most first.
+    MostUsed,
+    /// The pages you opened last, the last first.
+    Recent,
+    /// Your bookmarks, in the order added.
+    Bookmarks,
+}
+
+impl Topic {
+    /// Every topic, in the bar's order (`TOPIC_NAMES` holds their names).
+    pub fn all() -> [Self; 5] {
+        [
+            Self::Commands,
+            Self::Recipes,
+            Self::MostUsed,
+            Self::Recent,
+            Self::Bookmarks,
+        ]
+    }
+
+    /// The name shown in the bar and the list's title.
+    pub fn name(self) -> &'static str {
+        let at = Self::all().iter().position(|t| *t == self).unwrap_or(0);
+        TOPIC_NAMES[at]
+    }
 }
 
 /// A setting on the about screen, in the order shown.
@@ -128,6 +164,10 @@ pub struct App {
     /// for the jumper (Space).
     pub sections: Vec<usize>,
     pub scroll_max: usize,
+    /// The topic whose list is shown, and the topics that have anything
+    /// (commands always): the bar shows those, and ← → move among them.
+    pub topic: Topic,
+    pub topics: Vec<Topic>,
     /// The setting chosen on the about screen, in `Setting::all()`.
     pub setting: usize,
     /// Whether the shell's history is read (`history = off`: not).
@@ -180,6 +220,8 @@ impl App {
             note: None,
             about_from: Mode::Browse,
             sections: Vec::new(),
+            topic: Topic::Commands,
+            topics: vec![Topic::Commands],
             scroll_max: 0,
             setting: 0,
             history: true,
@@ -443,42 +485,73 @@ impl App {
         !self.uses.is_empty() && !self.uses.contains_key(name)
     }
 
-    /// The groups above A to Z: bookmarks, recent pages, most used, each
-    /// only with commands in `allowed` (on this machine, `@` respected).
-    fn groups(&self, allowed: &[&Command]) -> Vec<(Section, Vec<Command>)> {
-        let find = |name: &String| {
-            allowed
+    /// The commands of `topic`, among `allowed` (on this machine, `@`
+    /// respected), in the topic's own order.
+    fn topic_list(&self, topic: Topic, allowed: &[&Command]) -> Vec<Command> {
+        let named = |names: &[String]| -> Vec<Command> {
+            names
                 .iter()
-                .find(|c| c.name == *name)
+                .filter_map(|name| allowed.iter().find(|c| c.name == *name))
                 .map(|c| (*c).clone())
+                .collect()
         };
-        let mut most_used: Vec<&&Command> = allowed
-            .iter()
-            .filter(|c| self.uses.contains_key(&c.name))
-            .collect();
-        most_used.sort_by(|a, b| {
-            self.uses[&b.name]
-                .cmp(&self.uses[&a.name])
-                .then_with(|| a.name.cmp(&b.name))
-        });
-        vec![
-            (
-                Section::Bookmarks,
-                self.bookmarks.iter().filter_map(find).collect(),
-            ),
-            (
-                Section::Recent,
-                self.recent.iter().filter_map(find).collect(),
-            ),
-            (
-                Section::MostUsed,
-                most_used
-                    .into_iter()
+        match topic {
+            Topic::Commands => allowed
+                .iter()
+                .filter(|c| c.kind != Kind::Recipe)
+                .map(|c| (*c).clone())
+                .collect(),
+            Topic::Recipes => allowed
+                .iter()
+                .filter(|c| c.kind == Kind::Recipe)
+                .map(|c| (*c).clone())
+                .collect(),
+            Topic::MostUsed => {
+                let mut used: Vec<&&Command> = allowed
+                    .iter()
+                    .filter(|c| self.uses.contains_key(&c.name))
+                    .collect();
+                used.sort_by(|a, b| {
+                    self.uses[&b.name]
+                        .cmp(&self.uses[&a.name])
+                        .then_with(|| a.name.cmp(&b.name))
+                });
+                used.into_iter()
                     .take(MOST_USED_MAX)
                     .map(|c| (*c).clone())
-                    .collect(),
-            ),
-        ]
+                    .collect()
+            }
+            Topic::Recent => named(&self.recent),
+            Topic::Bookmarks => named(&self.bookmarks),
+        }
+    }
+
+    /// Whether `topic` has anything among `allowed`, without building its
+    /// list; commands always counts, so the bar is never empty.
+    fn has_any(&self, topic: Topic, allowed: &[&Command]) -> bool {
+        let on_machine = |name: &String| allowed.iter().any(|c| c.name == *name);
+        match topic {
+            Topic::Commands => true,
+            Topic::Recipes => allowed.iter().any(|c| c.kind == Kind::Recipe),
+            Topic::MostUsed => allowed.iter().any(|c| self.uses.contains_key(&c.name)),
+            Topic::Recent => self.recent.iter().any(on_machine),
+            Topic::Bookmarks => self.bookmarks.iter().any(on_machine),
+        }
+    }
+
+    /// Shows the topic `steps` away in the bar, wrapping round, its list
+    /// from the top.
+    pub fn step_topic(&mut self, steps: isize) {
+        let count = self.topics.len().max(1);
+        let at = self
+            .topics
+            .iter()
+            .position(|t| *t == self.topic)
+            .unwrap_or(0);
+        let forward = steps.rem_euclid(isize::try_from(count).unwrap_or(isize::MAX));
+        let next = (at + usize::try_from(forward).unwrap_or(0)) % count;
+        self.topic = self.topics.get(next).copied().unwrap_or(Topic::Commands);
+        self.refilter();
     }
 
     /// Builds the rows again (a group changed) with the same command
@@ -510,30 +583,54 @@ impl App {
         self.mode = Mode::Browse;
     }
 
-    /// Scrolls the page by `lines` (negative: up); `ui` stops it at the end.
-    /// Space in the list: selects the first command under the next header
-    /// (the next letter, or group), its header shown on top; after the
-    /// last, the first one again. A search's results have no headers.
+    /// Tab in the list: selects the first command of the next letter, its
+    /// header shown on top; after the last, the first one again. A
+    /// search's results, and your own topics, have no letters.
     pub fn next_letter(&mut self) {
-        let headers: Vec<usize> = (0..self.rows.len())
-            .filter(|&i| !self.rows[i].is_selectable())
-            .collect();
+        let headers = self.headers();
         let at = self.list.selected().unwrap_or(0);
-        let Some(&header) = headers
+        let next = headers
             .iter()
             .find(|&&h| h > at)
-            .or_else(|| headers.first())
-        else {
-            return;
-        };
-        let Some(first) = (header..self.rows.len()).find(|&i| self.rows[i].is_selectable()) else {
-            return;
-        };
-        self.list.select(Some(first));
-        *self.list.offset_mut() = header;
+            .or_else(|| headers.first());
+        if let Some(&header) = next {
+            self.select_under(header);
+        }
     }
 
-    /// Space on a page: scrolls to the next section's heading; at the last
+    /// Shift+Tab in the list: the letter before the selected one's; from
+    /// the first, the last.
+    pub fn previous_letter(&mut self) {
+        let headers = self.headers();
+        let at = self.list.selected().unwrap_or(0);
+        // the selected command's own letter, then the one before it
+        let own = headers.iter().rposition(|&h| h < at);
+        let back = match own {
+            Some(i) if i > 0 => headers.get(i - 1),
+            _ => headers.last(),
+        };
+        if let Some(&header) = back {
+            self.select_under(header);
+        }
+    }
+
+    /// Where the list's letter headers are.
+    fn headers(&self) -> Vec<usize> {
+        (0..self.rows.len())
+            .filter(|&i| !self.rows[i].is_selectable())
+            .collect()
+    }
+
+    /// Selects the first command under the header at `header`, with the
+    /// header on top of the list.
+    fn select_under(&mut self, header: usize) {
+        if let Some(first) = (header..self.rows.len()).find(|&i| self.rows[i].is_selectable()) {
+            self.list.select(Some(first));
+            *self.list.offset_mut() = header;
+        }
+    }
+
+    /// Tab on a page: scrolls to the next section's heading; at the last
     /// one (or the end of the page), back to the top.
     pub fn next_section(&mut self) {
         let next = self.sections.iter().copied().find(|&s| s > self.scroll);
@@ -543,6 +640,16 @@ impl App {
         };
     }
 
+    /// Shift+Tab on a page: the section before; from the top, the last one.
+    pub fn previous_section(&mut self) {
+        let back = self.sections.iter().copied().rfind(|&s| s < self.scroll);
+        self.scroll = match back {
+            Some(line) => line,
+            None => self.sections.last().map_or(0, |&s| s.min(self.scroll_max)),
+        };
+    }
+
+    /// Scrolls the page by `lines` (negative: up); `ui` stops it at the end.
     pub fn scroll_by(&mut self, lines: isize) {
         self.scroll = self.scroll.saturating_add_signed(lines);
     }
@@ -650,6 +757,17 @@ impl App {
             self.commands = commands::merge(std::mem::take(&mut self.commands));
             self.refilter();
         }
+        // the topic that holds it: a recipe's, or the commands'
+        let is_recipe = self
+            .commands
+            .iter()
+            .any(|c| c.name == name && c.kind == Kind::Recipe);
+        self.topic = if is_recipe {
+            Topic::Recipes
+        } else {
+            Topic::Commands
+        };
+        self.refilter();
         let Some(row) = self
             .rows
             .iter()
@@ -671,11 +789,23 @@ impl App {
             .filter(|c| !pages_only || self.pages.contains(&content::page_key(&c.name)))
             .collect();
         self.snippets.clear();
+        // the topics with anything in them; one that emptied (the last
+        // bookmark taken away) is left for the commands
+        self.topics = Topic::all()
+            .into_iter()
+            .filter(|t| self.has_any(*t, &allowed))
+            .collect();
+        if !self.topics.contains(&self.topic) {
+            self.topic = Topic::Commands;
+        }
         if query.trim().is_empty() {
-            // no search: your groups, then the whole list, A to Z under its letters
-            let groups = self.groups(&allowed);
-            self.rows =
-                rows::with_groups(groups, rows::build(allowed.into_iter().cloned().collect()));
+            // no search: the topic's list; A to Z under its letters for the
+            // big ones, in its own order for yours
+            let list = self.topic_list(self.topic, &allowed);
+            self.rows = match self.topic {
+                Topic::Commands | Topic::Recipes => rows::build(list),
+                _ => rows::ranked(list),
+            };
         } else {
             // a search: best first, never alphabetical. Names that match come
             // first (an exact name on top), then pages that match by content.

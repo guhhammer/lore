@@ -23,11 +23,11 @@ impl Row {
 pub fn build(mut commands: Vec<Command>) -> Vec<Row> {
     // by section first: `{` sorts after `z` by name, but belongs under `#`;
     // sort_by_key is stable, so names keep their order within a section
-    commands.sort_by_key(Section::of_command);
+    commands.sort_by_key(|c| Section::of(&c.name));
     let mut rows = Vec::new();
     let mut current = None; // the section of the last header pushed
     for command in commands {
-        let section = Section::of_command(&command);
+        let section = Section::of(&command.name);
         if current != Some(section) {
             rows.push(Row::Header(section)); // a new section starts here
             current = Some(section);
@@ -40,16 +40,4 @@ pub fn build(mut commands: Vec<Command>) -> Vec<Row> {
 /// Search results: no headers, in the order given (best match first).
 pub fn ranked(commands: Vec<Command>) -> Vec<Row> {
     commands.into_iter().map(Row::Command).collect()
-}
-
-/// `rows` with groups above them (bookmarks, recent, most used), each under
-/// its header; an empty group is left out.
-pub fn with_groups(groups: Vec<(Section, Vec<Command>)>, rows: Vec<Row>) -> Vec<Row> {
-    let mut all = Vec::new();
-    for (section, commands) in groups.into_iter().filter(|(_, c)| !c.is_empty()) {
-        all.push(Row::Header(section));
-        all.extend(commands.into_iter().map(Row::Command));
-    }
-    all.extend(rows);
-    all
 }

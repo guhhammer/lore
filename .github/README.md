@@ -17,18 +17,24 @@ and what can go wrong. For Linux and macOS, with bash, zsh or fish.
    ██   ▄█▀▀▀█▄  ██▄▀▀▀ ▄█▀▀▀█▄  ┌ search ───────────────────────────────── ● internet ┐
    ██   ██   ██  ██     ██▀▀▀▀▀  │press / to search                                    │
  ▀▀▀▀▀▀  ▀▀▀▀▀   ▀▀      ▀▀▀▀▀   └─────────────────────────────────────────────────────┘
+  commands    recipes    recent   ← → topics
 ┌───────┐┌ tar  7/1374 ────────────────────────────────────────────────────────────────┐
-│ tail  ││VERSION                                                                      │
+│ tai...││VERSION                                                                      │
 │ tai...││  Package    tar (dpkg)                                                      │
 │ tai...││  Installed  1.35+dfsg-3.1                                                   │
+│ tai...││  Newest     1.35+dfsg-3.1, up to date as of your last package list update   │
 │ tai...││  Update     sudo apt update && sudo apt install --only-upgrade tar          │
+│ tai...││  Location   /usr/bin/tar                                                    │
 │ tai...││                                                                             │
-│ tap   ││HOW TO USE                                                                   │
-│ tap...││  $ tar -xf archive.tar.gz                                                   │
-│ tape  ││      unpack an archive (the compression is detected)                        │
-│ tar   ││  $ tar -czf backup.tar.gz folder/                                           │
+│ tai...││HOW TO USE                                                                   │
+│ tap   ││  $ tar -xf archive.tar.gz                                                   │
+│ tap...││      unpack an archive (the compression is detected)                        │
+│ tap...││  $ tar -tf archive.tar.gz                                                   │
+│ tape  ││      list what is inside without unpacking                                  │
+│ tap...││  $ tar -czf backup.tar.gz folder/                                           │
+│ tar   ││      pack a folder, gzip-compressed                                         │
 └───────┘└─────────────────────────────────────────────────────────────────────────────┘
-↑↓ PgUp/PgDn Scroll   Space Next section   / Search   c Copy   b Bookmark   ←/Esc Back
+↑↓ PgUp/PgDn Scroll   Tab/ShiftTab Jump   / Search   c Copy   b Bookmark   ←/Esc Back
 ```
 
 > The app and its command are **lore**. The Rust crate is **`lore-tui`**,
@@ -105,10 +111,12 @@ To build it yourself, see [Build from source](#build-from-source).
 | `lore --completions bash` | Prints the Tab completion script for bash, zsh or fish. |
 | `lore --help`, `lore --version` | What they say. |
 
-**The list.** With no search it is A to Z under letter headers (names
-starting with a digit or symbol go under `#`). Your bookmarks, recent pages
-and most-used commands are on top, then the recipes. Each name shows its
-categories, such as `[archives files]`; `danger` is in red.
+**Topics.** A bar under the search bar holds the topics, each its own
+list: **commands** (every command here, A to Z under letter headers, `#`
+for names starting with a digit or symbol), **recipes**, and your own
+**most used**, **recent** and **bookmarks** once they have anything. ← and
+→ switch topics. Each name shows its categories, such as
+`[archives files]`; `danger` is in red.
 
 **A page** opens beside the list and fits the space left. A command with no
 page explains why that may be.
@@ -129,19 +137,20 @@ The keys you can press are always shown on the bottom line.
 | Key | Does |
 | --- | --- |
 | ↑ ↓ | Move |
-| → or Enter | Open the page |
-| Space | Jump to the next letter: A → B → C … → back to the top |
+| ← → | Switch the topic: commands, recipes, most used, recent, bookmarks |
+| Enter | Open the page |
+| Tab, Shift+Tab | Jump to the next or previous letter, round at either end |
 | `/` | Search |
 | `b` | Bookmark (press again to remove) |
 | `+` | About lore, and settings |
-| Esc | Quit |
+| Esc or Ctrl+C | Quit |
 
 **On a page**
 
 | Key | Does |
 | --- | --- |
 | ↑ ↓, PgUp PgDn | Scroll |
-| Space | Jump to the next section, then back to the top |
+| Tab, Shift+Tab | Jump to the next or previous section, round at either end |
 | `c` | Copy one of the examples to the clipboard (works over ssh too) |
 | `/` | Search other commands; the page stays beside the list |
 | `b` | Bookmark |

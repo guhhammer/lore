@@ -97,14 +97,13 @@ pub const NO_PAGE_REASONS: &[&str] = &[
 
 /// The key bar, per mode: (key, what it does).
 pub const KEYS_BROWSE: &[(&str, &str)] = &[
-    ("↑↓", "Move"),
-    ("→/Enter", "Page"),
+    ("↑↓←→", "Move"),
+    ("Enter", "Page"),
     ("/", "Search"),
-    ("Space", "Next letter"),
+    ("Tab/ShiftTab", "Jump"),
     ("b", "Bookmark"),
-    ("+", "About & settings"),
-    ("Esc", "Quit"),
-    ("^C", "Quit"),
+    ("+", "About"),
+    ("Esc/^C", "Quit"),
 ];
 pub const KEYS_SEARCH: &[(&str, &str)] = &[
     ("type", "Filter"),
@@ -117,7 +116,7 @@ pub const KEYS_SEARCH: &[(&str, &str)] = &[
 ];
 pub const KEYS_PAGE: &[(&str, &str)] = &[
     ("↑↓ PgUp/PgDn", "Scroll"),
-    ("Space", "Next section"),
+    ("Tab/ShiftTab", "Jump"),
     ("/", "Search"),
     ("c", "Copy"),
     ("b", "Bookmark"),
@@ -145,8 +144,9 @@ pub const SEARCH_HINT: &str = "press / to search";
 pub const SEARCH_KEPT_HINT: &str = "   (/ to edit)";
 
 /// The list's title: `{total}` commands, or `{shown}` of them while searching.
-pub const LIST_TITLE: &str = " commands ({total}) ";
-pub const LIST_TITLE_SEARCHING: &str = " commands ({shown} of {total}) ";
+pub const LIST_TITLE: &str = " {topic} ({total}) ";
+/// A search looks in every topic.
+pub const LIST_TITLE_SEARCHING: &str = " every topic: {shown} of {total} ";
 
 /// When nothing matches the search `{query}`.
 pub const NO_MATCH: &str = " no command matches \"{query}\"";
@@ -518,10 +518,6 @@ pub const COPY_PICKER_MARGIN: u16 = 2;
 /// The key that opens the palette picker, on the about screen (`+`) only.
 pub const PALETTE_KEY: char = 'p';
 
-/// The jumper: in the list, to the next letter (A → B → … → back to the
-/// top); on a page, to the next section (back to the top after the last).
-pub const JUMP_KEY: char = ' ';
-
 /// The picker's title, and its title when the choice could not be saved.
 pub const PALETTE_TITLE: &str = " colours ";
 pub const PALETTE_NOT_SAVED: &str = " not saved: {why} ";
@@ -568,15 +564,20 @@ pub const RECENT_FILE: &str = "recent";
 /// The key that adds or removes a bookmark, in the list and on a page.
 pub const BOOKMARK_KEY: char = 'b';
 
-/// How many recently opened pages, and most-used commands, head the list.
+/// How many recently opened pages are kept, and how many commands the most
+/// used topic lists.
 pub const RECENT_MAX: usize = 10;
-pub const MOST_USED_MAX: usize = 10;
+pub const MOST_USED_MAX: usize = 50;
 
-/// The headers of the groups above A to Z, when the search is empty.
-pub const GROUP_BOOKMARKS: &str = "★ bookmarks";
-pub const GROUP_RECENT: &str = "recent";
-pub const GROUP_MOST_USED: &str = "most used";
-pub const GROUP_RECIPES: &str = "recipes";
+/// The topics, in the bar under the search bar (← → switch them), in the
+/// order shown (`Topic::all()` in src/app.rs). A topic with nothing in it
+/// (no bookmarks yet, no history) is not shown; commands always is.
+pub const TOPIC_NAMES: [&str; 5] = ["commands", "recipes", "most used", "recent", "bookmarks"];
+/// The bar's height, and the room between two topics.
+pub const TOPIC_BAR_HEIGHT: u16 = 1;
+pub const TOPIC_GAP: &str = "  ";
+/// After the topics, what switches them.
+pub const TOPIC_HINT: &str = "  ← → topics";
 
 /// Before the title of a bookmarked command's page.
 pub const BOOKMARK_MARK: &str = "★ ";

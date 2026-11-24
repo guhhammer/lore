@@ -1,9 +1,9 @@
-//! Tests for your own use in the list: bookmarks, recent pages, most used,
-//! never used (src/app.rs, src/interface/rows.rs).
+//! Tests for your own use: the bookmarks, recent and most used topics, and
+//! the never-used mark (src/app.rs).
 
 use std::collections::HashMap;
 
-use lore_tui::app::{App, Mode};
+use lore_tui::app::{App, Mode, Topic};
 use lore_tui::commands::{Command, Kind};
 use lore_tui::compile_config::{BOOKMARK_KEY, RECENT_MAX};
 use lore_tui::interface::input::{Action, action_for};
@@ -43,13 +43,14 @@ fn select(app: &mut App, name: &str) {
 }
 
 #[test]
-fn with_no_bookmarks_recent_or_history_the_list_is_a_to_z_only() {
+fn with_no_bookmarks_recent_or_history_there_is_only_the_commands_topic() {
     let app = app(&["ls", "cat"]);
+    assert_eq!(app.topics, [Topic::Commands]);
     assert_eq!(labels(&app), ["[C]", "cat", "[L]", "ls"]);
 }
 
 #[test]
-fn bookmarks_recent_and_most_used_head_the_list_and_stay_in_their_letters() {
+fn bookmarks_recent_and_most_used_are_topics_of_their_own() {
     let mut app = app(&["ls", "cat", "tar"]);
     app.set_personal(
         vec!["tar".into()],
@@ -57,23 +58,21 @@ fn bookmarks_recent_and_most_used_head_the_list_and_stay_in_their_letters() {
         uses(&[("ls", 9), ("cat", 2)]),
     );
     assert_eq!(
-        labels(&app),
+        app.topics,
         [
-            "[★ bookmarks]",
-            "tar",
-            "[recent]",
-            "cat",
-            "[most used]",
-            "ls",
-            "cat",
-            "[C]",
-            "cat",
-            "[L]",
-            "ls",
-            "[T]",
-            "tar",
+            Topic::Commands,
+            Topic::MostUsed,
+            Topic::Recent,
+            Topic::Bookmarks
         ]
     );
+    assert_eq!(labels(&app), ["[C]", "cat", "[L]", "ls", "[T]", "tar"]);
+    app.step_topic(1);
+    assert_eq!(labels(&app), ["ls", "cat"], "most used, most first");
+    app.step_topic(1);
+    assert_eq!(labels(&app), ["cat"]);
+    app.step_topic(1);
+    assert_eq!(labels(&app), ["tar"]);
 }
 
 #[test]
@@ -84,13 +83,15 @@ fn names_kept_that_are_not_on_this_machine_are_left_out() {
         vec!["gone".into()],
         uses(&[("gone", 3)]),
     );
+    assert_eq!(app.topics, [Topic::Commands], "nothing to show in them");
     assert_eq!(labels(&app), ["[L]", "ls"]);
 }
 
 #[test]
-fn the_groups_are_only_shown_with_the_search_empty() {
+fn a_search_looks_in_every_topic() {
     let mut app = app(&["ls", "lsof"]);
     app.set_personal(vec!["ls".into()], Vec::new(), HashMap::new());
+    app.step_topic(1); // bookmarks: only ls
     app.open_search();
     app.type_char('l');
     assert_eq!(labels(&app), ["ls", "lsof"]);

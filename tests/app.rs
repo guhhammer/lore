@@ -202,9 +202,12 @@ fn a_name_given_at_start_opens_its_page_and_closing_it_goes_back_to_the_list() {
     app.close_info();
     assert_eq!(app.mode, Mode::Browse, "the whole app is there, not a quit");
     assert_eq!(selected_name(&app), "bash");
-    let at = app.list.selected();
-    app.down();
-    assert_ne!(app.list.selected(), at, "the arrows move the list as usual");
+    app.up();
+    assert_eq!(
+        selected_name(&app),
+        "awk",
+        "the arrows move the list as usual"
+    );
 }
 
 #[test]

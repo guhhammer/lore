@@ -349,7 +349,11 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
             }
             Action::CloseInfo => app.close_info(),
             Action::NextLetter => app.next_letter(),
+            Action::PreviousLetter => app.previous_letter(),
+            Action::NextTopic => app.step_topic(1),
+            Action::PreviousTopic => app.step_topic(-1),
             Action::NextSection => app.next_section(),
+            Action::PreviousSection => app.previous_section(),
             Action::LineUp => app.scroll_by(-1),
             Action::LineDown => app.scroll_by(1),
             Action::PageUp => app.scroll_by(-compile_config::PAGE_STEP),

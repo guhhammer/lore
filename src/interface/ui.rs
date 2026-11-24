@@ -4,7 +4,7 @@
 
 use ratatui::Frame;
 use ratatui::layout::{Constraint, Flex, Layout, Position, Rect};
-use ratatui::style::Style;
+use ratatui::style::{Modifier, Style};
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{Block, Clear, List, ListItem, ListState, Paragraph};
 
@@ -21,7 +21,7 @@ use crate::compile_config::{
     KEYS_SEARCH, LIST_HEADER_INDENT, LIST_INDENT, LIST_INDENT_NARROW, LIST_TITLE,
     LIST_TITLE_SEARCHING, LOGO, LOGO_GAP, LORE_ORANGE, NO_MATCH, PALETTE_DIR, PALETTE_NOT_SAVED,
     PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT, SEARCH_HINT, SEARCH_KEPT_HINT,
-    SEARCH_TITLE, UNUSED_MARK,
+    SEARCH_TITLE, TOPIC_BAR_HEIGHT, TOPIC_GAP, TOPIC_HINT, UNUSED_MARK,
 };
 use crate::info::content;
 use crate::info::page::{self, PageLine, Style as PageStyle};
@@ -39,8 +39,9 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
     // the search bar on top, the keys at the bottom, the body gets the rest
     // the logo, 4 rows, beside the search bar, which sits on its last 3
     let logo_height = u16::try_from(LOGO.len()).unwrap_or(u16::MAX);
-    let [top, body, keys] = Layout::vertical([
+    let [top, topics, body, keys] = Layout::vertical([
         Constraint::Length(logo_height.max(SEARCH_BAR_HEIGHT)),
+        Constraint::Length(TOPIC_BAR_HEIGHT),
         Constraint::Min(0),
         Constraint::Length(KEY_BAR_HEIGHT),
     ])
@@ -59,6 +60,7 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
     let logo_lines: Vec<Line> = LOGO.iter().map(|l| Line::styled(*l, orange)).collect();
     frame.render_widget(Paragraph::new(logo_lines), logo);
     draw_search(frame, app, search);
+    draw_topics(frame, app, topics);
     if app.about_shown() {
         draw_about(frame, app, body);
     } else if app.page_shown() {
@@ -326,6 +328,28 @@ fn draw_search(frame: &mut Frame, app: &App, area: Rect) {
     }
 }
 
+/// The topics under the search bar, the one shown highlighted; then what
+/// switches them. Never in the way: one line, cut if the screen is narrow.
+fn draw_topics(frame: &mut Frame, app: &App, area: Rect) {
+    let palette = app.palette();
+    let mut spans = vec![Span::raw(" ")];
+    for (i, topic) in app.topics.iter().enumerate() {
+        if i > 0 {
+            spans.push(Span::raw(TOPIC_GAP));
+        }
+        let style = if *topic == app.topic {
+            palette.selected().add_modifier(Modifier::BOLD)
+        } else {
+            palette.muted()
+        };
+        spans.push(Span::styled(format!(" {} ", topic.name()), style));
+    }
+    if app.topics.len() > 1 {
+        spans.push(Span::styled(TOPIC_HINT, palette.muted()));
+    }
+    frame.render_widget(Paragraph::new(Line::from(spans)), area);
+}
+
 /// The list of rows, or a note when nothing matches. `narrow`: beside a page,
 /// with names only and no title; names that do not fit end in `...`.
 fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
@@ -333,7 +357,11 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
     let block = if narrow {
         Block::bordered() // a title would not fit in a tenth of the screen
     } else if app.query.is_empty() {
-        Block::bordered().title(LIST_TITLE.replace("{total}", &total.to_string()))
+        Block::bordered().title(
+            LIST_TITLE
+                .replace("{topic}", app.topic.name())
+                .replace("{total}", &app.shown_count().to_string()),
+        )
     } else {
         Block::bordered().title(
             LIST_TITLE_SEARCHING

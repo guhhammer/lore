@@ -5,7 +5,7 @@ Short task pages that chain commands, written the way people ask:
 There are 100, most of them the terminal tasks with the most-viewed Stack
 Overflow questions.
 
-In lore they sit in the list under **recipes**, the search finds them like
+In lore they are the **recipes** topic (← → in the list), the search finds them like
 any command, and each opens as a page with its **STEPS**, the commands it
 **USES** (each one a page of its own) and its **NOTES**.
 

@@ -1,6 +1,6 @@
 //! Tests for the recipes (src/info/recipes.rs, recipes/, their page).
 
-use lore_tui::app::App;
+use lore_tui::app::{App, Topic};
 use lore_tui::commands::{Command, Kind};
 use lore_tui::compile_config::{HEADING_MANUAL, HEADING_STEPS, HEADING_VERSION};
 use lore_tui::info::page::{facts, render};
@@ -45,20 +45,25 @@ fn the_asked_for_recipes_are_there() {
 }
 
 #[test]
-fn recipes_go_under_their_own_header_and_not_under_a_letter() {
+fn recipes_are_a_topic_of_their_own_a_to_z_and_not_among_the_commands() {
     let mut list = vec![Command::new("ls", Kind::Program)];
     list.extend(commands().into_iter().take(2));
-    let app = App::new(list);
-    let labels: Vec<String> = app
-        .rows
-        .iter()
-        .map(|row| match row {
-            Row::Header(section) => format!("[{section}]"),
-            Row::Command(c) => c.name.clone(),
-        })
-        .collect();
-    assert_eq!(labels[0], "[recipes]");
-    assert_eq!(labels[3..], ["[L]", "ls"]);
+    let mut app = App::new(list);
+    let labels = |app: &App| -> Vec<String> {
+        app.rows
+            .iter()
+            .map(|row| match row {
+                Row::Header(section) => format!("[{section}]"),
+                Row::Command(c) => c.name.clone(),
+            })
+            .collect()
+    };
+    assert_eq!(labels(&app), ["[L]", "ls"], "commands: no recipes");
+    app.step_topic(1);
+    assert_eq!(app.topic, Topic::Recipes);
+    let shown = labels(&app);
+    assert!(shown[0].starts_with('['), "under a letter: {shown:?}");
+    assert_eq!(shown.iter().filter(|l| !l.starts_with('[')).count(), 2);
 }
 
 #[test]

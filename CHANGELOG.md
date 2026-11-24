@@ -22,6 +22,17 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Changed
 
+- **Topics:** a bar under the logo and the search bar holds lore's topics,
+  each a list of its own: commands, recipes, and your most used, recent
+  and bookmarks once they have anything. ← and → switch topics; a search
+  still looks in every topic, and `lore NAME` opens on NAME's topic. The
+  groups that used to head the list are these topics now, and most used
+  lists 50 commands, not 10.
+- **Keys:** Enter opens a page from the list (→ only from the search bar);
+  Tab and Shift+Tab jump to the next or previous letter, or section on a
+  page, in place of Space. The key bar says `↑↓←→ Move`, `+ About` and
+  `Esc/^C Quit`.
+
 - `Cargo.toml` names the homepage, https://lore.guhhammer.dev, and better
   crates.io keywords and categories.
 

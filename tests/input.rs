@@ -40,12 +40,26 @@ fn esc_quits_while_browsing_leaves_the_search_and_closes_the_page() {
 }
 
 #[test]
-fn right_and_enter_open_the_page_from_the_list_and_the_search_bar() {
-    for mode in [Mode::Browse, Mode::Search] {
-        for code in [KeyCode::Right, KeyCode::Enter] {
-            assert_eq!(action_for(key(code), mode), Some(Action::OpenInfo));
-        }
+fn enter_opens_the_page_from_the_list_and_the_search_bar_and_right_from_the_search_bar() {
+    assert_eq!(
+        action_for(key(KeyCode::Enter), Mode::Browse),
+        Some(Action::OpenInfo)
+    );
+    for code in [KeyCode::Right, KeyCode::Enter] {
+        assert_eq!(action_for(key(code), Mode::Search), Some(Action::OpenInfo));
     }
+}
+
+#[test]
+fn left_and_right_in_the_list_switch_the_topic() {
+    assert_eq!(
+        action_for(key(KeyCode::Right), Mode::Browse),
+        Some(Action::NextTopic)
+    );
+    assert_eq!(
+        action_for(key(KeyCode::Left), Mode::Browse),
+        Some(Action::PreviousTopic)
+    );
 }
 
 #[test]

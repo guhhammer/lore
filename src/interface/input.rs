@@ -6,7 +6,7 @@ use std::io;
 use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 
 use crate::app::Mode;
-use crate::compile_config::{ABOUT_KEY, BOOKMARK_KEY, COPY_KEY, JUMP_KEY, PALETTE_KEY, WAKE_EVERY};
+use crate::compile_config::{ABOUT_KEY, BOOKMARK_KEY, COPY_KEY, PALETTE_KEY, WAKE_EVERY};
 
 /// Something the app should do; the loop in lib.rs applies it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -51,12 +51,17 @@ pub enum Action {
     PreviousSetting,
     NextSetting,
     ChangeSetting,
-    /// Space in the list: the first command of the next letter (or group),
-    /// back to the top after the last.
+    /// Tab and Shift+Tab in the list: the first command of the next or the
+    /// previous letter, round at either end.
     NextLetter,
-    /// Space on a page: the next section at the top, back to the top after
-    /// the last.
+    PreviousLetter,
+    /// → and ← in the list: the next or previous topic in the bar.
+    NextTopic,
+    PreviousTopic,
+    /// Tab and Shift+Tab on a page: the next or previous section at the top,
+    /// round at either end.
     NextSection,
+    PreviousSection,
     /// Opens the palette picker (`p` or Enter on Colours, on the about screen).
     OpenPalettes,
     /// In the picker: try the palette above or below.
@@ -126,9 +131,14 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         (Mode::Copy, KeyCode::Esc) => Some(Action::CloseCopy),
         (Mode::Copy, _) => None,
         (Mode::Info, KeyCode::Char(COPY_KEY)) if plain => Some(Action::OpenCopy),
-        // the jumper (not in Search, where a space is typed)
-        (Mode::Browse, KeyCode::Char(JUMP_KEY)) if plain => Some(Action::NextLetter),
-        (Mode::Info, KeyCode::Char(JUMP_KEY)) if plain => Some(Action::NextSection),
+        // the jumper: Tab forward, Shift+Tab back (the terminal sends it as BackTab)
+        (Mode::Browse, KeyCode::Tab) => Some(Action::NextLetter),
+        (Mode::Browse, KeyCode::BackTab) => Some(Action::PreviousLetter),
+        // in the list, ← and → switch the topic; Enter opens
+        (Mode::Browse, KeyCode::Right) => Some(Action::NextTopic),
+        (Mode::Browse, KeyCode::Left) => Some(Action::PreviousTopic),
+        (Mode::Info, KeyCode::Tab) => Some(Action::NextSection),
+        (Mode::Info, KeyCode::BackTab) => Some(Action::PreviousSection),
         (Mode::Browse | Mode::Info, KeyCode::Char(BOOKMARK_KEY)) if plain => {
             Some(Action::ToggleBookmark)
         }
@@ -138,8 +148,10 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         (Mode::Info, KeyCode::Down) => Some(Action::LineDown),
         (_, KeyCode::Up) => Some(Action::Up),
         (_, KeyCode::Down) => Some(Action::Down),
-        // the page opens from the list and from the search bar alike
-        (Mode::Browse | Mode::Search, KeyCode::Right | KeyCode::Enter) => Some(Action::OpenInfo),
+        // Enter opens the page from the list; the search bar, whose results
+        // have no groups to move between, opens it with → too
+        (Mode::Browse, KeyCode::Enter) => Some(Action::OpenInfo),
+        (Mode::Search, KeyCode::Right | KeyCode::Enter) => Some(Action::OpenInfo),
         (Mode::Browse, KeyCode::Esc) => Some(Action::Quit),
         (Mode::Browse, KeyCode::Char('/')) if plain => Some(Action::OpenSearch),
         (Mode::Info, KeyCode::Left | KeyCode::Esc) => Some(Action::CloseInfo),

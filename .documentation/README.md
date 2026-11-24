@@ -62,7 +62,7 @@ lore/
 │   │   ├── palette.rs      the palettes and their styles
 │   │   ├── search.rs       name ranking, search by content, snippets
 │   │   ├── rows.rs         the list's rows
-│   │   ├── section.rs      the list's groups: bookmarks, recent, most used, recipes, # and A–Z
+│   │   ├── section.rs      a topic's sections: # and A–Z
 │   │   └── paths.rs        `~/` and `*` in configured paths
 │   └── utils/
 │       ├── clipboard.rs    copying through the terminal (OSC 52)
@@ -103,9 +103,9 @@ The app is always in one **mode**, and each mode has its own keys
 
 | Mode | What is on screen | Keys |
 | --- | --- | --- |
-| Browse | The list | ↑↓, → / Enter, Space (next letter), `/`, `b`, `+`, Esc quits |
+| Browse | The topic bar and its list | ↑↓, ←→ (topic), Enter, Tab / Shift+Tab (letter), `/`, `b`, `+`, Esc quits |
 | Search | Typing in the search bar | text, Backspace, ↑↓, Enter, Esc |
-| Info | A page beside the list | ↑↓ PgUp PgDn, Space (next section), `/`, `c`, `b`, ← / Esc |
+| Info | A page beside the list | ↑↓ PgUp PgDn, Tab / Shift+Tab (section), `/`, `c`, `b`, ← / Esc |
 | Copy | The page's examples, over it | ↑↓, Enter copies, Esc |
 | About | The `+` screen and its settings | ↑↓ choose, Enter changes, `p`, + / ← / Esc |
 | Palette | The palette picker, over `+` | ↑↓ try, Enter keeps, Esc cancels |
@@ -152,10 +152,12 @@ arrived, and asks for a redraw.
 
 ## Search
 
-- **No search:** the groups that have anything (bookmarks, recent pages,
-  most used, recipes), then A to Z under its letters. A command in a group
-  is also under its letter.
-- **A search** is ranked best first, with no headers:
+- **No search:** the topic's list (`App::topic`, `Topic` in app.rs):
+  commands and recipes A to Z under their letters, most used / recent /
+  bookmarks in their own order. The bar shows only topics with anything
+  (`App::topics`); one that empties gives way to commands. A new kind of
+  lore is a new `Topic`.
+- **A search** looks in every topic, ranked best first, with no headers:
   1. names: exact, then starting with the text, then a word inside the
      name starting with it, then anywhere;
   2. pages that match by content (from three characters): categories count

@@ -138,7 +138,13 @@ Print lore's version.
 .B Up, Down
 Move through the commands; the letter headers are skipped.
 .TP
-.B Right, Enter
+.B Left, Right
+Switch the topic, in the bar under the search bar: commands, recipes,
+most used, recent, bookmarks (see
+.BR TOPICS ).
+Round at either end.
+.TP
+.B Enter
 Open the selected command's page.
 .TP
 .B /
@@ -165,9 +171,9 @@ Esc leaves the search bar and keeps its text; Backspace erases it.
 Bookmark the selected command, or take its bookmark away (see
 .BR "YOUR OWN USE" ).
 .TP
-.B Space
-Jump to the next letter (or group): its first command, its header on top.
-After the last, back to the first: A, B, C, ... and A again.
+.B Tab, Shift+Tab
+Jump to the next or the previous letter: its first command, its header on
+top. Round at either end: A, B, C, ... and A again.
 .TP
 .B +
 About lore: its version, what it found on this machine (commands, pages,
@@ -206,9 +212,9 @@ and one that does not simply ignores it.
 Bookmark this page's command, or take its bookmark away; a bookmarked
 page's title starts with \(**.
 .TP
-.B Space
-Jump to the next section (VERSION, HOW TO USE, RELATED, ...); after the
-last, back to the top.
+.B Tab, Shift+Tab
+Jump to the next or the previous section (VERSION, HOW TO USE, RELATED,
+\&...), round at either end.
 .SS In the palette picker
 .TP
 .B Up, Down
@@ -238,12 +244,25 @@ or
 .B LANG
 when lore has a translation (from tldr-pages, 41 languages); otherwise in
 English.
-.SH RECIPES
-Under the
+.SH TOPICS
+Each kind of thing lore knows is a topic, with a list of its own; the bar
+under the search bar shows them, and Left and Right switch between them.
+.B commands
+is every command on this machine, A to Z;
 .B recipes
-header, above
-.BR # ,
-are 100 short task pages that chain commands: free disk space, what is
+the task pages (see
+.BR RECIPES );
+.BR "most used" ,
+.B recent
+and
+.B bookmarks
+your own (see
+.BR "YOUR OWN USE" ).
+A topic with nothing in it yet is not shown. A search looks in every topic.
+.SH RECIPES
+The
+.B recipes
+topic holds 100 short task pages that chain commands: free disk space, what is
 using a port, why won't a service start, add a user, find files containing
 a text, copy files to and from a server, read a file line by line, and
 more, most of them the terminal tasks people ask about most. Each shows numbered STEPS (risky ones
@@ -253,16 +272,14 @@ macOS. The search finds them by name and by what they say;
 copies a step's command. They are in lore's repository, recipes/, one
 Markdown file each.
 .SH YOUR OWN USE
-With the search empty, the list starts with three groups, above
-.BR # :
+Three topics are yours:
 .B bookmarks
 (added and removed with
 .BR b ),
 .B recent
 (the last 10 pages opened) and
 .B most used
-(the 10 commands your shell history ran most). Their commands are also
-under their letters. In a search, among names that match the same way,
+(the 50 commands your shell history ran most, most first). In a search, among names that match the same way,
 the ones you run most come first. A dim dot after a name marks a command
 your history never ran.
 .PP
