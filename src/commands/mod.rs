@@ -25,6 +25,9 @@ pub enum Kind {
     /// A recipe: a task page that chains commands ("free disk space"),
     /// from recipes/; lore's, not this machine's.
     Recipe,
+    /// A tool's cheat sheet: its everyday tasks, in groups ("docker"), from
+    /// tools/; lore's too.
+    Tool,
     /// A language's page from learnxinyminutes.com ("Python"), from
     /// languages/; lore's too.
     Language,
@@ -41,7 +44,7 @@ impl Kind {
     pub fn is_lores(self) -> bool {
         matches!(
             self,
-            Self::Recipe | Self::Language | Self::Docset | Self::DocEntry
+            Self::Recipe | Self::Tool | Self::Language | Self::Docset | Self::DocEntry
         )
     }
 }

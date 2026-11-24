@@ -119,7 +119,7 @@ To build it yourself, see [Build from source](#build-from-source).
 **Topics.** A bar under the search bar holds the topics, each its own
 list: **commands** (every command here, A to Z under letter headers, `#`
 for names starting with a digit or symbol), **recipes**, **languages**,
-**docs**, **tools** (coming soon), the **beacon**,
+**docs**, **tools**, the **beacon**,
 and your own **most used**, **recent** and **bookmarks** once they have
 anything. ← and → switch topics. Each name shows its categories, such as
 `[archives files]`; `danger` is in red, and `language` (a languages
@@ -130,6 +130,11 @@ formats), from [Learn X in Y minutes](https://learnxinyminutes.com): a
 reminder of how its features work, read top to bottom. It opens like a file
 in `bat`: the introduction, then the file with line numbers and colours;
 Tab jumps between its parts.
+
+**Tools** holds a cheat sheet per tool (docker, git, postgresql, ssh keys,
+tmux, nginx, terraform…): the tasks people look up every day, in groups
+(Tab jumps between them), each with the command to type; `c` copies one.
+A tool named like a command here is listed as `NAME (tool)`.
 
 **Docs** lists the documentation sets of [DevDocs](https://devdocs.io):
 the 50 most asked about on Stack Overflow, then all 850. Press `d` on one

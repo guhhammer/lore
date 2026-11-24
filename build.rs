@@ -147,26 +147,32 @@ fn palettes(out: &Path) {
     fs::write(out.join("palettes.rs"), table).expect("OUT_DIR is writable");
 }
 
-/// `$OUT_DIR/recipes.rs`: every `recipes/*.md` but README.md, checked: a
-/// `# title` first and at least one step, or the build stops.
+/// `$OUT_DIR/recipes.rs` and `tools.rs`: every `recipes/*.md` and
+/// `tools/*.md` but README.md, checked: a `# title` first and at least one
+/// step, or the build stops.
 fn recipes(out: &Path) {
-    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("recipes");
+    task_pages(out, "recipes", "BUILT_IN_RECIPES");
+    task_pages(out, "tools", "BUILT_IN_TOOLS");
+}
+
+fn task_pages(out: &Path, folder: &str, table_name: &str) {
+    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join(folder);
     println!("cargo:rerun-if-changed={}", dir.display());
-    let mut table = String::from("pub static BUILT_IN_RECIPES: &[&str] = &[\n");
+    let mut table = format!("pub static {table_name}: &[&str] = &[\n");
     for (_, path) in pages(&dir) {
-        let text = fs::read_to_string(&path).expect("a recipe is UTF-8 text");
+        let text = fs::read_to_string(&path).expect("a page is UTF-8 text");
         assert!(
             text.starts_with("# "),
             "{path}: the first line is `# title`"
         );
         assert!(
             text.lines().any(|l| l.starts_with("- `")),
-            "{path}: a recipe has steps (`- `command` : what it does`)"
+            "{path}: a page has steps (`- `command` : what it does`)"
         );
         table.push_str(&format!("    include_str!({path:?}),\n"));
     }
     table.push_str("];\n");
-    fs::write(out.join("recipes.rs"), table).expect("OUT_DIR is writable");
+    fs::write(out.join(format!("{folder}.rs")), table).expect("OUT_DIR is writable");
 }
 
 /// `$OUT_DIR/languages.rs` and `languages.zst`: every `languages/*.md` and

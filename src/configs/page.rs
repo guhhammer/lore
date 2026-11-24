@@ -8,6 +8,13 @@ pub const HEADING_SUBCOMMANDS: &str = "SUBCOMMANDS";
 pub const HEADING_NOTES: &str = "NOTES";
 pub const HEADING_FILES: &str = "FILES";
 pub const HEADING_STEPS: &str = "STEPS";
+/// A tool page's heading over its tasks, and the line under it.
+pub const HEADING_TASKS: &str = "TASKS";
+pub const TASKS_HINT: &str = "Everyday tasks, in groups (Tab jumps between them); c copies one. Read each before you run it.";
+/// After a tool page's name when a command here has the same name.
+pub const TOOL_SUFFIX: &str = " (tool)";
+/// What a tool page is, under its title.
+pub const IS_TOOL: &str = "A cheat sheet of lore's: the tasks this tool is used for every day.";
 pub const HEADING_USES: &str = "USES";
 
 /// Words a recipe's step can start with that are not the command it uses:

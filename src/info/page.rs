@@ -16,12 +16,12 @@ use crate::configs::{
     FIELD_INSTALLED, FIELD_LABEL_WIDTH, FIELD_LOCATION, FIELD_NEWEST, FIELD_PACKAGE, FIELD_UPDATE,
     FILES_HINT, FILES_MAX, FILES_PATH_STARTS, HEADING_FILES, HEADING_INTERNET, HEADING_LINKS,
     HEADING_MANUAL, HEADING_NOTES, HEADING_RELATED, HEADING_STEPS, HEADING_SUBCOMMANDS,
-    HEADING_USAGE, HEADING_USES, HEADING_VERSION, INTERNET_CHECKING, INTERNET_CUT,
+    HEADING_TASKS, HEADING_USAGE, HEADING_USES, HEADING_VERSION, INTERNET_CHECKING, INTERNET_CUT,
     INTERNET_DISABLED, INTERNET_DOT, INTERNET_FAILED, INTERNET_GUTTER, INTERNET_LOADING,
     INTERNET_MAX_LINES, INTERNET_NOTHING, INTERNET_OFFLINE, INTERNET_REMINDER, INTERNET_SOURCE,
-    IS_ALIAS, IS_BUILTIN, IS_FUNCTION, IS_KEYWORD, IS_RECIPE, IS_SUBCOMMAND, LINK_HINT,
+    IS_ALIAS, IS_BUILTIN, IS_FUNCTION, IS_KEYWORD, IS_RECIPE, IS_SUBCOMMAND, IS_TOOL, LINK_HINT,
     LINK_WARNING, NEWEST_SAME, NEWEST_UPDATE, NO_EXAMPLES, NO_PAGE, NO_PAGE_REASONS, NO_SUMMARY,
-    PAGE_INDENT, REASON_INDENT, RELATED_HINT, STEPS_HINT, SUBCOMMANDS_HINT, USES_HINT,
+    PAGE_INDENT, REASON_INDENT, RELATED_HINT, STEPS_HINT, SUBCOMMANDS_HINT, TASKS_HINT, USES_HINT,
     VERSION_ALIAS, VERSION_FUNCTION, VERSION_NOT_FOUND, VERSION_SHELL, VERSION_UNPACKAGED,
 };
 use crate::utils::internet::{self, Answer, Status};
@@ -130,6 +130,10 @@ pub fn render(
         recipe(&mut page, command, facts);
         return page.lines;
     }
+    if command.kind == Kind::Tool {
+        tool(&mut page, command, facts);
+        return page.lines;
+    }
     if command.kind == Kind::Language {
         return crate::info::languages::render(&command.name, width);
     }
@@ -155,7 +159,12 @@ pub fn render(
         Kind::Keyword => Some(IS_KEYWORD.to_owned()),
         Kind::Function => Some(IS_FUNCTION.to_owned()),
         Kind::Subcommand => Some(IS_SUBCOMMAND.replace("{program}", command.program())),
-        Kind::Program | Kind::Recipe | Kind::Language | Kind::Docset | Kind::DocEntry => None,
+        Kind::Program
+        | Kind::Recipe
+        | Kind::Tool
+        | Kind::Language
+        | Kind::Docset
+        | Kind::DocEntry => None,
     };
     if let Some(what) = what {
         page.wrapped(&what, Style::Text, "");
@@ -522,6 +531,68 @@ fn recipe(page: &mut Page, command: &Command, facts: &Facts) {
         page.heading(HEADING_NOTES);
         for note in &content.notes {
             page.wrapped(note, Style::Text, PAGE_INDENT);
+        }
+    }
+}
+
+/// A tool page: its title and categories, what the tool is, its TASKS in
+/// groups (each `### ` title a heading the jumper stops at; risky tasks
+/// marked), its notes and links. No version or manual: it is lore's.
+fn tool(page: &mut Page, command: &Command, facts: &Facts) {
+    let empty = Content::default();
+    let content = facts.content.as_ref().unwrap_or(&empty);
+    page.add(&command.name, Style::Title);
+    if !content.categories.is_empty() {
+        page.add(
+            &format!("[{}]", content.categories.join(" ")),
+            Style::Categories,
+        );
+    }
+    page.blank();
+    page.wrapped(IS_TOOL, Style::Dim, "");
+    page.blank();
+    for (i, paragraph) in content.summary.iter().enumerate() {
+        if i > 0 {
+            page.blank();
+        }
+        page.wrapped(paragraph, Style::Text, "");
+    }
+    page.heading(HEADING_TASKS);
+    page.wrapped(TASKS_HINT, Style::Dim, PAGE_INDENT);
+    for (i, (typed, what)) in content.usage.iter().enumerate() {
+        for (_, group) in content.groups.iter().filter(|(at, _)| *at == i) {
+            page.heading(group);
+        }
+        page.blank();
+        page.wrapped(what, Style::Text, PAGE_INDENT);
+        let (mark, style) = if danger::example(typed) {
+            (DANGER_MARK, Style::Danger)
+        } else {
+            ("", Style::Code)
+        };
+        page.wrapped(
+            &format!("{mark}{EXAMPLE_PROMPT}{typed}"),
+            style,
+            EXAMPLE_INDENT,
+        );
+    }
+    if !content.notes.is_empty() {
+        page.heading(HEADING_NOTES);
+        for note in &content.notes {
+            page.wrapped(note, Style::Text, PAGE_INDENT);
+        }
+    }
+    if !content.see_also.is_empty() {
+        page.heading(HEADING_RELATED);
+        page.wrapped(&content.see_also.join(", "), Style::Text, PAGE_INDENT);
+    }
+    if !content.links.is_empty() {
+        page.heading(HEADING_LINKS);
+        page.wrapped(LINK_HINT, Style::Dim, PAGE_INDENT);
+        for (label, url) in &content.links {
+            page.blank();
+            page.wrapped(label, Style::Text, PAGE_INDENT);
+            page.add(&format!("{PAGE_INDENT}{url}"), Style::Url); // whole, or the terminal opens half
         }
     }
 }

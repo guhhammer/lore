@@ -28,11 +28,7 @@ impl App {
 
     /// Asks the internet for the page on show (after it was turned on).
     pub fn ask_internet(&self) {
-        if let Some(page) = self
-            .page
-            .as_ref()
-            .filter(|p| p.command.kind != Kind::Recipe)
-        {
+        if let Some(page) = self.page.as_ref().filter(|p| !p.command.kind.is_lores()) {
             self.internet.request(&page.command.name);
         }
     }

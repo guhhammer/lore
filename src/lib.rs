@@ -119,12 +119,15 @@ pub fn run() -> io::Result<()> {
     result
 }
 
-/// The list: every command on this machine, and lore's recipes.
+/// The list: every command on this machine, and lore's recipes, languages
+/// and tools.
 fn everything() -> Vec<commands::Command> {
     let mut all = commands::collect();
     all.extend(info::recipes::commands());
     let taken = all.iter().map(|c| c.name.clone()).collect();
     all.extend(info::languages::commands(&taken));
+    let taken = all.iter().map(|c| c.name.clone()).collect();
+    all.extend(info::tools::commands(&taken));
     commands::merge(all)
 }
 

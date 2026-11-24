@@ -574,7 +574,7 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
                     categories,
                     width,
                     narrow,
-                    app.is_unused(&command.name) && command.kind != Kind::Recipe,
+                    app.is_unused(&command.name) && !command.kind.is_lores(),
                     app.palette(),
                 ))
             }
@@ -648,6 +648,7 @@ fn command_line(
                 Kind::Program => "a program",
                 Kind::Subcommand => "a subcommand",
                 Kind::Recipe => "a recipe",
+                Kind::Tool => "a tool page",
                 Kind::Language => "a language",
                 Kind::Docset | Kind::DocEntry => "documentation",
             };

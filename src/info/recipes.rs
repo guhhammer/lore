@@ -39,6 +39,7 @@ pub fn find(name: &str) -> Option<Content> {
 pub fn content_of(command: &Command) -> Option<Content> {
     match command.kind {
         Kind::Recipe => find(&command.name),
+        Kind::Tool => crate::info::tools::find(&command.name),
         Kind::Language => crate::info::languages::content(&command.name),
         _ => content::find(&command.name),
     }

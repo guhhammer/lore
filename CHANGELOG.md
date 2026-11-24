@@ -43,7 +43,17 @@ the version in `Cargo.toml`, and its subject starts with that version
   the sets); an entry opens at its own part, its HTML shown as text with
   headings, lists and code. Esc goes back to the sets. The catalogue is
   built in (`devdocs/catalog.tsv`, from `scripts/docs/catalog.py`).
-- **The tools topic**, empty for now: tools are coming.
+- **The tools topic:** a cheat sheet per tool, from `tools/` (built in,
+  format in `tools/README.md`): the everyday tasks people look up for
+  networking (ip, ss, dig, curl, tcpdump), language environments (python
+  venv, pip, uv, nvm, npm, pnpm, cargo, rustup), git and gh, databases
+  (MySQL, PostgreSQL, SQLite, Redis, MongoDB), containers (docker, docker
+  compose, podman, kubectl, helm), tmux, vim, shell scripting, servers
+  (systemd, cron, nginx, ufw, firewalld, certbot), keys and access (ssh
+  keys, gpg, pass, openssl), cloud (aws, gcloud, az, terraform, ansible)
+  and files (rsync, tar and zip, find grep sed awk). Each page's tasks are
+  in groups the jumper (Tab) stops at; `c` copies one. A tool named like a
+  command here is listed as `NAME (tool)`.
 - **Reset all** on the `+` screen: Enter, then Enter again, puts every
   setting back to its default and erases what lore kept (bookmarks, recent
   pages, downloaded docs and pages, the caches). Your own pages and

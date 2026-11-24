@@ -76,7 +76,7 @@ impl App {
         match topic {
             Topic::Commands => allowed
                 .iter()
-                .filter(|c| !matches!(c.kind, Kind::Recipe | Kind::Language))
+                .filter(|c| !matches!(c.kind, Kind::Recipe | Kind::Tool | Kind::Language))
                 .map(|c| (*c).clone())
                 .collect(),
             Topic::Languages => allowed
@@ -104,11 +104,15 @@ impl App {
                     .map(|c| (*c).clone())
                     .collect()
             }
+            Topic::Tools => allowed
+                .iter()
+                .filter(|c| c.kind == Kind::Tool)
+                .map(|c| (*c).clone())
+                .collect(),
             Topic::Recent => named(&self.recent),
             Topic::Bookmarks => named(&self.bookmarks),
-            // headed rows of their own: `beacon_rows`, `docs_rows`; tools
-            // are still to come
-            Topic::Beacon | Topic::Docs | Topic::Tools => Vec::new(),
+            // headed rows of their own: `beacon_rows`, `docs_rows`
+            Topic::Beacon | Topic::Docs => Vec::new(),
         }
     }
 

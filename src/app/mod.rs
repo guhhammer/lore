@@ -152,7 +152,7 @@ impl App {
         pages.extend(
             commands
                 .iter()
-                .filter(|c| matches!(c.kind, Kind::Recipe | Kind::Language))
+                .filter(|c| matches!(c.kind, Kind::Recipe | Kind::Tool | Kind::Language))
                 .map(|c| content::page_key(&c.name)),
         );
         let docs = docs_of(&commands, &pages);
@@ -380,6 +380,7 @@ impl App {
             .map(|c| c.kind);
         self.topic = match kind {
             Some(Kind::Recipe) => Topic::Recipes,
+            Some(Kind::Tool) => Topic::Tools,
             Some(Kind::Language) => Topic::Languages,
             _ => Topic::Commands,
         };
@@ -453,7 +454,7 @@ impl App {
                     rows.extend(rows::build(list));
                     rows
                 }
-                Topic::Commands | Topic::Recipes => {
+                Topic::Commands | Topic::Recipes | Topic::Tools => {
                     rows::build(self.topic_list(self.topic, &allowed))
                 }
                 _ => rows::ranked(self.topic_list(self.topic, &allowed)),

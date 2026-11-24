@@ -13,4 +13,5 @@ pub mod package; // package, version and updates, from the package manager
 pub mod page; // all of it, as lines to draw
 pub mod recipes; // task pages that chain commands, from recipes/
 pub mod tldr; // a tldr-pages page in lore's format, for --update-pages
+pub mod tools; // cheat sheets of a tool's everyday tasks, from tools/
 pub mod updates; // `lore --update-pages`: newer pages, only when asked

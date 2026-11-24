@@ -49,7 +49,7 @@ pub enum Topic {
     Languages,
     /// Documentation sets (DevDocs): download one to read it offline.
     Docs,
-    /// Tools: coming; empty for now.
+    /// Tools: a cheat sheet each (docker, ssh keys, postgresql), from tools/.
     Tools,
     /// What people use most and what is rising (`info::beacon`), installed
     /// here or not: trending, most used, then most used per category.

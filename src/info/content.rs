@@ -45,6 +45,9 @@ pub struct Content {
     pub summary: Vec<String>,
     /// (what to type, what it does).
     pub usage: Vec<(String, String)>,
+    /// A tool page's groups of tasks: (the first task's index in `usage`,
+    /// the `### ` title above it).
+    pub groups: Vec<(usize, String)>,
     /// The `## Notes` lines, as written.
     pub notes: Vec<String>,
     /// (label, URL); only `https://` links are kept.
@@ -307,7 +310,7 @@ pub fn parse(text: &str) -> Content {
             flush(&mut content.summary, &mut paragraph);
             part = match heading.trim().to_lowercase().as_str() {
                 // a recipe's steps are its examples
-                "usage" | "steps" => Part::Usage,
+                "usage" | "steps" | "tasks" => Part::Usage,
                 "notes" => Part::Notes,
                 "links" => Part::Links,
                 "see also" => Part::SeeAlso,
@@ -326,7 +329,12 @@ pub fn parse(text: &str) -> Content {
                 }
                 paragraph.push_str(line.trim());
             }
-            Part::Usage => content.usage.extend(usage(line)),
+            Part::Usage => match line.strip_prefix("### ") {
+                Some(title) => content
+                    .groups
+                    .push((content.usage.len(), title.trim().to_owned())),
+                None => content.usage.extend(usage(line)),
+            },
             Part::Notes if !line.trim().is_empty() => content.notes.push(line.trim().to_owned()),
             Part::Links => content.links.extend(link(line)),
             Part::SeeAlso => {

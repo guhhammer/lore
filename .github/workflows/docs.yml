@@ -38,7 +38,7 @@ jobs:
           args: >-
             --offline --no-progress
             '*.md' '.github/**/*.md' '.documentation/**/*.md' 'palettes/*.md'
-            'recipes/README.md' 'content/README.md' 'languages/README.md' 'scripts/**/*.md'
+            'recipes/README.md' 'tools/README.md' 'content/README.md' 'languages/README.md' 'scripts/**/*.md'
           fail: true
 
   manual:

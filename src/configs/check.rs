@@ -40,8 +40,16 @@ pub const CHECK_HTML: &[&str] = &[
     "onload=",
 ];
 
-/// The sections lore shows (and a recipe's `Steps`).
-pub const CHECK_SECTIONS: &[&str] = &["usage", "steps", "notes", "links", "see also", "categories"];
+/// The sections lore shows (and a recipe's `Steps`, a tool's `Tasks`).
+pub const CHECK_SECTIONS: &[&str] = &[
+    "usage",
+    "steps",
+    "tasks",
+    "notes",
+    "links",
+    "see also",
+    "categories",
+];
 
 /// Searches linked on every page, after the page's own links: (label, URL
 /// with `{}` where the command's name goes). The places people look for a

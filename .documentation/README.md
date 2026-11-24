@@ -8,7 +8,7 @@ How lore is built and where things are, for anyone working on the code.
 | The full manual | [`man/lore.1`](../man/lore.1) (`man -l man/lore.1`) |
 | What changed in each version | [`CHANGELOG.md`](../CHANGELOG.md) |
 | A version in depth: contents, checks, open issues | [`versions/`](versions/) |
-| Writing pages, recipes, palettes | [`content/`](../content/README.md), [`recipes/`](../recipes/README.md), [`palettes/`](../palettes/README.md) |
+| Writing pages, recipes, palettes | [`content/`](../content/README.md), [`recipes/`](../recipes/README.md), [`tools/`](../tools/README.md), [`palettes/`](../palettes/README.md) |
 | How code changes are expected to look | [`CONTRIBUTING.md`](../.github/CONTRIBUTING.md) |
 
 **This page:** [Names](#names) · [Layout](#layout) ·
@@ -64,6 +64,7 @@ lore/
 │   │   ├── explain.rs      `lore explain LINE`
 │   │   ├── languages.rs    the languages topic: learnxinyminutes pages, shown like bat
 │   │   ├── recipes.rs      the recipes as list entries (Kind::Recipe)
+│   │   ├── tools.rs        the tool cheat sheets as list entries (Kind::Tool, `NAME (tool)` on a clash)
 │   │   ├── tldr.rs         a tldr-pages page in lore's format
 │   │   └── updates.rs      `lore --update-pages`: the weekly bundle, else tldr's zips
 │   ├── interface/          what the user sees and types
@@ -85,9 +86,10 @@ lore/
 │       ├── manual.rs       running man and whatis, cleaning their output
 │       ├── text.rs         fitting text to columns
 │       └── zip.rs          the files in a zip archive (stored or deflated)
-├── build.rs                packs content/ into the binary (zstd); embeds and checks palettes/ and recipes/
+├── build.rs                packs content/ into the binary (zstd); embeds and checks palettes/, recipes/ and tools/
 ├── content/                9,109 pages, and 32,226 translations in i18n/<language>/ (41 languages)
 ├── recipes/                100 task pages
+├── tools/                  a cheat sheet per tool: `## Tasks` with `### Group` titles
 ├── languages/              201 learnxinyminutes pages + 678 translations (CC BY-SA 3.0), packed like content/
 ├── palettes/               15 colour palettes
 ├── beacon/beacon.tsv       the beacon's built-in table (BEACON_SNAPSHOT)

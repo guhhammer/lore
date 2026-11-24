@@ -34,5 +34,5 @@ pub const DOCS_NO_PAGE: &str = "This page is not in the download.";
 pub const DOCS_STARTED: &str = "downloading {name} in the background…";
 pub const DOCS_DELETED: &str = "deleted {name} from this machine";
 pub const DOCS_NOT_DELETED: &str = "could not delete {name}: {why}";
-/// The tools topic, for now.
-pub const TOOLS_EMPTY: &str = "Tools are coming soon.";
+/// The tools topic, when no tool page is there (all of them filtered out).
+pub const TOOLS_EMPTY: &str = "No tool pages here.";

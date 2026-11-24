@@ -119,7 +119,7 @@ pub fn check(name: &str, bytes: &[u8]) -> Vec<Finding> {
             continue;
         }
         match section.as_str() {
-            "usage" | "steps" => {
+            "usage" | "steps" | "tasks" => {
                 let Some(typed) = example(line) else {
                     continue;
                 };
