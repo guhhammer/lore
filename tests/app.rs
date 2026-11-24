@@ -194,12 +194,17 @@ fn an_at_sign_keeps_only_the_commands_with_a_lore_page() {
 }
 
 #[test]
-fn a_name_given_at_start_opens_its_page_and_closing_it_quits() {
+fn a_name_given_at_start_opens_its_page_and_closing_it_goes_back_to_the_list() {
     let mut app = app_with_pages(&["awk", "bash"], &[]);
     assert!(app.open_direct("bash"));
     assert_eq!(app.mode, Mode::Info);
     assert_eq!(selected_name(&app), "bash");
-    assert!(app.direct);
+    app.close_info();
+    assert_eq!(app.mode, Mode::Browse, "the whole app is there, not a quit");
+    assert_eq!(selected_name(&app), "bash");
+    let at = app.list.selected();
+    app.down();
+    assert_ne!(app.list.selected(), at, "the arrows move the list as usual");
 }
 
 #[test]

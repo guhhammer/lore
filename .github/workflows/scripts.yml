@@ -1,17 +1,47 @@
 name: scripts
 
-# Paused for now: it runs only when started by hand from the Actions tab,
-# and then only prints a line. Add push and pull_request back under `on:`
-# once it runs a real check.
+# Checks the scripts on every push to main and every pull request that
+# touches them: shellcheck on the shell ones (cli/, the release scripts,
+# the bash completion, packaging/update.sh), and that every content script is valid Python.
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "cli/**"
+      - "scripts/**"
+      - "completions/**"
+      - "packaging/**"
+      - ".github/workflows/scripts.yml"
+  pull_request:
+    paths:
+      - "cli/**"
+      - "scripts/**"
+      - "completions/**"
+      - "packaging/**"
+      - ".github/workflows/scripts.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: scripts-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   shell:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "scripts is paused for now"
+      - uses: actions/checkout@v4
+      - run: shellcheck cli/make cli/clean scripts/release/*.sh completions/lore.bash packaging/update.sh
+
+  python:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: The content scripts parse
+        run: |
+          python3 -c 'import ast, sys
+          for f in sys.argv[1:]:
+              ast.parse(open(f).read(), f)' scripts/content/*.py

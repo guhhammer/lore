@@ -6,7 +6,7 @@ use std::io;
 use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 
 use crate::app::Mode;
-use crate::compile_config::{ABOUT_KEY, BOOKMARK_KEY, COPY_KEY, PALETTE_KEY};
+use crate::compile_config::{ABOUT_KEY, BOOKMARK_KEY, COPY_KEY, JUMP_KEY, PALETTE_KEY, WAKE_EVERY};
 
 /// Something the app should do; the loop in lib.rs applies it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -32,6 +32,9 @@ pub enum Action {
     Erase,
     /// The terminal changed size; nothing to do but draw again.
     Resize,
+    /// Something changed in the background (the connection, a cheat sheet
+    /// arrived): draw again.
+    Redraw,
     /// Adds the command in view to the bookmarks, or takes it out (`b`).
     ToggleBookmark,
     /// On a page: opens the list of its examples to copy (`c`).
@@ -44,7 +47,17 @@ pub enum Action {
     /// Opens the about screen (`+`), and goes back from it.
     OpenAbout,
     CloseAbout,
-    /// Opens the palette picker (`p`).
+    /// On the about screen: the setting above or below; change it (Enter).
+    PreviousSetting,
+    NextSetting,
+    ChangeSetting,
+    /// Space in the list: the first command of the next letter (or group),
+    /// back to the top after the last.
+    NextLetter,
+    /// Space on a page: the next section at the top, back to the top after
+    /// the last.
+    NextSection,
+    /// Opens the palette picker (`p` or Enter on Colours, on the about screen).
     OpenPalettes,
     /// In the picker: try the palette above or below.
     PreviousPalette,
@@ -55,10 +68,16 @@ pub enum Action {
     CancelPalette,
 }
 
-/// Waits for the next event that means something in `mode`.
-pub fn next_action(mode: Mode) -> io::Result<Action> {
+/// Waits for the next event that means something in `mode`; while
+/// waiting, asks `changed` now and then, and draws again when it says so.
+pub fn next_action(mode: Mode, changed: &dyn Fn() -> bool) -> io::Result<Action> {
     loop {
-        // event::read blocks until the terminal sends something
+        if !event::poll(WAKE_EVERY)? {
+            if changed() {
+                return Ok(Action::Redraw);
+            }
+            continue;
+        }
         if let Some(action) = action_for_event(event::read()?, mode) {
             return Ok(action);
         }
@@ -95,6 +114,10 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         (Mode::About, KeyCode::Esc | KeyCode::Left | KeyCode::Char(ABOUT_KEY)) => {
             Some(Action::CloseAbout)
         }
+        (Mode::About, KeyCode::Up) => Some(Action::PreviousSetting),
+        (Mode::About, KeyCode::Down) => Some(Action::NextSetting),
+        (Mode::About, KeyCode::Enter) => Some(Action::ChangeSetting),
+        (Mode::About, KeyCode::Char(PALETTE_KEY)) if plain => Some(Action::OpenPalettes),
         (Mode::About, _) => None,
         (Mode::Browse | Mode::Info, KeyCode::Char(ABOUT_KEY)) if plain => Some(Action::OpenAbout),
         (Mode::Copy, KeyCode::Up) => Some(Action::PreviousExample),
@@ -103,10 +126,9 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         (Mode::Copy, KeyCode::Esc) => Some(Action::CloseCopy),
         (Mode::Copy, _) => None,
         (Mode::Info, KeyCode::Char(COPY_KEY)) if plain => Some(Action::OpenCopy),
-        // not in Search, where `p` is typed
-        (Mode::Browse | Mode::Info, KeyCode::Char(PALETTE_KEY)) if plain => {
-            Some(Action::OpenPalettes)
-        }
+        // the jumper (not in Search, where a space is typed)
+        (Mode::Browse, KeyCode::Char(JUMP_KEY)) if plain => Some(Action::NextLetter),
+        (Mode::Info, KeyCode::Char(JUMP_KEY)) if plain => Some(Action::NextSection),
         (Mode::Browse | Mode::Info, KeyCode::Char(BOOKMARK_KEY)) if plain => {
             Some(Action::ToggleBookmark)
         }

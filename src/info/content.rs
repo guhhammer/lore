@@ -1,7 +1,8 @@
 //! A command's written page: a short Markdown file, `<command>.md`. The
 //! default pages are built into lore (from the repository's content/ folder,
 //! by build.rs), so no folder is needed to use them; a page in one of
-//! `CONTENT_DIRS` adds a command or replaces the built-in page.
+//! `USER_CONTENT_DIRS` adds or replaces pages; `SYSTEM_CONTENT_DIRS` (other
+//! programs' pages) only adds them. Pages from folders must pass `info::check`.
 //!
 //! The format (content/README.md has it for writers):
 //!
@@ -25,8 +26,10 @@ use std::fs;
 use std::io::Read;
 
 use crate::compile_config::{
-    CONTENT_DIRS, FORBIDDEN_FILE_CHARS, LOCALE_VARS, NO_TRANSLATION_LOCALES,
+    CHECK_INVISIBLE, FORBIDDEN_FILE_CHARS, LOCALE_VARS, NO_TRANSLATION_LOCALES, PAGE_MAX_BYTES,
+    SYSTEM_CONTENT_DIRS, USER_CONTENT_DIRS,
 };
+use crate::info::check;
 use crate::interface::paths;
 
 // EMBEDDED: the built-in pages, (name, byte range in EMBEDDED_TEXT), sorted by
@@ -74,17 +77,21 @@ pub fn find(name: &str) -> Option<Content> {
     if name.is_empty() || name.contains('/') || name.starts_with('.') {
         return None; // a page name must stay inside the folder
     }
-    let home = paths::home();
-    let from_folder = CONTENT_DIRS
-        .iter()
-        .flat_map(|dir| paths::expand(dir, home.as_deref()))
-        .find_map(|dir| paths::read_lossy(&dir.join(format!("{name}.md"))));
-    let text = from_folder.or_else(|| built_in(name).map(str::to_owned))?;
+    // yours, then lore's own, then a page another program installed
+    let text = folder_page(USER_CONTENT_DIRS, None, name)
+        .or_else(|| built_in(name).map(str::to_owned))
+        .or_else(|| folder_page(SYSTEM_CONTENT_DIRS, None, name))?;
     let mut content = parse(&text);
     // in the reader's language when there is a translation: its summary and
-    // examples replace the English ones; the rest stays
-    if let Some(translated) = languages().iter().find_map(|lang| translation(lang, name)) {
-        let translated = parse(translated);
+    // examples replace the English ones; the rest stays. Translations come
+    // in the same order.
+    let translated = languages().iter().find_map(|lang| {
+        folder_page(USER_CONTENT_DIRS, Some(lang), name)
+            .or_else(|| translation(lang, name).map(str::to_owned))
+            .or_else(|| folder_page(SYSTEM_CONTENT_DIRS, Some(lang), name))
+    });
+    if let Some(translated) = translated {
+        let translated = parse(&translated);
         if !translated.summary.is_empty() {
             content.summary = translated.summary;
         }
@@ -100,15 +107,50 @@ pub fn find(name: &str) -> Option<Content> {
     Some(content)
 }
 
+/// `name`'s page (or its translation into `lang`, under `i18n/<lang>/`)
+/// from the first of `dirs` that has one that passes the check; one that
+/// fails is passed over, as if it were not there.
+fn folder_page(dirs: &[&str], lang: Option<&str>, name: &str) -> Option<String> {
+    let home = paths::home();
+    dirs.iter()
+        .flat_map(|dir| paths::expand(dir, home.as_deref()))
+        .find_map(|dir| {
+            let dir = match lang {
+                Some(lang) => dir.join("i18n").join(lang),
+                None => dir,
+            };
+            let file = fs::File::open(dir.join(format!("{name}.md"))).ok()?;
+            let mut bytes = Vec::new();
+            // one byte more than allowed, so a file too big is seen as such
+            file.take(PAGE_MAX_BYTES as u64 + 1)
+                .read_to_end(&mut bytes)
+                .ok()?;
+            if !check::passes(&check::check(name, &bytes)) {
+                return None;
+            }
+            String::from_utf8(bytes).ok()
+        })
+}
+
+/// A character a page may show: not a control character (an escape
+/// sequence would be obeyed by the terminal), not one that hides or
+/// reorders text.
+pub fn shown(c: char) -> bool {
+    !c.is_control()
+        && !CHECK_INVISIBLE
+            .iter()
+            .any(|(from, to)| (*from..=*to).contains(&c))
+}
+
 /// The built-in pages, packed by build.rs with zstd, as one text. A pack
 /// that does not unpack (it cannot happen with a build that passed its
 /// tests) leaves lore with no built-in pages rather than stopping it.
 fn unpack(packed: &[u8]) -> String {
     let mut text = String::new();
-    if let Ok(mut decoder) = ruzstd::decoding::StreamingDecoder::new(packed) {
-        if decoder.read_to_string(&mut text).is_err() {
-            text.clear();
-        }
+    if let Ok(mut decoder) = ruzstd::decoding::StreamingDecoder::new(packed)
+        && decoder.read_to_string(&mut text).is_err()
+    {
+        text.clear();
     }
     text
 }
@@ -172,13 +214,14 @@ pub fn languages_of(locale: &str) -> Vec<String> {
     found
 }
 
-/// Every name with a page: built in, or in a `CONTENT_DIRS` folder. Each
+/// Every name with a page: built in, or in a content folder. Each
 /// folder is listed once, not checked per command.
 pub fn names() -> HashSet<String> {
     let home = paths::home();
     let mut names: HashSet<String> = built_in_names().map(str::to_owned).collect();
-    for dir in CONTENT_DIRS
+    for dir in USER_CONTENT_DIRS
         .iter()
+        .chain(SYSTEM_CONTENT_DIRS)
         .flat_map(|dir| paths::expand(dir, home.as_deref()))
     {
         let Ok(entries) = fs::read_dir(dir) else {
@@ -186,10 +229,10 @@ pub fn names() -> HashSet<String> {
         };
         for entry in entries.flatten() {
             let file = entry.file_name();
-            if let Some(name) = file.to_str().and_then(|f| f.strip_suffix(".md")) {
-                if name != "README" {
-                    names.insert(name.to_owned());
-                }
+            if let Some(name) = file.to_str().and_then(|f| f.strip_suffix(".md"))
+                && name != "README"
+            {
+                names.insert(name.to_owned());
             }
         }
     }
@@ -237,14 +280,14 @@ pub fn parse(text: &str) -> Content {
     let mut part = Part::Summary;
     let mut paragraph = String::new();
     for line in text.lines() {
-        // control characters out: a page can come from anyone, and an escape
-        // sequence would be obeyed by the terminal, not shown
-        let line: String = line.chars().filter(|c| !c.is_control()).collect();
+        // control and invisible characters out: a page can come from anyone
+        let line: String = line.chars().filter(|&c| shown(c)).collect();
         let line = line.trim_end();
         if let Some(heading) = line.strip_prefix("## ") {
             flush(&mut content.summary, &mut paragraph);
             part = match heading.trim().to_lowercase().as_str() {
-                "usage" => Part::Usage,
+                // a recipe's steps are its examples
+                "usage" | "steps" => Part::Usage,
                 "notes" => Part::Notes,
                 "links" => Part::Links,
                 "see also" => Part::SeeAlso,

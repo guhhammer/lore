@@ -20,8 +20,11 @@ the Rust crate, as named on crates.io, is `lore-tui` (`Cargo.toml`'s
 
 A terminal program that lists every command you can type on this machine,
 A to Z, and shows a page for each: what it does, its package and version,
-its most common uses, related commands, links and its manual. Offline: the
-pages are built into the binary. Linux and macOS; bash, zsh and fish.
+its most common uses, related commands, links and its manual. The pages
+are built into the binary, so everything works offline; when there is a
+connection, an INTERNET section adds cht.sh's cheat sheet, as raw text
+(Internet off on the `+` screen, `internet = off`, stops every request). Linux and macOS; bash, zsh and
+fish.
 
 ## Layout
 
@@ -44,9 +47,13 @@ lore/
 │   │   ├── page.rs         the whole page as styled lines
 │   │   ├── package.rs      package and version from dpkg/apt, rpm, pacman, Homebrew
 │   │   ├── links.rs        the search links
-│   │   └── danger.rs       what can destroy data or stop the system
+│   │   ├── check.rs        the check of pages other programs ship (`lore check`)
+│   │   ├── danger.rs       what can destroy data or stop the system
+│   │   ├── explain.rs      `lore explain LINE`: words, flags from the man page's options
+│   │   └── recipes.rs      the recipes: list entries (Kind::Recipe), their content
 │   ├── interface/          what the user sees and types
-│   │   ├── args.rs         `lore`, `lore NAME`, --print NAME, --help, --version
+│   │   ├── args.rs         `lore`, `lore NAME`, --print NAME, explain, --complete, --help, --version
+│   │   ├── complete.rs     what can come after `lore …`, for the completion scripts
 │   │   ├── input.rs        keys to actions, per mode
 │   │   ├── palette.rs      the palettes: reads the .palette files (built in, ~/.config/lore/palettes/), their styles
 │   │   ├── ui.rs           drawing
@@ -57,14 +64,18 @@ lore/
 │   └── utils/
 │       ├── clipboard.rs    copying through the terminal (OSC 52), so over ssh too
 │       ├── history.rs      uses per command, read from the shell's history files
+│       ├── internet.rs     the connection dot, cht.sh's cheat sheets (background, cached, cleaned)
 │       ├── manual.rs       running man and whatis, cleaning their output
 │       └── text.rs         fitting text to columns (`...`, wrapping)
-├── build.rs                packs content/ into the binary (zstd), embeds and checks palettes/
+├── build.rs                packs content/ into the binary (zstd), embeds and checks palettes/ and recipes/
 ├── content/                the pages (~9,100) and i18n/<language>/ (~32,200)
 ├── palettes/               the colour palettes, one .palette file each (its README has the format)
+├── completions/            bash, zsh and fish scripts; they ask `lore --complete WORDS`
+├── recipes/                task pages that chain commands, one .md each (its README has the format)
 ├── man/lore.1              lore's own manual
 ├── scripts/content/        the scripts that make content/ (their README has the order)
 ├── scripts/release/        the release tarball and notes, for .github/workflows/release.yml
+├── packaging/              AUR PKGBUILD (lore-tui), Homebrew formula, update.sh for a release
 ├── examples/commands.rs    prints every command lore lists, for scripts/content
 ├── tests/                  every test, through src/lib.rs
 ├── cli/make, cli/clean     the build gate and cleaning
@@ -78,8 +89,11 @@ lore/
    builtins and keywords, the user's aliases, and the subcommands that have
    a page when their program is installed (`git commit`), then keeps each
    name once, the way bash would resolve it.
-2. **The written page.** `info::content::find` looks for `<name>.md` in the
-   `CONTENT_DIRS` folders, then in the pages built into the binary. A
+2. **The written page.** `info::content::find` looks for `<name>.md` in
+   the reader's folder (`USER_CONTENT_DIRS`), then in the pages built into
+   the binary, then in the folders other programs install pages in
+   (`SYSTEM_CONTENT_DIRS`, for commands lore has no page for). A folder's
+   page must pass `info::check`, or it is passed over. A
    subcommand's spaces become dashes in the file name (`git-commit.md`);
    characters Windows forbids become `%XX` (`:` is `%3A.md`). In the
    reader's language (`LC_ALL`, `LC_MESSAGES`, `LANG`), a translation's
@@ -144,7 +158,16 @@ the tests, then static musl binaries for x86_64 and aarch64 Linux with a
 `.deb` and an `.rpm` each (`[package.metadata.deb]` and `generate-rpm` in
 `Cargo.toml`), macOS binaries for Apple Silicon and Intel, and a GitHub
 release with all of them, `SHA256SUMS`, and the version's CHANGELOG section
-as notes. The other workflows are still paused.
+as notes (the Unreleased section when the version has none yet, so a
+release is just a tag).
+
+**AUR and Homebrew** are published by hand, after a release:
+`packaging/update.sh 0.1.6` puts the version and checksums into
+`packaging/aur/PKGBUILD` (the `lore-tui` package, built from source;
+"lore" on the AUR is another program, so they conflict) and
+`packaging/homebrew/lore.rb` (from the release binaries, for a tap
+`guhhammer/homebrew-tap`; Homebrew does not quarantine them, so the
+unsigned macOS binary runs). The script prints the rest. `ci.yml` checks the code (as `cli/make` does, plus the constants rule and a run of the release binary), `docs.yml` the links between the docs and the manual page, `scripts.yml` the shell and Python scripts; each on pushes to main and pull requests that touch what it checks.
 
 The drawing and the keys are not covered by the tests. Check them by hand
 in a real terminal, or with tmux:

@@ -2,7 +2,7 @@
 
 lore's colour palettes, one file each. Every `*.palette` here is built
 into lore (`build.rs` checks it, so a broken one fails the build with the
-file and the key named), and shows in the picker (`p`) by its file name:
+file and the key named), and shows in the picker (`+`, then Colours) by its file name:
 `nord.palette` is `nord`. `terminal.palette` is the default and comes first;
 the others follow by name.
 

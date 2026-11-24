@@ -22,6 +22,9 @@ pub enum Kind {
     /// A program's subcommand with a lore page (`git commit`). Its name has
     /// a space, so it never shares a name with anything else.
     Subcommand,
+    /// A recipe: a task page that chains commands ("free disk space"),
+    /// from recipes/; lore's, not this machine's.
+    Recipe,
 }
 
 /// One entry of the list.

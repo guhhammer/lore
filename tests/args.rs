@@ -61,3 +61,39 @@ fn print_without_a_name_is_an_error() {
     assert!(args(&["--print"]).is_err());
     assert!(args(&["--print", "-x"]).is_err());
 }
+
+#[test]
+fn explain_takes_the_whole_line_quoted_or_not() {
+    assert_eq!(
+        args(&["explain", "tar -xzvf a.tgz"]),
+        Ok(Start::Explain("tar -xzvf a.tgz".into()))
+    );
+    assert_eq!(
+        args(&["explain", "tar", "-xzvf", "a"]),
+        Ok(Start::Explain("tar -xzvf a".into()))
+    );
+    assert!(args(&["explain"]).is_err());
+}
+
+#[test]
+fn complete_takes_every_word_and_completions_takes_a_shell() {
+    assert_eq!(
+        args(&["--complete", "git", "co"]),
+        Ok(Start::Complete(vec!["git".into(), "co".into()]))
+    );
+    assert_eq!(args(&["--complete"]), Ok(Start::Complete(Vec::new())));
+    assert_eq!(
+        args(&["--completions", "fish"]),
+        Ok(Start::Completions("fish".into()))
+    );
+    assert!(args(&["--completions"]).is_err());
+}
+
+#[test]
+fn check_takes_the_files_to_check() {
+    assert_eq!(
+        args(&["check", "a.md", "b.md"]),
+        Ok(Start::Check(vec!["a.md".into(), "b.md".into()]))
+    );
+    assert!(args(&["check"]).is_err());
+}

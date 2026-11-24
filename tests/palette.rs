@@ -180,10 +180,11 @@ fn key(code: KeyCode) -> KeyEvent {
 }
 
 #[test]
-fn p_opens_the_picker_from_the_list_and_from_a_page_but_types_in_the_search() {
+fn p_opens_the_picker_only_on_the_about_screen_and_types_in_the_search() {
     let p = key(KeyCode::Char(PALETTE_KEY));
-    assert_eq!(action_for(p, Mode::Browse), Some(Action::OpenPalettes));
-    assert_eq!(action_for(p, Mode::Info), Some(Action::OpenPalettes));
+    assert_eq!(action_for(p, Mode::About), Some(Action::OpenPalettes));
+    assert_eq!(action_for(p, Mode::Browse), None);
+    assert_eq!(action_for(p, Mode::Info), None);
     assert_eq!(action_for(p, Mode::Search), Some(Action::Type(PALETTE_KEY)));
 }
 

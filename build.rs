@@ -6,6 +6,9 @@
 //! page sits in that text), and EMBEDDED_I18N, (language, name, where) from
 //! `content/i18n/<language>/`, both sorted for binary search.
 //!
+//! And the recipes of `recipes/` (`$OUT_DIR/recipes.rs`: BUILT_IN_RECIPES,
+//! each file's text), each checked for a title and steps.
+//!
 //! It also puts in the colour palettes of `palettes/` (`$OUT_DIR/palettes.rs`:
 //! BUILT_IN_PALETTES, (name, the file's text), `terminal` first), and checks
 //! each one, so a palette with a missing key or a bad colour fails the build
@@ -140,6 +143,28 @@ fn palettes(out: &Path) {
     fs::write(out.join("palettes.rs"), table).expect("OUT_DIR is writable");
 }
 
+/// `$OUT_DIR/recipes.rs`: every `recipes/*.md` but README.md, checked: a
+/// `# title` first and at least one step, or the build stops.
+fn recipes(out: &Path) {
+    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("recipes");
+    println!("cargo:rerun-if-changed={}", dir.display());
+    let mut table = String::from("pub static BUILT_IN_RECIPES: &[&str] = &[\n");
+    for (_, path) in pages(&dir) {
+        let text = fs::read_to_string(&path).expect("a recipe is UTF-8 text");
+        assert!(
+            text.starts_with("# "),
+            "{path}: the first line is `# title`"
+        );
+        assert!(
+            text.lines().any(|l| l.starts_with("- `")),
+            "{path}: a recipe has steps (`- `command` : what it does`)"
+        );
+        table.push_str(&format!("    include_str!({path:?}),\n"));
+    }
+    table.push_str("];\n");
+    fs::write(out.join("recipes.rs"), table).expect("OUT_DIR is writable");
+}
+
 fn main() {
     let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("content");
     // cargo watches every file under a folder named here: a page added,
@@ -188,4 +213,5 @@ fn main() {
     ));
     fs::write(out.join("content.rs"), table).expect("OUT_DIR is writable");
     palettes(&out);
+    recipes(&out);
 }

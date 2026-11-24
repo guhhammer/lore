@@ -9,17 +9,22 @@ use super::content::{self, Content};
 use super::danger;
 use super::links;
 use super::package::{self, Package};
+use super::recipes;
 use crate::commands::{self, Command, Kind};
 use crate::compile_config::{
     DANGER_EXAMPLE_NOTE, DANGER_MARK, DANGER_WARNING, EXAMPLE_INDENT, EXAMPLE_PROMPT,
     FIELD_INSTALLED, FIELD_LABEL_WIDTH, FIELD_LOCATION, FIELD_NEWEST, FIELD_PACKAGE, FIELD_UPDATE,
-    FILES_HINT, FILES_MAX, FILES_PATH_STARTS, HEADING_FILES, HEADING_LINKS, HEADING_MANUAL,
-    HEADING_NOTES, HEADING_RELATED, HEADING_SUBCOMMANDS, HEADING_USAGE, HEADING_VERSION, IS_ALIAS,
-    IS_BUILTIN, IS_FUNCTION, IS_KEYWORD, IS_SUBCOMMAND, LINK_HINT, LINK_WARNING, NEWEST_SAME,
-    NEWEST_UPDATE, NO_EXAMPLES, NO_PAGE, NO_PAGE_REASONS, NO_SUMMARY, PAGE_INDENT, REASON_INDENT,
-    RELATED_HINT, SUBCOMMANDS_HINT, VERSION_ALIAS, VERSION_FUNCTION, VERSION_NOT_FOUND,
-    VERSION_SHELL, VERSION_UNPACKAGED,
+    FILES_HINT, FILES_MAX, FILES_PATH_STARTS, HEADING_FILES, HEADING_INTERNET, HEADING_LINKS,
+    HEADING_MANUAL, HEADING_NOTES, HEADING_RELATED, HEADING_STEPS, HEADING_SUBCOMMANDS,
+    HEADING_USAGE, HEADING_USES, HEADING_VERSION, INTERNET_CHECKING, INTERNET_CUT,
+    INTERNET_DISABLED, INTERNET_DOT, INTERNET_FAILED, INTERNET_GUTTER, INTERNET_LOADING,
+    INTERNET_MAX_LINES, INTERNET_NOTHING, INTERNET_OFFLINE, INTERNET_REMINDER, INTERNET_SOURCE,
+    IS_ALIAS, IS_BUILTIN, IS_FUNCTION, IS_KEYWORD, IS_RECIPE, IS_SUBCOMMAND, LINK_HINT,
+    LINK_WARNING, NEWEST_SAME, NEWEST_UPDATE, NO_EXAMPLES, NO_PAGE, NO_PAGE_REASONS, NO_SUMMARY,
+    PAGE_INDENT, REASON_INDENT, RELATED_HINT, STEPS_HINT, SUBCOMMANDS_HINT, USES_HINT,
+    VERSION_ALIAS, VERSION_FUNCTION, VERSION_NOT_FOUND, VERSION_SHELL, VERSION_UNPACKAGED,
 };
+use crate::utils::internet::{self, Answer, Status};
 use crate::utils::manual;
 use crate::utils::text::{self, wrap};
 
@@ -40,6 +45,11 @@ pub enum Style {
     Categories,
     /// Can destroy data or stop the system: the warning and the examples.
     Danger,
+    /// The internet's dot and state: green when online, red when not.
+    Online,
+    Offline,
+    /// Text from the internet, shown as it came: never a link, never copied.
+    Raw,
 }
 
 /// One line of the page.
@@ -64,6 +74,13 @@ pub struct Facts {
 /// Looks `command` up: its page, its description and, for a program, its
 /// file and package. Runs `whatis` and the package manager; never fails.
 pub fn facts(command: &Command) -> Facts {
+    if command.kind == Kind::Recipe {
+        // lore's own page: nothing to look up on the machine
+        return Facts {
+            content: recipes::find(&command.name),
+            ..Facts::default()
+        };
+    }
     // a subcommand's file and package are its program's (`git commit` → git)
     let location = is_program(command)
         .then(|| commands::locate(command.program()))
@@ -98,6 +115,10 @@ pub fn render(
         lines: Vec::new(),
         width,
     };
+    if command.kind == Kind::Recipe {
+        recipe(&mut page, command, facts);
+        return page.lines;
+    }
     let empty = Content::default();
     let content = facts.content.as_ref().unwrap_or(&empty); // no page: every part empty
     let name = &command.name;
@@ -117,7 +138,7 @@ pub fn render(
         Kind::Keyword => Some(IS_KEYWORD.to_owned()),
         Kind::Function => Some(IS_FUNCTION.to_owned()),
         Kind::Subcommand => Some(IS_SUBCOMMAND.replace("{program}", command.program())),
-        Kind::Program => None,
+        Kind::Program | Kind::Recipe => None,
     };
     if let Some(what) = what {
         page.wrapped(&what, Style::Text, "");
@@ -270,6 +291,16 @@ fn version(page: &mut Page, command: &Command, facts: &Facts) {
     }
 }
 
+/// Whether `line` is a section's heading (INTERNET's too, coloured by the
+/// connection): where the jumper (Space) stops on a page.
+pub fn starts_a_section(line: &PageLine) -> bool {
+    match line.style {
+        Style::Heading => true,
+        Style::Online | Style::Offline => line.text.starts_with(HEADING_INTERNET),
+        _ => false,
+    }
+}
+
 /// "list directory contents" → "List directory contents."
 fn capitalized(line: &str) -> String {
     let mut chars = line.chars();
@@ -327,6 +358,129 @@ impl Page {
                 " ".repeat(text::width(&label))
             };
             self.add(&format!("{lead}{line}"), Style::Text);
+        }
+    }
+}
+
+/// The INTERNET section, put before MANUAL when the page is drawn: the dot
+/// and the state, the reminder that this is anyone's text, then the cheat
+/// sheet's lines as they came, behind a bar, cut at `INTERNET_MAX_LINES`.
+pub fn internet_lines(
+    name: &str,
+    status: Status,
+    answer: Option<&Answer>,
+    width: usize,
+) -> Vec<PageLine> {
+    let mut page = Page {
+        lines: Vec::new(),
+        width,
+    };
+    let online = status == Status::Online;
+    let style = if online {
+        Style::Online
+    } else {
+        Style::Offline
+    };
+    page.blank();
+    page.add(&format!("{HEADING_INTERNET} {INTERNET_DOT}"), style);
+    let state = match status {
+        Status::Online => INTERNET_SOURCE.replace("{name}", name),
+        Status::Offline => INTERNET_OFFLINE.to_owned(),
+        Status::Off => INTERNET_DISABLED.to_owned(),
+        Status::Checking => INTERNET_CHECKING.to_owned(),
+    };
+    let state_style = if status == Status::Checking {
+        Style::Dim
+    } else {
+        style
+    };
+    page.wrapped(&format!("{INTERNET_DOT} {state}"), state_style, PAGE_INDENT);
+    if status == Status::Off {
+        return page.lines; // turned off: nothing fetched is shown either
+    }
+    page.wrapped(INTERNET_REMINDER, Style::Warning, PAGE_INDENT);
+    match answer {
+        Some(Answer::Lines(lines)) => {
+            page.blank();
+            let room = width.saturating_sub(text::width(INTERNET_GUTTER)).max(10);
+            for (shown, line) in lines.iter().enumerate() {
+                if shown >= INTERNET_MAX_LINES {
+                    page.wrapped(
+                        &INTERNET_CUT.replace("{url}", &internet::url(name)),
+                        Style::Dim,
+                        PAGE_INDENT,
+                    );
+                    break;
+                }
+                for piece in wrap(line, room) {
+                    page.add(&format!("{INTERNET_GUTTER}{piece}"), Style::Raw);
+                }
+            }
+        }
+        Some(Answer::Loading) => page.wrapped(INTERNET_LOADING, Style::Dim, PAGE_INDENT),
+        Some(Answer::NotFound) => {
+            page.wrapped(
+                &INTERNET_NOTHING.replace("{name}", name),
+                Style::Dim,
+                PAGE_INDENT,
+            );
+        }
+        Some(Answer::Failed) => page.wrapped(INTERNET_FAILED, Style::Dim, PAGE_INDENT),
+        None => {}
+    }
+    page.lines
+}
+
+/// A recipe's page: its title and categories, what it does, its STEPS in
+/// order (numbered; risky ones marked), the commands it USES, its notes.
+/// No version, links or manual: it is lore's, not a program's.
+fn recipe(page: &mut Page, command: &Command, facts: &Facts) {
+    let empty = Content::default();
+    let content = facts.content.as_ref().unwrap_or(&empty);
+    page.add(&command.name, Style::Title);
+    if !content.categories.is_empty() {
+        page.add(
+            &format!("[{}]", content.categories.join(" ")),
+            Style::Categories,
+        );
+    }
+    page.blank();
+    page.wrapped(IS_RECIPE, Style::Dim, "");
+    page.blank();
+    for paragraph in &content.summary {
+        page.wrapped(paragraph, Style::Text, "");
+    }
+    page.heading(HEADING_STEPS);
+    page.wrapped(STEPS_HINT, Style::Dim, PAGE_INDENT);
+    for (i, (typed, what)) in content.usage.iter().enumerate() {
+        page.blank();
+        page.wrapped(&format!("{}. {what}", i + 1), Style::Text, PAGE_INDENT);
+        let (mark, style) = if danger::example(typed) {
+            (DANGER_MARK, Style::Danger)
+        } else {
+            ("", Style::Code)
+        };
+        page.wrapped(
+            &format!("{mark}{EXAMPLE_PROMPT}{typed}"),
+            style,
+            EXAMPLE_INDENT,
+        );
+    }
+    let mut uses = recipes::uses(content);
+    for name in &content.see_also {
+        if !uses.contains(name) {
+            uses.push(name.clone());
+        }
+    }
+    if !uses.is_empty() {
+        page.heading(HEADING_USES);
+        page.wrapped(USES_HINT, Style::Dim, PAGE_INDENT);
+        page.wrapped(&uses.join(", "), Style::Text, PAGE_INDENT);
+    }
+    if !content.notes.is_empty() {
+        page.heading(HEADING_NOTES);
+        for note in &content.notes {
+            page.wrapped(note, Style::Text, PAGE_INDENT);
         }
     }
 }

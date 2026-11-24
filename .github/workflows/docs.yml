@@ -1,17 +1,55 @@
 name: docs
 
-# Paused for now: it runs only when started by hand from the Actions tab,
-# and then only prints a line. Add push and pull_request back under `on:`
-# once it runs a real check.
+# Checks the docs on every push to main and every pull request that touches
+# them: links between the repository's own files (offline: outside sites
+# come and go, and a slow one would fail the run for nothing), and the
+# manual page, which groff must read without a warning.
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "**.md"
+      - "man/**"
+      - ".github/workflows/docs.yml"
+  pull_request:
+    paths:
+      - "**.md"
+      - "man/**"
+      - ".github/workflows/docs.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: docs-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   links:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "docs is paused for now"
+      - uses: actions/checkout@v4
+      # the ~40,000 pages in content/ and recipes/ link only to outside
+      # sites, so only the docs are read
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --offline --no-progress
+            '*.md' '.github/**/*.md' '.documentation/**/*.md' 'palettes/*.md'
+            'recipes/README.md' 'content/README.md' 'scripts/**/*.md'
+          fail: true
+
+  manual:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: command -v groff || (sudo apt-get update && sudo apt-get install -y groff-base)
+      - name: man/lore.1 reads without a warning
+        run: |
+          warnings=$(groff -man -ww -z man/lore.1 2>&1)
+          if [ -n "$warnings" ]; then
+            echo "$warnings"
+            exit 1
+          fi

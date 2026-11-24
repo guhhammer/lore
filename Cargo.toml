@@ -1,8 +1,8 @@
 [package]
 name = "lore-tui"
-version = "0.1.5"
+version = "0.1.6"
 edition = "2024"
-rust-version = "1.85"
+rust-version = "1.88"
 description = "A terminal list of every command you can type (programs, shell builtins, aliases), grouped A to Z. Linux and macOS; bash, zsh, fish."
 license = "MIT"
 readme = ".github/README.md"
@@ -25,6 +25,8 @@ ruzstd = "0.8.2"
 # How many columns a character takes (2 for Chinese, Japanese, Korean). Already
 # built as a dependency of ratatui; named here so the text fits by columns.
 unicode-width = "0.2"
+# The INTERNET section: https requests to cheat.sh, in pure Rust (rustls).
+ureq = { version = "3.5.2", default-features = false, features = ["rustls"] }
 
 # A smaller release binary: the whole program optimised as one unit. Most of
 # the size is the built-in pages, which these settings do not touch.
@@ -47,6 +49,9 @@ extended-description = "Every command you can type, A to Z (programs, shell buil
 assets = [
     ["target/release/lore", "usr/bin/", "755"],
     ["man/lore.1", "usr/share/man/man1/", "644"],
+    ["completions/lore.bash", "usr/share/bash-completion/completions/lore", "644"],
+    ["completions/_lore", "usr/share/zsh/vendor-completions/_lore", "644"],
+    ["completions/lore.fish", "usr/share/fish/vendor_completions.d/lore.fish", "644"],
     [".github/README.md", "usr/share/doc/lore/README.md", "644"],
 ]
 
@@ -57,5 +62,8 @@ auto-req = "no"
 assets = [
     { source = "target/release/lore", dest = "/usr/bin/lore", mode = "755" },
     { source = "man/lore.1", dest = "/usr/share/man/man1/lore.1", mode = "644", doc = true },
+    { source = "completions/lore.bash", dest = "/usr/share/bash-completion/completions/lore", mode = "644" },
+    { source = "completions/_lore", dest = "/usr/share/zsh/site-functions/_lore", mode = "644" },
+    { source = "completions/lore.fish", dest = "/usr/share/fish/vendor_completions.d/lore.fish", mode = "644" },
     { source = "LICENSE", dest = "/usr/share/licenses/lore/LICENSE", mode = "644", doc = true },
 ]

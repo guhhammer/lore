@@ -13,7 +13,68 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+## [0.1.6] - 2026-11-24
+
+The first release published on GitHub: a static binary for any Linux
+(x86_64 and ARM), `.deb` and `.rpm` packages, and macOS binaries for Apple
+Silicon and Intel, each with the man page and the shell completions.
+Everything since 0.1.0 is in it.
+
 ### Added
+
+- `packaging/`: an Arch build file (the AUR package `lore-tui`, built from
+  source) and a Homebrew formula (the release binaries, for a tap), with
+  `packaging/update.sh VERSION` to put a release's version and checksums
+  into both.
+
+- Settings on the about screen (`+`): Colours (Enter opens the palette
+  picker over it), Internet on or off and History read or not. ↑↓ choose
+  one, Enter changes it at once and saves it in the settings file. The
+  internet can now be turned on and off while lore runs; turned off, the
+  checking stops and the INTERNET section shows nothing fetched. `p` opens the
+  palettes there only: the list and pages no longer take it.
+- The jumper, Space: in the list, to the next letter or group (A, B, C, …
+  and back to the top); on a page, to the next section, and back to the
+  top after the last.
+- `lore explain "tar -xzvf a.tgz"`: each word of a command line and what it
+  means, offline: the program's summary, each flag's first sentence from
+  its man page (joined short flags split, `--opt=value` read, a flag's
+  value named), pipes and lists explained command by command,
+  redirections, and `sudo`/`env`/`xargs` then the command they run.
+- The internet: `● internet` on the search bar, green when cht.sh can be
+  reached and red when not, also on the about screen. Each command's page
+  gets an INTERNET section before MANUAL with that dot and the command's
+  community cheat sheet from cht.sh, fetched in the background when the
+  page opens and cached for a day (`~/.cache/lore/internet/`). It is shown
+  as raw text behind a bar, with every control, escape and invisible
+  character taken out; never turned into links, never offered to copy,
+  never run; and the section reminds the reader it can be changed by anyone
+  without checks. `internet = off` in the settings stops every request.
+  lore makes the requests itself (ureq, rustls): the binary is about 2.5 MB
+  larger.
+- Pages for other programs: a program can install its own page (and
+  translations, `i18n/<lang>/`) in `/usr/share/lore/content/`, used for a
+  command lore has no page for; only the reader's own folder may replace a
+  built-in page. `lore check NAME.md` checks such a page, and every page
+  read from a folder must pass it or it is not shown: no escape sequences,
+  invisible or reordering characters, HTML or script, examples that run a
+  download (`curl … | sh`), wrong titles, or over 64 KB; odd links are
+  warnings. Invisible and bidirectional characters are now taken out of
+  every page shown.
+- Shell completion for bash, zsh and fish: Tab after `lore` completes the
+  names lore lists, a program's subcommands (`lore git <Tab>`), recipes
+  word by word, the options, and a program's flags after `explain`; zsh
+  and fish show what each one is. lore answers itself (`lore --complete`),
+  so the scripts in `completions/` are three short files. The packages
+  install them; `lore --completions SHELL` prints one.
+- Recipes: 100 task pages that chain commands, most of them the terminal
+  tasks with the most-viewed Stack Overflow questions (find files containing
+  a text, change a folder's permissions, copy files to a server, send output
+  and errors to a file, split a string in bash…), plus free disk space,
+  what is using a port, why won't a service start and add a user, under their own `recipes` header in the
+  list, found by the search, with numbered steps, the commands they use and
+  notes for other systems. One Markdown file each in `recipes/`, built in
+  and checked by `build.rs` (`recipes/README.md`).
 
 - Releases: pushing a version tag (`v0.1.3`) builds lore for Linux (static
   x86_64 and ARM binaries that run on any distro, a `.deb` and an `.rpm` for
@@ -55,10 +116,30 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Changed
 
+- A release's notes are the Unreleased section of the CHANGELOG when the
+  version has no section of its own yet: a release is just a tag.
+
+- The ci, docs and scripts workflows run real checks on pushes to main and
+  pull requests: format, clippy, tests, the constants rule and a run of the
+  release binary; the docs' own links and the manual page; shellcheck and
+  the content scripts.
+- The minimum Rust is 1.88, not 1.85: ratatui 0.30.2 needs it.
+
+- `lore NAME` (and `lore git commit`) opens the page with the whole app
+  around it: ← or Esc go back to the list instead of quitting, and every
+  key works as usual; Esc in the list quits.
+
 - The built-in pages are packed with zstd at build time and unpacked once
   when lore starts (about 50 ms), and the release build optimises the whole
   program as one unit (thin LTO, one codegen unit): the binary goes from
   27.0 MB to 8.2 MB.
+
+### Fixed
+
+- `lore check` no longer takes a redirection from a file named like a tag
+  (`scheme <script.scm`) for HTML.
+- The bash completion takes each candidate as it is: `[`, a command, was
+  read as a file pattern.
 
 ## [0.1.0] - 2026-11-23
 

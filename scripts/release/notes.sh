@@ -1,19 +1,30 @@
 #!/usr/bin/env bash
 #
 # notes.sh TAG — the release notes for TAG (v0.1.3): its CHANGELOG.md section
-# when there is one, then how to install each file.
+# (or the Unreleased one, when it has none), then how to install each file.
 
 set -euo pipefail
 
 tag=${1:?usage: notes.sh TAG}
 version=${tag#v}
 
-# the lines between "## [<version>]" and the next "## [" heading
-awk -v head="## [$version]" '
-  index($0, head) == 1 { on = 1; next }
-  /^## \[/ && on       { exit }
-  on
-' CHANGELOG.md
+# the lines between a "## [...]" heading and the next one
+section() {
+  awk -v head="## [$1]" '
+    index($0, head) == 1 { on = 1; next }
+    /^## \[/ && on       { exit }
+    on
+  ' CHANGELOG.md
+}
+
+# the version's own section; when the changes are still under
+# "## [Unreleased]" (a tag pushed without renaming it), those, so that a
+# release is just a tag
+notes=$(section "$version")
+if [[ -z ${notes//[[:space:]]/} ]]; then
+  notes=$(section Unreleased)
+fi
+printf '%s\n' "$notes"
 
 cat <<NOTES
 

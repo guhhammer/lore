@@ -1,7 +1,10 @@
 //! The command line: `lore` opens the list, `lore NAME` opens NAME's page
 //! straight away, like `man NAME`, and `lore --print NAME` writes it out.
 
-use crate::compile_config::{ERROR_OPTIONS_ALONE, ERROR_PRINT_NAME, ERROR_UNKNOWN_OPTION};
+use crate::compile_config::{
+    CHECK_WORD, COMPLETE_FLAG, COMPLETIONS_FLAG, ERROR_CHECK_FILES, ERROR_COMPLETIONS_SHELL,
+    ERROR_EXPLAIN_LINE, ERROR_OPTIONS_ALONE, ERROR_PRINT_NAME, ERROR_UNKNOWN_OPTION, EXPLAIN_WORD,
+};
 
 /// What lore was asked to do.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -12,6 +15,15 @@ pub enum Start {
     Page(String),
     /// One command's page as plain text on stdout (`--print NAME`).
     Print(String),
+    /// Each word of a command line and what it means (`explain LINE`).
+    Explain(String),
+    /// What can come next on the command line, for the completion scripts
+    /// (`--complete WORDS`, the last one being typed).
+    Complete(Vec<String>),
+    /// A shell's completion script (`--completions bash`).
+    Completions(String),
+    /// Check page files another program ships (`check FILE…`).
+    Check(Vec<String>),
     Help,
     Version,
 }
@@ -24,6 +36,19 @@ pub fn parse(args: impl IntoIterator<Item = String>) -> Result<Start, String> {
         [] => Ok(Start::List),
         [flag] if flag == "-h" || flag == "--help" => Ok(Start::Help),
         [flag] if flag == "-V" || flag == "--version" => Ok(Start::Version),
+        [flag, words @ ..] if flag == COMPLETE_FLAG => Ok(Start::Complete(words.to_vec())),
+        [flag, shell] if flag == COMPLETIONS_FLAG => Ok(Start::Completions(shell.clone())),
+        [flag] if flag == COMPLETIONS_FLAG => Err(ERROR_COMPLETIONS_SHELL.to_owned()),
+        [word, files @ ..] if word == CHECK_WORD => match files {
+            [] => Err(ERROR_CHECK_FILES.to_owned()),
+            files => Ok(Start::Check(files.to_vec())),
+        },
+        // `lore explain "tar -xzvf a.tgz"`, or the words unquoted: all of
+        // them are the line, dashes included
+        [word, line @ ..] if word == EXPLAIN_WORD => match line {
+            [] => Err(ERROR_EXPLAIN_LINE.to_owned()),
+            line => Ok(Start::Explain(line.join(" "))),
+        },
         // `lore --print git commit`: the same names, printed
         [flag, names @ ..] if flag == "-p" || flag == "--print" => match names {
             [] => Err(ERROR_PRINT_NAME.to_owned()),

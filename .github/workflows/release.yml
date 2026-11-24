@@ -43,6 +43,10 @@ jobs:
     env:
       # Rust's own linker links the ARM build, so no cross compiler is needed
       CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER: rust-lld
+      # ring (TLS, for the INTERNET section) has some C: clang, on the runner
+      # already, compiles it for either target
+      CC_x86_64_unknown_linux_musl: clang
+      CC_aarch64_unknown_linux_musl: clang
     steps:
       - uses: actions/checkout@v4
       - run: rustup target add ${{ matrix.target }}

@@ -18,9 +18,13 @@ branches, so there are no backports — fixes land on the tip.
 ## Scope
 
 `lore` is a terminal program each user runs on their own machine, as
-themselves. It reaches no network and nobody else reaches it, so a
-vulnerability here is something that makes it do more than read directory
-listings, its pages and the package records, and draw them.
+themselves. Nobody else reaches it. Its one use of the network is the
+INTERNET section: a TCP check of `cht.sh:443` for the dot, and an https
+request to `https://cht.sh/NAME?T` when a page opens, made by lore itself
+(rustls), never by running a program, and none at all with
+`internet = off` (Internet off on the `+` screen). So a vulnerability here is something that makes it do
+more than read directory listings, its pages and the package records, ask
+cht.sh, and draw them.
 
 **In scope:**
 
@@ -28,8 +32,24 @@ listings, its pages and the package records, and draw them.
   shell's startup files: they are drawn to the terminal as they are, so a
   name or an alias holding terminal escape sequences is in scope.
 - The command pages (built in from `content/`, or read from the folders in
-  `CONTENT_DIRS`) and the output of `man` and `whatis`: drawn as text, with
-  control characters removed, so one that reaches the terminal is in scope.
+  `USER_CONTENT_DIRS` and `SYSTEM_CONTENT_DIRS`) and the output of `man`
+  and `whatis`: drawn as text, with control characters and invisible
+  (bidirectional, zero-width) characters removed, so one that reaches the
+  terminal is in scope.
+- **The INTERNET section's text** is anyone's: cheat.sh is written by its
+  community and the answer is not checked. lore takes out every control,
+  escape and invisible character, shows it as raw lines behind a bar,
+  never parses links from it, never offers it to copy (`c` copies only the
+  page's own examples) and never runs it, and the section says so. Text
+  from cht.sh that reaches the terminal as something other than text, that
+  lore copies or runs, or a request lore makes with `internet = off`, is in
+  scope. The answer is cached in `~/.cache/lore/internet/` for a day.
+- Pages other programs install (`/usr/share/lore/content/`): each must pass
+  `info::check` (`lore check`) or it is not shown, and one may only add a
+  page for a command lore has none for, never replace one. A page that gets
+  past the check with an escape sequence, hidden text, HTML or script, or
+  an example that runs a download, or that replaces another command's
+  page, is in scope.
 - A page's links: lore shows only `https://` links and never opens one
   itself (the terminal does, on the user's Ctrl+click). A page that leads
   to a log-in or to collecting anything from the reader is in scope; lore

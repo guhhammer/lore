@@ -14,7 +14,9 @@ lore \- every command you can type, and what each one does, offline
 lists every command you can type, each name once, sorted A to Z under
 section letters (names that start with a digit or a symbol go under
 .BR # ).
-It needs no internet.
+It needs no internet; with one, each page adds what cheat.sh has for the
+command (see
+.BR INTERNET ).
 .PP
 The list holds the programs on your
 .B $PATH
@@ -42,7 +44,8 @@ Open
 page straight away, as
 .B man
 .I NAME
-would. Closing the page quits. A name not found on this machine still
+would. Everything works from there as usual: Left or Esc go back to
+the list, and Esc there quits. A name not found on this machine still
 opens if lore or
 .B man
 has a page for it.
@@ -59,6 +62,70 @@ for pipes and scripts
 .RB ( "lore --print tar | less" ).
 It is laid out at the terminal's width, or 80 columns in a pipe or a file,
 and needs no terminal.
+.TP
+.BI "explain " LINE
+Each word of a command line and what it means, offline:
+.B lore explain """tar -xzvf a.tgz"""
+gives tar's summary, then each flag
+.RB ( \-x ,
+.BR \-z ,
+.BR \-v ,
+.BR \-f )
+with the first sentence its man page gives it, and
+.I a.tgz
+as the value of
+.BR \-f .
+Joined short flags are split, a long option's
+.I =value
+is read, a pipe or a list
+.RB ( | ,
+.BR && ,
+.BR ; )
+explains every command in it, redirections say where the output goes, and
+.BR sudo ,
+.B env
+or
+.B xargs
+are explained, then the command they run. Without quotes the words are
+taken as they come (the shell may change some).
+.TP
+.BI "\-\-completions " SHELL
+Print the completion script for
+.BR bash ,
+.B zsh
+or
+.BR fish .
+The packages install them already. Otherwise: in ~/.bashrc,
+.BR "source <(lore --completions bash)" ;
+for zsh,
+.B lore --completions zsh > ~/.zfunc/_lore
+with ~/.zfunc on
+.BR $fpath ;
+for fish,
+.BR "lore --completions fish > ~/.config/fish/completions/lore.fish" .
+Then Tab completes names
+.RB ( "lore gi" ),
+a program's subcommands
+.RB ( "lore git " ),
+recipes word by word, the options, and after
+.B explain
+a program's flags from its manual; zsh and fish show what each one is.
+.TP
+.BI "check " FILE...
+Check page files, for a program that ships its own page
+.RI ( NAME.md ).
+Errors keep a page from being shown, and make
+.B lore check
+exit with 1: a title that is not
+.IR NAME ,
+control characters or escape sequences, invisible characters that hide or
+reorder text, HTML or script, an example that runs what it downloads
+.RB ( "curl ... | sh" ),
+more than 64 KB, or text that is not UTF-8. Warnings: risky examples
+(marked
+.BR ! ),
+links that are not https, have a user or a password, a punycode or a bare
+address for a host, or are too long to show whole.
 .TP
 .BR \-h ", " \-\-help
 Print a short usage text.
@@ -98,14 +165,17 @@ Esc leaves the search bar and keeps its text; Backspace erases it.
 Bookmark the selected command, or take its bookmark away (see
 .BR "YOUR OWN USE" ).
 .TP
-.B p
-Pick a colour palette (see
-.BR COLOURS ).
+.B Space
+Jump to the next letter (or group): its first command, its header on top.
+After the last, back to the first: A, B, C, ... and A again.
 .TP
 .B +
 About lore: its version, what it found on this machine (commands, pages,
-translations, palettes, your history), where it keeps its settings and
-lists, its licence and source. +, Left or Esc go back.
+translations), where it keeps its settings and lists, its licence and
+source; and the settings, changed there: Colours (Enter opens the palette
+picker), Internet (on or off) and History (read or not). Up and Down choose
+one, Enter changes it, and it is saved at once for the next runs. +, Left or
+Esc go back; p opens the palette picker too.
 .TP
 .B Esc
 Quit.
@@ -136,8 +206,9 @@ and one that does not simply ignores it.
 Bookmark this page's command, or take its bookmark away; a bookmarked
 page's title starts with \(**.
 .TP
-.B p
-Pick a colour palette, the page staying behind it.
+.B Space
+Jump to the next section (VERSION, HOW TO USE, RELATED, ...); after the
+last, back to the top.
 .SS In the palette picker
 .TP
 .B Up, Down
@@ -167,6 +238,20 @@ or
 .B LANG
 when lore has a translation (from tldr-pages, 41 languages); otherwise in
 English.
+.SH RECIPES
+Under the
+.B recipes
+header, above
+.BR # ,
+are 100 short task pages that chain commands: free disk space, what is
+using a port, why won't a service start, add a user, find files containing
+a text, copy files to and from a server, read a file line by line, and
+more, most of them the terminal tasks people ask about most. Each shows numbered STEPS (risky ones
+marked), the commands it USES, and notes for other distributions and
+macOS. The search finds them by name and by what they say;
+.B c
+copies a step's command. They are in lore's repository, recipes/, one
+Markdown file each.
 .SH YOUR OWN USE
 With the search empty, the list starts with three groups, above
 .BR # :
@@ -187,11 +272,11 @@ The history is read from ~/.bash_history, ~/.zsh_history, ~/.histfile,
 whichever exist. lore only reads it, keeps nothing from it, and sends
 nothing anywhere;
 .I "history = off"
-in the settings file stops it reading it.
+in the settings file (or History on the + screen) stops it reading it.
 .SH COLOURS
-Press
-.B p
-to pick a palette; Enter saves it in the settings file (see
+On the + screen, Enter on Colours (or
+.BR p )
+opens the palette picker; Enter saves it in the settings file (see
 .BR FILES ).
 .B LORE_PALETTE
 names one for a single run, over the saved one.
@@ -232,6 +317,27 @@ or a terminal colour name
 .BR reset ...).
 The palettes/ folder of lore's repository has the built-in ones and the
 format in full.
+.SH INTERNET
+A dot on the search bar,
+.BR "\(bu internet" ,
+is green when cht.sh can be reached and red when not; the about screen
+.RB ( + )
+says the same. A command's page then has an INTERNET section before
+MANUAL, with the dot, and that command's community cheat sheet from
+.IR https://cht.sh/NAME ,
+fetched in the background when the page opens and kept for a day in
+~/.cache/lore/internet/.
+.PP
+It is raw text, written by anyone and not checked: it can be changed at
+any time. lore takes out every control and escape character, shows it as
+it came behind a bar, never turns it into links, never copies it
+.RB ( c
+copies only the page's own examples) and never runs it. Read it, and copy
+from it with care.
+.PP
+.I "internet = off"
+in the settings file, or Internet turned off on the + screen: lore makes
+no request at all, and the dot is red.
 .SH LINKS
 Every URL is shown whole, on a line of its own, so the terminal can open
 it: Ctrl+click in Konsole and most terminals. lore never opens a link
@@ -242,14 +348,22 @@ for any account. Check a link before you open it: anyone can add pages.
 .I $XDG_CONFIG_HOME/lore/config
 .TQ
 .I ~/.config/lore/config
-lore's settings, written when a setting is changed in the app: one
+lore's settings, written when a setting is changed in the app (the +
+screen, or p for colours): one
 .I "key = value"
 a line,
 .B #
 starts a comment:
-.I "palette = NAME"
+.IR "palette = NAME" ,
+.I "history = off"
 and
-.IR "history = off" .
+.IR "internet = off" .
+.TP
+.I ~/.cache/lore/internet/NAME.txt
+cht.sh's answer for
+.IR NAME ,
+kept for a day
+.RB ( $XDG_CACHE_HOME ).
 .TP
 .I $XDG_DATA_HOME/lore/bookmarks
 .TQ
@@ -265,9 +379,16 @@ Your bookmarks and recently opened pages, one name a line.
 .I /usr/share/lore/content/NAME.md
 A page for
 .IR NAME ,
-checked in this order before the pages built into lore; the first one
-found is shown. None of these folders needs to exist: lore carries its own
-pages. The format is in content/README.md in lore's repository.
+and its translations in
+.IR i18n/LANG/NAME.md
+under the same folders. Yours, in ~/.local/share/lore/content, come first
+and may replace a page built into lore. The other two are where programs
+install a page for their own command: lore uses them only for a command it
+has no page for, so no package can rewrite another command's page. Every
+one must pass
+.B lore check
+or it is not shown. None of these folders needs to exist. The format is in
+content/README.md in lore's repository.
 .SH EXIT STATUS
 0 on a normal quit; 1 when there is no terminal to draw on (a pipe, or
 .B ssh

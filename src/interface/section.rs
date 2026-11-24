@@ -3,7 +3,9 @@
 
 use std::fmt;
 
-use crate::compile_config::{GROUP_BOOKMARKS, GROUP_MOST_USED, GROUP_RECENT, SYMBOL_SECTION};
+use crate::compile_config::{
+    GROUP_BOOKMARKS, GROUP_MOST_USED, GROUP_RECENT, GROUP_RECIPES, SYMBOL_SECTION,
+};
 
 /// A section. `Symbol` is declared first, so it sorts before every letter.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
@@ -13,6 +15,8 @@ pub enum Section {
     Bookmarks,
     Recent,
     MostUsed,
+    /// The recipes (recipes/): only under this header, not under letters.
+    Recipes,
     /// Shown as `#`: names like `7z`, `[`, `!`.
     Symbol,
     /// Always upper case: `ls` and `Xorg` go under `L` and `X`.
@@ -20,6 +24,16 @@ pub enum Section {
 }
 
 impl Section {
+    /// The section a command goes under: `Recipes` for a recipe, else by
+    /// its name.
+    pub fn of_command(command: &crate::commands::Command) -> Self {
+        if command.kind == crate::commands::Kind::Recipe {
+            Self::Recipes
+        } else {
+            Self::of(&command.name)
+        }
+    }
+
     /// The section a name goes under: its first letter upper-cased, or `Symbol`.
     pub fn of(name: &str) -> Self {
         match name.chars().next() {
@@ -36,6 +50,7 @@ impl fmt::Display for Section {
             Self::Bookmarks => write!(f, "{GROUP_BOOKMARKS}"),
             Self::Recent => write!(f, "{GROUP_RECENT}"),
             Self::MostUsed => write!(f, "{GROUP_MOST_USED}"),
+            Self::Recipes => write!(f, "{GROUP_RECIPES}"),
             Self::Symbol => write!(f, "{SYMBOL_SECTION}"),
             Self::Letter(c) => write!(f, "{c}"),
         }

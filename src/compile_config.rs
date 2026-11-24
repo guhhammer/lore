@@ -19,6 +19,10 @@ Usage:
   lore NAME          NAME's page straight away (like `man NAME`)
   lore git commit    a subcommand's page
   lore --print NAME  NAME's page as plain text, for pipes and scripts (-p)
+  lore explain LINE  each word of a command line, from the man pages:
+                     lore explain \"tar -xzvf a.tgz\"
+  lore --completions SHELL   the completion script for bash, zsh or fish
+  lore check FILE    check a page file another program ships (see man lore)
   lore --help        this text
   lore --version     lore's version
 
@@ -96,9 +100,9 @@ pub const KEYS_BROWSE: &[(&str, &str)] = &[
     ("↑↓", "Move"),
     ("→/Enter", "Page"),
     ("/", "Search"),
+    ("Space", "Next letter"),
     ("b", "Bookmark"),
-    ("p", "Colours"),
-    ("+", "About"),
+    ("+", "About & settings"),
     ("Esc", "Quit"),
     ("^C", "Quit"),
 ];
@@ -113,21 +117,11 @@ pub const KEYS_SEARCH: &[(&str, &str)] = &[
 ];
 pub const KEYS_PAGE: &[(&str, &str)] = &[
     ("↑↓ PgUp/PgDn", "Scroll"),
+    ("Space", "Next section"),
     ("/", "Search"),
     ("c", "Copy"),
     ("b", "Bookmark"),
-    ("p", "Colours"),
     ("←/Esc", "Back"),
-    ("^C", "Quit"),
-];
-/// A page opened as `lore NAME`: closing it quits.
-pub const KEYS_PAGE_DIRECT: &[(&str, &str)] = &[
-    ("↑↓ PgUp/PgDn", "Scroll"),
-    ("/", "Search"),
-    ("c", "Copy"),
-    ("b", "Bookmark"),
-    ("p", "Colours"),
-    ("←/Esc", "Quit"),
     ("^C", "Quit"),
 ];
 /// The list of a page's examples to copy.
@@ -165,6 +159,172 @@ pub const ERROR_UNKNOWN_OPTION: &str = "unknown option {option}; see lore --help
 pub const ERROR_OPTIONS_ALONE: &str = "options go alone: lore NAME, or see lore --help";
 pub const ERROR_PRINT_NAME: &str = "--print needs a name: lore --print NAME";
 
+pub const ERROR_EXPLAIN_LINE: &str =
+    "explain needs a command line: lore explain \"tar -xzvf a.tgz\"";
+
+// ── shell completion (src/interface/complete.rs, completions/) ──────────────
+
+/// `lore --complete WORDS` (the scripts ask it) and `lore --completions
+/// SHELL` (prints a script).
+pub const COMPLETE_FLAG: &str = "--complete";
+pub const COMPLETIONS_FLAG: &str = "--completions";
+
+/// What can start the command line, offered after `lore -` (and `explain`
+/// after `lore e`).
+pub const COMPLETE_OPTIONS: &[(&str, &str)] = &[
+    ("--print", "a page as plain text, for pipes and scripts"),
+    ("-p", "a page as plain text, for pipes and scripts"),
+    ("--help", "how to use lore"),
+    ("-h", "how to use lore"),
+    ("--version", "lore's version"),
+    ("-V", "lore's version"),
+    (
+        "--completions",
+        "print the completion script for bash, zsh or fish",
+    ),
+    ("explain", "each word of a command line, from the man pages"),
+];
+
+/// Candidates get a description (the page's first sentence) only when
+/// there are at most this many, and it is cut to this many columns.
+pub const COMPLETE_DESCRIBE_MAX: usize = 300;
+pub const COMPLETE_DESCRIBE_WIDTH: usize = 60;
+
+/// The completion scripts, by shell, for `lore --completions SHELL`.
+pub const COMPLETION_SCRIPTS: &[(&str, &str)] = &[
+    ("bash", include_str!("../completions/lore.bash")),
+    ("zsh", include_str!("../completions/_lore")),
+    ("fish", include_str!("../completions/lore.fish")),
+];
+pub const ERROR_COMPLETIONS_SHELL: &str = "--completions needs a shell: bash, zsh or fish";
+
+// ── the internet (src/utils/internet.rs) ────────────────────────────────────
+
+/// `internet = off` in the settings file: no request at all.
+pub const SETTING_INTERNET: &str = "internet";
+
+/// Where a command's cheat sheet comes from: cheat.sh, community-written,
+/// as plain text (`?T`: no colours).
+pub const INTERNET_HOST: &str = "cht.sh";
+pub const INTERNET_URL: &str = "https://cht.sh/{name}?T";
+/// Who asks: lore, by name. cheat.sh sends plain text only to the clients
+/// it knows, curl among them, so the name says "like curl".
+pub const INTERNET_USER_AGENT: &str = "lore/{version} (plain text; like curl)";
+/// What the site answers for a name it does not know.
+pub const INTERNET_NOT_FOUND: &str = "Unknown topic";
+
+/// How long a connection may take; the whole request four times that.
+pub const INTERNET_TIMEOUT: std::time::Duration = std::time::Duration::from_secs(3);
+/// How often the screen looks for news from the background while waiting
+/// for a key.
+pub const WAKE_EVERY: std::time::Duration = std::time::Duration::from_millis(250);
+/// How often the connection is checked again, for the dot.
+pub const INTERNET_CHECK_EVERY: std::time::Duration = std::time::Duration::from_secs(30);
+/// The most of an answer lore reads, and shows.
+pub const INTERNET_MAX_BYTES: usize = 256 * 1024;
+pub const INTERNET_MAX_LINES: usize = 150;
+
+/// Answers kept for a day in `$XDG_CACHE_HOME/lore/internet` (or
+/// `~/.cache/lore/internet`), so a page opened again makes no request.
+pub const CACHE_HOME_VAR: &str = "XDG_CACHE_HOME";
+pub const CACHE_HOME_FALLBACK: &str = ".cache";
+pub const INTERNET_CACHE_DIR: &str = "lore/internet";
+pub const INTERNET_CACHE_HOURS: u64 = 24;
+
+/// The dot, and its word, on every screen and the about screen: always
+/// green or red, whatever the palette.
+pub const INTERNET_DOT: &str = "●";
+pub const INTERNET_WORD: &str = "internet";
+pub const INTERNET_ON: Color = Color::Green;
+pub const INTERNET_OFF: Color = Color::Red;
+
+/// The INTERNET section of a page, before MANUAL.
+pub const HEADING_INTERNET: &str = "INTERNET";
+pub const INTERNET_SOURCE: &str = "online: the cheat sheet for {name} from cht.sh";
+pub const INTERNET_REMINDER: &str = "Raw text from the internet, written by anyone: it can be changed or altered \
+at any time without any check, and lore does not check it either. Read it as text; copy from it \
+carefully, and never paste a command you have not understood. lore will not copy it for you.";
+pub const INTERNET_LOADING: &str = "Fetching it…";
+pub const INTERNET_NOTHING: &str = "cht.sh has nothing for {name}.";
+pub const INTERNET_FAILED: &str =
+    "It could not be fetched (slow or refused); it is tried again next time lore starts.";
+pub const INTERNET_OFFLINE: &str = "offline: no connection, so nothing was fetched";
+pub const INTERNET_DISABLED: &str = "off: turned off on the about screen (+), so lore asks nothing";
+pub const INTERNET_CHECKING: &str = "checking the connection…";
+pub const INTERNET_CUT: &str = "… more at {url}";
+/// The margin before each raw line: a bar, so the quote is plain to see.
+pub const INTERNET_GUTTER: &str = "  │ ";
+
+// ── lore explain ────────────────────────────────────────────────────────────
+
+/// `lore explain LINE`: the word that starts it.
+pub const EXPLAIN_WORD: &str = "explain";
+
+/// What the words of a command line mean when the man page does not say.
+pub const EXPLAIN_NO_SUMMARY: &str = "no description found on this machine";
+pub const EXPLAIN_NO_MANUAL: &str = "an option (no manual on this machine to say which)";
+pub const EXPLAIN_NOT_IN_MANUAL: &str = "an option its manual does not list";
+pub const EXPLAIN_VALUE_OF: &str = "the value given to {flag}";
+pub const EXPLAIN_FILE_OF: &str = "the file for {op}";
+pub const EXPLAIN_ARGUMENT: &str = "an argument: what it works on (a file, a name, a text)";
+pub const EXPLAIN_SETTING: &str = "sets {name} for this command only";
+pub const EXPLAIN_OPTIONS_END: &str = "the end of the options: what follows is taken as is";
+
+/// The longest a flag's description gets, in characters (then `...`).
+pub const EXPLAIN_MAX_CHARS: usize = 160;
+
+/// Columns of the word column at most; a longer word gets its own line.
+pub const EXPLAIN_WORD_WIDTH: usize = 18;
+
+/// Programs that run another command after their own options: that
+/// command is explained after them.
+pub const EXPLAIN_WRAPPERS: &[&str] = &[
+    "sudo", "doas", "env", "nice", "nohup", "time", "timeout", "xargs", "exec", "command", "watch",
+    "strace", "ionice", "chroot", "flock", "stdbuf",
+];
+
+/// Programs whose first argument can be their flags without a dash
+/// (`tar xzvf a.tgz`, `ps aux`).
+pub const EXPLAIN_BUNDLED: &[&str] = &["tar", "ps", "ar"];
+
+/// Between commands: what each joins.
+pub const EXPLAIN_OPERATORS: &[(&str, &str)] = &[
+    (
+        "|",
+        "sends the output of the command before into the next one",
+    ),
+    ("||", "runs the next command only if the one before failed"),
+    ("&&", "runs the next command only if the one before worked"),
+    (";", "then runs the next command"),
+    ("&", "runs the command before in the background"),
+];
+
+/// Redirections: (as written, what it does, whether a file follows).
+pub const EXPLAIN_REDIRECTS: &[(&str, &str, bool)] = &[
+    (">", "writes the output to a file, replacing it", true),
+    ("1>", "writes the output to a file, replacing it", true),
+    (">>", "adds the output to the end of a file", true),
+    ("<", "reads the input from a file", true),
+    ("2>", "writes the error messages to a file", true),
+    ("2>>", "adds the error messages to the end of a file", true),
+    ("&>", "writes the output and the errors to a file", true),
+    (
+        "2>&1",
+        "sends the error messages where the output goes",
+        false,
+    ),
+    (">&2", "sends the output where the error messages go", false),
+    (
+        "1>&2",
+        "sends the output where the error messages go",
+        false,
+    ),
+];
+
+/// Columns a man page is laid out at for reading its options: wide, so an
+/// option's description is not wrapped onto many lines.
+pub const EXPLAIN_MAN_WIDTH: u16 = 200;
+
 /// `lore --print NAME` into a pipe or a file, where there is no terminal to
 /// take the width from: columns to lay the page out at.
 pub const PRINT_WIDTH: u16 = 80;
@@ -178,6 +338,21 @@ pub const HEADING_RELATED: &str = "RELATED";
 pub const HEADING_SUBCOMMANDS: &str = "SUBCOMMANDS";
 pub const HEADING_NOTES: &str = "NOTES";
 pub const HEADING_FILES: &str = "FILES";
+pub const HEADING_STEPS: &str = "STEPS";
+pub const HEADING_USES: &str = "USES";
+
+/// Words a recipe's step can start with that are not the command it uses:
+/// wrappers and the shell's own words.
+pub const RECIPE_SKIPPED_WORDS: &[&str] = &[
+    "sudo", "doas", "env", "time", "nohup", "exec", "while", "until", "for", "do", "done", "if",
+    "then", "else", "elif", "fi", "case", "esac", "in", "function", "select", "!", "[", "[[", "((",
+    "local", "declare", "export", "readonly",
+];
+
+/// On a recipe's page: what it is, and the hints under its headings.
+pub const IS_RECIPE: &str = "A recipe: a task done in steps, with the commands for each.";
+pub const STEPS_HINT: &str = "In order; c copies a step's command. Read each before you run it.";
+pub const USES_HINT: &str = "The commands it uses, each with its own page (/ to find one).";
 pub const HEADING_LINKS: &str = "LINKS";
 pub const HEADING_MANUAL: &str = "MANUAL";
 
@@ -290,22 +465,43 @@ pub const ABOUT_TAGLINE: &str =
     "lore {version}: every command you can type, and what each one does. Offline.";
 pub const ABOUT_COMMANDS: &str = "{total} on this machine, {pages} with a lore page";
 pub const ABOUT_PAGES: &str = "{pages} built in, translations in {languages} languages";
-pub const ABOUT_PALETTE: &str = "{name} ({count} palettes; p picks one)";
 pub const ABOUT_KEPT: &str = "{bookmarks} bookmarks, {recent} recent pages";
-pub const ABOUT_HISTORY_ON: &str = "{seen} commands seen in your shell's history (only read, here)";
-pub const ABOUT_HISTORY_OFF: &str = "not read (no history, or `history = off`)";
 pub const ABOUT_LICENCE: &str = "MIT; examples and translations from tldr-pages, CC BY 4.0";
 pub const ABOUT_SOURCE: &str = "https://github.com/guhhammer/lore";
 pub const ABOUT_MANUAL: &str = "man lore, lore --help";
-pub const ABOUT_FIELDS: [&str; 10] = [
-    "Commands", "Pages", "Palette", "Settings", "Palettes", "Kept", "History", "Licence", "Source",
-    "Manual",
+pub const ABOUT_FIELDS: [&str; 8] = [
+    "Commands", "Pages", "Config", "Palettes", "Kept", "Licence", "Source", "Manual",
 ];
+
+/// The about screen's settings, changed there (↑↓ choose, Enter changes)
+/// and saved in the settings file at once: their heading, and each one's
+/// name, in the order shown (`Setting::all()` in src/app.rs).
+pub const ABOUT_SETTINGS_HEADING: &str = "SETTINGS";
+pub const ABOUT_SETTINGS_HINT: &str = "↑↓ choose, Enter changes; saved for the next runs";
+pub const ABOUT_SETTING_NAMES: [&str; 3] = ["Colours", "Internet", "History"];
+/// The mark before the chosen setting, and the room it takes on the others.
+pub const ABOUT_SETTING_MARK: &str = "▸ ";
+pub const ABOUT_COLOURS: &str = "{name}  ({count} palettes: Enter picks one; p does too)";
+pub const ABOUT_INTERNET_ON: &str = "on, online: pages show cht.sh's cheat sheets";
+pub const ABOUT_INTERNET_OFFLINE: &str = "on, offline: no connection right now";
+pub const ABOUT_INTERNET_OFF: &str = "off: lore makes no request";
+pub const ABOUT_INTERNET_CHECKING: &str = "on, checking…";
+pub const ABOUT_HISTORY_ON: &str =
+    "on: {seen} commands seen in your shell's history (only read, here)";
+pub const ABOUT_HISTORY_EMPTY: &str = "on: no shell history found";
+pub const ABOUT_HISTORY_OFF: &str = "off: your shell's history is not read";
+/// The key bar, when a setting could not be saved (it still holds for this run).
+pub const SETTING_NOT_SAVED: &str = "not saved for the next runs: {why}";
 /// Width of the field names' column on the about screen.
 pub const ABOUT_LABEL_WIDTH: usize = 10;
 
 /// The about screen's keys.
-pub const KEYS_ABOUT: &[(&str, &str)] = &[("+/←/Esc", "Back"), ("^C", "Quit")];
+pub const KEYS_ABOUT: &[(&str, &str)] = &[
+    ("↑↓", "Choose"),
+    ("Enter", "Change"),
+    ("+/←/Esc", "Back"),
+    ("^C", "Quit"),
+];
 
 /// The key that opens the list of a page's examples to copy.
 pub const COPY_KEY: char = 'c';
@@ -319,8 +515,12 @@ pub const NOTHING_TO_COPY: &str = "this page has no examples to copy";
 /// Columns the copy list leaves free on each side of the page.
 pub const COPY_PICKER_MARGIN: u16 = 2;
 
-/// The key that opens the palette picker, in the list and on a page.
+/// The key that opens the palette picker, on the about screen (`+`) only.
 pub const PALETTE_KEY: char = 'p';
+
+/// The jumper: in the list, to the next letter (A → B → … → back to the
+/// top); on a page, to the next section (back to the top after the last).
+pub const JUMP_KEY: char = ' ';
 
 /// The picker's title, and its title when the choice could not be saved.
 pub const PALETTE_TITLE: &str = " colours ";
@@ -343,7 +543,7 @@ pub const CONFIG_FILE: &str = "lore/config";
 /// The first lines of a settings file lore makes.
 pub const CONFIG_HEADER: &str = "\
 # lore's settings. lore writes this file when a setting is changed in the
-# app (p: colours); it can be edited by hand too. One `key = value` a line.
+# app (the + screen, or p for colours); it can be edited by hand too. One `key = value` a line.
 ";
 
 /// The palette's name in the settings file (`palette = nord`).
@@ -353,6 +553,7 @@ pub const SETTING_PALETTE: &str = "palette";
 /// history (no most-used group, no never-used marks).
 pub const SETTING_HISTORY: &str = "history";
 pub const SETTING_OFF: &str = "off";
+pub const SETTING_ON: &str = "on";
 
 /// Lists lore keeps between runs, one name a line, in
 /// `$XDG_DATA_HOME/lore/`, or `~/.local/share/lore/` when that is unset.
@@ -375,6 +576,7 @@ pub const MOST_USED_MAX: usize = 10;
 pub const GROUP_BOOKMARKS: &str = "★ bookmarks";
 pub const GROUP_RECENT: &str = "recent";
 pub const GROUP_MOST_USED: &str = "most used";
+pub const GROUP_RECIPES: &str = "recipes";
 
 /// Before the title of a bookmarked command's page.
 pub const BOOKMARK_MARK: &str = "★ ";
@@ -429,14 +631,63 @@ pub const COLOUR_NAMES: &[(&str, Color)] = &[
 
 // ── content pages ───────────────────────────────────────────────────────────
 
-/// Optional folders of extra pages (`<command>.md`), checked in this order
-/// before the pages built into lore; the first page found wins. None has to
-/// exist: lore carries its own pages and needs no folder.
-pub const CONTENT_DIRS: &[&str] = &[
-    "~/.local/share/lore/content",
-    "/usr/local/share/lore/content",
-    "/usr/share/lore/content",
+/// Optional folders of extra pages (`<command>.md`, translations in
+/// `i18n/<lang>/<command>.md`). None has to exist: lore carries its own
+/// pages. Every page found in them must pass `info::check`, or it is not
+/// shown.
+///
+/// Yours come first and may replace a page built into lore.
+pub const USER_CONTENT_DIRS: &[&str] = &["~/.local/share/lore/content"];
+/// Where other programs install a page for their command (a package's
+/// `/usr/share/lore/content/NAME.md`): used only for a command lore has no
+/// page of its own for, so no package can rewrite another command's page.
+pub const SYSTEM_CONTENT_DIRS: &[&str] =
+    &["/usr/local/share/lore/content", "/usr/share/lore/content"];
+
+// ── the check of pages lore did not write (src/info/check.rs) ───────────────
+
+/// `lore check FILE…`: checks page files, for the programs that ship one.
+pub const CHECK_WORD: &str = "check";
+pub const ERROR_CHECK_FILES: &str = "check needs page files: lore check NAME.md";
+pub const ERROR_CHECK_FAILED: &str = "{count} file(s) have errors: lore would not show them";
+pub const CHECK_OK: &str = "{file}: ok";
+pub const CHECK_UNREADABLE: &str = "{file}: cannot be read";
+
+/// The largest page file lore reads: a page is a short text.
+pub const PAGE_MAX_BYTES: usize = 64 * 1024;
+
+/// The longest link lore shows whole on a narrow screen.
+pub const MAX_LINK_LENGTH: usize = 76;
+
+/// Invisible characters that can hide text or reorder what the terminal
+/// shows (bidirectional overrides, "Trojan Source"), as ranges: an error in
+/// a page, and taken out of every page shown.
+pub const CHECK_INVISIBLE: &[(char, char)] = &[
+    ('\u{200B}', '\u{200F}'), // zero-width space and joiners, left/right marks
+    ('\u{2028}', '\u{2029}'), // line and paragraph separators
+    ('\u{202A}', '\u{202E}'), // bidirectional embeddings and overrides
+    ('\u{2060}', '\u{2064}'), // word joiner, invisible operators
+    ('\u{2066}', '\u{2069}'), // bidirectional isolates
+    ('\u{FEFF}', '\u{FEFF}'), // zero-width no-break space
 ];
+
+/// What would be code in a page: HTML and script, which no page needs.
+pub const CHECK_HTML: &[&str] = &[
+    "<script",
+    "<iframe",
+    "<object",
+    "<embed",
+    "<style",
+    "<?php",
+    "javascript:",
+    "vbscript:",
+    "data:text/html",
+    "onerror=",
+    "onload=",
+];
+
+/// The sections lore shows (and a recipe's `Steps`).
+pub const CHECK_SECTIONS: &[&str] = &["usage", "steps", "notes", "links", "see also", "categories"];
 
 /// Searches linked on every page, after the page's own links: (label, URL
 /// with `{}` where the command's name goes). The places people look for a

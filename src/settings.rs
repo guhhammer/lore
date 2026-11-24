@@ -1,7 +1,7 @@
 //! lore's settings file, kept between runs: `$XDG_CONFIG_HOME/lore/config`,
 //! or `~/.config/lore/config` when that is unset. Plain text, one
 //! `key = value` per line, `#` starts a comment; lore writes it when a
-//! setting is changed in the app (today, the palette: the `p` key).
+//! setting is changed in the app (the about screen, `+`: colours, internet, history).
 //!
 //! Lists lore keeps for you (bookmarks, recent pages) are data, not
 //! settings: one name a line in `$XDG_DATA_HOME/lore/`, or

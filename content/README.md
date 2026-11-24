@@ -85,6 +85,38 @@ files
 The version, the package and the manual page are not written here: lore
 reads them from the machine.
 
+## A page for your own program
+
+A program can ship a page for its command: install it as
+`/usr/share/lore/content/NAME.md` (`/usr/local/share/lore/content/` for a
+local install), in this format. Translations go in
+`/usr/share/lore/content/i18n/<lang>/NAME.md` (`pt_BR`, `de`…). lore uses
+such a page only for a command it has no page of its own for; the
+reader's `~/.local/share/lore/content/` may replace any.
+
+**Run `lore check NAME.md` before you ship it** (in your build, for
+example: it exits with 1 on an error). A page that fails is not shown. It
+must be plain text that a terminal shows and does not obey:
+
+| Error: the page is not shown | Why |
+| --- | --- |
+| a title other than `# NAME` | a page may not pose as another command's |
+| control characters, escape sequences | a terminal obeys them: clear the screen, set the clipboard, change the title |
+| invisible characters (zero-width, bidirectional overrides) | they hide text or reorder what is shown ("Trojan Source") |
+| HTML or script (`<script`, `javascript:`…) | lore shows text; nothing in a page is ever run |
+| an example that runs what it downloads (`curl … \| sh`, `bash <(wget …)`) | no page may hand the reader a command that runs a server's code |
+| more than 64 KB, or not UTF-8 | a page is a short text |
+
+| Warning: shown, but check it | |
+| --- | --- |
+| a risky example (`rm -rf`, `dd`…) | lore marks it with `!` |
+| a link that is not https | lore does not show it |
+| a user or password in a link, a punycode (`xn--`) or bare-address host | it can hide where the link really goes |
+| a link over 76 characters | a narrow screen cuts it |
+
+lore never runs, opens or writes anything a page says, and shows only
+https links, which the reader's terminal opens.
+
 ## Before you send a page
 
 - Every link goes to the page it says, over https, with no tracking.

@@ -8,24 +8,28 @@ use ratatui::style::Style;
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{Block, Clear, List, ListItem, ListState, Paragraph};
 
-use crate::app::{App, Mode};
+use crate::app::{App, Mode, Setting};
 use crate::commands::{Command, Kind};
 use crate::compile_config::{
-    ABOUT_COMMANDS, ABOUT_FIELDS, ABOUT_HISTORY_OFF, ABOUT_HISTORY_ON, ABOUT_KEPT,
-    ABOUT_LABEL_WIDTH, ABOUT_LICENCE, ABOUT_MANUAL, ABOUT_PAGES, ABOUT_PALETTE, ABOUT_SOURCE,
-    ABOUT_TAGLINE, ABOUT_TITLE, BOOKMARK_MARK, BOOKMARKS_FILE, COPY_PICKER_MARGIN, COPY_TITLE,
-    DANGER, INFO_LIST_PERCENT, KEY_BAR_HEIGHT, KEYS_ABOUT, KEYS_BROWSE, KEYS_COPY, KEYS_PAGE,
-    KEYS_PAGE_DIRECT, KEYS_PALETTE, KEYS_SEARCH, LIST_HEADER_INDENT, LIST_INDENT,
-    LIST_INDENT_NARROW, LIST_TITLE, LIST_TITLE_SEARCHING, LOGO, LOGO_GAP, LORE_ORANGE, NO_MATCH,
-    PALETTE_DIR, PALETTE_NOT_SAVED, PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT,
-    SEARCH_HINT, SEARCH_KEPT_HINT, SEARCH_TITLE, UNUSED_MARK,
+    ABOUT_COLOURS, ABOUT_COMMANDS, ABOUT_FIELDS, ABOUT_HISTORY_EMPTY, ABOUT_HISTORY_OFF,
+    ABOUT_HISTORY_ON, ABOUT_INTERNET_CHECKING, ABOUT_INTERNET_OFF, ABOUT_INTERNET_OFFLINE,
+    ABOUT_INTERNET_ON, ABOUT_KEPT, ABOUT_LABEL_WIDTH, ABOUT_LICENCE, ABOUT_MANUAL, ABOUT_PAGES,
+    ABOUT_SETTING_MARK, ABOUT_SETTING_NAMES, ABOUT_SETTINGS_HEADING, ABOUT_SETTINGS_HINT,
+    ABOUT_SOURCE, ABOUT_TAGLINE, ABOUT_TITLE, BOOKMARK_MARK, BOOKMARKS_FILE, COPY_PICKER_MARGIN,
+    COPY_TITLE, DANGER, HEADING_MANUAL, INFO_LIST_PERCENT, INTERNET_DOT, INTERNET_OFF, INTERNET_ON,
+    INTERNET_WORD, KEY_BAR_HEIGHT, KEYS_ABOUT, KEYS_BROWSE, KEYS_COPY, KEYS_PAGE, KEYS_PALETTE,
+    KEYS_SEARCH, LIST_HEADER_INDENT, LIST_INDENT, LIST_INDENT_NARROW, LIST_TITLE,
+    LIST_TITLE_SEARCHING, LOGO, LOGO_GAP, LORE_ORANGE, NO_MATCH, PALETTE_DIR, PALETTE_NOT_SAVED,
+    PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT, SEARCH_HINT, SEARCH_KEPT_HINT,
+    SEARCH_TITLE, UNUSED_MARK,
 };
 use crate::info::content;
-use crate::info::page::Style as PageStyle;
+use crate::info::page::{self, PageLine, Style as PageStyle};
 use crate::interface::palette::Palette;
 use crate::interface::paths;
 use crate::interface::rows::Row;
 use crate::settings;
+use crate::utils::internet::Status;
 use crate::utils::text;
 
 /// Draws the whole screen; called once per loop in lib.rs.
@@ -55,7 +59,7 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
     let logo_lines: Vec<Line> = LOGO.iter().map(|l| Line::styled(*l, orange)).collect();
     frame.render_widget(Paragraph::new(logo_lines), logo);
     draw_search(frame, app, search);
-    if app.mode == Mode::About {
+    if app.about_shown() {
         draw_about(frame, app, body);
     } else if app.page_shown() {
         let [list, page] = Layout::horizontal([
@@ -74,7 +78,7 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
             Paragraph::new(Line::styled(note.as_str(), app.palette().accent())),
             keys,
         ),
-        None => draw_keys(frame, app.mode, app.direct, app.palette(), keys),
+        None => draw_keys(frame, app.mode, app.palette(), keys),
     }
     if app.mode == Mode::Palette {
         draw_picker(frame, app, body);
@@ -113,9 +117,6 @@ fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
         ABOUT_PAGES
             .replace("{pages}", &count(app.pages.len()))
             .replace("{languages}", &count(content::translated_languages())),
-        ABOUT_PALETTE
-            .replace("{name}", &app.palette().name)
-            .replace("{count}", &count(app.palettes.len())),
         tilde(config),
         tilde(palettes_dir),
         format!(
@@ -125,11 +126,6 @@ fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
                 .replace("{bookmarks}", &count(app.bookmarks.len()))
                 .replace("{recent}", &count(app.recent.len()))
         ),
-        if app.uses.is_empty() {
-            ABOUT_HISTORY_OFF.to_owned()
-        } else {
-            ABOUT_HISTORY_ON.replace("{seen}", &count(app.uses.len()))
-        },
         ABOUT_LICENCE.to_owned(),
         ABOUT_SOURCE.to_owned(),
         ABOUT_MANUAL.to_owned(),
@@ -148,6 +144,56 @@ fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
         };
         lines.push(Line::from(vec![
             Span::styled(format!("  {label:<ABOUT_LABEL_WIDTH$}"), muted),
+            Span::styled(value, style),
+        ]));
+    }
+
+    // the settings, changed here: the chosen one marked and highlighted
+    lines.push(Line::raw(""));
+    lines.push(Line::from(vec![
+        Span::styled(
+            format!("  {ABOUT_SETTINGS_HEADING}"),
+            app.palette().heading(),
+        ),
+        Span::styled(format!("   {ABOUT_SETTINGS_HINT}"), muted),
+    ]));
+    let pad = " ".repeat(text::width(ABOUT_SETTING_MARK));
+    for (i, (setting, name)) in Setting::all().iter().zip(ABOUT_SETTING_NAMES).enumerate() {
+        let (value, style) = match setting {
+            Setting::Colours => (
+                ABOUT_COLOURS
+                    .replace("{name}", &app.palette().name)
+                    .replace("{count}", &count(app.palettes.len())),
+                Style::new(),
+            ),
+            Setting::Internet => {
+                let (state, style) = match app.internet.status() {
+                    Status::Online => (ABOUT_INTERNET_ON, Style::new().fg(INTERNET_ON)),
+                    Status::Offline => (ABOUT_INTERNET_OFFLINE, Style::new().fg(INTERNET_OFF)),
+                    Status::Off => (ABOUT_INTERNET_OFF, Style::new().fg(INTERNET_OFF)),
+                    Status::Checking => (ABOUT_INTERNET_CHECKING, muted),
+                };
+                (format!("{INTERNET_DOT} {state}"), style)
+            }
+            Setting::History => (
+                match (app.history, app.uses.len()) {
+                    (false, _) => ABOUT_HISTORY_OFF.to_owned(),
+                    (true, 0) => ABOUT_HISTORY_EMPTY.to_owned(),
+                    (true, seen) => ABOUT_HISTORY_ON.replace("{seen}", &count(seen)),
+                },
+                Style::new(),
+            ),
+        };
+        let chosen = i == app.setting;
+        let (mark, label_style) = if chosen {
+            (ABOUT_SETTING_MARK, app.palette().selected())
+        } else {
+            (pad.as_str(), muted)
+        };
+        lines.push(Line::from(vec![
+            Span::raw(format!("  {mark}")),
+            Span::styled(format!("{name:<ABOUT_LABEL_WIDTH$}"), label_style),
+            Span::raw(" "),
             Span::styled(value, style),
         ]));
     }
@@ -242,10 +288,22 @@ fn draw_picker(frame: &mut Frame, app: &App, area: Rect) {
 
 /// The search bar: its text (kept after leaving it), a cursor while typing,
 /// and a hint when it is empty.
+/// ` ● internet `: green when online, red when not (or off), dim while the
+/// first check runs. On every screen, on the search bar's right.
+fn internet_dot(app: &App) -> Line<'static> {
+    let style = match app.internet.status() {
+        Status::Online => Style::new().fg(INTERNET_ON),
+        Status::Offline | Status::Off => Style::new().fg(INTERNET_OFF),
+        Status::Checking => app.palette().muted(),
+    };
+    Line::styled(format!(" {INTERNET_DOT} {INTERNET_WORD} "), style)
+}
+
 fn draw_search(frame: &mut Frame, app: &App, area: Rect) {
     let searching = app.mode == Mode::Search;
     let block = Block::bordered()
         .title(SEARCH_TITLE)
+        .title_top(internet_dot(app).right_aligned())
         .border_style(if searching {
             app.palette().active() // keys go to the search bar
         } else {
@@ -317,7 +375,7 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
                     categories,
                     width,
                     narrow,
-                    app.is_unused(&command.name),
+                    app.is_unused(&command.name) && command.kind != Kind::Recipe,
                     app.palette(),
                 ))
             }
@@ -381,6 +439,7 @@ fn command_line(
                 Kind::Builtin => "a builtin",
                 Kind::Program => "a program",
                 Kind::Subcommand => "a subcommand",
+                Kind::Recipe => "a recipe",
             };
             parts.push((format!("  (hides {what})"), dim));
         }
@@ -418,10 +477,35 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
     let Some(page) = &app.page else {
         return; // nothing selected: open_info does not allow it, but be safe
     };
-    let rows = page.lines.len();
-    app.scroll = app.scroll.min(rows.saturating_sub(height));
-    let lines: Vec<Line> = page
+    // the INTERNET section goes before MANUAL (a recipe has neither): made
+    // here, at every draw, since its answer arrives in the background
+    let mut all: Vec<&PageLine> = page.lines.iter().collect();
+    let internet;
+    if let Some(manual) = page
         .lines
+        .iter()
+        .rposition(|l| l.style == PageStyle::Heading && l.text == HEADING_MANUAL)
+    {
+        let name = &page.command.name;
+        internet = page::internet_lines(
+            name,
+            app.internet.status(),
+            app.internet.answer(name).as_ref(),
+            usize::from(width),
+        );
+        let at = manual.saturating_sub(1); // before the blank line over MANUAL
+        all.splice(at..at, internet.iter());
+    }
+    let rows = all.len();
+    // where each section starts, for the jumper (Space)
+    let sections = all
+        .iter()
+        .enumerate()
+        .filter(|(_, l)| page::starts_a_section(l))
+        .map(|(i, _)| i)
+        .collect();
+    app.scroll = app.scroll.min(rows.saturating_sub(height));
+    let lines: Vec<Line> = all
         .iter()
         .map(|line| Line::styled(line.text.as_str(), style_of(line.style, app.palette())))
         .collect();
@@ -440,6 +524,8 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
         .block(Block::bordered().title(title))
         .scroll((u16::try_from(app.scroll).unwrap_or(u16::MAX), 0));
     frame.render_widget(paragraph, area);
+    app.sections = sections;
+    app.scroll_max = rows.saturating_sub(height);
 }
 
 /// How each kind of page line looks, in the palette's colours.
@@ -453,15 +539,18 @@ fn style_of(style: PageStyle, palette: &Palette) -> Style {
         PageStyle::Text => Style::new(),
         PageStyle::Categories => palette.category(),
         PageStyle::Danger => palette.danger(),
+        // green or red whatever the palette, as the dot on top
+        PageStyle::Online => Style::new().fg(INTERNET_ON),
+        PageStyle::Offline => Style::new().fg(INTERNET_OFF),
+        PageStyle::Raw => Style::new(),
     }
 }
 
 /// The bottom line, nano-style: each key highlighted, then what it does.
-fn draw_keys(frame: &mut Frame, mode: Mode, direct: bool, palette: &Palette, area: Rect) {
+fn draw_keys(frame: &mut Frame, mode: Mode, palette: &Palette, area: Rect) {
     let keys = match mode {
         Mode::Browse => KEYS_BROWSE,
         Mode::Search => KEYS_SEARCH,
-        Mode::Info if direct => KEYS_PAGE_DIRECT, // opened as `lore NAME`
         Mode::Info => KEYS_PAGE,
         Mode::Palette => KEYS_PALETTE,
         Mode::Copy => KEYS_COPY,

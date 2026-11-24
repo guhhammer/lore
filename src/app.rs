@@ -7,8 +7,8 @@ use ratatui::widgets::ListState;
 
 use crate::commands::{self, Command, Kind};
 use crate::compile_config::{COPIED, MAN_PROBE_WIDTH, MOST_USED_MAX, NOTHING_TO_COPY, RECENT_MAX};
-use crate::info::content;
 use crate::info::page::{self, Facts, PageLine};
+use crate::info::{content, recipes};
 use crate::interface::palette::{self, Palette};
 use crate::interface::rows::{self, Row};
 use crate::interface::search;
@@ -31,15 +31,33 @@ pub enum Mode {
     /// The list of the page's examples over it: ↑↓ choose, Enter copies,
     /// Esc closes. Opened from a page only.
     Copy,
-    /// The about screen (`+`): what lore is, where it keeps things.
+    /// The about screen (`+`): what lore is, where it keeps things, and
+    /// the settings: ↑↓ choose one, Enter changes it.
     About,
+}
+
+/// A setting on the about screen, in the order shown.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Setting {
+    /// The palette: Enter opens the picker over the about screen.
+    Colours,
+    /// The INTERNET section and the dot: on or off.
+    Internet,
+    /// Reading the shell's history (most used, never-used marks): on or off.
+    History,
+}
+
+impl Setting {
+    pub fn all() -> [Self; 3] {
+        [Self::Colours, Self::Internet, Self::History]
+    }
 }
 
 /// The open palette picker: where it was opened from, and what to go back
 /// to on Esc.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Picker {
-    /// Browse or Info: the mode to return to.
+    /// Browse, Info or About: the mode to return to.
     pub from: Mode,
     /// Where the palette from before is in `palettes`.
     pub before: usize,
@@ -76,8 +94,6 @@ pub struct App {
     pub scroll: usize,
     /// The names that have a lore page, for the `@` search.
     pub pages: HashSet<String>,
-    /// Opened as `lore NAME`: closing the page quits, like man.
-    pub direct: bool,
     /// Searching from a page (`/` while reading): the page stays beside the
     /// list until another one is opened.
     pub beside_page: bool,
@@ -107,6 +123,18 @@ pub struct App {
     pub note: Option<String>,
     /// The mode the about screen was opened from, to go back to.
     pub about_from: Mode,
+    /// Where the page's sections start, as drawn (the INTERNET section
+    /// counted), and how far it can scroll: ui.rs sets both at each draw,
+    /// for the jumper (Space).
+    pub sections: Vec<usize>,
+    pub scroll_max: usize,
+    /// The setting chosen on the about screen, in `Setting::all()`.
+    pub setting: usize,
+    /// Whether the shell's history is read (`history = off`: not).
+    pub history: bool,
+    /// The connection and the cheat sheets fetched (off in tests; lib.rs
+    /// starts it unless `internet = off`).
+    pub internet: std::sync::Arc<crate::utils::internet::Internet>,
 }
 
 impl App {
@@ -116,12 +144,19 @@ impl App {
     }
 
     /// Like `new`, with the set of names that have a lore page given.
-    pub fn with_pages(commands: Vec<Command>, pages: HashSet<String>) -> Self {
+    pub fn with_pages(commands: Vec<Command>, mut pages: HashSet<String>) -> Self {
+        // a recipe is a page of its own, for `@` and for searching by content
+        pages.extend(
+            commands
+                .iter()
+                .filter(|c| c.kind == Kind::Recipe)
+                .map(|c| content::page_key(&c.name)),
+        );
         // read once at start: a page per listed command that has one
         let docs = commands
             .iter()
             .filter(|c| pages.contains(&content::page_key(&c.name)))
-            .filter_map(|c| Some((c.name.clone(), search::Doc::of(&content::find(&c.name)?))))
+            .filter_map(|c| Some((c.name.clone(), search::Doc::of(&recipes::content_of(c)?))))
             .collect();
         let mut app = Self {
             commands,
@@ -132,7 +167,6 @@ impl App {
             page: None,
             scroll: 0,
             pages,
-            direct: false,
             beside_page: false,
             docs,
             snippets: HashMap::new(),
@@ -145,6 +179,11 @@ impl App {
             example: 0,
             note: None,
             about_from: Mode::Browse,
+            sections: Vec::new(),
+            scroll_max: 0,
+            setting: 0,
+            history: true,
+            internet: crate::utils::internet::Internet::off(),
         };
         app.refilter(); // builds the rows from the empty query
         app
@@ -168,7 +207,7 @@ impl App {
             Mode::Info => true,
             Mode::Search => self.beside_page,
             // the picker sits over whatever was on screen
-            Mode::Palette => self.picker.as_ref().is_some_and(|p| p.from == Mode::Info),
+            Mode::Palette => self.picker_from(Mode::Info),
             Mode::Copy => true,
             Mode::About => false,
             Mode::Browse => false,
@@ -180,6 +219,48 @@ impl App {
         if matches!(self.mode, Mode::Browse | Mode::Info) {
             self.about_from = self.mode;
             self.mode = Mode::About;
+        }
+    }
+
+    /// True when the about screen is on show: open, or under the picker
+    /// opened from it.
+    pub fn about_shown(&self) -> bool {
+        self.mode == Mode::About || self.picker_from(Mode::About)
+    }
+
+    /// The palette picker is open and was opened from `mode`.
+    fn picker_from(&self, mode: Mode) -> bool {
+        self.mode == Mode::Palette && self.picker.as_ref().is_some_and(|p| p.from == mode)
+    }
+
+    /// Chooses the setting `steps` away on the about screen, wrapping round.
+    pub fn step_setting(&mut self, steps: isize) {
+        let count = Setting::all().len();
+        let forward = steps.rem_euclid(isize::try_from(count).unwrap_or(isize::MAX));
+        self.setting = (self.setting + usize::try_from(forward).unwrap_or(0)) % count;
+    }
+
+    /// The setting chosen on the about screen.
+    pub fn chosen_setting(&self) -> Setting {
+        Setting::all()[self.setting % Setting::all().len()]
+    }
+
+    /// Turns reading the shell's history on (with what it holds) or off;
+    /// the groups and marks follow at once.
+    pub fn set_history(&mut self, on: bool, uses: HashMap<String, u32>) {
+        self.history = on;
+        self.uses = if on { uses } else { HashMap::new() };
+        self.rebuild_keeping_selection();
+    }
+
+    /// Asks the internet for the page on show (after it was turned on).
+    pub fn ask_internet(&self) {
+        if let Some(page) = self
+            .page
+            .as_ref()
+            .filter(|p| p.command.kind != Kind::Recipe)
+        {
+            self.internet.request(&page.command.name);
         }
     }
 
@@ -240,9 +321,9 @@ impl App {
         self.note = copied.map(|text| COPIED.replace("{text}", text));
     }
 
-    /// Opens the palette picker over the list or the page.
+    /// Opens the palette picker over the list, the page or the about screen.
     pub fn open_palettes(&mut self) {
-        if matches!(self.mode, Mode::Browse | Mode::Info) {
+        if matches!(self.mode, Mode::Browse | Mode::Info | Mode::About) {
             self.picker = Some(Picker {
                 from: self.mode,
                 before: self.chosen,
@@ -430,6 +511,38 @@ impl App {
     }
 
     /// Scrolls the page by `lines` (negative: up); `ui` stops it at the end.
+    /// Space in the list: selects the first command under the next header
+    /// (the next letter, or group), its header shown on top; after the
+    /// last, the first one again. A search's results have no headers.
+    pub fn next_letter(&mut self) {
+        let headers: Vec<usize> = (0..self.rows.len())
+            .filter(|&i| !self.rows[i].is_selectable())
+            .collect();
+        let at = self.list.selected().unwrap_or(0);
+        let Some(&header) = headers
+            .iter()
+            .find(|&&h| h > at)
+            .or_else(|| headers.first())
+        else {
+            return;
+        };
+        let Some(first) = (header..self.rows.len()).find(|&i| self.rows[i].is_selectable()) else {
+            return;
+        };
+        self.list.select(Some(first));
+        *self.list.offset_mut() = header;
+    }
+
+    /// Space on a page: scrolls to the next section's heading; at the last
+    /// one (or the end of the page), back to the top.
+    pub fn next_section(&mut self) {
+        let next = self.sections.iter().copied().find(|&s| s > self.scroll);
+        self.scroll = match next {
+            Some(line) if self.scroll < self.scroll_max => line.min(self.scroll_max),
+            _ => 0,
+        };
+    }
+
     pub fn scroll_by(&mut self, lines: isize) {
         self.scroll = self.scroll.saturating_add_signed(lines);
     }
@@ -465,10 +578,16 @@ impl App {
             }
             _ => {
                 self.scroll = 0; // a new page starts at its top
+                if command.kind != Kind::Recipe {
+                    self.internet.request(&command.name); // in the background
+                }
                 page::facts(&command)
             }
         };
-        let man = manual::page(&content::page_key(&command.name), width); // `man git-commit`
+        // `man git-commit`; a recipe has no manual
+        let man = (command.kind != Kind::Recipe)
+            .then(|| manual::page(&content::page_key(&command.name), width))
+            .flatten();
         let lines = page::render(&command, &facts, man.as_deref(), usize::from(width));
         self.page = Some(Page {
             command,
@@ -512,7 +631,8 @@ impl App {
         }
     }
 
-    /// Opens `name`'s page at start (`lore NAME`), so that closing it quits.
+    /// Opens `name`'s page at start (`lore NAME`). Everything works from
+    /// there as usual: ← goes back to the list, Esc there quits.
     /// A name lore did not find on this machine is added to the list for the
     /// page to show. False if neither lore nor man has anything on it.
     pub fn open_direct(&mut self, name: &str) -> bool {
@@ -539,7 +659,6 @@ impl App {
         };
         self.list.select(Some(row));
         self.open_info();
-        self.direct = true;
         true
     }
 

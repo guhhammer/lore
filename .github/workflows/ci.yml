@@ -1,17 +1,73 @@
 name: ci
 
-# Paused for now: it runs only when started by hand from the Actions tab,
-# and then only prints a line. Add push and pull_request back under `on:`
-# once it runs a real check.
+# Checks the code on every push to main and every pull request that touches
+# it: the same steps as cli/make (format, clippy, tests, a release build),
+# the rule that every constant lives in src/compile_config.rs, and a run of
+# the built binary on what needs no terminal.
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "examples/**"
+      - "build.rs"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "content/**"
+      - "recipes/**"
+      - "palettes/**"
+      - "completions/**"
+      - ".github/workflows/ci.yml"
+  pull_request:
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "examples/**"
+      - "build.rs"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "content/**"
+      - "recipes/**"
+      - "palettes/**"
+      - "completions/**"
+      - ".github/workflows/ci.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
+# a newer push to the same branch makes the older run moot
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  gate:
+  check:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "ci is paused for now"
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --check
+      - run: cargo clippy --all-targets --locked -- -D warnings
+      - run: cargo test --locked
+      - name: Every const and static lives in src/compile_config.rs
+        run: |
+          found=$(grep -rnE '^\s*(pub(\([^)]*\))?\s+)?(const|static)\s+[A-Z_]' src \
+            | grep -v '^src/compile_config.rs' || true)
+          if [ -n "$found" ]; then
+            echo "$found"
+            echo "::error::move these to src/compile_config.rs"
+            exit 1
+          fi
+      - run: cargo build --release --locked
+      - name: The binary runs (what needs no terminal)
+        run: |
+          lore=target/release/lore
+          $lore --version
+          $lore --help > /dev/null
+          $lore --print tar > page.txt && grep -q "HOW TO USE" page.txt
+          $lore explain "tar -xzvf a.tgz"
+          $lore --complete git co > words.txt && grep -q "^commit" words.txt
+          $lore --completions bash | bash -n

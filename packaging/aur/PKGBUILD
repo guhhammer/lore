@@ -1,0 +1,50 @@
+# Maintainer: guhhammer <https://github.com/guhhammer>
+#
+# lore, built from its source. The package is lore-tui, like the crate:
+# "lore" on the AUR is another program (a pager) that also installs
+# /usr/bin/lore, so the two conflict. packaging/update.sh fills in the
+# version and the checksum for a release.
+
+pkgname=lore-tui
+pkgver=0.1.6
+pkgrel=1
+pkgdesc='Every command you can type, A to Z, with an offline page for each'
+arch=('x86_64' 'aarch64')
+url='https://github.com/guhhammer/lore'
+license=('MIT')
+depends=('gcc-libs' 'glibc')
+makedepends=('cargo')
+optdepends=('man-db: the MANUAL section, and flags for lore explain')
+provides=('lore')
+conflicts=('lore' 'lore-bin')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+prepare() {
+  cd "lore-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "lore-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
+}
+
+check() {
+  cd "lore-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --release
+}
+
+package() {
+  cd "lore-$pkgver"
+  install -Dm755 target/release/lore "$pkgdir/usr/bin/lore"
+  install -Dm644 man/lore.1 "$pkgdir/usr/share/man/man1/lore.1"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 completions/lore.bash "$pkgdir/usr/share/bash-completion/completions/lore"
+  install -Dm644 completions/_lore "$pkgdir/usr/share/zsh/site-functions/_lore"
+  install -Dm644 completions/lore.fish "$pkgdir/usr/share/fish/vendor_completions.d/lore.fish"
+}

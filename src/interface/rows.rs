@@ -23,11 +23,11 @@ impl Row {
 pub fn build(mut commands: Vec<Command>) -> Vec<Row> {
     // by section first: `{` sorts after `z` by name, but belongs under `#`;
     // sort_by_key is stable, so names keep their order within a section
-    commands.sort_by_key(|c| Section::of(&c.name));
+    commands.sort_by_key(Section::of_command);
     let mut rows = Vec::new();
     let mut current = None; // the section of the last header pushed
     for command in commands {
-        let section = Section::of(&command.name);
+        let section = Section::of_command(&command);
         if current != Some(section) {
             rows.push(Row::Header(section)); // a new section starts here
             current = Some(section);

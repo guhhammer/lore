@@ -2,6 +2,7 @@
 //! search, the drawing, and the paths the configured lists are written in.
 
 pub mod args; // the command line: `lore`, `lore NAME`, --help, --version
+pub mod complete; // shell completion: what can come after `lore …`
 pub mod input; // keys and resizes → Action
 pub mod palette; // the colours, chosen by $LORE_PALETTE
 pub mod paths; // `~/` and `*` in the configured paths

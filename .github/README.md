@@ -10,7 +10,8 @@ command.
 `lore` lists every command you can type, each name once, in one scrollable
 list sorted alphabetically under the section letters `A` to `Z` (names that
 start with a digit or a symbol go under `#`). It is for anyone who wants to
-see what commands their machine has, with no internet needed:
+see what commands their machine has, with no internet needed (and, when
+there is one, a page's INTERNET section adds cht.sh's cheat sheet):
 
 - **Programs:** the executables on your `$PATH`, plus the places a `$PATH`
   often leaves out — `/usr/sbin` (where `reboot`, `fdisk` and `useradd` live),
@@ -28,12 +29,30 @@ see what commands their machine has, with no internet needed:
 - **Your own use:** your bookmarks (`b`), the pages you opened last and the
   commands your shell history runs most head the list; in a search, the
   ones you run most come first, and a dim dot marks those you never ran.
-  The history is only read, on your machine (`history = off` in
-  `~/.config/lore/config` turns it off); the lists are kept in
+  The history is only read, on your machine (History on the `+` screen, or `history = off` in
+  `~/.config/lore/config`, turns it off); the lists are kept in
   `~/.local/share/lore/`.
+- **Recipes:** 100 short task pages that chain commands, under their own
+  header, most of them the terminal tasks with the most-viewed Stack
+  Overflow questions: find files containing a text, copy files to a
+  server, free disk space, what is using a port, add a user, and more. Each is a Markdown file in
+  [`recipes/`](../recipes/).
+- **Internet:** a green or red `● internet` on top says whether there is a
+  connection. Then each page has an INTERNET section, before the manual,
+  with the command's community cheat sheet from cht.sh: raw text, written
+  by anyone, never copied or run by lore; the section reminds you to copy
+  from it with care. Turning Internet off on the `+` screen (`internet = off`
+  in `~/.config/lore/config`) stops every request.
+- **Your program's page in lore:** install `NAME.md` in
+  `/usr/share/lore/content/` and run `lore check NAME.md` first: see
+  [content/README.md](../content/README.md).
+- **Tab completion** in bash, zsh and fish: `lore git <Tab>` offers git's
+  subcommands; installed by the packages, or `lore --completions bash`.
+- **`lore explain "tar -xzvf a.tgz"`** says what each word of a command
+  line does, from the man pages, offline.
 - **FILES** on each page: the configuration files, logs and data its manual
   names.
-- **Colour palettes:** press `p` to pick one; the arrows try it on the whole
+- **Colour palettes:** Colours on the `+` screen (or `p` there) picks one; the arrows try it on the whole
   screen, Enter keeps it, and it is saved in `~/.config/lore/config` for the
   next time (`LORE_PALETTE=nord lore` uses another for one run). Eight
   themes, most with a dark and a light variant: `catppuccin-mocha`, `catppuccin-latte`,
@@ -66,6 +85,8 @@ lore/
 ├── src/                 the program: lib.rs runs it, commands/ finds the commands
 ├── content/             the command pages, built into the binary
 ├── palettes/            the colour palettes, one file each; add yours
+├── recipes/             task pages that chain commands, one file each
+├── completions/         Tab completion for bash, zsh and fish
 ├── man/                 lore.1, lore's own manual page
 ├── tests/               the tests, which reach the program through src/lib.rs
 ├── cli/                 make (fmt, clippy, test, build, release → app/) and clean
@@ -89,8 +110,8 @@ cargo run --release -- tar   # tar's page straight away, like `man tar`
 ```
 
 `lore git commit` opens a subcommand's page the same way, and `lore --print
-tar` writes the page out as plain text, for pipes and scripts. `lore NAME` opens NAME's page directly, and closing it quits, as with
-`man`. `lore --help` and `lore --version` do what they say. lore's own
+tar` writes the page out as plain text, for pipes and scripts. `lore NAME` opens NAME's page directly, as with `man`, and the whole app
+is there: ← goes back to the list, Esc there quits. `lore --help` and `lore --version` do what they say. lore's own
 manual is `man/lore.1`: `man -l man/lore.1` reads it from the checkout, and
 a package installs it so that `man lore` works.
 
@@ -120,9 +141,12 @@ always shown on the bottom line:
   empties it.
 - `c`, on a page, copies one of its examples to the clipboard (over ssh
   too: the terminal does the copy).
-- `+` shows what lore is and where it keeps things.
+- `+` shows what lore is and where it keeps things, and its settings:
+  Colours, Internet on or off, History read or not. ↑ and ↓ choose one,
+  Enter changes it, and it is saved for the next runs.
 - `b`, in the list or on a page, bookmarks the command (again: takes it out).
-- `p`, in the list or on a page, opens the colour palettes.
+- Space is the jumper: in the list, to the next letter (A, B, C, … and
+  back to A); on a page, to the next section, and back to the top.
 - Esc, when not searching or reading, quits. Ctrl+C quits at any time.
 
 ## Building
@@ -132,7 +156,7 @@ cli/make     # cargo fmt, clippy, test, build, build --release, then copies app/
 cli/clean    # removes all of target/ and the page drafts
 ```
 
-Needs Rust stable, edition 2024 (rustc 1.85 or newer).
+Needs Rust stable, edition 2024 (rustc 1.88 or newer).
 
 ## Where to read next
 
