@@ -13,3 +13,4 @@ desktop, files, containers
 ## Links
 - More information: https://imagemagick.org/script/import.php
 - tldr page: https://tldr.inbrowser.app/pages/common/magick-import
+- Wikipedia: https://en.wikipedia.org/wiki/ImageMagick

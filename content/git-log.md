@@ -18,3 +18,4 @@ version-control, monitoring, files
 ## Links
 - More information: https://git-scm.com/docs/git-log
 - tldr page: https://tldr.inbrowser.app/pages/common/git-log
+- Wikipedia: https://en.wikipedia.org/wiki/Git

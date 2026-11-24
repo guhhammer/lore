@@ -13,3 +13,4 @@ version-control, files, development
 ## Links
 - More information: https://git-scm.com/docs/git-bugreport
 - tldr page: https://tldr.inbrowser.app/pages/common/git-bugreport
+- Wikipedia: https://en.wikipedia.org/wiki/Git

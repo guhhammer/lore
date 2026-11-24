@@ -17,3 +17,4 @@ version-control, packages, files
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-diff/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-diff
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

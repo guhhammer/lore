@@ -16,3 +16,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-revert
 - tldr page: https://tldr.inbrowser.app/pages/common/git-revert
+- Wikipedia: https://en.wikipedia.org/wiki/Git

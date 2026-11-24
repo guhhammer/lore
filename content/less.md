@@ -18,3 +18,4 @@ text, files
 ## Links
 - More information: https://manned.org/less
 - tldr page: https://tldr.inbrowser.app/pages/common/less
+- Wikipedia: https://en.wikipedia.org/wiki/Less_(Unix)

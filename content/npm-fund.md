@@ -13,3 +13,4 @@ packages, network
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-fund/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-fund
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

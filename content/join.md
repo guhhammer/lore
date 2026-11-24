@@ -15,3 +15,4 @@ files, text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/join-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/join
+- Wikipedia: https://en.wikipedia.org/wiki/Join_(Unix)

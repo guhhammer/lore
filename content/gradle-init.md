@@ -15,3 +15,4 @@ development
 ## Links
 - More information: https://docs.gradle.org/current/userguide/build_init_plugin.html
 - tldr page: https://tldr.inbrowser.app/pages/common/gradle-init
+- Wikipedia: https://en.wikipedia.org/wiki/Gradle

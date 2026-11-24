@@ -18,3 +18,4 @@ version-control, files, packages
 ## Links
 - More information: https://git-scm.com/docs/git-commit
 - tldr page: https://tldr.inbrowser.app/pages/common/git-commit
+- Wikipedia: https://en.wikipedia.org/wiki/Git

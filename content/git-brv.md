@@ -11,3 +11,4 @@ version-control, documents
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-brv
 - tldr page: https://tldr.inbrowser.app/pages/common/git-brv
+- Wikipedia: https://en.wikipedia.org/wiki/Git

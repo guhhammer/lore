@@ -14,3 +14,4 @@ packages, network
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-bugs/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-bugs
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -16,3 +16,4 @@ network, text
 ## Links
 - More information: https://manned.org/irssi
 - tldr page: https://tldr.inbrowser.app/pages/common/irssi
+- Wikipedia: https://en.wikipedia.org/wiki/Irssi

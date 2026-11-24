@@ -16,3 +16,4 @@ files, desktop, editors
 ## Links
 - More information: https://manned.org/kdenlive
 - tldr page: https://tldr.inbrowser.app/pages/common/kdenlive
+- Wikipedia: https://en.wikipedia.org/wiki/Kdenlive

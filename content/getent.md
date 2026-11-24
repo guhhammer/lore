@@ -15,3 +15,4 @@ system, network, users
 ## Links
 - More information: https://manned.org/getent
 - tldr page: https://tldr.inbrowser.app/pages/linux/getent
+- Wikipedia: https://en.wikipedia.org/wiki/Getent

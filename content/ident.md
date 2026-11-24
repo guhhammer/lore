@@ -20,3 +20,4 @@ files, desktop
 ## Links
 - More information: https://manned.org/ident
 - tldr page: https://tldr.inbrowser.app/pages/common/ident
+- Wikipedia: https://en.wikipedia.org/wiki/Revision_Control_System

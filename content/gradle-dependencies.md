@@ -13,3 +13,4 @@ packages, desktop, development
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/gradle-dependencies
+- Wikipedia: https://en.wikipedia.org/wiki/Gradle

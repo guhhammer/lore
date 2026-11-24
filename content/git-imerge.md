@@ -16,3 +16,4 @@ version-control
 ## Links
 - More information: https://github.com/mhagger/git-imerge
 - tldr page: https://tldr.inbrowser.app/pages/common/git-imerge
+- Wikipedia: https://en.wikipedia.org/wiki/Git

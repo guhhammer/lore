@@ -14,3 +14,4 @@ packages, text, files
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-List_packages_or_modules
 - tldr page: https://tldr.inbrowser.app/pages/common/go-list
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

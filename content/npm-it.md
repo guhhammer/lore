@@ -10,3 +10,4 @@ development, packages, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-it
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

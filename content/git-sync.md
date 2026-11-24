@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://manned.org/git-sync
 - tldr page: https://tldr.inbrowser.app/pages/common/git-sync
+- Wikipedia: https://en.wikipedia.org/wiki/Git

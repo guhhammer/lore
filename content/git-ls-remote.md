@@ -15,3 +15,4 @@ version-control, network, packages
 ## Links
 - More information: https://git-scm.com/docs/git-ls-remote
 - tldr page: https://tldr.inbrowser.app/pages/common/git-ls-remote
+- Wikipedia: https://en.wikipedia.org/wiki/Git

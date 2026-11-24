@@ -18,3 +18,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git
 - tldr page: https://tldr.inbrowser.app/pages/common/git
+- Wikipedia: https://en.wikipedia.org/wiki/Git

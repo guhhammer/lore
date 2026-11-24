@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://man.openbsd.org/mktemp.1
 - tldr page: https://tldr.inbrowser.app/pages/common/mktemp
+- Wikipedia: https://en.wikipedia.org/wiki/Mktemp

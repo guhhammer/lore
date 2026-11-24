@@ -18,3 +18,4 @@ containers
 ## Links
 - More information: https://helm.sh/docs/helm/
 - tldr page: https://tldr.inbrowser.app/pages/common/helm
+- Wikipedia: https://en.wikipedia.org/wiki/Helm_(package_manager)

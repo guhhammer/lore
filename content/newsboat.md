@@ -15,3 +15,4 @@ text, network
 ## Links
 - More information: https://newsboat.org/releases/2.40/docs/newsboat.html#_first_steps
 - tldr page: https://tldr.inbrowser.app/pages/common/newsboat
+- Wikipedia: https://en.wikipedia.org/wiki/Newsboat

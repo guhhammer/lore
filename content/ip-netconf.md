@@ -14,3 +14,4 @@ network, desktop
 ## Links
 - More information: https://manned.org/ip-netconf
 - tldr page: https://tldr.inbrowser.app/pages/linux/ip-netconf
+- Wikipedia: https://en.wikipedia.org/wiki/Iproute2

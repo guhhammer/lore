@@ -17,3 +17,4 @@ development, packages, files
 ## Links
 - More information: https://pkg.go.dev/cmd/go
 - tldr page: https://tldr.inbrowser.app/pages/common/go
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

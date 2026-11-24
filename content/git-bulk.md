@@ -18,3 +18,4 @@ version-control, files, packages
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-bulk
 - tldr page: https://tldr.inbrowser.app/pages/common/git-bulk
+- Wikipedia: https://en.wikipedia.org/wiki/Git

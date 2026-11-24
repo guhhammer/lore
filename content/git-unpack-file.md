@@ -11,3 +11,4 @@ files, version-control
 ## Links
 - More information: https://git-scm.com/docs/git-unpack-file
 - tldr page: https://tldr.inbrowser.app/pages/common/git-unpack-file
+- Wikipedia: https://en.wikipedia.org/wiki/Git

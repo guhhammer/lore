@@ -13,3 +13,4 @@ version-control, files, network
 ## Links
 - More information: https://manned.org/git-stamp
 - tldr page: https://tldr.inbrowser.app/pages/common/git-stamp
+- Wikipedia: https://en.wikipedia.org/wiki/Git

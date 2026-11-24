@@ -15,3 +15,4 @@ security, files
 ## Links
 - More information: https://docs.openssl.org/master/man1/openssl-dgst/
 - tldr page: https://tldr.inbrowser.app/pages/common/openssl-dgst
+- Wikipedia: https://en.wikipedia.org/wiki/OpenSSL

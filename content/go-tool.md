@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Run_specified_go_tool
 - tldr page: https://tldr.inbrowser.app/pages/common/go-tool
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

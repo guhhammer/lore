@@ -12,3 +12,4 @@ files, desktop
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-root/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-root
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

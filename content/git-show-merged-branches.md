@@ -10,3 +10,4 @@ version-control, documents
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/git-show-merged-branches
+- Wikipedia: https://en.wikipedia.org/wiki/Git

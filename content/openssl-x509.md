@@ -14,3 +14,4 @@ security
 ## Links
 - More information: https://docs.openssl.org/master/man1/openssl-x509/
 - tldr page: https://tldr.inbrowser.app/pages/common/openssl-x509
+- Wikipedia: https://en.wikipedia.org/wiki/OpenSSL

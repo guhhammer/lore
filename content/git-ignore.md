@@ -17,3 +17,4 @@ version-control, files
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-ignore
 - tldr page: https://tldr.inbrowser.app/pages/common/git-ignore
+- Wikipedia: https://en.wikipedia.org/wiki/Git

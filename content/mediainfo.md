@@ -13,3 +13,4 @@ media, desktop, files
 ## Links
 - More information: https://mediaarea.net/MediaInfo
 - tldr page: https://tldr.inbrowser.app/pages/common/mediainfo
+- Wikipedia: https://en.wikipedia.org/wiki/MediaInfo

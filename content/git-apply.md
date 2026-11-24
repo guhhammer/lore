@@ -19,3 +19,4 @@ version-control, files, network
 ## Links
 - More information: https://git-scm.com/docs/git-apply
 - tldr page: https://tldr.inbrowser.app/pages/common/git-apply
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -14,3 +14,4 @@ users, network
 ## Links
 - More information: https://docs.npmjs.com/cli/v11/npm-adduser
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-adduser
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

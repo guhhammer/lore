@@ -21,3 +21,4 @@ network, files, windows
 ## Links
 - More information: https://www.serverwatch.com/guides/netsh-commands/
 - tldr page: https://tldr.inbrowser.app/pages/windows/netsh-wlan
+- Wikipedia: https://en.wikipedia.org/wiki/Netsh

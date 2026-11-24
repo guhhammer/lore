@@ -16,3 +16,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-mergetool
 - tldr page: https://tldr.inbrowser.app/pages/common/git-mergetool
+- Wikipedia: https://en.wikipedia.org/wiki/Git

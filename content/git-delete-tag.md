@@ -11,3 +11,4 @@ version-control
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-delete-tag
 - tldr page: https://tldr.inbrowser.app/pages/common/git-delete-tag
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -13,3 +13,4 @@ danger, disks
 ## Links
 - More information: https://manned.org/mkfs
 - tldr page: https://tldr.inbrowser.app/pages/linux/mkfs
+- Wikipedia: https://en.wikipedia.org/wiki/Mkfs

@@ -15,3 +15,4 @@ version-control, files, archives
 ## Links
 - More information: https://git-scm.com/docs/git-unpack-objects
 - tldr page: https://tldr.inbrowser.app/pages/common/git-unpack-objects
+- Wikipedia: https://en.wikipedia.org/wiki/Git

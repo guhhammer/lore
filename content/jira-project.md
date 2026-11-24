@@ -12,3 +12,4 @@ development
 ## Links
 - More information: https://github.com/ankitpokhrel/jira-cli#other-commands
 - tldr page: https://tldr.inbrowser.app/pages/common/jira-project
+- Wikipedia: https://en.wikipedia.org/wiki/Jira_(software)

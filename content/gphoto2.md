@@ -17,3 +17,4 @@ network, containers, media
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/gphoto2
+- Wikipedia: https://en.wikipedia.org/wiki/GPhoto

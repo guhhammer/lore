@@ -23,3 +23,4 @@ desktop, files
 ## Links
 - More information: https://manned.org/nautilus
 - tldr page: https://tldr.inbrowser.app/pages/linux/nautilus
+- Wikipedia: https://en.wikipedia.org/wiki/GNOME_Files

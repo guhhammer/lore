@@ -18,3 +18,4 @@ files, users
 ## Links
 - More information: https://hashcat.net/wiki/doku.php?id=hashcat
 - tldr page: https://tldr.inbrowser.app/pages/common/hashcat
+- Wikipedia: https://en.wikipedia.org/wiki/Hashcat

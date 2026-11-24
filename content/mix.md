@@ -15,3 +15,4 @@ development, packages
 ## Links
 - More information: https://hexdocs.pm/mix/index.html
 - tldr page: https://tldr.inbrowser.app/pages/common/mix
+- Wikipedia: https://en.wikipedia.org/wiki/Mix_(build_tool)

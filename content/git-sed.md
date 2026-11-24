@@ -14,3 +14,4 @@ version-control, text, files
 ## Links
 - More information: https://manned.org/git-sed
 - tldr page: https://tldr.inbrowser.app/pages/common/git-sed
+- Wikipedia: https://en.wikipedia.org/wiki/Git

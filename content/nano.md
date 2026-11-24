@@ -22,3 +22,4 @@ editors
 ## Links
 - More information: https://nano-editor.org/dist/latest/nano.html
 - tldr page: https://tldr.inbrowser.app/pages/common/nano
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_nano

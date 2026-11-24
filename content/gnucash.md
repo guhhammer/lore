@@ -13,3 +13,4 @@ files, monitoring
 ## Links
 - More information: https://manned.org/gnucash
 - tldr page: https://tldr.inbrowser.app/pages/common/gnucash
+- Wikipedia: https://en.wikipedia.org/wiki/GnuCash

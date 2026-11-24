@@ -18,3 +18,4 @@ files
 
 ## Links
 - GNU manual: https://www.gnu.org/software/coreutils/ls
+- Wikipedia: https://en.wikipedia.org/wiki/Ls

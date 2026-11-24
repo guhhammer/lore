@@ -14,3 +14,4 @@ text, files
 ## Links
 - More information: https://manned.org/head.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/head
+- Wikipedia: https://en.wikipedia.org/wiki/Head_(Unix)

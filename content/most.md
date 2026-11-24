@@ -18,3 +18,4 @@ files, text
 ## Links
 - More information: https://manned.org/most
 - tldr page: https://tldr.inbrowser.app/pages/common/most
+- Wikipedia: https://en.wikipedia.org/wiki/Most_(Unix)

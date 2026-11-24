@@ -13,3 +13,4 @@ version-control, databases
 ## Links
 - More information: https://git-scm.com/docs/git-prune
 - tldr page: https://tldr.inbrowser.app/pages/common/git-prune
+- Wikipedia: https://en.wikipedia.org/wiki/Git

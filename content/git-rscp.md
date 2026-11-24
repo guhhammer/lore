@@ -12,3 +12,4 @@ version-control, files, packages
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-scp
 - tldr page: https://tldr.inbrowser.app/pages/common/git-rscp
+- Wikipedia: https://en.wikipedia.org/wiki/Git

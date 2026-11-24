@@ -15,3 +15,4 @@ files, archives, text
 ## Links
 - More information: https://manned.org/mail
 - tldr page: https://tldr.inbrowser.app/pages/common/mail
+- Wikipedia: https://en.wikipedia.org/wiki/Mail_(Unix)

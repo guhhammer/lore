@@ -14,3 +14,4 @@ network, development
 ## Links
 - More information: https://docs.gradle.org/current/userguide/gradle_wrapper.html
 - tldr page: https://tldr.inbrowser.app/pages/common/gradle-wrapper
+- Wikipedia: https://en.wikipedia.org/wiki/Gradle

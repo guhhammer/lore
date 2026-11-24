@@ -18,3 +18,4 @@ shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-history
 - tldr page: https://tldr.inbrowser.app/pages/common/history
+- Wikipedia: https://en.wikipedia.org/wiki/History_(command)

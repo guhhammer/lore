@@ -16,3 +16,4 @@ files, network
 ## Links
 - More information: https://mplayerhq.hu/DOCS/HTML/en/commandline.html
 - tldr page: https://tldr.inbrowser.app/pages/common/mplayer
+- Wikipedia: https://en.wikipedia.org/wiki/MPlayer

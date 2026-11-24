@@ -18,3 +18,4 @@ files, containers, media
 ## Links
 - More information: https://imagemagick.org/script/convert.php
 - tldr page: https://tldr.inbrowser.app/pages/common/magick-convert
+- Wikipedia: https://en.wikipedia.org/wiki/ImageMagick

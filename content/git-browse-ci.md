@@ -12,3 +12,4 @@ version-control, packages
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-browse-ci
 - tldr page: https://tldr.inbrowser.app/pages/common/git-browse-ci
+- Wikipedia: https://en.wikipedia.org/wiki/Git

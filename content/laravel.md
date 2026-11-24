@@ -17,3 +17,4 @@ packages
 ## Links
 - More information: https://laravel.com/docs/installation
 - tldr page: https://tldr.inbrowser.app/pages/common/laravel
+- Wikipedia: https://en.wikipedia.org/wiki/Laravel

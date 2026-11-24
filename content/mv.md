@@ -15,3 +15,4 @@ files
 
 ## Links
 - GNU manual: https://www.gnu.org/software/coreutils/mv
+- Wikipedia: https://en.wikipedia.org/wiki/Mv_(Unix)

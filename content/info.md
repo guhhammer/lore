@@ -13,3 +13,4 @@ documents
 ## Links
 - More information: https://manned.org/info
 - tldr page: https://tldr.inbrowser.app/pages/common/info
+- Wikipedia: https://en.wikipedia.org/wiki/Info_(Unix)

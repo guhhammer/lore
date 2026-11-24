@@ -14,3 +14,4 @@ version-control, files, packages
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-lock
 - tldr page: https://tldr.inbrowser.app/pages/common/git-lock
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -18,3 +18,4 @@ files, development, media
 ## Links
 - More information: https://lilypond.org/doc/latest/Documentation/usage/command_002dline-usage
 - tldr page: https://tldr.inbrowser.app/pages/common/lilypond
+- Wikipedia: https://en.wikipedia.org/wiki/LilyPond

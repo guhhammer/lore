@@ -19,3 +19,4 @@ files, network, disks
 ## Links
 - More information: https://dev.yorhel.nl/ncdu/man
 - tldr page: https://tldr.inbrowser.app/pages/common/ncdu
+- Wikipedia: https://en.wikipedia.org/wiki/Ncdu

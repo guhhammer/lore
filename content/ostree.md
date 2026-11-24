@@ -17,3 +17,4 @@ version-control, files, containers
 ## Links
 - More information: https://ostreedev.github.io/ostree/
 - tldr page: https://tldr.inbrowser.app/pages/linux/ostree
+- Wikipedia: https://en.wikipedia.org/wiki/OSTree

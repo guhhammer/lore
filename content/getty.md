@@ -11,3 +11,4 @@ Alternative Linux getty.
 
 ## Links
 - Documentation: https://systemd.io/CREDENTIALS/
+- Wikipedia: https://en.wikipedia.org/wiki/Getty_(software)

@@ -11,3 +11,4 @@ version-control
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-rebase-patch
 - tldr page: https://tldr.inbrowser.app/pages/common/git-rebase-patch
+- Wikipedia: https://en.wikipedia.org/wiki/Git

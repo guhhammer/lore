@@ -12,3 +12,4 @@ containers, media, files
 ## Links
 - More information: https://imagemagick.org/script/compare.php
 - tldr page: https://tldr.inbrowser.app/pages/common/magick-compare
+- Wikipedia: https://en.wikipedia.org/wiki/ImageMagick

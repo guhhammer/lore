@@ -13,3 +13,4 @@ version-control, network, users
 ## Links
 - More information: https://git-scm.com/docs/git-credential
 - tldr page: https://tldr.inbrowser.app/pages/common/git-credential
+- Wikipedia: https://en.wikipedia.org/wiki/Git

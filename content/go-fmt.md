@@ -15,3 +15,4 @@ packages, files, text
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Gofmt__reformat__package_sources
 - tldr page: https://tldr.inbrowser.app/pages/common/go-fmt
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

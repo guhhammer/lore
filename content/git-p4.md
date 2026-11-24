@@ -15,3 +15,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-p4
 - tldr page: https://tldr.inbrowser.app/pages/common/git-p4
+- Wikipedia: https://en.wikipedia.org/wiki/Git

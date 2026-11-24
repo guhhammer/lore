@@ -18,3 +18,4 @@ version-control, packages
 ## Links
 - More information: https://git-scm.com/docs/git-push
 - tldr page: https://tldr.inbrowser.app/pages/common/git-push
+- Wikipedia: https://en.wikipedia.org/wiki/Git

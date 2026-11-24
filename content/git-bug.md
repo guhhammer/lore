@@ -17,3 +17,4 @@ version-control, development
 ## Links
 - More information: https://github.com/git-bug/git-bug/blob/master/doc/md/git-bug.md
 - tldr page: https://tldr.inbrowser.app/pages/common/git-bug
+- Wikipedia: https://en.wikipedia.org/wiki/Git

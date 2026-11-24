@@ -14,3 +14,4 @@ development
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Remove_object_files_and_cached_files
 - tldr page: https://tldr.inbrowser.app/pages/common/go-clean
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

@@ -13,3 +13,4 @@ documents, files, development
 ## Links
 - More information: https://docs.oracle.com/en/java/javase/25/docs/specs/man/javadoc.html
 - tldr page: https://tldr.inbrowser.app/pages/common/javadoc
+- Wikipedia: https://en.wikipedia.org/wiki/Javadoc

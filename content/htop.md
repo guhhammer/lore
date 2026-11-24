@@ -25,3 +25,4 @@ processes, monitoring
 ## Links
 - More information: https://manned.org/htop
 - tldr page: https://tldr.inbrowser.app/pages/common/htop
+- Wikipedia: https://en.wikipedia.org/wiki/Htop

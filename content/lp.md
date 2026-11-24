@@ -20,3 +20,4 @@ files, documents, hardware
 ## Links
 - More information: https://manned.org/lp
 - tldr page: https://tldr.inbrowser.app/pages/common/lp
+- Wikipedia: https://en.wikipedia.org/wiki/System_V_printing_system

@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://manned.org/git-psykorebase
 - tldr page: https://tldr.inbrowser.app/pages/common/git-psykorebase
+- Wikipedia: https://en.wikipedia.org/wiki/Git

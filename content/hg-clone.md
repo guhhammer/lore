@@ -15,3 +15,4 @@ files, packages, version-control
 ## Links
 - More information: https://www.mercurial-scm.org/help/commands/clone
 - tldr page: https://tldr.inbrowser.app/pages/common/hg-clone
+- Wikipedia: https://en.wikipedia.org/wiki/Mercurial

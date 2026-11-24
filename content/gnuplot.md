@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://manned.org/gnuplot
 - tldr page: https://tldr.inbrowser.app/pages/common/gnuplot
+- Wikipedia: https://en.wikipedia.org/wiki/Gnuplot

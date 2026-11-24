@@ -18,3 +18,4 @@ development
 ## Links
 - More information: https://www.gnu.org/software/make/manual/make.html
 - tldr page: https://tldr.inbrowser.app/pages/common/make
+- Wikipedia: https://en.wikipedia.org/wiki/Make_(software)

@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://nginx.org/docs/switches.html
 - tldr page: https://tldr.inbrowser.app/pages/common/nginx
+- Wikipedia: https://en.wikipedia.org/wiki/Nginx

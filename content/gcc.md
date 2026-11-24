@@ -18,3 +18,4 @@ development
 ## Links
 - More information: https://gcc.gnu.org/onlinedocs/gcc/
 - tldr page: https://tldr.inbrowser.app/pages/common/gcc
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Compiler_Collection

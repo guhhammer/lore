@@ -14,3 +14,4 @@ version-control
 ## Links
 - More information: https://manned.org/git-squash
 - tldr page: https://tldr.inbrowser.app/pages/common/git-squash
+- Wikipedia: https://en.wikipedia.org/wiki/Git

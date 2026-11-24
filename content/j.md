@@ -15,3 +15,4 @@ files, text, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/j
+- Wikipedia: https://en.wikipedia.org/wiki/J_(programming_language)

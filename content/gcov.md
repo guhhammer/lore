@@ -16,3 +16,4 @@ files, development
 ## Links
 - More information: https://gcc.gnu.org/onlinedocs/gcc/Invoking-Gcov.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/gcov
+- Wikipedia: https://en.wikipedia.org/wiki/Gcov

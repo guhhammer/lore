@@ -14,3 +14,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/explain/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-explain
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

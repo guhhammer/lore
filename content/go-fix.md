@@ -11,3 +11,4 @@ packages
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Update_packages_to_use_new_APIs
 - tldr page: https://tldr.inbrowser.app/pages/common/go-fix
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

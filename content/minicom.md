@@ -21,3 +21,4 @@ network, users, files
 ## Links
 - More information: https://manned.org/minicom
 - tldr page: https://tldr.inbrowser.app/pages/linux/minicom
+- Wikipedia: https://en.wikipedia.org/wiki/Minicom

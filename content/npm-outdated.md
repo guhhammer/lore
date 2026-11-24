@@ -12,3 +12,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-outdated/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-outdated
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

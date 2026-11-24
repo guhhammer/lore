@@ -20,3 +20,4 @@ text
 
 ## Links
 - GNU manual: https://www.gnu.org/software/grep/manual/grep.html
+- Wikipedia: https://en.wikipedia.org/wiki/Grep

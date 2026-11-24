@@ -17,3 +17,4 @@ packages, network
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-view/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-view
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

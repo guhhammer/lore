@@ -15,3 +15,4 @@ files, network, users
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/openvpn
+- Wikipedia: https://en.wikipedia.org/wiki/OpenVPN

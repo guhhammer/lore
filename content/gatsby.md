@@ -15,3 +15,4 @@ development
 ## Links
 - More information: https://www.gatsbyjs.com/docs/reference/gatsby-cli/
 - tldr page: https://tldr.inbrowser.app/pages/common/gatsby
+- Wikipedia: https://en.wikipedia.org/wiki/Gatsby_(software)

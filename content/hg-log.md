@@ -18,3 +18,4 @@ monitoring, desktop, shell
 ## Links
 - More information: https://www.mercurial-scm.org/help/commands/log
 - tldr page: https://tldr.inbrowser.app/pages/common/hg-log
+- Wikipedia: https://en.wikipedia.org/wiki/Mercurial

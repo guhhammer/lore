@@ -15,3 +15,4 @@ version-control, packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-version/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-version
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

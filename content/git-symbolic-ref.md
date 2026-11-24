@@ -15,3 +15,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-symbolic-ref
 - tldr page: https://tldr.inbrowser.app/pages/common/git-symbolic-ref
+- Wikipedia: https://en.wikipedia.org/wiki/Git

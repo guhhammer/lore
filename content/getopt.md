@@ -14,3 +14,4 @@ files, text
 ## Links
 - More information: https://manned.org/getopt
 - tldr page: https://tldr.inbrowser.app/pages/linux/getopt
+- Wikipedia: https://en.wikipedia.org/wiki/Getopt

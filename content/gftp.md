@@ -17,3 +17,4 @@ network, files, shell, macos
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/osx/gftp
+- Wikipedia: https://en.wikipedia.org/wiki/GFTP

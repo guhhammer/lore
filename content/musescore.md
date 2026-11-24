@@ -19,3 +19,4 @@ files, editors, media
 ## Links
 - More information: https://handbook.musescore.org/appendix/command-line-usage
 - tldr page: https://tldr.inbrowser.app/pages/common/musescore
+- Wikipedia: https://en.wikipedia.org/wiki/MuseScore

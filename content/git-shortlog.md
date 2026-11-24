@@ -16,3 +16,4 @@ version-control, monitoring
 ## Links
 - More information: https://git-scm.com/docs/git-shortlog
 - tldr page: https://tldr.inbrowser.app/pages/common/git-shortlog
+- Wikipedia: https://en.wikipedia.org/wiki/Git

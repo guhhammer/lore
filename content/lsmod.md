@@ -15,3 +15,4 @@ system
 ## Links
 - More information: https://manned.org/lsmod
 - tldr page: https://tldr.inbrowser.app/pages/linux/lsmod
+- Wikipedia: https://en.wikipedia.org/wiki/Lsmod

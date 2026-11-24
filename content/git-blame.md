@@ -18,3 +18,4 @@ files, version-control, text
 ## Links
 - More information: https://git-scm.com/docs/git-blame
 - tldr page: https://tldr.inbrowser.app/pages/common/git-blame
+- Wikipedia: https://en.wikipedia.org/wiki/Git

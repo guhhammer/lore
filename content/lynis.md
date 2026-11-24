@@ -13,3 +13,4 @@ users
 ## Links
 - More information: https://cisofy.com/documentation/lynis/
 - tldr page: https://tldr.inbrowser.app/pages/linux/lynis
+- Wikipedia: https://en.wikipedia.org/wiki/Lynis

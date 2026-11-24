@@ -11,3 +11,4 @@ processes, users, macos
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/osx/launchd
+- Wikipedia: https://en.wikipedia.org/wiki/Launchd

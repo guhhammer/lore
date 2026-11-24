@@ -15,3 +15,4 @@ version-control, files, packages
 ## Links
 - More information: https://manned.org/git-fast-export
 - tldr page: https://tldr.inbrowser.app/pages/common/git-fast-export
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -16,3 +16,4 @@ files, editors, text
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/kate
+- Wikipedia: https://en.wikipedia.org/wiki/Kate_(text_editor)

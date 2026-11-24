@@ -20,3 +20,4 @@ hardware, desktop, files
 ## Links
 - More information: https://manpages.opensuse.org/hwinfo/hwinfo.8.en.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/hwinfo
+- Wikipedia: https://en.wikipedia.org/wiki/Hwinfo

@@ -13,3 +13,4 @@ version-control, files, shell
 ## Links
 - More information: https://git-scm.com/docs/git-filter-branch
 - tldr page: https://tldr.inbrowser.app/pages/common/git-filter-branch
+- Wikipedia: https://en.wikipedia.org/wiki/Git

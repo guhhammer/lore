@@ -13,3 +13,4 @@ files, shell
 ## Links
 - More information: https://manned.org/lex
 - tldr page: https://tldr.inbrowser.app/pages/common/lex
+- Wikipedia: https://en.wikipedia.org/wiki/Lex_(software)

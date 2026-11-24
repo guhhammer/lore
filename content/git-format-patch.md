@@ -16,3 +16,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-format-patch
 - tldr page: https://tldr.inbrowser.app/pages/common/git-format-patch
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -13,3 +13,4 @@ version-control, desktop
 ## Links
 - More information: https://git-scm.com/docs/git-rev-parse
 - tldr page: https://tldr.inbrowser.app/pages/common/git-rev-parse
+- Wikipedia: https://en.wikipedia.org/wiki/Git

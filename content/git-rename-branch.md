@@ -12,3 +12,4 @@ version-control, files
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-rename-branch
 - tldr page: https://tldr.inbrowser.app/pages/common/git-rename-branch
+- Wikipedia: https://en.wikipedia.org/wiki/Git

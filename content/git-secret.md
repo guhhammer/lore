@@ -18,3 +18,4 @@ version-control, packages, files
 ## Links
 - More information: https://github.com/sobolevn/git-secret
 - tldr page: https://tldr.inbrowser.app/pages/common/git-secret
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -18,3 +18,4 @@ version-control, shell, users
 ## Links
 - More information: https://git-scm.com/docs/git-config
 - tldr page: https://tldr.inbrowser.app/pages/common/git-config
+- Wikipedia: https://en.wikipedia.org/wiki/Git

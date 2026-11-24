@@ -15,3 +15,4 @@ files, desktop
 ## Links
 - More information: https://manned.org/nemo
 - tldr page: https://tldr.inbrowser.app/pages/linux/nemo
+- Wikipedia: https://en.wikipedia.org/wiki/Nemo_(file_manager)

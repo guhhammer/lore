@@ -17,3 +17,4 @@ network
 ## Links
 - More information: https://manned.org/nc
 - tldr page: https://tldr.inbrowser.app/pages/common/nc
+- Wikipedia: https://en.wikipedia.org/wiki/Netcat

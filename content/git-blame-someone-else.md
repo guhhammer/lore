@@ -11,3 +11,4 @@ version-control
 ## Links
 - More information: https://github.com/jayphelps/git-blame-someone-else
 - tldr page: https://tldr.inbrowser.app/pages/common/git-blame-someone-else
+- Wikipedia: https://en.wikipedia.org/wiki/Git

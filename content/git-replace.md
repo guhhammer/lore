@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-replace
 - tldr page: https://tldr.inbrowser.app/pages/common/git-replace
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -14,3 +14,4 @@ documents, monitoring
 ## Links
 - More information: https://narkoz.github.io/gitlab/
 - tldr page: https://tldr.inbrowser.app/pages/common/gitlab
+- Wikipedia: https://en.wikipedia.org/wiki/GitLab

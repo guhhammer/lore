@@ -15,3 +15,4 @@ documents
 ## Links
 - More information: https://ledger-cli.org/doc/ledger.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ledger
+- Wikipedia: https://en.wikipedia.org/wiki/Ledger_(software)

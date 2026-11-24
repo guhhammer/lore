@@ -15,3 +15,4 @@ version-control
 ## Links
 - More information: https://git-cliff.org/docs/usage/args/
 - tldr page: https://tldr.inbrowser.app/pages/common/git-cliff
+- Wikipedia: https://en.wikipedia.org/wiki/Git

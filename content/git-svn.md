@@ -15,3 +15,4 @@ version-control, packages, network
 ## Links
 - More information: https://git-scm.com/docs/git-svn
 - tldr page: https://tldr.inbrowser.app/pages/common/git-svn
+- Wikipedia: https://en.wikipedia.org/wiki/Git

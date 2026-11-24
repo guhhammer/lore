@@ -16,3 +16,4 @@ network, files, shell
 ## Links
 - More information: https://manned.org/mosh
 - tldr page: https://tldr.inbrowser.app/pages/common/mosh
+- Wikipedia: https://en.wikipedia.org/wiki/Mosh_(software)

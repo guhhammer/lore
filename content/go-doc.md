@@ -15,3 +15,4 @@ documents, packages, text
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Show_documentation_for_package_or_symbol
 - tldr page: https://tldr.inbrowser.app/pages/common/go-doc
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

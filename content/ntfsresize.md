@@ -15,3 +15,4 @@ disks
 
 ## Links
 - Documentation: https://github.com/tuxera/ntfs-3g/wiki/
+- Wikipedia: https://en.wikipedia.org/wiki/Ntfsresize

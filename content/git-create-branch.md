@@ -13,3 +13,4 @@ version-control, packages
 ## Links
 - More information: https://manned.org/git-create-branch
 - tldr page: https://tldr.inbrowser.app/pages/common/git-create-branch
+- Wikipedia: https://en.wikipedia.org/wiki/Git

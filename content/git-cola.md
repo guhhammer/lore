@@ -15,3 +15,4 @@ version-control, network, files
 ## Links
 - More information: https://git-cola.readthedocs.io/en/latest/git-cola.html
 - tldr page: https://tldr.inbrowser.app/pages/common/git-cola
+- Wikipedia: https://en.wikipedia.org/wiki/Git

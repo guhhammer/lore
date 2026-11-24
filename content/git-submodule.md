@@ -17,3 +17,4 @@ version-control, files, packages
 ## Links
 - More information: https://git-scm.com/docs/git-submodule
 - tldr page: https://tldr.inbrowser.app/pages/common/git-submodule
+- Wikipedia: https://en.wikipedia.org/wiki/Git

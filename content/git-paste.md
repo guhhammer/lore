@@ -12,3 +12,4 @@ version-control
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-paste
 - tldr page: https://tldr.inbrowser.app/pages/common/git-paste
+- Wikipedia: https://en.wikipedia.org/wiki/Git

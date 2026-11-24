@@ -10,3 +10,4 @@ version-control
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/git-delete-merged-branches
+- Wikipedia: https://en.wikipedia.org/wiki/Git

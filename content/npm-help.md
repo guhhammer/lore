@@ -11,3 +11,4 @@ desktop
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-help/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-help
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

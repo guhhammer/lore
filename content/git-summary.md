@@ -14,3 +14,4 @@ version-control, desktop, packages
 ## Links
 - More information: https://manned.org/git-summary
 - tldr page: https://tldr.inbrowser.app/pages/common/git-summary
+- Wikipedia: https://en.wikipedia.org/wiki/Git

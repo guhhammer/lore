@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://jupyterlab.readthedocs.io/en/stable/getting_started/starting.html
 - tldr page: https://tldr.inbrowser.app/pages/common/jupyter-lab
+- Wikipedia: https://en.wikipedia.org/wiki/Project_Jupyter

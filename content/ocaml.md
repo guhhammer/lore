@@ -13,3 +13,4 @@ files, documents
 ## Links
 - More information: https://manned.org/ocaml
 - tldr page: https://tldr.inbrowser.app/pages/common/ocaml
+- Wikipedia: https://en.wikipedia.org/wiki/OCaml

@@ -12,3 +12,4 @@ files
 ## Links
 - More information: https://nix.dev/manual/nix/stable/command-ref/new-cli/nix3-flake-init.html
 - tldr page: https://tldr.inbrowser.app/pages/common/nix-flake-init
+- Wikipedia: https://en.wikipedia.org/wiki/Nix_(package_manager)

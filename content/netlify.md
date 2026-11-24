@@ -14,3 +14,4 @@ cloud
 ## Links
 - More information: https://cli.netlify.com/
 - tldr page: https://tldr.inbrowser.app/pages/common/netlify
+- Wikipedia: https://en.wikipedia.org/wiki/Netlify

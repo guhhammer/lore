@@ -15,3 +15,4 @@ version-control, development, text
 ## Links
 - More information: https://git-scm.com/docs/git-mktree
 - tldr page: https://tldr.inbrowser.app/pages/common/git-mktree
+- Wikipedia: https://en.wikipedia.org/wiki/Git

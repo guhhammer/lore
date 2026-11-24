@@ -15,3 +15,4 @@ files, documents, media
 ## Links
 - More information: https://www.gnu.org/software/groff/manual/groff.html.node/Groff-Options.html
 - tldr page: https://tldr.inbrowser.app/pages/common/groff
+- Wikipedia: https://en.wikipedia.org/wiki/Groff_(software)

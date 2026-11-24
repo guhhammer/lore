@@ -13,3 +13,4 @@ users, network, text
 ## Links
 - More information: https://marlam.de/msmtp/
 - tldr page: https://tldr.inbrowser.app/pages/common/msmtp
+- Wikipedia: https://en.wikipedia.org/wiki/Msmtp

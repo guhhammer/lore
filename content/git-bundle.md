@@ -18,3 +18,4 @@ files, version-control, packages
 ## Links
 - More information: https://git-scm.com/docs/git-bundle
 - tldr page: https://tldr.inbrowser.app/pages/common/git-bundle
+- Wikipedia: https://en.wikipedia.org/wiki/Git

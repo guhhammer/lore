@@ -14,3 +14,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-diff-files
 - tldr page: https://tldr.inbrowser.app/pages/common/git-diff-files
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -13,3 +13,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-commit-graph
 - tldr page: https://tldr.inbrowser.app/pages/common/git-commit-graph
+- Wikipedia: https://en.wikipedia.org/wiki/Git

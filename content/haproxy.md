@@ -18,3 +18,4 @@ files, network, monitoring
 ## Links
 - More information: https://manned.org/haproxy
 - tldr page: https://tldr.inbrowser.app/pages/common/haproxy
+- Wikipedia: https://en.wikipedia.org/wiki/HAProxy

@@ -18,3 +18,4 @@ packages
 ## Links
 - More information: https://nix.dev/manual/nix/stable/command-ref/new-cli/nix3-registry.html
 - tldr page: https://tldr.inbrowser.app/pages/common/nix-registry
+- Wikipedia: https://en.wikipedia.org/wiki/Nix_(package_manager)

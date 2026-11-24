@@ -16,3 +16,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-search/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-search
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

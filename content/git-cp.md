@@ -12,3 +12,4 @@ files, version-control, shell
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-cp
 - tldr page: https://tldr.inbrowser.app/pages/common/git-cp
+- Wikipedia: https://en.wikipedia.org/wiki/Git

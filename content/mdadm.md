@@ -17,3 +17,4 @@ danger, disks, users
 ## Links
 - More information: https://manned.org/mdadm
 - tldr page: https://tldr.inbrowser.app/pages/linux/mdadm
+- Wikipedia: https://en.wikipedia.org/wiki/Mdadm

@@ -13,3 +13,4 @@ files, text
 ## Links
 - More information: https://manned.org/iconv
 - tldr page: https://tldr.inbrowser.app/pages/common/iconv
+- Wikipedia: https://en.wikipedia.org/wiki/Iconv

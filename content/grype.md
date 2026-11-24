@@ -18,3 +18,4 @@ containers, media, files
 ## Links
 - More information: https://oss.anchore.com/docs/reference/grype/cli
 - tldr page: https://tldr.inbrowser.app/pages/common/grype
+- Wikipedia: https://en.wikipedia.org/wiki/Grype

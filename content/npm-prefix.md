@@ -12,3 +12,4 @@ documents
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-prefix/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-prefix
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

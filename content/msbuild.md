@@ -17,3 +17,4 @@ development, files
 ## Links
 - More information: https://learn.microsoft.com/visualstudio/msbuild
 - tldr page: https://tldr.inbrowser.app/pages/common/msbuild
+- Wikipedia: https://en.wikipedia.org/wiki/MSBuild

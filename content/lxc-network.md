@@ -16,3 +16,4 @@ network, containers
 ## Links
 - More information: https://canonical.com/lxd/docs/latest/reference/manpages/lxc/network/
 - tldr page: https://tldr.inbrowser.app/pages/linux/lxc-network
+- Wikipedia: https://en.wikipedia.org/wiki/LXC

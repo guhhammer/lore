@@ -12,3 +12,4 @@ desktop
 ## Links
 - More information: https://docs.npmjs.com/cli/whoami/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-whoami
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

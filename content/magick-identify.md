@@ -13,3 +13,4 @@ containers, media, files
 ## Links
 - More information: https://imagemagick.org/script/identify.php
 - tldr page: https://tldr.inbrowser.app/pages/common/magick-identify
+- Wikipedia: https://en.wikipedia.org/wiki/ImageMagick

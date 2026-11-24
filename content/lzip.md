@@ -18,3 +18,4 @@ files, archives, network
 ## Links
 - More information: https://www.nongnu.org/lzip/manual/lzip_manual.html#Invoking-lzip
 - tldr page: https://tldr.inbrowser.app/pages/common/lzip
+- Wikipedia: https://en.wikipedia.org/wiki/Lzip

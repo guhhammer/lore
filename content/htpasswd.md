@@ -16,3 +16,4 @@ files, users
 ## Links
 - More information: https://httpd.apache.org/docs/current/programs/htpasswd.html
 - tldr page: https://tldr.inbrowser.app/pages/common/htpasswd
+- Wikipedia: https://en.wikipedia.org/wiki/.htpasswd

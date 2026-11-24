@@ -10,3 +10,6 @@ Tool for administration of Samba and remote CIFS servers.
 
 ## Categories
 windows
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Net_(command)

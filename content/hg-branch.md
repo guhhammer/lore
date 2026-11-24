@@ -12,3 +12,4 @@ version-control
 ## Links
 - More information: https://www.mercurial-scm.org/help/commands/branch
 - tldr page: https://tldr.inbrowser.app/pages/common/hg-branch
+- Wikipedia: https://en.wikipedia.org/wiki/Mercurial

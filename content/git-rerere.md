@@ -13,3 +13,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-rerere
 - tldr page: https://tldr.inbrowser.app/pages/common/git-rerere
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -16,3 +16,4 @@ packages
 ## Links
 - More information: https://guix.gnu.org/manual/en/guix.html#Invoking-guix-package
 - tldr page: https://tldr.inbrowser.app/pages/linux/guix-package
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Guix

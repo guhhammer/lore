@@ -21,3 +21,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-switch
 - tldr page: https://tldr.inbrowser.app/pages/common/git-switch
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -14,3 +14,4 @@ desktop, editors, files
 ## Links
 - More information: https://manned.org/gedit
 - tldr page: https://tldr.inbrowser.app/pages/linux/gedit
+- Wikipedia: https://en.wikipedia.org/wiki/Gedit

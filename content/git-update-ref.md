@@ -12,3 +12,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-update-ref
 - tldr page: https://tldr.inbrowser.app/pages/common/git-update-ref
+- Wikipedia: https://en.wikipedia.org/wiki/Git

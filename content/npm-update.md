@@ -14,3 +14,4 @@ packages, development
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-update/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-update
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

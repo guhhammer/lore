@@ -17,3 +17,4 @@ processes
 ## Links
 - More information: https://manned.org/ipcrm
 - tldr page: https://tldr.inbrowser.app/pages/linux/ipcrm
+- Wikipedia: https://en.wikipedia.org/wiki/Ipcrm

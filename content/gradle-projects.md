@@ -12,3 +12,4 @@ desktop, development
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/gradle-projects
+- Wikipedia: https://en.wikipedia.org/wiki/Gradle

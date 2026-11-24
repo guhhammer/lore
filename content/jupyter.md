@@ -17,3 +17,4 @@ files, network
 ## Links
 - More information: https://docs.jupyter.org/en/latest/use/jupyter-command.html
 - tldr page: https://tldr.inbrowser.app/pages/common/jupyter
+- Wikipedia: https://en.wikipedia.org/wiki/Project_Jupyter

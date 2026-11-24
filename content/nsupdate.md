@@ -13,3 +13,4 @@ network
 
 ## Links
 - Documentation: https://datatracker.ietf.org/doc/html/rfc2136.html
+- Wikipedia: https://en.wikipedia.org/wiki/Nsupdate

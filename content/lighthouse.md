@@ -18,3 +18,4 @@ network, files, text
 ## Links
 - More information: https://github.com/GoogleChrome/lighthouse#cli-options
 - tldr page: https://tldr.inbrowser.app/pages/common/lighthouse
+- Wikipedia: https://en.wikipedia.org/wiki/Lighthouse_(software)

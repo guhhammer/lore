@@ -16,3 +16,4 @@ text, development, files
 ## Links
 - More information: https://pkg.go.dev/cmd/vet
 - tldr page: https://tldr.inbrowser.app/pages/common/go-vet
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

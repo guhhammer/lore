@@ -15,3 +15,4 @@ Manage the npm profile and related settings. Note: This command is unaware of wo
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-profile/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-profile
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -11,3 +11,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/open
+- Wikipedia: https://en.wikipedia.org/wiki/Open_Programming_Language

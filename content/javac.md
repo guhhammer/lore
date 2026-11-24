@@ -14,3 +14,4 @@ files, development
 ## Links
 - More information: https://docs.oracle.com/en/java/javase/25/docs/specs/man/javac.html
 - tldr page: https://tldr.inbrowser.app/pages/common/javac
+- Wikipedia: https://en.wikipedia.org/wiki/Javac

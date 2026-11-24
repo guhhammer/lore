@@ -16,3 +16,4 @@ files, development
 ## Links
 - More information: https://sourceware.org/gdb/current/onlinedocs/gdb#Invocation
 - tldr page: https://tldr.inbrowser.app/pages/common/gdb
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Debugger

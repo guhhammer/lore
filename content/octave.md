@@ -16,3 +16,4 @@ development, files
 ## Links
 - More information: https://manned.org/octave
 - tldr page: https://tldr.inbrowser.app/pages/common/octave
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Octave

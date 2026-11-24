@@ -13,3 +13,4 @@ version-control, files, packages
 ## Links
 - More information: https://git-scm.com/docs/git-cat-file
 - tldr page: https://tldr.inbrowser.app/pages/common/git-cat-file
+- Wikipedia: https://en.wikipedia.org/wiki/Git

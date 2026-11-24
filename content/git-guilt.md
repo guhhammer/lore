@@ -16,3 +16,4 @@ version-control
 ## Links
 - More information: https://manned.org/git-guilt
 - tldr page: https://tldr.inbrowser.app/pages/common/git-guilt
+- Wikipedia: https://en.wikipedia.org/wiki/Git

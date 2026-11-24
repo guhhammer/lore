@@ -18,3 +18,4 @@ users, system, network
 ## Links
 - More information: https://manned.org/last
 - tldr page: https://tldr.inbrowser.app/pages/linux/last
+- Wikipedia: https://en.wikipedia.org/wiki/Lastlog

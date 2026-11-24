@@ -10,3 +10,4 @@ Synchronize a remote IMAP server with local Maildir folders.
 ## Links
 - More information: https://www.offlineimap.org/doc/offlineimap.html
 - tldr page: https://tldr.inbrowser.app/pages/common/offlineimap
+- Wikipedia: https://en.wikipedia.org/wiki/OfflineIMAP

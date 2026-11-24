@@ -15,3 +15,4 @@ files, version-control, packages
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-scp
 - tldr page: https://tldr.inbrowser.app/pages/common/git-scp
+- Wikipedia: https://en.wikipedia.org/wiki/Git

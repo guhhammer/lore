@@ -16,3 +16,4 @@ development, files, packages
 ## Links
 - More information: https://docs.meteor.com/cli/
 - tldr page: https://tldr.inbrowser.app/pages/common/meteor
+- Wikipedia: https://en.wikipedia.org/wiki/Meteor_(web_framework)

@@ -17,3 +17,4 @@ databases, packages, documents
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-query/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-query
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -17,3 +17,4 @@ files, desktop, media
 ## Links
 - More information: https://manned.org/objdump
 - tldr page: https://tldr.inbrowser.app/pages/common/objdump
+- Wikipedia: https://en.wikipedia.org/wiki/Objdump

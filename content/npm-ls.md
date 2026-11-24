@@ -16,3 +16,4 @@ packages, documents
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-ls/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-ls
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

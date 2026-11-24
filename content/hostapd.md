@@ -12,3 +12,4 @@ network
 ## Links
 - More information: https://manned.org/hostapd
 - tldr page: https://tldr.inbrowser.app/pages/common/hostapd
+- Wikipedia: https://en.wikipedia.org/wiki/Hostapd

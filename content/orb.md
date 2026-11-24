@@ -18,3 +18,4 @@ containers, network, macos
 ## Links
 - More information: https://docs.orbstack.dev/headless
 - tldr page: https://tldr.inbrowser.app/pages/osx/orb
+- Wikipedia: https://en.wikipedia.org/wiki/Orb_(software)

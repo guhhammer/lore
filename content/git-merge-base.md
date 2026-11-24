@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-merge-base
 - tldr page: https://tldr.inbrowser.app/pages/common/git-merge-base
+- Wikipedia: https://en.wikipedia.org/wiki/Git

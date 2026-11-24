@@ -18,3 +18,4 @@ version-control, packages, documents
 ## Links
 - More information: https://www.mercurial-scm.org/help/commands
 - tldr page: https://tldr.inbrowser.app/pages/common/hg
+- Wikipedia: https://en.wikipedia.org/wiki/Mercurial

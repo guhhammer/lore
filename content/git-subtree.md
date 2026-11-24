@@ -15,3 +15,4 @@ version-control, files, packages
 ## Links
 - More information: https://manned.org/git-subtree
 - tldr page: https://tldr.inbrowser.app/pages/common/git-subtree
+- Wikipedia: https://en.wikipedia.org/wiki/Git

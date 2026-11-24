@@ -11,3 +11,4 @@ version-control
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/git-delete-squashed-branches
+- Wikipedia: https://en.wikipedia.org/wiki/Git

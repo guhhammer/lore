@@ -18,3 +18,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-rebase
 - tldr page: https://tldr.inbrowser.app/pages/common/git-rebase
+- Wikipedia: https://en.wikipedia.org/wiki/Git

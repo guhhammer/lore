@@ -6,3 +6,6 @@ Format documents with groff for TTY (terminal) devices.
 
 ## Categories
 shell, hardware
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Nroff

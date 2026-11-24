@@ -12,3 +12,4 @@ network
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-ping/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-ping
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

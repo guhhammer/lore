@@ -11,3 +11,4 @@ version-control, monitoring
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-local-commits
 - tldr page: https://tldr.inbrowser.app/pages/common/git-local-commits
+- Wikipedia: https://en.wikipedia.org/wiki/Git

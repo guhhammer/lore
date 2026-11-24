@@ -15,3 +15,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-cherry-pick
 - tldr page: https://tldr.inbrowser.app/pages/common/git-cherry-pick
+- Wikipedia: https://en.wikipedia.org/wiki/Git

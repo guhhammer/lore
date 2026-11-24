@@ -12,3 +12,4 @@ version-control, files, archives
 ## Links
 - More information: https://git-scm.com/docs/git-show-index
 - tldr page: https://tldr.inbrowser.app/pages/common/git-show-index
+- Wikipedia: https://en.wikipedia.org/wiki/Git

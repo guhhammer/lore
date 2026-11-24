@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/ln-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ln
+- Wikipedia: https://en.wikipedia.org/wiki/Ln_(Unix)

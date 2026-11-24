@@ -19,3 +19,4 @@ text, files
 ## Links
 - More information: https://manned.org/more.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/more
+- Wikipedia: https://en.wikipedia.org/wiki/More_(command)

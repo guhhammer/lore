@@ -16,3 +16,4 @@ files, documents
 ## Links
 - More information: https://docs.kde.org/stable_kf6/en/okular/okular/command-line-options.html
 - tldr page: https://tldr.inbrowser.app/pages/common/okular
+- Wikipedia: https://en.wikipedia.org/wiki/Okular

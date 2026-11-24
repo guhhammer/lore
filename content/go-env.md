@@ -14,3 +14,4 @@ shell
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Print_Go_environment_information
 - tldr page: https://tldr.inbrowser.app/pages/common/go-env
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

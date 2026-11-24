@@ -14,3 +14,4 @@ version-control, monitoring, processes
 ## Links
 - More information: https://git-scm.com/docs/git-whatchanged
 - tldr page: https://tldr.inbrowser.app/pages/common/git-whatchanged
+- Wikipedia: https://en.wikipedia.org/wiki/Git

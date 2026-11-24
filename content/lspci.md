@@ -16,3 +16,4 @@ hardware
 ## Links
 - More information: https://manned.org/lspci
 - tldr page: https://tldr.inbrowser.app/pages/linux/lspci
+- Wikipedia: https://en.wikipedia.org/wiki/Lspci

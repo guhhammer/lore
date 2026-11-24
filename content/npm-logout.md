@@ -15,3 +15,4 @@ users, monitoring
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-logout/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-logout
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

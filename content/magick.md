@@ -18,3 +18,4 @@ media
 ## Links
 - More information: https://imagemagick.org/script/magick.php
 - tldr page: https://tldr.inbrowser.app/pages/common/magick
+- Wikipedia: https://en.wikipedia.org/wiki/ImageMagick

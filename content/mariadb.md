@@ -17,3 +17,4 @@ files, databases, development
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/mariadb
+- Wikipedia: https://en.wikipedia.org/wiki/MariaDB

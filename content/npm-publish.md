@@ -18,3 +18,4 @@ packages, network
 ## Links
 - More information: https://docs.npmjs.com/cli/publish/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-publish
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

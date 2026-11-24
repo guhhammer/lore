@@ -15,3 +15,4 @@ development, monitoring, network
 ## Links
 - More information: https://ftp.gnu.org/old-gnu/Manuals/gprof/html_mono/gprof.html
 - tldr page: https://tldr.inbrowser.app/pages/common/gprof
+- Wikipedia: https://en.wikipedia.org/wiki/Gprof

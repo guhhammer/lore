@@ -17,3 +17,4 @@ desktop
 ## Links
 - More information: https://github.com/YaLTeR/niri
 - tldr page: https://tldr.inbrowser.app/pages/linux/niri
+- Wikipedia: https://en.wikipedia.org/wiki/Niri

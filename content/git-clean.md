@@ -17,3 +17,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-clean
 - tldr page: https://tldr.inbrowser.app/pages/common/git-clean
+- Wikipedia: https://en.wikipedia.org/wiki/Git

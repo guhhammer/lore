@@ -17,3 +17,4 @@ shell, users
 ## Links
 - More information: https://manned.org/mesg.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/mesg
+- Wikipedia: https://en.wikipedia.org/wiki/Mesg

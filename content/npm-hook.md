@@ -14,3 +14,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/v10/hook/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-hook
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

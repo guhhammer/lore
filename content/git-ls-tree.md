@@ -14,3 +14,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-ls-tree
 - tldr page: https://tldr.inbrowser.app/pages/common/git-ls-tree
+- Wikipedia: https://en.wikipedia.org/wiki/Git

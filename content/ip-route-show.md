@@ -10,3 +10,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/ip-route-show
+- Wikipedia: https://en.wikipedia.org/wiki/Iproute2

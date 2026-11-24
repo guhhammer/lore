@@ -16,3 +16,4 @@ containers
 ## Links
 - More information: https://canonical.com/lxd/docs/latest/reference/manpages/lxc/profile/
 - tldr page: https://tldr.inbrowser.app/pages/linux/lxc-profile
+- Wikipedia: https://en.wikipedia.org/wiki/LXC

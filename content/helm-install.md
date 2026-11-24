@@ -17,3 +17,4 @@ packages, containers, files
 ## Links
 - More information: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
 - tldr page: https://tldr.inbrowser.app/pages/common/helm-install
+- Wikipedia: https://en.wikipedia.org/wiki/Helm_(package_manager)

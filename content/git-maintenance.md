@@ -15,3 +15,4 @@ version-control, packages
 ## Links
 - More information: https://git-scm.com/docs/git-maintenance
 - tldr page: https://tldr.inbrowser.app/pages/common/git-maintenance
+- Wikipedia: https://en.wikipedia.org/wiki/Git

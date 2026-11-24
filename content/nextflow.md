@@ -18,3 +18,4 @@ files
 ## Links
 - More information: https://www.nextflow.io/docs/latest/cli.html
 - tldr page: https://tldr.inbrowser.app/pages/common/nextflow
+- Wikipedia: https://en.wikipedia.org/wiki/Nextflow

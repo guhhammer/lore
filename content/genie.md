@@ -13,3 +13,4 @@ system
 ## Links
 - More information: https://github.com/arkane-systems/genie
 - tldr page: https://tldr.inbrowser.app/pages/linux/genie
+- Wikipedia: https://en.wikipedia.org/wiki/Vala_(programming_language)

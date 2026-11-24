@@ -12,3 +12,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-for-each-repo
 - tldr page: https://tldr.inbrowser.app/pages/common/git-for-each-repo
+- Wikipedia: https://en.wikipedia.org/wiki/Git

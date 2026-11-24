@@ -18,3 +18,4 @@ version-control, text, files
 ## Links
 - More information: https://manned.org/git-fame
 - tldr page: https://tldr.inbrowser.app/pages/common/git-fame
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -12,3 +12,4 @@ version-control, development, network
 ## Links
 - More information: https://git-scm.com/docs/git-request-pull
 - tldr page: https://tldr.inbrowser.app/pages/common/git-request-pull
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -17,3 +17,4 @@ development
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/magento
+- Wikipedia: https://en.wikipedia.org/wiki/Magento

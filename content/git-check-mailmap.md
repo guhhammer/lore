@@ -12,3 +12,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-check-mailmap
 - tldr page: https://tldr.inbrowser.app/pages/common/git-check-mailmap
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -15,3 +15,4 @@ version-control, files, development
 ## Links
 - More information: https://git-scm.com/docs/git-check-ignore
 - tldr page: https://tldr.inbrowser.app/pages/common/git-check-ignore
+- Wikipedia: https://en.wikipedia.org/wiki/Git

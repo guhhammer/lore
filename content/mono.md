@@ -12,3 +12,4 @@ development
 ## Links
 - More information: https://www.mono-project.com/docs/
 - tldr page: https://tldr.inbrowser.app/pages/linux/mono
+- Wikipedia: https://en.wikipedia.org/wiki/Mono_(software)

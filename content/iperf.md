@@ -16,3 +16,4 @@ network
 ## Links
 - More information: https://iperf.fr/iperf-doc.php
 - tldr page: https://tldr.inbrowser.app/pages/common/iperf
+- Wikipedia: https://en.wikipedia.org/wiki/Iperf

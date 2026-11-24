@@ -15,3 +15,4 @@ files, containers, media
 ## Links
 - More information: https://imagemagick.org/script/montage.php
 - tldr page: https://tldr.inbrowser.app/pages/common/magick-montage
+- Wikipedia: https://en.wikipedia.org/wiki/ImageMagick

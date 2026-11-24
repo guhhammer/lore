@@ -10,3 +10,4 @@ Fill your console with Hollywood melodrama technobabble.
 ## Links
 - More information: https://manned.org/hollywood
 - tldr page: https://tldr.inbrowser.app/pages/linux/hollywood
+- Wikipedia: https://en.wikipedia.org/wiki/Hollywood_(programming_language)

@@ -12,3 +12,4 @@ files, version-control
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-reset-file
 - tldr page: https://tldr.inbrowser.app/pages/common/git-reset-file
+- Wikipedia: https://en.wikipedia.org/wiki/Git

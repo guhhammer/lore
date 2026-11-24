@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://manned.org/git-extras
 - tldr page: https://tldr.inbrowser.app/pages/common/git-extras
+- Wikipedia: https://en.wikipedia.org/wiki/Git

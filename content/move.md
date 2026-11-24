@@ -18,3 +18,4 @@ files, shell, documents, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/move
+- Wikipedia: https://en.wikipedia.org/wiki/Move_(command)

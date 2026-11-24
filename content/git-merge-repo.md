@@ -12,3 +12,4 @@ version-control, packages, files
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-merge-repo
 - tldr page: https://tldr.inbrowser.app/pages/common/git-merge-repo
+- Wikipedia: https://en.wikipedia.org/wiki/Git

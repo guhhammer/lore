@@ -11,3 +11,4 @@ version-control, archives
 ## Links
 - More information: https://git-scm.com/docs/git-get-tar-commit-id
 - tldr page: https://tldr.inbrowser.app/pages/common/git-get-tar-commit-id
+- Wikipedia: https://en.wikipedia.org/wiki/Git

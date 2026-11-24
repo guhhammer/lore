@@ -15,3 +15,4 @@ network, security
 ## Links
 - More information: https://www.funtoo.org/Keychain
 - tldr page: https://tldr.inbrowser.app/pages/common/keychain
+- Wikipedia: https://en.wikipedia.org/wiki/Keychain_(software)

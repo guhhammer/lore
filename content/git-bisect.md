@@ -18,3 +18,4 @@ version-control, files, development
 ## Links
 - More information: https://git-scm.com/docs/git-bisect
 - tldr page: https://tldr.inbrowser.app/pages/common/git-bisect
+- Wikipedia: https://en.wikipedia.org/wiki/Git

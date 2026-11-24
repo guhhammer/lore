@@ -11,3 +11,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-update-index
 - tldr page: https://tldr.inbrowser.app/pages/common/git-update-index
+- Wikipedia: https://en.wikipedia.org/wiki/Git

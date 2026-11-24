@@ -14,3 +14,4 @@ security, version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-hash-object
 - tldr page: https://tldr.inbrowser.app/pages/common/git-hash-object
+- Wikipedia: https://en.wikipedia.org/wiki/Git

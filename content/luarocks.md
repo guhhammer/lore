@@ -14,3 +14,6 @@ Installing without `--local` writes to system folders and needs root.
 
 ## Categories
 packages, development, system
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/LuaRocks

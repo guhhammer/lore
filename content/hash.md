@@ -15,3 +15,4 @@ security, shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-hash
 - tldr page: https://tldr.inbrowser.app/pages/common/hash
+- Wikipedia: https://en.wikipedia.org/wiki/Hash_(Unix)

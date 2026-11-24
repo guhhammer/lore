@@ -16,3 +16,4 @@ packages, files, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/msiexec
+- Wikipedia: https://en.wikipedia.org/wiki/Windows_Installer

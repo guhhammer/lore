@@ -18,3 +18,4 @@ development, files
 ## Links
 - More information: https://mesonbuild.com/Commands.html
 - tldr page: https://tldr.inbrowser.app/pages/common/meson
+- Wikipedia: https://en.wikipedia.org/wiki/Meson_(software)

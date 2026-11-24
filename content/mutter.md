@@ -10,3 +10,6 @@ Clutter based compositing GTK2 Window Manager.
 
 ## Categories
 desktop
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Mutter_(software)

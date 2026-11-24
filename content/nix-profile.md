@@ -16,3 +16,4 @@ packages
 ## Links
 - More information: https://nix.dev/manual/nix/latest/command-ref/new-cli/nix3-profile.html
 - tldr page: https://tldr.inbrowser.app/pages/common/nix-profile
+- Wikipedia: https://en.wikipedia.org/wiki/Nix_(package_manager)

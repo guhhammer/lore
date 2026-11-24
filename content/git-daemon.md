@@ -13,3 +13,4 @@ version-control, files, system
 ## Links
 - More information: https://git-scm.com/docs/git-daemon
 - tldr page: https://tldr.inbrowser.app/pages/common/git-daemon
+- Wikipedia: https://en.wikipedia.org/wiki/Git

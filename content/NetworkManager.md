@@ -14,3 +14,4 @@ network, documents, system
 
 ## Links
 - Documentation: https://networkmanager.dev
+- Wikipedia: https://en.wikipedia.org/wiki/NetworkManager

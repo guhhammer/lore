@@ -16,3 +16,4 @@ network, users
 ## Links
 - More information: https://manned.org/ip-address
 - tldr page: https://tldr.inbrowser.app/pages/linux/ip-address
+- Wikipedia: https://en.wikipedia.org/wiki/Iproute2

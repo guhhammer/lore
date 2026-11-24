@@ -21,3 +21,4 @@ disks
 ## Links
 - More information: https://manned.org/mount.8
 - tldr page: https://tldr.inbrowser.app/pages/linux/mount
+- Wikipedia: https://en.wikipedia.org/wiki/Mount_(Unix)

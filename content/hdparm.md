@@ -17,3 +17,4 @@ hardware, users, disks
 ## Links
 - More information: https://manned.org/hdparm
 - tldr page: https://tldr.inbrowser.app/pages/linux/hdparm
+- Wikipedia: https://en.wikipedia.org/wiki/Hdparm

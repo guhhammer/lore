@@ -16,3 +16,4 @@ packages, network, development
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/go-get
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

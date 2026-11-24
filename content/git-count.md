@@ -12,3 +12,4 @@ version-control, documents
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-count
 - tldr page: https://tldr.inbrowser.app/pages/common/git-count
+- Wikipedia: https://en.wikipedia.org/wiki/Git

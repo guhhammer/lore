@@ -16,3 +16,4 @@ archives, monitoring, development, windows
 ## Links
 - More information: https://github.com/gentilkiwi/mimikatz
 - tldr page: https://tldr.inbrowser.app/pages/windows/mimikatz-sekurlsa
+- Wikipedia: https://en.wikipedia.org/wiki/Mimikatz

@@ -17,3 +17,4 @@ danger, processes, shell
 ## Links
 - More information: https://manned.org/kill.1posix
 - tldr page: https://tldr.inbrowser.app/pages/common/kill
+- Wikipedia: https://en.wikipedia.org/wiki/Kill_(command)

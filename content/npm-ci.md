@@ -13,3 +13,4 @@ packages, text, development
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-ci/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-ci
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

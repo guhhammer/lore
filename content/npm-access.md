@@ -17,3 +17,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-access/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-access
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -15,3 +15,4 @@ A sketching and painting program designed for digital artists.
 ## Links
 - More information: https://docs.krita.org/en/reference_manual/linux_command_line.html
 - tldr page: https://tldr.inbrowser.app/pages/common/krita
+- Wikipedia: https://en.wikipedia.org/wiki/Krita

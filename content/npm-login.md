@@ -16,3 +16,4 @@ users, monitoring
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-login/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-login
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

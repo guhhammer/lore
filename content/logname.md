@@ -13,3 +13,4 @@ users
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/logname
+- Wikipedia: https://en.wikipedia.org/wiki/Logname

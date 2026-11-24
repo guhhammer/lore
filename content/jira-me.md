@@ -14,3 +14,4 @@ desktop, users
 ## Links
 - More information: https://github.com/ankitpokhrel/jira-cli#commands
 - tldr page: https://tldr.inbrowser.app/pages/common/jira-me
+- Wikipedia: https://en.wikipedia.org/wiki/Jira_(software)

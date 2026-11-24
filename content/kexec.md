@@ -14,3 +14,4 @@ system, files
 ## Links
 - More information: https://manned.org/kexec
 - tldr page: https://tldr.inbrowser.app/pages/linux/kexec
+- Wikipedia: https://en.wikipedia.org/wiki/Kexec

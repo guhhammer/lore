@@ -18,3 +18,4 @@ processes, files, network
 ## Links
 - More information: https://manned.org/lsof
 - tldr page: https://tldr.inbrowser.app/pages/common/lsof
+- Wikipedia: https://en.wikipedia.org/wiki/Lsof

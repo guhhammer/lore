@@ -18,3 +18,4 @@ version-control, network
 ## Links
 - More information: https://github.com/git-lfs/git-lfs/tree/main/docs
 - tldr page: https://tldr.inbrowser.app/pages/common/git-lfs
+- Wikipedia: https://en.wikipedia.org/wiki/Git

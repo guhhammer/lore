@@ -16,3 +16,4 @@ files, network
 ## Links
 - More information: https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html
 - tldr page: https://tldr.inbrowser.app/pages/common/java
+- Wikipedia: https://en.wikipedia.org/wiki/Java_(programming_language)

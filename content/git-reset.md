@@ -17,3 +17,4 @@ version-control, files, security
 ## Links
 - More information: https://git-scm.com/docs/git-reset
 - tldr page: https://tldr.inbrowser.app/pages/common/git-reset
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -14,3 +14,4 @@ version-control, disks, desktop
 ## Links
 - More information: https://git-scm.com/docs/git-count-objects
 - tldr page: https://tldr.inbrowser.app/pages/common/git-count-objects
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -13,3 +13,4 @@ files
 ## Links
 - More information: https://docs.openssl.org/master/man1/openssl-genpkey/
 - tldr page: https://tldr.inbrowser.app/pages/common/openssl-genpkey
+- Wikipedia: https://en.wikipedia.org/wiki/OpenSSL

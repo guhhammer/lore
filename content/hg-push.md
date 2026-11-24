@@ -16,3 +16,4 @@ version-control, packages
 ## Links
 - More information: https://www.mercurial-scm.org/help/commands/push
 - tldr page: https://tldr.inbrowser.app/pages/common/hg-push
+- Wikipedia: https://en.wikipedia.org/wiki/Mercurial

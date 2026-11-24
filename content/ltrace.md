@@ -14,3 +14,4 @@ files, development, desktop
 ## Links
 - More information: https://manned.org/ltrace
 - tldr page: https://tldr.inbrowser.app/pages/linux/ltrace
+- Wikipedia: https://en.wikipedia.org/wiki/Ltrace

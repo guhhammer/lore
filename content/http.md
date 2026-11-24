@@ -21,3 +21,4 @@ network, files, users
 ## Links
 - More information: https://httpie.io/docs/cli/usage
 - tldr page: https://tldr.inbrowser.app/pages/common/http
+- Wikipedia: https://en.wikipedia.org/wiki/HTTP

@@ -13,3 +13,4 @@ text, version-control, desktop
 ## Links
 - More information: https://git-scm.com/docs/git-column
 - tldr page: https://tldr.inbrowser.app/pages/common/git-column
+- Wikipedia: https://en.wikipedia.org/wiki/Git

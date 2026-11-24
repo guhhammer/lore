@@ -15,3 +15,4 @@ packages, files
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-prune/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-prune
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -15,3 +15,4 @@ packages, users
 ## Links
 - More information: https://docs.npmjs.com/cli/v11/npm-stars
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-stars
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

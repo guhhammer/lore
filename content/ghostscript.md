@@ -14,3 +14,4 @@ documents, development, media
 
 ## Links
 - Documentation: https://ghostscript.com/doc/current/Use.htm
+- Wikipedia: https://en.wikipedia.org/wiki/Ghostscript

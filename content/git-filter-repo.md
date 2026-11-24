@@ -17,3 +17,4 @@ files, version-control, shell
 ## Links
 - More information: https://github.com/newren/git-filter-repo
 - tldr page: https://tldr.inbrowser.app/pages/common/git-filter-repo
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -12,3 +12,4 @@ documents
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-help-search/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-help-search
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -16,3 +16,4 @@ text, shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-getopts
 - tldr page: https://tldr.inbrowser.app/pages/common/getopts
+- Wikipedia: https://en.wikipedia.org/wiki/Getopts

@@ -13,3 +13,4 @@ version-control, monitoring
 ## Links
 - More information: https://git-scm.com/docs/git-reflog
 - tldr page: https://tldr.inbrowser.app/pages/common/git-reflog
+- Wikipedia: https://en.wikipedia.org/wiki/Git

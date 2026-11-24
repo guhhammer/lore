@@ -18,3 +18,4 @@ network, development
 ## Links
 - More information: https://docs.ollama.com/cli
 - tldr page: https://tldr.inbrowser.app/pages/common/ollama
+- Wikipedia: https://en.wikipedia.org/wiki/Ollama

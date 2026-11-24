@@ -10,3 +10,4 @@ Numerical computation environment by MathWorks.
 ## Links
 - More information: https://www.mathworks.com/help/matlab/matlab_env/startup-options/
 - tldr page: https://tldr.inbrowser.app/pages/common/matlab
+- Wikipedia: https://en.wikipedia.org/wiki/MATLAB

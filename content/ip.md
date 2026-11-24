@@ -18,3 +18,4 @@ network
 ## Links
 - More information: https://manned.org/ip.8
 - tldr page: https://tldr.inbrowser.app/pages/linux/ip
+- Wikipedia: https://en.wikipedia.org/wiki/Iproute2

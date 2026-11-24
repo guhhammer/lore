@@ -12,3 +12,4 @@ version-control, network, packages
 ## Links
 - More information: https://git-scm.com/docs/git-update-server-info
 - tldr page: https://tldr.inbrowser.app/pages/common/git-update-server-info
+- Wikipedia: https://en.wikipedia.org/wiki/Git

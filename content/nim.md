@@ -16,3 +16,4 @@ files, development, processes
 ## Links
 - More information: https://nim-lang.org/docs/nimc.html
 - tldr page: https://tldr.inbrowser.app/pages/common/nim
+- Wikipedia: https://en.wikipedia.org/wiki/Nim_(programming_language)

@@ -17,3 +17,4 @@ network
 ## Links
 - More information: https://docs.chef.io/workstation/knife/
 - tldr page: https://tldr.inbrowser.app/pages/common/knife
+- Wikipedia: https://en.wikipedia.org/wiki/Knife

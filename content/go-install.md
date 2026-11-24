@@ -14,3 +14,4 @@ packages, development, files
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Compile_and_install_packages_and_dependencies
 - tldr page: https://tldr.inbrowser.app/pages/common/go-install
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

@@ -17,3 +17,4 @@ development, monitoring
 ## Links
 - More information: https://docs.julialang.org/en/v1/manual/getting-started/
 - tldr page: https://tldr.inbrowser.app/pages/common/julia
+- Wikipedia: https://en.wikipedia.org/wiki/Julia_(programming_language)

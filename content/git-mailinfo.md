@@ -13,3 +13,4 @@ version-control, archives
 ## Links
 - More information: https://git-scm.com/docs/git-mailinfo
 - tldr page: https://tldr.inbrowser.app/pages/common/git-mailinfo
+- Wikipedia: https://en.wikipedia.org/wiki/Git

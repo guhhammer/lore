@@ -12,3 +12,4 @@ Check the health of the npm environment.
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-doctor/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-doctor
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -14,3 +14,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-checkout-index
 - tldr page: https://tldr.inbrowser.app/pages/common/git-checkout-index
+- Wikipedia: https://en.wikipedia.org/wiki/Git

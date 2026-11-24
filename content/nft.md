@@ -18,3 +18,4 @@ users, network, databases
 ## Links
 - More information: https://wiki.nftables.org/wiki-nftables/index.php/Main_Page
 - tldr page: https://tldr.inbrowser.app/pages/linux/nft
+- Wikipedia: https://en.wikipedia.org/wiki/Nftables

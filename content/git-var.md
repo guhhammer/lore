@@ -12,3 +12,4 @@ version-control, documents
 ## Links
 - More information: https://git-scm.com/docs/git-var
 - tldr page: https://tldr.inbrowser.app/pages/common/git-var
+- Wikipedia: https://en.wikipedia.org/wiki/Git

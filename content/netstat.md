@@ -20,3 +20,4 @@ network
 ## Links
 - More information: https://manned.org/netstat
 - tldr page: https://tldr.inbrowser.app/pages/common/netstat
+- Wikipedia: https://en.wikipedia.org/wiki/Netstat

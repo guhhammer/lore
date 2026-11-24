@@ -17,3 +17,4 @@ desktop
 ## Links
 - More information: https://manned.org/neofetch
 - tldr page: https://tldr.inbrowser.app/pages/common/neofetch
+- Wikipedia: https://en.wikipedia.org/wiki/Neofetch

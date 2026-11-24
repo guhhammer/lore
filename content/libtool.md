@@ -17,3 +17,4 @@ development, files, network
 ## Links
 - More information: https://www.gnu.org/software/libtool/manual/libtool.html#Invoking-libtool
 - tldr page: https://tldr.inbrowser.app/pages/linux/libtool
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Libtool

@@ -18,3 +18,4 @@ files, text
 ## Links
 - More information: https://manned.org/nl.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/nl
+- Wikipedia: https://en.wikipedia.org/wiki/Nl_(Unix)

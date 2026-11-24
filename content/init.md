@@ -15,3 +15,4 @@ system, users, development
 ## Links
 - More information: https://manned.org/init.8
 - tldr page: https://tldr.inbrowser.app/pages/linux/init
+- Wikipedia: https://en.wikipedia.org/wiki/Init

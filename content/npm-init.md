@@ -13,3 +13,4 @@ packages, files, text
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-init/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-init
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

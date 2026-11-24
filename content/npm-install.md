@@ -14,3 +14,4 @@ packages, network, text
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-install/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-install
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -18,3 +18,4 @@ version-control, files, text
 ## Links
 - More information: https://git-scm.com/docs/git-show
 - tldr page: https://tldr.inbrowser.app/pages/common/git-show
+- Wikipedia: https://en.wikipedia.org/wiki/Git

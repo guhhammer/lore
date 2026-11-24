@@ -15,3 +15,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-send-email
 - tldr page: https://tldr.inbrowser.app/pages/common/git-send-email
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -17,3 +17,4 @@ development, shell, text
 ## Links
 - More information: https://www.nushell.sh/book/configuration.html#flag-behavior
 - tldr page: https://tldr.inbrowser.app/pages/common/nu
+- Wikipedia: https://en.wikipedia.org/wiki/Nu_(programming_language)

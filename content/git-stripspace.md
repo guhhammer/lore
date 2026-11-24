@@ -13,3 +13,4 @@ version-control, files, text
 ## Links
 - More information: https://git-scm.com/docs/git-stripspace
 - tldr page: https://tldr.inbrowser.app/pages/common/git-stripspace
+- Wikipedia: https://en.wikipedia.org/wiki/Git

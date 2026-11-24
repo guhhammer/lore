@@ -16,3 +16,4 @@ windows
 ## Links
 - More information: https://github.com/gentilkiwi/mimikatz
 - tldr page: https://tldr.inbrowser.app/pages/windows/mimikatz-lsadump
+- Wikipedia: https://en.wikipedia.org/wiki/Mimikatz

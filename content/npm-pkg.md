@@ -18,3 +18,4 @@ packages, text
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-pkg/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-pkg
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

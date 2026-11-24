@@ -13,3 +13,4 @@ files, version-control
 ## Links
 - More information: https://git-scm.com/docs/git-mv
 - tldr page: https://tldr.inbrowser.app/pages/common/git-mv
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -12,3 +12,4 @@ development, files, packages
 ## Links
 - More information: https://github.com/openmopac/mopac
 - tldr page: https://tldr.inbrowser.app/pages/linux/mopac
+- Wikipedia: https://en.wikipedia.org/wiki/MOPAC

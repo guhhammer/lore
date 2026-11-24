@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://sourceware.org/binutils/docs/ld.html#Options
 - tldr page: https://tldr.inbrowser.app/pages/common/ld
+- Wikipedia: https://en.wikipedia.org/wiki/Linker_(computing)

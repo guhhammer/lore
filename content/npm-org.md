@@ -16,3 +16,4 @@ users
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-org/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-org
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

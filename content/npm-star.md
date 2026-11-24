@@ -18,3 +18,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/v11/npm-star
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-star
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

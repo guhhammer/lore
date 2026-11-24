@@ -18,3 +18,4 @@ version-control, packages, files
 ## Links
 - More information: https://git-scm.com/docs/git-clone
 - tldr page: https://tldr.inbrowser.app/pages/common/git-clone
+- Wikipedia: https://en.wikipedia.org/wiki/Git

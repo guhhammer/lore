@@ -17,3 +17,4 @@ files, documents
 ## Links
 - More information: https://inkscape.org/doc/inkscape-man.html
 - tldr page: https://tldr.inbrowser.app/pages/common/inkscape
+- Wikipedia: https://en.wikipedia.org/wiki/Inkscape

@@ -8,3 +8,4 @@ Add messages to syslog.
 ## Links
 - More information: https://manned.org/logger.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/logger
+- Wikipedia: https://en.wikipedia.org/wiki/Syslog

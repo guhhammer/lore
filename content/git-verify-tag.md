@@ -13,3 +13,4 @@ security, version-control
 ## Links
 - More information: https://git-scm.com/docs/git-verify-tag
 - tldr page: https://tldr.inbrowser.app/pages/common/git-verify-tag
+- Wikipedia: https://en.wikipedia.org/wiki/Git

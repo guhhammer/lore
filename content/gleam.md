@@ -18,3 +18,4 @@ development, packages
 ## Links
 - More information: https://gleam.run/writing-gleam/command-line-reference/
 - tldr page: https://tldr.inbrowser.app/pages/common/gleam
+- Wikipedia: https://en.wikipedia.org/wiki/Gleam_(programming_language)

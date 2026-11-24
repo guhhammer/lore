@@ -15,3 +15,4 @@ development, network, system
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Module_maintenance
 - tldr page: https://tldr.inbrowser.app/pages/common/go-mod
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

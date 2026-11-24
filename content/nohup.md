@@ -13,3 +13,4 @@ processes
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/nohup
+- Wikipedia: https://en.wikipedia.org/wiki/Nohup

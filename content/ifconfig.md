@@ -15,3 +15,4 @@ network
 ## Links
 - More information: https://net-tools.sourceforge.io/man/ifconfig.8.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ifconfig
+- Wikipedia: https://en.wikipedia.org/wiki/Ifconfig

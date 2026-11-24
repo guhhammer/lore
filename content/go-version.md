@@ -12,3 +12,4 @@ desktop
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Print_Go_version
 - tldr page: https://tldr.inbrowser.app/pages/common/go-version
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

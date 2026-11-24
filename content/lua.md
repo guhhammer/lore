@@ -13,3 +13,4 @@ development
 ## Links
 - More information: https://www.lua.org/manual/5.4/lua.html
 - tldr page: https://tldr.inbrowser.app/pages/common/lua
+- Wikipedia: https://en.wikipedia.org/wiki/Lua

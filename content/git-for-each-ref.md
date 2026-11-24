@@ -18,3 +18,4 @@ version-control, packages
 ## Links
 - More information: https://git-scm.com/docs/git-for-each-ref
 - tldr page: https://tldr.inbrowser.app/pages/common/git-for-each-ref
+- Wikipedia: https://en.wikipedia.org/wiki/Git

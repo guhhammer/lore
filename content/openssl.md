@@ -18,3 +18,4 @@ security, network
 ## Links
 - More information: https://docs.openssl.org/master/man1/openssl/
 - tldr page: https://tldr.inbrowser.app/pages/common/openssl
+- Wikipedia: https://en.wikipedia.org/wiki/OpenSSL

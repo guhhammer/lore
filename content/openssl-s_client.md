@@ -14,3 +14,4 @@ network, security, desktop
 ## Links
 - More information: https://docs.openssl.org/master/man1/openssl-s_client/
 - tldr page: https://tldr.inbrowser.app/pages/common/openssl-s_client
+- Wikipedia: https://en.wikipedia.org/wiki/OpenSSL

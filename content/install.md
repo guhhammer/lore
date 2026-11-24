@@ -15,3 +15,4 @@ files, packages, users
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/install
+- Wikipedia: https://en.wikipedia.org/wiki/Install_(Unix)

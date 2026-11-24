@@ -13,3 +13,4 @@ files
 ## Links
 - More information: https://www.cs.hmc.edu/~geoff/ispell-man.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ispell
+- Wikipedia: https://en.wikipedia.org/wiki/Ispell

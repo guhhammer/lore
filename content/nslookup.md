@@ -22,3 +22,4 @@ network
 ## Links
 - More information: https://manned.org/nslookup
 - tldr page: https://tldr.inbrowser.app/pages/common/nslookup
+- Wikipedia: https://en.wikipedia.org/wiki/Nslookup

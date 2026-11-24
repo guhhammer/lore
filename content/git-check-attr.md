@@ -14,3 +14,4 @@ files, version-control
 ## Links
 - More information: https://git-scm.com/docs/git-check-attr
 - tldr page: https://tldr.inbrowser.app/pages/common/git-check-attr
+- Wikipedia: https://en.wikipedia.org/wiki/Git

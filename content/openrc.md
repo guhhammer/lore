@@ -17,3 +17,4 @@ system
 ## Links
 - More information: https://wiki.gentoo.org/wiki/OpenRC
 - tldr page: https://tldr.inbrowser.app/pages/linux/openrc
+- Wikipedia: https://en.wikipedia.org/wiki/OpenRC

@@ -22,3 +22,4 @@ version-control, files, text
 ## Links
 - More information: https://git-scm.com/docs/git-gui
 - tldr page: https://tldr.inbrowser.app/pages/common/git-gui
+- Wikipedia: https://en.wikipedia.org/wiki/Git

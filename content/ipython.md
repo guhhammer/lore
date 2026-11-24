@@ -15,3 +15,4 @@ shell
 ## Links
 - More information: https://ipython.readthedocs.io/en/stable/config/options/index.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ipython
+- Wikipedia: https://en.wikipedia.org/wiki/IPython

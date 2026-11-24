@@ -10,3 +10,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-restart
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

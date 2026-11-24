@@ -16,3 +16,4 @@ packages, network, shell
 ## Links
 - More information: https://nixos.org/
 - tldr page: https://tldr.inbrowser.app/pages/common/nix-classic
+- Wikipedia: https://en.wikipedia.org/wiki/Nix_(package_manager)

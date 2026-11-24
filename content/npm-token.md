@@ -13,3 +13,4 @@ Manage and generate authentication tokens for the npm registry.
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-token/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-token
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

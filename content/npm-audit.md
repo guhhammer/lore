@@ -17,3 +17,4 @@ packages, development
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-audit/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-audit
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

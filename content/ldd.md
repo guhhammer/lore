@@ -15,3 +15,4 @@ desktop, packages, files
 ## Links
 - More information: https://manned.org/ldd
 - tldr page: https://tldr.inbrowser.app/pages/linux/ldd
+- Wikipedia: https://en.wikipedia.org/wiki/Ldd_(Unix)

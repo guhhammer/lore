@@ -12,3 +12,4 @@ Low-latency, high quality voice chat software.
 ## Links
 - More information: https://manned.org/mumble
 - tldr page: https://tldr.inbrowser.app/pages/common/mumble
+- Wikipedia: https://en.wikipedia.org/wiki/Mumble_(software)

@@ -16,3 +16,4 @@ files, version-control, desktop
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-effort
 - tldr page: https://tldr.inbrowser.app/pages/common/git-effort
+- Wikipedia: https://en.wikipedia.org/wiki/Git

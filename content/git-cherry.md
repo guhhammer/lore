@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-cherry
 - tldr page: https://tldr.inbrowser.app/pages/common/git-cherry
+- Wikipedia: https://en.wikipedia.org/wiki/Git

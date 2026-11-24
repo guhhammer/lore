@@ -17,3 +17,4 @@ network, files, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/https
+- Wikipedia: https://en.wikipedia.org/wiki/HTTPS

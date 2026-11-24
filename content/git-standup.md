@@ -14,3 +14,4 @@ version-control, users
 ## Links
 - More information: https://manned.org/git-standup
 - tldr page: https://tldr.inbrowser.app/pages/common/git-standup
+- Wikipedia: https://en.wikipedia.org/wiki/Git

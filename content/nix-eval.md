@@ -16,3 +16,4 @@ files, documents
 ## Links
 - More information: https://nix.dev/manual/nix/stable/command-ref/new-cli/nix3-eval.html
 - tldr page: https://tldr.inbrowser.app/pages/common/nix-eval
+- Wikipedia: https://en.wikipedia.org/wiki/Nix_(package_manager)

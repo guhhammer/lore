@@ -18,3 +18,4 @@ packages, development
 ## Links
 - More information: https://guides.rubygems.org/command-reference/
 - tldr page: https://tldr.inbrowser.app/pages/common/gem
+- Wikipedia: https://en.wikipedia.org/wiki/RubyGems

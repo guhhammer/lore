@@ -12,3 +12,4 @@ version-control
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-ignore-io
 - tldr page: https://tldr.inbrowser.app/pages/common/git-ignore-io
+- Wikipedia: https://en.wikipedia.org/wiki/Git

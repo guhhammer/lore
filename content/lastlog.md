@@ -14,3 +14,4 @@ users, desktop
 ## Links
 - More information: https://manned.org/lastlog
 - tldr page: https://tldr.inbrowser.app/pages/linux/lastlog
+- Wikipedia: https://en.wikipedia.org/wiki/Lastlog

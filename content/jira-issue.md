@@ -18,3 +18,4 @@ shell, development
 ## Links
 - More information: https://github.com/ankitpokhrel/jira-cli#issue
 - tldr page: https://tldr.inbrowser.app/pages/common/jira-issue
+- Wikipedia: https://en.wikipedia.org/wiki/Jira_(software)

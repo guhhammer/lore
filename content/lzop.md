@@ -15,3 +15,4 @@ files, archives
 ## Links
 - More information: https://www.lzop.org/lzop_man.php
 - tldr page: https://tldr.inbrowser.app/pages/common/lzop
+- Wikipedia: https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Oberhumer

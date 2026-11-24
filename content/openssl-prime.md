@@ -9,3 +9,4 @@ Compute prime numbers.
 ## Links
 - More information: https://docs.openssl.org/master/man1/openssl-prime/
 - tldr page: https://tldr.inbrowser.app/pages/common/openssl-prime
+- Wikipedia: https://en.wikipedia.org/wiki/OpenSSL

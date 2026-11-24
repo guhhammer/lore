@@ -14,3 +14,4 @@ files, monitoring, development
 ## Links
 - More information: https://jmeter.apache.org/usermanual/get-started.html#options
 - tldr page: https://tldr.inbrowser.app/pages/common/jmeter
+- Wikipedia: https://en.wikipedia.org/wiki/Apache_JMeter

@@ -18,3 +18,4 @@ network, files, users
 ## Links
 - More information: https://manned.org/hydra
 - tldr page: https://tldr.inbrowser.app/pages/common/hydra
+- Wikipedia: https://en.wikipedia.org/wiki/Hydra_(software)

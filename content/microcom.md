@@ -12,3 +12,4 @@ network, hardware, shell
 ## Links
 - More information: https://manned.org/microcom
 - tldr page: https://tldr.inbrowser.app/pages/linux/microcom
+- Wikipedia: https://en.wikipedia.org/wiki/Microcom

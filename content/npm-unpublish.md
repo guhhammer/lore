@@ -15,3 +15,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-unpublish/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-unpublish
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

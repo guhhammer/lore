@@ -13,3 +13,4 @@ version-control, security
 ## Links
 - More information: https://git-scm.com/docs/git-verify-commit
 - tldr page: https://tldr.inbrowser.app/pages/common/git-verify-commit
+- Wikipedia: https://en.wikipedia.org/wiki/Git

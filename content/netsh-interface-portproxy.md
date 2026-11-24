@@ -16,3 +16,4 @@ network, desktop, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/netsh-interface-portproxy
+- Wikipedia: https://en.wikipedia.org/wiki/Netsh

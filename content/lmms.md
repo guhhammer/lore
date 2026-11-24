@@ -21,3 +21,4 @@ files, development, text
 ## Links
 - More information: https://manned.org/lmms
 - tldr page: https://tldr.inbrowser.app/pages/common/lmms
+- Wikipedia: https://en.wikipedia.org/wiki/LMMS

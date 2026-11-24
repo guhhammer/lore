@@ -18,3 +18,4 @@ editors, text, network
 ## Links
 - More information: https://www.vim.org/
 - tldr page: https://tldr.inbrowser.app/pages/common/gvim
+- Wikipedia: https://en.wikipedia.org/wiki/Vim_(text_editor)

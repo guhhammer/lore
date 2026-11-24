@@ -15,3 +15,4 @@ files, editors, text, macos
 ## Links
 - More information: https://macromates.com/textmate/manual/opening-files#mate
 - tldr page: https://tldr.inbrowser.app/pages/osx/mate
+- Wikipedia: https://en.wikipedia.org/wiki/MATE_(desktop_environment)

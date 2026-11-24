@@ -13,3 +13,4 @@ development, files, packages
 ## Links
 - More information: https://manned.org/ldconfig
 - tldr page: https://tldr.inbrowser.app/pages/linux/ldconfig
+- Wikipedia: https://en.wikipedia.org/wiki/Ldconfig

@@ -16,3 +16,4 @@ files
 ## Links
 - More information: https://manned.org/meld
 - tldr page: https://tldr.inbrowser.app/pages/common/meld
+- Wikipedia: https://en.wikipedia.org/wiki/Meld_(software)

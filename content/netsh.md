@@ -19,3 +19,4 @@ files, network, documents, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/netsh
+- Wikipedia: https://en.wikipedia.org/wiki/Netsh

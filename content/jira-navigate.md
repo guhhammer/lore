@@ -10,3 +10,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/jira-navigate
+- Wikipedia: https://en.wikipedia.org/wiki/Jira_(software)

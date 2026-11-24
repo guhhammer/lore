@@ -13,3 +13,4 @@ version-control, files, archives
 ## Links
 - More information: https://git-scm.com/docs/git-verify-pack
 - tldr page: https://tldr.inbrowser.app/pages/common/git-verify-pack
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -14,3 +14,4 @@ desktop
 ## Links
 - More information: https://manned.org/kinfocenter
 - tldr page: https://tldr.inbrowser.app/pages/linux/kinfocenter
+- Wikipedia: https://en.wikipedia.org/wiki/KInfoCenter

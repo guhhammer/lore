@@ -17,3 +17,4 @@ files, network
 ## Links
 - More information: https://lftp.yar.ru/lftp-man.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/lftp
+- Wikipedia: https://en.wikipedia.org/wiki/Lftp

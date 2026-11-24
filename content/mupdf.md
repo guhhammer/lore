@@ -17,3 +17,4 @@ media, documents, files
 ## Links
 - More information: https://mupdf.readthedocs.io/en/latest/tools/mupdf-gl.html
 - tldr page: https://tldr.inbrowser.app/pages/common/mupdf
+- Wikipedia: https://en.wikipedia.org/wiki/MuPDF

@@ -21,3 +21,4 @@ users, network, files
 ## Links
 - More information: https://manned.org/ip-rule
 - tldr page: https://tldr.inbrowser.app/pages/linux/ip-rule
+- Wikipedia: https://en.wikipedia.org/wiki/Iproute2

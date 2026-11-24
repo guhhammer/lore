@@ -12,3 +12,4 @@ version-control, packages, shell
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-obliterate
 - tldr page: https://tldr.inbrowser.app/pages/common/git-obliterate
+- Wikipedia: https://en.wikipedia.org/wiki/Git

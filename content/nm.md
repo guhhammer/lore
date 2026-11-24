@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://manned.org/nm
 - tldr page: https://tldr.inbrowser.app/pages/common/nm
+- Wikipedia: https://en.wikipedia.org/wiki/Nm_(Unix)

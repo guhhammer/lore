@@ -20,3 +20,4 @@ documents, shell
 ## Links
 - More information: https://manned.org/man
 - tldr page: https://tldr.inbrowser.app/pages/common/man
+- Wikipedia: https://en.wikipedia.org/wiki/Man_page

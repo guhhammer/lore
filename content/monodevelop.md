@@ -16,3 +16,4 @@ files, monitoring
 ## Links
 - More information: https://www.monodevelop.com/documentation/
 - tldr page: https://tldr.inbrowser.app/pages/common/monodevelop
+- Wikipedia: https://en.wikipedia.org/wiki/MonoDevelop

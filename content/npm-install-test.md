@@ -14,3 +14,4 @@ packages, development
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-install-test/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-install-test
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

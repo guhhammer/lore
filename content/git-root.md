@@ -12,3 +12,4 @@ version-control, documents, files
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-root
 - tldr page: https://tldr.inbrowser.app/pages/common/git-root
+- Wikipedia: https://en.wikipedia.org/wiki/Git

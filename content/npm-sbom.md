@@ -13,3 +13,4 @@ development, packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-sbom/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-sbom
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -19,3 +19,4 @@ network
 ## Links
 - More information: https://manned.org/host
 - tldr page: https://tldr.inbrowser.app/pages/common/host
+- Wikipedia: https://en.wikipedia.org/wiki/Host_(Unix)

@@ -11,3 +11,4 @@ version-control, archives, files
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-archive-file
 - tldr page: https://tldr.inbrowser.app/pages/common/git-archive-file
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-range-diff
 - tldr page: https://tldr.inbrowser.app/pages/common/git-range-diff
+- Wikipedia: https://en.wikipedia.org/wiki/Git

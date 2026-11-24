@@ -11,3 +11,6 @@ Locale and ISO 2022 support for Unicode terminals.
 
 ## Categories
 system
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Luit

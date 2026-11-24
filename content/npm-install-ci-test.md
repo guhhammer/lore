@@ -12,3 +12,4 @@ development, packages
 ## Links
 - More information: https://docs.npmjs.com/cli/install-ci-test/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-install-ci-test
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

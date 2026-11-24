@@ -11,3 +11,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-cvsexportcommit
 - tldr page: https://tldr.inbrowser.app/pages/common/git-cvsexportcommit
+- Wikipedia: https://en.wikipedia.org/wiki/Git

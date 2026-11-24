@@ -15,3 +15,4 @@ packages, files, network
 ## Links
 - More information: https://docs.npmjs.com/cli/pack/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-pack
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

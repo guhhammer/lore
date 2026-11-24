@@ -16,3 +16,4 @@ files
 ## Links
 - More information: https://manned.org/mailx
 - tldr page: https://tldr.inbrowser.app/pages/common/mailx
+- Wikipedia: https://en.wikipedia.org/wiki/Mailx

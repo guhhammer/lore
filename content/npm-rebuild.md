@@ -16,3 +16,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-rebuild/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-rebuild
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

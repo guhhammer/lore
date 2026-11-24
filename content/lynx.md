@@ -18,3 +18,4 @@ files, text
 ## Links
 - More information: https://manned.org/lynx
 - tldr page: https://tldr.inbrowser.app/pages/common/lynx
+- Wikipedia: https://en.wikipedia.org/wiki/Lynx_(web_browser)

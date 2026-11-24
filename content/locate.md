@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://manned.org/locate
 - tldr page: https://tldr.inbrowser.app/pages/linux/locate
+- Wikipedia: https://en.wikipedia.org/wiki/Locate_(Unix)

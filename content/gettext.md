@@ -17,3 +17,4 @@ files, system, text
 ## Links
 - More information: https://www.gnu.org/software/gettext/manual/gettext.html#gettext-Invocation
 - tldr page: https://tldr.inbrowser.app/pages/common/gettext
+- Wikipedia: https://en.wikipedia.org/wiki/Gettext

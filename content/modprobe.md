@@ -20,3 +20,4 @@ system, development, users
 ## Links
 - More information: https://manned.org/modprobe
 - tldr page: https://tldr.inbrowser.app/pages/linux/modprobe
+- Wikipedia: https://en.wikipedia.org/wiki/Modprobe

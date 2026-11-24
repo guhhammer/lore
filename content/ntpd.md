@@ -13,3 +13,4 @@ system, network, users
 ## Links
 - More information: https://manned.org/ntpd
 - tldr page: https://tldr.inbrowser.app/pages/linux/ntpd
+- Wikipedia: https://en.wikipedia.org/wiki/Ntpd

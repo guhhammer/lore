@@ -18,3 +18,4 @@ network, users, files
 ## Links
 - More information: https://manned.org/ip-link
 - tldr page: https://tldr.inbrowser.app/pages/linux/ip-link
+- Wikipedia: https://en.wikipedia.org/wiki/Iproute2

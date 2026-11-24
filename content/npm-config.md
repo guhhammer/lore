@@ -14,3 +14,4 @@ Manage the `npm` configuration settings.
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-config/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-config
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

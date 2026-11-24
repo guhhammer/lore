@@ -14,3 +14,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-diff-index
 - tldr page: https://tldr.inbrowser.app/pages/common/git-diff-index
+- Wikipedia: https://en.wikipedia.org/wiki/Git

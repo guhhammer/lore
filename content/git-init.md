@@ -14,3 +14,4 @@ version-control, packages, network
 ## Links
 - More information: https://git-scm.com/docs/git-init
 - tldr page: https://tldr.inbrowser.app/pages/common/git-init
+- Wikipedia: https://en.wikipedia.org/wiki/Git

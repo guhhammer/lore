@@ -18,3 +18,4 @@ version-control, packages
 ## Links
 - More information: https://git-scm.com/docs/git-fsck
 - tldr page: https://tldr.inbrowser.app/pages/common/git-fsck
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -15,3 +15,4 @@ shell, users, text
 ## Links
 - More information: https://manned.org/kmscon
 - tldr page: https://tldr.inbrowser.app/pages/linux/kmscon
+- Wikipedia: https://en.wikipedia.org/wiki/Kmscon

@@ -15,3 +15,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-exec/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-exec
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

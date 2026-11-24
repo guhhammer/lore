@@ -18,3 +18,4 @@ desktop, files, text
 ## Links
 - More information: https://www.mercurial-scm.org/help/commands/status
 - tldr page: https://tldr.inbrowser.app/pages/common/hg-status
+- Wikipedia: https://en.wikipedia.org/wiki/Mercurial

@@ -11,3 +11,4 @@ version-control, shell
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-coauthor
 - tldr page: https://tldr.inbrowser.app/pages/common/git-coauthor
+- Wikipedia: https://en.wikipedia.org/wiki/Git

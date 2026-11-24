@@ -17,3 +17,4 @@ files, disks, security
 ## Links
 - More information: https://docs.ipfs.tech/reference/kubo/cli/
 - tldr page: https://tldr.inbrowser.app/pages/common/ipfs
+- Wikipedia: https://en.wikipedia.org/wiki/InterPlanetary_File_System

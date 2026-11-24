@@ -16,3 +16,4 @@ packages, files, disks, macos
 ## Links
 - More information: https://keith.github.io/xcode-man-pages/installer.8.html
 - tldr page: https://tldr.inbrowser.app/pages/osx/installer
+- Wikipedia: https://en.wikipedia.org/wiki/Installer_(programming_language)

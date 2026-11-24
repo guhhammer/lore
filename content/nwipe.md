@@ -15,3 +15,4 @@ disks, users, network
 ## Links
 - More information: https://manned.org/nwipe
 - tldr page: https://tldr.inbrowser.app/pages/common/nwipe
+- Wikipedia: https://en.wikipedia.org/wiki/Nwipe

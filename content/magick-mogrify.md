@@ -17,3 +17,4 @@ files, containers, media
 ## Links
 - More information: https://imagemagick.org/script/mogrify.php
 - tldr page: https://tldr.inbrowser.app/pages/common/magick-mogrify
+- Wikipedia: https://en.wikipedia.org/wiki/ImageMagick

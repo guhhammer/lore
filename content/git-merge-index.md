@@ -15,3 +15,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-merge-index
 - tldr page: https://tldr.inbrowser.app/pages/common/git-merge-index
+- Wikipedia: https://en.wikipedia.org/wiki/Git

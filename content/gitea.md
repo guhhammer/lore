@@ -16,3 +16,4 @@ desktop, files, version-control
 ## Links
 - More information: https://docs.gitea.com/administration/command-line
 - tldr page: https://tldr.inbrowser.app/pages/common/gitea
+- Wikipedia: https://en.wikipedia.org/wiki/Gitea

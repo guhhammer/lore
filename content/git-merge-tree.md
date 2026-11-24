@@ -12,3 +12,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-merge-tree
 - tldr page: https://tldr.inbrowser.app/pages/common/git-merge-tree
+- Wikipedia: https://en.wikipedia.org/wiki/Git

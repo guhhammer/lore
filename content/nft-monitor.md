@@ -14,3 +14,4 @@ monitoring, users, security
 ## Links
 - More information: https://manned.org/nft#head21
 - tldr page: https://tldr.inbrowser.app/pages/linux/nft-monitor
+- Wikipedia: https://en.wikipedia.org/wiki/Nftables

@@ -13,3 +13,4 @@ version-control, files, packages
 ## Links
 - More information: https://manned.org/git-authors
 - tldr page: https://tldr.inbrowser.app/pages/common/git-authors
+- Wikipedia: https://en.wikipedia.org/wiki/Git

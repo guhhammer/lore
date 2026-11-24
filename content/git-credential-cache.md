@@ -11,3 +11,4 @@ version-control, monitoring
 ## Links
 - More information: https://git-scm.com/docs/git-credential-cache
 - tldr page: https://tldr.inbrowser.app/pages/common/git-credential-cache
+- Wikipedia: https://en.wikipedia.org/wiki/Git

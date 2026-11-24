@@ -14,3 +14,4 @@ files, documents, network
 ## Links
 - More information: https://manned.org/grip
 - tldr page: https://tldr.inbrowser.app/pages/common/grip
+- Wikipedia: https://en.wikipedia.org/wiki/Grip_(software)

@@ -14,3 +14,4 @@ version-control
 ## Links
 - More information: https://manned.org/git-feature
 - tldr page: https://tldr.inbrowser.app/pages/common/git-feature
+- Wikipedia: https://en.wikipedia.org/wiki/Git

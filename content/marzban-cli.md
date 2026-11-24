@@ -17,3 +17,4 @@ users
 ## Links
 - More information: https://github.com/Gozargah/Marzban/blob/master/cli/README.md
 - tldr page: https://tldr.inbrowser.app/pages/linux/marzban-cli
+- Wikipedia: https://en.wikipedia.org/wiki/Marzban

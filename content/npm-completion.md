@@ -14,3 +14,4 @@ files, shell
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-completion/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-completion
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

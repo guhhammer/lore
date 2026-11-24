@@ -13,3 +13,4 @@ hardware, monitoring, desktop
 ## Links
 - More information: https://manned.org/mpstat
 - tldr page: https://tldr.inbrowser.app/pages/linux/mpstat
+- Wikipedia: https://en.wikipedia.org/wiki/Mpstat

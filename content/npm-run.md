@@ -17,3 +17,4 @@ development
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-run/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-run
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

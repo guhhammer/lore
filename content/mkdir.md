@@ -12,3 +12,4 @@ files
 
 ## Links
 - GNU manual: https://www.gnu.org/software/coreutils/mkdir
+- Wikipedia: https://en.wikipedia.org/wiki/Mkdir

@@ -14,3 +14,4 @@ version-control, files, packages
 ## Links
 - More information: https://manned.org/git-sparse-checkout
 - tldr page: https://tldr.inbrowser.app/pages/common/git-sparse-checkout
+- Wikipedia: https://en.wikipedia.org/wiki/Git

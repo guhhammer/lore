@@ -18,3 +18,4 @@ files, development
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/mixxx
+- Wikipedia: https://en.wikipedia.org/wiki/Mixxx

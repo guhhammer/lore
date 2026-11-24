@@ -13,3 +13,4 @@ packages, text, files
 ## Links
 - More information: https://docs.npmjs.com/cli/v11/npm-shrinkwrap
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-shrinkwrap
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -16,3 +16,4 @@ files, network
 ## Links
 - More information: https://github.com/OJ/gobuster#modes
 - tldr page: https://tldr.inbrowser.app/pages/common/gobuster
+- Wikipedia: https://en.wikipedia.org/wiki/Gobuster

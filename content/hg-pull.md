@@ -17,3 +17,4 @@ packages, version-control
 ## Links
 - More information: https://www.mercurial-scm.org/help/commands/pull
 - tldr page: https://tldr.inbrowser.app/pages/common/hg-pull
+- Wikipedia: https://en.wikipedia.org/wiki/Mercurial

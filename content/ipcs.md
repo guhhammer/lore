@@ -22,3 +22,4 @@ monitoring
 ## Links
 - More information: https://manned.org/ipcs.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/ipcs
+- Wikipedia: https://en.wikipedia.org/wiki/Ipcs

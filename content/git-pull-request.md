@@ -11,3 +11,4 @@ version-control, development
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-pull-request
 - tldr page: https://tldr.inbrowser.app/pages/common/git-pull-request
+- Wikipedia: https://en.wikipedia.org/wiki/Git

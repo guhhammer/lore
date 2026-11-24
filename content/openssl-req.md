@@ -12,3 +12,4 @@ security
 ## Links
 - More information: https://docs.openssl.org/master/man1/openssl-req/
 - tldr page: https://tldr.inbrowser.app/pages/common/openssl-req
+- Wikipedia: https://en.wikipedia.org/wiki/OpenSSL

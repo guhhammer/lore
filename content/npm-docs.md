@@ -12,3 +12,4 @@ packages, documents
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-docs/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-docs
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

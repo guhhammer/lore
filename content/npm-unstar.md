@@ -16,3 +16,4 @@ packages, network
 ## Links
 - More information: https://docs.npmjs.com/cli/v11/npm-unstar
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-unstar
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

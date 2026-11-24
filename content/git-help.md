@@ -15,3 +15,4 @@ version-control, desktop
 ## Links
 - More information: https://git-scm.com/docs/git-help
 - tldr page: https://tldr.inbrowser.app/pages/common/git-help
+- Wikipedia: https://en.wikipedia.org/wiki/Git

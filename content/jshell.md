@@ -10,3 +10,6 @@ An interactive Java prompt: type Java statements and see the result at once.
 
 ## Categories
 shell, development, files
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/JShell

@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-write-tree
 - tldr page: https://tldr.inbrowser.app/pages/common/git-write-tree
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -11,3 +11,4 @@ files
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/link-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/link
+- Wikipedia: https://en.wikipedia.org/wiki/Link_(Unix)

@@ -14,3 +14,4 @@ development, network
 ## Links
 - More information: https://www.gnu.org/software/guile/manual/guile.html#Invoking-Guile
 - tldr page: https://tldr.inbrowser.app/pages/common/guile
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Guile

@@ -17,3 +17,4 @@ development, network
 ## Links
 - More information: https://manned.org/gradle
 - tldr page: https://tldr.inbrowser.app/pages/common/gradle
+- Wikipedia: https://en.wikipedia.org/wiki/Gradle

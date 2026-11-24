@@ -16,3 +16,4 @@ version-control, files
 ## Links
 - More information: https://git-annex.branchable.com/git-annex/
 - tldr page: https://tldr.inbrowser.app/pages/common/git-annex
+- Wikipedia: https://en.wikipedia.org/wiki/Git

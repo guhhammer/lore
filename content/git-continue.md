@@ -10,3 +10,4 @@ version-control, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/git-continue
+- Wikipedia: https://en.wikipedia.org/wiki/Git

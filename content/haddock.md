@@ -11,3 +11,6 @@ Documentation tool for annotated Haskell source code.
 
 ## Categories
 files, development, documents
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Haddock_(software)

@@ -18,3 +18,4 @@ archives
 ## Links
 - More information: https://www.gnu.org/software/gzip/manual/gzip.html
 - tldr page: https://tldr.inbrowser.app/pages/common/gzip
+- Wikipedia: https://en.wikipedia.org/wiki/Gzip

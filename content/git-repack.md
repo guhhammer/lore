@@ -14,3 +14,4 @@ version-control, packages
 ## Links
 - More information: https://git-scm.com/docs/git-repack
 - tldr page: https://tldr.inbrowser.app/pages/common/git-repack
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -10,3 +10,4 @@ Generate RSA private keys.
 ## Links
 - More information: https://docs.openssl.org/master/man1/openssl-genrsa/
 - tldr page: https://tldr.inbrowser.app/pages/common/openssl-genrsa
+- Wikipedia: https://en.wikipedia.org/wiki/OpenSSL

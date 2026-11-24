@@ -14,3 +14,4 @@ files
 
 ## Links
 - Documentation: https://www.gnu.org/software/mailutils/manual/index.html
+- Wikipedia: https://en.wikipedia.org/wiki/Movemail

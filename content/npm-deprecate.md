@@ -13,3 +13,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-deprecate/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-deprecate
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

@@ -18,3 +18,4 @@ version-control, network
 ## Links
 - More information: https://git-scm.com/docs/git-remote
 - tldr page: https://tldr.inbrowser.app/pages/common/git-remote
+- Wikipedia: https://en.wikipedia.org/wiki/Git

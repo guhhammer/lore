@@ -12,3 +12,4 @@ files, development
 ## Links
 - More information: https://pkg.go.dev/cmd/go#hdr-Compile_and_run_Go_program
 - tldr page: https://tldr.inbrowser.app/pages/common/go-run
+- Wikipedia: https://en.wikipedia.org/wiki/Go_(programming_language)

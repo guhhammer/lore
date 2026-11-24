@@ -17,3 +17,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-cache/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-cache
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

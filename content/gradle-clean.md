@@ -13,3 +13,4 @@ development, files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/gradle-clean
+- Wikipedia: https://en.wikipedia.org/wiki/Gradle

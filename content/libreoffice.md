@@ -13,3 +13,4 @@ files, documents, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/libreoffice
+- Wikipedia: https://en.wikipedia.org/wiki/LibreOffice

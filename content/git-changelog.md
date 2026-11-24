@@ -17,3 +17,4 @@ version-control, files, packages
 ## Links
 - More information: https://manned.org/git-changelog
 - tldr page: https://tldr.inbrowser.app/pages/common/git-changelog
+- Wikipedia: https://en.wikipedia.org/wiki/Git

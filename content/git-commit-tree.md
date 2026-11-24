@@ -17,3 +17,4 @@ version-control, files
 ## Links
 - More information: https://git-scm.com/docs/git-commit-tree
 - tldr page: https://tldr.inbrowser.app/pages/common/git-commit-tree
+- Wikipedia: https://en.wikipedia.org/wiki/Git

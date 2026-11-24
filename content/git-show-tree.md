@@ -11,3 +11,4 @@ version-control, packages
 ## Links
 - More information: https://github.com/tj/git-extras/blob/main/Commands.md#git-show-tree
 - tldr page: https://tldr.inbrowser.app/pages/common/git-show-tree
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -16,3 +16,4 @@ network, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/netcat
+- Wikipedia: https://en.wikipedia.org/wiki/Netcat

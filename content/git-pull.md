@@ -14,3 +14,4 @@ version-control, packages, network
 ## Links
 - More information: https://git-scm.com/docs/git-pull
 - tldr page: https://tldr.inbrowser.app/pages/common/git-pull
+- Wikipedia: https://en.wikipedia.org/wiki/Git

@@ -15,3 +15,4 @@ files, network, text
 ## Links
 - More information: https://manned.org/nokogiri
 - tldr page: https://tldr.inbrowser.app/pages/common/nokogiri
+- Wikipedia: https://en.wikipedia.org/wiki/Nokogiri_(software)

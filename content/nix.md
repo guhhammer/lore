@@ -20,3 +20,4 @@ packages, development, documents
 ## Links
 - More information: https://nix.dev/manual/nix/stable/command-ref/new-cli/nix
 - tldr page: https://tldr.inbrowser.app/pages/common/nix
+- Wikipedia: https://en.wikipedia.org/wiki/Nix_(package_manager)

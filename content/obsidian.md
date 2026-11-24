@@ -18,3 +18,4 @@ network, files, text
 ## Links
 - More information: https://obsidian.md/help/cli
 - tldr page: https://tldr.inbrowser.app/pages/common/obsidian
+- Wikipedia: https://en.wikipedia.org/wiki/Obsidian_(software)

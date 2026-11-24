@@ -13,3 +13,4 @@ version-control
 ## Links
 - More information: https://git-scm.com/docs/git-check-ref-format
 - tldr page: https://tldr.inbrowser.app/pages/common/git-check-ref-format
+- Wikipedia: https://en.wikipedia.org/wiki/Git

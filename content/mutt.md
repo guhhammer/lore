@@ -14,3 +14,4 @@ files, text
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/mutt
+- Wikipedia: https://en.wikipedia.org/wiki/Mutt_(email_client)

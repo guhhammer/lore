@@ -18,3 +18,4 @@ containers, media, text
 ## Links
 - More information: https://manned.org/lxc
 - tldr page: https://tldr.inbrowser.app/pages/linux/lxc
+- Wikipedia: https://en.wikipedia.org/wiki/LXC

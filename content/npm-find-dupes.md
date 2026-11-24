@@ -18,3 +18,4 @@ packages
 ## Links
 - More information: https://docs.npmjs.com/cli/npm-find-dupes/
 - tldr page: https://tldr.inbrowser.app/pages/common/npm-find-dupes
+- Wikipedia: https://en.wikipedia.org/wiki/Npm

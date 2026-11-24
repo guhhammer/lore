@@ -10,3 +10,4 @@ development, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/jira-projects
+- Wikipedia: https://en.wikipedia.org/wiki/Jira_(software)
