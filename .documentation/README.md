@@ -53,7 +53,9 @@ lore/
 │   │   ├── links.rs        the search links every page gets
 │   │   ├── check.rs        `lore check`: the check of pages lore did not write
 │   │   ├── danger.rs       what can destroy data or stop the system
+│   │   ├── docs.rs         the docs topic: DevDocs catalogue, downloads, pages
 │   │   ├── explain.rs      `lore explain LINE`
+│   │   ├── languages.rs    the languages topic: learnxinyminutes pages, shown like bat
 │   │   ├── recipes.rs      the recipes as list entries (Kind::Recipe)
 │   │   ├── tldr.rs         a tldr-pages page in lore's format
 │   │   └── updates.rs      `lore --update-pages`: the weekly bundle, else tldr's zips
@@ -69,6 +71,8 @@ lore/
 │   │   └── paths.rs        `~/` and `*` in configured paths
 │   └── utils/
 │       ├── clipboard.rs    copying through the terminal (OSC 52)
+│       ├── highlight.rs    code in colours (comments, strings, numbers, keywords)
+│       ├── html.rs         HTML as page lines (docs pages)
 │       ├── history.rs      uses per command, from the shell's history
 │       ├── internet.rs     the connection dot and cht.sh's cheat sheets
 │       ├── manual.rs       running man and whatis, cleaning their output
@@ -77,13 +81,17 @@ lore/
 ├── build.rs                packs content/ into the binary (zstd); embeds and checks palettes/ and recipes/
 ├── content/                9,109 pages, and 32,226 translations in i18n/<language>/ (41 languages)
 ├── recipes/                100 task pages
+├── languages/              201 learnxinyminutes pages + 678 translations (CC BY-SA 3.0), packed like content/
 ├── palettes/               15 colour palettes
 ├── beacon/beacon.tsv       the beacon's built-in table (BEACON_SNAPSHOT)
 ├── completions/            bash, zsh and fish scripts (they ask `lore --complete`)
 ├── man/lore.1              lore's own manual
-├── tests/                  every test (32 files), through src/lib.rs
+├── tests/                  every test (35 files), through src/lib.rs
 ├── examples/commands.rs    prints every command lore lists, for scripts/content
 ├── scripts/content/        the scripts that made content/, and bundle.py (the weekly pages)
+├── devdocs/catalog.tsv      every DevDocs set, ranked by Stack Overflow (DOCS_CATALOG)
+├── scripts/docs/           catalog.py: devdocs/catalog.tsv
+├── scripts/languages/      sync.py: languages/ from a learnxinyminutes-docs checkout
 ├── scripts/beacon/         snapshot.py: the beacon's table, from popcon and Homebrew
 ├── scripts/release/        the release tarball and notes
 ├── packaging/              the AUR build file, the Homebrew formula, update.sh
@@ -109,12 +117,13 @@ The app is always in one **mode**, and each mode has its own keys
 
 | Mode | What is on screen | Keys |
 | --- | --- | --- |
-| Browse | The topic bar and its list | ↑↓, ←→ (topic), Enter, Tab / Shift+Tab (letter), `/`, `b`, `+`, Esc quits |
+| Browse | The topic bar and its list | ↑↓, PgUp PgDn, `w` `s` (fast scroll), ←→ (topic), Enter, Tab / Shift+Tab (letter), `/`, `b`, `+`, Esc quits |
 | Search | Typing in the search bar | text, Backspace, ↑↓, Enter, Esc |
-| Info | A page beside the list | ↑↓ PgUp PgDn, Tab / Shift+Tab (section), `/`, `c`, `b`, ← / Esc |
+| Info | A page beside the list | ↑↓ PgUp PgDn, `w` `s`, Tab / Shift+Tab (section), `/`, `c`, `b`, ← / Esc |
 | Copy | The page's examples, over it | ↑↓, Enter copies, Esc |
 | About | The `+` screen and its settings | ↑↓ choose, Enter changes, `p`, + / ← / Esc |
 | Palette | The palette picker, over `+` | ↑↓ try, Enter keeps, Esc cancels |
+| Choose | The picker of Pages in or Favourite, over `+` (`App::choice`) | ↑↓ PgUp PgDn, a letter jumps, Enter keeps, Esc |
 
 Ctrl+C quits in every mode. The background (the internet) never changes
 the state itself: `next_action` checks every 250 ms whether something
@@ -153,7 +162,10 @@ arrived, and asks for a redraw.
    It runs again on every resize, without looking the facts up again.
    **INTERNET** is added at each draw by `ui::draw_page` (just before
    MANUAL), because its answer arrives in the background. A **recipe's**
-   page is STEPS · USES · NOTES instead.
+   page is STEPS · USES · NOTES instead, and a **language's** (`info::languages`)
+   is its file as `bat` shows it: lines with parts of their own colour
+   (`PageLine::spans`, from `utils::highlight` and the `LANGUAGE_SYNTAXES`
+   table), banner comments as headings for the jumper.
 
 ---
 
@@ -182,12 +194,13 @@ arrived, and asks for a redraw.
 
 | File | Written by | Holds |
 | --- | --- | --- |
-| `$XDG_CONFIG_HOME/lore/config` (`~/.config/lore/config`) | the `+` settings (`lib.rs::change_setting`) | `palette`, `internet`, `history` |
+| `$XDG_CONFIG_HOME/lore/config` (`~/.config/lore/config`) | the `+` settings (`lib.rs::change_setting`, `keep_choice`) | `palette`, `internet`, `history`, `scroll`, `reading`, `favourite` |
 | `$XDG_CONFIG_HOME/lore/palettes/` | the user | their own palettes |
 | `$XDG_DATA_HOME/lore/` (`~/.local/share/lore/`) | `b`, opening a page | `bookmarks`, `recent` |
 | `$XDG_CACHE_HOME/lore/internet/` (`~/.cache/lore/internet/`) | `utils::internet` | cheat sheets, a day |
 | `$XDG_CACHE_HOME/lore/beacon.tsv` | `info::beacon::refresh` (Internet on) | the newest beacon table, a week |
 | `~/.local/share/lore/updates/` | `lore --update-pages` (`info::updates`) | pages and translations lore lacks |
+| `~/.local/share/lore/docs/<slug>/` | `d` in the docs topic (`info::docs`) | `index.tsv`, `pages`, `offsets.tsv` |
 
 ---
 

@@ -26,7 +26,11 @@ fn every_topic_has_its_name_in_the_bar() {
 fn the_list_opens_on_the_commands_topic() {
     let app = app_with_a_recipe();
     assert_eq!(app.topic, Topic::Commands);
-    assert_eq!(app.topics, [Topic::Commands, Topic::Recipes]);
+    assert_eq!(
+        app.topics,
+        [Topic::Commands, Topic::Recipes, Topic::Docs, Topic::Tools],
+        "docs and tools are always there"
+    );
 }
 
 #[test]
@@ -34,10 +38,10 @@ fn right_and_left_go_round_the_topics_shown() {
     let mut app = app_with_a_recipe();
     app.step_topic(1);
     assert_eq!(app.topic, Topic::Recipes);
+    app.step_topic(-2);
+    assert_eq!(app.topic, Topic::Tools, "round to the last");
     app.step_topic(1);
-    assert_eq!(app.topic, Topic::Commands, "round to the first");
-    app.step_topic(-1);
-    assert_eq!(app.topic, Topic::Recipes, "and back round to the last");
+    assert_eq!(app.topic, Topic::Commands, "and round to the first");
 }
 
 #[test]

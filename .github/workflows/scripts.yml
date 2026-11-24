@@ -45,4 +45,4 @@ jobs:
         run: |
           python3 -c 'import ast, sys
           for f in sys.argv[1:]:
-              ast.parse(open(f).read(), f)' scripts/content/*.py scripts/beacon/*.py
+              ast.parse(open(f).read(), f)' scripts/content/*.py scripts/beacon/*.py scripts/languages/*.py scripts/docs/*.py

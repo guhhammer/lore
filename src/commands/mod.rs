@@ -25,6 +25,25 @@ pub enum Kind {
     /// A recipe: a task page that chains commands ("free disk space"),
     /// from recipes/; lore's, not this machine's.
     Recipe,
+    /// A language's page from learnxinyminutes.com ("Python"), from
+    /// languages/; lore's too.
+    Language,
+    /// A documentation set of the docs topic (`Python 3.13`); `runs` holds
+    /// its slug (`python~3.13`).
+    Docset,
+    /// One page of a downloaded set; `runs` holds `slug<TAB>path<TAB>type`.
+    DocEntry,
+}
+
+impl Kind {
+    /// lore's own kind of page (a recipe, a language, docs): nothing about
+    /// it is looked up on the machine or on cht.sh, and it has no manual.
+    pub fn is_lores(self) -> bool {
+        matches!(
+            self,
+            Self::Recipe | Self::Language | Self::Docset | Self::DocEntry
+        )
+    }
 }
 
 /// One entry of the list.

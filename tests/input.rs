@@ -25,9 +25,10 @@ fn slash_opens_the_search_while_browsing() {
 
 #[test]
 fn esc_quits_while_browsing_leaves_the_search_and_closes_the_page() {
+    // Escape: out of an open docs set first, else out of lore (lib.rs)
     assert_eq!(
         action_for(key(KeyCode::Esc), Mode::Browse),
-        Some(Action::Quit)
+        Some(Action::Escape)
     );
     assert_eq!(
         action_for(key(KeyCode::Esc), Mode::Search),
@@ -141,5 +142,34 @@ fn a_key_release_is_ignored_so_one_press_acts_once() {
     assert_eq!(
         action_for_event(Event::Key(key(KeyCode::Down)), Mode::Browse),
         Some(Action::Down)
+    );
+}
+
+#[test]
+fn page_keys_and_w_s_move_the_list_and_scroll_a_page() {
+    let key = |code| KeyEvent::new(code, KeyModifiers::NONE);
+    for mode in [Mode::Browse, Mode::Info] {
+        assert_eq!(action_for(key(KeyCode::PageUp), mode), Some(Action::PageUp));
+        assert_eq!(
+            action_for(key(KeyCode::PageDown), mode),
+            Some(Action::PageDown)
+        );
+        assert_eq!(
+            action_for(key(KeyCode::Char('w')), mode),
+            Some(Action::FastUp)
+        );
+        assert_eq!(
+            action_for(key(KeyCode::Char('s')), mode),
+            Some(Action::FastDown)
+        );
+    }
+    assert_eq!(
+        action_for(key(KeyCode::PageDown), Mode::Search),
+        Some(Action::PageDown)
+    );
+    assert_eq!(
+        action_for(key(KeyCode::Char('s')), Mode::Search),
+        Some(Action::Type('s')),
+        "typed in a search"
     );
 }

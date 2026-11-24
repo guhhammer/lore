@@ -155,9 +155,16 @@ Print lore's version.
 .B Up, Down
 Move through the commands; the letter headers are skipped.
 .TP
+.B PgUp, PgDn
+Move 20 commands up or down (in the search's results too).
+.TP
+.B w, s
+Fast scroll: move up or down by the lines set in Fast scroll on the +
+screen (10 at first).
+.TP
 .B Left, Right
 Switch the topic, in the bar under the search bar: commands, recipes,
-beacon, most used, recent, bookmarks (see
+languages, docs, tools, beacon, most used, recent, bookmarks (see
 .BR TOPICS ).
 Round at either end.
 .TP
@@ -196,7 +203,18 @@ top. Round at either end: A, B, C, ... and A again.
 About lore: its version, what it found on this machine (commands, pages,
 translations), where it keeps its settings and lists, its licence and
 source; and the settings, changed there: Colours (Enter opens the palette
-picker), Internet (on or off) and History (read or not). Up and Down choose
+picker), Internet (on or off), History (read or not), Fast scroll (how many
+lines w and s move: 5, 10, 15, 20 or 30; Enter goes to the next), Pages in
+(the language pages are read in: system, which follows
+.BR LANG ,
+English, or any language a translation is in) and Favourite (a programming
+language shown first in the languages topic), and Reset all (Enter, then
+Enter again: every setting back to its default; bookmarks, recent pages,
+downloaded docs and pages and the caches erased; your own pages and
+palettes stay). The screen also lists the author's profiles to follow.
+Pages in and Favourite open a
+picker: Up, Down, PgUp and PgDn choose, a letter jumps to the next choice
+starting with it, Enter keeps, Esc goes back. Up and Down choose
 one, Enter changes it, and it is saved at once for the next runs. +, Left or
 Esc go back; p opens the palette picker too.
 .TP
@@ -206,6 +224,9 @@ Quit.
 .TP
 .B Up, Down, PgUp, PgDn
 Scroll.
+.TP
+.B w, s
+Fast scroll: up or down by the Fast scroll lines.
 .TP
 .B /
 Search other commands without leaving the page: the list beside it
@@ -269,6 +290,14 @@ is every command on this machine, A to Z;
 .B recipes
 the task pages (see
 .BR RECIPES );
+.B languages
+a page per programming language (see
+.BR LANGUAGES );
+.B docs
+documentation sets to download (see
+.BR DOCS );
+.B tools
+(coming soon);
 .B beacon
 what people use most and what is rising (see
 .BR BEACON );
@@ -279,6 +308,42 @@ and
 your own (see
 .BR "YOUR OWN USE" ).
 A topic with nothing in it yet is not shown. A search looks in every topic.
+.SH LANGUAGES
+The
+.B languages
+topic holds the pages of Learn X in Y minutes
+.RI ( https://learnxinyminutes.com ):
+for each of about 200 programming languages, tools and formats, a short
+introduction and one commented file that walks through how it works, to be
+read from top to bottom. A page opens like a file in
+.BR bat :
+the introduction as text, then the file in a frame, its name on top, each
+line numbered, comments, strings, numbers and keywords in colour, and a line
+too long for the panel wrapped under its number. Tab and Shift+Tab jump
+between the file's parts (its banner comments). In your language when the
+site has a translation. A language named like a command on this machine
+gets
+.I (language)
+after its name. The pages are unchanged, by their contributors, under
+CC BY-SA 3.0.
+.SH DOCS
+The
+.B docs
+topic lists every documentation set of DevDocs
+.RI ( https://devdocs.io ),
+about 850 for languages, frameworks and tools: the 50 most asked about on
+Stack Overflow first, then all of them A to Z. Press
+.B d
+on a set to download it in the background, to read offline; it is kept in
+~/.local/share/lore/docs/.
+.B x
+deletes it. Enter on a downloaded set lists its pages by type, and
+.B /
+searches them (with no set open,
+.B /
+searches the sets); Enter opens one at its own part, its HTML shown as
+text. Esc goes back to the sets. The sets are by their projects, under
+their licences, credited on each page.
 .SH BEACON
 The
 .B beacon

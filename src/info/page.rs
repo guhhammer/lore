@@ -50,6 +50,13 @@ pub enum Style {
     Offline,
     /// Text from the internet, shown as it came: never a link, never copied.
     Raw,
+    /// A language page's file, coloured like `bat`: its comments, keywords,
+    /// strings and numbers, and the line numbers beside it.
+    Comment,
+    Keyword,
+    Literal,
+    Number,
+    Gutter,
 }
 
 /// One line of the page.
@@ -57,6 +64,10 @@ pub enum Style {
 pub struct PageLine {
     pub text: String,
     pub style: Style,
+    /// When not empty, the line in parts of their own style (a language
+    /// page's code); `text` is then those parts joined, and `style` says
+    /// only what the line is (a heading the jumper stops at, or not).
+    pub spans: Vec<(String, Style)>,
 }
 
 /// What is looked up about a command, once: its page, its `whatis` line,
@@ -74,10 +85,10 @@ pub struct Facts {
 /// Looks `command` up: its page, its description and, for a program, its
 /// file and package. Runs `whatis` and the package manager; never fails.
 pub fn facts(command: &Command) -> Facts {
-    if command.kind == Kind::Recipe {
+    if command.kind.is_lores() && !matches!(command.kind, Kind::Docset | Kind::DocEntry) {
         // lore's own page: nothing to look up on the machine
         return Facts {
-            content: recipes::find(&command.name),
+            content: recipes::content_of(command),
             ..Facts::default()
         };
     }
@@ -119,6 +130,12 @@ pub fn render(
         recipe(&mut page, command, facts);
         return page.lines;
     }
+    if command.kind == Kind::Language {
+        return crate::info::languages::render(&command.name, width);
+    }
+    if matches!(command.kind, Kind::Docset | Kind::DocEntry) {
+        return docs_page(command, width);
+    }
     let empty = Content::default();
     let content = facts.content.as_ref().unwrap_or(&empty); // no page: every part empty
     let name = &command.name;
@@ -138,7 +155,7 @@ pub fn render(
         Kind::Keyword => Some(IS_KEYWORD.to_owned()),
         Kind::Function => Some(IS_FUNCTION.to_owned()),
         Kind::Subcommand => Some(IS_SUBCOMMAND.replace("{program}", command.program())),
-        Kind::Program | Kind::Recipe => None,
+        Kind::Program | Kind::Recipe | Kind::Language | Kind::Docset | Kind::DocEntry => None,
     };
     if let Some(what) = what {
         page.wrapped(&what, Style::Text, "");
@@ -291,6 +308,29 @@ fn version(page: &mut Page, command: &Command, facts: &Facts) {
     }
 }
 
+/// A docs topic page: a set's cover, or one of its pages (`runs` says
+/// which: the slug, or `slug<TAB>path<TAB>type`).
+fn docs_page(command: &Command, width: usize) -> Vec<PageLine> {
+    use crate::info::docs;
+    let runs = command.runs.clone().unwrap_or_default();
+    let mut parts = runs.split('\t');
+    let slug = parts.next().unwrap_or_default();
+    let Some(set) = docs::catalog().into_iter().find(|s| s.slug == slug) else {
+        return Vec::new();
+    };
+    match (command.kind, parts.next()) {
+        (Kind::DocEntry, Some(path)) => {
+            let entry = docs::Entry {
+                name: command.name.clone(),
+                path: path.to_owned(),
+                kind: parts.next().unwrap_or_default().to_owned(),
+            };
+            docs::entry_page(&set, &entry, width)
+        }
+        _ => docs::set_page(&set, width),
+    }
+}
+
 /// Whether `line` is a section's heading (INTERNET's too, coloured by the
 /// connection): where the jumper (Space) stops on a page.
 pub fn starts_a_section(line: &PageLine) -> bool {
@@ -326,6 +366,7 @@ impl Page {
         self.lines.push(PageLine {
             text: text.to_owned(),
             style,
+            spans: Vec::new(),
         });
     }
 

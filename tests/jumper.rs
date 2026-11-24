@@ -94,6 +94,7 @@ fn the_sections_are_the_headings_and_internets_coloured_one() {
     let line = |text: &str, style| PageLine {
         text: text.to_owned(),
         style,
+        spans: Vec::new(),
     };
     assert!(starts_a_section(&line("HOW TO USE", Style::Heading)));
     assert!(starts_a_section(&line(

@@ -46,8 +46,12 @@ the commands your shell history ran most (a dim dot marks the ones it never
 ran). Kept in ~/.local/share/lore/; `history = off` in the config file
 stops reading the history.
 
-In the list: up and down move, left and right switch topics, Enter opens a
-page, Tab and Shift+Tab jump between headings, / searches (start with @
+Docs: d downloads the selected documentation set to read offline, x
+deletes it; Enter on a downloaded one lists its pages, Esc goes back.
+
+In the list: up and down move (PgUp/PgDn by 20, w/s by the Fast scroll
+lines set on +), left and right switch topics, Enter opens a page, Tab and
+Shift+Tab jump between headings, / searches (start with @
 for only the commands that have a lore page), Esc quits.
 On a page: arrows and PgUp/PgDn scroll, Tab jumps between sections, / finds
 another command, left arrow or Esc close it.
@@ -107,6 +111,7 @@ pub const KEYS_BROWSE: &[(&str, &str)] = &[
     ("Enter", "Page"),
     ("/", "Search"),
     ("Tab/ShiftTab", "Jump"),
+    ("PgUp/PgDn w/s", "Fast"),
     ("b", "Bookmark"),
     ("+", "About"),
     ("Esc/^C", "Quit"),
@@ -121,7 +126,7 @@ pub const KEYS_SEARCH: &[(&str, &str)] = &[
     ("^C", "Quit"),
 ];
 pub const KEYS_PAGE: &[(&str, &str)] = &[
-    ("↑↓ PgUp/PgDn", "Scroll"),
+    ("↑↓ PgUp/PgDn w/s", "Scroll"),
     ("Tab/ShiftTab", "Jump"),
     ("/", "Search"),
     ("c", "Copy"),
@@ -482,13 +487,80 @@ pub const ABOUT_MANUAL: &str = "man lore, lore --help";
 pub const ABOUT_FIELDS: [&str; 8] = [
     "Commands", "Pages", "Config", "Palettes", "Kept", "Licence", "Source", "Manual",
 ];
+/// The author's profiles, to follow: a heading, a call to follow, and each
+/// one's name and link (opened by the terminal's Ctrl+click).
+pub const ABOUT_FOLLOW_HEADING: &str = "FOLLOW";
+pub const ABOUT_FOLLOW_HINT: &str = "like lore? follow guhhammer for what comes next (Ctrl+click)";
+pub const ABOUT_FOLLOW: &[(&str, &str)] = &[
+    ("GitHub", "https://github.com/guhhammer"),
+    ("LinkedIn", "https://www.linkedin.com/in/guhhammer/"),
+    ("X", "https://x.com/guhhammer"),
+];
 
 /// The about screen's settings, changed there (↑↓ choose, Enter changes)
 /// and saved in the settings file at once: their heading, and each one's
 /// name, in the order shown (`Setting::all()` in src/app.rs).
 pub const ABOUT_SETTINGS_HEADING: &str = "SETTINGS";
 pub const ABOUT_SETTINGS_HINT: &str = "↑↓ choose, Enter changes; saved for the next runs";
-pub const ABOUT_SETTING_NAMES: [&str; 3] = ["Colours", "Internet", "History"];
+pub const ABOUT_SETTING_NAMES: [&str; 7] = [
+    "Colours",
+    "Internet",
+    "History",
+    "Fast scroll",
+    "Pages in",
+    "Favourite",
+    "Reset all",
+];
+/// Reset all: every setting back to its default, and what lore kept for
+/// you erased (bookmarks, recent pages, downloaded docs and pages, the
+/// caches). Your own pages and palettes stay. Enter asks, Enter again does it.
+pub const ABOUT_RESET: &str =
+    "Enter: settings back to default, bookmarks, recent, downloads and caches erased";
+pub const ABOUT_RESET_ARMED: &str =
+    "Enter again to erase it all for good; ↑↓ or Esc keep everything";
+pub const RESET_DONE: &str =
+    "reset: every setting is back to its default, and lore's saved things are erased";
+pub const RESET_FAILED: &str = "reset, but some could not be erased: {why}";
+/// Pages in: the language pages are read in (translations of the command
+/// and language pages), `system` following `LANG`; saved as
+/// `reading = pt_BR`. Enter opens a picker of the languages there are.
+pub const SETTING_READING: &str = "reading";
+pub const READING_SYSTEM: &str = "system";
+pub const READING_ENGLISH: &str = "en";
+pub const ABOUT_READING: &str = "{code}  (Enter picks one of {count})";
+pub const ABOUT_READING_SYSTEM: &str = "system: from LANG ({code})";
+/// Favourite: the programming language pinned on top of the languages
+/// topic; saved as `favourite = Python`. Enter opens a picker of them.
+pub const SETTING_FAVOURITE: &str = "favourite";
+pub const FAVOURITE_NONE: &str = "none";
+pub const ABOUT_FAVOURITE: &str = "{name}  (Enter picks one; first in the languages topic)";
+pub const LANGUAGE_FAVOURITE_TITLE: &str = "favourite";
+/// The picker of those two settings, over the about screen; a letter
+/// jumps to the next choice starting with it.
+pub const CHOOSE_TITLE_READING: &str = " pages in ";
+pub const CHOOSE_TITLE_FAVOURITE: &str = " favourite language ";
+pub const CHOOSE_MARGIN: u16 = 6;
+/// How far PgUp and PgDn move in it.
+pub const CHOOSE_PAGE: isize = 10;
+pub const KEYS_CHOOSE: &[(&str, &str)] = &[
+    ("↑↓ PgUp/PgDn", "Choose"),
+    ("a-z", "Jump"),
+    ("Enter", "Keep"),
+    ("Esc", "Cancel"),
+    ("^C", "Quit"),
+];
+/// The language chosen in Pages in, for this run (None: `LANG` decides).
+/// Set at start and by the picker; `info::content::languages` reads it.
+pub static READING_LANGUAGE: std::sync::RwLock<Option<String>> = std::sync::RwLock::new(None);
+/// Fast scroll: how many lines `w` and `s` move, in the list and on a
+/// page. Enter on the about screen goes to the next of these; saved as
+/// `scroll = 10`.
+pub const FAST_SCROLL_CHOICES: [usize; 5] = [5, 10, 15, 20, 30];
+pub const FAST_SCROLL_DEFAULT: usize = 10;
+pub const SETTING_FAST_SCROLL: &str = "scroll";
+pub const FAST_UP_KEY: char = 'w';
+pub const FAST_DOWN_KEY: char = 's';
+pub const ABOUT_FAST_SCROLL: &str = "{lines} lines a press of w or s  (Enter: 5, 10, 15, 20 or 30)";
 /// The mark before the chosen setting, and the room it takes on the others.
 pub const ABOUT_SETTING_MARK: &str = "▸ ";
 pub const ABOUT_COLOURS: &str = "{name}  ({count} palettes: Enter picks one; p does too)";
@@ -503,7 +575,7 @@ pub const ABOUT_HISTORY_OFF: &str = "off: your shell's history is not read";
 /// The key bar, when a setting could not be saved (it still holds for this run).
 pub const SETTING_NOT_SAVED: &str = "not saved for the next runs: {why}";
 /// Width of the field names' column on the about screen.
-pub const ABOUT_LABEL_WIDTH: usize = 10;
+pub const ABOUT_LABEL_WIDTH: usize = 12;
 
 /// The about screen's keys.
 pub const KEYS_ABOUT: &[(&str, &str)] = &[
@@ -582,9 +654,12 @@ pub const MOST_USED_MAX: usize = 50;
 /// The topics, in the bar under the search bar (← → switch them), in the
 /// order shown (`Topic::all()` in src/app.rs). A topic with nothing in it
 /// (no bookmarks yet, no history) is not shown; commands always is.
-pub const TOPIC_NAMES: [&str; 6] = [
+pub const TOPIC_NAMES: [&str; 9] = [
     "commands",
     "recipes",
+    "languages",
+    "docs",
+    "tools",
     "beacon",
     "most used",
     "recent",
@@ -746,6 +821,562 @@ pub const BEACON_FOR: &str = "most used for {category}";
 pub const BEACON_RISE: &str = "↑ {rise}× this month";
 pub const BEACON_RANK: &str = "#{rank}";
 pub const BEACON_NOT_HERE: &str = "not installed";
+
+// ── the languages topic (src/info/languages.rs, src/utils/highlight.rs) ─────
+
+/// After a language's name when a command on this machine has the same
+/// one (`bc`, `R`), so both are in the list.
+pub const LANGUAGE_SUFFIX: &str = " (language)";
+/// The category every language page shows, and is found by.
+pub const LANGUAGE_CATEGORY: &str = "language";
+/// Under the title: where the page comes from, and its licence.
+pub const LANGUAGE_SOURCE: &str = "From learnxinyminutes.com, CC BY-SA 3.0, by {who}";
+pub const LANGUAGE_CONTRIBUTORS_MAX: usize = 4;
+pub const LANGUAGE_AND_MORE: &str = " and others";
+/// The page on the site, at the end.
+pub const LANGUAGE_URL: &str = "https://learnxinyminutes.com/{name}/";
+pub const LANGUAGE_LINK_HEADING: &str = "ON THE WEB";
+/// The file's frame, as `bat` draws it: rules, the gutter's bar, the name.
+pub const LANGUAGE_RULE: char = '─';
+pub const LANGUAGE_RULE_TOP: char = '┬';
+pub const LANGUAGE_RULE_MIDDLE: char = '┼';
+pub const LANGUAGE_RULE_BOTTOM: char = '┴';
+pub const LANGUAGE_BAR: &str = " │ ";
+pub const LANGUAGE_FILE: &str = "File: {file}";
+/// The fewest columns the line numbers take (bat's four).
+pub const LANGUAGE_GUTTER_MIN: usize = 4;
+/// A tab in the code, as spaces.
+pub const LANGUAGE_TAB: &str = "    ";
+
+/// How each language writes comments and strings, found by the code
+/// block's tag (```python) or the file's extension (learnpython.py): the
+/// names, the line comments, the block comments, and whether '…' and "…"
+/// are strings (not in Rust or Haskell, where ' marks a lifetime or a
+/// type, nor in Vim script, where " starts a comment). The first match
+/// wins; a language not here is guessed from its file (`highlight::guess`).
+/// One row of `LANGUAGE_SYNTAXES`: (names, line comments, block comments,
+/// '…' strings, "…" strings).
+pub type SyntaxRow = (
+    &'static [&'static str],
+    &'static [&'static str],
+    &'static [(&'static str, &'static str)],
+    bool,
+    bool,
+);
+pub const LANGUAGE_SYNTAXES: &[SyntaxRow] = &[
+    (
+        &["ps1", "powershell", "pwsh"],
+        &["#"],
+        &[("<#", "#>")],
+        true,
+        true,
+    ),
+    (&["nix"], &["#"], &[("/*", "*/")], true, true),
+    (&["rs", "rust"], &["//"], &[("/*", "*/")], false, true),
+    (&["css"], &[], &[("/*", "*/")], true, true),
+    (
+        &["sql", "mysql", "psql"],
+        &["--"],
+        &[("/*", "*/")],
+        true,
+        true,
+    ),
+    (
+        &["lua", "moon", "moonscript"],
+        &["--"],
+        &[("--[[", "]]")],
+        true,
+        true,
+    ),
+    (
+        &[
+            "hs",
+            "haskell",
+            "elm",
+            "purs",
+            "purescript",
+            "agda",
+            "idr",
+            "idris",
+            "dhall",
+        ],
+        &["--"],
+        &[("{-", "-}")],
+        false,
+        true,
+    ),
+    (&["lean", "lean4"], &["--"], &[("/-", "-/")], false, true),
+    (
+        &["ada", "adb", "ads", "vhdl", "vhd", "hdl", "applescript"],
+        &["--"],
+        &[],
+        false,
+        true,
+    ),
+    (
+        &["pas", "pascal", "dpr", "delphi", "pp"],
+        &["//"],
+        &[("(*", "*)"), ("{", "}")],
+        true,
+        false,
+    ),
+    (
+        &["fs", "fsx", "fsharp", "f#"],
+        &["//"],
+        &[("(*", "*)")],
+        false,
+        true,
+    ),
+    (
+        &[
+            "ml",
+            "mli",
+            "ocaml",
+            "sml",
+            "coq",
+            "wl",
+            "wolfram",
+            "nb",
+            "mathematica",
+        ],
+        &[],
+        &[("(*", "*)")],
+        false,
+        true,
+    ),
+    (
+        &["forth", "fth", "4th"],
+        &["\\ "],
+        &[("( ", ")")],
+        false,
+        true,
+    ),
+    (
+        &["vim", "vimrc", "vimscript", "viml"],
+        &["\""],
+        &[],
+        true,
+        false,
+    ),
+    (&["st", "smalltalk"], &[], &[("\"", "\"")], true, false),
+    (
+        &["vb", "bas", "vba", "visualbasic", "smallbasic"],
+        &["'", "REM "],
+        &[],
+        false,
+        true,
+    ),
+    (
+        &["f", "f90", "f95", "f03", "fortran"],
+        &["!"],
+        &[],
+        true,
+        true,
+    ),
+    (&["apl", "dyalog"], &["⍝"], &[], true, false),
+    (&["cob", "cbl", "cobol"], &["*>"], &[], true, true),
+    (
+        &["html", "htm", "xml", "svg", "xhtml", "vue"],
+        &[],
+        &[("<!--", "-->")],
+        true,
+        true,
+    ),
+    (&["jinja", "j2", "twig"], &[], &[("{#", "#}")], true, true),
+    (
+        &[
+            "md", "markdown", "djot", "rst", "textile", "asciidoc", "adoc", "wikitext", "csv",
+            "txt", "text",
+        ],
+        &[],
+        &[],
+        false,
+        false,
+    ),
+    (
+        &[
+            "lisp",
+            "lsp",
+            "cl",
+            "clj",
+            "cljs",
+            "cljc",
+            "clojure",
+            "edn",
+            "scm",
+            "ss",
+            "scheme",
+            "rkt",
+            "racket",
+            "el",
+            "elisp",
+            "emacs-lisp",
+            "fnl",
+            "fennel",
+            "hy",
+            "janet",
+            "lfe",
+            "red",
+            "reds",
+            "rebol",
+            "chicken",
+            "ini",
+        ],
+        &[";"],
+        &[("#|", "|#")],
+        false,
+        true,
+    ),
+    (
+        &[
+            "erl", "erlang", "hrl", "prolog", "pro", "matlab", "tex", "latex", "bib", "mercury",
+        ],
+        &["%"],
+        &[("/*", "*/")],
+        true,
+        true,
+    ),
+    (
+        &[
+            "py",
+            "python",
+            "python3",
+            "sh",
+            "bash",
+            "shell",
+            "zsh",
+            "fish",
+            "ksh",
+            "tcsh",
+            "csh",
+            "rb",
+            "ruby",
+            "pl",
+            "perl",
+            "pm",
+            "raku",
+            "p6",
+            "r",
+            "yaml",
+            "yml",
+            "toml",
+            "mk",
+            "make",
+            "makefile",
+            "cmake",
+            "ex",
+            "exs",
+            "elixir",
+            "jl",
+            "julia",
+            "nim",
+            "tcl",
+            "cr",
+            "crystal",
+            "coffee",
+            "coffeescript",
+            "dockerfile",
+            "docker",
+            "awk",
+            "sed",
+            "hcl",
+            "tf",
+            "terraform",
+            "gd",
+            "gdscript",
+            "jq",
+            "conf",
+            "nmap",
+            "golfscript",
+            "gs",
+            "bqn",
+            "s",
+            "asm",
+            "mips",
+            "zfs",
+            "tmux",
+            "hjson",
+            "hocon",
+            "nostos",
+            "makrellpy",
+            "osl",
+            "sorbet",
+            "httpie",
+            "ansible",
+            "mojo",
+            "rink",
+            "uxntal",
+            "pod",
+        ],
+        &["#"],
+        &[],
+        true,
+        true,
+    ),
+    (
+        &[
+            "c",
+            "h",
+            "cpp",
+            "c++",
+            "cc",
+            "cxx",
+            "hpp",
+            "cs",
+            "csharp",
+            "c#",
+            "java",
+            "js",
+            "javascript",
+            "mjs",
+            "jsx",
+            "ts",
+            "typescript",
+            "tsx",
+            "go",
+            "swift",
+            "kt",
+            "kotlin",
+            "scala",
+            "dart",
+            "php",
+            "groovy",
+            "sol",
+            "solidity",
+            "d",
+            "v",
+            "vlang",
+            "odin",
+            "glsl",
+            "hlsl",
+            "proto",
+            "protobuf",
+            "jsonnet",
+            "libsonnet",
+            "vala",
+            "qml",
+            "pde",
+            "processing",
+            "bal",
+            "ballerina",
+            "chpl",
+            "chapel",
+            "m",
+            "objc",
+            "objective-c",
+            "hack",
+            "hh",
+            "re",
+            "reason",
+            "res",
+            "rescript",
+            "sv",
+            "verilog",
+            "less",
+            "scss",
+            "sass",
+            "styl",
+            "stylus",
+            "hx",
+            "haxe",
+            "as",
+            "cue",
+            "zig",
+            "gleam",
+            "cypher",
+            "json",
+            "json5",
+            "cj",
+            "cangjie",
+            "ats",
+            "dats",
+            "sats",
+            "kts",
+            "gradle",
+            "java",
+            "p5",
+            "amd",
+            "angularjs",
+            "jquery",
+            "assemblyscript",
+            "q#",
+            "qs",
+            "opencv",
+            "opengl",
+            "openmp",
+            "raylib",
+            "pyqt",
+            "qt",
+            "solidity",
+            "wasm",
+            "wat",
+            "webassembly",
+            "linker",
+            "ld",
+            "ldpl",
+            "citron",
+            "niva",
+            "phel",
+            "phix",
+            "tailspin",
+            "sing",
+            "miniscript",
+        ],
+        &["//"],
+        &[("/*", "*/")],
+        true,
+        true,
+    ),
+];
+
+/// The comment marks `highlight::guess` tries on a file no table names,
+/// the one most lines start with winning.
+pub const LANGUAGE_GUESSED_COMMENTS: &[&str] = &["//", "#", "--", ";", "%", "'", "!"];
+
+/// Words coloured as keywords, whatever the language: the ones most
+/// languages share.
+pub const LANGUAGE_KEYWORDS: &[&str] = &[
+    "if",
+    "else",
+    "elif",
+    "elsif",
+    "unless",
+    "then",
+    "end",
+    "for",
+    "foreach",
+    "while",
+    "until",
+    "do",
+    "loop",
+    "break",
+    "continue",
+    "return",
+    "yield",
+    "function",
+    "func",
+    "fn",
+    "fun",
+    "def",
+    "defn",
+    "defun",
+    "lambda",
+    "proc",
+    "sub",
+    "class",
+    "struct",
+    "enum",
+    "union",
+    "interface",
+    "trait",
+    "impl",
+    "type",
+    "typedef",
+    "module",
+    "namespace",
+    "package",
+    "import",
+    "from",
+    "export",
+    "use",
+    "using",
+    "include",
+    "require",
+    "let",
+    "const",
+    "var",
+    "val",
+    "mut",
+    "static",
+    "public",
+    "private",
+    "protected",
+    "new",
+    "delete",
+    "true",
+    "false",
+    "null",
+    "nil",
+    "None",
+    "True",
+    "False",
+    "self",
+    "this",
+    "super",
+    "match",
+    "case",
+    "switch",
+    "default",
+    "when",
+    "try",
+    "catch",
+    "except",
+    "finally",
+    "raise",
+    "throw",
+    "throws",
+    "async",
+    "await",
+    "in",
+    "of",
+    "and",
+    "or",
+    "not",
+    "is",
+    "as",
+    "where",
+    "with",
+    "begin",
+    "local",
+    "global",
+    "extends",
+    "implements",
+    "override",
+    "virtual",
+    "void",
+    "goto",
+    "pass",
+    "assert",
+];
+
+// ── the docs topic (src/info/docs.rs, src/utils/html.rs) ─────────────────────
+
+/// Every documentation set DevDocs offers: devdocs/catalog.tsv, from
+/// scripts/docs/catalog.py, ranked by Stack Overflow's most asked-about.
+pub const DOCS_CATALOG: &str = include_str!("../devdocs/catalog.tsv");
+/// A set's two files on DevDocs, fetched when the reader asks (`d`).
+pub const DOCS_INDEX_URL: &str = "https://documents.devdocs.io/{slug}/index.json?{mtime}";
+pub const DOCS_DB_URL: &str = "https://documents.devdocs.io/{slug}/db.json?{mtime}";
+/// The largest file a set may have (OpenJDK's is about 120 MB).
+pub const DOCS_MAX_BYTES: usize = 300 * 1024 * 1024;
+/// Where downloaded sets are kept, in the data folder (`~/.local/share/lore/docs`).
+pub const DOCS_DIR: &str = "docs";
+/// How many sets "most searched" lists.
+pub const DOCS_MOST_SEARCHED: usize = 50;
+/// The keys, in the docs topic: download a set, delete it.
+pub const DOWNLOAD_KEY: char = 'd';
+pub const DELETE_KEY: char = 'x';
+/// The docs topic's headings.
+pub const DOCS_DOWNLOADED: &str = "downloaded";
+pub const DOCS_MOST: &str = "most searched (Stack Overflow)";
+pub const DOCS_ALL: &str = "every set on devdocs.io";
+/// After each set's name in the list.
+pub const DOCS_HERE: &str = "on this machine · x deletes";
+pub const DOCS_SIZE: &str = "{size} MB · d downloads";
+pub const DOCS_DOWNLOADING: &str = "downloading…";
+pub const DOCS_FAILED: &str = "failed: {why}";
+/// A set's own page, and an entry's.
+pub const DOCS_INFO_SIZE: &str = "{size} MB of documentation from devdocs.io, to read offline.";
+pub const DOCS_INFO_DOWNLOAD: &str = "Press d to download it; Enter on it then lists its pages.";
+pub const DOCS_INFO_HERE: &str = "On this machine: Enter lists its pages, x deletes it.";
+pub const DOCS_FROM: &str = "From devdocs.io. {who}";
+pub const DOCS_NO_PAGE: &str = "This page is not in the download.";
+/// The key bar's note after `d` and `x`.
+pub const DOCS_STARTED: &str = "downloading {name} in the background…";
+pub const DOCS_DELETED: &str = "deleted {name} from this machine";
+pub const DOCS_NOT_DELETED: &str = "could not delete {name}: {why}";
+/// The tools topic, for now.
+pub const TOOLS_EMPTY: &str = "Tools are coming soon.";
 
 // ── the check of pages lore did not write (src/info/check.rs) ───────────────
 

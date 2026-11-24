@@ -44,9 +44,9 @@ fn select(app: &mut App, name: &str) {
 }
 
 #[test]
-fn with_no_bookmarks_recent_or_history_there_is_only_the_commands_topic() {
+fn with_no_bookmarks_recent_or_history_none_of_your_own_topics_show() {
     let app = app(&["ls", "cat"]);
-    assert_eq!(app.topics, [Topic::Commands]);
+    assert_eq!(app.topics, [Topic::Commands, Topic::Docs, Topic::Tools]);
     assert_eq!(labels(&app), ["[C]", "cat", "[L]", "ls"]);
 }
 
@@ -62,13 +62,15 @@ fn bookmarks_recent_and_most_used_are_topics_of_their_own() {
         app.topics,
         [
             Topic::Commands,
+            Topic::Docs,
+            Topic::Tools,
             Topic::MostUsed,
             Topic::Recent,
             Topic::Bookmarks
         ]
     );
     assert_eq!(labels(&app), ["[C]", "cat", "[L]", "ls", "[T]", "tar"]);
-    app.step_topic(1);
+    app.step_topic(3);
     assert_eq!(labels(&app), ["ls", "cat"], "most used, most first");
     app.step_topic(1);
     assert_eq!(labels(&app), ["cat"]);
@@ -84,7 +86,11 @@ fn names_kept_that_are_not_on_this_machine_are_left_out() {
         vec!["gone".into()],
         uses(&[("gone", 3)]),
     );
-    assert_eq!(app.topics, [Topic::Commands], "nothing to show in them");
+    assert_eq!(
+        app.topics,
+        [Topic::Commands, Topic::Docs, Topic::Tools],
+        "nothing to show in them"
+    );
     assert_eq!(labels(&app), ["[L]", "ls"]);
 }
 
@@ -92,7 +98,7 @@ fn names_kept_that_are_not_on_this_machine_are_left_out() {
 fn a_search_looks_in_every_topic() {
     let mut app = app(&["ls", "lsof"]);
     app.set_personal(vec!["ls".into()], Vec::new(), HashMap::new());
-    app.step_topic(1); // bookmarks: only ls
+    app.show_topic(Topic::Bookmarks); // only ls
     app.open_search();
     app.type_char('l');
     assert_eq!(labels(&app), ["ls", "lsof"]);

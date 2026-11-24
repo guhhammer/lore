@@ -15,6 +15,48 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **The docs topic:** every documentation set DevDocs offers (850, for
+  languages, frameworks and tools), the 50 most asked about on Stack
+  Overflow first, then every set A to Z. `d` downloads a set in the
+  background to read offline (`~/.local/share/lore/docs/`), `x` deletes it.
+  Enter on a downloaded set lists its pages by type; `/` searches them (or
+  the sets); an entry opens at its own part, its HTML shown as text with
+  headings, lists and code. Esc goes back to the sets. The catalogue is
+  built in (`devdocs/catalog.tsv`, from `scripts/docs/catalog.py`).
+- **The tools topic**, empty for now: tools are coming.
+- **Reset all** on the `+` screen: Enter, then Enter again, puts every
+  setting back to its default and erases what lore kept (bookmarks, recent
+  pages, downloaded docs and pages, the caches). Your own pages and
+  palettes stay.
+- **Follow** on the `+` screen: the author's GitHub, LinkedIn and X.
+- The search reads the pages in the language set in Pages in (or `LANG`),
+  English where there is no translation, and again when Pages in changes.
+
+- **PgUp and PgDn in the list** (and the search's results): 20 rows at a
+  time, as on a page.
+- **Fast scroll:** `w` and `s` move up and down by a number of lines, in
+  the list and on a page. Set on the `+` screen (Fast scroll: 5, 10, 15, 20
+  or 30; 10 at first), saved as `scroll = 10`.
+- **Pages in**, on the `+` screen: the language lore shows pages in
+  (`system` follows `LANG`), from a picker of every language there is a
+  translation in; saved as `reading = pt_BR`.
+- **Favourite**, on the `+` screen: a programming language shown first in
+  the languages topic, under `favourite`; saved as `favourite = Python`.
+- In a search, the `language` category of a languages page is in the
+  palette's third colour, so languages stand out among commands.
+
+- **The languages topic:** the pages of
+  [Learn X in Y minutes](https://learnxinyminutes.com), 201 programming
+  languages, tools and formats, with the site's 678 translations in 37
+  languages (picked from `LANG`, like the command pages). Each is a reminder
+  of how a language works, read from top to bottom: an introduction, then
+  one commented file, shown the way `bat` shows a file, with line numbers
+  and colours for comments, strings, numbers and keywords, wrapped under
+  its number. Tab and Shift+Tab jump between the file's parts (its
+  `####` banners). The pages are copied unchanged into `languages/`
+  (`scripts/languages/sync.py`), licensed CC BY-SA 3.0 and credited on each
+  page. A language named like a command here gets ` (language)`.
+
 - **The beacon topic:** what people use most and what is rising, between
   recipes and most used. It lists the commands trending this month, the
   most used ones, then the most used per category (for archives, for

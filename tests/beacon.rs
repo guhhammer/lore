@@ -123,7 +123,7 @@ fn the_beacon_is_a_topic_once_it_has_numbers() {
 #[test]
 fn the_beacon_lists_trending_then_most_used_under_their_headings() {
     let mut app = app_with_a_beacon();
-    app.step_topic(1);
+    app.show_topic(Topic::Beacon);
     assert_eq!(app.topic, Topic::Beacon);
     let shown: Vec<String> = app
         .rows
@@ -145,7 +145,7 @@ fn the_beacon_lists_trending_then_most_used_under_their_headings() {
 #[test]
 fn a_command_not_installed_is_listed_for_its_page_and_says_so() {
     let mut app = app_with_a_beacon();
-    app.step_topic(1);
+    app.show_topic(Topic::Beacon);
     assert!(app.snippets["jq"].contains(BEACON_NOT_HERE));
     assert!(app.snippets["jq"].contains("4.0×"));
     assert!(!app.snippets["git"].contains(BEACON_NOT_HERE));

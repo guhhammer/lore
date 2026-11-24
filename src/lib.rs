@@ -62,6 +62,8 @@ pub fn run() -> io::Result<()> {
         Start::List => None,
         Start::Page(name) => Some(name),
     };
+    // before the list is read, so its pages' summaries are in that language
+    let reading = saved_reading();
     let mut app = App::new(everything());
     app.palettes = interface::palette::all();
     app.chosen = interface::palette::at_start(&app.palettes);
@@ -75,6 +77,17 @@ pub fn run() -> io::Result<()> {
     }
     app.set_beacon(info::beacon::load());
     app.history = !history_off;
+    app.reading = reading;
+    // `favourite = Python` (or `none`)
+    let favourite = settings::read(compile_config::SETTING_FAVOURITE)
+        .map(|name| name.trim().to_owned())
+        .filter(|name| !name.is_empty() && name != compile_config::FAVOURITE_NONE);
+    app.set_favourite(favourite);
+    // `scroll = 15`: one of the choices, else the default
+    app.fast_scroll = settings::read(compile_config::SETTING_FAST_SCROLL)
+        .and_then(|lines| lines.trim().parse().ok())
+        .filter(|lines| compile_config::FAST_SCROLL_CHOICES.contains(lines))
+        .unwrap_or(compile_config::FAST_SCROLL_DEFAULT);
     app.set_personal(
         settings::read_list(compile_config::BOOKMARKS_FILE),
         settings::read_list(compile_config::RECENT_FILE),
@@ -110,6 +123,8 @@ pub fn run() -> io::Result<()> {
 fn everything() -> Vec<commands::Command> {
     let mut all = commands::collect();
     all.extend(info::recipes::commands());
+    let taken = all.iter().map(|c| c.name.clone()).collect();
+    all.extend(info::languages::commands(&taken));
     commands::merge(all)
 }
 
@@ -117,6 +132,7 @@ fn everything() -> Vec<commands::Command> {
 /// screen, at the terminal's width, or `PRINT_WIDTH` in a pipe or a file.
 /// Needs no terminal: it is for scripts, `grep` and `less`.
 fn print_page(name: &str) -> io::Result<()> {
+    saved_reading(); // Pages in, as on screen
     let mut app = App::new(everything());
     if !app.open_direct(name) {
         return Err(io::Error::other(
@@ -313,6 +329,46 @@ fn change_setting(app: &mut App) {
             }
             settings::write(SETTING_INTERNET, word(on))
         }
+        Setting::Reset => {
+            if app.reset_armed {
+                reset_all(app);
+            } else {
+                app.reset_armed = true; // asks first: Enter again does it
+            }
+            return;
+        }
+        Setting::Reading => {
+            let current = app
+                .reading
+                .clone()
+                .unwrap_or_else(|| compile_config::READING_SYSTEM.to_owned());
+            app.open_choice(Setting::Reading, reading_choices(), &current);
+            return;
+        }
+        Setting::Favourite => {
+            let mut languages: Vec<String> = app
+                .commands
+                .iter()
+                .filter(|c| c.kind == commands::Kind::Language)
+                .map(|c| c.name.clone())
+                .collect();
+            languages.sort_by_key(|name| name.to_lowercase());
+            let mut names = vec![compile_config::FAVOURITE_NONE.to_owned()];
+            names.extend(languages);
+            let current = app
+                .favourite
+                .clone()
+                .unwrap_or_else(|| compile_config::FAVOURITE_NONE.to_owned());
+            app.open_choice(Setting::Favourite, names, &current);
+            return;
+        }
+        Setting::FastScroll => {
+            app.next_fast_scroll();
+            settings::write(
+                compile_config::SETTING_FAST_SCROLL,
+                &app.fast_scroll.to_string(),
+            )
+        }
         Setting::History => {
             let on = !app.history;
             let uses = if on {
@@ -329,6 +385,135 @@ fn change_setting(app: &mut App) {
     }
 }
 
+/// Pages in's choices: `system`, English, then every language a
+/// translation is in (the command pages' and the language pages'), sorted.
+pub fn reading_choices() -> Vec<String> {
+    let mut codes: Vec<&str> = info::content::translated_codes();
+    codes.extend(info::languages::translated_codes());
+    codes.sort_unstable();
+    codes.dedup();
+    let mut choices = vec![
+        compile_config::READING_SYSTEM.to_owned(),
+        compile_config::READING_ENGLISH.to_owned(),
+    ];
+    choices.extend(codes.into_iter().map(str::to_owned));
+    choices
+}
+
+/// Pages in from the settings file (`reading = pt_BR`; `system` or none:
+/// LANG decides), applied for this run.
+fn saved_reading() -> Option<String> {
+    let reading = settings::read(compile_config::SETTING_READING)
+        .map(|code| code.trim().to_owned())
+        .filter(|code| !code.is_empty() && code != compile_config::READING_SYSTEM);
+    if let Ok(mut chosen) = compile_config::READING_LANGUAGE.write() {
+        chosen.clone_from(&reading);
+    }
+    reading
+}
+
+/// Applies Pages in for this run: a code, or None for `system` (LANG).
+pub fn set_reading(app: &mut App, code: Option<String>) {
+    if let Ok(mut chosen) = compile_config::READING_LANGUAGE.write() {
+        chosen.clone_from(&code);
+    }
+    app.reading = code;
+    app.page = None; // laid out again, in the new language, when drawn
+    app.reload_docs(); // and the search reads that language's pages
+}
+
+/// Reset all, asked twice: every saved thing erased (settings file, lists,
+/// downloads, caches) and every setting back to its default, now.
+fn reset_all(app: &mut App) {
+    use compile_config::{BEACON_CACHE_FILE, INTERNET_CACHE_DIR};
+    app.reset_armed = false;
+    let mut extra: Vec<std::path::PathBuf> = info::updates::folder().into_iter().collect();
+    extra.extend(info::docs::folder()); // the downloaded docs
+    app.close_docset();
+    if let Some(cache) = utils::internet::cache_home() {
+        extra.push(cache.join(INTERNET_CACHE_DIR));
+        extra.push(cache.join(BEACON_CACHE_FILE));
+    }
+    let failed = settings::erase_all(&extra);
+    // the defaults, as a first start would have them
+    app.chosen = 0; // `terminal`, first of the palettes (build.rs puts it there)
+    app.internet.set_enabled(true);
+    app.set_history(true, utils::history::read());
+    app.fast_scroll = compile_config::FAST_SCROLL_DEFAULT;
+    set_reading(app, None);
+    app.set_personal(Vec::new(), Vec::new(), app.uses.clone());
+    app.set_favourite(None);
+    app.set_beacon(info::beacon::load());
+    app.note = Some(match failed.first() {
+        None => compile_config::RESET_DONE.to_owned(),
+        Some(error) => compile_config::RESET_FAILED.replace("{why}", &error.to_string()),
+    });
+}
+
+/// `d` and `x`: the docs set in view (the one selected, the one open, or
+/// the one whose page is shown) downloaded in the background, or deleted.
+fn docs_key(app: &mut App, action: Action) {
+    use commands::Kind;
+    use compile_config::{DOCS_DELETED, DOCS_NOT_DELETED, DOCS_STARTED};
+    let in_view = match app.mode {
+        app::Mode::Info => app.page.as_ref().map(|page| page.command.clone()),
+        _ => app.selected().cloned(),
+    };
+    let slug = match in_view {
+        Some(command) if matches!(command.kind, Kind::Docset | Kind::DocEntry) => command
+            .runs
+            .and_then(|runs| runs.split('\t').next().map(str::to_owned)),
+        _ => None,
+    };
+    let Some(set) = slug.and_then(|slug| app.docsets.iter().find(|s| s.slug == slug).cloned())
+    else {
+        return; // not a docs set: d and x do nothing here
+    };
+    let name = set.title();
+    if action == Action::Download {
+        app.downloads.start(set);
+        app.note = Some(DOCS_STARTED.replace("{name}", &name));
+    } else {
+        if app
+            .docset
+            .as_ref()
+            .is_some_and(|(open, _)| open.slug == set.slug)
+        {
+            app.close_docset();
+        }
+        app.note = Some(match info::docs::delete(&set.slug) {
+            Ok(()) => DOCS_DELETED.replace("{name}", &name),
+            Err(why) => DOCS_NOT_DELETED
+                .replace("{name}", &name)
+                .replace("{why}", &why.to_string()),
+        });
+    }
+    app.refresh_rows();
+}
+
+/// Keeps what was chosen in a setting's picker, for this run and the next.
+fn keep_choice(app: &mut App) {
+    use app::Setting;
+    let Some((setting, item)) = app.close_choice(true) else {
+        return;
+    };
+    let saved = match setting {
+        Setting::Reading => {
+            let code = (item != compile_config::READING_SYSTEM).then(|| item.clone());
+            set_reading(app, code);
+            settings::write(compile_config::SETTING_READING, &item)
+        }
+        _ => {
+            let name = (item != compile_config::FAVOURITE_NONE).then(|| item.clone());
+            app.set_favourite(name);
+            settings::write(compile_config::SETTING_FAVOURITE, &item)
+        }
+    };
+    if let Err(error) = saved {
+        app.note = Some(compile_config::SETTING_NOT_SAVED.replace("{why}", &error.to_string()));
+    }
+}
+
 /// Draw, wait for an action, apply it; repeat until Quit.
 fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
     let mut draw = true;
@@ -337,12 +522,23 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
             terminal.draw(|frame| ui::draw(frame, app))?;
         }
         let internet = std::sync::Arc::clone(&app.internet);
-        let action = input::next_action(app.mode, &|| internet.take_changed())?;
+        let downloads = std::sync::Arc::clone(&app.downloads);
+        let action = input::next_action(app.mode, &|| {
+            // `|` (not `||`): both are read, so neither change is lost
+            internet.take_changed() | downloads.take_changed()
+        })?;
         if action != Action::Redraw {
             app.note = None; // a note on the key bar lasts until the next key
         }
         match action {
             Action::Quit => return Ok(()),
+            // Esc: out of an open docs set first, then out of lore
+            Action::Escape => {
+                if !app.close_docset() {
+                    return Ok(());
+                }
+            }
+            Action::Download | Action::Delete => docs_key(app, action),
             Action::Up => app.up(),
             Action::Down => app.down(),
             Action::OpenSearch => app.open_search(),
@@ -366,8 +562,24 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
             Action::PreviousSection => app.previous_section(),
             Action::LineUp => app.scroll_by(-1),
             Action::LineDown => app.scroll_by(1),
-            Action::PageUp => app.scroll_by(-compile_config::PAGE_STEP),
-            Action::PageDown => app.scroll_by(compile_config::PAGE_STEP),
+            // on a page they scroll it; in the list (and the search's
+            // results) they move the selection
+            Action::PageUp | Action::PageDown | Action::FastUp | Action::FastDown => {
+                let lines = match action {
+                    Action::PageUp | Action::PageDown => compile_config::PAGE_STEP,
+                    _ => isize::try_from(app.fast_scroll).unwrap_or(isize::MAX),
+                };
+                let lines = if matches!(action, Action::PageUp | Action::FastUp) {
+                    -lines
+                } else {
+                    lines
+                };
+                if app.mode == app::Mode::Info {
+                    app.scroll_by(lines);
+                } else {
+                    app.move_by(lines);
+                }
+            }
             Action::Type(c) => app.type_char(c),
             Action::Erase => app.erase(),
             Action::OpenAbout => app.open_about(),
@@ -386,6 +598,12 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
                 app.close_copy(sent.as_deref());
             }
             Action::OpenPalettes => app.open_palettes(),
+            Action::StepChoice(steps) => app.step_choice(steps),
+            Action::JumpChoice(letter) => app.jump_choice(letter),
+            Action::KeepChoice => keep_choice(app),
+            Action::CancelChoice => {
+                app.close_choice(false);
+            }
             Action::PreviousPalette => app.step_palette(-1),
             Action::NextPalette => app.step_palette(1),
             Action::CancelPalette => app.cancel_palettes(),
@@ -398,7 +616,9 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
                 }
             }
             // nothing to change: the loop draws again (a new size, news)
-            Action::Resize | Action::Redraw => {}
+            Action::Resize => {}
+            // a download ended: the docs topic shows its new state
+            Action::Redraw => app.refresh_rows(),
         }
         // More keys already waiting (an arrow held down): apply them before
         // drawing, so a held key does not lag behind on a slow terminal.

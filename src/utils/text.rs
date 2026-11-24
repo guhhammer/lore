@@ -25,7 +25,7 @@ pub fn fit(text: &str, columns: usize) -> String {
 }
 
 /// The longest start of `text` that fits in `columns`, and the rest.
-fn take_columns(text: &str, columns: usize) -> (&str, &str) {
+pub fn take_columns(text: &str, columns: usize) -> (&str, &str) {
     let mut used = 0;
     for (at, c) in text.char_indices() {
         used += c.width().unwrap_or(0);

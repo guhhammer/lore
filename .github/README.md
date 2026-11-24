@@ -66,6 +66,8 @@ and what can go wrong. For Linux and macOS, with bash, zsh or fish.
 | **Search by name or by task** | Type `tar`, or type `compress folder`: lore searches names first, then what the pages say. |
 | **100 recipes** | Short task pages that chain commands, mostly the terminal tasks with the most-viewed Stack Overflow questions: *find files containing a text*, *what is using port 80*, *free disk space*, *add a user*… |
 | **`lore explain`** | `lore explain "tar -xzvf a.tgz"` says what every word and flag means, from the man pages, offline. |
+| **Languages** | The [Learn X in Y minutes](https://learnxinyminutes.com) pages for 201 languages, in your language when translated, shown like `bat` shows a file: line numbers and colours. |
+| **Docs** | Every documentation set of [DevDocs](https://devdocs.io) (850), the most asked about on Stack Overflow first: download one to read it offline, delete it when done. |
 | **The beacon** | What people use most and what is rising this month, from Debian's and Homebrew's public numbers: trending, most used, and most used per category, installed here or not. |
 | **Your own use** | Bookmarks, the pages you opened last, and the commands your shell history runs most sit at the top. |
 | **Your language** | Pages in 41 languages when a translation exists, picked from `$LANG`. |
@@ -116,10 +118,24 @@ To build it yourself, see [Build from source](#build-from-source).
 
 **Topics.** A bar under the search bar holds the topics, each its own
 list: **commands** (every command here, A to Z under letter headers, `#`
-for names starting with a digit or symbol), **recipes**, the **beacon**,
+for names starting with a digit or symbol), **recipes**, **languages**,
+**docs**, **tools** (coming soon), the **beacon**,
 and your own **most used**, **recent** and **bookmarks** once they have
 anything. ← and → switch topics. Each name shows its categories, such as
-`[archives files]`; `danger` is in red.
+`[archives files]`; `danger` is in red, and `language` (a languages
+page, in a search) in the palette's third colour.
+
+**Languages** holds a page per programming language (and some tools and
+formats), from [Learn X in Y minutes](https://learnxinyminutes.com): a
+reminder of how its features work, read top to bottom. It opens like a file
+in `bat`: the introduction, then the file with line numbers and colours;
+Tab jumps between its parts.
+
+**Docs** lists the documentation sets of [DevDocs](https://devdocs.io):
+the 50 most asked about on Stack Overflow, then all 850. Press `d` on one
+to download it (in the background) and read it offline, `x` to delete it.
+Enter on a downloaded set lists its pages by type, and `/` searches them;
+Esc goes back to the sets.
 
 **The beacon** lists what is trending this month, the most used commands,
 then the most used per category (*most used for archives*…), each with its
@@ -157,7 +173,10 @@ The keys you can press are always shown on the bottom line.
 | Key | Does |
 | --- | --- |
 | ↑ ↓ | Move |
-| ← → | Switch the topic: commands, recipes, beacon, most used, recent, bookmarks |
+| PgUp PgDn | Move 20 rows |
+| `w` `s` | Fast scroll: up or down by the lines set on the `+` screen (10 at first) |
+| ← → | Switch the topic: commands, recipes, languages, docs, tools, beacon, most used, recent, bookmarks |
+| `d` `x` | In docs: download a set, delete it |
 | Enter | Open the page |
 | Tab, Shift+Tab | Jump to the next or previous letter (or beacon heading), round at either end |
 | `/` | Search |
@@ -170,6 +189,7 @@ The keys you can press are always shown on the bottom line.
 | Key | Does |
 | --- | --- |
 | ↑ ↓, PgUp PgDn | Scroll |
+| `w` `s` | Fast scroll |
 | Tab, Shift+Tab | Jump to the next or previous section, round at either end |
 | `c` | Copy one of the examples to the clipboard (works over ssh too) |
 | `/` | Search other commands; the page stays beside the list |
@@ -194,15 +214,20 @@ Press `+` for the about screen. Its **Settings** are changed right there
 | Colours | 15 palettes, or `terminal` (your terminal's own colours). Enter opens a picker: ↑↓ try one live, Enter keeps it, Esc goes back. |
 | Internet | On or off (see [Privacy and the internet](#privacy-and-the-internet)). |
 | History | Whether lore reads your shell history to rank your most-used commands. |
+| Fast scroll | How many lines `w` and `s` move: 5, 10, 15, 20 or 30 (Enter goes to the next). |
+| Pages in | The language pages are shown in: `system` (your `LANG`), English, or any language there is a translation in. Enter opens a picker. |
+| Favourite | A programming language shown first in the languages topic. Enter opens a picker. |
+| Reset all | Enter, then Enter again: every setting back to its default, and bookmarks, recent pages, downloads and caches erased. Your own pages and palettes stay. |
 
 Where lore keeps things (each follows the XDG variables when they are set):
 
 | Path | What |
 | --- | --- |
-| `~/.config/lore/config` | The settings: `palette = nord`, `internet = off`, `history = off`. Plain text; edit it by hand if you like. |
+| `~/.config/lore/config` | The settings: `palette = nord`, `internet = off`, `history = off`, `scroll = 15`, `reading = pt_BR`, `favourite = Python`. Plain text; edit it by hand if you like. |
 | `~/.config/lore/palettes/` | Your own palettes ([how](../palettes/README.md)). |
 | `~/.local/share/lore/` | Your bookmarks and recent pages. |
 | `~/.local/share/lore/content/` | Your own pages, which can replace built-in ones. |
+| `~/.local/share/lore/docs/` | The documentation sets you downloaded (`x` deletes one). |
 | `~/.local/share/lore/updates/` | The pages `lore --update-pages` fetched, replaced whole each time. |
 | `~/.cache/lore/internet/` | Cheat sheets fetched from the internet, kept for a day. |
 | `~/.cache/lore/beacon.tsv` | The newest beacon table fetched, used at the next start. |
@@ -225,6 +250,8 @@ Where lore keeps things (each follows the XDG variables when they are set):
   copies it for you and never runs it. Read it with care.
 - **The beacon** fetches a newer table of public numbers at most once a
   week, when Internet is on. It sends nothing about you or your use.
+- **Docs** are downloaded from DevDocs (`documents.devdocs.io`) only when
+  you press `d`, and deleted with `x`.
 - **Turn Internet off** on the `+` screen and lore makes no network request
   on its own. Only `lore --update-pages` still downloads, because you typed
   it.
@@ -270,6 +297,7 @@ lore/
 ├── src/            the program (start at src/lib.rs)
 ├── content/        the command pages, built into the binary
 ├── recipes/        the task pages
+├── languages/      the Learn X in Y minutes pages (CC BY-SA 3.0)
 ├── palettes/       the colour palettes
 ├── beacon/         the beacon's built-in table (scripts/beacon/ makes it)
 ├── completions/    Tab completion for bash, zsh and fish
@@ -297,6 +325,11 @@ lore/
 ## Licence
 
 MIT. See [LICENSE](../LICENSE).
+
+The pages in `languages/` are from
+[Learn X in Y minutes](https://learnxinyminutes.com), © their contributors,
+under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/); see
+[languages/README.md](../languages/README.md).
 
 Most usage examples in `content/` are adapted from
 [tldr-pages](https://github.com/tldr-pages/tldr), under

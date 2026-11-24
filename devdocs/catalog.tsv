@@ -1,0 +1,852 @@
+# lore docs catalogue, 2026-11-24: scripts/docs/catalog.py
+# slug	name	version	release	bytes	mtime	stack overflow rank (0: none)	home	attribution
+angular	Angular		22.3.0	10861991	1795054865	27	https://angular.dev/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~21	Angular	21	21.2.16	10194636	1780544824	27	https://angular.dev/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~20	Angular	20	20.3.15	8722712	1765113112	27	https://angular.dev/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~19	Angular	19	19.2.15	23803929	1760079830	27	https://angular.dev/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~18	Angular	18	18.2.14	19027386	1760079802	27	https://angular.dev/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~17	Angular	17	17.0.8	13391401	1760077092	27	https://angular.dev/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~16	Angular	16	16.2.12	13164472	1704532000	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~15	Angular	15	15.2.9	12721860	1704531987	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~14	Angular	14	14.2.12	12573663	1677002927	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~13	Angular	13	13.3.8	12301262	1654202014	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~12	Angular	12	12.2.13	12068716	1637796435	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~11	Angular	11	11.2.14	10762429	1620904631	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~10	Angular	10	10.2.3	10810159	1605349931	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~9	Angular	9	9.1.12	11269302	1605348993	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~8	Angular	8	8.2.14	11258180	1605348882	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~7	Angular	7	7.2.15	11251926	1578506637	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~6	Angular	6	6.1.10	10532202	1578515196	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~5	Angular	5	5.2.11	9383106	1528681935	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~4	Angular	4	4.4.6	8247972	1510333140	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angular~2	Angular	2	2.4.10	7928892	1501435056	27	https://angular.io/	Super-powered by Google ©2010–2025. Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+angularjs~1.8	Angular.js	1.8	1.8.2	2203253	1605224318	31		© 2010–2020 Google, Inc. Licensed under the Creative Commons Attribution License 3.0.
+angularjs~1.7	Angular.js	1.7	1.7.8	2105039	1565296342	31		© 2010–2020 Google, Inc. Licensed under the Creative Commons Attribution License 3.0.
+angularjs~1.6	Angular.js	1.6	1.6.9	2134014	1565296194	31		© 2010–2020 Google, Inc. Licensed under the Creative Commons Attribution License 3.0.
+angularjs~1.5	Angular.js	1.5	1.5.11	2034320	1501418597	31		© 2010–2020 Google, Inc. Licensed under the Creative Commons Attribution License 3.0.
+angularjs~1.4	Angular.js	1.4	1.4.14	1801860	1501418614	31		© 2010–2020 Google, Inc. Licensed under the Creative Commons Attribution License 3.0.
+angularjs~1.3	Angular.js	1.3	1.3.20	1669877	1501418630	31		© 2010–2020 Google, Inc. Licensed under the Creative Commons Attribution License 3.0.
+angularjs~1.2	Angular.js	1.2	1.2.32	1362341	1501418645	31		© 2010–2020 Google, Inc. Licensed under the Creative Commons Attribution License 3.0.
+ansible	Ansible			281009221	1779811686	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+ansible~2.11	Ansible	2.11	2.11.0	66680146	1620152691	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+ansible~2.10	Ansible	2.10	2.10.5	60276270	1611397133	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+ansible~2.9	Ansible	2.9	2.9.15	51592361	1605344733	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+ansible~2.8	Ansible	2.8	2.8.16	42365857	1605345113	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+ansible~2.7	Ansible	2.7	2.7.17	28244128	1605345317	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+ansible~2.6	Ansible	2.6	2.6.18	23323920	1565300911	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+ansible~2.5	Ansible	2.5	2.5.15	19537519	1565301756	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+ansible~2.4	Ansible	2.4	2.4.6	13106288	1565301882	394	https://www.ansible.com/	© 2012–2018 Michael DeHaan © 2018–2025 Red Hat, Inc. Licensed under the GNU General Public License version 3.
+apache_http_server	Apache HTTP Server		2.4.64	3391556	1752170356	0	https://httpd.apache.org/	© 2018 The Apache Software Foundation Licensed under the Apache License, Version 2.0.
+apache_pig~0.17	Apache Pig	0.17	0.17.0	731436	1498397567	0	https://pig.apache.org/	© 2007–2017 Apache Software Foundation Licensed under the Apache Software License version 2.0.
+apache_pig~0.16	Apache Pig	0.16	0.16.0	716644	1469311906	0	https://pig.apache.org/	© 2007–2017 Apache Software Foundation Licensed under the Apache Software License version 2.0.
+apache_pig~0.15	Apache Pig	0.15	0.15.0	703105	1461510756	0	https://pig.apache.org/	© 2007–2017 Apache Software Foundation Licensed under the Apache Software License version 2.0.
+apache_pig~0.14	Apache Pig	0.14	0.14.0	697409	1461510759	0	https://pig.apache.org/	© 2007–2017 Apache Software Foundation Licensed under the Apache Software License version 2.0.
+apache_pig~0.13	Apache Pig	0.13	0.13.0	671261	1461510762	0	https://pig.apache.org/	© 2007–2017 Apache Software Foundation Licensed under the Apache Software License version 2.0.
+astro	Astro		5.16.5	19511174	1765699021	0	https://docs.astro.build/	© 2021 Fred K. Schott Licensed under the MIT License.
+async	Async		3.2.0	222054	1605779467	0	https://caolan.github.io/async/	© 2010–2018 Caolan McMahon Licensed under the MIT License.
+axios	Axios		1.15.0	56598	1776019634	366	hthttps://axios-http.com/	© 2020-present John Jakob "Jake" Sarjeant Licensed under the MIT License.
+babel~7	Babel	7	7.21.4	1087962	1681332889	864	https://babeljs.io/	© 2014-present Sebastian McKenzie Licensed under the MIT License.
+babel~6	Babel	6	6.26.1	371969	1517763345	864	https://babeljs.io/	© 2014-present Sebastian McKenzie Licensed under the MIT License.
+backbone	Backbone.js		1.6.0	92964	1741635319	438	https://backbonejs.org/	© 2010–2024 Jeremy Ashkenas, DocumentCloud Licensed under the MIT License.
+bash	Bash		5.3	958336	1784459519	52	https://www.gnu.org/software/bash/	Copyright © 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc. Licensed under the GNU Free Documentation License.
+bazel~9	Bazel	9	9.3.2	459357	1795056848	0		Licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License.
+bazel~8	Bazel	8	8.7.0	427302	1789304774	0		Licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License.
+bazel~7	Bazel	7	7.7.1	460681	1789304775	0		Licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License.
+bluebird	Bluebird		3.7.2	456762	1605779492	0	http://bluebirdjs.com/	© 2013–2018 Petka Antonov Licensed under the MIT License.
+bootstrap~6	Bootstrap	6	6.0.0-alpha.1	2143944	1792076529	0	https://getbootstrap.com/	© 2011–2026 The Bootstrap Authors Code licensed under the MIT License. Documentation licensed under the Creative Commons Attribution License v3.0.
+bootstrap~5	Bootstrap	5	5.3	1653273	1690398435	0	https://getbootstrap.com/	© 2011–2026 The Bootstrap Authors Code licensed under the MIT License. Documentation licensed under the Creative Commons Attribution License v3.0.
+bootstrap~4	Bootstrap	4	4.5	814853	1605739179	0	https://getbootstrap.com/	© 2011–2026 The Bootstrap Authors Code licensed under the MIT License. Documentation licensed under the Creative Commons Attribution License v3.0.
+bootstrap~3	Bootstrap	3	3.4.1	1697424	1580689306	0	https://getbootstrap.com/	© 2011–2026 The Bootstrap Authors Code licensed under the MIT License. Documentation licensed under the Creative Commons Attribution License v3.0.
+bottle~0.12	Bottle	0.12	0.12.13	299543	1484519567	0	https://bottlepy.org/	© 2009–2017 Marcel Hellkamp Licensed under the MIT License.
+bottle~0.11	Bottle	0.11	0.11.7	274880	1484519569	0	https://bottlepy.org/	© 2009–2017 Marcel Hellkamp Licensed under the MIT License.
+bower	Bower		1.8.4	40717	1606742155	0	https://bower.io/	© 2018 Bower contributors Licensed under the MIT License.
+bun	Bun		1.4.0	2619648	1788070436	0	https://bun.com/	© bun.com, oven-sh, Jarred Sumner Licensed under the MIT License.
+bun	Bun	1.3	1.3.12	2388265	1776195405	0	https://leafletjs.com/	© bun.com, oven-sh, Jarred Sumner Licensed under the MIT License.
+c	C			5128537	1786782280	18		© cppreference.com Licensed under the Creative Commons Attribution-ShareAlike Unported License v3.0.
+cpp	C++			44891108	1786790485	9		© cppreference.com Licensed under the Creative Commons Attribution-ShareAlike Unported License v3.0.
+cakephp~4.4	CakePHP	4.4	4.4.6	16109357	1665254265	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~4.3	CakePHP	4.3	4.3.10	15777107	1665254309	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~4.2	CakePHP	4.2	4.2.10	15263140	1665254391	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~4.1	CakePHP	4.1	4.1.6	14794051	1605475888	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~4.0	CakePHP	4.0	4.0.8	14522103	1605475696	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.9	CakePHP	3.9	3.9.4	15499317	1605475574	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.8	CakePHP	3.8	3.8.3	11635384	1567467580	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.7	CakePHP	3.7	3.7.9	11569246	1567467530	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.6	CakePHP	3.6	3.6.15	11169983	1567467484	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.5	CakePHP	3.5	3.5.15	10616786	1524923581	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.4	CakePHP	3.4	3.4.13	10562123	1503758159	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.3	CakePHP	3.3	3.3.15	8700321	1487425686	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.2	CakePHP	3.2	3.2.14	8263596	1474125449	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~3.1	CakePHP	3.1	3.1.13	7959275	1462111394	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~2.10	CakePHP	2.10	2.10.3	6138877	1506274147	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~2.9	CakePHP	2.9	2.9.4	5552668	1484523236	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~2.8	CakePHP	2.8	2.8.8	7518979	1474125323	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+cakephp~2.7	CakePHP	2.7	2.7.11	8483870	1462111536	284	https://cakephp.org/	© 2005–present The Cake Software Foundation, Inc. Licensed under the MIT License. CakePHP is a registered trademark of Cake Software Foundation, Inc. We are not endorsed by or affiliated with CakePHP.
+celery	Celery		5.7.0	2781963	1795053781	934	https://docs.celeryq.dev	Copyright © 2017-2026 Asif Saif Uddin, core team & contributors. All rights reserved. Celery is licensed under The BSD License (3 Clause, also known as the new BSD license). The license is an OSI approved Open Source license and is GPL-compatible.
+chai	Chai		4.3.4	409158	1616341781	0	https://www.chaijs.com/	© 2017 Chai.js Assertion Library Licensed under the MIT License.
+chef~18	Chef	18	18.0.15	39100800	1642869336	0	https://www.chef.io/	© Chef Software, Inc. Licensed under the Creative Commons Attribution 3.0 Unported License. The Chef™ Mark and Chef Logo are either registered trademarks/service marks or trademarks/service marks of Chef, in the United States and other countries and are used with Chef Inc's permission. We are not affiliated with, endorsed or sponsored by Chef Inc.
+chef~17	Chef	17	17.9.18	39400936	1640623092	0	https://www.chef.io/	© Chef Software, Inc. Licensed under the Creative Commons Attribution 3.0 Unported License. The Chef™ Mark and Chef Logo are either registered trademarks/service marks or trademarks/service marks of Chef, in the United States and other countries and are used with Chef Inc's permission. We are not affiliated with, endorsed or sponsored by Chef Inc.
+chef~16	Chef	16	16.8.14	30557798	1609092122	0	https://www.chef.io/	© Chef Software, Inc. Licensed under the Creative Commons Attribution 3.0 Unported License. The Chef™ Mark and Chef Logo are either registered trademarks/service marks or trademarks/service marks of Chef, in the United States and other countries and are used with Chef Inc's permission. We are not affiliated with, endorsed or sponsored by Chef Inc.
+chef~12	Chef	12	12.13	3833180	1495472987	0	https://www.chef.io/	© Chef Software, Inc. Licensed under the Creative Commons Attribution 3.0 Unported License. The Chef™ Mark and Chef Logo are either registered trademarks/service marks or trademarks/service marks of Chef, in the United States and other countries and are used with Chef Inc's permission. We are not affiliated with, endorsed or sponsored by Chef Inc.
+chef~11	Chef	11	11.18	3436869	1495473070	0	https://www.chef.io/	© Chef Software, Inc. Licensed under the Creative Commons Attribution 3.0 Unported License. The Chef™ Mark and Chef Logo are either registered trademarks/service marks or trademarks/service marks of Chef, in the United States and other countries and are used with Chef Inc's permission. We are not affiliated with, endorsed or sponsored by Chef Inc.
+click	click		8.1.x	596852	1718218727	896	https://click.palletsprojects.com/	© Copyright 2014 Pallets. Licensed under the BSD 3-Clause License. We are not supported nor endorsed by Pallets.
+clojure~1.11	Clojure	1.11	1.11	613733	1654203215	504	https://clojure.org	© Rich Hickey Licensed under the Eclipse Public License 1.0.
+clojure~1.10	Clojure	1.10	1.10.3	568238	1654203157	504	https://clojure.org	© Rich Hickey Licensed under the Eclipse Public License 1.0.
+clojure~1.9	Clojure	1.9	1.9 (legacy)	552293	1564989950	504		© Rich Hickey Licensed under the Eclipse Public License 1.0.
+clojure~1.8	Clojure	1.8	1.8 (legacy)	536469	1564989936	504		© Rich Hickey Licensed under the Eclipse Public License 1.0.
+clojure~1.7	Clojure	1.7	1.7 (legacy)	529090	1564989924	504		© Rich Hickey Licensed under the Eclipse Public License 1.0.
+cmake	CMake		4.5	9290010	1795054869	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~4.4	CMake	4.4	4.4	8945354	1795054871	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.31	CMake	3.31	3.31	7148034	1732213877	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.30	CMake	3.30	3.30	6987685	1732213851	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.29	CMake	3.29	3.29	6785974	1732213809	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.28	CMake	3.28	3.28	6596551	1732213783	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.27	CMake	3.27	3.27	6509139	1732213728	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.26	CMake	3.26	3.26	6267544	1677001050	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.25	CMake	3.25	3.25	6158684	1672952830	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.24	CMake	3.24	3.24	5951625	1664308803	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.23	CMake	3.23	3.23	5653287	1664308777	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.22	CMake	3.22	3.22	5519387	1664308705	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.21	CMake	3.21	3.21	5338206	1626242515	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.20	CMake	3.20	3.20	5288704	1614980656	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.19	CMake	3.19	3.19.0	5039942	1605381436	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.18	CMake	3.18	3.18.4	4744863	1605381504	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.17	CMake	3.17	3.17.5	4609039	1605381534	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.16	CMake	3.16	3.16.9	4321342	1605381566	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.15	CMake	3.15	3.15.7	4035439	1605381587	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.14	CMake	3.14	3.14.7	3827740	1605381604	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.13	CMake	3.13	3.13.5	3595991	1565299044	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.12	CMake	3.12	3.12.4	3574125	1565299067	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.11	CMake	3.11	3.11.4	3390569	1565299091	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.10	CMake	3.10	3.10.3	3286249	1565299119	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.9	CMake	3.9	3.9.6	3094532	1565299138	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.8	CMake	3.8	3.8.2	2975086	1565299154	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.7	CMake	3.7	3.7.2	2866260	1565299170	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.6	CMake	3.6	3.6.3	2690545	1565299186	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+cmake~3.5	CMake	3.5	3.5.2	2620325	1565299201	302	https://cmake.org/	© 2000–2026 Kitware, Inc. and Contributors Licensed under the BSD 3-clause License.
+codeception	Codeception		4.1.22	1835445	1635915214	0	https://codeception.com/	© 2011 Michael Bodnarchuk and contributors Licensed under the MIT License.
+codeceptjs	CodeceptJS		3.0.2	1668904	1605779589	0	https://codecept.io/	© 2015 DavertMik <davert@codegyre.com> (http://codegyre.com) Licensed under the MIT License.
+codeigniter~4	CodeIgniter	4	4.7.6	2673391	1795055052	118	https://codeigniter.com/	© 2014–2021 British Columbia Institute of Technology Licensed under the MIT License.
+codeigniter~3	CodeIgniter	3	3.1.8	1383823	1608726321	118	https://codeigniter.com/	© 2014–2021 British Columbia Institute of Technology Licensed under the MIT License.
+coffeescript~2	CoffeeScript	2	2.7.0	113980	1651127827	859	https://coffeescript.org	© 2009–2022 Jeremy Ashkenas Licensed under the MIT License.
+coffeescript~1	CoffeeScript	1	1.12.7	66997	1567469136	859	https://coffeescript.org	© 2009–2022 Jeremy Ashkenas Licensed under the MIT License.
+coldfusion	ColdFusion		2026-04-30	4723021	1783115477	619	https://cfdocs.org/	© 2012–present Foundeo, Inc. and the CFDocs contributors. Licensed under the MIT License. ColdFusion is a trademark of Adobe Systems Incorporated.
+composer	Composer		2.11.2	481918	1795053751	0	https://getcomposer.org	© Nils Adermann, Jordi Boggiano Licensed under the MIT License.
+cordova~9	Cordova	9	9.0.0	1999214	1568233757	128	https://cordova.apache.org/	© 2012, 2013, 2015 The Apache Software Foundation Licensed under the Apache License 2.0.
+cordova~8	Cordova	8	8.1.2	1837553	1568233780	128	https://cordova.apache.org/	© 2012, 2013, 2015 The Apache Software Foundation Licensed under the Apache License 2.0.
+cordova~7	Cordova	7	7.1.0	2561422	1568233822	128	https://cordova.apache.org/	© 2012, 2013, 2015 The Apache Software Foundation Licensed under the Apache License 2.0.
+cordova~6	Cordova	6	6.5.0	2540160	1568233846	128	https://cordova.apache.org/	© 2012, 2013, 2015 The Apache Software Foundation Licensed under the Apache License 2.0.
+couchdb~3.5	CouchDB	3.5	3.5.1	1706093	1771056301	0	https://couchdb.apache.org/	Copyright © 2025 The Apache Software Foundation — Licensed under the Apache License 2.0
+crystal	Crystal		1.21.1	19273145	1791567069	0	https://crystal-lang.org/	
+css	CSS			15878611	1789389022	10	https://developer.mozilla.org/en-US/docs/Web/CSS	© 2005–2025 MDN contributors. Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.
+cyclejs	Cycle.js		23.1.0	249489	1779814527	0	https://cycle.js.org/	© 2014–present Cycle.js contributors. Licensed under the MIT License.
+cypress	Cypress		9.4.1	6467439	1644542245	861	https://www.cypress.io/	© 2017 Cypress.io Licensed under the MIT License.
+d	D		2.114.0	6345638	1795054121	0	https://dlang.org/	© 1999–2021 The D Language Foundation Licensed under the Boost License 1.0.
+d3~7	D3.js	7	7.8.1	15292432	1673996378	225	https://d3js.org/	© 2010–2023 Michael Bostock Licensed under the BSD License.
+d3~6	D3.js	6	6.7.0	16118637	1620901630	225	https://d3js.org/	© 2010–2023 Michael Bostock Licensed under the BSD License.
+d3~5	D3.js	5	5.7.0	15463167	1541342142	225	https://d3js.org/	© 2010–2023 Michael Bostock Licensed under the BSD License.
+d3~4	D3.js	4	4.12.2	13601596	1515367749	225	https://d3js.org/	© 2010–2023 Michael Bostock Licensed under the BSD License.
+d3~3	D3.js	3	3.5.17	653806	1472313914	225	https://d3js.org/	© 2010–2023 Michael Bostock Licensed under the BSD License.
+dart~3	Dart	3	3.14.1	33242585	1795056840	84	https://dart.dev/	© 2012 the Dart project authors Licensed under the BSD 3-Clause "New" or "Revised" License.
+dart~2	Dart	2	2.19.6	31833526	1788071688	84	https://dart.dev/	© 2012 the Dart project authors Licensed under the BSD 3-Clause "New" or "Revised" License.
+dart~1	Dart	1	1.24.3	31726721	1533594583	84	https://www.dartlang.org/	© 2012 the Dart project authors Licensed under the BSD 3-Clause "New" or "Revised" License.
+date_fns	date-fns		2.29.2	795425	1662486995	0	https://date-fns.org/	© 2021 Sasha Koss and Lesha Koss Licensed under the MIT License.
+deno~2	Deno	2	2.9.6	25167850	1789303852	0	https://deno.com/	© 2018–2025 the Deno authors Licensed under the MIT License.
+deno~1	Deno	1	1.27.0	1387308	1666901256	0	https://deno.land/	© 2018–2025 the Deno authors Licensed under the MIT License.
+django~6.1	Django	6.1	6.1	7524546	1783115774	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~6.0	Django	6.0	6.0	7352739	1758816086	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~5.2	Django	5.2	5.2	7066403	1740301531	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~5.1	Django	5.1	5.1	6890659	1723969466	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~5.0	Django	5.0	5.0	6765897	1707069813	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~4.2	Django	4.2	4.2	6717476	1681330932	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~4.1	Django	4.1	4.1	6663049	1659552957	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~4.0	Django	4.0	4.0	6478583	1638969421	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~3.2	Django	3.2	3.2	6381167	1618517198	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~3.1	Django	3.1	3.1.4	6299745	1605595927	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~3.0	Django	3.0	3.0.11	6205427	1605596007	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~2.2	Django	2.2	2.2.17	6246493	1605596059	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~2.1	Django	2.1	2.1.15	6132370	1581364985	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~2.0	Django	2.0	2.0.13	6070229	1565033713	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~1.11	Django	1.11	1.11.29	6141190	1605596155	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~1.10	Django	1.10	1.10.8	6007190	1505055496	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~1.9	Django	1.9	1.9.13	5396651	1491762860	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django~1.8	Django	1.8	1.8.18	5201532	1491762906	26	https://www.djangoproject.com/	© Django Software Foundation and individual contributors Licensed under the BSD License.
+django_rest_framework	Django REST Framework		3.15.2	761075	1723969634	283	https://www.django-rest-framework.org/	Copyright © 2011–present Encode OSS Ltd. Licensed under the BSD License.
+docker	Docker		20.10.16	4328150	1654206621	62	https://docker.com/	© 2019 Docker, Inc. Licensed under the Apache License, Version 2.0. Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+docker~19	Docker	19	19.03	5340967	1565018323	62	https://docker.com/	© 2019 Docker, Inc. Licensed under the Apache License, Version 2.0. Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+docker~18	Docker	18	18.09	5307980	1565018170	62	https://docker.com/	© 2019 Docker, Inc. Licensed under the Apache License, Version 2.0. Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+docker~17	Docker	17	17.12	5632971	1565018048	62	https://docker.com/	© 2019 Docker, Inc. Licensed under the Apache License, Version 2.0. Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+docker~1.13	Docker	1.13	1.13	6967276	1504538357	62	https://docker.com/	© 2019 Docker, Inc. Licensed under the Apache License, Version 2.0. Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+docker~1.12	Docker	1.12	1.12	6667872	1504538249	62	https://docker.com/	© 2019 Docker, Inc. Licensed under the Apache License, Version 2.0. Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+docker~1.11	Docker	1.11	1.11	5827804	1504538129	62	https://docker.com/	© 2019 Docker, Inc. Licensed under the Apache License, Version 2.0. Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+docker~1.10	Docker	1.10	1.10	7125854	1504538058	62	https://docker.com/	© 2019 Docker, Inc. Licensed under the Apache License, Version 2.0. Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+dojo	Dojo		1.10	2007352	1500741465	912	http://dojotoolkit.org	© 2005–2017 JS Foundation Licensed under the AFL 2.1 and BSD 3-Clause licenses.
+drupal~8	Drupal	8	8.1.7	37442060	1469287435	447	https://www.drupal.org/	© 2001–2016 by the original authors Licensed under the GNU General Public License, version 2 and later. Drupal is a registered trademark of Dries Buytaert.
+drupal~7	Drupal	7	7.50	17249491	1468189926	447	https://www.drupal.org/	© 2001–2016 by the original authors Licensed under the GNU General Public License, version 2 and later. Drupal is a registered trademark of Dries Buytaert.
+duckdb	DuckDB		1.1.3	5058825	1732369732	0	https://duckdb.org/	© Copyright 2018–2024 Stichting DuckDB Foundation Licensed under the MIT License.
+eigen3	Eigen3		3.4.0	7515699	1648707897	0	https://eigen.tuxfamily.org	© Eigen. Licensed under the MPL2 License.
+electron	Electron		20.0.0	3279582	1661623849	583	https://www.electronjs.org/	© GitHub Inc. Licensed under the MIT license.
+elisp	Elisp		31.1.50	7101560	1788545012	0	https://www.gnu.org/software/emacs/manual/elisp	Copyright © 1990-1996, 1998-2026 Free Software Foundation, Inc. Licensed under the GNU GPL license.
+elixir~1.20	Elixir	1.20	1.20.1	5384460	1782053487	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.18	Elixir	1.18	1.18.1	5109915	1736595317	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.17	Elixir	1.17	1.17.2	5020137	1721191122	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.16	Elixir	1.16	1.16.3	4878810	1721191069	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.15	Elixir	1.15	1.15.4	4637714	1691006092	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.14	Elixir	1.14	1.14.1	4472184	1666381151	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.13	Elixir	1.13	1.13.4	4280359	1653726531	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.12	Elixir	1.12	1.12.0	4192462	1621923627	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.11	Elixir	1.11	1.11.2	3846305	1605353877	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.10	Elixir	1.10	1.10.4	3489436	1605353824	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.9	Elixir	1.9	1.9.4	3322429	1605353547	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.8	Elixir	1.8	1.8.2	2998181	1566479569	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.7	Elixir	1.7	1.7.4	2854907	1566479817	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.6	Elixir	1.6	1.6.6	2752818	1566479836	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.5	Elixir	1.5	1.5.3	2566205	1566479860	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.4	Elixir	1.4	1.4.5	2406844	1566479891	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+elixir~1.3	Elixir	1.3	1.3.4	2180461	1566479949	867	https://elixir-lang.org/	© 2012-2026 The Elixir Team Licensed under the Apache License, Version 2.0.
+ember~4	Ember.js	4	4.9.0	3916533	1671573236	373	https://emberjs.com/	© 2022 Yehuda Katz, Tom Dale and Ember.js contributors Licensed under the MIT License.
+ember~3	Ember.js	3	3.28.0	4133504	1671573150	373	https://emberjs.com/	© 2022 Yehuda Katz, Tom Dale and Ember.js contributors Licensed under the MIT License.
+ember~2	Ember.js	2	2.18.0	3350117	1614024862	373	https://emberjs.com/	© 2022 Yehuda Katz, Tom Dale and Ember.js contributors Licensed under the MIT License.
+enzyme	Enzyme		3.11.0	332962	1606890727	0		© 2015 Airbnb, Inc. Licensed under the MIT License.
+erlang~29	Erlang	29	29.1.1	18361183	1791567802	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~28	Erlang	28	28.5.0.7	17691120	1791568061	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~27	Erlang	27	27.3.4.18	17161751	1791567699	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~26	Erlang	26	26.2.5.21	16492671	1791567674	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~25	Erlang	25	25.3.2.2	15805642	1686472164	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~24	Erlang	24	24.0	13720742	1666539201	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~23	Erlang	23	23.2	13250294	1611956405	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~22	Erlang	22	22.3	12894945	1611956580	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~21	Erlang	21	21.0	10706256	1531082610	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~20	Erlang	20	20.3	8870168	1528680392	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~19	Erlang	19	19.3	9477458	1495487321	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+erlang~18	Erlang	18	18.3	8909158	1495487381	860	https://www.erlang.org/	© 2010–2026 Ericsson AB Licensed under the Apache License, Version 2.0.
+es_toolkit	es-toolkit		1.52.0	1735329	1788542521	0	https://es-toolkit.dev	© 2024-2026, Viva Republica Licensed under the MIT License.
+esbuild	esbuild		0.28.2	530524	1788295340	0	https://esbuild.github.io/	© 2020 Evan Wallace Licensed under the MIT License.
+eslint	ESLint		10.15.0	6206576	1795053769	0	https://eslint.org/	© OpenJS Foundation and other contributors Licensed under the MIT License.
+express	Express		5.2.1	519485	1765193778	83	https://expressjs.com/	© 2017 StrongLoop, IBM, and other expressjs.com contributors. Licensed under the Creative Commons Attribution-ShareAlike License v3.0.
+express~4	Express	4	4.21.2	447837	1748804195	83	https://expressjs.com/	© 2017 StrongLoop, IBM, and other expressjs.com contributors. Licensed under the Creative Commons Attribution-ShareAlike License v3.0.
+falcon~2.0	Falcon	2.0	2.0.0	656610	1605730657	0	https://falconframework.org/	© 2019 by Falcon contributors Licensed under the Apache License, Version 2.0.
+falcon~1.4	Falcon	1.4	1.4.1	545288	1519571975	0	https://falconframework.org/	© 2019 by Falcon contributors Licensed under the Apache License, Version 2.0.
+falcon~1.3	Falcon	1.3	1.3.0	499126	1505055855	0	https://falconframework.org/	© 2019 by Falcon contributors Licensed under the Apache License, Version 2.0.
+falcon~1.2	Falcon	1.2	1.2.0	442298	1505055858	0	https://falconframework.org/	© 2019 by Falcon contributors Licensed under the Apache License, Version 2.0.
+fastapi	FastAPI		0.141.1	4444557	1788074383	0	https://fastapi.tiangolo.com/	© 2018 Sebastián Ramírez Licensed under the MIT License.
+fish~4.9	Fish	4.9	4.9.3	900272	1789314186	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.8	Fish	4.8	4.8.0	900056	1789314194	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.7	Fish	4.7	4.7.1	892040	1779811875	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.6	Fish	4.6	4.6.0	895086	1776273671	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.5	Fish	4.5	4.5.0	891198	1772653974	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.4	Fish	4.4	4.4.0	890835	1771063659	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.3	Fish	4.3	4.3.3	886322	1771063620	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.2	Fish	4.2	4.2.1	876295	1771063607	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.1	Fish	4.1	4.1.2	881539	1771063618	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~4.0	Fish	4.0	4.0.1	855043	1742114242	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~3.7	Fish	3.7	3.7.0	799203	1704531498	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~3.6	Fish	3.6	3.6.0	776533	1673197076	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~3.5	Fish	3.5	3.5.0	714563	1657043609	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~3.4	Fish	3.4	3.4.0	682324	1647196902	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~3.3	Fish	3.3	3.3.0	617356	1625389963	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~3.2	Fish	3.2	3.2.0	591802	1614669925	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~3.1	Fish	3.1	3.1.2	474827	1605475242	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~3.0	Fish	3.0	3.0.1	358991	1605475093	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~2.7	Fish	2.7	2.7.1	336043	1515367841	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~2.6	Fish	2.6	2.6.0	300968	1501448153	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~2.5	Fish	2.5	2.5.0	287843	1486329214	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~2.4	Fish	2.4	2.4.0	282800	1479050136	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~2.3	Fish	2.3	2.3.1	267217	1473109691	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+fish~2.2	Fish	2.2	2.2.0	233348	1473109693	0	https://fishshell.com/	© 2005-2009 Axel Liljencrantz, 2009-2026 fish-shell contributors Licensed under the GNU General Public License, version 2.
+flask	Flask		3.1.1	1236115	1739347690	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flask~3.0	Flask	3.0	3.0.x	1200265	1696879574	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flask~2.3	Flask	2.3	2.3.x	1207055	1686474096	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flask~2.2	Flask	2.2	2.2.x	1556374	1661622767	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flask~2.1	Flask	2.1	2.1.x	1565056	1649445089	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flask~2.0	Flask	2.0	2.0.x	1365837	1620898779	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flask~1.1	Flask	1.1	1.1.x	949376	1607340443	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flask~1.0	Flask	1.0	1.0.x	932071	1607340436	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flask~0.12	Flask	0.12	0.12.x	814636	1607340430	151	https://palletsprojects.com/p/flask/	© 2010 Pallets Licensed under the BSD 3-clause License.
+flow	Flow		0.330.0	1071714	1788296128	0	https://flow.org/	© 2013–present Facebook Inc. Licensed under the MIT License.
+fluture	Fluture		14.0.0	66025	1704474146	0	https://github.com/fluture-js/Fluture	© 2020 Aldwin Vlasblom Licensed under the MIT License.
+gcc~16	GCC	16	16.2.0	4433162	1788091813	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~16_cpp	GCC	16 CPP	16.2.0	322219	1788091817	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~15	GCC	15	15.3.0	4420323	1788091786	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~15_cpp	GCC	15 CPP	15.3.0	317329	1788091794	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~14	GCC	14	14.4.0	4282954	1788091831	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~14_cpp	GCC	14 CPP	14.2.0	307242	1788091837	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~13	GCC	13	13.3.0	3867597	1733654892	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~13_cpp	GCC	13 CPP	13.3.0	303255	1733654888	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~12	GCC	12	12.2.0	3500535	1663710204	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~12_cpp	GCC	12 CPP	12.1.0	312690	1654202663	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~11	GCC	11	11.4.0	3975590	1690397638	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~11_cpp	GCC	11 CPP	11.4.0	355216	1690397646	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~10	GCC	10	10.5.0	3856871	1690397613	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~10_cpp	GCC	10 CPP	10.5.0	351837	1690397623	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~9	GCC	9	9.5.0	3164425	1690397592	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~9_cpp	GCC	9 CPP	9.5.0	306195	1690397598	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~8	GCC	8	8.5.0	3136916	1690397560	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~8_cpp	GCC	8 CPP	8.5.0	298515	1690397576	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~7	GCC	7	7.5.0	2950289	1690397545	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~7_cpp	GCC	7 CPP	7.5.0	295342	1690397551	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~6	GCC	6	6.5.0	2809944	1690397525	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~6_cpp	GCC	6 CPP	6.5.0	311238	1690397530	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~5	GCC	5	5.5.0	2624252	1690397500	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~5_cpp	GCC	5 CPP	5.5.0	311201	1690397509	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~4	GCC	4	4.9.4	2733355	1690397383	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gcc~4_cpp	GCC	4 CPP	4.9.4	272013	1690397410	206	https://gcc.gnu.org/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+git	Git		2.56.1	6334850	1795053758	53	https://git-scm.com/	© 2005–2026 Linus Torvalds and others Licensed under the GNU General Public License version 2.
+gnu_fortran~14	GNU Fortran	14	14.2.0	1362466	1733654851	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~13	GNU Fortran	13	13.3.0	1362233	1733654883	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~12	GNU Fortran	12	12.1.0	1276891	1654202799	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~11	GNU Fortran	11	11.1.0	1313643	1619729946	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~10	GNU Fortran	10	10.2.0	1309289	1605731856	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~9	GNU Fortran	9	9.3.0	1301512	1605731757	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~8	GNU Fortran	8	8.4.0	1267644	1605731716	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~7	GNU Fortran	7	7.3.0	1250341	1519585935	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~6	GNU Fortran	6	6.4.0	1133523	1503759905	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~5	GNU Fortran	5	5.4.0	999032	1469312374	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_fortran~4	GNU Fortran	4	4.9.3	853323	1460316067	0	https://gcc.gnu.org/fortran/	© Free Software Foundation Licensed under the GNU Free Documentation License, Version 1.3.
+gnu_make	GNU Make		4.4	762165	1667596839	0	https://www.gnu.org/software/make/manual/html_node/	Copyright © 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Free Software Foundation, Inc. Licensed under the GNU Free Documentation License.
+gnu_cobol	GnuCOBOL		3.1	1230454	1605779797	0	https://gnucobol.sourceforge.io/	Copyright © 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc. Licensed under the GNU Free Documentation License.
+gnuplot	Gnuplot		6.0.5	1168731	1791569158	0	http://www.gnuplot.info/	Copyright 1986 - 1993, 1998, 2004 Thomas Williams, Colin Kelley Distributed under the gnuplot license (rights to distribute modified versions are withheld).
+go	Go		1.27.0	4973652	1787318362	109	https://golang.org/	© Google, Inc. Licensed under the Creative Commons Attribution License 3.0.
+godot~4.7	Godot	4.7	4.7.0	14588265	1783539571	0	https://godotengine.org/	© 2014–present Juan Linietsky, Ariel Manzur and the Godot community Licensed under the Creative Commons Attribution Unported License v3.0.
+godot~4.2	Godot	4.2	4.2.2	9981382	1722157192	0	https://godotengine.org/	© 2014–present Juan Linietsky, Ariel Manzur and the Godot community Licensed under the Creative Commons Attribution Unported License v3.0.
+godot~3.5	Godot	3.5	3.5.3	11470473	1722157104	0	https://godotengine.org/	© 2014–present Juan Linietsky, Ariel Manzur and the Godot community Licensed under the Creative Commons Attribution Unported License v3.0.
+godot~3.4	Godot	3.4	3.4.5	9731843	1667593098	0	https://godotengine.org/	© 2014–present Juan Linietsky, Ariel Manzur and the Godot community Licensed under the Creative Commons Attribution Unported License v3.0.
+godot~3.3	Godot	3.3	3.3.0	8447572	1619719645	0	https://godotengine.org/	© 2014–present Juan Linietsky, Ariel Manzur and the Godot community Licensed under the Creative Commons Attribution Unported License v3.0.
+godot~3.2	Godot	3.2	3.2.3	7859945	1605474158	0	https://godotengine.org/	© 2014–present Juan Linietsky, Ariel Manzur and the Godot community Licensed under the Creative Commons Attribution Unported License v3.0.
+godot~2.1	Godot	2.1	2.1.6	4289694	1605474195	0	https://godotengine.org/	© 2014–present Juan Linietsky, Ariel Manzur and the Godot community Licensed under the Creative Commons Attribution Unported License v3.0.
+graphite	Graphite		1.1.4	448138	1541342583	0		© 2008–2012 Chris Davis © 2011–2016 The Graphite Project Licensed under the Apache License, Version 2.0.
+graphviz	Graphviz		14.01	1672251	1760859944	0	https://www.graphviz.org/	© 2025 The Graphviz Authors Licensed under the Eclipse Public License 1.0.
+groovy~4.0	Groovy	4.0	4.0.0	32832765	1646154540	290	https://groovy-lang.org/	© 2003-2022 The Apache Software Foundation Licensed under the Apache license.
+groovy~3.0	Groovy	3.0	3.0.9	36629044	1638102204	290	https://groovy-lang.org/	© 2003-2022 The Apache Software Foundation Licensed under the Apache license.
+groovy~2.5	Groovy	2.5	2.5.14	31281164	1607339554	290	https://groovy-lang.org/	© 2003-2022 The Apache Software Foundation Licensed under the Apache license.
+groovy~2.4	Groovy	2.4	2.4.21	29303890	1607339610	290	https://groovy-lang.org/	© 2003-2022 The Apache Software Foundation Licensed under the Apache license.
+grunt	Grunt		1.5.0	178169	1723975557	929	https://gruntjs.com/	© GruntJS Team Licensed under the MIT License.
+gtk~4.0	GTK	4.0	4.0.0	10706544	1666381010	972	https://www.gtk.org/	© 2005–2020 The GNOME Project Licensed under the GNU Lesser General Public License version 2.1 or later.
+gtk~3.24	GTK	3.24	3.24.24	14440482	1608725659	972	https://www.gtk.org/	© 2005–2020 The GNOME Project Licensed under the GNU Lesser General Public License version 2.1 or later.
+gtk~3.22	GTK	3.22	3.22.3	15480205	1608725720	972	https://www.gtk.org/	© 2005–2020 The GNOME Project Licensed under the GNU Lesser General Public License version 2.1 or later.
+gtk~3.20	GTK	3.20	3.20.4	15246961	1608725772	972	https://www.gtk.org/	© 2005–2020 The GNOME Project Licensed under the GNU Lesser General Public License version 2.1 or later.
+hammerspoon	Hammerspoon		0.9.100	2813010	1705093380	0	https://www.hammerspoon.org	© 2014–2017 Hammerspoon contributors Licensed under the MIT License.
+handlebars	Handlebars.js		4.0.12	83745	1537740907	0	https://handlebarsjs.com/	© 2011–2017 by Yehuda Katz Licensed under the MIT License.
+hapi	Hapi		21.3.2	477903	1696875110	0	https://hapi.dev/	Copyright © 2011-2022, Project contributors Copyright © 2011-2020, Sideway Inc Copyright © 2011-2014, Walmart Copyright © 2011, Yahoo Inc. Licensed under the BSD 3-clause License.
+haproxy~3.4	HAProxy	3.4	3.4.0	3087897	1795054856	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~3.3	HAProxy	3.3	3.3.0	3032803	1765193608	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~3.2	HAProxy	3.2	3.2.9	2982259	1765193613	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~3.1	HAProxy	3.1	3.1.10	2880875	1765193617	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~3.0	HAProxy	3.0	3.0.12	2791676	1765193658	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.9	HAProxy	2.9	2.9.0	2660573	1707072620	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.8	HAProxy	2.8	2.8.0	2298119	1691007360	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.7	HAProxy	2.7	2.7.0	2209501	1671575125	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.6	HAProxy	2.6	2.6.5	2184493	1671575144	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.5	HAProxy	2.5	2.5.8	2145990	1671575157	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.4	HAProxy	2.4	2.4.18	2120431	1662467720	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.3	HAProxy	2.3	2.3.0	2003395	1607081435	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.2	HAProxy	2.2	2.2.5	1974872	1607081461	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.1	HAProxy	2.1	2.1.10	1800369	1607081466	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~2.0	HAProxy	2.0	2.0.19	1868610	1607081474	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~1.9	HAProxy	1.9	1.9.16	1816542	1607081480	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~1.8	HAProxy	1.8	1.8.27	1731236	1607081484	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haproxy~1.7	HAProxy	1.7	1.7.12	1651641	1607081488	0	https://www.haproxy.org/	© 2025 Willy Tarreau, HAProxy contributors Licensed under the GNU General Public License version 2.
+haskell~9	Haskell	9	9.14.1	71920309	1789383478	163	https://www.haskell.org/	
+haskell~8	Haskell	8	8.10.2	42753098	1605963532	163	https://www.haskell.org/	
+haskell~7	Haskell	7	7.10.3	6610017	1503760279	163	https://www.haskell.org/	
+haxe	Haxe		4.3.7	1625484	1795056166	0	https://haxe.org	© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~cpp	Haxe	C++	4.3.7	376015	1795056164	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~cs	Haxe	C#	4.3.7	3665438	1795056167	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~flash	Haxe	Flash	4.3.7	1812714	1795056166	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~java	Haxe	Java	4.3.7	3604652	1795056171	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~javascript	Haxe	JavaScript	4.3.7	6205991	1795056177	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~neko	Haxe	Neko	4.3.7	80509	1795056168	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~php	Haxe	PHP	4.3.7	1252090	1795056170	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~lua	Haxe	Lua	4.3.7	402768	1795056171	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~hashlink	Haxe	HashLink	4.3.7	201506	1795056172	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~sys	Haxe	Sys	4.3.7	145021	1795056172	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~python	Haxe	Python	4.3.7	658321	1795056174	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+haxe~eval	Haxe	Eval	4.3.7	428415	1795056174	0		© 2005–2020 Haxe Foundation Licensed under a MIT license.
+homebrew	Homebrew		6.0.3	42771747	1782406296	0	https://brew.sh	© 2009–present Homebrew contributors Licensed under the BSD 2-Clause License.
+html	HTML			5529381	1779812338	7	https://developer.mozilla.org/en-US/docs/Web/HTML	© 2005–2025 MDN contributors. Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.
+htmx	htmx		4.0.0	771968	1788068855	0	https://htmx.org/	Licensed under the Zero-Clause BSD License.
+htmx~2	htmx	2	2.0.10	590482	1788068761	0	https://htmx.org/	Licensed under the Zero-Clause BSD License.
+htmx~1	htmx	1	1.9.12	538728	1771064706	0	https://htmx.org/	Licensed under the Zero-Clause BSD License.
+http	HTTP			7047986	1782060535	120	https://developer.mozilla.org/en-US/docs/Web/HTTP	
+i3	i3		4.25.1	272919	1771064453	0	https://i3wm.org/	© 2009, Michael Stapelberg and contributors
+immutable	Immutable.js		4.2.1	850444	1671963844	0	https://immutable-js.com/	© 2014–present, Lee Byron and other contributors Licensed under the 3-clause BSD License.
+influxdata	InfluxData		1.3	3582825	1501448812	0	https://www.influxdata.com/	© 2015 InfluxData, Inc. Licensed under the MIT license.
+jasmine	Jasmine		4.0.0	187857	1644541675	644	https://jasmine.github.io/	© 2008–2019 Pivotal Labs Licensed under the MIT License.
+javascript	JavaScript			12370828	1789388556	1	https://developer.mozilla.org/en-US/docs/Web/JavaScript	© 2005–2025 MDN contributors. Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.
+jekyll~4	Jekyll	4	4.4.1	376494	1748771988	0	https://jekyllrb.com/	© 2025 Jekyll Core Team and contributors Licensed under the MIT license.
+jekyll~3	Jekyll	3	3.7.2	334606	1517761163	0	https://jekyllrb.com/	© 2025 Jekyll Core Team and contributors Licensed under the MIT license.
+jest	Jest		30.5.0	874097	1788295275	395	https://jestjs.io/	© 2022 Facebook, Inc. Licensed under the MIT License.
+jinja~3.1	Jinja	3.1	3.1.x	599870	1686474140	0	https://palletsprojects.com/p/jinja/	© 2007–2021 Pallets Licensed under the BSD 3-clause License.
+jinja~3.0	Jinja	3.0	3.0.x	574863	1620900752	0	https://palletsprojects.com/p/jinja/	© 2007–2021 Pallets Licensed under the BSD 3-clause License.
+jinja~2.11	Jinja	2.11	2.11.x	350919	1607340671	0	https://palletsprojects.com/p/jinja/	© 2007–2021 Pallets Licensed under the BSD 3-clause License.
+jinja~2.10	Jinja	2.10	2.10.x	341367	1607340667	0	https://palletsprojects.com/p/jinja/	© 2007–2021 Pallets Licensed under the BSD 3-clause License.
+jinja~2.9	Jinja	2.9	2.9.x	332310	1607340661	0	https://palletsprojects.com/p/jinja/	© 2007–2021 Pallets Licensed under the BSD 3-clause License.
+joi	Joi		17.11.0	495178	1696876212	0	https://joi.dev/	Copyright © 2012-2022, Project contributors Copyright © 2012-2022, Sideway Inc Copyright © 2012-2014, Walmart Licensed under the BSD 3-clause License.
+jq	jq		1.8	311991	1782016232	0	https://jqlang.org/	© 2012 Stephen Dolan Licensed under the Creative Commons Attribution 3.0 license
+jquery	jQuery		4.1.0	2874134	1795053076	8	https://jquery.com/	© The jQuery Foundation and other contributors Licensed under the MIT License.
+jquerymobile	jQuery Mobile		1.4.5	1120776	1500821575	0		© The jQuery Foundation and other contributors Licensed under the MIT License.
+jqueryui	jQuery UI		1.14.1	1106635	1739346677	0		© The jQuery Foundation and other contributors Licensed under the MIT License.
+jsdoc	JSDoc		3.6.7	283287	1635158076	0	https://jsdoc.app/	© 2011–2017 the contributors to the JSDoc 3 documentation project Licensed under the Creative Commons Attribution-ShareAlike Unported License v3.0.
+julia~1.13	Julia	1.13	1.13.0	5738173	1789304420	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.12	Julia	1.12	1.12.6	5633398	1776194805	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.11	Julia	1.11	1.11.2	5211364	1733655064	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.10	Julia	1.10	1.10.7	4881908	1733655058	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.9	Julia	1.9	1.9.2	4729497	1691006352	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.8	Julia	1.8	1.8.5	4538394	1673554762	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.7	Julia	1.7	1.7.0	4529013	1638662810	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.6	Julia	1.6	1.6.0	4295051	1616880793	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.5	Julia	1.5	1.5.3	4127258	1606771181	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.4	Julia	1.4	1.4.2	4088933	1606771121	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.3	Julia	1.3	1.3.1	3936345	1606771224	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.2	Julia	1.2	1.2.0	3856675	1581357546	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.1	Julia	1.1	1.1.1	3356572	1581357517	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~1.0	Julia	1.0	1.0.4	3359580	1581357502	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~0.7	Julia	0.7	0.7.0	3333596	1581357460	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~0.6	Julia	0.6	0.6.2	2721254	1515368111	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+julia~0.5	Julia	0.5	0.5.2	2184173	1498401014	665	https://julialang.org/	© 2009–2026 Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and other contributors Licensed under the MIT License.
+knockout	Knockout.js		3.5.1	457680	1606292302	451	https://knockoutjs.com/	© Steven Sanderson, the Knockout.js team, and other contributors Licensed under the MIT License.
+koa	Koa		3.3.0	160777	1795054308	0	https://koajs.com/	© 2020 Koa contributors Licensed under the MIT License.
+koa~2	Koa	2	2.16.1	187366	1748761292	0	https://koajs.com/	© 2020 Koa contributors Licensed under the MIT License.
+koa~1	Koa	1	1.7.1	73304	1748761289	0	https://koajs.com/	© 2020 Koa contributors Licensed under the MIT License.
+kotlin~2	Kotlin	2	2.4.20	81586953	1789307258	79	https://kotlinlang.org/	© 2010–2026 JetBrains s.r.o. and Kotlin Programming Language contributors Licensed under the Apache License, Version 2.0.
+kotlin~1.9	Kotlin	1.9	1.9.0	33300681	1690355716	79	https://kotlinlang.org/	© 2010–2026 JetBrains s.r.o. and Kotlin Programming Language contributors Licensed under the Apache License, Version 2.0.
+kotlin~1.8	Kotlin	1.8	1.8.0	27964403	1673467458	79	https://kotlinlang.org/	© 2010–2026 JetBrains s.r.o. and Kotlin Programming Language contributors Licensed under the Apache License, Version 2.0.
+kotlin~1.7	Kotlin	1.7	1.7.20	30791418	1664563886	79	https://kotlinlang.org/	© 2010–2026 JetBrains s.r.o. and Kotlin Programming Language contributors Licensed under the Apache License, Version 2.0.
+kotlin~1.6	Kotlin	1.6	1.6.20	36244921	1649445927	79	https://kotlinlang.org/	© 2010–2026 JetBrains s.r.o. and Kotlin Programming Language contributors Licensed under the Apache License, Version 2.0.
+kotlin~1.4	Kotlin	1.4	1.4.10	29132761	1605610517	79	https://kotlinlang.org/	© 2010–2026 JetBrains s.r.o. and Kotlin Programming Language contributors Licensed under the Apache License, Version 2.0.
+kubectl	Kubectl		1.36.3	339453	1786796047	0	https://kubernetes.io/docs/reference/kubectl/	© 2026 The Kubernetes Authors | Documentation Distributed under CC BY 4.0 Copyright © 2026 The Linux Foundation ®. All rights reserved.
+kubectl~1.20	Kubectl	1.20	1.20	296365	1651603888	0	https://kubernetes.io/docs/reference/kubectl/	© 2026 The Kubernetes Authors | Documentation Distributed under CC BY 4.0 Copyright © 2026 The Linux Foundation ®. All rights reserved.
+kubernetes	Kubernetes		1.36.3	1302728	1786796086	138	https://kubernetes.io/	© 2026 The Kubernetes Authors | Documentation Distributed under CC BY 4.0 Copyright © 2026 The Linux Foundation ®. All rights reserved.
+kubernetes~1.28	Kubernetes	1.28	1.28	951091	1707071525	138	https://kubernetes.io/	© 2026 The Kubernetes Authors | Documentation Distributed under CC BY 4.0 Copyright © 2026 The Linux Foundation ®. All rights reserved.
+kubernetes~1.27	Kubernetes	1.27	1.27	937585	1707071535	138	https://kubernetes.io/	© 2026 The Kubernetes Authors | Documentation Distributed under CC BY 4.0 Copyright © 2026 The Linux Foundation ®. All rights reserved.
+kubernetes~1.26	Kubernetes	1.26	1.26	915761	1707071550	138	https://kubernetes.io/	© 2026 The Kubernetes Authors | Documentation Distributed under CC BY 4.0 Copyright © 2026 The Linux Foundation ®. All rights reserved.
+kubernetes~1.25	Kubernetes	1.25	1.25	888511	1707071560	138	https://kubernetes.io/	© 2026 The Kubernetes Authors | Documentation Distributed under CC BY 4.0 Copyright © 2026 The Linux Foundation ®. All rights reserved.
+kubernetes~1.24	Kubernetes	1.24	1.24	888186	1707071570	138	https://kubernetes.io/	© 2026 The Kubernetes Authors | Documentation Distributed under CC BY 4.0 Copyright © 2026 The Linux Foundation ®. All rights reserved.
+laravel~11	Laravel	11	11.11.1	41267337	1721189849	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~10	Laravel	10	10.48.14	38324375	1721190156	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~9	Laravel	9	9.52.16	34739713	1721190245	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~8	Laravel	8	8.83.27	29635971	1686478900	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~7	Laravel	7	7.30.6	24008060	1686479126	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~6	Laravel	6	6.20.44	22674192	1686479242	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~5.8	Laravel	5.8	5.8.38	20593064	1605356185	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~5.7	Laravel	5.7	5.7.7	19082161	1538928383	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~5.6	Laravel	5.6	5.6.33	19686189	1534715526	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~5.5	Laravel	5.5	5.5.28	17701623	1515368259	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~5.4	Laravel	5.4	5.4.30	16448730	1505054925	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~5.3	Laravel	5.3	5.3.30	14614370	1505055249	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~5.2	Laravel	5.2	5.2.31	12870495	1505055328	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~5.1	Laravel	5.1	5.1.33	11737667	1505055406	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+laravel~4.2	Laravel	4.2	4.2.11	7711773	1505055134	39	https://laravel.com/	© Taylor Otwell Licensed under the MIT License. Laravel is a trademark of Taylor Otwell.
+latex	LaTeX		May 2022	1547251	1664564237	746	https://ctan.org/pkg/latex2e-help-texinfo/	© 2007–2018 Karl Berry Public Domain Software
+leaflet~2.0	Leaflet	2.0	2.0.0-beta.5	966824	1795101989	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.9	Leaflet	1.9	1.9.4	769872	1686472816	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.8	Leaflet	1.8	1.8.0	763883	1650351577	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.7	Leaflet	1.7	1.7.1	728726	1605214569	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.6	Leaflet	1.6	1.6.0	722507	1578593193	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.5	Leaflet	1.5	1.5.1	729474	1578594002	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.4	Leaflet	1.4	1.4.0	704120	1565300133	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.3	Leaflet	1.3	1.3.4	700386	1541343594	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.2	Leaflet	1.2	1.2.0	678833	1531084146	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.1	Leaflet	1.1	1.1.0	677510	1531084149	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+leaflet~1.0	Leaflet	1.0	1.0.3	672447	1531084153	670	https://leafletjs.com/	© 2010–2026 Volodymyr Agafonkin © 2010–2011, CloudMade Maps © OpenStreetMap contributors.
+less~4	Less	4	4.1.3	167970	1795055325	0	http://lesscss.org/	© 2009–2020 The Core Less Team Licensed under the Creative Commons Attribution License 3.0.
+less~3	Less	3	3.12.0	161488	1605731084	0	http://lesscss.org/	© 2009–2020 The Core Less Team Licensed under the Creative Commons Attribution License 3.0.
+less~2	Less	2	2.7.2	150274	1495470772	0	http://lesscss.org/	© 2009–2020 The Core Less Team Licensed under the Creative Commons Attribution License 3.0.
+man	Linux man pages			143221084	1724181421	0	https://man7.org/linux/man-pages/	...
+liquid	Liquid		5.14.0	112688	1795053950	0	https://shopify.github.io/liquid/	© 2005, 2006 Tobias Luetke Licensed under the MIT License.
+lit~3	Lit	3	3.3.1	1253640	1760803302	0	https://lit.dev/	© Google LLC Licensed under the Creative Commons Attribution 3.0 Unported License.
+lit~2	Lit	2	2.8.0	1216810	1760803296	0	https://lit.dev/	© Google LLC Licensed under the Creative Commons Attribution 3.0 Unported License.
+lit~1	Lit	1	1.0.1	569610	1760803290	0	https://lit.dev/	© Google LLC Licensed under the Creative Commons Attribution 3.0 Unported License.
+lodash~4	lodash	4	4.18.1	338909	1776195644	0	https://lodash.com/	© JS Foundation and other contributors Licensed under the MIT License.
+lodash~3	lodash	3	3.10.1	264546	1475414357	0	https://lodash.com/	© JS Foundation and other contributors Licensed under the MIT License.
+lodash~2	lodash	2	2.4.2	172643	1475414359	0	https://lodash.com/	© JS Foundation and other contributors Licensed under the MIT License.
+lua~5.5	Lua	5.5	5.5.0	376524	1768140940	393	https://www.lua.org/	© 1994–2025 Lua.org, PUC-Rio. Licensed under the MIT License.
+lua~5.4	Lua	5.4	5.4.1	356766	1605205878	393		© 1994–2025 Lua.org, PUC-Rio. Licensed under the MIT License.
+lua~5.3	Lua	5.3	5.3.6	325692	1605205897	393		© 1994–2025 Lua.org, PUC-Rio. Licensed under the MIT License.
+lua~5.2	Lua	5.2	5.2.4	304632	1500739926	393		© 1994–2025 Lua.org, PUC-Rio. Licensed under the MIT License.
+lua~5.1	Lua	5.1	5.1.5	253404	1500739929	393		© 1994–2025 Lua.org, PUC-Rio. Licensed under the MIT License.
+love	LÖVE		11.3	3786685	1606513699	0	https://love2d.org/	© 2006–2020 LÖVE Development Team Licensed under the GNU Free Documentation License, Version 1.3.
+maplibre_gl	MapLibre GL JS		6.19.0	1016818	1795053954	0	https://maplibre.org/maplibre-gl-js/docs/	© MapLibre contributors Licensed under the 3-Clause BSD License.
+mariadb	MariaDB		11.0.2	25206985	1691007490	606	https://mariadb.com/	© 2023 MariaDB Licensed under the Creative Commons Attribution 3.0 Unported License and the GNU Free Documentation License.
+marionette~4	Marionette.js	4	4.1.2	400137	1795055325	0	https://marionettejs.com/	© 2017 Muted Solutions, LLC Licensed under the MIT License.
+marionette~3	Marionette.js	3	3.5.1	503494	1510332195	0	https://marionettejs.com/	© 2017 Muted Solutions, LLC Licensed under the MIT License.
+marionette~2	Marionette.js	2	2.4.7	319692	1479678843	0	https://marionettejs.com/	© 2017 Muted Solutions, LLC Licensed under the MIT License.
+markdown	Markdown			33555	1663878232	928		© 2004 John Gruber Licensed under the BSD License.
+matplotlib	Matplotlib		3.11.2	62036249	1795055022	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.10	Matplotlib	3.10	3.10.8	59584723	1795055035	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.9	Matplotlib	3.9	3.9.3	65462810	1776194565	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.8	Matplotlib	3.8	3.8.4	58242438	1731856837	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.7	Matplotlib	3.7	3.7.5	57709331	1731857734	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.6	Matplotlib	3.6	3.6.0	51378620	1686475248	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.5	Matplotlib	3.5	3.5.1	52121211	1641877238	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.4	Matplotlib	3.4	3.4.3	51421402	1638097062	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.3	Matplotlib	3.3	3.3.3	58607046	1609088279	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.2	Matplotlib	3.2	3.2.2	73124849	1609091519	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.1	Matplotlib	3.1	3.1.1	41535835	1565298356	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~3.0	Matplotlib	3.0	3.0.0	40654111	1541344025	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~2.2	Matplotlib	2.2	2.2.3	39868819	1541343845	112	https://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~2.1	Matplotlib	2.1	2.1.0	32934732	1509301001	112	http://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~2.0	Matplotlib	2.0	2.0.2	5137554	1498401455	112	http://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+matplotlib~1.5	Matplotlib	1.5	1.5.3	3803905	1483389014	112	http://matplotlib.org/	© 2012–2026 Matplotlib Development Team. All rights reserved. Licensed under the Matplotlib License Agreement.
+meteor~1.5	Meteor	1.5	1.5.2	2121693	1509301490	309	https://www.meteor.com/	© 2011–2017 Meteor Development Group, Inc. Licensed under the MIT License.
+meteor~1.4	Meteor	1.4	1.4.4	2509309	1501449312	309	https://www.meteor.com/	© 2011–2017 Meteor Development Group, Inc. Licensed under the MIT License.
+meteor~1.3	Meteor	1.3	1.3.5	2442819	1501449342	309	https://www.meteor.com/	© 2011–2017 Meteor Development Group, Inc. Licensed under the MIT License.
+mocha	Mocha		9.0.2	521006	1625795050	982	https://mochajs.org/	© 2011–2021 JS Foundation and contributors Licensed under the Creative Commons Attribution 4.0 International License.
+modernizr	Modernizr		3.13.1	78360	1795053949	0	https://modernizr.com/	© 2009–2020 The Modernizr team Licensed under the MIT License.
+moment	Moment.js		2.31.0	254154	1795053750	0	http://momentjs.com/	© JS Foundation and other contributors Licensed under the MIT License.
+moment_timezone	Moment.js Timezone		0.6.0	46912	1760880490	0	https://momentjs.com/timezone/	© JS Foundation and other contributors Licensed under the MIT License.
+mongoose	Mongoose		7.4.1	1853673	1690396733	182	http://mongoosejs.com/	© 2010 LearnBoost Licensed under the MIT License.
+nextjs	Next.js		14.2.4	2936428	1718217664	213	https://www.nextjs.org/	© 2024 Vercel, Inc. Licensed under the MIT License.
+nginx	nginx		1.31.1	2244537	1779790939	152	https://nginx.org/	© 2002-2021 Igor Sysoev © 2011-2026 Nginx, Inc. Licensed under the BSD License.
+nginx_lua_module	nginx / Lua Module		0.10.28	790575	1748760945	0		© 2009–2017 Xiaozhe Wang (chaoslawful) © 2009–2019 Yichun "agentzh" Zhang (章亦春), OpenResty Inc. Licensed under the BSD License.
+nim	Nim		2.4.2	7922287	1795054319	0	https://nim-lang.org/	© 2006–2024 Andreas Rumpf Licensed under the MIT License.
+nim~1	Nim	1	1.4.8	7498475	1630441166	0	https://nim-lang.org/	© 2006–2024 Andreas Rumpf Licensed under the MIT License.
+nix	Nix		2.11.0	364680	1662466530	0	https://nixos.org/	© 2022 NixOS Contributors Licensed under the LGPL License.
+node	Node.js		26.3.1	6856259	1782016594	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~24_lts	Node.js	24 LTS	24.14.0	6279739	1772653670	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~22_lts	Node.js	22 LTS	22.20.0	5947333	1760871907	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~20_lts	Node.js	20 LTS	20.19.5	5517386	1760871944	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~18_lts	Node.js	18 LTS	18.18.0	5021367	1696877051	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~16_lts	Node.js	16 LTS	16.13.2	4404915	1642868465	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~14_lts	Node.js	14 LTS	14.17.0	3751695	1620858545	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~12_lts	Node.js	12 LTS	12.22.1	3587901	1620858747	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~10_lts	Node.js	10 LTS	10.24.1	2949230	1620858755	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~8_lts	Node.js	8 LTS	8.17.0	2277032	1620858760	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~6_lts	Node.js	6 LTS	6.17.1	1616160	1620858765	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+node~4_lts	Node.js	4 LTS	4.9.1	982096	1620859104	16	https://nodejs.org/	© Joyent, Inc. and other Node contributors Licensed under the MIT License. Node.js is a trademark of Joyent, Inc. and is used with its permission. We are not endorsed by or affiliated with Joyent.
+nokogiri	Nokogiri		1.19.4	811790	1788543496	0		© 2008–2026 by Mike Dalessio, Aaron Patterson, Yoko Harada, Akinori MUSHA, John Shahid, Karol Bucek, Sam Ruby, Craig Barnes, Stephen Checkoway, Lars Kanis, Sergio Arbeo, Timothy Elliott, Nobuyoshi Nakada, Charles Nutter, Patrick Mahoney Licensed under the MIT License.
+npm	npm		10.2.5	2146076	1704535397	176	https://www.npmjs.com/	© npm, Inc. and Contributors Licensed under the npm License. npm is a trademark of npm, Inc.
+numpy~2.5	NumPy	2.5	2.5	14553463	1792077485	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~2.4	NumPy	2.4	2.4	15299438	1772653369	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~2.2	NumPy	2.2	2.2	13664741	1748763768	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~2.1	NumPy	2.1	2.1	13688454	1748763599	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~2.0	NumPy	2.0	2.0.1	13523586	1748763510	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.23	NumPy	1.23	1.23.0	12902376	1664829125	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.22	NumPy	1.22	1.22.4	12699644	1664829318	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.21	NumPy	1.21	1.21.6	12495663	1664829453	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.20	NumPy	1.20	1.20.1	19057419	1613677417	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.19	NumPy	1.19	1.19.0	20631946	1609672265	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.18	NumPy	1.18	1.18.5	18845479	1609672666	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.17	NumPy	1.17	1.17.0	14687962	1567476462	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.16	NumPy	1.16	1.16.1	14195886	1567476550	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.15	NumPy	1.15	1.15.4	13978118	1567476633	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.14	NumPy	1.14	1.14.5	13107582	1567476769	69	https://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.13	NumPy	1.13	1.13.0	6106757	1498401762	69	http://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.12	NumPy	1.12	1.12.0	5936289	1498401838	69	http://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.11	NumPy	1.11	1.11.0	5869485	1467583174	69	http://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+numpy~1.10	NumPy	1.10	1.10.4	5821391	1467583024	69	http://www.numpy.org/	© 2005–2026 NumPy Developers Licensed under the 3-clause BSD License.
+nushell	Nushell		0.113.1	2583552	1780343233	0	https://www.nushell.sh/	Copyright © 2019–2026 The Nushell Project Developers Licensed under the MIT License.
+ocaml	OCaml		5.5	10184020	1788068994	0	https://ocaml.org/	© 1995-2026 INRIA.
+ocaml~5.0	OCaml	5.0	5.0	5800609	1671963555	0	https://ocaml.org/	© 1995-2026 INRIA.
+ocaml~4.14	OCaml	4.14	4.14	5679040	1671963533	0	https://ocaml.org/	© 1995-2026 INRIA.
+octave~11	Octave	11	11.3.0	7423812	1795054332	0	https://www.octave.org/	© 1996–2026 The Octave Project Developers Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies. Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one. Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions.
+octave~10	Octave	10	10.3.0	7331030	1776194167	0	https://www.octave.org/	© 1996–2026 The Octave Project Developers Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies. Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one. Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions.
+octave~9	Octave	9	9.4.0	7541194	1776194223	0	https://www.octave.org/	© 1996–2026 The Octave Project Developers Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies. Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one. Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions.
+octave~8	Octave	8	8.1.0	6273079	1681331376	0	http://www.octave.org/	© 1996–2026 The Octave Project Developers Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies. Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one. Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions.
+octave~7	Octave	7	7.2.0	6172854	1667592677	0	http://www.octave.org/	© 1996–2026 The Octave Project Developers Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies. Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one. Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions.
+octave~6	Octave	6	6.4.0	5513605	1667592699	0	http://www.octave.org/	© 1996–2026 The Octave Project Developers Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies. Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one. Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions.
+octave~5	Octave	5	5.2.0	5089239	1667592722	0	http://www.octave.org/	© 1996–2026 The Octave Project Developers Permission is granted to make and distribute verbatim copies of this manual provided the copyright notice and this permission notice are preserved on all copies. Permission is granted to copy and distribute modified versions of this manual under the conditions for verbatim copying, provided that the entire resulting derived work is distributed under the terms of a permission notice identical to this one. Permission is granted to copy and distribute translations of this manual into another language, under the above conditions for modified versions.
+odin	Odin		2026-11a	71556631	1795056008	0	https://odin-lang.org/	© 2016-2026 Ginger Bill Licensed under the zlib License.
+opengl~4	OpenGL	4	4	6712356	1722156644	232	https://registry.khronos.org/OpenGL-Refpages/	
+opengl~2.1	OpenGL	2.1	2.1	3776073	1722156636	232	https://registry.khronos.org/OpenGL-Refpages/	
+openjdk~25	OpenJDK	25	25	119600497	1760880786	3	https://openjdk.java.net/	© 1993, 2025, Oracle and/or its affiliates. All rights reserved. Documentation extracted from Debian's OpenJDK Development Kit package. Licensed under the GNU General Public License, version 2, with the Classpath Exception. Various third party code in OpenJDK is licensed under different licenses (see Debian package). Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.
+openjdk~21	OpenJDK	21	21	103314091	1706127173	3	https://openjdk.java.net/	© 1993, 2025, Oracle and/or its affiliates. All rights reserved. Documentation extracted from Debian's OpenJDK Development Kit package. Licensed under the GNU General Public License, version 2, with the Classpath Exception. Various third party code in OpenJDK is licensed under different licenses (see Debian package). Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.
+openjdk~17	OpenJDK	17	17	101139714	1635800919	3	https://openjdk.java.net/	© 1993, 2025, Oracle and/or its affiliates. All rights reserved. Documentation extracted from Debian's OpenJDK Development Kit package. Licensed under the GNU General Public License, version 2, with the Classpath Exception. Various third party code in OpenJDK is licensed under different licenses (see Debian package). Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.
+openjdk~11	OpenJDK	11	11.0.11	81635907	1623654507	3	https://openjdk.java.net/	© 1993, 2025, Oracle and/or its affiliates. All rights reserved. Documentation extracted from Debian's OpenJDK Development Kit package. Licensed under the GNU General Public License, version 2, with the Classpath Exception. Various third party code in OpenJDK is licensed under different licenses (see Debian package). Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.
+openjdk~8	OpenJDK	8	8	33586141	1614022668	3	https://openjdk.java.net/	© 1993, 2025, Oracle and/or its affiliates. All rights reserved. Documentation extracted from Debian's OpenJDK Development Kit package. Licensed under the GNU General Public License, version 2, with the Classpath Exception. Various third party code in OpenJDK is licensed under different licenses (see Debian package). Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.
+openjdk~8_gui	OpenJDK	8 GUI	8	29272900	1614022710	3	https://openjdk.java.net/	© 1993, 2025, Oracle and/or its affiliates. All rights reserved. Documentation extracted from Debian's OpenJDK Development Kit package. Licensed under the GNU General Public License, version 2, with the Classpath Exception. Various third party code in OpenJDK is licensed under different licenses (see Debian package). Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.
+openjdk~8_web	OpenJDK	8 Web	8	15183342	1614022678	3	https://openjdk.java.net/	© 1993, 2025, Oracle and/or its affiliates. All rights reserved. Documentation extracted from Debian's OpenJDK Development Kit package. Licensed under the GNU General Public License, version 2, with the Classpath Exception. Various third party code in OpenJDK is licensed under different licenses (see Debian package). Java and OpenJDK are trademarks or registered trademarks of Oracle and/or its affiliates.
+openlayers	OpenLayers		10.11.0	5451696	1795053954	0	https://openlayers.org/	© 2005-present, OpenLayers Contributors All rights reserved. Licensed under the BSD 2-Clause License.
+opentofu~1.12	OpenTofu	1.12	1.12.0	2549853	1779813681	0	https://opentofu.org/	Copyright (c) The OpenTofu Authors Copyright (c) 2014 HashiCorp, Inc. Mozilla Public License, version 2.0
+opentofu~1.11	OpenTofu	1.11	1.11.5	2466179	1779813677	0	https://opentofu.org/	Copyright (c) The OpenTofu Authors Copyright (c) 2014 HashiCorp, Inc. Mozilla Public License, version 2.0
+opentofu~1.10	OpenTofu	1.10	1.10.9	2392925	1779813672	0	https://opentofu.org/	Copyright (c) The OpenTofu Authors Copyright (c) 2014 HashiCorp, Inc. Mozilla Public License, version 2.0
+opentofu~1.9	OpenTofu	1.9	1.9.4	2331207	1779813655	0	https://opentofu.org/	Copyright (c) The OpenTofu Authors Copyright (c) 2014 HashiCorp, Inc. Mozilla Public License, version 2.0
+opentsdb	OpenTSDB		2.4.1	1349035	1795054232	0	https://opentsdb.net/	© 2010–2016 The OpenTSDB Authors Licensed under the GNU LGPLv2.1+ and GPLv3+ licenses.
+padrino	Padrino		0.15	883213	1607536628	0	http://padrinorb.com/	© 2010–2020 Padrino Licensed under the MIT License.
+pandas~3	pandas	3	3.1.1	13433492	1795056843	29	https://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~2	pandas	2	2.3.0	15673005	1751618118	29	https://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~1	pandas	1	1.5.0	15318243	1664306040	29	https://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~0.25	pandas	0.25	0.25.0	7436542	1565040763	29	http://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~0.24	pandas	0.24	0.24.2	8062696	1565040693	29	http://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~0.23	pandas	0.23	0.23.4	5530997	1565037562	29	http://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~0.22	pandas	0.22	0.22.0	4727191	1565037476	29	http://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~0.21	pandas	0.21	0.21.1	4718570	1565037237	29	http://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~0.20	pandas	0.20	0.20.3	4296030	1565036225	29	http://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~0.19	pandas	0.19	0.19.2	7664016	1565036094	29	http://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+pandas~0.18	pandas	0.18	0.18.1	7469373	1565035864	29	http://pandas.pydata.org/	© 2008–2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team © 2011–2025, Open source contributors Licensed under the 3-clause BSD License.
+perl~5.44	Perl	5.44	5.44.0	17819123	1786787732	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.42	Perl	5.42	5.42.0	17458594	1751617576	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.40	Perl	5.40	5.40.2	17512977	1748771636	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.38	Perl	5.38	5.38.0	16392305	1688407898	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.36	Perl	5.36	5.36.0	14815065	1654205685	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.34	Perl	5.34	5.34.0	13721787	1635176783	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.32	Perl	5.32	5.32.0	14137766	1607063720	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.30	Perl	5.30	5.30.3	14032638	1607063504	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.28	Perl	5.28	5.28.3	15373940	1607063348	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.26	Perl	5.26	5.26.0	14046450	1500742523	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.24	Perl	5.24	5.24.0	14166764	1500742737	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.22	Perl	5.22	5.22.0	14046450	1500742852	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+perl~5.20	Perl	5.20	5.20.2	14101118	1500742940	119	https://www.perl.org/	© 1993–2026 Larry Wall and others Licensed under the GNU General Public License version 1 or later, or the Artistic License. The Perl logo is a trademark of the Perl Foundation.
+phalcon~3	Phalcon	3	3.1.1	3296452	1495471186	0	https://phalconphp.com/	© 2011–2017 Phalcon Framework Team Licensed under the Creative Commons Attribution License 3.0.
+phalcon~2	Phalcon	2	2.0.13	2714996	1475334683	0	https://phalconphp.com/	© 2011–2017 Phalcon Framework Team Licensed under the Creative Commons Attribution License 3.0.
+phaser	Phaser		2.6.2	6877092	1472404795	0	http://phaser.io/	© 2016 Richard Davey, Photon Storm Ltd. Licensed under the MIT License.
+phoenix	Phoenix		1.8.8	3835355	1782051989	0	http://www.phoenixframework.org	
+php	PHP		8.6	33086234	1795102450	5	https://www.php.net/	© 1997–2026 The PHP Documentation Group Licensed under the Creative Commons Attribution License v3.0 or later.
+phpunit	PHPUnit		13.4	1894468	1795054305	828	https://phpunit.de/	© 2005–2026 Sebastian Bergmann Licensed under the Creative Commons Attribution 3.0 Unported License.
+phpunit~12	PHPUnit	12	12.5	1243707	1782016907	828	https://phpunit.de/	© 2005–2026 Sebastian Bergmann Licensed under the Creative Commons Attribution 3.0 Unported License.
+phpunit~9	PHPUnit	9	9.5	683587	1611080923	828	https://phpunit.de/	© 2005–2026 Sebastian Bergmann Licensed under the Creative Commons Attribution 3.0 Unported License.
+phpunit~8	PHPUnit	8	8.5	695835	1611080907	828	https://phpunit.de/	© 2005–2026 Sebastian Bergmann Licensed under the Creative Commons Attribution 3.0 Unported License.
+phpunit~6	PHPUnit	6	6.5	394690	1515368674	828	https://phpunit.de/	© 2005–2026 Sebastian Bergmann Licensed under the Creative Commons Attribution 3.0 Unported License.
+phpunit~5	PHPUnit	5	5.7	393964	1483389936	828	https://phpunit.de/	© 2005–2026 Sebastian Bergmann Licensed under the Creative Commons Attribution 3.0 Unported License.
+phpunit~4	PHPUnit	4	4.8	413036	1469313483	828	https://phpunit.de/	© 2005–2026 Sebastian Bergmann Licensed under the Creative Commons Attribution 3.0 Unported License.
+playwright	Playwright		1.63.0	3805652	1789304484	0	https://playwright.dev/	© 2026 Microsoft Licensed under the Apache License, Version 2.0.
+point_cloud_library	PointCloudLibrary		1.15.0	60852367	1748765272	0	https://pointclouds.org/	© 2009–2012, Willow Garage, Inc. © 2012–, Open Perception, Inc. Licensed under the BSD License.
+polars	Polars		1.44.1	5266042	1792077457	0	https://pola.rs/	© 2020 Ritchie Vink © 2022 Polars contributors Licensed under the MIT License.
+pony	Pony		0.38.1	2463235	1607341629	0	https://www.ponylang.io/	© 2016-2020, The Pony Developers © 2014-2015, Causality Ltd. Licensed under the BSD 2-Clause License.
+postgresql~19	PostgreSQL	19	19.0	8913600	1795169683	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~18	PostgreSQL	18	18.7	8608184	1795056822	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~17	PostgreSQL	17	17.11	8336477	1789393420	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~16	PostgreSQL	16	16.15	8099160	1789393416	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~15	PostgreSQL	15	15.19	7894625	1789393408	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~14	PostgreSQL	14	14.24	7654772	1789393403	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~13	PostgreSQL	13	13.23	7343758	1789393396	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~12	PostgreSQL	12	12.22	6784500	1789393389	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~11	PostgreSQL	11	11.22	6539465	1789393383	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~10	PostgreSQL	10	10.11	6524871	1579100778	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~9.6	PostgreSQL	9.6	9.6.16	5824588	1579100900	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~9.5	PostgreSQL	9.5	9.5.20	5575494	1579101914	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+postgresql~9.4	PostgreSQL	9.4	9.4.25	5227076	1579102090	45	https://www.postgresql.org/	© 1996–2026 The PostgreSQL Global Development Group Licensed under the PostgreSQL License.
+powershell~7.7	PowerShell	7.7	7.7	7032967	1780412325	66	https://learn.microsoft.com/powershell	© Microsoft Corporation Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+powershell~7.6	PowerShell	7.6	7.6	7025549	1780412329	66	https://learn.microsoft.com/powershell	© Microsoft Corporation Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+powershell~7.5	PowerShell	7.5	7.5	7014769	1780412332	66	https://learn.microsoft.com/powershell	© Microsoft Corporation Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+powershell~7.4	PowerShell	7.4	7.4	6991965	1780412337	66	https://learn.microsoft.com/powershell	© Microsoft Corporation Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+powershell~5.1	PowerShell	5.1	5.1	7570035	1780412341	66	https://learn.microsoft.com/powershell	© Microsoft Corporation Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+powershell~scripting	PowerShell	Scripting		5320963	1780412345	66	https://learn.microsoft.com/powershell	© Microsoft Corporation Code licensed under an MIT-style License. Documentation licensed under CC BY 4.0.
+prettier	Prettier		3.10.1	289160	1795053754	0	https://prettier.io/	© James Long and contributors
+pug	Pug		3.0.0	81617	1605298885	0	https://pugjs.org/	© Pug authors Licensed under the MIT license.
+puppeteer	Puppeteer		7.1.0	406782	1613603168	0		© 2021 Google Inc Licensed under the Apache License 2.0.
+pygame	Pygame		2.6.1	1145609	1795053951	499	https://www.pygame.org/	© Pygame Developers. Licensed under the GNU LGPL License version 2.1.
+pytest	pytest		9.2.0	1916273	1795053756	803	https://pytest.org/	© 2015–2026 Holger Krekel and pytest-dev team Licensed under the MIT License.
+python~3.15	Python	3.15	3.15.0	22169218	1791835216	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.14	Python	3.14	3.14.8	20789756	1791121287	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.13	Python	3.13	3.13.8	19127630	1759906687	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.12	Python	3.12	3.12.9	18129117	1741250406	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.11	Python	3.11	3.11.11	17729110	1741251079	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.10	Python	3.10	3.10.13	16372162	1696878688	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.9	Python	3.9	3.9.14	15447502	1666882293	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.8	Python	3.8	3.8.14	15163896	1666882475	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.7	Python	3.7	3.7.9	8547840	1605223193	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.6	Python	3.6	3.6.12	8156588	1605223247	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~3.5	Python	3.5	3.5.9	7721568	1578589263	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+python~2.7	Python	2.7	2.7.17	6488045	1578589341	2	https://www.python.org/	© 2001 Python Software Foundation Licensed under the PSF License.
+pytorch~2.15	PyTorch	2.15	2.15	25732635	1795056973	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.14	PyTorch	2.14	2.14	26941609	1789297469	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.13	PyTorch	2.13	2.13	26669716	1789296396	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.12	PyTorch	2.12	2.12	24484472	1789297204	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.11	PyTorch	2.11	2.11	24393734	1789296983	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.10	PyTorch	2.10	2.10	24123354	1789296321	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.9	PyTorch	2.9	2.9	20962450	1765114577	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.8	PyTorch	2.8	2.8	18244673	1765114286	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.7	PyTorch	2.7	2.7	16142970	1748762821	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.6	PyTorch	2.6	2.6	16003812	1748762662	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.5	PyTorch	2.5	2.5	15156350	1748762570	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.4	PyTorch	2.4	2.4	14683899	1748762281	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.3	PyTorch	2.3	2.3	14409805	1748762192	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.2	PyTorch	2.2	2.2	14098562	1748762062	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.1	PyTorch	2.1	2.1	13527045	1748761977	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~2.0	PyTorch	2.0	2.0	11862011	1748761878	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+pytorch~1.13	PyTorch	1.13	1.13	10845648	1748761763	376	https://pytorch.org/	© 2026, PyTorch Contributors PyTorch has a BSD-style license, as found in the LICENSE file.
+q	Q		1.5.1	59863	1748760995	0	http://documentup.com/kriskowal/q/	© 2009–2018 Kristopher Michael Kowal Licensed under the MIT License.
+qt~6.12	Qt	6.12	6.12	113802616	1795055234	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~6.9	Qt	6.9	6.9	127737028	1760874761	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~6.8	Qt	6.8	6.8	118068227	1744391853	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~6.2	Qt	6.2	6.2	76573854	1641879449	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~6.1	Qt	6.1	6.1	68561049	1620902067	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~6.0	Qt	6.0	6.0	51623622	1608723876	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~5.15	Qt	5.15	5.15	83324752	1605815797	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~5.14	Qt	5.14	5.14	80528067	1605816922	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~5.13	Qt	5.13	5.13	77784680	1564995096	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~5.12	Qt	5.12	5.12	80338638	1564995520	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~5.11	Qt	5.11	5.11	78478531	1564995953	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~5.9	Qt	5.9	5.9	75280911	1534111533	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qt~5.6	Qt	5.6	5.6	65841485	1564996312	95	https://www.qt.io	© The Qt Company Ltd Licensed under the GNU Free Documentation License, Version 1.3.
+qunit	QUnit		2.25.0	436016	1779773992	0	https://qunitjs.com/	© OpenJS Foundation and contributors. Licensed under the MIT license.
+r	R		4.4.2	12361218	1731847119	14	https://www.r-project.org/	Copyright (©) 1999–2012 R Foundation for Statistical Computing. Licensed under the GNU General Public License .
+rabbitmq	RabbitMQ		4.4.1	6646930	1795054845	613	https://www.rabbitmq.com/	Copyright © 2005-2026 Broadcom. All Rights Reserved. The term “Broadcom” refers to Broadcom Inc. and/or its subsidiaries. Licensed under the Apache License, Version 2.0.
+ramda	Ramda		0.31.3	321319	1751052825	0	http://ramdajs.com/	© 2013–2025 Scott Sauyet and Michael Hurley Licensed under the MIT License.
+react	React		19.3	8981282	1795054349	15	https://react.dev/	© 2013–present Facebook Inc. Licensed under the Creative Commons Attribution 4.0 International Public License.
+react~18	React	18	18.3.1	6380003	1733989945	15	https://react.dev/	© 2013–present Facebook Inc. Licensed under the Creative Commons Attribution 4.0 International Public License.
+react~17	React	17	17.0.2	1272769	1733989958	15	https://react.dev/	© 2013–present Facebook Inc. Licensed under the Creative Commons Attribution 4.0 International Public License.
+react_bootstrap	React Bootstrap		1.5.0	607965	1614324411	0	https://react-bootstrap.github.io	© 2014–present Stephen J. Collings, Matthew Honnibal, Pieter Vanderwerff Licensed under the MIT License (MIT).
+react_native	React Native		0.69	3721974	1661624163	63	https://reactnative.dev/	© 2022 Facebook Inc. Licensed under the Creative Commons Attribution 4.0 International Public License.
+react_router	React Router		6.4.1	580066	1664565809	439	https://reactrouterdotcom.fly.dev/	© React Training 2015-2019 © Remix Software 2020-2022 Licensed under the MIT License (MIT).
+reactivex	ReactiveX			1167911	1571593308	0	http://reactivex.io/	© ReactiveX contributors Licensed under the Apache License 2.0.
+redis	Redis		7.0.10	1922342	1681332415	350	https://redis.io/	© 2006–2022 Salvatore Sanfilippo Licensed under the Creative Commons Attribution-ShareAlike License 4.0.
+redux	Redux		4.1.2	46393	1638665023	251	http://redux.js.org/	© 2015–2022 Dan Abramov Licensed under the MIT License.
+redux~3	Redux	3	3.7.2	841649	1503762495	251	http://redux.js.org/	© 2015–2022 Dan Abramov Licensed under the MIT License.
+relay~10	Relay	10	10.1.0	218918	1607338227	0	https://relay.dev/	© 2020–present Facebook Inc. Licensed under the BSD License.
+relay~9	Relay	9	9.1.0	217190	1607338221	0	https://relay.dev/	© 2020–present Facebook Inc. Licensed under the BSD License.
+relay~8	Relay	8	8.0.0	216931	1607338213	0	https://relay.dev/	© 2020–present Facebook Inc. Licensed under the BSD License.
+requests	Requests		2.34.2	242935	1786795950	0	https://requests.readthedocs.io/	© 2011-2026 Kenneth Reitz and other contributors Licensed under the Apache license.
+requirejs	RequireJS		2.3.5	189153	1503762537	0	http://requirejs.org/	© jQuery Foundation and other contributors Licensed under the MIT License.
+rethinkdb~javascript	RethinkDB	javascript	2.4.1	2641686	1608313569	0	https://rethinkdb.com/	© RethinkDB contributors Licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
+rethinkdb~ruby	RethinkDB	ruby	2.4.1	2595645	1608313604	0	https://rethinkdb.com/	© RethinkDB contributors Licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
+rethinkdb~python	RethinkDB	python	2.4.1	2602836	1608313625	0	https://rethinkdb.com/	© RethinkDB contributors Licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
+rethinkdb~java	RethinkDB	java	2.4.1	2655918	1608313647	0	https://rethinkdb.com/	© RethinkDB contributors Licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License.
+ruby~4.0	Ruby	4.0	4.0.1	8543865	1773854187	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~3.4	Ruby	3.4	3.4.7	14975742	1760862176	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~3.3	Ruby	3.3	3.3.0	12979893	1704480839	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~3.2	Ruby	3.2	3.2.0	10101657	1673467794	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~3.1	Ruby	3.1	3.1.1	9160982	1651695522	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~3	Ruby	3	3.0.0	8832005	1609538948	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~2.7	Ruby	2.7	2.7.2	10516199	1605253532	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~2.6	Ruby	2.6	2.6.3	10200734	1566309056	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~2.5	Ruby	2.5	2.5.3	7887594	1545081553	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~2.4	Ruby	2.4	2.4.5	7697010	1545082864	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~2.3	Ruby	2.3	2.3.8	7535569	1545082731	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+ruby~2.2	Ruby	2.2	2.2.10	7538440	1545082614	34	https://www.ruby-lang.org/	Ruby Core © 1993–2025 Yukihiro Matsumoto Licensed under the Ruby License. Ruby Standard Library © contributors Licensed under their own licenses.
+minitest	Ruby / Minitest		6.0.1	252889	1773857552	0	https://minite.st	© Ryan Davis, seattle.rb Licensed under the MIT License.
+rack	Ruby / Rack		3.2.6	465601	1786778156	0	https://rack.github.io/rack/3.2/index.html	© 2007-2021 Leah Neukirchen Licensed under the MIT License.
+rails~8.1	Ruby on Rails	8.1	8.1.2	11594952	1773857292	23	https://rubyonrails.org/	
+rails~8.0	Ruby on Rails	8.0	8.0.1	10379970	1736598203	23	https://rubyonrails.org/	
+rails~7.2	Ruby on Rails	7.2	7.2.1	10337546	1725555702	23	https://rubyonrails.org/	
+rails~7.1	Ruby on Rails	7.1	7.1.2	9778521	1704481472	23	https://rubyonrails.org/	
+rails~7.0	Ruby on Rails	7.0	7.0.0	8679089	1641683048	23	https://rubyonrails.org/	
+rails~6.1	Ruby on Rails	6.1	6.1.1	8511715	1611082577	23	http://rubyonrails.org/	
+rails~6.0	Ruby on Rails	6.0	6.0.0	7154859	1572048847	23	http://rubyonrails.org/	
+rails~5.2	Ruby on Rails	5.2	5.2.2	6703783	1545084238	23	http://rubyonrails.org/	
+rails~5.1	Ruby on Rails	5.1	5.1.6	6230373	1545084681	23	http://rubyonrails.org/	
+rails~5.0	Ruby on Rails	5.0	5.0.7	6147681	1545084761	23	http://rubyonrails.org/	
+rails~4.2	Ruby on Rails	4.2	4.2.11	5530698	1545084814	23	http://rubyonrails.org/	
+rails~4.1	Ruby on Rails	4.1	4.1.16	3792537	1483393875	23	http://rubyonrails.org/	
+rust	Rust		1.98.0	70119547	1788067804	194	https://www.rust-lang.org/	© 2010 The Rust Project Developers Licensed under the Apache License, Version 2.0 or the MIT license, at your option.
+rxjs	RxJS		7.8.1	2036367	1732017954	424	https://rxjs.dev/	© 2015–2022 Google, Inc., Netflix, Inc., Microsoft Corp. and contributors. Code licensed under an Apache-2.0 License. Documentation licensed under CC BY 4.0.
+saltstack	SaltStack		3003	11983829	1619732892	0	https://www.saltproject.io/	© 2021 SaltStack. Licensed under the Apache License, Version 2.0.
+sanctuary	Sanctuary		3.1.0	152952	1661620815	0	https://sanctuary.js.org/	© 2020 Sanctuary © 2016 Plaid Technologies, Inc. Licensed under the MIT License.
+sanctuary_def	Sanctuary Def		0.22.0	57602	1748760973	0	https://github.com/sanctuary-js/sanctuary-def	© 2020 Sanctuary © 2016 Plaid Technologies, Inc. Licensed under the MIT License.
+sanctuary_type_classes	Sanctuary Type Classes		13.0.0	59000	1696874764	0	https://github.com/sanctuary-js/sanctuary-type-classes	© 2020 Sanctuary © 2016 Plaid Technologies, Inc. Licensed under the MIT License.
+sass	Sass		1.104.0	4129856	1788542643	324	http://sass-lang.com/	© 2006–2025 the Sass team, and numerous contributors Licensed under the MIT License.
+scala~3	Scala	3	3.10.1	4797684	1795057057	72	https://www.scala-lang.org/	© 2002-2022 EPFL, with contributions from Lightbend. Licensed under the Apache License, Version 2.0.
+scala~2.13_library	Scala	2.13 Library	2.13.0	129662003	1565550548	72	http://www.scala-lang.org/	© 2002-2022 EPFL, with contributions from Lightbend. Licensed under the Apache License, Version 2.0.
+scala~2.13_reflection	Scala	2.13 Reflection	2.13.0	19046212	1565551408	72	http://www.scala-lang.org/	© 2002-2022 EPFL, with contributions from Lightbend. Licensed under the Apache License, Version 2.0.
+scala~2.12_library	Scala	2.12 Library	2.12.9	150941113	1565551292	72	http://www.scala-lang.org/	© 2002-2022 EPFL, with contributions from Lightbend. Licensed under the Apache License, Version 2.0.
+scala~2.12_reflection	Scala	2.12 Reflection	2.12.9	18174235	1565551511	72	http://www.scala-lang.org/	© 2002-2022 EPFL, with contributions from Lightbend. Licensed under the Apache License, Version 2.0.
+scikit_image	scikit-image		0.26.0	23571098	1786796377	0	https://scikit-image.org/	© 2019 the scikit-image team Licensed under the BSD 3-clause License.
+scikit_learn	scikit-learn		1.9.0	109783336	1786797155	318	https://scikit-learn.org/	© 2007–2026 The scikit-learn developers Licensed under the 3-clause BSD License.
+sequelize~6	Sequelize	6	6.37.5	824188	1731857648	693	https://sequelize.org/	Copyright © 2014–present Sequelize contributors Licensed under the MIT License.
+sequelize~5	Sequelize	5	5.22.0	1328438	1609093886	693	https://sequelize.org/	Copyright © 2014–present Sequelize contributors Licensed under the MIT License.
+sequelize~4	Sequelize	4	4.44.4	1546768	1609093896	693	https://sequelize.org/	Copyright © 2014–present Sequelize contributors Licensed under the MIT License.
+sinon~15	Sinon.JS	15	15.0.1	120016	1671962514	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~14	Sinon.JS	14	14.0.2	120016	1671962512	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~13	Sinon.JS	13	13.0.1	120016	1671962509	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~12	Sinon.JS	12	12.0.1	119641	1671962505	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~11	Sinon.JS	11	11.1.2	119640	1671962501	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~10	Sinon.JS	10	10.0.1	120101	1619733139	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~9	Sinon.JS	9	9.2.2	119250	1608725356	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~8	Sinon.JS	8	8.1.1	122546	1608725353	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~7	Sinon.JS	7	7.5.0	120246	1608725350	0	https://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~6	Sinon.JS	6	6.3.5	120369	1541374679	0	http://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~5	Sinon.JS	5	5.1.0	112874	1528680045	0	http://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~4	Sinon.JS	4	4.5.0	104021	1524927542	0	http://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~3	Sinon.JS	3	3.3.0	105244	1506272828	0	http://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~2	Sinon.JS	2	2.4.1	96240	1506272828	0	http://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+sinon~1	Sinon.JS	1	1.17.7	83926	1506272829	0	http://sinonjs.org/	© 2010–2022 Christian Johansen Licensed under the BSD License.
+socketio~4	Socket.IO	4	4.5.2	1447973	1663709361	441	https://socket.io/	© 2014–2021 Automattic Licensed under the MIT License.
+socketio~3	Socket.IO	3	3.0.5	901094	1615491131	441	http://socket.io/	© 2014–2021 Automattic Licensed under the MIT License.
+socketio~2	Socket.IO	2	2.4.0	596167	1611080946	441	http://socket.io/	© 2014–2021 Automattic Licensed under the MIT License.
+spring_boot	Spring Boot		3.1.3	3425508	1693728240	55	https://spring.io/	Copyright © 2012-2023 VMware, Inc. Licensed under the Apache License, Version 2.0.
+sqlite	SQLite		3.54.0	16104928	1791835427	81	https://sqlite.org/	SQLite is in the Public Domain.
+statsmodels	Statsmodels		0.9.0	15819423	1541374872	0	http://www.statsmodels.org/	© 2009–2012 Statsmodels Developers © 2006–2008 Scipy Developers © 2006 Jonathan E. Taylor Licensed under the 3-clause BSD License.
+browser_support_tables	Support Tables		1.0.30001810	22856487	1788069116	0		© 2020 Alexis Deveria Licensed under the Creative Commons Attribution 4.0 International License.
+svelte	Svelte		5.58.0	603554	1795054307	0	https://svelte.dev/	© 2016–2025 Rich Harris and contributors Licensed under the MIT License.
+svelte~4	Svelte	4	4.2.1	319039	1696881287	0	https://svelte.dev/	© 2016–2025 Rich Harris and contributors Licensed under the MIT License.
+svelte~3	Svelte	3	3.55.0	512379	1672952884	0	https://svelte.dev/	© 2016–2025 Rich Harris and contributors Licensed under the MIT License.
+svg	SVG			2786506	1757951824	189	https://developer.mozilla.org/en-US/docs/Web/SVG	© 2005–2025 MDN contributors. Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.
+symfony~4.1	Symfony	4.1	4.1.7	15754272	1541375004	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+symfony~4.0	Symfony	4.0	4.0.3	14182389	1515369903	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+symfony~3.4	Symfony	3.4	3.4.3	14949752	1515369763	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+symfony~3.3	Symfony	3.3	3.3.15	14066834	1515369628	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+symfony~3.2	Symfony	3.2	3.2.13	13318281	1509304300	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+symfony~3.1	Symfony	3.1	3.1.8	12851145	1509304394	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+symfony~3.0	Symfony	3.0	3.0.1	12691338	1509304485	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+symfony~2.8	Symfony	2.8	2.8.28	13046428	1509304582	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+symfony~2.7	Symfony	2.7	2.7.35	12438508	1509304675	110	https://symfony.com/	© 2004–2017 Fabien Potencier Licensed under the MIT License.
+tailwindcss	Tailwind CSS		4.3.5	2729272	1795054315	801	https://tailwindcss.com/	© Tailwind Labs Inc.
+tailwindcss~3	Tailwind CSS	3	3.4.17	2751234	1751651533	801	https://tailwindcss.com/	© Tailwind Labs Inc.
+tanstack_query	TanStack Query		5.108.0	1663405	1795053789	0	https://tanstack.com/query	© 2021-present Tanner Linsley Licensed under the MIT License.
+tanstack_router	TanStack Router		1.170.41	934178	1791566460	0	https://tanstack.com/router	© 2021-present Tanner Linsley Licensed under the MIT License.
+tcl_tk~9.0	Tcl/Tk	9.0	9.0.2	3745030	1752472055	0	https://www.tcl-lang.org/	Licensed under Tcl/Tk terms
+tcl_tk~8.6	Tcl/Tk	8.6	8.6.16	3415101	1752472070	0	https://www.tcl-lang.org/	Licensed under Tcl/Tk terms
+tcllib	Tcllib		2.0	5864546	1752471686	0	https://core.tcl-lang.org/tcllib/doc/trunk/embedded/index.md	Licensed under the BSD license
+tensorflow	TensorFlow		2.21.0	35684632	1789309337	101	https://www.tensorflow.org/	© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow~2.9	TensorFlow	2.9	2.9.1	31393337	1654205885	101	https://www.tensorflow.org/	© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow~2.4	TensorFlow	2.4	2.4.0	27846039	1614803766	101	https://www.tensorflow.org/	© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow~2.3	TensorFlow	2.3	2.3.0	26649208	1605729186	101	https://www.tensorflow.org/	© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow~1.15	TensorFlow	1.15	1.15.0	26874119	1605729778	101	https://www.tensorflow.org/	© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow_cpp	TensorFlow C++		2.21.0	8021521	1789309045	0		© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow_cpp~2.9	TensorFlow C++	2.9	2.9.1	6660258	1654205712	0		© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow_cpp~2.4	TensorFlow C++	2.4	2.4.0	6610343	1614803828	0		© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow_cpp~2.3	TensorFlow C++	2.3	2.3.0	6675080	1605594982	0		© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+tensorflow_cpp~1.15	TensorFlow C++	1.15	1.15.0	6393571	1605595110	0		© 2022 The TensorFlow Authors. All rights reserved. Licensed under the Creative Commons Attribution License 4.0. Code samples licensed under the Apache 2.0 License.
+terraform	Terraform		1.15.8	82510148	1786795186	452	https://www.terraform.io/	© 2026 HashiCorp Licensed under the MPL 2.0 License.
+threejs	Three.js		173	3007467	1740300935	0	https://threejs.org/	© 2010–2026 Three.js Authors Licensed under the MIT License.
+tokio	Tokio		1.53.1	9709860	1785178562	0	https://tokio.rs/	MIT License Copyright © Tokio Contributors
+trio	Trio		0.29.0	910521	1740297090	0	https://trio.readthedocs.io/	© 2017 Nathaniel J. Smith Licensed under the MIT License.
+twig~3	Twig	3	3.1.1	722515	1607535850	798	https://twig.symfony.com/	© 2009–2018 by the Twig Team Licensed under the three clause BSD license. The Twig logo is © 2010–2020 Symfony
+twig~2	Twig	2	2.14.1	749608	1607535854	798	https://twig.symfony.com/	© 2009–2018 by the Twig Team Licensed under the three clause BSD license. The Twig logo is © 2010–2020 Symfony
+twig~1	Twig	1	1.44.1	667388	1607535857	798	https://twig.symfony.com/	© 2009–2018 by the Twig Team Licensed under the three clause BSD license. The Twig logo is © 2010–2020 Symfony
+typescript	TypeScript		7.0.2	1947534	1791567288	33	https://www.typescriptlang.org	© 2012-2026 Microsoft Licensed under the Apache License, Version 2.0.
+typst	Typst		0.15.1	5410304	1791736773	0	https://typst.app/	© Typst GmbH and contributors Licensed under the Apache License, Version 2.0.
+underscore	Underscore.js		1.13.1	65680	1624953261	0	https://underscorejs.org	© 2009–2021 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors Licensed under the MIT License.
+vagrant	Vagrant		2.2.0	620133	1541375199	980	https://www.vagrantup.com/	© 2010–2018 Mitchell Hashimoto Licensed under the MPL 2.0 License.
+valibot	Valibot		1.5.0	1942258	1789305174	0	https://valibot.dev/	© Fabian Hiller Licensed under the MIT License.
+varnish	Varnish		7.4	948184	1696876643	0	https://varnish-cache.org/	Copyright © 2006 Verdens Gang AS Copyright © 2006–2020 Varnish Software AS Licensed under the BSD-2-Clause License.
+vertx~5	Vert.x	5	5.2.3	8726095	1795054844	0	http://vertx.io	© 2025 Eclipse Vert.x™ Eclipse Vert.x™ is open source and dual-licensed under the Eclipse Public License 2.0 and the Apache License 2.0. Website design by Michel Krämer.
+vertx~4	Vert.x	4	4.5.15	3048172	1748458592	0	http://vertx.io	© 2025 Eclipse Vert.x™ Eclipse Vert.x™ is open source and dual-licensed under the Eclipse Public License 2.0 and the Apache License 2.0. Website design by Michel Krämer.
+vertx~3	Vert.x	3	3.9.16	2308877	1748458598	0	http://vertx.io	© 2025 Eclipse Vert.x™ Eclipse Vert.x™ is open source and dual-licensed under the Eclipse Public License 2.0 and the Apache License 2.0. Website design by Michel Krämer.
+vite	Vite		8.3.0	730278	1789311221	0	https://vite.dev/	© 2019-present, VoidZero Inc. and Vite contributors Licensed under the MIT License.
+vite~7	Vite	7	7.3.1	615233	1773855399	0	https://vite.dev/	© 2019-present, VoidZero Inc. and Vite contributors Licensed under the MIT License.
+vite~6	Vite	6	6.3.5	583752	1751387999	0	https://vite.dev/	© 2019-present, VoidZero Inc. and Vite contributors Licensed under the MIT License.
+vite~5	Vite	5	5.4.11	454408	1732717059	0	https://vite.dev/	© 2019-present, VoidZero Inc. and Vite contributors Licensed under the MIT License.
+vite~4	Vite	4	4.5.5	338769	1731856055	0	https://vite.dev/	© 2019-present, VoidZero Inc. and Vite contributors Licensed under the MIT License.
+vite~3	Vite	3	3.2.11	283476	1731856058	0	https://vite.dev/	© 2019-present, VoidZero Inc. and Vite contributors Licensed under the MIT License.
+vitest	Vitest		5.1.1	2528616	1795054312	0	https://vitest.dev/	© 2021-Present VoidZero Inc. and Vitest contributors Licensed under the MIT License.
+vitest	Vitest	4	4.1.0	1949316	1773855441	0	https://vitest.dev/	© 2021-Present VoidZero Inc. and Vitest contributors Licensed under the MIT License.
+vitest~3	Vitest	3	3.2.4	1727563	1771060832	0	https://vitest.dev/	© 2021-Present VoidZero Inc. and Vitest contributors Licensed under the MIT License.
+vitest~2	Vitest	2	2.1.9	1064148	1742113911	0	https://vitest.dev/	© 2021-Present VoidZero Inc. and Vitest contributors Licensed under the MIT License.
+vue~3	Vue	3	3.5.41	1529280	1786781078	74	https://vuejs.org/	© 2018-present, Yuxi (Evan) You and Vue contributors Licensed under the MIT License.
+vue~2	Vue	2	2.7.14	953786	1690404383	74	https://vuejs.org/	© 2018-present, Yuxi (Evan) You and Vue contributors Licensed under the MIT License.
+vue~1	Vue	1	1.0.28	532776	1566306946	74	https://vuejs.org/	© 2018-present, Yuxi (Evan) You and Vue contributors Licensed under the MIT License.
+vue_router~5	Vue Router	5	5.0.2	743870	1771062481	0	https://router.vuejs.org	© 2014-present Evan You, Eduardo San Martin Morote Licensed under the MIT License.
+vue_router~4	Vue Router	4	4.0.12	538605	1634931718	0	https://router.vuejs.org	© 2014-present Evan You, Eduardo San Martin Morote Licensed under the MIT License.
+vue_router~3	Vue Router	3	3.5.1	250061	1611963525	0	https://router.vuejs.org	© 2014-present Evan You, Eduardo San Martin Morote Licensed under the MIT License.
+vueuse	VueUse		15.0.0	1745076	1791567178	0	https://vueuse.org/	© 2019-present Anthony Fu Licensed under the MIT License.
+vuex~4	Vuex	4	4.0.2	285608	1634931821	0	https://vuex.vuejs.org	© 2015–present Evan You Licensed under the MIT License.
+vuex~3	Vuex	3	3.6.2	251057	1611963127	0	https://vuex.vuejs.org	© 2015–present Evan You Licensed under the MIT License.
+vulkan	Vulkan		1.0.59	1797883	1504468140	0	https://www.khronos.org/vulkan/	© 2014–2017 Khronos Group Inc. Licensed under the Creative Commons Attribution 4.0 International License. Vulkan and the Vulkan logo are registered trademarks of the Khronos Group Inc.
+wagtail	Wagtail		4.1.1	2046885	1671572856	0	https://wagtail.org/	© 2014-present Torchbox Ltd and individual contributors. All rights are reserved. Licensed under the BSD License.
+wagtail~3	Wagtail	3	3.0.3	3317852	1671572977	0	https://wagtail.org/	© 2014-present Torchbox Ltd and individual contributors. All rights are reserved. Licensed under the BSD License.
+wagtail~2	Wagtail	2	2.16.3	3534156	1671573033	0	https://wagtail.org/	© 2014-present Torchbox Ltd and individual contributors. All rights are reserved. Licensed under the BSD License.
+dom	Web APIs			65693540	1789388430	211	https://developer.mozilla.org/en-US/docs/Web/API	© 2005–2025 MDN contributors. Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.
+web_extensions	Web Extensions			10416340	1682341648	0	https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions	© 2005–2025 MDN contributors. Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.
+webpack~5	webpack	5	5.97.1	1836905	1733655164	205	https://webpack.js.org/	© JS Foundation and other contributors Licensed under the Creative Commons Attribution License 4.0.
+webpack~4	webpack	4	4.44.2	1025353	1605973966	205	https://webpack.js.org/	© JS Foundation and other contributors Licensed under the Creative Commons Attribution License 4.0.
+webpack~1	webpack	1	1.15.0	848140	1506273002	205	https://webpack.github.io/	© 2012–2015 Tobias Koppers Licensed under the MIT License.
+werkzeug	Werkzeug		3.1.1	864629	1739347720	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+werkzeug~3.0	Werkzeug	3.0	3.0.x	771128	1696879626	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+werkzeug~2.3	Werkzeug	2.3	2.3.x	853446	1686474439	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+werkzeug~2.2	Werkzeug	2.2	2.2.x	950786	1661622825	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+werkzeug~2.1	Werkzeug	2.1	2.1.x	920521	1649444940	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+werkzeug~2.0	Werkzeug	2.0	2.0.x	877555	1620900558	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+werkzeug~1.0	Werkzeug	1.0	1.0.x	703393	1607340883	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+werkzeug~0.16	Werkzeug	0.16	0.16.x	764243	1607340756	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+werkzeug~0.15	Werkzeug	0.15	0.15.x	763921	1607340745	0	https://palletsprojects.com/p/werkzeug/	© 2007 Pallets Licensed under the BSD 3-clause License.
+wordpress	WordPress		7.1	48054884	1795055610	43	https://wordpress.org/	© 2003–2026 WordPress Foundation Licensed under the GNU GPLv2+ License.
+xslt_xpath	XSLT & XPath			463786	1662494398	0		© 2005–2025 MDN contributors. Licensed under the Creative Commons Attribution-ShareAlike License v2.5 or later.
+yarn	Yarn		4.18.1	1116739	1795054311	0	https://yarnpkg.com/	© 2016–present Yarn Contributors Licensed under the BSD License.
+yarn~3	Yarn	3	3.1.1	986037	1638481366	0	https://v3.yarnpkg.com/	© 2016–present Yarn Contributors Licensed under the BSD License.
+yarn~classic	Yarn	Classic	1.22.17	239074	1638481396	0	https://classic.yarnpkg.com/	© 2016–present Yarn Contributors Licensed under the BSD License.
+yii~2.0	Yii	2.0	2.0.12	15399034	1498404939	539	http://www.yiiframework.com/	© 2008–2017 by Yii Software LLC Licensed under the three clause BSD license.
+yii~1.1	Yii	1.1	1.1.19	13150704	1498404499	539	http://www.yiiframework.com/	© 2008–2017 by Yii Software LLC Licensed under the three clause BSD license.
+zig	Zig		0.17.1	631288	1794949609	0	https://ziglang.org/	© 2015–2026, Zig contributors Licensed under the MIT License.
+zsh	Zsh		5.9.0	1724019	1751052545	0	https://zsh.sourceforge.io/	The Z Shell is copyright © 1992–2017 Paul Falstad, Richard Coleman, Zoltán Hidvégi, Andrew Main, Peter Stephenson, Sven Wischnowsky, and others. Licensed under the MIT License.

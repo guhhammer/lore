@@ -54,6 +54,7 @@ Only its own files, and only when you change something:
 | `~/.cache/lore/internet/NAME.txt` | A cheat sheet arrives from the internet (kept a day). |
 | `~/.cache/lore/beacon.tsv` | A newer beacon table arrives (at most once a week). |
 | `~/.local/share/lore/updates/` | You run `lore --update-pages` (replaced whole each time). |
+| `~/.local/share/lore/docs/` | You press `d` on a docs set (`x`, or Reset all, deletes it). |
 
 It reads no passwords, keys or tokens.
 
@@ -73,6 +74,10 @@ Nothing, unless the internet is on (it is by default):
   or, when that fails, to Debian's popcon (`https://popcon.debian.org/by_inst`)
   and Homebrew's analytics (`https://formulae.brew.sh/api/analytics/…`).
   Public numbers are read; nothing about your own use is sent.
+
+- when you press `d` in the docs topic, the set's two files from
+  `https://documents.devdocs.io/`. Their HTML is shown as text: tags,
+  scripts and control characters taken out, never run.
 
 Turn **Internet off** on the `+` screen (`internet = off` in the settings
 file), and lore makes no network request on its own. The one exception is

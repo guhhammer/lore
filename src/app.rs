@@ -9,11 +9,13 @@ use crate::commands::{self, Command, Kind};
 use crate::compile_config::{
     BEACON_CATEGORIES_MAX, BEACON_CATEGORY_POOL, BEACON_FOR, BEACON_NOT_HERE, BEACON_PER_CATEGORY,
     BEACON_POPULAR, BEACON_POPULAR_MAX, BEACON_RANK, BEACON_RISE, BEACON_TRENDING,
-    BEACON_TRENDING_MAX, COPIED, DANGER, MAN_PROBE_WIDTH, MOST_USED_MAX, NOTHING_TO_COPY,
-    RECENT_MAX, TOPIC_NAMES,
+    BEACON_TRENDING_MAX, COPIED, DANGER, DOCS_ALL, DOCS_DOWNLOADED, DOCS_DOWNLOADING, DOCS_FAILED,
+    DOCS_HERE, DOCS_MOST, DOCS_MOST_SEARCHED, DOCS_SIZE, FAST_SCROLL_CHOICES, FAST_SCROLL_DEFAULT,
+    LANGUAGE_FAVOURITE_TITLE, MAN_PROBE_WIDTH, MOST_USED_MAX, NOTHING_TO_COPY, RECENT_MAX,
+    TOPIC_NAMES,
 };
-use crate::info::beacon;
 use crate::info::page::{self, Facts, PageLine};
+use crate::info::{beacon, docs};
 use crate::info::{content, recipes};
 use crate::interface::palette::{self, Palette};
 use crate::interface::rows::{self, Row};
@@ -39,6 +41,19 @@ pub enum Mode {
     /// The about screen (`+`): what lore is, where it keeps things, and
     /// the settings: ↑↓ choose one, Enter changes it.
     About,
+    /// A picker over the about screen, for a setting with many choices
+    /// (Pages in, Favourite): ↑↓ choose, a letter jumps, Enter keeps, Esc
+    /// goes back.
+    Choose,
+}
+
+/// The open picker of `Mode::Choose`: for which setting, its choices, and
+/// the one chosen.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Choice {
+    pub setting: Setting,
+    pub items: Vec<String>,
+    pub at: usize,
 }
 
 /// A topic: one list of its own, chosen in the bar under the search bar
@@ -49,6 +64,12 @@ pub enum Topic {
     Commands,
     /// The task pages, A to Z.
     Recipes,
+    /// learnxinyminutes.com's pages, one per programming language, A to Z.
+    Languages,
+    /// Documentation sets (DevDocs): download one to read it offline.
+    Docs,
+    /// Tools: coming; empty for now.
+    Tools,
     /// What people use most and what is rising (`info::beacon`), installed
     /// here or not: trending, most used, then most used per category.
     Beacon,
@@ -62,10 +83,13 @@ pub enum Topic {
 
 impl Topic {
     /// Every topic, in the bar's order (`TOPIC_NAMES` holds their names).
-    pub fn all() -> [Self; 6] {
+    pub fn all() -> [Self; 9] {
         [
             Self::Commands,
             Self::Recipes,
+            Self::Languages,
+            Self::Docs,
+            Self::Tools,
             Self::Beacon,
             Self::MostUsed,
             Self::Recent,
@@ -89,11 +113,28 @@ pub enum Setting {
     Internet,
     /// Reading the shell's history (most used, never-used marks): on or off.
     History,
+    /// How many lines `w` and `s` move: one of `FAST_SCROLL_CHOICES`.
+    FastScroll,
+    /// The language pages are read in: `system` (LANG) or a code.
+    Reading,
+    /// The programming language pinned on top of the languages topic.
+    Favourite,
+    /// Every setting to its default, every saved thing erased: Enter, then
+    /// Enter again.
+    Reset,
 }
 
 impl Setting {
-    pub fn all() -> [Self; 3] {
-        [Self::Colours, Self::Internet, Self::History]
+    pub fn all() -> [Self; 7] {
+        [
+            Self::Colours,
+            Self::Internet,
+            Self::History,
+            Self::FastScroll,
+            Self::Reading,
+            Self::Favourite,
+            Self::Reset,
+        ]
     }
 }
 
@@ -180,6 +221,21 @@ pub struct App {
     pub setting: usize,
     /// Whether the shell's history is read (`history = off`: not).
     pub history: bool,
+    /// How many lines `w` and `s` move (`scroll = 10`).
+    pub fast_scroll: usize,
+    /// Pages in: a language code, or None for `system` (LANG).
+    pub reading: Option<String>,
+    /// The favourite programming language, by its name in the list.
+    pub favourite: Option<String>,
+    /// The picker open over the about screen (Mode::Choose).
+    pub choice: Option<Choice>,
+    /// Reset all was pressed once: Enter again resets, anything else keeps.
+    pub reset_armed: bool,
+    /// The docs topic: every set there is, the downloads under way, and the
+    /// set whose pages are listed (Enter on a downloaded set; Esc leaves).
+    pub docsets: Vec<docs::Docset>,
+    pub downloads: std::sync::Arc<docs::Downloads>,
+    pub docset: Option<(docs::Docset, Vec<docs::Entry>)>,
     /// The beacon's numbers (empty: no beacon topic), and the categories
     /// of the most used among them, read once from their pages.
     pub beacon: Vec<beacon::Entry>,
@@ -187,6 +243,17 @@ pub struct App {
     /// The connection and the cheat sheets fetched (off in tests; lib.rs
     /// starts it unless `internet = off`).
     pub internet: std::sync::Arc<crate::utils::internet::Internet>,
+}
+
+/// What each listed command's page says, for the search: in the reader's
+/// language where a translation has it (`content::find` and
+/// `languages::content` pick it), else in English.
+fn docs_of(commands: &[Command], pages: &HashSet<String>) -> HashMap<String, search::Doc> {
+    commands
+        .iter()
+        .filter(|c| pages.contains(&content::page_key(&c.name)))
+        .filter_map(|c| Some((c.name.clone(), search::Doc::of(&recipes::content_of(c)?))))
+        .collect()
 }
 
 impl App {
@@ -201,15 +268,10 @@ impl App {
         pages.extend(
             commands
                 .iter()
-                .filter(|c| c.kind == Kind::Recipe)
+                .filter(|c| matches!(c.kind, Kind::Recipe | Kind::Language))
                 .map(|c| content::page_key(&c.name)),
         );
-        // read once at start: a page per listed command that has one
-        let docs = commands
-            .iter()
-            .filter(|c| pages.contains(&content::page_key(&c.name)))
-            .filter_map(|c| Some((c.name.clone(), search::Doc::of(&recipes::content_of(c)?))))
-            .collect();
+        let docs = docs_of(&commands, &pages);
         let mut app = Self {
             commands,
             query: String::new(),
@@ -237,6 +299,14 @@ impl App {
             scroll_max: 0,
             setting: 0,
             history: true,
+            fast_scroll: FAST_SCROLL_DEFAULT,
+            reading: None,
+            favourite: None,
+            choice: None,
+            reset_armed: false,
+            docsets: docs::catalog(),
+            downloads: std::sync::Arc::default(),
+            docset: None,
             beacon: Vec::new(),
             beacon_categories: HashMap::new(),
             internet: crate::utils::internet::Internet::off(),
@@ -265,7 +335,7 @@ impl App {
             // the picker sits over whatever was on screen
             Mode::Palette => self.picker_from(Mode::Info),
             Mode::Copy => true,
-            Mode::About => false,
+            Mode::About | Mode::Choose => false,
             Mode::Browse => false,
         }
     }
@@ -281,7 +351,7 @@ impl App {
     /// True when the about screen is on show: open, or under the picker
     /// opened from it.
     pub fn about_shown(&self) -> bool {
-        self.mode == Mode::About || self.picker_from(Mode::About)
+        matches!(self.mode, Mode::About | Mode::Choose) || self.picker_from(Mode::About)
     }
 
     /// The palette picker is open and was opened from `mode`.
@@ -291,6 +361,7 @@ impl App {
 
     /// Chooses the setting `steps` away on the about screen, wrapping round.
     pub fn step_setting(&mut self, steps: isize) {
+        self.reset_armed = false; // moving away from Reset all keeps everything
         let count = Setting::all().len();
         let forward = steps.rem_euclid(isize::try_from(count).unwrap_or(isize::MAX));
         self.setting = (self.setting + usize::try_from(forward).unwrap_or(0)) % count;
@@ -322,6 +393,7 @@ impl App {
 
     /// Back from the about screen to where it was opened.
     pub fn close_about(&mut self) {
+        self.reset_armed = false;
         if self.mode == Mode::About {
             self.mode = self.about_from;
         }
@@ -446,9 +518,23 @@ impl App {
     /// Opens the selected command's page, and puts it first among the
     /// recent ones; does nothing on an empty list.
     pub fn open_info(&mut self) {
-        let Some(name) = self.selected().map(|c| c.name.clone()) else {
+        let Some(command) = self.selected().cloned() else {
             return;
         };
+        // a downloaded set opens as the list of its pages, not as a page
+        if command.kind == Kind::Docset {
+            let slug = command.runs.clone().unwrap_or_default();
+            if docs::is_downloaded(&slug)
+                && let Some(set) = self.docsets.iter().find(|s| s.slug == slug).cloned()
+            {
+                self.docset = Some((set, docs::entries(&slug)));
+                self.query.clear();
+                self.mode = Mode::Browse;
+                self.refilter();
+                return;
+            }
+        }
+        let name = command.name;
         self.mode = Mode::Info;
         self.scroll = 0;
         self.beside_page = false;
@@ -516,7 +602,12 @@ impl App {
         match topic {
             Topic::Commands => allowed
                 .iter()
-                .filter(|c| c.kind != Kind::Recipe)
+                .filter(|c| !matches!(c.kind, Kind::Recipe | Kind::Language))
+                .map(|c| (*c).clone())
+                .collect(),
+            Topic::Languages => allowed
+                .iter()
+                .filter(|c| c.kind == Kind::Language)
                 .map(|c| (*c).clone())
                 .collect(),
             Topic::Recipes => allowed
@@ -541,8 +632,9 @@ impl App {
             }
             Topic::Recent => named(&self.recent),
             Topic::Bookmarks => named(&self.bookmarks),
-            // headed rows of its own: `beacon_rows`
-            Topic::Beacon => Vec::new(),
+            // headed rows of their own: `beacon_rows`, `docs_rows`; tools
+            // are still to come
+            Topic::Beacon | Topic::Docs | Topic::Tools => Vec::new(),
         }
     }
 
@@ -553,7 +645,9 @@ impl App {
         match topic {
             Topic::Commands => true,
             Topic::Recipes => allowed.iter().any(|c| c.kind == Kind::Recipe),
+            Topic::Languages => allowed.iter().any(|c| c.kind == Kind::Language),
             Topic::Beacon => !self.beacon.is_empty(),
+            Topic::Docs | Topic::Tools => true,
             Topic::MostUsed => allowed.iter().any(|c| self.uses.contains_key(&c.name)),
             Topic::Recent => self.recent.iter().any(on_machine),
             Topic::Bookmarks => self.bookmarks.iter().any(on_machine),
@@ -645,6 +739,14 @@ impl App {
         (rows, snippets)
     }
 
+    /// Shows `topic`, if it is in the bar, its list from the top.
+    pub fn show_topic(&mut self, topic: Topic) {
+        if self.topics.contains(&topic) {
+            self.topic = topic;
+            self.refilter();
+        }
+    }
+
     /// Shows the topic `steps` away in the bar, wrapping round, its list
     /// from the top.
     pub fn step_topic(&mut self, steps: isize) {
@@ -658,6 +760,103 @@ impl App {
         let next = (at + usize::try_from(forward).unwrap_or(0)) % count;
         self.topic = self.topics.get(next).copied().unwrap_or(Topic::Commands);
         self.refilter();
+    }
+
+    /// Leaves the set whose pages are listed, back to the sets; false when
+    /// none is open.
+    pub fn close_docset(&mut self) -> bool {
+        if self.docset.take().is_none() {
+            return false;
+        }
+        self.query.clear();
+        self.refilter();
+        true
+    }
+
+    /// The docs topic's rows: an open set's pages under their types, else
+    /// the sets: downloaded, most searched, then every one, each with its
+    /// state. With a `query`, only those whose name matches, best first.
+    fn docs_rows(&self, query: &str) -> (Vec<Row>, HashMap<String, String>) {
+        let mut rows = Vec::new();
+        let mut snippets = HashMap::new();
+        if let Some((set, entries)) = &self.docset {
+            let entry = |e: &docs::Entry| Command {
+                runs: Some(format!("{}\t{}\t{}", set.slug, e.path, e.kind)),
+                ..Command::new(e.name.clone(), Kind::DocEntry)
+            };
+            if query.trim().is_empty() {
+                rows.push(Row::Title(set.title()));
+                let mut kinds: Vec<&str> = entries.iter().map(|e| e.kind.as_str()).collect();
+                kinds.sort_unstable();
+                kinds.dedup();
+                for kind in kinds {
+                    rows.push(Row::Title(kind.to_owned()));
+                    let mut these: Vec<&docs::Entry> =
+                        entries.iter().filter(|e| e.kind == kind).collect();
+                    these.sort_by_key(|e| e.name.to_lowercase());
+                    rows.extend(these.into_iter().map(|e| Row::Command(entry(e))));
+                }
+            } else {
+                let mut found: Vec<(_, &docs::Entry)> = entries
+                    .iter()
+                    .filter_map(|e| Some((search::name_rank(&e.name, query)?, e)))
+                    .collect();
+                found.sort_by(|(a, x), (b, y)| a.cmp(b).then_with(|| x.name.cmp(&y.name)));
+                rows.extend(found.into_iter().map(|(_, e)| Row::Command(entry(e))));
+            }
+            return (rows, snippets);
+        }
+        let row = |set: &docs::Docset| Command {
+            runs: Some(set.slug.clone()),
+            ..Command::new(set.title(), Kind::Docset)
+        };
+        for set in &self.docsets {
+            let state = match self.downloads.progress(&set.slug) {
+                Some(docs::Progress::Downloading) => DOCS_DOWNLOADING.to_owned(),
+                Some(docs::Progress::Failed(why)) => DOCS_FAILED.replace("{why}", &why),
+                None if docs::is_downloaded(&set.slug) => DOCS_HERE.to_owned(),
+                None => {
+                    DOCS_SIZE.replace("{size}", &format!("{:.1}", set.bytes as f64 / 1_048_576.0))
+                }
+            };
+            snippets.insert(set.title(), state);
+        }
+        if !query.trim().is_empty() {
+            let mut found: Vec<(_, &docs::Docset)> = self
+                .docsets
+                .iter()
+                .filter_map(|s| Some((search::name_rank(&s.title(), query)?, s)))
+                .collect();
+            found.sort_by(|(a, x), (b, y)| a.cmp(b).then_with(|| x.rank.cmp(&y.rank)));
+            rows.extend(found.into_iter().map(|(_, s)| Row::Command(row(s))));
+            return (rows, snippets);
+        }
+        let here: Vec<&docs::Docset> = self
+            .docsets
+            .iter()
+            .filter(|s| docs::is_downloaded(&s.slug))
+            .collect();
+        let mut section = |title: &str, sets: Vec<&docs::Docset>| {
+            if !sets.is_empty() {
+                rows.push(Row::Title(title.to_owned()));
+                rows.extend(sets.into_iter().map(|s| Row::Command(row(s))));
+            }
+        };
+        section(DOCS_DOWNLOADED, here);
+        section(
+            DOCS_MOST,
+            docs::most_searched(&self.docsets, DOCS_MOST_SEARCHED),
+        );
+        let mut all: Vec<&docs::Docset> = self.docsets.iter().collect();
+        all.sort_by_key(|s| s.title().to_lowercase());
+        section(DOCS_ALL, all);
+        (rows, snippets)
+    }
+
+    /// Builds the rows again (a download ended) with the same command
+    /// selected.
+    pub fn refresh_rows(&mut self) {
+        self.rebuild_keeping_selection();
     }
 
     /// Builds the rows again (a group changed) with the same command
@@ -791,14 +990,14 @@ impl App {
             }
             _ => {
                 self.scroll = 0; // a new page starts at its top
-                if command.kind != Kind::Recipe {
+                if !command.kind.is_lores() {
                     self.internet.request(&command.name); // in the background
                 }
                 page::facts(&command)
             }
         };
         // `man git-commit`; a recipe has no manual
-        let man = (command.kind != Kind::Recipe)
+        let man = (!command.kind.is_lores())
             .then(|| manual::page(&content::page_key(&command.name), width))
             .flatten();
         let lines = page::render(&command, &facts, man.as_deref(), usize::from(width));
@@ -830,6 +1029,88 @@ impl App {
         if let Some(i) = (current + 1..self.rows.len()).find(|&i| self.rows[i].is_selectable()) {
             self.list.select(Some(i));
         }
+    }
+
+    /// Opens the picker for `setting` over the about screen, `items` its
+    /// choices, the one named `current` chosen (else the first).
+    pub fn open_choice(&mut self, setting: Setting, items: Vec<String>, current: &str) {
+        let at = items.iter().position(|i| i == current).unwrap_or(0);
+        self.choice = Some(Choice { setting, items, at });
+        self.mode = Mode::Choose;
+    }
+
+    /// The choice `steps` away, stopping at either end.
+    pub fn step_choice(&mut self, steps: isize) {
+        if let Some(choice) = &mut self.choice {
+            let last = choice.items.len().saturating_sub(1);
+            choice.at = choice.at.saturating_add_signed(steps).min(last);
+        }
+    }
+
+    /// The next choice starting with `letter` (any case), round after the
+    /// last; none: the choice stays.
+    pub fn jump_choice(&mut self, letter: char) {
+        if let Some(choice) = &mut self.choice {
+            let count = choice.items.len();
+            let starts = |i: usize| {
+                choice.items[i]
+                    .chars()
+                    .next()
+                    .is_some_and(|c| c.to_lowercase().eq(letter.to_lowercase()))
+            };
+            if let Some(i) = (1..=count)
+                .map(|n| (choice.at + n) % count)
+                .find(|&i| starts(i))
+            {
+                choice.at = i;
+            }
+        }
+    }
+
+    /// Closes the picker, back on the about screen; the setting and the
+    /// item chosen when `keep`.
+    pub fn close_choice(&mut self, keep: bool) -> Option<(Setting, String)> {
+        self.mode = Mode::About;
+        let choice = self.choice.take()?;
+        let item = choice.items.get(choice.at).cloned()?;
+        keep.then_some((choice.setting, item))
+    }
+
+    /// Reads the pages again for the search, in the language pages are
+    /// read in now (Pages in changed), and searches again.
+    pub fn reload_docs(&mut self) {
+        self.docs = docs_of(&self.commands, &self.pages);
+        self.refilter();
+    }
+
+    /// Sets the favourite language (None: none), shown first in its topic.
+    pub fn set_favourite(&mut self, name: Option<String>) {
+        self.favourite = name;
+        self.refilter();
+    }
+
+    /// Moves the selection `steps` commands down (up when negative),
+    /// headers skipped, stopping at either end: PgUp/PgDn and `w`/`s`.
+    pub fn move_by(&mut self, steps: isize) {
+        for _ in 0..steps.unsigned_abs() {
+            if steps < 0 {
+                self.up();
+            } else {
+                self.down();
+            }
+        }
+    }
+
+    /// The fast scroll's next choice, round after the last (Enter on the
+    /// about screen); one not among them goes back to the first.
+    pub fn next_fast_scroll(&mut self) {
+        let at = FAST_SCROLL_CHOICES
+            .iter()
+            .position(|&n| n == self.fast_scroll);
+        self.fast_scroll = match at {
+            Some(i) => FAST_SCROLL_CHOICES[(i + 1) % FAST_SCROLL_CHOICES.len()],
+            None => FAST_SCROLL_CHOICES[0],
+        };
     }
 
     /// Selects the previous command up, skipping headers. At the first command
@@ -864,14 +1145,15 @@ impl App {
             self.refilter();
         }
         // the topic that holds it: a recipe's, or the commands'
-        let is_recipe = self
+        let kind = self
             .commands
             .iter()
-            .any(|c| c.name == name && c.kind == Kind::Recipe);
-        self.topic = if is_recipe {
-            Topic::Recipes
-        } else {
-            Topic::Commands
+            .find(|c| c.name == name)
+            .map(|c| c.kind);
+        self.topic = match kind {
+            Some(Kind::Recipe) => Topic::Recipes,
+            Some(Kind::Language) => Topic::Languages,
+            _ => Topic::Commands,
         };
         self.refilter();
         let Some(row) = self
@@ -904,6 +1186,16 @@ impl App {
         if !self.topics.contains(&self.topic) {
             self.topic = Topic::Commands;
         }
+        // the docs topic searches among its sets (or an open set's pages)
+        if self.topic == Topic::Docs {
+            let (rows, snippets) = self.docs_rows(query);
+            self.rows = rows;
+            self.snippets = snippets;
+            self.list = ListState::default();
+            self.list
+                .select(self.rows.iter().position(Row::is_selectable));
+            return;
+        }
         if query.trim().is_empty() {
             // no search: the topic's list; A to Z under its letters for the
             // big ones, in its own order for yours
@@ -911,6 +1203,26 @@ impl App {
                 Topic::Beacon => {
                     let (rows, snippets) = self.beacon_rows(&allowed);
                     self.snippets = snippets;
+                    rows
+                }
+                Topic::Docs => {
+                    let (rows, snippets) = self.docs_rows("");
+                    self.snippets = snippets;
+                    rows
+                }
+                Topic::Languages => {
+                    let list = self.topic_list(self.topic, &allowed);
+                    // the favourite on top, under its own heading
+                    let favourite = self
+                        .favourite
+                        .as_ref()
+                        .and_then(|name| list.iter().find(|c| c.name == *name).cloned());
+                    let mut rows = Vec::new();
+                    if let Some(favourite) = favourite {
+                        rows.push(Row::Title(LANGUAGE_FAVOURITE_TITLE.to_owned()));
+                        rows.push(Row::Command(favourite));
+                    }
+                    rows.extend(rows::build(list));
                     rows
                 }
                 Topic::Commands | Topic::Recipes => {

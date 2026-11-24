@@ -11,17 +11,26 @@ use ratatui::widgets::{Block, Clear, List, ListItem, ListState, Paragraph};
 use crate::app::{App, Mode, Setting};
 use crate::commands::{Command, Kind};
 use crate::compile_config::{
-    ABOUT_COLOURS, ABOUT_COMMANDS, ABOUT_FIELDS, ABOUT_HISTORY_EMPTY, ABOUT_HISTORY_OFF,
-    ABOUT_HISTORY_ON, ABOUT_INTERNET_CHECKING, ABOUT_INTERNET_OFF, ABOUT_INTERNET_OFFLINE,
-    ABOUT_INTERNET_ON, ABOUT_KEPT, ABOUT_LABEL_WIDTH, ABOUT_LICENCE, ABOUT_MANUAL, ABOUT_PAGES,
-    ABOUT_SETTING_MARK, ABOUT_SETTING_NAMES, ABOUT_SETTINGS_HEADING, ABOUT_SETTINGS_HINT,
-    ABOUT_SOURCE, ABOUT_TAGLINE, ABOUT_TITLE, BOOKMARK_MARK, BOOKMARKS_FILE, COPY_PICKER_MARGIN,
-    COPY_TITLE, DANGER, HEADING_MANUAL, INFO_LIST_PERCENT, INTERNET_DOT, INTERNET_OFF, INTERNET_ON,
-    INTERNET_WORD, KEY_BAR_HEIGHT, KEYS_ABOUT, KEYS_BROWSE, KEYS_COPY, KEYS_PAGE, KEYS_PALETTE,
-    KEYS_SEARCH, LIST_HEADER_INDENT, LIST_INDENT, LIST_INDENT_NARROW, LIST_TITLE,
-    LIST_TITLE_SEARCHING, LOGO, LOGO_GAP, LORE_ORANGE, NO_MATCH, PALETTE_DIR, PALETTE_NOT_SAVED,
-    PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT, SEARCH_HINT, SEARCH_KEPT_HINT,
-    SEARCH_TITLE, TOPIC_BAR_HEIGHT, TOPIC_GAP, TOPIC_HINT, UNUSED_MARK,
+    ABOUT_COLOURS, ABOUT_COMMANDS, ABOUT_FAST_SCROLL, ABOUT_FIELDS, ABOUT_HISTORY_EMPTY,
+    ABOUT_HISTORY_OFF, ABOUT_HISTORY_ON, ABOUT_INTERNET_CHECKING, ABOUT_INTERNET_OFF,
+    ABOUT_INTERNET_OFFLINE, ABOUT_INTERNET_ON, ABOUT_KEPT, ABOUT_LABEL_WIDTH, ABOUT_LICENCE,
+    ABOUT_MANUAL, ABOUT_PAGES, ABOUT_SETTING_MARK, ABOUT_SETTING_NAMES, ABOUT_SETTINGS_HEADING,
+    ABOUT_SETTINGS_HINT, ABOUT_SOURCE, ABOUT_TAGLINE, ABOUT_TITLE, BOOKMARK_MARK, BOOKMARKS_FILE,
+    COPY_PICKER_MARGIN, COPY_TITLE, DANGER, HEADING_MANUAL, INFO_LIST_PERCENT, INTERNET_DOT,
+    INTERNET_OFF, INTERNET_ON, INTERNET_WORD, KEY_BAR_HEIGHT, KEYS_ABOUT, KEYS_BROWSE, KEYS_COPY,
+    KEYS_PAGE, KEYS_PALETTE, KEYS_SEARCH, LANGUAGE_CATEGORY, LIST_HEADER_INDENT, LIST_INDENT,
+    LIST_INDENT_NARROW, LIST_TITLE, LIST_TITLE_SEARCHING, LOGO, LOGO_GAP, LORE_ORANGE, NO_MATCH,
+    PALETTE_DIR, PALETTE_NOT_SAVED, PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT,
+    SEARCH_HINT, SEARCH_KEPT_HINT, SEARCH_TITLE, TOPIC_BAR_HEIGHT, TOPIC_GAP, TOPIC_HINT,
+    UNUSED_MARK,
+};
+use crate::compile_config::{
+    ABOUT_FAVOURITE, ABOUT_READING, ABOUT_READING_SYSTEM, CHOOSE_MARGIN, CHOOSE_TITLE_FAVOURITE,
+    CHOOSE_TITLE_READING, FAVOURITE_NONE, KEYS_CHOOSE, READING_ENGLISH,
+};
+use crate::compile_config::{
+    ABOUT_FOLLOW, ABOUT_FOLLOW_HEADING, ABOUT_FOLLOW_HINT, ABOUT_RESET, ABOUT_RESET_ARMED,
+    TOOLS_EMPTY,
 };
 use crate::info::content;
 use crate::info::page::{self, PageLine, Style as PageStyle};
@@ -88,6 +97,57 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
     if app.mode == Mode::Copy {
         draw_copy(frame, app, body);
     }
+    if app.mode == Mode::Choose {
+        draw_choice(frame, app, body);
+    }
+}
+
+/// A setting's picker (Pages in, Favourite), over the about screen: its
+/// choices in a list as tall as fits, the chosen one selected.
+fn draw_choice(frame: &mut Frame, app: &App, area: Rect) {
+    let Some(choice) = &app.choice else {
+        return;
+    };
+    let title = match choice.setting {
+        Setting::Reading => CHOOSE_TITLE_READING,
+        _ => CHOOSE_TITLE_FAVOURITE,
+    };
+    let longest = choice
+        .items
+        .iter()
+        .map(|i| text::width(i))
+        .chain([text::width(title)])
+        .max()
+        .unwrap_or(0);
+    let width = u16::try_from(longest)
+        .unwrap_or(u16::MAX)
+        .saturating_add(CHOOSE_MARGIN)
+        .min(area.width);
+    let height = u16::try_from(choice.items.len() + 2)
+        .unwrap_or(u16::MAX)
+        .min(area.height);
+    let [middle] = Layout::horizontal([Constraint::Length(width)])
+        .flex(Flex::Center)
+        .areas(area);
+    let [popup] = Layout::vertical([Constraint::Length(height)])
+        .flex(Flex::Center)
+        .areas(middle);
+    let items: Vec<ListItem> = choice
+        .items
+        .iter()
+        .map(|item| ListItem::new(format!(" {item}")))
+        .collect();
+    let list = List::new(items)
+        .block(
+            Block::bordered()
+                .title(title)
+                .border_style(app.palette().active()),
+        )
+        .style(app.palette().base())
+        .highlight_style(app.palette().selected());
+    let mut state = ListState::default().with_selected(Some(choice.at));
+    frame.render_widget(Clear, popup);
+    frame.render_stateful_widget(list, popup, &mut state);
 }
 
 /// The about screen: what lore is, and what it has and keeps here (the
@@ -150,6 +210,19 @@ fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
         ]));
     }
 
+    // the author's profiles, to follow
+    lines.push(Line::raw(""));
+    lines.push(Line::from(vec![
+        Span::styled(format!("  {ABOUT_FOLLOW_HEADING}"), app.palette().heading()),
+        Span::styled(format!("   {ABOUT_FOLLOW_HINT}"), muted),
+    ]));
+    for (site, link) in ABOUT_FOLLOW {
+        lines.push(Line::from(vec![
+            Span::styled(format!("  {site:<ABOUT_LABEL_WIDTH$}"), muted),
+            Span::styled(*link, app.palette().accent()),
+        ]));
+    }
+
     // the settings, changed here: the chosen one marked and highlighted
     lines.push(Line::raw(""));
     lines.push(Line::from(vec![
@@ -177,6 +250,43 @@ fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
                 };
                 (format!("{INTERNET_DOT} {state}"), style)
             }
+            Setting::Reading => (
+                match &app.reading {
+                    Some(code) => ABOUT_READING
+                        .replace("{code}", code)
+                        .replace("{count}", &count(crate::reading_choices().len())),
+                    None => ABOUT_READING_SYSTEM.replace(
+                        "{code}",
+                        &crate::info::content::languages()
+                            .first()
+                            .cloned()
+                            .unwrap_or_else(|| READING_ENGLISH.to_owned()),
+                    ),
+                },
+                Style::new(),
+            ),
+            Setting::Favourite => (
+                ABOUT_FAVOURITE
+                    .replace("{name}", app.favourite.as_deref().unwrap_or(FAVOURITE_NONE)),
+                Style::new(),
+            ),
+            Setting::Reset => (
+                if app.reset_armed {
+                    ABOUT_RESET_ARMED
+                } else {
+                    ABOUT_RESET
+                }
+                .to_owned(),
+                if app.reset_armed {
+                    app.palette().danger()
+                } else {
+                    muted
+                },
+            ),
+            Setting::FastScroll => (
+                ABOUT_FAST_SCROLL.replace("{lines}", &app.fast_scroll.to_string()),
+                Style::new(),
+            ),
             Setting::History => (
                 match (app.history, app.uses.len()) {
                     (false, _) => ABOUT_HISTORY_OFF.to_owned(),
@@ -356,7 +466,8 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
     let total = app.commands.len();
     let block = if narrow {
         Block::bordered() // a title would not fit in a tenth of the screen
-    } else if app.query.is_empty() {
+    } else if app.query.is_empty() || app.topic == crate::app::Topic::Docs {
+        // the docs topic searches only itself: its own title, its count
         Block::bordered().title(
             LIST_TITLE
                 .replace("{topic}", app.topic.name())
@@ -370,10 +481,13 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
         )
     };
     if app.rows.is_empty() {
-        let none = Line::from(Span::styled(
-            NO_MATCH.replace("{query}", &app.query),
-            app.palette().muted(),
-        ));
+        // the tools topic, empty for now, says so
+        let note = if app.query.is_empty() && app.topic == crate::app::Topic::Tools {
+            TOOLS_EMPTY.to_owned()
+        } else {
+            NO_MATCH.replace("{query}", &app.query)
+        };
+        let none = Line::from(Span::styled(note, app.palette().muted()));
         frame.render_widget(Paragraph::new(none).block(block), area);
         return;
     }
@@ -395,9 +509,11 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
                 )))
             }
             Row::Command(command) => {
+                // a docs row is not the command of the same name
                 let categories = app
                     .docs
                     .get(&command.name)
+                    .filter(|_| !matches!(command.kind, Kind::Docset | Kind::DocEntry))
                     .map(|d| d.categories.as_slice())
                     .unwrap_or_default();
                 let snippet = app.snippets.get(&command.name).map(String::as_str);
@@ -449,8 +565,12 @@ fn command_line(
             // `danger` in red, so it is seen before the command is run
             parts.push(("  [".to_owned(), palette.category()));
             for (i, category) in categories.iter().enumerate() {
+                // danger in red; a language page's own category in the
+                // palette's third colour, so languages stand out in a search
                 let style = if category == DANGER {
                     palette.danger()
+                } else if category == LANGUAGE_CATEGORY {
+                    palette.accent()
                 } else {
                     palette.category()
                 };
@@ -460,7 +580,12 @@ fn command_line(
             parts.push(("]".to_owned(), palette.category()));
         }
         let dim = palette.muted();
-        if let Some(runs) = &command.runs {
+        // what an alias runs (docs rows keep their set's name there, unshown)
+        if let Some(runs) = command
+            .runs
+            .as_ref()
+            .filter(|_| command.kind == Kind::Alias)
+        {
             parts.push((format!("  = {runs}"), dim));
         }
         if let Some(hidden) = command.hides {
@@ -472,6 +597,8 @@ fn command_line(
                 Kind::Program => "a program",
                 Kind::Subcommand => "a subcommand",
                 Kind::Recipe => "a recipe",
+                Kind::Language => "a language",
+                Kind::Docset | Kind::DocEntry => "documentation",
             };
             parts.push((format!("  (hides {what})"), dim));
         }
@@ -539,7 +666,21 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
     app.scroll = app.scroll.min(rows.saturating_sub(height));
     let lines: Vec<Line> = all
         .iter()
-        .map(|line| Line::styled(line.text.as_str(), style_of(line.style, app.palette())))
+        .map(|line| {
+            if line.spans.is_empty() {
+                Line::styled(line.text.as_str(), style_of(line.style, app.palette()))
+            } else {
+                // a language page's code: each part in its own colour
+                Line::from(
+                    line.spans
+                        .iter()
+                        .map(|(text, style)| {
+                            Span::styled(text.as_str(), style_of(*style, app.palette()))
+                        })
+                        .collect::<Vec<_>>(),
+                )
+            }
+        })
         .collect();
     let mark = if app.is_bookmarked(&page.command.name) {
         BOOKMARK_MARK
@@ -575,6 +716,10 @@ fn style_of(style: PageStyle, palette: &Palette) -> Style {
         PageStyle::Online => Style::new().fg(INTERNET_ON),
         PageStyle::Offline => Style::new().fg(INTERNET_OFF),
         PageStyle::Raw => Style::new(),
+        PageStyle::Comment | PageStyle::Gutter => palette.muted(),
+        PageStyle::Keyword => palette.heading(),
+        PageStyle::Literal => palette.code(),
+        PageStyle::Number => palette.category(),
     }
 }
 
@@ -585,6 +730,7 @@ fn draw_keys(frame: &mut Frame, mode: Mode, palette: &Palette, area: Rect) {
         Mode::Search => KEYS_SEARCH,
         Mode::Info => KEYS_PAGE,
         Mode::Palette => KEYS_PALETTE,
+        Mode::Choose => KEYS_CHOOSE,
         Mode::Copy => KEYS_COPY,
         Mode::About => KEYS_ABOUT,
     };

@@ -6,7 +6,10 @@ use std::io;
 use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 
 use crate::app::Mode;
-use crate::compile_config::{ABOUT_KEY, BOOKMARK_KEY, COPY_KEY, PALETTE_KEY, WAKE_EVERY};
+use crate::compile_config::{
+    ABOUT_KEY, BOOKMARK_KEY, CHOOSE_PAGE, COPY_KEY, DELETE_KEY, DOWNLOAD_KEY, FAST_DOWN_KEY,
+    FAST_UP_KEY, PALETTE_KEY, WAKE_EVERY,
+};
 
 /// Something the app should do; the loop in lib.rs applies it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -23,9 +26,13 @@ pub enum Action {
     /// Scrolls the page one line up or down.
     LineUp,
     LineDown,
-    /// Scrolls the page a screen up or down.
+    /// A screen up or down: the page's lines, or the list's rows.
     PageUp,
     PageDown,
+    /// `w` and `s`: the fast scroll's lines (a setting) up or down, on a
+    /// page or in the list.
+    FastUp,
+    FastDown,
     /// A character typed into the search bar.
     Type(char),
     /// Backspace in the search bar.
@@ -71,6 +78,18 @@ pub enum Action {
     /// the one before.
     KeepPalette,
     CancelPalette,
+    /// In a setting's picker (Mode::Choose): move by this many, jump to the
+    /// next choice starting with a letter, keep the choice, or go back.
+    StepChoice(isize),
+    /// Esc in the list: leaves an open docs set, or quits.
+    Escape,
+    /// `d` and `x` in the docs topic (or on a docs page): download the set,
+    /// delete it from this machine.
+    Download,
+    Delete,
+    JumpChoice(char),
+    KeepChoice,
+    CancelChoice,
 }
 
 /// Waits for the next event that means something in `mode`; while
@@ -116,6 +135,16 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         (Mode::Palette, KeyCode::Enter) => Some(Action::KeepPalette),
         (Mode::Palette, KeyCode::Esc) => Some(Action::CancelPalette),
         (Mode::Palette, _) => None,
+        (Mode::Choose, KeyCode::Up) => Some(Action::StepChoice(-1)),
+        (Mode::Choose, KeyCode::Down) => Some(Action::StepChoice(1)),
+        (Mode::Choose, KeyCode::PageUp) => Some(Action::StepChoice(-CHOOSE_PAGE)),
+        (Mode::Choose, KeyCode::PageDown) => Some(Action::StepChoice(CHOOSE_PAGE)),
+        (Mode::Choose, KeyCode::Enter) => Some(Action::KeepChoice),
+        (Mode::Choose, KeyCode::Esc) => Some(Action::CancelChoice),
+        (Mode::Choose, KeyCode::Char(c)) if plain && c.is_alphanumeric() => {
+            Some(Action::JumpChoice(c))
+        }
+        (Mode::Choose, _) => None,
         (Mode::About, KeyCode::Esc | KeyCode::Left | KeyCode::Char(ABOUT_KEY)) => {
             Some(Action::CloseAbout)
         }
@@ -152,13 +181,19 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         // have no groups to move between, opens it with → too
         (Mode::Browse, KeyCode::Enter) => Some(Action::OpenInfo),
         (Mode::Search, KeyCode::Right | KeyCode::Enter) => Some(Action::OpenInfo),
-        (Mode::Browse, KeyCode::Esc) => Some(Action::Quit),
+        (Mode::Browse, KeyCode::Esc) => Some(Action::Escape),
+        (Mode::Browse | Mode::Info, KeyCode::Char(DOWNLOAD_KEY)) if plain => Some(Action::Download),
+        (Mode::Browse | Mode::Info, KeyCode::Char(DELETE_KEY)) if plain => Some(Action::Delete),
         (Mode::Browse, KeyCode::Char('/')) if plain => Some(Action::OpenSearch),
         (Mode::Info, KeyCode::Left | KeyCode::Esc) => Some(Action::CloseInfo),
         // search other commands without leaving the page
         (Mode::Info, KeyCode::Char('/')) if plain => Some(Action::OpenSearch),
-        (Mode::Info, KeyCode::PageUp) => Some(Action::PageUp),
-        (Mode::Info, KeyCode::PageDown) => Some(Action::PageDown),
+        (Mode::Info | Mode::Browse | Mode::Search, KeyCode::PageUp) => Some(Action::PageUp),
+        (Mode::Info | Mode::Browse | Mode::Search, KeyCode::PageDown) => Some(Action::PageDown),
+        (Mode::Info | Mode::Browse, KeyCode::Char(FAST_UP_KEY)) if plain => Some(Action::FastUp),
+        (Mode::Info | Mode::Browse, KeyCode::Char(FAST_DOWN_KEY)) if plain => {
+            Some(Action::FastDown)
+        }
         (Mode::Search, KeyCode::Esc) => Some(Action::LeaveSearch),
         (Mode::Search, KeyCode::Backspace) => Some(Action::Erase),
         (Mode::Search, KeyCode::Char(c)) if plain => Some(Action::Type(c)),

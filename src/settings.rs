@@ -16,8 +16,8 @@ use std::io;
 use std::path::{Path, PathBuf};
 
 use crate::compile_config::{
-    CONFIG_FILE, CONFIG_HEADER, CONFIG_HOME_FALLBACK, CONFIG_HOME_VAR, DATA_DIR,
-    DATA_HOME_FALLBACK, DATA_HOME_VAR,
+    BOOKMARKS_FILE, CONFIG_FILE, CONFIG_HEADER, CONFIG_HOME_FALLBACK, CONFIG_HOME_VAR, DATA_DIR,
+    DATA_HOME_FALLBACK, DATA_HOME_VAR, RECENT_FILE,
 };
 use crate::interface::paths;
 
@@ -122,6 +122,36 @@ pub fn list_path_from(
         .map(Path::to_path_buf)
         .or_else(|| home.map(|home| home.join(DATA_HOME_FALLBACK)))?;
     Some(base.join(DATA_DIR).join(file))
+}
+
+/// Reset all: erases what lore keeps for the user: the settings file, the
+/// bookmarks and recent pages, the downloaded docs and pages, the caches.
+/// The user's own pages and palettes stay. Whatever is not there is
+/// skipped; the errors of what could not be erased are returned.
+pub fn erase_all(extra: &[PathBuf]) -> Vec<io::Error> {
+    let mut targets: Vec<PathBuf> = [path(), list_path(BOOKMARKS_FILE), list_path(RECENT_FILE)]
+        .into_iter()
+        .flatten()
+        .collect();
+    targets.extend(extra.iter().cloned());
+    erase(&targets)
+}
+
+/// Erases each of `targets`, a file or a whole folder; one not there is
+/// skipped. The errors of what could not be erased.
+pub fn erase(targets: &[PathBuf]) -> Vec<io::Error> {
+    targets
+        .iter()
+        .filter(|target| target.exists())
+        .filter_map(|target| {
+            let erased = if target.is_dir() {
+                fs::remove_dir_all(target)
+            } else {
+                fs::remove_file(target)
+            };
+            erased.err()
+        })
+        .collect()
 }
 
 /// A kept list's names, in order; empty when there is no file.

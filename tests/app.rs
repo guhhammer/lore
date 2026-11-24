@@ -322,3 +322,18 @@ fn a_page_searched_from_is_laid_out_again_at_a_new_width_and_stays_the_same_page
     assert_eq!(page.command.name, "awk");
     assert_eq!(page.width, 40);
 }
+
+#[test]
+fn moving_by_many_skips_headers_and_stops_at_either_end() {
+    let mut app = App::new(
+        ["ant", "apt", "bat", "cat"]
+            .map(|n| Command::new(n, Kind::Program))
+            .to_vec(),
+    );
+    app.move_by(2);
+    assert_eq!(app.selected().unwrap().name, "bat");
+    app.move_by(50);
+    assert_eq!(app.selected().unwrap().name, "cat");
+    app.move_by(-50);
+    assert_eq!(app.selected().unwrap().name, "ant");
+}

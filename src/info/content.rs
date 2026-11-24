@@ -28,7 +28,7 @@ use std::io::Read;
 
 use crate::compile_config::{
     CHECK_INVISIBLE, FORBIDDEN_FILE_CHARS, LOCALE_VARS, NO_TRANSLATION_LOCALES, PAGE_MAX_BYTES,
-    SYSTEM_CONTENT_DIRS, UPDATED_CONTENT_DIRS, USER_CONTENT_DIRS,
+    READING_LANGUAGE, SYSTEM_CONTENT_DIRS, UPDATED_CONTENT_DIRS, USER_CONTENT_DIRS,
 };
 use crate::info::check;
 use crate::interface::paths;
@@ -149,7 +149,7 @@ pub fn shown(c: char) -> bool {
 /// The built-in pages, packed by build.rs with zstd, as one text. A pack
 /// that does not unpack (it cannot happen with a build that passed its
 /// tests) leaves lore with no built-in pages rather than stopping it.
-fn unpack(packed: &[u8]) -> String {
+pub fn unpack(packed: &[u8]) -> String {
     let mut text = String::new();
     if let Ok(mut decoder) = ruzstd::decoding::StreamingDecoder::new(packed)
         && decoder.read_to_string(&mut text).is_err()
@@ -186,6 +186,14 @@ pub fn translation(lang: &str, name: &str) -> Option<&'static str> {
 /// `["pt_BR", "pt"]`. English, `C` and `POSIX` give none: the pages are
 /// English already.
 pub fn languages() -> Vec<String> {
+    // Pages in, on the about screen, wins over LANG
+    if let Some(code) = READING_LANGUAGE
+        .read()
+        .ok()
+        .and_then(|chosen| chosen.clone())
+    {
+        return languages_of(&code);
+    }
     let value = LOCALE_VARS
         .iter()
         .find_map(|var| std::env::var(var).ok().filter(|v| !v.is_empty()))
@@ -198,6 +206,13 @@ pub fn translated_languages() -> usize {
     let mut seen: Vec<&str> = EMBEDDED_I18N.iter().map(|(lang, _, _)| *lang).collect();
     seen.dedup(); // the table is sorted by language
     seen.len()
+}
+
+/// The language codes the built-in translations are in, sorted.
+pub fn translated_codes() -> Vec<&'static str> {
+    let mut seen: Vec<&str> = EMBEDDED_I18N.iter().map(|(lang, _, _)| *lang).collect();
+    seen.dedup();
+    seen
 }
 
 /// `languages` for one locale value; separate so it can be tested.

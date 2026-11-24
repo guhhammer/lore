@@ -9,6 +9,10 @@
 //! And the recipes of `recipes/` (`$OUT_DIR/recipes.rs`: BUILT_IN_RECIPES,
 //! each file's text), each checked for a title and steps.
 //!
+//! And learnxinyminutes.com's pages of `languages/` (`$OUT_DIR/languages.rs`:
+//! LANGUAGE_PAGES, (file name, where), LANGUAGE_I18N, (language, file name,
+//! where), and LANGUAGE_TEXT, packed like the pages: 13 MB to about 3 MB).
+//!
 //! It also puts in the colour palettes of `palettes/` (`$OUT_DIR/palettes.rs`:
 //! BUILT_IN_PALETTES, (name, the file's text), `terminal` first), and checks
 //! each one, so a palette with a missing key or a bad colour fails the build
@@ -165,6 +169,53 @@ fn recipes(out: &Path) {
     fs::write(out.join("recipes.rs"), table).expect("OUT_DIR is writable");
 }
 
+/// `$OUT_DIR/languages.rs` and `languages.zst`: every `languages/*.md` and
+/// `languages/i18n/<language>/*.md`, each with a `name:` (English) or
+/// translated text, or the build stops.
+fn language_pages(out: &Path) {
+    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("languages");
+    println!("cargo:rerun-if-changed={}", dir.display());
+    let mut text = String::new();
+    let mut table = String::from("pub static LANGUAGE_PAGES: &[(&str, (usize, usize))] = &[\n");
+    for (name, path) in pages(&dir) {
+        let range = add(&mut text, &path);
+        assert!(
+            text[range.0..range.1].starts_with("---") && text[range.0..range.1].contains("\nname:"),
+            "{path}: a language page starts with its `---` header, with a `name:`"
+        );
+        table.push_str(&format!("    ({name:?}, {range:?}),\n"));
+    }
+    table.push_str("];\n");
+    let i18n = dir.join("i18n");
+    let mut codes: Vec<String> = fs::read_dir(&i18n)
+        .map(|entries| {
+            entries
+                .flatten()
+                .filter(|e| e.path().is_dir())
+                .filter_map(|e| e.file_name().to_str().map(str::to_owned))
+                .collect()
+        })
+        .unwrap_or_default();
+    codes.sort();
+    table.push_str("pub static LANGUAGE_I18N: &[(&str, &str, (usize, usize))] = &[\n");
+    for code in &codes {
+        let code_dir = i18n.join(code);
+        println!("cargo:rerun-if-changed={}", code_dir.display());
+        for (name, path) in pages(&code_dir) {
+            let range = add(&mut text, &path);
+            table.push_str(&format!("    ({code:?}, {name:?}, {range:?}),\n"));
+        }
+    }
+    table.push_str("];\n");
+    let packed = zstd::encode_all(text.as_bytes(), ZSTD_LEVEL).expect("zstd packs the pages");
+    fs::write(out.join("languages.zst"), packed).expect("OUT_DIR is writable");
+    table.push_str(concat!(
+        "pub static LANGUAGE_TEXT: std::sync::LazyLock<String> = std::sync::LazyLock::new(|| ",
+        "unpack(include_bytes!(concat!(env!(\"OUT_DIR\"), \"/languages.zst\"))));\n",
+    ));
+    fs::write(out.join("languages.rs"), table).expect("OUT_DIR is writable");
+}
+
 fn main() {
     let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("content");
     // cargo watches every file under a folder named here: a page added,
@@ -214,4 +265,5 @@ fn main() {
     fs::write(out.join("content.rs"), table).expect("OUT_DIR is writable");
     palettes(&out);
     recipes(&out);
+    language_pages(&out);
 }
