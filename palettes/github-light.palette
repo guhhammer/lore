@@ -1,0 +1,12 @@
+# github-light, from GitHub's Primer colours (https://primer.style/foundations/color)
+
+background = #ffffff
+text       = #1f2328
+muted      = #656d76
+selection  = #ddf4ff
+primary    = #0969da
+secondary  = #8250df
+accent     = #0550ae
+danger     = #cf222e
+code       = #116329
+warning    = #9a6700

@@ -3,7 +3,7 @@
 
 use lore_tui::app::{App, Topic};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::{DOCS_ALL, DOCS_MOST, DOCS_MOST_SEARCHED, TOOLS_EMPTY};
+use lore_tui::configs::{DOCS_ALL, DOCS_MOST, DOCS_MOST_SEARCHED, TOOLS_EMPTY};
 use lore_tui::info::docs;
 use lore_tui::info::page::Style;
 use lore_tui::interface::rows::Row;

@@ -5,7 +5,7 @@
 //! explained; `sudo`, `env` and the like are explained, then the command
 //! they run.
 
-use crate::compile_config::{
+use crate::configs::{
     EXPLAIN_ARGUMENT, EXPLAIN_BUNDLED, EXPLAIN_FILE_OF, EXPLAIN_MAX_CHARS, EXPLAIN_NO_MANUAL,
     EXPLAIN_NO_SUMMARY, EXPLAIN_NOT_IN_MANUAL, EXPLAIN_OPERATORS, EXPLAIN_OPTIONS_END,
     EXPLAIN_REDIRECTS, EXPLAIN_SETTING, EXPLAIN_VALUE_OF, EXPLAIN_WRAPPERS,

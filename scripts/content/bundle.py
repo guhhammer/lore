@@ -18,7 +18,7 @@ from pathlib import Path
 
 from common import PLATFORMS, TLDR, Page, file_name, read_tldr, tldr_links
 
-RECORD_MARK = "\x1e"  # src/compile_config.rs: RECORD_MARK
+RECORD_MARK = "\x1e"  # src/configs/: RECORD_MARK
 
 
 def pages(language: str):

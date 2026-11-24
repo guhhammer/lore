@@ -2,7 +2,7 @@ name: ci
 
 # Checks the code on every push to main and every pull request that touches
 # it: the same steps as cli/make (format, clippy, tests, a release build),
-# the rule that every constant lives in src/compile_config.rs, and a run of
+# the rule that every constant lives in src/configs/, and a run of
 # the built binary on what needs no terminal.
 
 on:
@@ -58,13 +58,13 @@ jobs:
       - run: cargo fmt --check
       - run: cargo clippy --all-targets --locked -- -D warnings
       - run: cargo test --locked
-      - name: Every const and static lives in src/compile_config.rs
+      - name: Every const and static lives in src/configs/
         run: |
           found=$(grep -rnE '^\s*(pub(\([^)]*\))?\s+)?(const|static)\s+[A-Z_]' src \
-            | grep -v '^src/compile_config.rs' || true)
+            | grep -v '^src/configs/' || true)
           if [ -n "$found" ]; then
             echo "$found"
-            echo "::error::move these to src/compile_config.rs"
+            echo "::error::move these to src/configs/"
             exit 1
           fi
       - run: cargo build --release --locked

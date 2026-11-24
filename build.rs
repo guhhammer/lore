@@ -55,7 +55,7 @@ fn pages(dir: &Path) -> Vec<(String, String)> {
 }
 
 /// The keys every palette file has; `interface::palette` reads them (and
-/// compile_config.rs's `PALETTE_KEYS` lists them again, for the run time).
+/// src/configs/'s `PALETTE_KEYS` lists them again, for the run time).
 const PALETTE_KEYS: [&str; 10] = [
     "background",
     "text",
@@ -69,7 +69,7 @@ const PALETTE_KEYS: [&str; 10] = [
     "warning",
 ];
 
-/// The colour names a palette can use besides `#rrggbb` (compile_config.rs's
+/// The colour names a palette can use besides `#rrggbb` (src/configs/'s
 /// `COLOUR_NAMES`, by name).
 const COLOUR_NAMES: [&str; 17] = [
     "reset",

@@ -1,0 +1,12 @@
+# everforest-light (medium), from https://github.com/sainnhe/everforest
+
+background = #fdf6e3
+text       = #5c6a72
+muted      = #939f91
+selection  = #e6e2cc
+primary    = #8da101
+secondary  = #df69ba
+accent     = #3a94c5
+danger     = #f85552
+code       = #35a77c
+warning    = #dfa000

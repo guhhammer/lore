@@ -9,7 +9,7 @@
 //! warnings are shown by `lore check` only. Pages built into lore were
 //! checked when they were written and are not checked again here.
 
-use crate::compile_config::{
+use crate::configs::{
     CHECK_HTML, CHECK_INVISIBLE, CHECK_SECTIONS, MAX_LINK_LENGTH, PAGE_MAX_BYTES,
 };
 use crate::info::content::page_key;

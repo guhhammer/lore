@@ -3,7 +3,7 @@
 
 use std::fmt;
 
-use crate::compile_config::SYMBOL_SECTION;
+use crate::configs::SYMBOL_SECTION;
 
 /// A section. `Symbol` is declared first, so it sorts before every letter.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]

@@ -26,7 +26,7 @@ use std::collections::HashSet;
 use std::fs;
 use std::io::Read;
 
-use crate::compile_config::{
+use crate::configs::{
     CHECK_INVISIBLE, FORBIDDEN_FILE_CHARS, LOCALE_VARS, NO_TRANSLATION_LOCALES, PAGE_MAX_BYTES,
     READING_LANGUAGE, SYSTEM_CONTENT_DIRS, UPDATED_CONTENT_DIRS, USER_CONTENT_DIRS,
 };

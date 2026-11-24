@@ -1,0 +1,12 @@
+# kanagawa (wave), from https://github.com/rebelot/kanagawa.nvim
+
+background = #1f1f28
+text       = #dcd7ba
+muted      = #727169
+selection  = #2d4f67
+primary    = #7e9cd8
+secondary  = #957fb8
+accent     = #7fb4ca
+danger     = #e82424
+code       = #98bb6c
+warning    = #ff9e3b

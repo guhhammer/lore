@@ -15,7 +15,7 @@ use std::fs;
 use std::io;
 use std::path::{Path, PathBuf};
 
-use crate::compile_config::{
+use crate::configs::{
     BOOKMARKS_FILE, CONFIG_FILE, CONFIG_HEADER, CONFIG_HOME_FALLBACK, CONFIG_HOME_VAR, DATA_DIR,
     DATA_HOME_FALLBACK, DATA_HOME_VAR, RECENT_FILE,
 };

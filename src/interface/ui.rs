@@ -8,27 +8,27 @@ use ratatui::style::{Modifier, Style};
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{Block, Clear, List, ListItem, ListState, Paragraph};
 
-use crate::app::{App, Mode, Setting};
+use crate::app::{App, Mode, Setting, copy_label};
 use crate::commands::{Command, Kind};
-use crate::compile_config::{
+use crate::configs::{
     ABOUT_COLOURS, ABOUT_COMMANDS, ABOUT_FAST_SCROLL, ABOUT_FIELDS, ABOUT_HISTORY_EMPTY,
     ABOUT_HISTORY_OFF, ABOUT_HISTORY_ON, ABOUT_INTERNET_CHECKING, ABOUT_INTERNET_OFF,
     ABOUT_INTERNET_OFFLINE, ABOUT_INTERNET_ON, ABOUT_KEPT, ABOUT_LABEL_WIDTH, ABOUT_LICENCE,
     ABOUT_MANUAL, ABOUT_PAGES, ABOUT_SETTING_MARK, ABOUT_SETTING_NAMES, ABOUT_SETTINGS_HEADING,
     ABOUT_SETTINGS_HINT, ABOUT_SOURCE, ABOUT_TAGLINE, ABOUT_TITLE, BOOKMARK_MARK, BOOKMARKS_FILE,
     COPY_PICKER_MARGIN, COPY_TITLE, DANGER, HEADING_MANUAL, INFO_LIST_PERCENT, INTERNET_DOT,
-    INTERNET_OFF, INTERNET_ON, INTERNET_WORD, KEY_BAR_HEIGHT, KEYS_ABOUT, KEYS_BROWSE, KEYS_COPY,
-    KEYS_PAGE, KEYS_PALETTE, KEYS_SEARCH, LANGUAGE_CATEGORY, LIST_HEADER_INDENT, LIST_INDENT,
-    LIST_INDENT_NARROW, LIST_TITLE, LIST_TITLE_SEARCHING, LOGO, LOGO_GAP, LORE_ORANGE, NO_MATCH,
-    PALETTE_DIR, PALETTE_NOT_SAVED, PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT,
-    SEARCH_HINT, SEARCH_KEPT_HINT, SEARCH_TITLE, TOPIC_BAR_HEIGHT, TOPIC_GAP, TOPIC_HINT,
-    UNUSED_MARK,
+    INTERNET_OFF, INTERNET_ON, INTERNET_WORD, KEY_BAR_HEIGHT, KEY_BAR_ROWS_MAX, KEY_GAP,
+    KEYS_ABOUT, KEYS_BROWSE, KEYS_COPY, KEYS_PAGE, KEYS_PALETTE, KEYS_SEARCH, LANGUAGE_CATEGORY,
+    LIST_HEADER_INDENT, LIST_INDENT, LIST_INDENT_NARROW, LIST_TITLE, LIST_TITLE_SEARCHING, LOGO,
+    LOGO_GAP, LORE_ORANGE, MIN_HEIGHT, MIN_WIDTH, NO_MATCH, PALETTE_DIR, PALETTE_NOT_SAVED,
+    PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT, SEARCH_HINT, SEARCH_KEPT_HINT,
+    SEARCH_TITLE, TOO_SMALL, TOPIC_BAR_HEIGHT, TOPIC_GAP, TOPIC_HINT, UNUSED_MARK,
 };
-use crate::compile_config::{
+use crate::configs::{
     ABOUT_FAVOURITE, ABOUT_READING, ABOUT_READING_SYSTEM, CHOOSE_MARGIN, CHOOSE_TITLE_FAVOURITE,
     CHOOSE_TITLE_READING, FAVOURITE_NONE, KEYS_CHOOSE, READING_ENGLISH,
 };
-use crate::compile_config::{
+use crate::configs::{
     ABOUT_FOLLOW, ABOUT_FOLLOW_HEADING, ABOUT_FOLLOW_HINT, ABOUT_RESET, ABOUT_RESET_ARMED,
     TOOLS_EMPTY,
 };
@@ -45,6 +45,18 @@ use crate::utils::text;
 pub fn draw(frame: &mut Frame, app: &mut App) {
     // the palette's background and text under everything drawn after
     frame.render_widget(Block::new().style(app.palette().base()), frame.area());
+    let area = frame.area();
+    if area.width < MIN_WIDTH || area.height < MIN_HEIGHT {
+        draw_too_small(frame, app.palette(), area);
+        return;
+    }
+    let key_rows = match &app.note {
+        Some(_) => Vec::new(),
+        None => key_rows(keys_of(app.mode), usize::from(area.width)),
+    };
+    let key_height = u16::try_from(key_rows.len())
+        .unwrap_or(u16::MAX)
+        .max(KEY_BAR_HEIGHT);
     // the search bar on top, the keys at the bottom, the body gets the rest
     // the logo, 4 rows, beside the search bar, which sits on its last 3
     let logo_height = u16::try_from(LOGO.len()).unwrap_or(u16::MAX);
@@ -52,9 +64,9 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
         Constraint::Length(logo_height.max(SEARCH_BAR_HEIGHT)),
         Constraint::Length(TOPIC_BAR_HEIGHT),
         Constraint::Min(0),
-        Constraint::Length(KEY_BAR_HEIGHT),
+        Constraint::Length(key_height),
     ])
-    .areas(frame.area());
+    .areas(area);
     let logo_width = LOGO.iter().map(|l| text::width(l)).max().unwrap_or(0);
     let logo_width = u16::try_from(logo_width).unwrap_or(u16::MAX);
     let [logo, _, search] = Layout::horizontal([
@@ -89,7 +101,7 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
             Paragraph::new(Line::styled(note.as_str(), app.palette().accent())),
             keys,
         ),
-        None => draw_keys(frame, app.mode, app.palette(), keys),
+        None => draw_keys(frame, &key_rows, app.palette(), keys),
     }
     if app.mode == Mode::Palette {
         draw_picker(frame, app, body);
@@ -336,23 +348,22 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
 /// The page's examples, over the page, to copy one: each as typed, cut to
 /// fit, the chosen one selected.
 fn draw_copy(frame: &mut Frame, app: &App, area: Rect) {
-    let examples = app.examples();
+    let labels: Vec<String> = app.copies.iter().map(|c| copy_label(c)).collect();
     let room = area.width.saturating_sub(2 * COPY_PICKER_MARGIN);
     let inside = usize::from(room.saturating_sub(4)); // borders and margins
-    let longest = examples
-        .iter()
-        .map(|e| text::width(e) + 4)
-        .max()
-        .unwrap_or(0);
+    let longest = labels.iter().map(|e| text::width(e) + 4).max().unwrap_or(0);
     let width = u16::try_from(longest).unwrap_or(u16::MAX).min(room);
-    let height = u16::try_from(examples.len() + 2).unwrap_or(u16::MAX); // + borders
+    // + borders; a long list scrolls inside the body
+    let height = u16::try_from(labels.len() + 2)
+        .unwrap_or(u16::MAX)
+        .min(area.height);
     let [middle] = Layout::horizontal([Constraint::Length(width)])
         .flex(Flex::Center)
         .areas(area);
     let [popup] = Layout::vertical([Constraint::Length(height)])
         .flex(Flex::Center)
         .areas(middle);
-    let items: Vec<ListItem> = examples
+    let items: Vec<ListItem> = labels
         .iter()
         .map(|e| {
             ListItem::new(Span::styled(
@@ -460,24 +471,44 @@ fn draw_search(frame: &mut Frame, app: &App, area: Rect) {
 
 /// The topics under the search bar, the one shown highlighted; then what
 /// switches them. Never in the way: one line, cut if the screen is narrow.
-fn draw_topics(frame: &mut Frame, app: &App, area: Rect) {
+fn draw_topics(frame: &mut Frame, app: &mut App, area: Rect) {
     let palette = app.palette();
     let mut spans = vec![Span::raw(" ")];
+    let mut chosen = (0, 0); // where the chosen topic starts and ends, in columns
+    let mut at = 1;
     for (i, topic) in app.topics.iter().enumerate() {
         if i > 0 {
             spans.push(Span::raw(TOPIC_GAP));
+            at += text::width(TOPIC_GAP);
         }
+        let name = format!(" {} ", topic.name());
+        if *topic == app.topic {
+            chosen = (at, at + text::width(&name));
+        }
+        at += text::width(&name);
         let style = if *topic == app.topic {
             palette.selected().add_modifier(Modifier::BOLD)
         } else {
             palette.muted()
         };
-        spans.push(Span::styled(format!(" {} ", topic.name()), style));
+        spans.push(Span::styled(name, style));
     }
     if app.topics.len() > 1 {
         spans.push(Span::styled(TOPIC_HINT, palette.muted()));
+        at += text::width(TOPIC_HINT);
     }
-    frame.render_widget(Paragraph::new(Line::from(spans)), area);
+    // a bar wider than the window slides, only as far as it takes to keep
+    // the chosen topic in sight (a column of room on each side)
+    let width = usize::from(area.width);
+    let mut scroll = app.topic_scroll.min(at.saturating_sub(width));
+    if chosen.0 < scroll + 1 {
+        scroll = chosen.0.saturating_sub(1);
+    } else if chosen.1 + 1 > scroll + width {
+        scroll = (chosen.1 + 1).saturating_sub(width);
+    }
+    app.topic_scroll = scroll;
+    let scroll = u16::try_from(scroll).unwrap_or(u16::MAX);
+    frame.render_widget(Paragraph::new(Line::from(spans)).scroll((0, scroll)), area);
 }
 
 /// The list of rows, or a note when nothing matches. `narrow`: beside a page,
@@ -743,9 +774,9 @@ fn style_of(style: PageStyle, palette: &Palette) -> Style {
     }
 }
 
-/// The bottom line, nano-style: each key highlighted, then what it does.
-fn draw_keys(frame: &mut Frame, mode: Mode, palette: &Palette, area: Rect) {
-    let keys = match mode {
+/// The keys of a mode, for the key bar.
+fn keys_of(mode: Mode) -> &'static [(&'static str, &'static str)] {
+    match mode {
         Mode::Browse => KEYS_BROWSE,
         Mode::Search => KEYS_SEARCH,
         Mode::Info => KEYS_PAGE,
@@ -753,11 +784,68 @@ fn draw_keys(frame: &mut Frame, mode: Mode, palette: &Palette, area: Rect) {
         Mode::Choose => KEYS_CHOOSE,
         Mode::Copy => KEYS_COPY,
         Mode::About => KEYS_ABOUT,
-    };
-    let mut spans = Vec::new();
-    for (key, label) in keys {
-        spans.push(Span::styled(*key, palette.key()));
-        spans.push(Span::raw(format!(" {label}   ")));
     }
-    frame.render_widget(Paragraph::new(Line::from(spans)), area);
+}
+
+/// The key bar's rows for a window `width` wide: as many keys on a row as
+/// fit, then the next row, at most `KEY_BAR_ROWS_MAX`; keys past the last
+/// row are left out (the window is too narrow for them).
+pub fn key_rows<'a>(keys: &'a [(&'a str, &'a str)], width: usize) -> Vec<Vec<(&'a str, &'a str)>> {
+    let mut rows: Vec<Vec<(&str, &str)>> = vec![Vec::new()];
+    let mut used = 0;
+    for &(key, label) in keys {
+        let room = text::width(key) + 1 + text::width(label);
+        let gap = if used == 0 { 0 } else { text::width(KEY_GAP) };
+        if used > 0 && used + gap + room > width {
+            if rows.len() == KEY_BAR_ROWS_MAX {
+                break;
+            }
+            rows.push(Vec::new());
+            used = 0;
+        }
+        used += if used == 0 { room } else { gap + room };
+        if let Some(row) = rows.last_mut() {
+            row.push((key, label));
+        }
+    }
+    rows
+}
+
+/// The bottom rows, nano-style: each key highlighted, then what it does.
+fn draw_keys(frame: &mut Frame, rows: &[Vec<(&str, &str)>], palette: &Palette, area: Rect) {
+    let lines: Vec<Line> = rows
+        .iter()
+        .map(|row| {
+            let mut spans = Vec::new();
+            for (i, (key, label)) in row.iter().enumerate() {
+                if i > 0 {
+                    spans.push(Span::raw(KEY_GAP));
+                }
+                spans.push(Span::styled(*key, palette.key()));
+                spans.push(Span::raw(format!(" {label}")));
+            }
+            Line::from(spans)
+        })
+        .collect();
+    frame.render_widget(Paragraph::new(lines), area);
+}
+
+/// What a window too small for lore shows: its size and the size needed.
+fn draw_too_small(frame: &mut Frame, palette: &Palette, area: Rect) {
+    let note = TOO_SMALL
+        .replace("{width}", &area.width.to_string())
+        .replace("{height}", &area.height.to_string())
+        .replace("{min_width}", &MIN_WIDTH.to_string())
+        .replace("{min_height}", &MIN_HEIGHT.to_string());
+    let lines: Vec<Line> = note
+        .lines()
+        .map(|l| Line::styled(l.to_owned(), palette.accent()))
+        .collect();
+    let height = u16::try_from(lines.len())
+        .unwrap_or(u16::MAX)
+        .min(area.height);
+    let [middle] = Layout::vertical([Constraint::Length(height)])
+        .flex(Flex::Center)
+        .areas(area);
+    frame.render_widget(Paragraph::new(lines).centered(), middle);
 }

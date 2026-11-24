@@ -15,7 +15,7 @@ use std::path::Path;
 
 use ratatui::style::{Color, Modifier, Style};
 
-use crate::compile_config::{
+use crate::configs::{
     COLOUR_NAMES, MODIFIER_DANGER, MODIFIER_HEADING, MODIFIER_SECTION, PALETTE_DIR,
     PALETTE_FILE_END, PALETTE_VAR, SETTING_PALETTE,
 };

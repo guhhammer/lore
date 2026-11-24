@@ -4,7 +4,7 @@
 //! categories, summary and examples), so "compress folder" finds tar and
 //! zip. A query starting with `@` keeps only the commands that have a page.
 
-use crate::compile_config::{
+use crate::configs::{
     CONTENT_MIN_CHARS, NAME_WORD_SEPARATORS, PAGES_ONLY, PLURAL_MIN_CHARS, SCORE_CATEGORY,
     SCORE_CATEGORY_PART, SCORE_DESCRIPTION, SCORE_EXAMPLE, SCORE_PHRASE, SCORE_SUMMARY,
     SCORE_TYPED, SNIPPET_CONTEXT, SYNONYMS,

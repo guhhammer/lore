@@ -1,6 +1,6 @@
 //! Tests for shell completion (src/interface/complete.rs, completions/).
 
-use lore_tui::compile_config::COMPLETION_SCRIPTS;
+use lore_tui::configs::COMPLETION_SCRIPTS;
 use lore_tui::info::explain::ManOption;
 use lore_tui::interface::complete::{Sources, candidates};
 

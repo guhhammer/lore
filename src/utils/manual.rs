@@ -4,7 +4,7 @@
 
 use std::process::{Command, Stdio};
 
-use crate::compile_config::MAN_MIN_WIDTH;
+use crate::configs::MAN_MIN_WIDTH;
 
 /// `name`'s manual laid out `width` columns wide, or None when there is no
 /// page (or no `man`). Never fails otherwise: a page is a nice-to-have.

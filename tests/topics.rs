@@ -1,9 +1,9 @@
 //! Tests for the topics: the bar under the search bar, ← → between them
-//! (src/app.rs).
+//! (src/app/).
 
 use lore_tui::app::{App, Topic};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::TOPIC_NAMES;
+use lore_tui::configs::TOPIC_NAMES;
 use lore_tui::info::recipes;
 
 fn app_with_a_recipe() -> App {

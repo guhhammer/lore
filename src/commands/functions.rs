@@ -3,7 +3,7 @@
 
 use super::shell::Shell;
 use super::{Command, Kind};
-use crate::compile_config::FISH_FUNCTION_FILES;
+use crate::configs::FISH_FUNCTION_FILES;
 use crate::interface::paths;
 
 /// The user's functions for `shell`; none for bash and zsh.

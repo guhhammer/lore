@@ -1,0 +1,12 @@
+# ayu-dark, from https://github.com/ayu-theme/ayu-colors
+
+background = #0b0e14
+text       = #bfbdb6
+muted      = #565b66
+selection  = #273747
+primary    = #e6b450
+secondary  = #d2a6ff
+accent     = #59c2ff
+danger     = #f07178
+code       = #aad94c
+warning    = #ffb454

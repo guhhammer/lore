@@ -1,7 +1,7 @@
 //! Tests for the INTERNET section (src/utils/internet.rs and its page part).
 //! None of them reaches the network.
 
-use lore_tui::compile_config::{HEADING_INTERNET, INTERNET_MAX_LINES, INTERNET_REMINDER};
+use lore_tui::configs::{HEADING_INTERNET, INTERNET_MAX_LINES, INTERNET_REMINDER};
 use lore_tui::info::page::{Style, internet_lines};
 use lore_tui::utils::internet::{Answer, Internet, Status, answer_of, clean, url};
 

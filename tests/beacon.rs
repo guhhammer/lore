@@ -1,11 +1,11 @@
 //! Tests for the beacon: its table, its rankings, the sources it can be
-//! made from, and its topic (src/info/beacon.rs, src/app.rs).
+//! made from, and its topic (src/info/beacon.rs, src/app/).
 
 use std::collections::HashSet;
 
 use lore_tui::app::{App, Topic};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::{BEACON_NOT_HERE, BEACON_POPULAR, BEACON_SNAPSHOT, BEACON_TRENDING};
+use lore_tui::configs::{BEACON_NOT_HERE, BEACON_POPULAR, BEACON_SNAPSHOT, BEACON_TRENDING};
 use lore_tui::info::beacon::{self, Entry};
 use lore_tui::interface::rows::Row;
 

@@ -1,9 +1,9 @@
-//! The user's shell, and its builtins and keywords (lists in compile_config.rs).
+//! The user's shell, and its builtins and keywords (lists in src/configs/shells.rs).
 
 use std::env;
 
 use super::{Command, Kind};
-use crate::compile_config as config;
+use crate::configs as config;
 
 /// The shells lore knows. Any other (sh, dash, ksh…) is treated as bash, the
 /// closest in syntax and builtins.

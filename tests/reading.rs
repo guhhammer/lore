@@ -4,7 +4,7 @@
 
 use lore_tui::app::App;
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::READING_LANGUAGE;
+use lore_tui::configs::READING_LANGUAGE;
 use lore_tui::info::content;
 
 fn read_in(code: Option<&str>) {

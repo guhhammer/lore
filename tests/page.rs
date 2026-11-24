@@ -4,7 +4,7 @@
 use std::path::PathBuf;
 
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::LINK_WARNING;
+use lore_tui::configs::LINK_WARNING;
 use lore_tui::info::content::parse;
 use lore_tui::info::package::Package;
 use lore_tui::info::page::{Facts, PageLine, Style, render};
@@ -62,7 +62,7 @@ fn every_url_is_one_whole_line_even_on_a_narrow_panel() {
     assert_eq!(urls[0], "https://www.gnu.org/software/coreutils/ls");
     assert_eq!(
         urls.len(),
-        1 + lore_tui::compile_config::SEARCH_LINKS.len(),
+        1 + lore_tui::configs::SEARCH_LINKS.len(),
         "its own link and every search"
     );
 }

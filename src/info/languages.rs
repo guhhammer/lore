@@ -19,7 +19,7 @@
 use std::collections::HashSet;
 
 use crate::commands::{Command, Kind};
-use crate::compile_config::{
+use crate::configs::{
     LANGUAGE_AND_MORE, LANGUAGE_BAR, LANGUAGE_CATEGORY, LANGUAGE_CONTRIBUTORS_MAX, LANGUAGE_FILE,
     LANGUAGE_GUTTER_MIN, LANGUAGE_LINK_HEADING, LANGUAGE_RULE, LANGUAGE_RULE_BOTTOM,
     LANGUAGE_RULE_MIDDLE, LANGUAGE_RULE_TOP, LANGUAGE_SOURCE, LANGUAGE_SUFFIX, LANGUAGE_TAB,
@@ -217,6 +217,67 @@ pub fn render(name: &str, width: usize) -> Vec<PageLine> {
     lines
 }
 
+/// The syntax of a block: by its fence tag, else by the file's extension,
+/// else guessed from the code.
+fn syntax_of(tag: &str, file: Option<&str>, code: &[String]) -> Syntax {
+    let extension = file.and_then(|f| f.rsplit('.').next());
+    highlight::by_name(tag)
+        .or_else(|| extension.and_then(highlight::by_name))
+        .unwrap_or_else(|| highlight::guess(code))
+}
+
+/// What `c` can copy from the page of `name`: its code, piece by piece
+/// (the lines between blank lines), as typed: no line numbers, no frame.
+/// A piece that is only comments is left out: there is nothing to run.
+pub fn snippets(name: &str) -> Vec<String> {
+    let Some(file) = file_of(name) else {
+        return Vec::new();
+    };
+    let Some(page) = page_of(file) else {
+        return Vec::new();
+    };
+    let (header, body) = split(page);
+    let filename =
+        field(header, "filename").or_else(|| field(split(page_of_english(file)).0, "filename"));
+    let mut pieces = Vec::new();
+    let mut fence: Option<(usize, String)> = None;
+    let mut block: Vec<String> = Vec::new();
+    // a block left open at the end counts as closed there
+    for raw in body.lines().chain(std::iter::once("```")) {
+        let trimmed = raw.trim_start();
+        let ticks = trimmed.chars().take_while(|&c| c == '`').count();
+        match &fence {
+            None if ticks >= 3 => fence = Some((ticks, trimmed[ticks..].trim().to_owned())),
+            Some((open, tag)) if ticks >= *open && trimmed[ticks..].trim().is_empty() => {
+                let syntax = syntax_of(tag, filename, &block);
+                let mut open_comment = None;
+                let mut piece: Vec<&str> = Vec::new();
+                let mut code = false; // the piece has a line that is not a comment
+                for line in block.iter().map(String::as_str).chain([""]) {
+                    let parts = highlight::line(line, &syntax, &mut open_comment);
+                    if line.trim().is_empty() {
+                        if code {
+                            pieces.push(piece.join("\n"));
+                        }
+                        piece.clear();
+                        code = false;
+                        continue;
+                    }
+                    code |= parts
+                        .iter()
+                        .any(|(t, style)| *style != Style::Comment && !t.trim().is_empty());
+                    piece.push(line);
+                }
+                block.clear();
+                fence = None;
+            }
+            Some(_) => block.push(raw.to_owned()), // tabs kept: a Makefile needs them
+            None => {}
+        }
+    }
+    pieces
+}
+
 /// The English page of `file` (its header names the file).
 fn page_of_english(file: &str) -> &'static str {
     LANGUAGE_PAGES
@@ -257,10 +318,7 @@ fn code_block(
     shown_name: Option<&str>,
     width: usize,
 ) {
-    let extension = syntax_name.and_then(|f| f.rsplit('.').next());
-    let syntax: Syntax = highlight::by_name(tag)
-        .or_else(|| extension.and_then(highlight::by_name))
-        .unwrap_or_else(|| highlight::guess(code));
+    let syntax = syntax_of(tag, syntax_name, code);
     let gutter = code.len().to_string().len().max(LANGUAGE_GUTTER_MIN);
     let room = width
         .saturating_sub(gutter + LANGUAGE_BAR.chars().count())

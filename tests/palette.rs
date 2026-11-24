@@ -5,7 +5,7 @@ use std::fs;
 
 use lore_tui::app::{App, Mode};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::PALETTE_KEY;
+use lore_tui::configs::PALETTE_KEY;
 use lore_tui::interface::input::{Action, action_for};
 use lore_tui::interface::palette::{Palette, add_from, built_in, colour, named, parse};
 use ratatui::crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
@@ -92,7 +92,7 @@ fn each_palette_keeps_its_primary_secondary_and_accent_colours_apart() {
 }
 
 #[test]
-fn there_are_eight_themes_with_at_most_two_variants_each() {
+fn there_are_thirteen_themes_with_at_most_two_variants_each() {
     // a theme's variants share the name's first word: tokyo-night, tokyo-night-day
     let mut count: HashMap<String, usize> = HashMap::new();
     for palette in &built_in()[1..] {
@@ -104,7 +104,7 @@ fn there_are_eight_themes_with_at_most_two_variants_each() {
             .to_owned();
         *count.entry(theme).or_insert(0) += 1;
     }
-    assert_eq!(count.len(), 8, "{count:?}");
+    assert_eq!(count.len(), 13, "{count:?}");
     assert!(count.values().all(|&n| n <= 2), "{count:?}");
 }
 
@@ -169,7 +169,7 @@ fn the_default_palette_dims_and_reverses_as_lore_always_did() {
     assert_eq!(nord.selected().bg, Some(nord.selection));
 }
 
-// ── the picker (src/app.rs, src/interface/input.rs) ─────────────────────────
+// ── the picker (src/app/, src/interface/input.rs) ─────────────────────────
 
 fn app() -> App {
     App::new(vec![Command::new("ls", Kind::Program)])

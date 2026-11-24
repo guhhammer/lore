@@ -11,7 +11,7 @@ use super::links;
 use super::package::{self, Package};
 use super::recipes;
 use crate::commands::{self, Command, Kind};
-use crate::compile_config::{
+use crate::configs::{
     DANGER_EXAMPLE_NOTE, DANGER_MARK, DANGER_WARNING, EXAMPLE_INDENT, EXAMPLE_PROMPT,
     FIELD_INSTALLED, FIELD_LABEL_WIDTH, FIELD_LOCATION, FIELD_NEWEST, FIELD_PACKAGE, FIELD_UPDATE,
     FILES_HINT, FILES_MAX, FILES_PATH_STARTS, HEADING_FILES, HEADING_INTERNET, HEADING_LINKS,

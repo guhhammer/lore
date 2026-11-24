@@ -6,8 +6,8 @@ then **Colours**: ↑↓ try them live, Enter keeps one.
 | Built in | |
 | --- | --- |
 | `terminal` | The default: your terminal's own colours. |
-| Dark | `catppuccin-mocha`, `dracula`, `gruvbox-dark`, `nord`, `one-dark`, `rose-pine`, `solarized-dark`, `tokyo-night` |
-| Light | `catppuccin-latte`, `gruvbox-light`, `one-light`, `rose-pine-dawn`, `solarized-light`, `tokyo-night-day` |
+| Dark | `ayu-dark`, `catppuccin-mocha`, `dracula`, `everforest-dark`, `github-dark`, `gruvbox-dark`, `kanagawa`, `monokai`, `nord`, `one-dark`, `rose-pine`, `solarized-dark`, `tokyo-night` |
+| Light | `ayu-light`, `catppuccin-latte`, `everforest-light`, `github-light`, `gruvbox-light`, `one-light`, `rose-pine-dawn`, `solarized-light`, `tokyo-night-day` |
 
 Every `*.palette` here is built into lore, and `build.rs` checks it: a
 broken one stops the build with the file and the key named. A palette's

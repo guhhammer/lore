@@ -1,0 +1,12 @@
+# ayu-light, from https://github.com/ayu-theme/ayu-colors
+
+background = #fcfcfc
+text       = #5c6166
+muted      = #8a9199
+selection  = #d3e1f5
+primary    = #399ee6
+secondary  = #a37acc
+accent     = #4cbf99
+danger     = #e65050
+code       = #86b300
+warning    = #f2ae49

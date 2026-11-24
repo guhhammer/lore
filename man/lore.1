@@ -150,6 +150,10 @@ Print a short usage text.
 .BR \-V ", " \-\-version
 Print lore's version.
 .SH KEYS
+The keys are always shown at the bottom: one line, or two on a narrow
+window. On a narrow window the topics bar slides to keep the chosen topic
+in sight. lore needs a window of at least 50 columns by 14 rows; a smaller
+one shows its size and what is needed instead.
 .SS In the list
 .TP
 .B Up, Down
@@ -240,7 +244,9 @@ Back to the list, or quit when the page was opened as
 .IR NAME .
 .TP
 .B c
-Copy one of the page's examples: a list of them opens over the page, Up and
+Copy one of the page's examples (on a language's page, a piece of its code;
+on a doc's page, one of its code blocks), only its text, never the line
+numbers or the frame around it: a list opens over the page, Up and
 Down choose, Enter copies (the key bar says what), Esc closes. lore asks
 the terminal to copy it (the OSC 52 escape), so it works over ssh and with
 no clipboard tool installed; most terminals do it, tmux with
@@ -407,7 +413,8 @@ names one for a single run, over the saved one.
 Built in:
 .B terminal
 (the default, the terminal's own colours), Catppuccin, Dracula, Nord,
-Gruvbox, Solarized, Tokyo Night, One and Ros\('e Pine, most in a dark and a
+Gruvbox, Solarized, Tokyo Night, One, Ros\('e Pine, Monokai, GitHub,
+Everforest, Kanagawa and Ayu, most in a dark and a
 light variant. Every palette but
 .B terminal
 paints its own background. An unknown name gives the default; case does

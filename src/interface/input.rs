@@ -6,7 +6,7 @@ use std::io;
 use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 
 use crate::app::Mode;
-use crate::compile_config::{
+use crate::configs::{
     ABOUT_KEY, BOOKMARK_KEY, CHOOSE_PAGE, COPY_KEY, DELETE_KEY, DOWNLOAD_KEY, FAST_DOWN_KEY,
     FAST_UP_KEY, PALETTE_KEY, WAKE_EVERY,
 };

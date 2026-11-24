@@ -1,4 +1,4 @@
-//! Turns the path patterns of compile_config.rs into real paths: `~/` → the
+//! Turns the path patterns of src/configs/ into real paths: `~/` → the
 //! home directory, `*` → every matching name in that directory.
 
 use std::env;

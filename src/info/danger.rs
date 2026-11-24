@@ -2,7 +2,7 @@
 //! `danger` category) or one example (`DANGEROUS_EXAMPLES`).
 
 use super::content::Content;
-use crate::compile_config::{DANGER, DANGEROUS_ANYWHERE, DANGEROUS_EXAMPLES, RUN_AS};
+use crate::configs::{DANGER, DANGEROUS_ANYWHERE, DANGEROUS_EXAMPLES, RUN_AS};
 
 /// Whether the page marks its command as dangerous.
 pub fn command(content: &Content) -> bool {

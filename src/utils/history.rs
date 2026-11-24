@@ -5,7 +5,7 @@
 use std::collections::HashMap;
 use std::fs;
 
-use crate::compile_config::{HISTORY_FILES, HISTORY_WRAPPERS};
+use crate::configs::{HISTORY_FILES, HISTORY_WRAPPERS};
 use crate::interface::paths;
 
 /// Uses per command name, from every history file found (`$HISTFILE` too).

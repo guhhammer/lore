@@ -22,7 +22,7 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
 
-use crate::compile_config::{
+use crate::configs::{
     DOCS_CATALOG, DOCS_DB_URL, DOCS_DIR, DOCS_FROM, DOCS_INDEX_URL, DOCS_INFO_DOWNLOAD,
     DOCS_INFO_HERE, DOCS_INFO_SIZE, DOCS_MAX_BYTES, DOCS_NO_PAGE, INTERNET_TIMEOUT,
 };
@@ -233,6 +233,18 @@ pub fn entry_page(set: &Docset, entry: &Entry, width: usize) -> Vec<PageLine> {
         lines.push(line(&text, Style::Dim));
     }
     lines
+}
+
+/// The code blocks of an entry's page (`runs` = `slug\tpath\ttype`),
+/// for `c` to copy; none when the set is not downloaded.
+pub fn code_blocks(runs: &str) -> Vec<String> {
+    let mut fields = runs.split('\t');
+    let (Some(slug), Some(path)) = (fields.next(), fields.next()) else {
+        return Vec::new();
+    };
+    page_html(slug, path)
+        .map(|page| html::code_blocks(from_anchor(&page, path)))
+        .unwrap_or_default()
 }
 
 /// The page from the entry's own part on (`path#part`: the element with

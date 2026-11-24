@@ -1,0 +1,12 @@
+# monokai, the classic Monokai colours (https://monokai.pro)
+
+background = #272822
+text       = #f8f8f2
+muted      = #75715e
+selection  = #49483e
+primary    = #66d9ef
+secondary  = #ae81ff
+accent     = #fd971f
+danger     = #f92672
+code       = #a6e22e
+warning    = #e6db74

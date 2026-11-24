@@ -42,7 +42,7 @@ BREW = "https://formulae.brew.sh/api/analytics/install-on-request/{days}d.json"
 AGENT = "lore-beacon (https://github.com/guhhammer/lore)"
 
 # a package on this share of the most installed one's machines is the base
-# system (src/compile_config.rs has the same value for lore's own fallback)
+# system (src/configs/ has the same value for lore's own fallback)
 BASE_SHARE = 0.9
 # a package gives the command named like it; without one, all of its
 # commands if it has at most this many (ripgrep: rg), else none

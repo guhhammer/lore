@@ -22,8 +22,8 @@ MIN_SCORE = 3  # one mention in the summary, or three in the examples
 
 
 def shell_words() -> set[str]:
-    """The builtins and keywords lore knows, from its compile_config.rs."""
-    config = (ROOT / "src" / "compile_config.rs").read_text(encoding="utf-8")
+    """The builtins and keywords lore knows, from its src/configs/."""
+    config = "\n".join(p.read_text(encoding="utf-8") for p in sorted((ROOT / "src" / "configs").glob("*.rs")))
     blocks = re.findall(r"pub const \w+_(?:BUILTINS|KEYWORDS): &\[&str\] = &\[(.*?)\];", config, re.S)
     return {word for block in blocks for word in re.findall(r'"([^"]+)"', block)}
 

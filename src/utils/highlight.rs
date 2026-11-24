@@ -4,7 +4,7 @@
 //! (`LANGUAGE_SYNTAXES`) instead of a grammar per language: these pages are
 //! read, not compiled, and the comments are most of them.
 
-use crate::compile_config::{LANGUAGE_GUESSED_COMMENTS, LANGUAGE_KEYWORDS, LANGUAGE_SYNTAXES};
+use crate::configs::{LANGUAGE_GUESSED_COMMENTS, LANGUAGE_KEYWORDS, LANGUAGE_SYNTAXES};
 use crate::info::page::Style;
 
 /// How one language writes comments and strings.

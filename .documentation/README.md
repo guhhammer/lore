@@ -36,8 +36,15 @@ lore/
 ├── src/
 │   ├── main.rs             calls lore_tui::run()
 │   ├── lib.rs              run(): arguments, the terminal, the event loop, the settings changes
-│   ├── app.rs              the state: list, search, page, modes, settings, jumper
-│   ├── compile_config.rs   every hardcoded value and text (see Rules)
+│   ├── app/                the state: list, search, page, modes, settings, jumper
+│   │   ├── mod.rs          App, Page; the list's moves, the search, the jumper
+│   │   ├── types.rs        Mode, Topic, Setting, Choice, Picker
+│   │   ├── topics.rs       what each topic lists; beacon and docs rows; own lists
+│   │   ├── page_view.rs    the page on show: open, lay out, scroll, copy (`c`)
+│   │   └── about.rs        the + screen's settings, the palette and choice pickers
+│   ├── configs/            every hardcoded value and text (see Rules), one file
+│   │                       per part (texts, screen, languages, shells…); mod.rs
+│   │                       re-exports them all as crate::configs::NAME
 │   ├── settings.rs         the settings file and the kept lists
 │   ├── commands/           finding the commands
 │   │   ├── mod.rs          Command, Kind, collect(), merge()
@@ -108,7 +115,7 @@ lore/
 main.rs → lib.rs::run()
             ├─ a command-line job (--print, explain, check, --complete…): prints, exits
             └─ the app:
-                 commands::collect() + recipes  →  App (app.rs)
+                 commands::collect() + recipes  →  App (src/app/)
                  loop:  ui::draw(App)  →  input::next_action(mode)  →  lib.rs applies it to App
 ```
 
@@ -171,7 +178,7 @@ arrived, and asks for a redraw.
 
 ## Search
 
-- **No search:** the topic's list (`App::topic`, `Topic` in app.rs):
+- **No search:** the topic's list (`App::topic`, `Topic` in src/app/types.rs):
   commands and recipes A to Z under their letters, most used / recent /
   bookmarks in their own order, the beacon under its own headings
   (`App::beacon_rows`: `Row::Title`, which Tab jumps between like letters). The bar shows only topics with anything
@@ -206,7 +213,7 @@ arrived, and asks for a redraw.
 
 ## Rules
 
-- **Every hardcoded value and fixed text goes in `src/compile_config.rs`**,
+- **Every hardcoded value and fixed text goes in `src/configs/`**,
   and only there: no `const` or `static` anywhere else (CI checks it). That
   covers paths, builtins and keywords, every text the user reads, colours
   and styles, widths, search weights, synonyms, danger rules, links and

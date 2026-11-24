@@ -71,7 +71,7 @@ and what can go wrong. For Linux and macOS, with bash, zsh or fish.
 | **The beacon** | What people use most and what is rising this month, from Debian's and Homebrew's public numbers: trending, most used, and most used per category, installed here or not. |
 | **Your own use** | Bookmarks, the pages you opened last, and the commands your shell history runs most sit at the top. |
 | **Your language** | Pages in 41 languages when a translation exists, picked from `$LANG`. |
-| **Colour palettes** | 15 palettes (Catppuccin, Dracula, Nord, Gruvbox, Solarized, Tokyo Night, One, Rosé Pine…), or your terminal's own colours. |
+| **Colour palettes** | 23 palettes (Catppuccin, Dracula, Nord, Gruvbox, Solarized, Tokyo Night, One, Rosé Pine, Monokai, GitHub, Everforest, Kanagawa, Ayu), or your terminal's own colours. |
 | **Tab completion** | `lore git <Tab>` offers git's subcommands, in bash, zsh and fish. |
 
 Everything is built into one binary: no folder to install, nothing to
@@ -166,7 +166,10 @@ only commands that have a page (`@gr`).
 
 ## Keys
 
-The keys you can press are always shown on the bottom line.
+The keys you can press are always shown at the bottom: one line, or two on
+a narrow window. On a narrow window the topics bar slides with ←→ to keep
+the chosen topic in sight. lore needs a window of at least 50×14; a smaller
+one shows its size and what is needed instead.
 
 **In the list**
 
@@ -191,7 +194,7 @@ The keys you can press are always shown on the bottom line.
 | ↑ ↓, PgUp PgDn | Scroll |
 | `w` `s` | Fast scroll |
 | Tab, Shift+Tab | Jump to the next or previous section, round at either end |
-| `c` | Copy one of the examples to the clipboard (works over ssh too) |
+| `c` | Copy one of the examples, or a piece of a language's or a doc's code, to the clipboard: only the text, no line numbers (works over ssh too) |
 | `/` | Search other commands; the page stays beside the list |
 | `b` | Bookmark |
 | ← or Esc | Back to the list |
@@ -212,7 +215,7 @@ to change) and saved for the next time:
 
 | Setting | Choices |
 | --- | --- |
-| Colours | 15 palettes, or `terminal` (your terminal's own colours). Enter opens a picker: ↑↓ try one live, Enter keeps it, Esc goes back. |
+| Colours | 23 palettes, or `terminal` (your terminal's own colours). Enter opens a picker: ↑↓ try one live, Enter keeps it, Esc goes back. |
 | Internet | On or off (see [Privacy and the internet](#privacy-and-the-internet)). |
 | History | Whether lore reads your shell history to rank your most-used commands. |
 | Fast scroll | How many lines `w` and `s` move: 5, 10, 15, 20 or 30 (Enter goes to the next). |

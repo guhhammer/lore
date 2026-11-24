@@ -2,7 +2,7 @@
 
 use lore_tui::app::{App, Topic};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::{HEADING_MANUAL, HEADING_STEPS, HEADING_VERSION};
+use lore_tui::configs::{HEADING_MANUAL, HEADING_STEPS, HEADING_VERSION};
 use lore_tui::info::page::{facts, render};
 use lore_tui::info::recipes::{commands, find, uses};
 use lore_tui::interface::rows::Row;

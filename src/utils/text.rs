@@ -4,7 +4,7 @@
 
 use unicode_width::{UnicodeWidthChar, UnicodeWidthStr};
 
-use crate::compile_config::ELLIPSIS;
+use crate::configs::ELLIPSIS;
 
 /// How many columns `text` takes on screen.
 pub fn width(text: &str) -> usize {

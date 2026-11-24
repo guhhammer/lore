@@ -8,7 +8,7 @@ use std::os::unix::fs::PermissionsExt;
 use std::path::{Path, PathBuf};
 
 use super::{Command, Kind};
-use crate::compile_config::{PATH_LIST_FILES, PROGRAM_DIRS};
+use crate::configs::{PATH_LIST_FILES, PROGRAM_DIRS};
 use crate::interface::paths;
 
 /// Every executable file found, unsorted; duplicates are removed later by `merge`.

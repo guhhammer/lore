@@ -113,6 +113,30 @@ pub fn to_lines(html: &str, width: usize) -> Vec<PageLine> {
     out.lines
 }
 
+/// The `<pre>` blocks of `html`, each as typed, for `c` to copy.
+pub fn code_blocks(html: &str) -> Vec<String> {
+    let mut blocks = Vec::new();
+    let mut block: Vec<String> = Vec::new();
+    // laid out wide enough that no code line is cut
+    for line in to_lines(html, usize::MAX / 4).into_iter().chain([PageLine {
+        text: String::new(),
+        style: Style::Text,
+        spans: Vec::new(),
+    }]) {
+        if line.style == Style::Code {
+            block.push(
+                line.text
+                    .strip_prefix("  ")
+                    .unwrap_or(&line.text)
+                    .to_owned(),
+            );
+        } else if !block.is_empty() {
+            blocks.push(std::mem::take(&mut block).join("\n"));
+        }
+    }
+    blocks
+}
+
 /// The lines made so far, and the paragraph being read.
 struct Writer {
     lines: Vec<PageLine>,
@@ -224,7 +248,9 @@ pub fn decode(text: &str) -> String {
         }
     }
     out.push_str(rest);
-    out.chars().filter(|&c| c == '\n' || shown(c)).collect()
+    out.chars()
+        .filter(|&c| c == '\n' || c == '\t' || shown(c))
+        .collect()
 }
 
 /// The character an entity's name (`lt`, `#39`, `#x27`) stands for.

@@ -23,7 +23,7 @@ use std::path::PathBuf;
 use std::thread;
 use std::time::Duration;
 
-use crate::compile_config::{
+use crate::configs::{
     BEACON_BASE_SHARE, BEACON_BREW_URL, BEACON_CACHE_FILE, BEACON_CACHE_HOURS, BEACON_KEEP,
     BEACON_MAX_BYTES, BEACON_POPCON_MAX_BYTES, BEACON_POPCON_URL, BEACON_SNAPSHOT,
     BEACON_TREND_MIN, BEACON_TREND_MIN_RISE, BEACON_URL, INTERNET_TIMEOUT,

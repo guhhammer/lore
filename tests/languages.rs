@@ -6,7 +6,7 @@ use std::collections::HashSet;
 
 use lore_tui::app::{App, Topic};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::{LANGUAGE_CATEGORY, LANGUAGE_SUFFIX};
+use lore_tui::configs::{LANGUAGE_CATEGORY, LANGUAGE_SUFFIX};
 use lore_tui::info::languages;
 use lore_tui::info::page::Style;
 use lore_tui::utils::highlight;

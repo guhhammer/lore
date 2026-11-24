@@ -15,6 +15,16 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **8 more palettes:** `monokai`, `github-dark`, `github-light`,
+  `everforest-dark`, `everforest-light`, `kanagawa`, `ayu-dark` and
+  `ayu-light` (23 in all).
+- **Small windows:** the key bar wraps onto a second row (never more) when
+  one is too narrow, the topics bar slides to keep the chosen topic in
+  sight, and a window under 50×14 says its size and what lore needs.
+- **Copy code:** `c` on a language's page lists its code piece by piece
+  (the lines between blank lines; comments alone are left out), on a doc's
+  page its code blocks, and copies only the code: no line numbers, no
+  frame, no panel beside it.
 - **The `+` screen scrolls** on a window too small for it: PgUp, PgDn, `w`
   and `s` scroll it, and choosing a setting with ↑↓ scrolls to it.
 - **`scripts/content/wikipedia.py`:** adds a Wikipedia link, last under
@@ -95,6 +105,10 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Changed
 
+- **Source layout:** `src/app.rs` is now the folder `src/app/` (state, types,
+  topics, the page on show, the about screen) and `src/compile_config.rs`
+  is `src/configs/`, one file per part of lore; every value is reached as
+  `crate::configs::NAME`.
 - **Topics:** a bar under the logo and the search bar holds lore's topics,
   each a list of its own: commands, recipes, and your most used, recent
   and bookmarks once they have anything. ← and → switch topics; a search
@@ -118,6 +132,9 @@ Everything since 0.1.0 is in it.
 
 ### Added
 
+- **8 more palettes:** `monokai`, `github-dark`, `github-light`,
+  `everforest-dark`, `everforest-light`, `kanagawa`, `ayu-dark` and
+  `ayu-light` (23 in all).
 - `packaging/`: an Arch build file (the AUR package `lore-tui`, built from
   source) and a Homebrew formula (the release binaries, for a tap), with
   `packaging/update.sh VERSION` to put a release's version and checksums
@@ -241,6 +258,9 @@ Everything since 0.1.0 is in it.
 
 ### Added
 
+- **8 more palettes:** `monokai`, `github-dark`, `github-light`,
+  `everforest-dark`, `everforest-light`, `kanagawa`, `ayu-dark` and
+  `ayu-light` (23 in all).
 - `lore`: a terminal list of every command you can type, for Linux and macOS
   — the executables on `$PATH` and in the directories it often leaves out
   (`/usr/sbin`, Homebrew, MacPorts, Nix, Snap, Flatpak, `~/bin`, language

@@ -4,7 +4,7 @@
 
 use std::path::{Path, PathBuf};
 
-use lore_tui::compile_config::RECORD_MARK;
+use lore_tui::configs::RECORD_MARK;
 use lore_tui::info::content;
 use lore_tui::info::tldr::{convert, describe, fill_placeholders};
 use lore_tui::info::updates::{self, NewPage};

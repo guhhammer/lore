@@ -1,10 +1,10 @@
-//! Tests for the about screen and the logo (src/app.rs, src/interface/input.rs).
+//! Tests for the about screen and the logo (src/app/, src/interface/input.rs).
 
 use std::collections::HashMap;
 
 use lore_tui::app::{App, Mode, Setting};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::{ABOUT_KEY, ABOUT_SETTING_NAMES, LOGO, LORE_ORANGE, PALETTE_KEY};
+use lore_tui::configs::{ABOUT_KEY, ABOUT_SETTING_NAMES, LOGO, LORE_ORANGE, PALETTE_KEY};
 use lore_tui::interface::input::{Action, action_for};
 use lore_tui::utils::text;
 use ratatui::crossterm::event::{KeyCode, KeyEvent, KeyModifiers};
@@ -140,7 +140,7 @@ fn the_built_in_translations_are_in_41_languages() {
 
 #[test]
 fn enter_on_fast_scroll_goes_round_its_choices_from_ten() {
-    use lore_tui::compile_config::{FAST_SCROLL_CHOICES, FAST_SCROLL_DEFAULT};
+    use lore_tui::configs::{FAST_SCROLL_CHOICES, FAST_SCROLL_DEFAULT};
     let mut app = App::new(vec![Command::new("ls", Kind::Program)]);
     assert_eq!(app.fast_scroll, FAST_SCROLL_DEFAULT);
     assert_eq!(FAST_SCROLL_DEFAULT, 10);
@@ -228,7 +228,7 @@ fn erasing_takes_files_and_folders_and_skips_what_is_not_there() {
 
 #[test]
 fn the_about_screen_asks_to_follow_the_author() {
-    use lore_tui::compile_config::ABOUT_FOLLOW;
+    use lore_tui::configs::ABOUT_FOLLOW;
     assert!(
         ABOUT_FOLLOW
             .iter()

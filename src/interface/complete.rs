@@ -12,7 +12,7 @@
 //!
 //! Nothing to offer: the scripts complete file names instead.
 
-use crate::compile_config::{COMPLETE_OPTIONS, EXPLAIN_WORD};
+use crate::configs::{COMPLETE_OPTIONS, EXPLAIN_WORD};
 use crate::info::explain::ManOption;
 
 /// One candidate: the word, and what it is (empty when not known).
@@ -107,7 +107,7 @@ fn next_words(before: &[String], current: &str, sources: &Sources) -> Vec<Candid
         }
         same
     });
-    let describe = words.len() <= crate::compile_config::COMPLETE_DESCRIBE_MAX;
+    let describe = words.len() <= crate::configs::COMPLETE_DESCRIBE_MAX;
     words
         .into_iter()
         .map(|(word, whole)| {

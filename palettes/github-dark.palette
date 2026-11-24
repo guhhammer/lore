@@ -1,0 +1,12 @@
+# github-dark, from GitHub's Primer colours (https://primer.style/foundations/color)
+
+background = #0d1117
+text       = #e6edf3
+muted      = #7d8590
+selection  = #30363d
+primary    = #58a6ff
+secondary  = #d2a8ff
+accent     = #79c0ff
+danger     = #ff7b72
+code       = #7ee787
+warning    = #d29922

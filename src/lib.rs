@@ -12,7 +12,7 @@ use ratatui::crossterm::event;
 
 pub mod app; // state: commands, search text, rows, selection
 pub mod commands; // where the names come from (programs, shell, aliases)
-pub mod compile_config; // hardcoded lists and paths
+pub mod configs; // hardcoded lists and paths
 pub mod info; // the page beside the list: content, version, links, manual
 pub mod interface; // keys, rows, search, drawing
 pub mod settings; // the settings file, kept between runs
@@ -31,7 +31,7 @@ pub fn run() -> io::Result<()> {
     let start = args::parse(std::env::args().skip(1)).map_err(io::Error::other)?;
     let page = match start {
         Start::Help => {
-            println!("{}", compile_config::HELP);
+            println!("{}", configs::HELP);
             return Ok(());
         }
         Start::Version => {
@@ -51,11 +51,11 @@ pub fn run() -> io::Result<()> {
             return Ok(());
         }
         Start::Completions(shell) => {
-            let script = compile_config::COMPLETION_SCRIPTS
+            let script = configs::COMPLETION_SCRIPTS
                 .iter()
                 .find(|(name, _)| *name == shell)
                 .map(|(_, script)| *script)
-                .ok_or_else(|| io::Error::other(compile_config::ERROR_COMPLETIONS_SHELL))?;
+                .ok_or_else(|| io::Error::other(configs::ERROR_COMPLETIONS_SHELL))?;
             print!("{script}");
             return Ok(());
         }
@@ -67,10 +67,10 @@ pub fn run() -> io::Result<()> {
     let mut app = App::new(everything());
     app.palettes = interface::palette::all();
     app.chosen = interface::palette::at_start(&app.palettes);
-    let history_off = settings::read(compile_config::SETTING_HISTORY).as_deref()
-        == Some(compile_config::SETTING_OFF);
-    let internet_off = settings::read(compile_config::SETTING_INTERNET).as_deref()
-        == Some(compile_config::SETTING_OFF);
+    let history_off =
+        settings::read(configs::SETTING_HISTORY).as_deref() == Some(configs::SETTING_OFF);
+    let internet_off =
+        settings::read(configs::SETTING_INTERNET).as_deref() == Some(configs::SETTING_OFF);
     if !internet_off {
         app.internet = utils::internet::Internet::start();
         info::beacon::refresh(); // a newer table for the next start, if due
@@ -79,18 +79,18 @@ pub fn run() -> io::Result<()> {
     app.history = !history_off;
     app.reading = reading;
     // `favourite = Python` (or `none`)
-    let favourite = settings::read(compile_config::SETTING_FAVOURITE)
+    let favourite = settings::read(configs::SETTING_FAVOURITE)
         .map(|name| name.trim().to_owned())
-        .filter(|name| !name.is_empty() && name != compile_config::FAVOURITE_NONE);
+        .filter(|name| !name.is_empty() && name != configs::FAVOURITE_NONE);
     app.set_favourite(favourite);
     // `scroll = 15`: one of the choices, else the default
-    app.fast_scroll = settings::read(compile_config::SETTING_FAST_SCROLL)
+    app.fast_scroll = settings::read(configs::SETTING_FAST_SCROLL)
         .and_then(|lines| lines.trim().parse().ok())
-        .filter(|lines| compile_config::FAST_SCROLL_CHOICES.contains(lines))
-        .unwrap_or(compile_config::FAST_SCROLL_DEFAULT);
+        .filter(|lines| configs::FAST_SCROLL_CHOICES.contains(lines))
+        .unwrap_or(configs::FAST_SCROLL_DEFAULT);
     app.set_personal(
-        settings::read_list(compile_config::BOOKMARKS_FILE),
-        settings::read_list(compile_config::RECENT_FILE),
+        settings::read_list(configs::BOOKMARKS_FILE),
+        settings::read_list(configs::RECENT_FILE),
         if history_off {
             Default::default()
         } else {
@@ -102,14 +102,14 @@ pub fn run() -> io::Result<()> {
         // message lands in the shell
         if !app.open_direct(&name) {
             return Err(io::Error::other(
-                compile_config::ERROR_NOTHING_NAMED.replace("{name}", &name),
+                configs::ERROR_NOTHING_NAMED.replace("{name}", &name),
             ));
         }
         keep_recent(&app);
     }
     // piped, from cron, or `ssh host lore` without -t: there is no screen
     if !io::stdout().is_terminal() {
-        return Err(io::Error::other(compile_config::ERROR_NO_TERMINAL));
+        return Err(io::Error::other(configs::ERROR_NO_TERMINAL));
     }
     // full-screen mode, keys come raw; try_init returns an error instead of
     // panicking if the terminal cannot be set up
@@ -136,13 +136,13 @@ fn print_page(name: &str) -> io::Result<()> {
     let mut app = App::new(everything());
     if !app.open_direct(name) {
         return Err(io::Error::other(
-            compile_config::ERROR_NOTHING_NAMED.replace("{name}", name),
+            configs::ERROR_NOTHING_NAMED.replace("{name}", name),
         ));
     }
     let width = if io::stdout().is_terminal() {
-        ratatui::crossterm::terminal::size().map_or(compile_config::PRINT_WIDTH, |(cols, _)| cols)
+        ratatui::crossterm::terminal::size().map_or(configs::PRINT_WIDTH, |(cols, _)| cols)
     } else {
-        compile_config::PRINT_WIDTH
+        configs::PRINT_WIDTH
     };
     app.load_page(width);
     let lines = app.page.map(|page| page.lines).unwrap_or_default();
@@ -161,7 +161,7 @@ fn print_page(name: &str) -> io::Result<()> {
 /// "ok". Fails (exit 1) when any file has an error, so a program's build
 /// can run it on the page it ships.
 fn check_files(files: &[String]) -> io::Result<()> {
-    use compile_config::{CHECK_OK, CHECK_UNREADABLE, ERROR_CHECK_FAILED, PAGE_MAX_BYTES};
+    use configs::{CHECK_OK, CHECK_UNREADABLE, ERROR_CHECK_FAILED, PAGE_MAX_BYTES};
     use std::io::Read;
     let mut failed = 0;
     for file in files {
@@ -216,12 +216,9 @@ fn complete(words: &[String]) -> io::Result<()> {
         summary.split(". ").next().unwrap_or_default().to_owned()
     };
     let options_of = |program: &str| {
-        utils::manual::page(
-            &content::page_key(program),
-            compile_config::EXPLAIN_MAN_WIDTH,
-        )
-        .map(|lines| info::explain::options_in_man(&lines))
-        .unwrap_or_default()
+        utils::manual::page(&content::page_key(program), configs::EXPLAIN_MAN_WIDTH)
+            .map(|lines| info::explain::options_in_man(&lines))
+            .unwrap_or_default()
     };
     let found = interface::complete::candidates(
         words,
@@ -238,10 +235,7 @@ fn complete(words: &[String]) -> io::Result<()> {
             .chars()
             .map(|c| if c.is_control() { ' ' } else { c })
             .collect();
-        let what = utils::text::fit(
-            what.trim_end_matches('.'),
-            compile_config::COMPLETE_DESCRIBE_WIDTH,
-        );
+        let what = utils::text::fit(what.trim_end_matches('.'), configs::COMPLETE_DESCRIBE_WIDTH);
         out.push_str(&format!("{word}\t{what}\n"));
     }
     match io::stdout().lock().write_all(out.as_bytes()) {
@@ -254,7 +248,7 @@ fn complete(words: &[String]) -> io::Result<()> {
 /// meanings wrapped at the terminal's width (or `PRINT_WIDTH`).
 fn explain(line: &str) -> io::Result<()> {
     use utils::text;
-    let manual = |name: &str| utils::manual::page(name, compile_config::EXPLAIN_MAN_WIDTH);
+    let manual = |name: &str| utils::manual::page(name, configs::EXPLAIN_MAN_WIDTH);
     let summary = |name: &str| {
         info::content::find(name)
             .and_then(|page| page.summary.into_iter().next())
@@ -268,14 +262,14 @@ fn explain(line: &str) -> io::Result<()> {
         },
     );
     let width = usize::from(if io::stdout().is_terminal() {
-        ratatui::crossterm::terminal::size().map_or(compile_config::PRINT_WIDTH, |(cols, _)| cols)
+        ratatui::crossterm::terminal::size().map_or(configs::PRINT_WIDTH, |(cols, _)| cols)
     } else {
-        compile_config::PRINT_WIDTH
+        configs::PRINT_WIDTH
     });
     let column = rows
         .iter()
         .map(|(word, _)| text::width(word))
-        .filter(|&w| w <= compile_config::EXPLAIN_WORD_WIDTH)
+        .filter(|&w| w <= configs::EXPLAIN_WORD_WIDTH)
         .max()
         .unwrap_or(0);
     let mut out = String::new();
@@ -305,7 +299,7 @@ fn explain(line: &str) -> io::Result<()> {
 /// Saves the recent pages for the next runs; if they cannot be saved, they
 /// still hold for this one.
 fn keep_recent(app: &App) {
-    let _ = settings::write_list(compile_config::RECENT_FILE, &app.recent);
+    let _ = settings::write_list(configs::RECENT_FILE, &app.recent);
 }
 
 /// Enter on a setting of the about screen: the palette opens its picker;
@@ -314,7 +308,7 @@ fn keep_recent(app: &App) {
 /// says why.
 fn change_setting(app: &mut App) {
     use app::Setting;
-    use compile_config::{SETTING_HISTORY, SETTING_INTERNET, SETTING_OFF, SETTING_ON};
+    use configs::{SETTING_HISTORY, SETTING_INTERNET, SETTING_OFF, SETTING_ON};
     let word = |on: bool| if on { SETTING_ON } else { SETTING_OFF };
     let saved = match app.chosen_setting() {
         Setting::Colours => {
@@ -341,7 +335,7 @@ fn change_setting(app: &mut App) {
             let current = app
                 .reading
                 .clone()
-                .unwrap_or_else(|| compile_config::READING_SYSTEM.to_owned());
+                .unwrap_or_else(|| configs::READING_SYSTEM.to_owned());
             app.open_choice(Setting::Reading, reading_choices(), &current);
             return;
         }
@@ -353,21 +347,18 @@ fn change_setting(app: &mut App) {
                 .map(|c| c.name.clone())
                 .collect();
             languages.sort_by_key(|name| name.to_lowercase());
-            let mut names = vec![compile_config::FAVOURITE_NONE.to_owned()];
+            let mut names = vec![configs::FAVOURITE_NONE.to_owned()];
             names.extend(languages);
             let current = app
                 .favourite
                 .clone()
-                .unwrap_or_else(|| compile_config::FAVOURITE_NONE.to_owned());
+                .unwrap_or_else(|| configs::FAVOURITE_NONE.to_owned());
             app.open_choice(Setting::Favourite, names, &current);
             return;
         }
         Setting::FastScroll => {
             app.next_fast_scroll();
-            settings::write(
-                compile_config::SETTING_FAST_SCROLL,
-                &app.fast_scroll.to_string(),
-            )
+            settings::write(configs::SETTING_FAST_SCROLL, &app.fast_scroll.to_string())
         }
         Setting::History => {
             let on = !app.history;
@@ -381,7 +372,7 @@ fn change_setting(app: &mut App) {
         }
     };
     if let Err(error) = saved {
-        app.note = Some(compile_config::SETTING_NOT_SAVED.replace("{why}", &error.to_string()));
+        app.note = Some(configs::SETTING_NOT_SAVED.replace("{why}", &error.to_string()));
     }
 }
 
@@ -393,8 +384,8 @@ pub fn reading_choices() -> Vec<String> {
     codes.sort_unstable();
     codes.dedup();
     let mut choices = vec![
-        compile_config::READING_SYSTEM.to_owned(),
-        compile_config::READING_ENGLISH.to_owned(),
+        configs::READING_SYSTEM.to_owned(),
+        configs::READING_ENGLISH.to_owned(),
     ];
     choices.extend(codes.into_iter().map(str::to_owned));
     choices
@@ -403,10 +394,10 @@ pub fn reading_choices() -> Vec<String> {
 /// Pages in from the settings file (`reading = pt_BR`; `system` or none:
 /// LANG decides), applied for this run.
 fn saved_reading() -> Option<String> {
-    let reading = settings::read(compile_config::SETTING_READING)
+    let reading = settings::read(configs::SETTING_READING)
         .map(|code| code.trim().to_owned())
-        .filter(|code| !code.is_empty() && code != compile_config::READING_SYSTEM);
-    if let Ok(mut chosen) = compile_config::READING_LANGUAGE.write() {
+        .filter(|code| !code.is_empty() && code != configs::READING_SYSTEM);
+    if let Ok(mut chosen) = configs::READING_LANGUAGE.write() {
         chosen.clone_from(&reading);
     }
     reading
@@ -414,7 +405,7 @@ fn saved_reading() -> Option<String> {
 
 /// Applies Pages in for this run: a code, or None for `system` (LANG).
 pub fn set_reading(app: &mut App, code: Option<String>) {
-    if let Ok(mut chosen) = compile_config::READING_LANGUAGE.write() {
+    if let Ok(mut chosen) = configs::READING_LANGUAGE.write() {
         chosen.clone_from(&code);
     }
     app.reading = code;
@@ -425,7 +416,7 @@ pub fn set_reading(app: &mut App, code: Option<String>) {
 /// Reset all, asked twice: every saved thing erased (settings file, lists,
 /// downloads, caches) and every setting back to its default, now.
 fn reset_all(app: &mut App) {
-    use compile_config::{BEACON_CACHE_FILE, INTERNET_CACHE_DIR};
+    use configs::{BEACON_CACHE_FILE, INTERNET_CACHE_DIR};
     app.reset_armed = false;
     let mut extra: Vec<std::path::PathBuf> = info::updates::folder().into_iter().collect();
     extra.extend(info::docs::folder()); // the downloaded docs
@@ -439,14 +430,14 @@ fn reset_all(app: &mut App) {
     app.chosen = 0; // `terminal`, first of the palettes (build.rs puts it there)
     app.internet.set_enabled(true);
     app.set_history(true, utils::history::read());
-    app.fast_scroll = compile_config::FAST_SCROLL_DEFAULT;
+    app.fast_scroll = configs::FAST_SCROLL_DEFAULT;
     set_reading(app, None);
     app.set_personal(Vec::new(), Vec::new(), app.uses.clone());
     app.set_favourite(None);
     app.set_beacon(info::beacon::load());
     app.note = Some(match failed.first() {
-        None => compile_config::RESET_DONE.to_owned(),
-        Some(error) => compile_config::RESET_FAILED.replace("{why}", &error.to_string()),
+        None => configs::RESET_DONE.to_owned(),
+        Some(error) => configs::RESET_FAILED.replace("{why}", &error.to_string()),
     });
 }
 
@@ -454,7 +445,7 @@ fn reset_all(app: &mut App) {
 /// the one whose page is shown) downloaded in the background, or deleted.
 fn docs_key(app: &mut App, action: Action) {
     use commands::Kind;
-    use compile_config::{DOCS_DELETED, DOCS_NOT_DELETED, DOCS_STARTED};
+    use configs::{DOCS_DELETED, DOCS_NOT_DELETED, DOCS_STARTED};
     let in_view = match app.mode {
         app::Mode::Info => app.page.as_ref().map(|page| page.command.clone()),
         _ => app.selected().cloned(),
@@ -499,18 +490,18 @@ fn keep_choice(app: &mut App) {
     };
     let saved = match setting {
         Setting::Reading => {
-            let code = (item != compile_config::READING_SYSTEM).then(|| item.clone());
+            let code = (item != configs::READING_SYSTEM).then(|| item.clone());
             set_reading(app, code);
-            settings::write(compile_config::SETTING_READING, &item)
+            settings::write(configs::SETTING_READING, &item)
         }
         _ => {
-            let name = (item != compile_config::FAVOURITE_NONE).then(|| item.clone());
+            let name = (item != configs::FAVOURITE_NONE).then(|| item.clone());
             app.set_favourite(name);
-            settings::write(compile_config::SETTING_FAVOURITE, &item)
+            settings::write(configs::SETTING_FAVOURITE, &item)
         }
     };
     if let Err(error) = saved {
-        app.note = Some(compile_config::SETTING_NOT_SAVED.replace("{why}", &error.to_string()));
+        app.note = Some(configs::SETTING_NOT_SAVED.replace("{why}", &error.to_string()));
     }
 }
 
@@ -550,7 +541,7 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
             Action::ToggleBookmark => {
                 if app.toggle_bookmark() {
                     // a list that cannot be saved still holds for this run
-                    let _ = settings::write_list(compile_config::BOOKMARKS_FILE, &app.bookmarks);
+                    let _ = settings::write_list(configs::BOOKMARKS_FILE, &app.bookmarks);
                 }
             }
             Action::CloseInfo => app.close_info(),
@@ -566,7 +557,7 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
             // results) they move the selection
             Action::PageUp | Action::PageDown | Action::FastUp | Action::FastDown => {
                 let lines = match action {
-                    Action::PageUp | Action::PageDown => compile_config::PAGE_STEP,
+                    Action::PageUp | Action::PageDown => configs::PAGE_STEP,
                     _ => isize::try_from(app.fast_scroll).unwrap_or(isize::MAX),
                 };
                 let lines = if matches!(action, Action::PageUp | Action::FastUp) {
@@ -613,7 +604,7 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
             // saved for the next runs; if it cannot be, the picker stays open
             // and says so, and Esc or Enter again are the user's choice
             Action::KeepPalette => {
-                match settings::write(compile_config::SETTING_PALETTE, &app.palette().name) {
+                match settings::write(configs::SETTING_PALETTE, &app.palette().name) {
                     Ok(_) => app.close_palettes(),
                     Err(error) => app.palette_failed(&error.to_string()),
                 }

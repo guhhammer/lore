@@ -1,11 +1,11 @@
 //! Tests for your own use: the bookmarks, recent and most used topics, and
-//! the never-used mark (src/app.rs).
+//! the never-used mark (src/app/).
 
 use std::collections::HashMap;
 
 use lore_tui::app::{App, Mode, Topic};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::{BOOKMARK_KEY, RECENT_MAX};
+use lore_tui::configs::{BOOKMARK_KEY, RECENT_MAX};
 use lore_tui::interface::input::{Action, action_for};
 use lore_tui::interface::rows::Row;
 use ratatui::crossterm::event::{KeyCode, KeyEvent, KeyModifiers};

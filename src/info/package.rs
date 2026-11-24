@@ -6,7 +6,7 @@
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
 
-use crate::compile_config::{UPDATE_DPKG, UPDATE_HOMEBREW, UPDATE_PACMAN, UPDATE_RPM};
+use crate::configs::{UPDATE_DPKG, UPDATE_HOMEBREW, UPDATE_PACMAN, UPDATE_RPM};
 
 /// What lore could learn about a program's package.
 #[derive(Debug, Clone, PartialEq, Eq)]

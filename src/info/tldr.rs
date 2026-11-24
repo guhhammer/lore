@@ -14,9 +14,7 @@
 //! `tar cf {{path/to/target.tar}} {{path/to/file1}}`
 //! ```
 
-use crate::compile_config::{
-    MAX_LINK_LENGTH, TLDR_MAX_EXAMPLES, TLDR_MORE_INFORMATION, TLDR_PAGE_LINK,
-};
+use crate::configs::{MAX_LINK_LENGTH, TLDR_MAX_EXAMPLES, TLDR_MORE_INFORMATION, TLDR_PAGE_LINK};
 use crate::info::content::page_key;
 
 /// `text`, tldr's page `name` (its file name, `git-commit`) from tldr's

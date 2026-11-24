@@ -1,9 +1,9 @@
 //! Tests for the jumper, Tab and Shift+Tab: the next or previous letter in
-//! the list, section on a page, round at either end (src/app.rs).
+//! the list, section on a page, round at either end (src/app/).
 
 use lore_tui::app::{App, Mode};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::HEADING_INTERNET;
+use lore_tui::configs::HEADING_INTERNET;
 use lore_tui::info::page::{PageLine, Style, starts_a_section};
 use lore_tui::interface::input::{Action, action_for};
 use lore_tui::interface::rows::Row;

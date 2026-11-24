@@ -18,7 +18,7 @@ use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::{Duration, SystemTime};
 
-use crate::compile_config::{
+use crate::configs::{
     CACHE_HOME_FALLBACK, CACHE_HOME_VAR, INTERNET_CACHE_DIR, INTERNET_CACHE_HOURS,
     INTERNET_CHECK_EVERY, INTERNET_HOST, INTERNET_MAX_BYTES, INTERNET_NOT_FOUND, INTERNET_TIMEOUT,
     INTERNET_URL, INTERNET_USER_AGENT, WAKE_EVERY,

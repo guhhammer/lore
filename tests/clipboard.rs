@@ -1,9 +1,9 @@
 //! Tests for copying an example (src/utils/clipboard.rs, the copy list in
-//! src/app.rs and src/interface/input.rs).
+//! src/app/ and src/interface/input.rs).
 
 use lore_tui::app::{App, Mode, Page};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::compile_config::COPY_KEY;
+use lore_tui::configs::COPY_KEY;
 use lore_tui::info::content::parse;
 use lore_tui::info::page::Facts;
 use lore_tui::interface::input::{Action, action_for};
@@ -87,4 +87,59 @@ fn a_page_with_no_examples_says_so_instead_of_opening_the_list() {
     app.open_copy();
     assert_eq!(app.mode, Mode::Info);
     assert!(app.note.is_some());
+}
+
+#[test]
+fn a_language_page_offers_its_code_piece_by_piece_without_the_frame() {
+    let pieces = lore_tui::info::languages::snippets("Python");
+    assert!(pieces.len() > 10, "{}", pieces.len());
+    for piece in &pieces {
+        // the code as typed: no line numbers, no frame, no blank edges
+        assert!(!piece.contains('│'), "{piece}");
+        assert!(!piece.starts_with('\n') && !piece.ends_with('\n'));
+        // a piece of comments only is left out
+        assert!(
+            piece.lines().any(|l| !l.trim_start().starts_with('#')),
+            "{piece}"
+        );
+    }
+    assert!(pieces.iter().any(|p| p.contains("print(")));
+}
+
+#[test]
+fn on_a_language_page_c_lists_its_code_and_copies_one_piece() {
+    let python = Command::new("Python", Kind::Language);
+    let mut app = App::new(vec![python.clone()]);
+    app.mode = Mode::Info;
+    app.page = Some(Page {
+        command: python,
+        width: 80,
+        facts: Facts::default(),
+        lines: Vec::new(),
+    });
+    app.open_copy();
+    assert_eq!(app.mode, Mode::Copy);
+    let chosen = app.chosen_example().expect("a piece");
+    assert_eq!(chosen, app.copies[0]);
+    app.close_copy(Some(&chosen));
+    let note = app.note.clone().unwrap_or_default();
+    assert!(note.starts_with("copied: "), "{note}");
+    assert!(!note.contains('\n'), "{note}");
+}
+
+#[test]
+fn a_piece_of_many_lines_is_named_by_its_first_and_how_many_follow() {
+    assert_eq!(lore_tui::app::copy_label("ls -l"), "ls -l");
+    assert_eq!(lore_tui::app::copy_label("a\nb"), "a  (+1 line)");
+    assert_eq!(
+        lore_tui::app::copy_label("x = 1\ny = 2\nz = 3"),
+        "x = 1  (+2 lines)"
+    );
+}
+
+#[test]
+fn html_code_blocks_come_out_whole_and_as_typed() {
+    let html = "<p>Use it:</p><pre>a = [1, 2]\n\tb = a &lt; 3</pre><p>or</p><pre>c()</pre>";
+    let blocks = lore_tui::utils::html::code_blocks(html);
+    assert_eq!(blocks, vec!["a = [1, 2]\n    b = a < 3", "c()"]);
 }

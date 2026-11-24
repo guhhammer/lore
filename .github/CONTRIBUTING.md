@@ -37,7 +37,7 @@ ready. The same checks run on GitHub for every pull request.
   `CHANGELOG.md` under `## [Unreleased]`.
 - **Tests live in `tests/`** and are named as sentences that state the rule
   they defend: `a_symlinked_command_is_listed`.
-- **Every constant and fixed text lives in `src/compile_config.rs`**, not
+- **Every constant and fixed text lives in `src/configs/` (one file per part of lore)**, not
   scattered through the code.
 - **Comments say why, not what.**
 

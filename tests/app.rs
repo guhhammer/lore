@@ -1,5 +1,5 @@
 //! Tests for the app's state: moving, searching, leaving the search, the
-//! page (src/app.rs). Each test name says the rule it checks.
+//! page (src/app/). Each test name says the rule it checks.
 
 use std::collections::HashSet;
 

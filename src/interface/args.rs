@@ -1,7 +1,7 @@
 //! The command line: `lore` opens the list, `lore NAME` opens NAME's page
 //! straight away, like `man NAME`, and `lore --print NAME` writes it out.
 
-use crate::compile_config::{
+use crate::configs::{
     CHECK_WORD, COMPLETE_FLAG, COMPLETIONS_FLAG, ERROR_CHECK_FILES, ERROR_COMPLETIONS_SHELL,
     ERROR_EXPLAIN_LINE, ERROR_OPTIONS_ALONE, ERROR_PRINT_NAME, ERROR_UNKNOWN_OPTION, EXPLAIN_WORD,
     UPDATE_PAGES_FLAG,

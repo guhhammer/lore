@@ -4,7 +4,7 @@
 //! `recipes` header, by its title.
 
 use crate::commands::{Command, Kind};
-use crate::compile_config::RECIPE_SKIPPED_WORDS;
+use crate::configs::RECIPE_SKIPPED_WORDS;
 use crate::info::content::{self, Content};
 
 // BUILT_IN_RECIPES: the text of every recipes/*.md

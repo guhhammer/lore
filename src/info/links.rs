@@ -1,6 +1,6 @@
 //! The web links of a page: its own, then the searches of `SEARCH_LINKS`.
 
-use crate::compile_config::SEARCH_LINKS;
+use crate::configs::SEARCH_LINKS;
 
 /// The searches for `name`, as (label, URL).
 pub fn searches(name: &str) -> Vec<(String, String)> {
