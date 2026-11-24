@@ -1,0 +1,15 @@
+# okabe-ito, built from the Okabe-Ito colours, the set made to stay apart
+# in every kind of colour blindness (Okabe & Ito, https://jfly.uni-koeln.de/color/;
+# Wong, Nature Methods 8:441, 2011). Black and white text and grey for
+# muted and selection are lore's choice.
+
+background = #000000
+text       = #ffffff
+muted      = #a0a0a0
+selection  = #1f3a55
+primary    = #56b4e9
+secondary  = #cc79a7
+accent     = #e69f00
+danger     = #d55e00
+code       = #009e73
+warning    = #f0e442

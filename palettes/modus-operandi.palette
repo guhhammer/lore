@@ -1,0 +1,13 @@
+# modus-operandi, from https://protesilaos.com/emacs/modus-themes (WCAG AAA:
+# every text colour at least 7:1 on its background)
+
+background = #ffffff
+text       = #000000
+muted      = #595959
+selection  = #c0deff
+primary    = #0031a9
+secondary  = #531ab6
+accent     = #3548cf
+danger     = #a60000
+code       = #005e8b
+warning    = #884900

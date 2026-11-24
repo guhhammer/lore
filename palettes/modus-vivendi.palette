@@ -1,0 +1,13 @@
+# modus-vivendi, from https://protesilaos.com/emacs/modus-themes (WCAG AAA:
+# every text colour at least 7:1 on its background)
+
+background = #000000
+text       = #ffffff
+muted      = #989898
+selection  = #2f447f
+primary    = #00bcff
+secondary  = #b6a0ff
+accent     = #79a8ff
+danger     = #ff5f59
+code       = #6ae4b9
+warning    = #fec43f

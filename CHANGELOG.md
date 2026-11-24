@@ -15,16 +15,21 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **Palettes for colour blindness and low vision:** `modus-vivendi`,
+  `modus-operandi` and their `-deuteranopia` and `-tritanopia` versions
+  (every colour at least 7:1, WCAG AAA), `github-dark-colorblind`,
+  `github-light-colorblind`, `github-dark-high-contrast`,
+  `github-light-high-contrast`, and `okabe-ito` (the colour set made to
+  stay apart in every kind of colour blindness). 33 palettes in all.
 - **8 more palettes:** `monokai`, `github-dark`, `github-light`,
   `everforest-dark`, `everforest-light`, `kanagawa`, `ayu-dark` and
   `ayu-light` (23 in all).
 - **Small windows:** the key bar wraps onto a second row (never more) when
   one is too narrow, the topics bar slides to keep the chosen topic in
   sight, and a window under 50×14 says its size and what lore needs.
-- **Copy code:** `c` on a language's page lists its code piece by piece
-  (the lines between blank lines; comments alone are left out), on a doc's
-  page its code blocks, and copies only the code: no line numbers, no
-  frame, no panel beside it.
+- **Copy a doc's code:** `c` on a doc's page lists its code blocks and
+  copies only the code, not the panel around it. On a language's page `c`
+  copies nothing and says so: its code is there to be typed by hand.
 - **The `+` screen scrolls** on a window too small for it: PgUp, PgDn, `w`
   and `s` scroll it, and choosing a setting with ↑↓ scrolls to it.
 - **`scripts/content/wikipedia.py`:** adds a Wikipedia link, last under
@@ -132,6 +137,12 @@ Everything since 0.1.0 is in it.
 
 ### Added
 
+- **Palettes for colour blindness and low vision:** `modus-vivendi`,
+  `modus-operandi` and their `-deuteranopia` and `-tritanopia` versions
+  (every colour at least 7:1, WCAG AAA), `github-dark-colorblind`,
+  `github-light-colorblind`, `github-dark-high-contrast`,
+  `github-light-high-contrast`, and `okabe-ito` (the colour set made to
+  stay apart in every kind of colour blindness). 33 palettes in all.
 - **8 more palettes:** `monokai`, `github-dark`, `github-light`,
   `everforest-dark`, `everforest-light`, `kanagawa`, `ayu-dark` and
   `ayu-light` (23 in all).
@@ -258,6 +269,12 @@ Everything since 0.1.0 is in it.
 
 ### Added
 
+- **Palettes for colour blindness and low vision:** `modus-vivendi`,
+  `modus-operandi` and their `-deuteranopia` and `-tritanopia` versions
+  (every colour at least 7:1, WCAG AAA), `github-dark-colorblind`,
+  `github-light-colorblind`, `github-dark-high-contrast`,
+  `github-light-high-contrast`, and `okabe-ito` (the colour set made to
+  stay apart in every kind of colour blindness). 33 palettes in all.
 - **8 more palettes:** `monokai`, `github-dark`, `github-light`,
   `everforest-dark`, `everforest-light`, `kanagawa`, `ayu-dark` and
   `ayu-light` (23 in all).

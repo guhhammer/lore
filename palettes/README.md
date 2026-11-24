@@ -7,6 +7,10 @@ then **Colours**: ↑↓ try them live, Enter keeps one.
 | --- | --- |
 | `terminal` | The default: your terminal's own colours. |
 | Dark | `ayu-dark`, `catppuccin-mocha`, `dracula`, `everforest-dark`, `github-dark`, `gruvbox-dark`, `kanagawa`, `monokai`, `nord`, `one-dark`, `rose-pine`, `solarized-dark`, `tokyo-night` |
+| Colour blind, red-green | `modus-vivendi-deuteranopia`, `modus-operandi-deuteranopia`, `github-dark-colorblind`, `github-light-colorblind` |
+| Colour blind, blue-yellow | `modus-vivendi-tritanopia`, `modus-operandi-tritanopia` |
+| Colour blind, any kind | `okabe-ito` |
+| Low vision, high contrast | `modus-vivendi`, `modus-operandi` (every colour at least 7:1), `github-dark-high-contrast`, `github-light-high-contrast` |
 | Light | `ayu-light`, `catppuccin-latte`, `everforest-light`, `github-light`, `gruvbox-light`, `one-light`, `rose-pine-dawn`, `solarized-light`, `tokyo-night-day` |
 
 Every `*.palette` here is built into lore, and `build.rs` checks it: a

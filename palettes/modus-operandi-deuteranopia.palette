@@ -1,0 +1,14 @@
+# modus-operandi-deuteranopia, from https://protesilaos.com/emacs/modus-themes
+# For red-green colour blindness (deuteranopia, protanopia): blues and
+# yellows, never red against green; danger is a dark orange. WCAG AAA.
+
+background = #ffffff
+text       = #000000
+muted      = #595959
+selection  = #c0deff
+primary    = #0000b0
+secondary  = #005e8b
+accent     = #3548cf
+danger     = #973300
+code       = #0031a9
+warning    = #695500

@@ -92,20 +92,28 @@ fn each_palette_keeps_its_primary_secondary_and_accent_colours_apart() {
 }
 
 #[test]
-fn there_are_thirteen_themes_with_at_most_two_variants_each() {
-    // a theme's variants share the name's first word: tokyo-night, tokyo-night-day
-    let mut count: HashMap<String, usize> = HashMap::new();
+fn there_are_fifteen_themes_with_at_most_two_variants_besides_their_accessible_ones() {
+    // a theme's variants share the name's first word: tokyo-night, tokyo-night-day;
+    // a version for colour blindness or low vision is not one more variant
+    let accessible = [
+        "-deuteranopia",
+        "-tritanopia",
+        "-colorblind",
+        "-high-contrast",
+    ];
+    let mut count: HashMap<String, Vec<String>> = HashMap::new();
     for palette in &built_in()[1..] {
-        let theme = palette
-            .name
-            .split('-')
-            .next()
-            .unwrap_or_default()
-            .to_owned();
-        *count.entry(theme).or_insert(0) += 1;
+        let base = accessible
+            .iter()
+            .fold(palette.name.clone(), |name, end| name.replace(end, ""));
+        let theme = base.split('-').next().unwrap_or_default().to_owned();
+        let variants = count.entry(theme).or_default();
+        if !variants.contains(&base) {
+            variants.push(base);
+        }
     }
-    assert_eq!(count.len(), 13, "{count:?}");
-    assert!(count.values().all(|&n| n <= 2), "{count:?}");
+    assert_eq!(count.len(), 15, "{count:?}");
+    assert!(count.values().all(|v| v.len() <= 2), "{count:?}");
 }
 
 #[test]

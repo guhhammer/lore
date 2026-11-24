@@ -24,8 +24,8 @@ saved in ~/.config/lore/config ($XDG_CONFIG_HOME/lore/config) for the next
 runs. LORE_PALETTE=NAME lore uses another one for one run. Your own
 palettes go in ~/.config/lore/palettes/NAME.palette (`man lore`, COLOURS).
 
-On a page, c copies one of its examples (a language's or a doc's code:
-a piece of it) to the clipboard, only the text, through the
+On a page, c copies one of its examples (a doc's code blocks too; a
+language's code is typed by hand) to the clipboard, only the text, through the
 terminal, so over ssh too (OSC 52: most terminals, tmux with set-clipboard).
 
 + shows what lore is, where it keeps things and what it found here.

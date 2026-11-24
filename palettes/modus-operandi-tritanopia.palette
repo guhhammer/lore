@@ -1,0 +1,15 @@
+# modus-operandi-tritanopia, from https://protesilaos.com/emacs/modus-themes
+# For blue-yellow colour blindness (tritanopia): reds, cyans and magentas,
+# never blue against yellow. WCAG AAA. Accent is the theme's cyan-warmer
+# (its own link colour is the cyan used for primary).
+
+background = #ffffff
+text       = #000000
+muted      = #595959
+selection  = #afdfef
+primary    = #005e8b
+secondary  = #8f0075
+accent     = #3f578f
+danger     = #b21100
+code       = #005f5f
+warning    = #721045

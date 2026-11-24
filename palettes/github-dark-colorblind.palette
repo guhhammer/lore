@@ -1,0 +1,15 @@
+# github-dark-colorblind, from GitHub's Primer colours
+# (https://primer.style/foundations/color), for red-green colour blindness
+# (protanopia, deuteranopia): danger is orange, success blue. Selection is
+# the one github-dark uses here.
+
+background = #0d1117
+text       = #f0f6fc
+muted      = #9198a1
+selection  = #30363d
+primary    = #4493f8
+secondary  = #ab7df8
+accent     = #79c0ff
+danger     = #f0883e
+code       = #58a6ff
+warning    = #d29922

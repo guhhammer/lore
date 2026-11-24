@@ -1,0 +1,14 @@
+# github-light-colorblind, from GitHub's Primer colours
+# (https://primer.style/foundations/color), for red-green colour blindness
+# (protanopia, deuteranopia): danger is orange, success blue.
+
+background = #ffffff
+text       = #1f2328
+muted      = #59636e
+selection  = #ddf4ff
+primary    = #0969da
+secondary  = #8250df
+accent     = #0550ae
+danger     = #bc4c00
+code       = #0a3069
+warning    = #9a6700

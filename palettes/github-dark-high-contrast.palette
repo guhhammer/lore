@@ -1,0 +1,14 @@
+# github-dark-high-contrast, from GitHub's Primer colours
+# (https://primer.style/foundations/color), for low vision.
+# Selection is Primer's neutral-muted, made opaque.
+
+background = #010409
+text       = #ffffff
+muted      = #b7bdc8
+selection  = #212830
+primary    = #74b9ff
+secondary  = #d3abff
+accent     = #71b7ff
+danger     = #ff9492
+code       = #2bd853
+warning    = #f0b72f

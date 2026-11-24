@@ -1,0 +1,13 @@
+# github-light-high-contrast, from GitHub's Primer colours
+# (https://primer.style/foundations/color), for low vision.
+
+background = #ffffff
+text       = #010409
+muted      = #454c54
+selection  = #dff7ff
+primary    = #023b95
+secondary  = #5e2bb4
+accent     = #0349b4
+danger     = #960d1e
+code       = #04591f
+warning    = #603700

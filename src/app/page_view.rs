@@ -2,7 +2,9 @@
 //! and copying from it (`c`).
 
 use crate::commands::{Command, Kind};
-use crate::configs::{COPIED, COPY_MORE_LINES, COPY_ONE_MORE_LINE, NOTHING_TO_COPY, RECENT_MAX};
+use crate::configs::{
+    COPIED, COPY_MORE_LINES, COPY_ONE_MORE_LINE, LANGUAGE_NO_COPY, NOTHING_TO_COPY, RECENT_MAX,
+};
 use crate::info::content;
 use crate::info::docs;
 use crate::info::page::{self};
@@ -50,15 +52,16 @@ impl App {
             .unwrap_or_default()
     }
 
-    /// What `c` can copy from the page on show: a language's code piece by
-    /// piece, a doc's code blocks, else the page's examples. Only the text,
-    /// never the line numbers, frame or panel around it.
+    /// What `c` can copy from the page on show: a doc's code blocks, else
+    /// the page's examples, only their text. A language's page has nothing
+    /// to copy: its code is there to be typed by hand, which is how it is
+    /// learnt.
     pub fn copyables(&self) -> Vec<String> {
         let Some(page) = &self.page else {
             return Vec::new();
         };
         match page.command.kind {
-            Kind::Language => crate::info::languages::snippets(&page.command.name),
+            Kind::Language => Vec::new(),
             Kind::DocEntry => page
                 .command
                 .runs
@@ -76,7 +79,13 @@ impl App {
             return;
         }
         self.copies = self.copyables();
-        if self.copies.is_empty() {
+        let language = self
+            .page
+            .as_ref()
+            .is_some_and(|p| p.command.kind == Kind::Language);
+        if language {
+            self.note = Some(LANGUAGE_NO_COPY.to_owned());
+        } else if self.copies.is_empty() {
             self.note = Some(NOTHING_TO_COPY.to_owned());
         } else {
             self.example = 0;

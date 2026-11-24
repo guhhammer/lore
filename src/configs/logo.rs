@@ -141,6 +141,9 @@ pub const COPY_KEY: char = 'c';
 pub const COPY_TITLE: &str = " copy ";
 pub const COPIED: &str = "copied: {text}";
 pub const NOTHING_TO_COPY: &str = "this page has nothing to copy";
+/// On a language's page, `c` copies nothing: its code is learnt by typing it.
+pub const LANGUAGE_NO_COPY: &str =
+    "nothing to copy here: type the code by hand, that is how it is learnt";
 
 /// After a piece's first line in the copy list: how many lines follow.
 pub const COPY_MORE_LINES: &str = "  (+{n} lines)";

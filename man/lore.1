@@ -244,9 +244,10 @@ Back to the list, or quit when the page was opened as
 .IR NAME .
 .TP
 .B c
-Copy one of the page's examples (on a language's page, a piece of its code;
-on a doc's page, one of its code blocks), only its text, never the line
-numbers or the frame around it: a list opens over the page, Up and
+Copy one of the page's examples (on a doc's page, one of its code blocks),
+only its text, never the frame around it. A language's page has nothing to
+copy: its code is there to be typed by hand, which is how it is learnt.
+For the others, a list opens over the page, Up and
 Down choose, Enter copies (the key bar says what), Esc closes. lore asks
 the terminal to copy it (the OSC 52 escape), so it works over ssh and with
 no clipboard tool installed; most terminals do it, tmux with
@@ -414,8 +415,10 @@ Built in:
 .B terminal
 (the default, the terminal's own colours), Catppuccin, Dracula, Nord,
 Gruvbox, Solarized, Tokyo Night, One, Ros\('e Pine, Monokai, GitHub,
-Everforest, Kanagawa and Ayu, most in a dark and a
-light variant. Every palette but
+Everforest, Kanagawa and Ayu, most in a dark and a light variant; and, for
+colour blindness and low vision, Modus (vivendi and operandi, every colour at
+least 7:1, with deuteranopia and tritanopia versions), GitHub colour-blind
+and high-contrast, and Okabe-Ito. Every palette but
 .B terminal
 paints its own background. An unknown name gives the default; case does
 not matter.

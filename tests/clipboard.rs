@@ -3,7 +3,7 @@
 
 use lore_tui::app::{App, Mode, Page};
 use lore_tui::commands::{Command, Kind};
-use lore_tui::configs::COPY_KEY;
+use lore_tui::configs::{COPY_KEY, LANGUAGE_NO_COPY};
 use lore_tui::info::content::parse;
 use lore_tui::info::page::Facts;
 use lore_tui::interface::input::{Action, action_for};
@@ -90,24 +90,7 @@ fn a_page_with_no_examples_says_so_instead_of_opening_the_list() {
 }
 
 #[test]
-fn a_language_page_offers_its_code_piece_by_piece_without_the_frame() {
-    let pieces = lore_tui::info::languages::snippets("Python");
-    assert!(pieces.len() > 10, "{}", pieces.len());
-    for piece in &pieces {
-        // the code as typed: no line numbers, no frame, no blank edges
-        assert!(!piece.contains('│'), "{piece}");
-        assert!(!piece.starts_with('\n') && !piece.ends_with('\n'));
-        // a piece of comments only is left out
-        assert!(
-            piece.lines().any(|l| !l.trim_start().starts_with('#')),
-            "{piece}"
-        );
-    }
-    assert!(pieces.iter().any(|p| p.contains("print(")));
-}
-
-#[test]
-fn on_a_language_page_c_lists_its_code_and_copies_one_piece() {
+fn on_a_language_page_c_copies_nothing_and_says_to_type_the_code() {
     let python = Command::new("Python", Kind::Language);
     let mut app = App::new(vec![python.clone()]);
     app.mode = Mode::Info;
@@ -118,13 +101,9 @@ fn on_a_language_page_c_lists_its_code_and_copies_one_piece() {
         lines: Vec::new(),
     });
     app.open_copy();
-    assert_eq!(app.mode, Mode::Copy);
-    let chosen = app.chosen_example().expect("a piece");
-    assert_eq!(chosen, app.copies[0]);
-    app.close_copy(Some(&chosen));
-    let note = app.note.clone().unwrap_or_default();
-    assert!(note.starts_with("copied: "), "{note}");
-    assert!(!note.contains('\n'), "{note}");
+    assert_eq!(app.mode, Mode::Info, "no copy list opens");
+    assert!(app.copies.is_empty());
+    assert_eq!(app.note.as_deref(), Some(LANGUAGE_NO_COPY));
 }
 
 #[test]
