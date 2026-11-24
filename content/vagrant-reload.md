@@ -10,3 +10,4 @@ Equivalent of running `halt` followed by `up`. A reload is usually required for 
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/reload
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-reload
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

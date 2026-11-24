@@ -18,3 +18,4 @@ version-control, files, security
 ## Links
 - More information: https://git.zx2c4.com/password-store/about/
 - tldr page: https://tldr.inbrowser.app/pages/common/pass
+- Wikipedia: https://en.wikipedia.org/wiki/Pass_(software)

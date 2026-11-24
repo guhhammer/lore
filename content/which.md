@@ -16,3 +16,4 @@ files, users, shell
 ## Links
 - More information: https://manned.org/which
 - tldr page: https://tldr.inbrowser.app/pages/common/which
+- Wikipedia: https://en.wikipedia.org/wiki/Which_(command)

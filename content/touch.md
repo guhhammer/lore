@@ -16,3 +16,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/touch
+- Wikipedia: https://en.wikipedia.org/wiki/Touch_(command)

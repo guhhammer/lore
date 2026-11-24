@@ -18,3 +18,4 @@ files
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_stack/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-stack
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

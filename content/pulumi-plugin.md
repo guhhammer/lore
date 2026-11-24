@@ -12,3 +12,4 @@ Manage language and resource provider plugins manually. Other commands manage th
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_plugin/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-plugin
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

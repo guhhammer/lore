@@ -13,3 +13,4 @@ network, packages, files
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_schema/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-schema
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

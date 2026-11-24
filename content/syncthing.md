@@ -18,3 +18,4 @@ files, network, hardware
 ## Links
 - More information: https://docs.syncthing.net/users/syncthing.html
 - tldr page: https://tldr.inbrowser.app/pages/common/syncthing
+- Wikipedia: https://en.wikipedia.org/wiki/Syncthing

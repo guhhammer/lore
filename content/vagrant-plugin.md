@@ -16,3 +16,4 @@ packages
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/plugin
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-plugin
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

@@ -18,3 +18,4 @@ files, network, desktop
 ## Links
 - More information: https://vivaldi.com/
 - tldr page: https://tldr.inbrowser.app/pages/common/vivaldi
+- Wikipedia: https://en.wikipedia.org/wiki/Vivaldi_(web_browser)

@@ -15,3 +15,4 @@ shell
 ## Links
 - More information: https://manned.org/time
 - tldr page: https://tldr.inbrowser.app/pages/common/time
+- Wikipedia: https://en.wikipedia.org/wiki/Time_(Unix)

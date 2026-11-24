@@ -13,3 +13,4 @@ text, files
 ## Links
 - More information: https://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html#idm47077139535968
 - tldr page: https://tldr.inbrowser.app/pages/common/xml-list
+- Wikipedia: https://en.wikipedia.org/wiki/XML

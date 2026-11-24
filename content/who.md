@@ -20,3 +20,4 @@ desktop, processes, system
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/who-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/who
+- Wikipedia: https://en.wikipedia.org/wiki/Who_(Unix)

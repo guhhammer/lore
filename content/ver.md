@@ -13,3 +13,4 @@ desktop, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/ver
+- Wikipedia: https://en.wikipedia.org/wiki/Ver_(command)

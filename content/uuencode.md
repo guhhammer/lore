@@ -13,3 +13,4 @@ files
 ## Links
 - More information: https://manned.org/uuencode
 - tldr page: https://tldr.inbrowser.app/pages/common/uuencode
+- Wikipedia: https://en.wikipedia.org/wiki/Uuencoding

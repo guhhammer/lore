@@ -21,3 +21,4 @@ files, network, archives
 ## Links
 - More information: https://www.gnu.org/software/parallel/man.html
 - tldr page: https://tldr.inbrowser.app/pages/common/parallel
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_parallel

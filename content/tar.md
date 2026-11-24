@@ -15,3 +15,4 @@ archives
 
 ## Links
 - GNU manual: https://www.gnu.org/software/tar/manual/tar.html
+- Wikipedia: https://en.wikipedia.org/wiki/Tar_(computing)

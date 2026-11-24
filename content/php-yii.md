@@ -13,3 +13,4 @@ network, text
 ## Links
 - More information: https://www.yiiframework.com/doc/guide/2.0/en/tutorial-console
 - tldr page: https://tldr.inbrowser.app/pages/common/php-yii
+- Wikipedia: https://en.wikipedia.org/wiki/PHP

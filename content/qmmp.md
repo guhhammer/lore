@@ -22,3 +22,4 @@ media, network, disks
 ## Links
 - More information: https://manned.org/qmmp
 - tldr page: https://tldr.inbrowser.app/pages/common/qmmp
+- Wikipedia: https://en.wikipedia.org/wiki/Qmmp

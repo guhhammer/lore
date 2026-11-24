@@ -21,3 +21,4 @@ desktop, hardware, files
 ## Links
 - More information: https://github.com/Genymobile/scrcpy
 - tldr page: https://tldr.inbrowser.app/pages/common/scrcpy
+- Wikipedia: https://en.wikipedia.org/wiki/Scrcpy

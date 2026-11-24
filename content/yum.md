@@ -17,3 +17,4 @@ packages
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/yum
+- Wikipedia: https://en.wikipedia.org/wiki/Yum_(software)

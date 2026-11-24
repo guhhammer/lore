@@ -16,3 +16,4 @@ packages, network, users
 ## Links
 - More information: https://en.opensuse.org/SDB:Zypper_manual
 - tldr page: https://tldr.inbrowser.app/pages/linux/zypper
+- Wikipedia: https://en.wikipedia.org/wiki/ZYpp

@@ -14,3 +14,4 @@ network
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/ssh
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-ssh
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

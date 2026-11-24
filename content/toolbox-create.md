@@ -15,3 +15,4 @@ containers, media
 ## Links
 - More information: https://manned.org/toolbox-create
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox-create
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

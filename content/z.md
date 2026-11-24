@@ -17,3 +17,4 @@ text, files
 ## Links
 - More information: https://github.com/rupa/z
 - tldr page: https://tldr.inbrowser.app/pages/common/z
+- Wikipedia: https://en.wikipedia.org/wiki/Z_notation

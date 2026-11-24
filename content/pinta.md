@@ -12,3 +12,4 @@ containers, media
 ## Links
 - More information: https://www.pinta-project.com/user-guide/overview/
 - tldr page: https://tldr.inbrowser.app/pages/common/pinta
+- Wikipedia: https://en.wikipedia.org/wiki/Pinta_(software)

@@ -21,3 +21,4 @@ danger, disks
 ## Links
 - More information: https://www.gnu.org/software/parted/manual/parted.html#Invoking-Parted
 - tldr page: https://tldr.inbrowser.app/pages/linux/parted
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Parted

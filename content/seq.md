@@ -17,3 +17,4 @@ documents
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/seq-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/seq
+- Wikipedia: https://en.wikipedia.org/wiki/Seq_(Unix)

@@ -13,3 +13,4 @@ databases, desktop
 ## Links
 - More information: https://www.x.org/releases/current/doc/man/man1/xrdb.1.xhtml
 - tldr page: https://tldr.inbrowser.app/pages/linux/xrdb
+- Wikipedia: https://en.wikipedia.org/wiki/Xrdb

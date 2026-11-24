@@ -17,3 +17,4 @@ network, users, files
 ## Links
 - More information: https://manned.org/squid
 - tldr page: https://tldr.inbrowser.app/pages/common/squid
+- Wikipedia: https://en.wikipedia.org/wiki/Squid_(software)

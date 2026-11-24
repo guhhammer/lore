@@ -16,3 +16,4 @@ media, files
 ## Links
 - More information: https://manned.org/sox
 - tldr page: https://tldr.inbrowser.app/pages/common/sox
+- Wikipedia: https://en.wikipedia.org/wiki/SoX

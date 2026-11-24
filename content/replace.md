@@ -15,3 +15,4 @@ text, windows
 
 ## Links
 - Documentation: https://mariadb.com/docs/
+- Wikipedia: https://en.wikipedia.org/wiki/Replace_(command)

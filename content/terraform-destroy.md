@@ -16,3 +16,4 @@ files
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/destroy
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-destroy
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

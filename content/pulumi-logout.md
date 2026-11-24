@@ -14,3 +14,4 @@ monitoring, cloud, network
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_logout/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-logout
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

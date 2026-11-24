@@ -12,3 +12,4 @@ desktop
 ## Links
 - More information: https://manned.org/xserver-xephyr
 - tldr page: https://tldr.inbrowser.app/pages/common/xephyr
+- Wikipedia: https://en.wikipedia.org/wiki/Xephyr

@@ -16,3 +16,4 @@ packages, development, files
 ## Links
 - More information: https://yarnpkg.com/cli
 - tldr page: https://tldr.inbrowser.app/pages/common/yarn
+- Wikipedia: https://en.wikipedia.org/wiki/Yarn_(package_manager)

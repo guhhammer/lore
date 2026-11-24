@@ -15,3 +15,4 @@ media
 ## Links
 - More information: https://manned.org/pastel
 - tldr page: https://tldr.inbrowser.app/pages/common/pastel
+- Wikipedia: https://en.wikipedia.org/wiki/Pastel_(programming_language)

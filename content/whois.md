@@ -13,3 +13,4 @@ network
 ## Links
 - More information: https://manned.org/whois
 - tldr page: https://tldr.inbrowser.app/pages/common/whois
+- Wikipedia: https://en.wikipedia.org/wiki/WHOIS

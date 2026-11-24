@@ -16,3 +16,4 @@ files, development
 ## Links
 - More information: https://book.rada.re/first_steps/commandline_flags.html
 - tldr page: https://tldr.inbrowser.app/pages/common/radare2
+- Wikipedia: https://en.wikipedia.org/wiki/Radare2

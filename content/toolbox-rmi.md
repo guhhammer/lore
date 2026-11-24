@@ -16,3 +16,4 @@ containers, media
 ## Links
 - More information: https://manned.org/toolbox-rmi
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox-rmi
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

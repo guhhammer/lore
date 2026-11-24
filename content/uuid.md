@@ -20,3 +20,4 @@ network, files
 ## Links
 - More information: https://manned.org/uuid
 - tldr page: https://tldr.inbrowser.app/pages/linux/uuid
+- Wikipedia: https://en.wikipedia.org/wiki/Universally_unique_identifier

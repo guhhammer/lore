@@ -14,3 +14,4 @@ documents, users
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_whoami/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-whoami
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

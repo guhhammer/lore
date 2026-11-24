@@ -15,3 +15,4 @@ shell, desktop, media
 ## Links
 - More information: https://manned.org/xterm
 - tldr page: https://tldr.inbrowser.app/pages/linux/xterm
+- Wikipedia: https://en.wikipedia.org/wiki/Xterm

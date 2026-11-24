@@ -16,3 +16,4 @@ version-control, files, packages
 ## Links
 - More information: https://svnbook.red-bean.com/en/1.7/svn-book.html#svn.ref.svn
 - tldr page: https://tldr.inbrowser.app/pages/common/svn
+- Wikipedia: https://en.wikipedia.org/wiki/Apache_Subversion

@@ -18,3 +18,4 @@ files, development
 ## Links
 - More information: https://docs.vlang.io/getting-started.html
 - tldr page: https://tldr.inbrowser.app/pages/common/v
+- Wikipedia: https://en.wikipedia.org/wiki/V_(programming_language)

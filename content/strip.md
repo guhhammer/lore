@@ -13,3 +13,4 @@ files
 ## Links
 - More information: https://manned.org/strip
 - tldr page: https://tldr.inbrowser.app/pages/linux/strip
+- Wikipedia: https://en.wikipedia.org/wiki/Strip_(Unix)

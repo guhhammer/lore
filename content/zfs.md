@@ -16,3 +16,4 @@ disks
 ## Links
 - More information: https://manned.org/zfs
 - tldr page: https://tldr.inbrowser.app/pages/common/zfs
+- Wikipedia: https://en.wikipedia.org/wiki/ZFS

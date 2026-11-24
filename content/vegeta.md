@@ -19,3 +19,4 @@ network, monitoring, development
 ## Links
 - More information: https://github.com/tsenart/vegeta#usage-manual
 - tldr page: https://tldr.inbrowser.app/pages/common/vegeta
+- Wikipedia: https://en.wikipedia.org/wiki/Vegeta_(software)

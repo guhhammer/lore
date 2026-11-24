@@ -16,3 +16,4 @@ users, shell
 ## Links
 - More information: https://manned.org/write.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/write
+- Wikipedia: https://en.wikipedia.org/wiki/Write_(Unix)

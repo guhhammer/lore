@@ -23,3 +23,4 @@ danger, files
 
 ## Links
 - GNU manual: https://www.gnu.org/software/coreutils/rm
+- Wikipedia: https://en.wikipedia.org/wiki/Rm_(Unix)

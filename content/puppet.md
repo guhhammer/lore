@@ -17,3 +17,4 @@ files, desktop, documents
 ## Links
 - More information: https://github.com/puppetlabs/puppet/blob/main/references/man/overview.md
 - tldr page: https://tldr.inbrowser.app/pages/common/puppet
+- Wikipedia: https://en.wikipedia.org/wiki/Puppet_(software)

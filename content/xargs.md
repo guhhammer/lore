@@ -21,3 +21,4 @@ shell
 ## Links
 - More information: https://www.gnu.org/software/findutils/manual/find.html#xargs-options
 - tldr page: https://tldr.inbrowser.app/pages/common/xargs
+- Wikipedia: https://en.wikipedia.org/wiki/Xargs

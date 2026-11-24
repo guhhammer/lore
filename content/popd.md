@@ -18,3 +18,4 @@ files, shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-popd
 - tldr page: https://tldr.inbrowser.app/pages/common/popd
+- Wikipedia: https://en.wikipedia.org/wiki/Pushd_and_popd

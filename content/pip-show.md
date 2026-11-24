@@ -13,3 +13,4 @@ packages
 ## Links
 - More information: https://pip.pypa.io/en/stable/cli/pip_show/
 - tldr page: https://tldr.inbrowser.app/pages/common/pip-show
+- Wikipedia: https://en.wikipedia.org/wiki/Pip_(package_manager)

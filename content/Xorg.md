@@ -11,3 +11,4 @@ X11R7 X server.
 
 ## Links
 - Documentation: https://www.x.org
+- Wikipedia: https://en.wikipedia.org/wiki/X.Org_Server

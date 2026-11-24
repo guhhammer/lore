@@ -14,3 +14,4 @@ files, network
 ## Links
 - More information: https://www.gnu.org/software/inetutils/manual/inetutils.html#rcp-invocation
 - tldr page: https://tldr.inbrowser.app/pages/linux/rcp
+- Wikipedia: https://en.wikipedia.org/wiki/Berkeley_r-commands

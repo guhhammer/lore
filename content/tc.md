@@ -17,3 +17,4 @@ users, network, packages
 ## Links
 - More information: https://manned.org/tc
 - tldr page: https://tldr.inbrowser.app/pages/linux/tc
+- Wikipedia: https://en.wikipedia.org/wiki/Tc_(Linux)

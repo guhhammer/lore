@@ -16,3 +16,4 @@ desktop, files
 ## Links
 - More information: https://manned.org/readelf
 - tldr page: https://tldr.inbrowser.app/pages/linux/readelf
+- Wikipedia: https://en.wikipedia.org/wiki/Readelf

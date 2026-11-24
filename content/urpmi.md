@@ -23,3 +23,4 @@ packages, network, users
 ## Links
 - More information: https://man.linuxreviews.org/man8/urpmi.8.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/urpmi
+- Wikipedia: https://en.wikipedia.org/wiki/Urpmi

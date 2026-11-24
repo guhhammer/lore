@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://rdiff-backup.net/rdiff-backup.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/rdiff-backup
+- Wikipedia: https://en.wikipedia.org/wiki/Rdiff-backup

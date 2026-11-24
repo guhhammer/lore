@@ -22,3 +22,4 @@ network
 ## Links
 - More information: https://www.gnu.org/software/wget/manual/wget.html
 - tldr page: https://tldr.inbrowser.app/pages/common/wget
+- Wikipedia: https://en.wikipedia.org/wiki/Wget

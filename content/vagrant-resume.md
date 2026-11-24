@@ -10,3 +10,4 @@ Resume a Vagrant managed machine that was previously suspended.
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/resume
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-resume
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

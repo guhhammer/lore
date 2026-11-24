@@ -20,3 +20,4 @@ files
 ## Links
 - More information: https://landley.net/toybox/
 - tldr page: https://tldr.inbrowser.app/pages/linux/toybox
+- Wikipedia: https://en.wikipedia.org/wiki/Toybox

@@ -13,3 +13,4 @@ documents, files
 ## Links
 - More information: https://help.softmaker.com/planmaker2026/en/index.html
 - tldr page: https://tldr.inbrowser.app/pages/common/planmaker
+- Wikipedia: https://en.wikipedia.org/wiki/PlanMaker

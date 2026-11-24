@@ -17,3 +17,4 @@ desktop, hardware
 ## Links
 - More information: https://www.x.org/releases/current/doc/man/man1/xkill.1.xhtml
 - tldr page: https://tldr.inbrowser.app/pages/common/xkill
+- Wikipedia: https://en.wikipedia.org/wiki/Xkill

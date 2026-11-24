@@ -16,3 +16,4 @@ files, text, databases
 ## Links
 - More information: https://harelba.github.io/q/
 - tldr page: https://tldr.inbrowser.app/pages/common/q
+- Wikipedia: https://en.wikipedia.org/wiki/Q_(software)

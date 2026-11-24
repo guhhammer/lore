@@ -12,3 +12,4 @@ files
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/sum-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/sum
+- Wikipedia: https://en.wikipedia.org/wiki/Sum_(Unix)

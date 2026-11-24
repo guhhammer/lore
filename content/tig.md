@@ -22,3 +22,4 @@ version-control, files
 ## Links
 - More information: https://jonas.github.io/tig/doc/manual.html
 - tldr page: https://tldr.inbrowser.app/pages/common/tig
+- Wikipedia: https://en.wikipedia.org/wiki/Tig_(software)

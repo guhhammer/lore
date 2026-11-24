@@ -16,3 +16,4 @@ files, development
 ## Links
 - More information: https://manned.org/yacc.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/yacc
+- Wikipedia: https://en.wikipedia.org/wiki/Yacc

@@ -15,3 +15,4 @@ files, containers, media
 ## Links
 - More information: https://github.com/tesseract-ocr/tesseract/blob/main/doc/tesseract.1.asc
 - tldr page: https://tldr.inbrowser.app/pages/common/tesseract
+- Wikipedia: https://en.wikipedia.org/wiki/Tesseract_(software)

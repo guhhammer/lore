@@ -11,3 +11,4 @@ network
 ## Links
 - More information: https://manned.org/tcpkill
 - tldr page: https://tldr.inbrowser.app/pages/linux/tcpkill
+- Wikipedia: https://en.wikipedia.org/wiki/Tcpkill

@@ -18,3 +18,4 @@ network, files
 ## Links
 - More information: https://download.samba.org/pub/rsync/rsync.1
 - tldr page: https://tldr.inbrowser.app/pages/common/rsync
+- Wikipedia: https://en.wikipedia.org/wiki/Rsync

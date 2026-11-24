@@ -11,3 +11,4 @@ Format configuration according to Terraform language style conventions.
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/fmt
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-fmt
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

@@ -14,3 +14,4 @@ users, files
 ## Links
 - More information: https://manned.org/wall
 - tldr page: https://tldr.inbrowser.app/pages/linux/wall
+- Wikipedia: https://en.wikipedia.org/wiki/Wall_(Unix)

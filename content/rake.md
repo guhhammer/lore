@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://ruby.github.io/rake/
 - tldr page: https://tldr.inbrowser.app/pages/common/rake
+- Wikipedia: https://en.wikipedia.org/wiki/Rake_(software)

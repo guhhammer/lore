@@ -16,3 +16,4 @@ files, packages, security
 ## Links
 - More information: https://restic.readthedocs.io/en/stable/manual_rest.html#usage-help
 - tldr page: https://tldr.inbrowser.app/pages/common/restic
+- Wikipedia: https://en.wikipedia.org/wiki/Restic

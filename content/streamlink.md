@@ -18,3 +18,4 @@ media, files, archives
 ## Links
 - More information: https://streamlink.github.io/cli.html#command-line-usage
 - tldr page: https://tldr.inbrowser.app/pages/common/streamlink
+- Wikipedia: https://en.wikipedia.org/wiki/Streamlink

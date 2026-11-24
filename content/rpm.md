@@ -18,3 +18,4 @@ packages, network, files
 ## Links
 - More information: https://rpm-software-management.github.io/rpm/man/rpm.8
 - tldr page: https://tldr.inbrowser.app/pages/linux/rpm
+- Wikipedia: https://en.wikipedia.org/wiki/RPM_Package_Manager

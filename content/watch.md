@@ -16,3 +16,4 @@ monitoring, shell
 ## Links
 - More information: https://manned.org/watch
 - tldr page: https://tldr.inbrowser.app/pages/common/watch
+- Wikipedia: https://en.wikipedia.org/wiki/Watch_(command)

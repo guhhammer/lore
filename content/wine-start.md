@@ -18,3 +18,4 @@ files, documents
 ## Links
 - More information: https://gitlab.winehq.org/wine/wine/-/wikis/Commands
 - tldr page: https://tldr.inbrowser.app/pages/linux/wine-start
+- Wikipedia: https://en.wikipedia.org/wiki/Wine_(software)

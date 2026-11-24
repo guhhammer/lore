@@ -15,3 +15,4 @@ hardware, monitoring
 ## Links
 - More information: https://upower.freedesktop.org/docs/upower.1.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/upower
+- Wikipedia: https://en.wikipedia.org/wiki/UPower

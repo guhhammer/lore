@@ -14,3 +14,4 @@ media, files, containers
 ## Links
 - More information: https://manned.org/pdfimages
 - tldr page: https://tldr.inbrowser.app/pages/common/pdfimages
+- Wikipedia: https://en.wikipedia.org/wiki/Pdfimages

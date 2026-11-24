@@ -17,3 +17,4 @@ development, files, packages
 ## Links
 - More information: https://manned.org/pypy
 - tldr page: https://tldr.inbrowser.app/pages/common/pypy
+- Wikipedia: https://en.wikipedia.org/wiki/PyPy

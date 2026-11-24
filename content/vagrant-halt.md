@@ -16,3 +16,4 @@ Shut down the running machine Vagrant is managing.
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/halt
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-halt
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

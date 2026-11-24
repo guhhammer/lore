@@ -20,3 +20,4 @@ files, network
 ## Links
 - More information: https://github.com/sherlock-project/sherlock
 - tldr page: https://tldr.inbrowser.app/pages/common/sherlock
+- Wikipedia: https://en.wikipedia.org/wiki/Sherlock_(software)

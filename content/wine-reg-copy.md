@@ -14,3 +14,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/wine-reg-copy
+- Wikipedia: https://en.wikipedia.org/wiki/Wine_(software)

@@ -20,3 +20,4 @@ development, files
 ## Links
 - More information: https://manned.org/raku
 - tldr page: https://tldr.inbrowser.app/pages/common/raku
+- Wikipedia: https://en.wikipedia.org/wiki/Raku_(programming_language)

@@ -17,3 +17,4 @@ users
 ## Links
 - More information: https://manned.org/su
 - tldr page: https://tldr.inbrowser.app/pages/linux/su
+- Wikipedia: https://en.wikipedia.org/wiki/Su_(Unix)

@@ -15,3 +15,4 @@ monitoring, hardware
 ## Links
 - More information: https://github.com/akopytov/sysbench#usage
 - tldr page: https://tldr.inbrowser.app/pages/common/sysbench
+- Wikipedia: https://en.wikipedia.org/wiki/Sysbench

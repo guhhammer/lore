@@ -13,3 +13,4 @@ containers, media
 ## Links
 - More information: https://manned.org/toolbox-list
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox-list
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

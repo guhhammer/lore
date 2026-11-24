@@ -19,3 +19,4 @@ files, desktop
 ## Links
 - More information: https://docs.xfce.org/xfce/thunar/start
 - tldr page: https://tldr.inbrowser.app/pages/linux/thunar
+- Wikipedia: https://en.wikipedia.org/wiki/Thunar

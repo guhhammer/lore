@@ -19,3 +19,4 @@ containers, media
 ## Links
 - More information: https://docs.podman.io/en/latest/markdown/podman-image.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/podman-image
+- Wikipedia: https://en.wikipedia.org/wiki/Podman

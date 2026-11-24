@@ -18,3 +18,4 @@ network, users, files
 ## Links
 - More information: https://www.tcpdump.org/manpages/tcpdump.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/tcpdump
+- Wikipedia: https://en.wikipedia.org/wiki/Tcpdump

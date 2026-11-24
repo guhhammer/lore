@@ -18,3 +18,4 @@ development
 ## Links
 - More information: https://docs.python.org/using/cmdline.html
 - tldr page: https://tldr.inbrowser.app/pages/common/python
+- Wikipedia: https://en.wikipedia.org/wiki/Python_(programming_language)

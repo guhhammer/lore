@@ -15,3 +15,4 @@ packages, network
 ## Links
 - More information: https://pip.pypa.io/en/stable/cli/pip_index/
 - tldr page: https://tldr.inbrowser.app/pages/common/pip-index
+- Wikipedia: https://en.wikipedia.org/wiki/Pip_(package_manager)

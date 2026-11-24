@@ -11,3 +11,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/r
+- Wikipedia: https://en.wikipedia.org/wiki/R_(programming_language)

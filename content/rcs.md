@@ -21,3 +21,4 @@ files
 ## Links
 - More information: https://manned.org/rcs
 - tldr page: https://tldr.inbrowser.app/pages/common/rcs
+- Wikipedia: https://en.wikipedia.org/wiki/Revision_Control_System

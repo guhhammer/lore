@@ -16,3 +16,4 @@ users
 ## Links
 - More information: https://www.postfix.org/postfix.1.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/postfix
+- Wikipedia: https://en.wikipedia.org/wiki/Postfix_(software)

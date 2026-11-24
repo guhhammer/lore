@@ -14,3 +14,4 @@ monitoring
 ## Links
 - More information: https://valgrind.org/docs/manual/manual-core.html#manual-core.options
 - tldr page: https://tldr.inbrowser.app/pages/common/valgrind
+- Wikipedia: https://en.wikipedia.org/wiki/Valgrind

@@ -13,3 +13,4 @@ network, development, system
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/get
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-get
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

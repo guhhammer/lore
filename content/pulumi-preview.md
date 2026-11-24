@@ -12,3 +12,4 @@ Show a preview of updates to a stack's resources.
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_preview/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-preview
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

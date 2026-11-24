@@ -13,3 +13,4 @@ databases
 ## Links
 - More information: https://manned.org/route
 - tldr page: https://tldr.inbrowser.app/pages/common/route
+- Wikipedia: https://en.wikipedia.org/wiki/Route_(command)

@@ -21,3 +21,4 @@ text, files
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/tail-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/tail
+- Wikipedia: https://en.wikipedia.org/wiki/Tail_(Unix)

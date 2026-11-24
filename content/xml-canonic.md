@@ -14,3 +14,4 @@ text, files
 ## Links
 - More information: https://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html#idm47077139560880
 - tldr page: https://tldr.inbrowser.app/pages/common/xml-canonic
+- Wikipedia: https://en.wikipedia.org/wiki/XML

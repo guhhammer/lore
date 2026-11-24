@@ -18,3 +18,4 @@ files, cloud, system
 ## Links
 - More information: https://rclone.org/commands/rclone/
 - tldr page: https://tldr.inbrowser.app/pages/common/rclone
+- Wikipedia: https://en.wikipedia.org/wiki/Rclone

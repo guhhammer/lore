@@ -16,3 +16,4 @@ desktop
 ## Links
 - More information: https://manned.org/wmctrl
 - tldr page: https://tldr.inbrowser.app/pages/linux/wmctrl
+- Wikipedia: https://en.wikipedia.org/wiki/Wmctrl

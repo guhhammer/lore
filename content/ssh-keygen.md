@@ -21,3 +21,4 @@ network, users, files
 ## Links
 - More information: https://man.openbsd.org/ssh-keygen
 - tldr page: https://tldr.inbrowser.app/pages/common/ssh-keygen
+- Wikipedia: https://en.wikipedia.org/wiki/Ssh-keygen

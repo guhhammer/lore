@@ -13,3 +13,4 @@ files, documents, shell
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/pwd-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/pwd
+- Wikipedia: https://en.wikipedia.org/wiki/Pwd

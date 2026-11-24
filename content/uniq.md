@@ -21,3 +21,4 @@ text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/uniq-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/uniq
+- Wikipedia: https://en.wikipedia.org/wiki/Uniq

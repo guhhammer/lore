@@ -18,3 +18,4 @@ packages, network, text
 ## Links
 - More information: https://pnpm.io/pnpm-cli
 - tldr page: https://tldr.inbrowser.app/pages/common/pnpm
+- Wikipedia: https://en.wikipedia.org/wiki/Pnpm

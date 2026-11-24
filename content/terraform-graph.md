@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/graph
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-graph
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

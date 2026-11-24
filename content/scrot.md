@@ -17,3 +17,4 @@ media, desktop
 ## Links
 - More information: https://manned.org/scrot
 - tldr page: https://tldr.inbrowser.app/pages/linux/scrot
+- Wikipedia: https://en.wikipedia.org/wiki/Scrot

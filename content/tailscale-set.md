@@ -8,3 +8,4 @@ Change the specified preferences. These options can also be changed during the i
 ## Links
 - More information: https://tailscale.com/kb/1080/cli#set
 - tldr page: https://tldr.inbrowser.app/pages/common/tailscale-set
+- Wikipedia: https://en.wikipedia.org/wiki/Tailscale

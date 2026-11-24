@@ -14,3 +14,4 @@ processes
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/timeout
+- Wikipedia: https://en.wikipedia.org/wiki/Timeout_(computing)

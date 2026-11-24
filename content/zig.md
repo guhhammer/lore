@@ -18,3 +18,4 @@ development, files
 ## Links
 - More information: https://ziglang.org/documentation/master/
 - tldr page: https://tldr.inbrowser.app/pages/common/zig
+- Wikipedia: https://en.wikipedia.org/wiki/Zig_(programming_language)

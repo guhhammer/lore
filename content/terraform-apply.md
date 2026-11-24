@@ -18,3 +18,4 @@ files
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/apply
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-apply
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

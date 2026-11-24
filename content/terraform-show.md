@@ -16,3 +16,4 @@ files, text
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/show
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-show
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

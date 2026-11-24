@@ -15,3 +15,4 @@ desktop, users, files
 ## Links
 - More information: https://manned.org/zenity
 - tldr page: https://tldr.inbrowser.app/pages/linux/zenity
+- Wikipedia: https://en.wikipedia.org/wiki/Zenity

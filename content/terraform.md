@@ -16,3 +16,4 @@ cloud, development
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

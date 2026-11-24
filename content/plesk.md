@@ -16,3 +16,4 @@ files, monitoring, users
 ## Links
 - More information: https://docs.plesk.com/en-US/obsidian/cli-linux/plesk-utility.75661/
 - tldr page: https://tldr.inbrowser.app/pages/common/plesk
+- Wikipedia: https://en.wikipedia.org/wiki/Plesk

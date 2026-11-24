@@ -18,3 +18,4 @@ network, files, sunos
 ## Links
 - More information: https://www.unix.com/man-page/sunos/1m/snoop
 - tldr page: https://tldr.inbrowser.app/pages/sunos/snoop
+- Wikipedia: https://en.wikipedia.org/wiki/Snoop_(software)

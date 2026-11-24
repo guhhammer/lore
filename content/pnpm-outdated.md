@@ -18,3 +18,4 @@ packages, documents
 ## Links
 - More information: https://pnpm.io/cli/outdated
 - tldr page: https://tldr.inbrowser.app/pages/common/pnpm-outdated
+- Wikipedia: https://en.wikipedia.org/wiki/Pnpm

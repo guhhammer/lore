@@ -7,3 +7,6 @@ SWI-Prolog 9.2.9.
 - `prolog --abi-version` : display ABI version key
 - `prolog --home=DIR` : use DIR as home directory
 - `prolog --stack-limit=size[bkmg]` : set the combined stack limit to size bytes
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Prolog

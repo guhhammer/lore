@@ -13,3 +13,4 @@ desktop, shell, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/title
+- Wikipedia: https://en.wikipedia.org/wiki/Title_(command)

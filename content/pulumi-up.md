@@ -14,3 +14,4 @@ Create or update the resources in a stack.
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_up/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-up
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

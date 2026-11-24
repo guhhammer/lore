@@ -15,3 +15,4 @@ users
 ## Links
 - More information: https://manned.org/rkhunter
 - tldr page: https://tldr.inbrowser.app/pages/linux/rkhunter
+- Wikipedia: https://en.wikipedia.org/wiki/Rkhunter

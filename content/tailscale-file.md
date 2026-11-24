@@ -12,3 +12,4 @@ files, network, hardware
 ## Links
 - More information: https://tailscale.com/kb/1106/taildrop
 - tldr page: https://tldr.inbrowser.app/pages/common/tailscale-file
+- Wikipedia: https://en.wikipedia.org/wiki/Tailscale

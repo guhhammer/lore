@@ -14,3 +14,4 @@ monitoring, users, hardware
 ## Links
 - More information: https://github.com/fenrus75/powertop
 - tldr page: https://tldr.inbrowser.app/pages/linux/powertop
+- Wikipedia: https://en.wikipedia.org/wiki/PowerTOP

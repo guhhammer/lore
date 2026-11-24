@@ -11,3 +11,6 @@ Generate documentation from Ruby script files.
 
 ## Categories
 development, documents
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/RDoc

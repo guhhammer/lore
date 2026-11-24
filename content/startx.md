@@ -14,3 +14,4 @@ network, desktop, users
 ## Links
 - More information: https://www.x.org/releases/X11R7.6/doc/man/man1/startx.1.xhtml
 - tldr page: https://tldr.inbrowser.app/pages/linux/startx
+- Wikipedia: https://en.wikipedia.org/wiki/Xinit

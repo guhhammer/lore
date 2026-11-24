@@ -18,3 +18,4 @@ packages, development, text
 ## Links
 - More information: https://pnpm.io/cli/audit
 - tldr page: https://tldr.inbrowser.app/pages/common/pnpm-audit
+- Wikipedia: https://en.wikipedia.org/wiki/Pnpm

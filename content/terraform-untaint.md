@@ -14,3 +14,4 @@ Remove the tainted status from a resource instance.
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/untaint
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-untaint
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

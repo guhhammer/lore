@@ -20,3 +20,4 @@ network, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/pathping
+- Wikipedia: https://en.wikipedia.org/wiki/PathPing

@@ -17,3 +17,4 @@ packages, files, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/pip3
+- Wikipedia: https://en.wikipedia.org/wiki/Pip_(package_manager)

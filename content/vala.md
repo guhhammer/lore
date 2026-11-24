@@ -13,3 +13,4 @@ desktop, network, files
 ## Links
 - More information: https://docs.vala.dev/index.html
 - tldr page: https://tldr.inbrowser.app/pages/common/vala
+- Wikipedia: https://en.wikipedia.org/wiki/Vala_(programming_language)

@@ -19,3 +19,4 @@ files, text
 ## Links
 - More information: https://manned.org/unix2dos
 - tldr page: https://tldr.inbrowser.app/pages/linux/unix2dos
+- Wikipedia: https://en.wikipedia.org/wiki/Unix2dos

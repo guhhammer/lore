@@ -17,3 +17,4 @@ text
 ## Links
 - More information: https://manned.org/sed.1posix
 - tldr page: https://tldr.inbrowser.app/pages/common/sed
+- Wikipedia: https://en.wikipedia.org/wiki/Sed

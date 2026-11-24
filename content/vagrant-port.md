@@ -14,3 +14,4 @@ network
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/port
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-port
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

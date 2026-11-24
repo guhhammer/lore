@@ -14,3 +14,4 @@ Manage Terraform workspaces for multiple environments.
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/workspace
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-workspace
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

@@ -18,3 +18,4 @@ network, files
 ## Links
 - More information: https://github.com/webtorrent/webtorrent-cli
 - tldr page: https://tldr.inbrowser.app/pages/common/webtorrent
+- Wikipedia: https://en.wikipedia.org/wiki/WebTorrent

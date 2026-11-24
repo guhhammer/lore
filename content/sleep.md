@@ -9,3 +9,4 @@ Delay for a specified amount of time.
 ## Links
 - More information: https://manned.org/sleep
 - tldr page: https://tldr.inbrowser.app/pages/common/sleep
+- Wikipedia: https://en.wikipedia.org/wiki/Sleep_(command)

@@ -15,3 +15,4 @@ files, editors, hardware
 ## Links
 - More information: https://qutebrowser.org/doc/qutebrowser.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/qutebrowser
+- Wikipedia: https://en.wikipedia.org/wiki/Qutebrowser

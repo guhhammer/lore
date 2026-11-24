@@ -11,3 +11,4 @@ shell
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/tty-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/tty
+- Wikipedia: https://en.wikipedia.org/wiki/Tty_(Unix)

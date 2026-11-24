@@ -15,3 +15,4 @@ monitoring, network
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/logout
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-logout
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

@@ -18,3 +18,4 @@ windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/reg-compare
+- Wikipedia: https://en.wikipedia.org/wiki/Windows_Registry

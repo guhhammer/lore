@@ -14,3 +14,4 @@ packages, network
 ## Links
 - More information: https://docs.saltproject.io/en/latest/ref/cli/index.html
 - tldr page: https://tldr.inbrowser.app/pages/common/salt
+- Wikipedia: https://en.wikipedia.org/wiki/Salt_(software)

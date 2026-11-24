@@ -17,3 +17,4 @@ users
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/whoami
+- Wikipedia: https://en.wikipedia.org/wiki/Whoami

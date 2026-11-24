@@ -15,3 +15,4 @@ development, packages
 ## Links
 - More information: https://manned.org/swiftc
 - tldr page: https://tldr.inbrowser.app/pages/common/swift
+- Wikipedia: https://en.wikipedia.org/wiki/Swift_(programming_language)

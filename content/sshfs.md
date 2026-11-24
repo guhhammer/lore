@@ -15,3 +15,4 @@ files, network, disks
 ## Links
 - More information: https://github.com/libfuse/sshfs/blob/master/sshfs.rst
 - tldr page: https://tldr.inbrowser.app/pages/common/sshfs
+- Wikipedia: https://en.wikipedia.org/wiki/SSHFS

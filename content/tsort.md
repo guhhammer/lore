@@ -8,3 +8,4 @@ Perform a topological sort. A common use is to show the dependency order of node
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/tsort
+- Wikipedia: https://en.wikipedia.org/wiki/Tsort

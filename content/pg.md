@@ -12,3 +12,4 @@ files
 ## Links
 - More information: https://manned.org/pg
 - tldr page: https://tldr.inbrowser.app/pages/linux/pg
+- Wikipedia: https://en.wikipedia.org/wiki/Pg_(Unix)

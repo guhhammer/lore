@@ -23,3 +23,4 @@ development, shell, files
 ## Links
 - More information: https://zsh.sourceforge.io/Doc/Release/Invocation.html#Invocation
 - tldr page: https://tldr.inbrowser.app/pages/common/zsh
+- Wikipedia: https://en.wikipedia.org/wiki/Z_shell

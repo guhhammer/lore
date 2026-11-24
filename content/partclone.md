@@ -13,3 +13,4 @@ files, containers, media
 ## Links
 - More information: https://manned.org/partclone
 - tldr page: https://tldr.inbrowser.app/pages/linux/partclone
+- Wikipedia: https://en.wikipedia.org/wiki/Partclone

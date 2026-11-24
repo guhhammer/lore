@@ -10,3 +10,6 @@ X server outputting to a window on a pre-existing X display.
 
 ## Categories
 desktop, network
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Xephyr

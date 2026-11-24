@@ -14,3 +14,4 @@ development
 ## Links
 - More information: https://vite.dev/guide/
 - tldr page: https://tldr.inbrowser.app/pages/common/vite
+- Wikipedia: https://en.wikipedia.org/wiki/Vite

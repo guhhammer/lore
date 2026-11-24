@@ -18,3 +18,4 @@ desktop, users, processes
 ## Links
 - More information: https://manned.org/w
 - tldr page: https://tldr.inbrowser.app/pages/common/w
+- Wikipedia: https://en.wikipedia.org/wiki/W_(Unix)

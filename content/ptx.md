@@ -15,3 +15,4 @@ files, text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/ptx-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/ptx
+- Wikipedia: https://en.wikipedia.org/wiki/Ptx_(Unix)

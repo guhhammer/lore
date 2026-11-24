@@ -16,3 +16,4 @@ files, users, shell
 ## Links
 - More information: https://manned.org/pass-otp
 - tldr page: https://tldr.inbrowser.app/pages/common/pass-otp
+- Wikipedia: https://en.wikipedia.org/wiki/Pass_(software)

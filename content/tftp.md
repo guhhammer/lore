@@ -17,3 +17,4 @@ network, files
 ## Links
 - More information: https://manned.org/tftp
 - tldr page: https://tldr.inbrowser.app/pages/linux/tftp
+- Wikipedia: https://en.wikipedia.org/wiki/Trivial_File_Transfer_Protocol

@@ -16,3 +16,4 @@ windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/reg-delete
+- Wikipedia: https://en.wikipedia.org/wiki/Windows_Registry

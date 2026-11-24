@@ -16,3 +16,4 @@ files, version-control
 ## Links
 - More information: https://manned.org/quilt
 - tldr page: https://tldr.inbrowser.app/pages/common/quilt
+- Wikipedia: https://en.wikipedia.org/wiki/Quilt_(software)

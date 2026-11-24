@@ -16,3 +16,4 @@ archives, files
 ## Links
 - More information: https://manned.org/pax.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/pax
+- Wikipedia: https://en.wikipedia.org/wiki/Pax_(command)

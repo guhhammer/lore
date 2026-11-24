@@ -18,3 +18,4 @@ files, documents, media
 ## Links
 - More information: https://pandoc.org/MANUAL.html
 - tldr page: https://tldr.inbrowser.app/pages/common/pandoc
+- Wikipedia: https://en.wikipedia.org/wiki/Pandoc

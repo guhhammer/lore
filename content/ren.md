@@ -13,3 +13,4 @@ files, shell, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/ren
+- Wikipedia: https://en.wikipedia.org/wiki/Ren_(command)

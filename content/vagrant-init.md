@@ -17,3 +17,4 @@ files, network
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/init
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-init
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

@@ -13,3 +13,4 @@ files
 ## Links
 - More information: https://manned.org/sendmail
 - tldr page: https://tldr.inbrowser.app/pages/common/sendmail
+- Wikipedia: https://en.wikipedia.org/wiki/Sendmail

@@ -12,3 +12,4 @@ Manage snapshots of Vagrant machines.
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/snapshot
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-snapshot
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

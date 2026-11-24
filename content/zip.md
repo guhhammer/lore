@@ -20,3 +20,4 @@ archives
 ## Links
 - More information: https://manned.org/zip
 - tldr page: https://tldr.inbrowser.app/pages/common/zip
+- Wikipedia: https://en.wikipedia.org/wiki/Info-ZIP

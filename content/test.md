@@ -20,3 +20,4 @@ development, files, shell
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/test-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/test
+- Wikipedia: https://en.wikipedia.org/wiki/Test_(Unix)

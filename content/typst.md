@@ -14,3 +14,4 @@ files, development, media
 ## Links
 - More information: https://manned.org/typst
 - tldr page: https://tldr.inbrowser.app/pages/common/typst
+- Wikipedia: https://en.wikipedia.org/wiki/Typst

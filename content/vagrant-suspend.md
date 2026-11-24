@@ -9,3 +9,4 @@ Save the state of the guest machine rather than fully shutting it down.
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/suspend
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-suspend
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

@@ -16,3 +16,4 @@ documents, media, files
 ## Links
 - More information: https://manned.org/pic
 - tldr page: https://tldr.inbrowser.app/pages/common/pic
+- Wikipedia: https://en.wikipedia.org/wiki/PIC_(markup_language)

@@ -14,3 +14,4 @@ files, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/reg-save
+- Wikipedia: https://en.wikipedia.org/wiki/Windows_Registry

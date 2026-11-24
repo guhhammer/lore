@@ -20,3 +20,4 @@ network
 ## Links
 - More information: https://manned.org/traceroute
 - tldr page: https://tldr.inbrowser.app/pages/common/traceroute
+- Wikipedia: https://en.wikipedia.org/wiki/Traceroute

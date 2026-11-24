@@ -15,3 +15,4 @@ Mark a resource instance as not fully functional to force replacement on next ap
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/taint
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-taint
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

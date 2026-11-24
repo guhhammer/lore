@@ -18,3 +18,4 @@ media, network
 ## Links
 - More information: https://developer.valvesoftware.com/wiki/Command_Line_Options
 - tldr page: https://tldr.inbrowser.app/pages/common/steam
+- Wikipedia: https://en.wikipedia.org/wiki/Steam_(service)

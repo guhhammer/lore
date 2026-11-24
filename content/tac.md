@@ -18,3 +18,4 @@ files, desktop, text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/tac-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/tac
+- Wikipedia: https://en.wikipedia.org/wiki/Cat_(Unix)

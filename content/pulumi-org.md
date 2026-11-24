@@ -15,3 +15,4 @@ desktop
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_org/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-org
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

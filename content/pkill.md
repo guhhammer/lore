@@ -15,3 +15,4 @@ danger, processes
 ## Links
 - More information: https://manned.org/pkill
 - tldr page: https://tldr.inbrowser.app/pages/common/pkill
+- Wikipedia: https://en.wikipedia.org/wiki/Pkill

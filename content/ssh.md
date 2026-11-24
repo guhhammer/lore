@@ -20,3 +20,4 @@ network, security
 
 ## Links
 - OpenSSH manual: https://man.openbsd.org/ssh
+- Wikipedia: https://en.wikipedia.org/wiki/SSH

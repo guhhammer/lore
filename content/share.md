@@ -18,3 +18,4 @@ files, disks, network, sunos
 ## Links
 - More information: https://docs.oracle.com/cd/E36784_01/html/E36825/gntjt.html
 - tldr page: https://tldr.inbrowser.app/pages/sunos/share
+- Wikipedia: https://en.wikipedia.org/wiki/Share_(command)

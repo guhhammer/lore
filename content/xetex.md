@@ -13,3 +13,4 @@ documents, development, media
 ## Links
 - More information: https://www.tug.org/xetex/
 - tldr page: https://tldr.inbrowser.app/pages/common/xetex
+- Wikipedia: https://en.wikipedia.org/wiki/XeTeX

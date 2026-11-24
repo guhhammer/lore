@@ -12,3 +12,4 @@ Internet relay chat client with various features.
 ## Links
 - More information: https://weechat.org/doc/
 - tldr page: https://tldr.inbrowser.app/pages/common/weechat
+- Wikipedia: https://en.wikipedia.org/wiki/WeeChat

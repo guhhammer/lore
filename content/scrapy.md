@@ -17,3 +17,4 @@ network, development, files
 ## Links
 - More information: https://docs.scrapy.org/en/latest/topics/commands.html#using-the-scrapy-tool
 - tldr page: https://tldr.inbrowser.app/pages/common/scrapy
+- Wikipedia: https://en.wikipedia.org/wiki/Scrapy

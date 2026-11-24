@@ -16,3 +16,4 @@ desktop, files
 ## Links
 - More information: https://manned.org/retroarch
 - tldr page: https://tldr.inbrowser.app/pages/linux/retroarch
+- Wikipedia: https://en.wikipedia.org/wiki/RetroArch

@@ -14,3 +14,4 @@ network, files, archives
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/upload
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-upload
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

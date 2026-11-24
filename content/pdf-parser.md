@@ -13,3 +13,4 @@ media, documents, files
 ## Links
 - More information: https://blog.didierstevens.com/programs/pdf-tools/
 - tldr page: https://tldr.inbrowser.app/pages/common/pdf-parser
+- Wikipedia: https://en.wikipedia.org/wiki/Pdf-parser

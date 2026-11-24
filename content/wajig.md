@@ -18,3 +18,4 @@ packages
 ## Links
 - More information: https://togaware.com/linux/survivor/wajig.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/wajig
+- Wikipedia: https://en.wikipedia.org/wiki/Wajig

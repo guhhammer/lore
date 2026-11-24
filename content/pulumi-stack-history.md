@@ -15,3 +15,4 @@ shell, desktop
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_stack_history/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-stack-history
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

@@ -11,3 +11,4 @@ media, documents, containers
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/pstoedit
+- Wikipedia: https://en.wikipedia.org/wiki/Pstoedit

@@ -13,3 +13,4 @@ files
 ## Links
 - More information: https://github.com/puppetlabs/puppet/blob/main/references/man/apply.md
 - tldr page: https://tldr.inbrowser.app/pages/common/puppet-apply
+- Wikipedia: https://en.wikipedia.org/wiki/Puppet_(software)

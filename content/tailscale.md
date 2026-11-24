@@ -18,3 +18,4 @@ network, system, desktop
 ## Links
 - More information: https://tailscale.com/kb/1080/cli
 - tldr page: https://tldr.inbrowser.app/pages/common/tailscale
+- Wikipedia: https://en.wikipedia.org/wiki/Tailscale

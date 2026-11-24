@@ -7,3 +7,6 @@ X Window System initializer.
 
 ## Categories
 desktop
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Xinit

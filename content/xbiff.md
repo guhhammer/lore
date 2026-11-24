@@ -10,3 +10,6 @@ Mailbox flag for X.
 
 ## Categories
 desktop
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Xbiff

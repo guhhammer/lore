@@ -13,3 +13,4 @@ documents, development, media
 ## Links
 - More information: https://www.tug.org/applications/pdftex/
 - tldr page: https://tldr.inbrowser.app/pages/common/pdftex
+- Wikipedia: https://en.wikipedia.org/wiki/PdfTeX

@@ -14,3 +14,4 @@ files, shell
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/tee-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/tee
+- Wikipedia: https://en.wikipedia.org/wiki/Tee_(command)

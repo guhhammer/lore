@@ -10,3 +10,4 @@ Cancel a stack's currently running update, if any.
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_cancel/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-cancel
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

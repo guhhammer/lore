@@ -13,3 +13,4 @@ files, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/reg-import
+- Wikipedia: https://en.wikipedia.org/wiki/Windows_Registry

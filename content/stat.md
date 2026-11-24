@@ -19,3 +19,4 @@ files, shell
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/stat-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/stat
+- Wikipedia: https://en.wikipedia.org/wiki/Stat_(system_call)

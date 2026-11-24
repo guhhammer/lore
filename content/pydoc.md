@@ -13,3 +13,4 @@ documents, desktop, network
 ## Links
 - More information: https://docs.python.org/library/pydoc.html
 - tldr page: https://tldr.inbrowser.app/pages/common/pydoc
+- Wikipedia: https://en.wikipedia.org/wiki/Pydoc

@@ -15,3 +15,4 @@ network, processes, monitoring
 ## Links
 - More information: https://man.openbsd.org/ssh-agent
 - tldr page: https://tldr.inbrowser.app/pages/common/ssh-agent
+- Wikipedia: https://en.wikipedia.org/wiki/Ssh-agent

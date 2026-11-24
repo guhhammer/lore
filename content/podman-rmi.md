@@ -14,3 +14,4 @@ containers, media
 ## Links
 - More information: https://docs.podman.io/en/latest/markdown/podman-rmi.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/podman-rmi
+- Wikipedia: https://en.wikipedia.org/wiki/Podman

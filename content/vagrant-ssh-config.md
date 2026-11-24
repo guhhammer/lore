@@ -12,3 +12,4 @@ network, desktop
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/ssh_config
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-ssh-config
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

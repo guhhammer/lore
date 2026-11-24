@@ -17,3 +17,4 @@ development
 ## Links
 - More information: https://docs.pytest.org/en/latest/how-to/usage.html
 - tldr page: https://tldr.inbrowser.app/pages/common/pytest
+- Wikipedia: https://en.wikipedia.org/wiki/Pytest

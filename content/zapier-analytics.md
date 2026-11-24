@@ -10,3 +10,4 @@ Show the status of the analytics that are collected. It is also used to change w
 ## Links
 - More information: https://platform.zapier.com/reference/cli#analytics
 - tldr page: https://tldr.inbrowser.app/pages/common/zapier-analytics
+- Wikipedia: https://en.wikipedia.org/wiki/Zapier

@@ -16,3 +16,4 @@ network, users, desktop
 ## Links
 - More information: https://manned.org/rdesktop
 - tldr page: https://tldr.inbrowser.app/pages/linux/rdesktop
+- Wikipedia: https://en.wikipedia.org/wiki/Rdesktop

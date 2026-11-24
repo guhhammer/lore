@@ -14,3 +14,4 @@ development, shell, monitoring
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/scheme
+- Wikipedia: https://en.wikipedia.org/wiki/Scheme_(programming_language)

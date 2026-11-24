@@ -14,3 +14,4 @@ documents
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_about/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-about
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

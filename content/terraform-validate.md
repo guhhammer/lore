@@ -15,3 +15,4 @@ files, development
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/validate
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-validate
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

@@ -17,3 +17,4 @@ files, archives, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/zcat
+- Wikipedia: https://en.wikipedia.org/wiki/Gzip

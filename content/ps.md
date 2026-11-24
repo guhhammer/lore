@@ -18,3 +18,4 @@ processes
 ## Links
 - More information: https://manned.org/ps
 - tldr page: https://tldr.inbrowser.app/pages/common/ps
+- Wikipedia: https://en.wikipedia.org/wiki/Ps_(Unix)

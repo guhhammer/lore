@@ -13,3 +13,4 @@ packages
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_install/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-install
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

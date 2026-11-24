@@ -16,3 +16,4 @@ packages, development, files
 ## Links
 - More information: https://pip.pypa.io/en/stable/cli/pip_wheel/
 - tldr page: https://tldr.inbrowser.app/pages/common/pip-wheel
+- Wikipedia: https://en.wikipedia.org/wiki/Pip_(package_manager)

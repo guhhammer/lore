@@ -17,3 +17,4 @@ development, files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/qgis
+- Wikipedia: https://en.wikipedia.org/wiki/QGIS

@@ -21,3 +21,4 @@ packages, files, windows
 ## Links
 - More information: https://learn.microsoft.com/windows/package-manager/winget
 - tldr page: https://tldr.inbrowser.app/pages/windows/winget
+- Wikipedia: https://en.wikipedia.org/wiki/Windows_Package_Manager

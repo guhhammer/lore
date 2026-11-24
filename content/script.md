@@ -18,3 +18,4 @@ development, files, media
 ## Links
 - More information: https://manned.org/script
 - tldr page: https://tldr.inbrowser.app/pages/linux/script
+- Wikipedia: https://en.wikipedia.org/wiki/Script_(Unix)

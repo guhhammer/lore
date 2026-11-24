@@ -10,3 +10,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-down
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

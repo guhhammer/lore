@@ -15,3 +15,4 @@ text, development
 ## Links
 - More information: https://github.com/npm/node-semver
 - tldr page: https://tldr.inbrowser.app/pages/common/semver
+- Wikipedia: https://en.wikipedia.org/wiki/Software_versioning

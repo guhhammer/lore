@@ -18,3 +18,4 @@ development, files
 ## Links
 - More information: https://www.scala-sbt.org/1.x/docs/
 - tldr page: https://tldr.inbrowser.app/pages/common/sbt
+- Wikipedia: https://en.wikipedia.org/wiki/Sbt_(software)

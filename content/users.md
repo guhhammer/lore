@@ -18,3 +18,4 @@ users, desktop
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/users
+- Wikipedia: https://en.wikipedia.org/wiki/Who_(Unix)

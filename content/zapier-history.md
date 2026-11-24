@@ -12,3 +12,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/zapier-history
+- Wikipedia: https://en.wikipedia.org/wiki/Zapier

@@ -17,3 +17,4 @@ files, editors, text
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/vi
+- Wikipedia: https://en.wikipedia.org/wiki/Vi_(text_editor)

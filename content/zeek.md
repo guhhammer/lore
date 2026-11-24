@@ -16,3 +16,4 @@ network, files, users
 ## Links
 - More information: https://docs.zeek.org/en/lts/quickstart.html#zeek-as-a-command-line-utility
 - tldr page: https://tldr.inbrowser.app/pages/common/zeek
+- Wikipedia: https://en.wikipedia.org/wiki/Zeek

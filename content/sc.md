@@ -18,3 +18,4 @@ system, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/sc
+- Wikipedia: https://en.wikipedia.org/wiki/Sc_(spreadsheet_calculator)

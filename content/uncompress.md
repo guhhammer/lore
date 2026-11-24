@@ -14,3 +14,4 @@ files, archives
 ## Links
 - More information: https://manned.org/uncompress
 - tldr page: https://tldr.inbrowser.app/pages/linux/uncompress
+- Wikipedia: https://en.wikipedia.org/wiki/Compress_(software)

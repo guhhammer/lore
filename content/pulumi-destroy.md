@@ -13,3 +13,4 @@ Destroy all existing resources in a stack.
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_destroy/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-destroy
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

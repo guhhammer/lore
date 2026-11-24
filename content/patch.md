@@ -15,3 +15,4 @@ version-control, files
 ## Links
 - More information: https://manned.org/patch
 - tldr page: https://tldr.inbrowser.app/pages/common/patch
+- Wikipedia: https://en.wikipedia.org/wiki/Patch_(Unix)

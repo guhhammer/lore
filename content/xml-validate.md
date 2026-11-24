@@ -15,3 +15,4 @@ text, files
 ## Links
 - More information: https://xmlstar.sourceforge.net/doc/UG/xmlstarlet-ug.html#idm47077139576400
 - tldr page: https://tldr.inbrowser.app/pages/common/xml-validate
+- Wikipedia: https://en.wikipedia.org/wiki/XML

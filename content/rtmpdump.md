@@ -14,3 +14,4 @@ files, network, media
 ## Links
 - More information: https://rtmpdump.mplayerhq.hu/rtmpdump.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/rtmpdump
+- Wikipedia: https://en.wikipedia.org/wiki/RTMPDump

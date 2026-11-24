@@ -13,3 +13,4 @@ archives, files
 ## Links
 - More information: https://github.com/upx/upx/blob/devel/doc/upx.pod
 - tldr page: https://tldr.inbrowser.app/pages/common/upx
+- Wikipedia: https://en.wikipedia.org/wiki/UPX

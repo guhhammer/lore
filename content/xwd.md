@@ -8,3 +8,6 @@ Dump an image of an X window.
 
 ## Categories
 containers, desktop, media
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Xwd

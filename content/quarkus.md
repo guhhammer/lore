@@ -18,3 +18,4 @@ development, containers
 ## Links
 - More information: https://quarkus.io/guides/cli-tooling
 - tldr page: https://tldr.inbrowser.app/pages/common/quarkus
+- Wikipedia: https://en.wikipedia.org/wiki/Quarkus

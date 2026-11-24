@@ -18,3 +18,4 @@ users, network
 ## Links
 - More information: https://tailscale.com/kb/1080/cli/#up
 - tldr page: https://tldr.inbrowser.app/pages/common/tailscale-up
+- Wikipedia: https://en.wikipedia.org/wiki/Tailscale

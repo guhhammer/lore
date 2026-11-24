@@ -18,3 +18,4 @@ files, network
 ## Links
 - More information: https://transmissionbt.com/
 - tldr page: https://tldr.inbrowser.app/pages/common/transmission
+- Wikipedia: https://en.wikipedia.org/wiki/Transmission_(BitTorrent_client)

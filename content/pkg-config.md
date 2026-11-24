@@ -14,3 +14,4 @@ packages
 ## Links
 - More information: https://manned.org/pkg-config
 - tldr page: https://tldr.inbrowser.app/pages/common/pkg-config
+- Wikipedia: https://en.wikipedia.org/wiki/Pkg-config

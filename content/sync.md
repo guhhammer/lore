@@ -13,3 +13,4 @@ disks, files
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/sync-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/sync
+- Wikipedia: https://en.wikipedia.org/wiki/Sync_(Unix)

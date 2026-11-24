@@ -18,3 +18,4 @@ containers, files, system
 ## Links
 - More information: https://docs.waydro.id/usage/waydroid-command-line-options
 - tldr page: https://tldr.inbrowser.app/pages/linux/waydroid
+- Wikipedia: https://en.wikipedia.org/wiki/Waydroid

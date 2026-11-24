@@ -18,3 +18,4 @@ desktop, media
 ## Links
 - More information: https://manned.org/redshift
 - tldr page: https://tldr.inbrowser.app/pages/common/redshift
+- Wikipedia: https://en.wikipedia.org/wiki/Redshift_(software)

@@ -12,3 +12,4 @@ desktop
 ## Links
 - More information: https://manned.org/toolbox-help
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox-help
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

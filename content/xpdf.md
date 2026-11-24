@@ -16,3 +16,4 @@ files, documents, media
 ## Links
 - More information: https://www.xpdfreader.com/xpdf-man.html
 - tldr page: https://tldr.inbrowser.app/pages/common/xpdf
+- Wikipedia: https://en.wikipedia.org/wiki/Xpdf

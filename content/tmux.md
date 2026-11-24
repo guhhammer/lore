@@ -23,3 +23,4 @@ shell
 ## Links
 - More information: https://github.com/tmux/tmux
 - tldr page: https://tldr.inbrowser.app/pages/common/tmux
+- Wikipedia: https://en.wikipedia.org/wiki/Tmux

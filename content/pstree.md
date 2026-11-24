@@ -16,3 +16,4 @@ processes, desktop
 ## Links
 - More information: https://manned.org/pstree
 - tldr page: https://tldr.inbrowser.app/pages/linux/pstree
+- Wikipedia: https://en.wikipedia.org/wiki/Pstree

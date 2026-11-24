@@ -13,3 +13,4 @@ files, version-control
 ## Links
 - More information: https://manned.org/xdelta
 - tldr page: https://tldr.inbrowser.app/pages/common/xdelta
+- Wikipedia: https://en.wikipedia.org/wiki/Xdelta

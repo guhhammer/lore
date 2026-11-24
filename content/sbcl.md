@@ -12,3 +12,4 @@ development, monitoring
 ## Links
 - More information: https://www.sbcl.org/manual/#Command-Line-Options
 - tldr page: https://tldr.inbrowser.app/pages/common/sbcl
+- Wikipedia: https://en.wikipedia.org/wiki/Steel_Bank_Common_Lisp

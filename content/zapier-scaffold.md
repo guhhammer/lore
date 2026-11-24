@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://platform.zapier.com/reference/cli#scaffold
 - tldr page: https://tldr.inbrowser.app/pages/common/zapier-scaffold
+- Wikipedia: https://en.wikipedia.org/wiki/Zapier

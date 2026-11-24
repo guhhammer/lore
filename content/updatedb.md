@@ -12,3 +12,4 @@ databases, system
 ## Links
 - More information: https://manned.org/updatedb
 - tldr page: https://tldr.inbrowser.app/pages/linux/updatedb
+- Wikipedia: https://en.wikipedia.org/wiki/Locate_(Unix)

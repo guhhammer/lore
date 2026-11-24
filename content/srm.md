@@ -14,3 +14,4 @@ danger, files
 ## Links
 - More information: https://srm.sourceforge.net/srm.html
 - tldr page: https://tldr.inbrowser.app/pages/common/srm
+- Wikipedia: https://en.wikipedia.org/wiki/Srm_(Unix)

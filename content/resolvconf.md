@@ -13,3 +13,4 @@ Manage nameserver information. Acts as an intermediary between programs that sup
 ## Links
 - More information: https://manned.org/resolvconf
 - tldr page: https://tldr.inbrowser.app/pages/common/resolvconf
+- Wikipedia: https://en.wikipedia.org/wiki/Resolvconf

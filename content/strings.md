@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://manned.org/strings
 - tldr page: https://tldr.inbrowser.app/pages/common/strings
+- Wikipedia: https://en.wikipedia.org/wiki/Strings_(Unix)

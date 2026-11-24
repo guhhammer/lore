@@ -15,3 +15,4 @@ files, development, documents
 ## Links
 - More information: https://quarto.org/docs/reference/projects/options.html
 - tldr page: https://tldr.inbrowser.app/pages/common/quarto
+- Wikipedia: https://en.wikipedia.org/wiki/Quarto_(software)

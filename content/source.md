@@ -15,3 +15,4 @@ files, shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-source
 - tldr page: https://tldr.inbrowser.app/pages/common/source
+- Wikipedia: https://en.wikipedia.org/wiki/Dot_(command)

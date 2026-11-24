@@ -15,3 +15,4 @@ files, editors, text
 ## Links
 - More information: https://zed.dev/docs/reference/cli
 - tldr page: https://tldr.inbrowser.app/pages/common/zed
+- Wikipedia: https://en.wikipedia.org/wiki/Zed_(text_editor)

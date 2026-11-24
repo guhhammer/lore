@@ -18,3 +18,4 @@ network, containers, media
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/box
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-box
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

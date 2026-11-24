@@ -15,3 +15,4 @@ development
 ## Links
 - More information: https://scala-cli.virtuslab.org/docs/reference/cli-options/
 - tldr page: https://tldr.inbrowser.app/pages/common/scala
+- Wikipedia: https://en.wikipedia.org/wiki/Scala_(software)

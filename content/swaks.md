@@ -15,3 +15,4 @@ development, users, network
 ## Links
 - More information: https://github.com/jetmore/swaks/blob/develop/doc/base.pod
 - tldr page: https://tldr.inbrowser.app/pages/linux/swaks
+- Wikipedia: https://en.wikipedia.org/wiki/Swaks

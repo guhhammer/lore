@@ -14,3 +14,4 @@ media, desktop
 ## Links
 - More information: https://manned.org/spectacle
 - tldr page: https://tldr.inbrowser.app/pages/common/spectacle
+- Wikipedia: https://en.wikipedia.org/wiki/KDE_Gear

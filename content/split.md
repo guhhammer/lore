@@ -14,3 +14,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/split
+- Wikipedia: https://en.wikipedia.org/wiki/Split_(Unix)

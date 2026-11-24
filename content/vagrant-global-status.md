@@ -15,3 +15,4 @@ desktop
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/global-status
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-global-status
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

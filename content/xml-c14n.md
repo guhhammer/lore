@@ -10,3 +10,4 @@ text, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/xml-c14n
+- Wikipedia: https://en.wikipedia.org/wiki/XML

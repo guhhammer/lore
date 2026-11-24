@@ -13,3 +13,4 @@ Check the validity of a Vagrantfile.
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/validate
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-validate
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

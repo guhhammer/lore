@@ -16,3 +16,4 @@ danger, files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/shred
+- Wikipedia: https://en.wikipedia.org/wiki/Shred_(Unix)

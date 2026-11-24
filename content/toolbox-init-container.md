@@ -11,3 +11,4 @@ containers, network, users
 ## Links
 - More information: https://manned.org/toolbox-init-container
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox-init-container
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

@@ -19,3 +19,4 @@ files, shell, development
 ## Links
 - More information: https://manned.org/tcsh
 - tldr page: https://tldr.inbrowser.app/pages/common/tcsh
+- Wikipedia: https://en.wikipedia.org/wiki/Tcsh

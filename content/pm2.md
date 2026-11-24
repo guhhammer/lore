@@ -17,3 +17,4 @@ processes, monitoring
 ## Links
 - More information: https://pm2.keymetrics.io/docs/usage/quick-start/
 - tldr page: https://tldr.inbrowser.app/pages/common/pm2
+- Wikipedia: https://en.wikipedia.org/wiki/PM2

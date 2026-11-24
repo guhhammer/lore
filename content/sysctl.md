@@ -17,3 +17,4 @@ system, files
 ## Links
 - More information: https://manned.org/sysctl.8
 - tldr page: https://tldr.inbrowser.app/pages/linux/sysctl
+- Wikipedia: https://en.wikipedia.org/wiki/Sysctl

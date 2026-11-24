@@ -14,3 +14,4 @@ system, files
 ## Links
 - More information: https://docs.pipewire.org/page_man_pipewire_1.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/pipewire
+- Wikipedia: https://en.wikipedia.org/wiki/PipeWire

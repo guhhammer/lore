@@ -18,3 +18,4 @@ network, documents, monitoring
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

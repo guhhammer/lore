@@ -14,3 +14,4 @@ documents
 ## Links
 - More information: https://perldoc.perl.org/perldoc
 - tldr page: https://tldr.inbrowser.app/pages/common/perldoc
+- Wikipedia: https://en.wikipedia.org/wiki/Perl_Programming_Documentation

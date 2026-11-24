@@ -17,3 +17,4 @@ shell, desktop
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-stack-hist
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

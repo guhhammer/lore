@@ -16,3 +16,4 @@ containers, desktop, documents
 ## Links
 - More information: https://manned.org/toolbox
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

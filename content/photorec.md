@@ -12,3 +12,4 @@ disks, files, containers
 ## Links
 - More information: https://www.cgsecurity.org/wiki/PhotoRec_Step_By_Step
 - tldr page: https://tldr.inbrowser.app/pages/linux/photorec
+- Wikipedia: https://en.wikipedia.org/wiki/PhotoRec

@@ -16,3 +16,4 @@ network, files
 
 ## Links
 - Documentation: https://www.wireshark.org/docs/wsug_html_chunked/
+- Wikipedia: https://en.wikipedia.org/wiki/Wireshark

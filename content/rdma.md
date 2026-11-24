@@ -8,3 +8,6 @@ RDMA tool.
 - `rdma -b` : read commands from provided file or standard input and invoke them
 - `rdma -d` : output detailed information
 - `rdma -r` : output includes driver-specific details in raw format
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Remote_direct_memory_access

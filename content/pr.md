@@ -16,3 +16,4 @@ files, documents, text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/pr-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/pr
+- Wikipedia: https://en.wikipedia.org/wiki/Pr_(Unix)

@@ -18,3 +18,4 @@ files
 ## Links
 - More information: https://www.htslib.org/doc/samtools.html
 - tldr page: https://tldr.inbrowser.app/pages/common/samtools
+- Wikipedia: https://en.wikipedia.org/wiki/SAMtools

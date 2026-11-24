@@ -15,3 +15,4 @@ network, databases, users
 ## Links
 - More information: https://github.com/sqlmapproject/sqlmap/wiki/Usage
 - tldr page: https://tldr.inbrowser.app/pages/common/sqlmap
+- Wikipedia: https://en.wikipedia.org/wiki/Sqlmap

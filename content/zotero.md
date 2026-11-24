@@ -11,3 +11,4 @@ Manage your bibliographies.
 ## Links
 - More information: https://www.zotero.org/support/
 - tldr page: https://tldr.inbrowser.app/pages/common/zotero
+- Wikipedia: https://en.wikipedia.org/wiki/Zotero

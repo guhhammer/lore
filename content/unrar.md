@@ -15,3 +15,4 @@ archives, files
 ## Links
 - More information: https://manned.org/unrar
 - tldr page: https://tldr.inbrowser.app/pages/common/unrar
+- Wikipedia: https://en.wikipedia.org/wiki/Unrar

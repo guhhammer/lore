@@ -16,3 +16,4 @@ monitoring, hardware, network
 ## Links
 - More information: https://manned.org/sar
 - tldr page: https://tldr.inbrowser.app/pages/linux/sar
+- Wikipedia: https://en.wikipedia.org/wiki/Sar_(Unix)

@@ -15,3 +15,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/wine-reg-delete
+- Wikipedia: https://en.wikipedia.org/wiki/Wine_(software)

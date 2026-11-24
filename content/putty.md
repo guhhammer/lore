@@ -17,3 +17,4 @@ network
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/putty
+- Wikipedia: https://en.wikipedia.org/wiki/PuTTY

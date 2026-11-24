@@ -11,3 +11,4 @@ Stop a guest machine and destroy all its resources. Any boxes installed are kept
 ## Links
 - More information: https://developer.hashicorp.com/vagrant/docs/cli/destroy
 - tldr page: https://tldr.inbrowser.app/pages/common/vagrant-destroy
+- Wikipedia: https://en.wikipedia.org/wiki/Vagrant_(software)

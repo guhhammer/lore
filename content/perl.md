@@ -16,3 +16,4 @@ text, development
 ## Links
 - More information: https://perldoc.perl.org/perl
 - tldr page: https://tldr.inbrowser.app/pages/common/perl
+- Wikipedia: https://en.wikipedia.org/wiki/Perl

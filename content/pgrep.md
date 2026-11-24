@@ -19,3 +19,4 @@ processes
 ## Links
 - More information: https://keith.github.io/xcode-man-pages/pgrep.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/pgrep
+- Wikipedia: https://en.wikipedia.org/wiki/Pgrep

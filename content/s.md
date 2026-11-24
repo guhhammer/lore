@@ -14,3 +14,4 @@ databases, shell
 ## Links
 - More information: https://github.com/zquestz/s#s
 - tldr page: https://tldr.inbrowser.app/pages/common/s
+- Wikipedia: https://en.wikipedia.org/wiki/S_(programming_language)

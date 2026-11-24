@@ -15,3 +15,4 @@ media
 ## Links
 - More information: https://shotcut.org/notes/command-line-options/
 - tldr page: https://tldr.inbrowser.app/pages/common/shotcut
+- Wikipedia: https://en.wikipedia.org/wiki/Shotcut

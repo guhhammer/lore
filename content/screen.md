@@ -23,3 +23,4 @@ shell
 ## Links
 - More information: https://manned.org/screen
 - tldr page: https://tldr.inbrowser.app/pages/common/screen
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Screen

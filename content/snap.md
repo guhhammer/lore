@@ -13,3 +13,4 @@ packages
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/snap
+- Wikipedia: https://en.wikipedia.org/wiki/Snap_(software)

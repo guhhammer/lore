@@ -12,3 +12,4 @@ monitoring, disks, hardware
 ## Links
 - More information: https://manned.org/vmstat
 - tldr page: https://tldr.inbrowser.app/pages/linux/vmstat
+- Wikipedia: https://en.wikipedia.org/wiki/Vmstat

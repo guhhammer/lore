@@ -24,3 +24,4 @@ processes, monitoring
 ## Links
 - More information: https://manned.org/top
 - tldr page: https://tldr.inbrowser.app/pages/linux/top
+- Wikipedia: https://en.wikipedia.org/wiki/Top_(software)

@@ -21,3 +21,4 @@ network, documents
 ## Links
 - More information: https://manned.org/whereis
 - tldr page: https://tldr.inbrowser.app/pages/linux/whereis
+- Wikipedia: https://en.wikipedia.org/wiki/Whereis

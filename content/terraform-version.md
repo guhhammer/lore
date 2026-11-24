@@ -9,3 +9,4 @@ Show the current Terraform version, installed providers, and available updates.
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/version
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-version
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

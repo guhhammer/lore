@@ -23,3 +23,4 @@ development, files, network
 ## Links
 - More information: https://manned.org/ruby
 - tldr page: https://tldr.inbrowser.app/pages/common/ruby
+- Wikipedia: https://en.wikipedia.org/wiki/Ruby_(programming_language)

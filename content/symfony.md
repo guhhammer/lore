@@ -11,3 +11,4 @@ The console component for the Symfony framework.
 ## Links
 - More information: https://symfony.com/doc/current/setup.html
 - tldr page: https://tldr.inbrowser.app/pages/common/symfony
+- Wikipedia: https://en.wikipedia.org/wiki/Symfony

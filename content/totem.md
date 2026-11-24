@@ -14,3 +14,4 @@ disks
 
 ## Links
 - Documentation: https://flathub.org/apps/details/org.gnome.Totem
+- Wikipedia: https://en.wikipedia.org/wiki/GNOME_Videos

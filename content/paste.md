@@ -14,3 +14,4 @@ files, text, version-control
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/paste
+- Wikipedia: https://en.wikipedia.org/wiki/Paste_(Unix)

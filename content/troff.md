@@ -17,3 +17,4 @@ files, documents, media
 ## Links
 - More information: https://manned.org/troff
 - tldr page: https://tldr.inbrowser.app/pages/common/troff
+- Wikipedia: https://en.wikipedia.org/wiki/Troff

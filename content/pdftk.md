@@ -16,3 +16,4 @@ documents, media, files
 ## Links
 - More information: https://www.pdflabs.com/docs/pdftk-man-page/
 - tldr page: https://tldr.inbrowser.app/pages/common/pdftk
+- Wikipedia: https://en.wikipedia.org/wiki/PDFtk

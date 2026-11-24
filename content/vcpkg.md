@@ -14,3 +14,4 @@ packages, development
 ## Links
 - More information: https://learn.microsoft.com/vcpkg/
 - tldr page: https://tldr.inbrowser.app/pages/common/vcpkg
+- Wikipedia: https://en.wikipedia.org/wiki/Vcpkg

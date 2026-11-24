@@ -15,3 +15,4 @@ development, network
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_new/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-new
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi

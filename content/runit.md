@@ -9,3 +9,4 @@
 ## Links
 - More information: https://smarden.org/runit/runit.8
 - tldr page: https://tldr.inbrowser.app/pages/common/runit
+- Wikipedia: https://en.wikipedia.org/wiki/Runit

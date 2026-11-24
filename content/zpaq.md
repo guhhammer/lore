@@ -16,3 +16,4 @@ archives, files
 ## Links
 - More information: https://mattmahoney.net/dc/zpaqdoc.html
 - tldr page: https://tldr.inbrowser.app/pages/common/zpaq
+- Wikipedia: https://en.wikipedia.org/wiki/ZPAQ

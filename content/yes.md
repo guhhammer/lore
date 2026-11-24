@@ -14,3 +14,4 @@ packages, shell
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/yes-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/yes
+- Wikipedia: https://en.wikipedia.org/wiki/Yes_(Unix)

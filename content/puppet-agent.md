@@ -17,3 +17,4 @@ network, development
 ## Links
 - More information: https://github.com/puppetlabs/puppet/blob/main/references/man/agent.md
 - tldr page: https://tldr.inbrowser.app/pages/common/puppet-agent
+- Wikipedia: https://en.wikipedia.org/wiki/Puppet_(software)

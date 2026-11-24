@@ -15,3 +15,4 @@ system, media
 ## Links
 - More information: https://manned.org/pulseaudio
 - tldr page: https://tldr.inbrowser.app/pages/linux/pulseaudio
+- Wikipedia: https://en.wikipedia.org/wiki/PulseAudio

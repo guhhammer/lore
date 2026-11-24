@@ -21,3 +21,4 @@ security, files, users
 ## Links
 - More information: https://smallstep.com/docs/step-cli/
 - tldr page: https://tldr.inbrowser.app/pages/common/step
+- Wikipedia: https://en.wikipedia.org/wiki/Step_(software)

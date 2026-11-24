@@ -16,3 +16,4 @@ cloud, development, shell
 ## Links
 - More information: https://www.serverless.com/framework/docs/providers/aws/cli-reference
 - tldr page: https://tldr.inbrowser.app/pages/common/serverless
+- Wikipedia: https://en.wikipedia.org/wiki/Serverless_computing

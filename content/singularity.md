@@ -16,3 +16,4 @@ containers, media, development
 ## Links
 - More information: https://singularity-docs.readthedocs.io/en/latest/#commands
 - tldr page: https://tldr.inbrowser.app/pages/common/singularity
+- Wikipedia: https://en.wikipedia.org/wiki/Apptainer

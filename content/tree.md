@@ -18,3 +18,4 @@ files
 ## Links
 - More information: https://manned.org/tree
 - tldr page: https://tldr.inbrowser.app/pages/common/tree
+- Wikipedia: https://en.wikipedia.org/wiki/Tree_(command)

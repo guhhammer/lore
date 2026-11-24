@@ -16,3 +16,4 @@ containers
 ## Links
 - More information: https://manned.org/toolbox-run
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox-run
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

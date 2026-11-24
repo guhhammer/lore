@@ -18,3 +18,4 @@ text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/sort-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/sort
+- Wikipedia: https://en.wikipedia.org/wiki/Sort_(Unix)

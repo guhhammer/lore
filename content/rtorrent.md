@@ -13,3 +13,4 @@ network
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/rtorrent
+- Wikipedia: https://en.wikipedia.org/wiki/RTorrent

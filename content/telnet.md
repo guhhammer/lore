@@ -16,3 +16,4 @@ network
 ## Links
 - More information: https://manned.org/telnet
 - tldr page: https://tldr.inbrowser.app/pages/common/telnet
+- Wikipedia: https://en.wikipedia.org/wiki/Telnet

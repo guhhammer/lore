@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://github.com/bcpierce00/unison
 - tldr page: https://tldr.inbrowser.app/pages/common/unison
+- Wikipedia: https://en.wikipedia.org/wiki/Unison_(software)

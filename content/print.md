@@ -13,3 +13,4 @@ documents, files, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/print
+- Wikipedia: https://en.wikipedia.org/wiki/PRINT_(command)

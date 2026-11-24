@@ -18,3 +18,4 @@ network, files, text
 ## Links
 - More information: https://www.php.net/manual/en/features.commandline.options.php
 - tldr page: https://tldr.inbrowser.app/pages/common/php
+- Wikipedia: https://en.wikipedia.org/wiki/PHP

@@ -15,3 +15,4 @@ databases, desktop, files
 ## Links
 - More information: https://gitlab.winehq.org/wine/wine/-/wikis/Commands
 - tldr page: https://tldr.inbrowser.app/pages/linux/wine-reg-query
+- Wikipedia: https://en.wikipedia.org/wiki/Wine_(software)

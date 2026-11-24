@@ -21,3 +21,4 @@ files, archives, windows
 ## Links
 - More information: https://learn.microsoft.com/windows/wsl/reference
 - tldr page: https://tldr.inbrowser.app/pages/windows/wsl
+- Wikipedia: https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux

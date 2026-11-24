@@ -14,3 +14,4 @@ development
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/racket
+- Wikipedia: https://en.wikipedia.org/wiki/Racket_(programming_language)

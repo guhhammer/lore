@@ -15,3 +15,4 @@ databases, files
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/query
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-query
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

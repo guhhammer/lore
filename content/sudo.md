@@ -26,3 +26,4 @@ users, system
 
 ## Links
 - sudo's site: https://www.sudo.ws/docs/man/sudo.man/
+- Wikipedia: https://en.wikipedia.org/wiki/Sudo

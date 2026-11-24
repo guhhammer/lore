@@ -17,3 +17,4 @@ development, documents, monitoring
 ## Links
 - More information: https://github.com/zapier/zapier-platform/blob/main/packages/cli/docs/cli.md
 - tldr page: https://tldr.inbrowser.app/pages/common/zapier
+- Wikipedia: https://en.wikipedia.org/wiki/Zapier

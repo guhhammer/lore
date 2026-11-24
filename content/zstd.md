@@ -17,3 +17,4 @@ archives, files
 ## Links
 - More information: https://manned.org/zstd
 - tldr page: https://tldr.inbrowser.app/pages/common/zstd
+- Wikipedia: https://en.wikipedia.org/wiki/Zstd

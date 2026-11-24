@@ -10,3 +10,4 @@ Email client and RSS reader.
 ## Links
 - More information: https://manned.org/thunderbird
 - tldr page: https://tldr.inbrowser.app/pages/common/thunderbird
+- Wikipedia: https://en.wikipedia.org/wiki/Mozilla_Thunderbird

@@ -23,3 +23,4 @@ network, media
 ## Links
 - More information: https://rg3.github.io/youtube-dl/
 - tldr page: https://tldr.inbrowser.app/pages/common/youtube-dl
+- Wikipedia: https://en.wikipedia.org/wiki/Youtube-dl

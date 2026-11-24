@@ -13,3 +13,4 @@ disks, files, network
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/veracrypt
+- Wikipedia: https://en.wikipedia.org/wiki/VeraCrypt

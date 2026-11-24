@@ -14,3 +14,4 @@ packages, files
 ## Links
 - More information: https://pip.pypa.io/en/stable/cli/pip_lock/
 - tldr page: https://tldr.inbrowser.app/pages/common/pip-lock
+- Wikipedia: https://en.wikipedia.org/wiki/Pip_(package_manager)

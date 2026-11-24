@@ -10,3 +10,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/yum-config-manager
+- Wikipedia: https://en.wikipedia.org/wiki/Yum_(software)

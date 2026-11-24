@@ -15,3 +15,4 @@ files, desktop
 ## Links
 - More information: https://manned.org/xed
 - tldr page: https://tldr.inbrowser.app/pages/linux/xed
+- Wikipedia: https://en.wikipedia.org/wiki/Xed

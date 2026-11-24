@@ -15,3 +15,4 @@ desktop
 ## Links
 - More information: https://manned.org/x11vnc
 - tldr page: https://tldr.inbrowser.app/pages/linux/x11vnc
+- Wikipedia: https://en.wikipedia.org/wiki/X11vnc

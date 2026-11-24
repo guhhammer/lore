@@ -7,3 +7,6 @@ Convert data from one encoding to another.
 - `uconv -s` : suppress messages during execution
 - `uconv -v` : display extra informative messages during execution
 - `uconv -l` : list all the available encodings and exit
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Uconv

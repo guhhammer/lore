@@ -16,3 +16,4 @@ containers
 ## Links
 - More information: https://manned.org/toolbox-rm
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox-rm
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

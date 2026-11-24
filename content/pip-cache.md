@@ -11,3 +11,4 @@ Inspect and manage pip's wheel cache.
 ## Links
 - More information: https://pip.pypa.io/en/stable/cli/pip_cache/
 - tldr page: https://tldr.inbrowser.app/pages/common/pip-cache
+- Wikipedia: https://en.wikipedia.org/wiki/Pip_(package_manager)

@@ -14,3 +14,4 @@ development
 ## Links
 - More information: https://manned.org/qsub.1
 - tldr page: https://tldr.inbrowser.app/pages/linux/qsub
+- Wikipedia: https://en.wikipedia.org/wiki/Qsub

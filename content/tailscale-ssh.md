@@ -12,3 +12,4 @@ network
 ## Links
 - More information: https://tailscale.com/kb/1193/tailscale-ssh
 - tldr page: https://tldr.inbrowser.app/pages/common/tailscale-ssh
+- Wikipedia: https://en.wikipedia.org/wiki/Tailscale

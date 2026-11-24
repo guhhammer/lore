@@ -19,3 +19,4 @@ documents, system
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/uname
+- Wikipedia: https://en.wikipedia.org/wiki/Uname

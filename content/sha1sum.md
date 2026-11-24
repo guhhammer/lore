@@ -16,3 +16,4 @@ files, security
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/sha1sum
+- Wikipedia: https://en.wikipedia.org/wiki/Sha1sum

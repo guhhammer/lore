@@ -15,3 +15,4 @@ disks, files, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/subst
+- Wikipedia: https://en.wikipedia.org/wiki/SUBST

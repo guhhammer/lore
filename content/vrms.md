@@ -12,3 +12,4 @@ packages
 ## Links
 - More information: https://salsa.debian.org/debian/check-dfsg-status
 - tldr page: https://tldr.inbrowser.app/pages/linux/vrms
+- Wikipedia: https://en.wikipedia.org/wiki/Vrms

@@ -13,3 +13,4 @@ files, development
 ## Links
 - More information: https://www.valheimgame.com/support/a-guide-to-dedicated-servers/
 - tldr page: https://tldr.inbrowser.app/pages/linux/valheim
+- Wikipedia: https://en.wikipedia.org/wiki/Valheim

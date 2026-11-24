@@ -20,3 +20,4 @@ files, archives
 ## Links
 - More information: https://www.tarsnap.com/man-tarsnap.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/tarsnap
+- Wikipedia: https://en.wikipedia.org/wiki/Tarsnap

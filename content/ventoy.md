@@ -18,3 +18,4 @@ disks, users, packages
 ## Links
 - More information: https://www.ventoy.net/en/doc_start.html#doc_linux_cli
 - tldr page: https://tldr.inbrowser.app/pages/linux/ventoy
+- Wikipedia: https://en.wikipedia.org/wiki/Ventoy

@@ -16,3 +16,4 @@ containers, media
 ## Links
 - More information: https://manned.org/toolbox-enter
 - tldr page: https://tldr.inbrowser.app/pages/linux/toolbox-enter
+- Wikipedia: https://en.wikipedia.org/wiki/Toolbox_(software)

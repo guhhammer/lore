@@ -20,3 +20,4 @@ processes, shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-wait
 - tldr page: https://tldr.inbrowser.app/pages/common/wait
+- Wikipedia: https://en.wikipedia.org/wiki/Wait_(command)

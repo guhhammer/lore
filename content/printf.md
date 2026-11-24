@@ -19,3 +19,4 @@ documents, text, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/printf
+- Wikipedia: https://en.wikipedia.org/wiki/Printf_(Unix)

@@ -8,3 +8,4 @@ This command may be mistaken as the cross-platform version of PowerShell (former
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/powershell
+- Wikipedia: https://en.wikipedia.org/wiki/PowerShell

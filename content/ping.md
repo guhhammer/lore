@@ -21,3 +21,4 @@ network
 ## Links
 - More information: https://manned.org/ping
 - tldr page: https://tldr.inbrowser.app/pages/common/ping
+- Wikipedia: https://en.wikipedia.org/wiki/Ping_(networking_utility)

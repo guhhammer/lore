@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://pylint.pycqa.org/en/latest/
 - tldr page: https://tldr.inbrowser.app/pages/common/pylint
+- Wikipedia: https://en.wikipedia.org/wiki/Pylint

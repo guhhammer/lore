@@ -14,3 +14,4 @@ files, development, text
 ## Links
 - More information: https://veripool.org/guide/latest/
 - tldr page: https://tldr.inbrowser.app/pages/common/verilator
+- Wikipedia: https://en.wikipedia.org/wiki/Verilator

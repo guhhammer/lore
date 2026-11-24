@@ -18,3 +18,4 @@ files, network, packages
 ## Links
 - More information: https://developer.hashicorp.com/terraform/cli/commands/providers
 - tldr page: https://tldr.inbrowser.app/pages/common/terraform-providers
+- Wikipedia: https://en.wikipedia.org/wiki/Terraform_(software)

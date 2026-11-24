@@ -15,3 +15,4 @@ users, shell, text
 ## Links
 - More information: https://www.gnu.org/software/inetutils/manual/inetutils.html#talk-invocation
 - tldr page: https://tldr.inbrowser.app/pages/linux/talk
+- Wikipedia: https://en.wikipedia.org/wiki/Talk_(software)

@@ -13,3 +13,4 @@ files, archives
 ## Links
 - More information: https://pmt.sourceforge.io/pngcrush/
 - tldr page: https://tldr.inbrowser.app/pages/common/pngcrush
+- Wikipedia: https://en.wikipedia.org/wiki/Pngcrush

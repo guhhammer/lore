@@ -18,3 +18,4 @@ files, shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-pushd
 - tldr page: https://tldr.inbrowser.app/pages/common/pushd
+- Wikipedia: https://en.wikipedia.org/wiki/Pushd_and_popd

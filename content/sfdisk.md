@@ -15,3 +15,4 @@ danger, disks, files, desktop
 ## Links
 - More information: https://manned.org/sfdisk
 - tldr page: https://tldr.inbrowser.app/pages/linux/sfdisk
+- Wikipedia: https://en.wikipedia.org/wiki/Sfdisk

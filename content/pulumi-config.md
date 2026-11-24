@@ -17,3 +17,4 @@ files
 ## Links
 - More information: https://www.pulumi.com/docs/iac/cli/commands/pulumi_config/
 - tldr page: https://tldr.inbrowser.app/pages/common/pulumi-config
+- Wikipedia: https://en.wikipedia.org/wiki/Pulumi
