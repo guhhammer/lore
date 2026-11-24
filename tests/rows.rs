@@ -9,6 +9,7 @@ fn labels(rows: &[Row]) -> Vec<String> {
     rows.iter()
         .map(|row| match row {
             Row::Header(section) => format!("[{section}]"),
+            Row::Title(title) => format!("[{title}]"),
             Row::Command(command) => command.name.clone(),
         })
         .collect()

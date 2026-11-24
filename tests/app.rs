@@ -21,7 +21,7 @@ fn app(names: &[&str]) -> App {
 fn selected_name(app: &App) -> &str {
     match &app.rows[app.list.selected().unwrap()] {
         Row::Command(command) => &command.name,
-        Row::Header(_) => panic!("a header is selected"),
+        Row::Header(_) | Row::Title(_) => panic!("a header is selected"),
     }
 }
 
@@ -31,6 +31,7 @@ fn labels(app: &App) -> Vec<String> {
         .iter()
         .map(|row| match row {
             Row::Header(section) => format!("[{section}]"),
+            Row::Title(title) => format!("[{title}]"),
             Row::Command(command) => command.name.clone(),
         })
         .collect()

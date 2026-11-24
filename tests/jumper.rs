@@ -25,7 +25,7 @@ fn app(names: &[&str]) -> App {
 fn selected_name(app: &App) -> String {
     match &app.rows[app.list.selected().unwrap()] {
         Row::Command(command) => command.name.clone(),
-        Row::Header(_) => panic!("a header is selected"),
+        Row::Header(_) | Row::Title(_) => panic!("a header is selected"),
     }
 }
 

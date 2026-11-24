@@ -46,6 +46,7 @@ lore/
 │   │   ├── aliases.rs      aliases, read as text from the startup files
 │   │   └── functions.rs    fish functions
 │   ├── info/               what a page says
+│   │   ├── beacon.rs       the beacon topic's numbers: popcon and Homebrew, ranked
 │   │   ├── content.rs      the written pages: built in, folders, translations
 │   │   ├── page.rs         the whole page as styled lines (and the INTERNET section)
 │   │   ├── package.rs      package and version from dpkg/apt, rpm, pacman, Homebrew
@@ -53,7 +54,9 @@ lore/
 │   │   ├── check.rs        `lore check`: the check of pages lore did not write
 │   │   ├── danger.rs       what can destroy data or stop the system
 │   │   ├── explain.rs      `lore explain LINE`
-│   │   └── recipes.rs      the recipes as list entries (Kind::Recipe)
+│   │   ├── recipes.rs      the recipes as list entries (Kind::Recipe)
+│   │   ├── tldr.rs         a tldr-pages page in lore's format
+│   │   └── updates.rs      `lore --update-pages`: the weekly bundle, else tldr's zips
 │   ├── interface/          what the user sees and types
 │   │   ├── args.rs         the command line
 │   │   ├── complete.rs     Tab completion's answers (`lore --complete`)
@@ -69,20 +72,23 @@ lore/
 │       ├── history.rs      uses per command, from the shell's history
 │       ├── internet.rs     the connection dot and cht.sh's cheat sheets
 │       ├── manual.rs       running man and whatis, cleaning their output
-│       └── text.rs         fitting text to columns
+│       ├── text.rs         fitting text to columns
+│       └── zip.rs          the files in a zip archive (stored or deflated)
 ├── build.rs                packs content/ into the binary (zstd); embeds and checks palettes/ and recipes/
 ├── content/                9,109 pages, and 32,226 translations in i18n/<language>/ (41 languages)
 ├── recipes/                100 task pages
 ├── palettes/               15 colour palettes
+├── beacon/beacon.tsv       the beacon's built-in table (BEACON_SNAPSHOT)
 ├── completions/            bash, zsh and fish scripts (they ask `lore --complete`)
 ├── man/lore.1              lore's own manual
-├── tests/                  every test (29 files), through src/lib.rs
+├── tests/                  every test (32 files), through src/lib.rs
 ├── examples/commands.rs    prints every command lore lists, for scripts/content
-├── scripts/content/        the scripts that made content/
+├── scripts/content/        the scripts that made content/, and bundle.py (the weekly pages)
+├── scripts/beacon/         snapshot.py: the beacon's table, from popcon and Homebrew
 ├── scripts/release/        the release tarball and notes
 ├── packaging/              the AUR build file, the Homebrew formula, update.sh
 ├── cli/make, cli/clean     the build gate, and cleaning
-├── .github/workflows/      ci, docs, scripts, release
+├── .github/workflows/      ci, docs, scripts, release, content (weekly data)
 └── app/                    where cli/make copies the release binary (ignored)
 ```
 
@@ -127,8 +133,9 @@ arrived, and asks for a redraw.
    1. in the reader's own folder (`USER_CONTENT_DIRS`), which may replace
       anything;
    2. in the pages built into the binary;
-   3. in the folders other programs install pages in
-      (`SYSTEM_CONTENT_DIRS`), only for a command lore has no page for.
+   3. in the pages `lore --update-pages` fetched (`UPDATED_CONTENT_DIRS`),
+      then the folders other programs install pages in
+      (`SYSTEM_CONTENT_DIRS`), both only for a command lore has no page for.
 
    A page from a folder must pass `info::check`, or it is skipped. A
    subcommand's spaces become dashes in the file name (`git-commit.md`);
@@ -154,7 +161,8 @@ arrived, and asks for a redraw.
 
 - **No search:** the topic's list (`App::topic`, `Topic` in app.rs):
   commands and recipes A to Z under their letters, most used / recent /
-  bookmarks in their own order. The bar shows only topics with anything
+  bookmarks in their own order, the beacon under its own headings
+  (`App::beacon_rows`: `Row::Title`, which Tab jumps between like letters). The bar shows only topics with anything
   (`App::topics`); one that empties gives way to commands. A new kind of
   lore is a new `Topic`.
 - **A search** looks in every topic, ranked best first, with no headers:
@@ -178,6 +186,8 @@ arrived, and asks for a redraw.
 | `$XDG_CONFIG_HOME/lore/palettes/` | the user | their own palettes |
 | `$XDG_DATA_HOME/lore/` (`~/.local/share/lore/`) | `b`, opening a page | `bookmarks`, `recent` |
 | `$XDG_CACHE_HOME/lore/internet/` (`~/.cache/lore/internet/`) | `utils::internet` | cheat sheets, a day |
+| `$XDG_CACHE_HOME/lore/beacon.tsv` | `info::beacon::refresh` (Internet on) | the newest beacon table, a week |
+| `~/.local/share/lore/updates/` | `lore --update-pages` (`info::updates`) | pages and translations lore lacks |
 
 ---
 
@@ -248,7 +258,15 @@ lore needs a terminal: started from a pipe, it says so and exits with 1.
    - macOS binaries for Apple Silicon and Intel (not signed);
    - a GitHub release with all of them, `SHA256SUMS`, and the notes from
      `scripts/release/notes.sh`.
-4. **AUR and Homebrew,** by hand: `packaging/update.sh X.Y.Z` puts the new
+4. **The weekly data** is not part of a release: `content.yml` runs each
+   Monday (or by hand) and replaces the two assets of the pre-release
+   tagged `content`: `pages.zst` (`scripts/content/bundle.py`, for
+   `lore --update-pages`) and `beacon.tsv` (`scripts/beacon/snapshot.py`).
+   lore reads them at fixed URLs (`UPDATE_BUNDLE_URL`, `BEACON_URL`); when
+   they cannot be had, it goes to tldr-pages, popcon and Homebrew itself.
+   To refresh the built-in table before a release, run
+   `python3 scripts/beacon/snapshot.py`.
+5. **AUR and Homebrew,** by hand: `packaging/update.sh X.Y.Z` puts the new
    version and checksums into `packaging/aur/PKGBUILD` and
    `packaging/homebrew/lore.rb`, then prints what to push where.
 

@@ -131,7 +131,10 @@ def read_tldr(path: Path, english: bool = True) -> TldrPage:
                 link_line = text.startswith(("More information", "Homepage"))
                 refers = text.startswith("See also")
             else:
-                link_line, refers = bool(url), SEE_ALSO.match(text)
+                # "Mais informações: <https://…>": a label, then the link;
+                # a link inside a sentence is part of the summary
+                labelled = text.split("<https://")[0].rstrip().endswith((":", "："))
+                link_line, refers = bool(url) and labelled, SEE_ALSO.match(text)
             if link_line:
                 if url:
                     more_info = more_info or url.group(1).rstrip(".")

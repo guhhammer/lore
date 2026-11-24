@@ -23,10 +23,13 @@ Usage:
                      lore explain \"tar -xzvf a.tgz\"
   lore --completions SHELL   the completion script for bash, zsh or fish
   lore check FILE    check a page file another program ships (see man lore)
+  lore --update-pages  download newer pages, for commands lore has no page
+                     for (lore's weekly pages, else tldr-pages); only then
+                     does lore fetch pages
   lore --help        this text
   lore --version     lore's version
 
-Colours: press p in the list or on a page to pick a palette; the choice is
+Colours: press + then Enter on Colours (or p there) to pick a palette; it is
 saved in ~/.config/lore/config ($XDG_CONFIG_HOME/lore/config) for the next
 runs. LORE_PALETTE=NAME lore uses another one for one run. Your own
 palettes go in ~/.config/lore/palettes/NAME.palette (`man lore`, COLOURS).
@@ -36,15 +39,18 @@ terminal, so over ssh too (OSC 52: most terminals, tmux with set-clipboard).
 
 + shows what lore is, where it keeps things and what it found here.
 
-Your own use: b bookmarks a command; with the search empty, the list starts
-with your bookmarks, the pages you opened last and the commands your shell
-history ran most (a dim dot marks the ones it never ran). Kept in
-~/.local/share/lore/; `history = off` in the config file stops reading it.
+Topics: the bar under the search bar holds commands, recipes, beacon
+(what people use most and what is rising, from Debian's and Homebrew's
+public numbers) and your own: bookmarks (b), the pages you opened last and
+the commands your shell history ran most (a dim dot marks the ones it never
+ran). Kept in ~/.local/share/lore/; `history = off` in the config file
+stops reading the history.
 
-In the list: arrows move, / searches (start with @ for only the commands
-that have a lore page), right arrow or Enter opens a page, Esc quits.
-On a page: arrows and PgUp/PgDn scroll, / finds another command, left
-arrow or Esc close it.
+In the list: up and down move, left and right switch topics, Enter opens a
+page, Tab and Shift+Tab jump between headings, / searches (start with @
+for only the commands that have a lore page), Esc quits.
+On a page: arrows and PgUp/PgDn scroll, Tab jumps between sections, / finds
+another command, left arrow or Esc close it.
 `man lore` has the rest.";
 
 /// Under FILES: where the paths come from.
@@ -183,6 +189,10 @@ pub const COMPLETE_OPTIONS: &[(&str, &str)] = &[
         "print the completion script for bash, zsh or fish",
     ),
     ("explain", "each word of a command line, from the man pages"),
+    (
+        "--update-pages",
+        "download newer pages (the only time lore asks for them)",
+    ),
 ];
 
 /// Candidates get a description (the page's first sentence) only when
@@ -572,7 +582,14 @@ pub const MOST_USED_MAX: usize = 50;
 /// The topics, in the bar under the search bar (← → switch them), in the
 /// order shown (`Topic::all()` in src/app.rs). A topic with nothing in it
 /// (no bookmarks yet, no history) is not shown; commands always is.
-pub const TOPIC_NAMES: [&str; 5] = ["commands", "recipes", "most used", "recent", "bookmarks"];
+pub const TOPIC_NAMES: [&str; 6] = [
+    "commands",
+    "recipes",
+    "beacon",
+    "most used",
+    "recent",
+    "bookmarks",
+];
 /// The bar's height, and the room between two topics.
 pub const TOPIC_BAR_HEIGHT: u16 = 1;
 pub const TOPIC_GAP: &str = "  ";
@@ -644,6 +661,91 @@ pub const USER_CONTENT_DIRS: &[&str] = &["~/.local/share/lore/content"];
 /// page of its own for, so no package can rewrite another command's page.
 pub const SYSTEM_CONTENT_DIRS: &[&str] =
     &["/usr/local/share/lore/content", "/usr/share/lore/content"];
+
+/// Pages `lore --update-pages` downloaded: used only for a command with no
+/// page of yours or lore's own, like `SYSTEM_CONTENT_DIRS`. The first one
+/// is where they are written; lore replaces the whole folder each time.
+pub const UPDATED_CONTENT_DIRS: &[&str] = &["~/.local/share/lore/updates"];
+
+// ── newer pages: `lore --update-pages` (src/info/updates.rs) ────────────────
+
+pub const UPDATE_PAGES_FLAG: &str = "--update-pages";
+/// First: the pages lore's repository converts each week, one zstd file of
+/// records (`RECORD_MARK` + path + newline + the page).
+pub const UPDATE_BUNDLE_URL: &str =
+    "https://github.com/guhhammer/lore/releases/download/content/pages.zst";
+/// A record's start: a control character, which no page that passes the
+/// check can hold, so a page cannot fake one.
+pub const RECORD_MARK: char = '\u{1e}';
+/// Else: tldr-pages' own release, one zip per language, converted here.
+pub const UPDATE_TLDR_URL: &str =
+    "https://github.com/tldr-pages/tldr/releases/latest/download/tldr-pages.{lang}.zip";
+/// tldr's folders this system uses, the first winning a name: the
+/// system's own, then the common ones.
+pub const TLDR_PLATFORMS_LINUX: &[&str] = &["linux", "common"];
+pub const TLDR_PLATFORMS_MACOS: &[&str] = &["osx", "common"];
+/// The link every converted page gets, besides tldr's "More information".
+pub const TLDR_PAGE_LINK: &str = "https://tldr.inbrowser.app/pages/{platform}/{name}";
+pub const TLDR_MORE_INFORMATION: &str = "More information";
+/// The most examples a converted page keeps (the built-in pages keep 8 too).
+pub const TLDR_MAX_EXAMPLES: usize = 8;
+/// The most a download may weigh, and the most a bundle may unpack to.
+pub const UPDATE_MAX_BYTES: usize = 64 * 1024 * 1024;
+/// What `lore --update-pages` says.
+pub const UPDATE_TRYING: &str = "lore: fetching {url}";
+pub const UPDATE_FALLBACK: &str = "lore: not there ({why}); converting tldr-pages instead";
+pub const UPDATE_DONE: &str =
+    "lore: {pages} new pages and {translations} translations in {dir}, from {source}";
+pub const UPDATE_SOURCE_BUNDLE: &str = "lore's weekly pages";
+pub const UPDATE_SOURCE_TLDR: &str = "tldr-pages (CC BY 4.0)";
+pub const ERROR_UPDATE_FAILED: &str = "could not get newer pages: {why}";
+pub const ERROR_UPDATE_NO_HOME: &str = "no home folder to keep the pages in";
+pub const ERROR_UPDATE_EMPTY: &str = "nothing usable came back";
+
+// ── the beacon topic (src/info/beacon.rs) ───────────────────────────────────
+
+/// The numbers built into lore: beacon/beacon.tsv, from
+/// scripts/beacon/snapshot.py (popcon and Homebrew).
+pub const BEACON_SNAPSHOT: &str = include_str!("../beacon/beacon.tsv");
+/// A newer copy, fetched in the background when Internet is on, and kept
+/// in `$XDG_CACHE_HOME/lore/beacon.tsv` for `BEACON_CACHE_HOURS`.
+pub const BEACON_URL: &str =
+    "https://github.com/guhhammer/lore/releases/download/content/beacon.tsv";
+pub const BEACON_CACHE_FILE: &str = "lore/beacon.tsv";
+pub const BEACON_CACHE_HOURS: u64 = 24 * 7;
+pub const BEACON_MAX_BYTES: usize = 4 * 1024 * 1024;
+/// Without lore's copy, the sources themselves: popcon's ranking (read only
+/// this far: the most installed come first) and Homebrew's installs asked
+/// for by name. A package or formula then counts for the command of the
+/// same name only.
+pub const BEACON_POPCON_URL: &str = "https://popcon.debian.org/by_inst";
+pub const BEACON_POPCON_MAX_BYTES: usize = 3 * 1024 * 1024;
+pub const BEACON_BREW_URL: &str =
+    "https://formulae.brew.sh/api/analytics/install-on-request/{days}d.json";
+/// A package on this share of the most installed one's machines is the base
+/// system, not a choice: left out (scripts/beacon/snapshot.py does the same).
+pub const BEACON_BASE_SHARE: f64 = 0.9;
+/// How many commands a table made here keeps, the most used first (as the
+/// script's).
+pub const BEACON_KEEP: usize = 1500;
+/// Trending: installs in the last 30 days against the year's monthly mean,
+/// at least this much higher, from at least `BEACON_TREND_MIN` installs.
+pub const BEACON_TREND_MIN_RISE: f64 = 1.3;
+pub const BEACON_TREND_MIN: u64 = 2000;
+/// How many the beacon lists: trending, popular, and per category.
+pub const BEACON_TRENDING_MAX: usize = 20;
+pub const BEACON_POPULAR_MAX: usize = 50;
+pub const BEACON_PER_CATEGORY: usize = 5;
+pub const BEACON_CATEGORIES_MAX: usize = 12;
+/// How many of the most popular the categories are made from.
+pub const BEACON_CATEGORY_POOL: usize = 400;
+/// The beacon's headings, and what follows each name.
+pub const BEACON_TRENDING: &str = "trending this month";
+pub const BEACON_POPULAR: &str = "most used";
+pub const BEACON_FOR: &str = "most used for {category}";
+pub const BEACON_RISE: &str = "↑ {rise}× this month";
+pub const BEACON_RANK: &str = "#{rank}";
+pub const BEACON_NOT_HERE: &str = "not installed";
 
 // ── the check of pages lore did not write (src/info/check.rs) ───────────────
 

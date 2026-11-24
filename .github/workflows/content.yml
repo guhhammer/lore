@@ -1,0 +1,48 @@
+name: content
+
+# Each week (and by hand), the data lore can fetch after it was installed,
+# published as the assets of one pre-release tagged `content`:
+#
+#   pages.zst    every tldr page in lore's format, for `lore --update-pages`
+#                (scripts/content/bundle.py); lore keeps only what it lacks
+#   beacon.tsv   the beacon topic's numbers, from Debian popcon and
+#                Homebrew (scripts/beacon/snapshot.py)
+#
+# A pre-release, so GitHub's "latest release" (the README's download link)
+# stays the newest version of lore. The `content` tag is not a version tag:
+# release.yml does not run for it. Each run replaces the two files.
+
+on:
+  schedule:
+    - cron: "17 4 * * 1" # Mondays, 04:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: content
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: tldr-pages, newest
+        run: git clone --depth 1 https://github.com/tldr-pages/tldr.git .content-draft/tldr-src
+      - name: The pages
+        run: python3 scripts/content/bundle.py pages.zst
+      - name: The beacon
+        run: python3 scripts/beacon/snapshot.py --out beacon.tsv
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          notes="Data lore fetches after it is installed: pages.zst for \`lore --update-pages\`, beacon.tsv for the beacon topic. Made $(date -u +%Y-%m-%d) from tldr-pages $(git -C .content-draft/tldr-src rev-parse --short HEAD) (CC BY 4.0), Debian popcon and Homebrew analytics."
+          if gh release view content >/dev/null 2>&1; then
+            gh release edit content --prerelease --notes "$notes"
+          else
+            gh release create content --prerelease --title "content (weekly)" --notes "$notes"
+          fi
+          gh release upload content pages.zst beacon.tsv --clobber

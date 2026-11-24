@@ -66,13 +66,15 @@ and what can go wrong. For Linux and macOS, with bash, zsh or fish.
 | **Search by name or by task** | Type `tar`, or type `compress folder`: lore searches names first, then what the pages say. |
 | **100 recipes** | Short task pages that chain commands, mostly the terminal tasks with the most-viewed Stack Overflow questions: *find files containing a text*, *what is using port 80*, *free disk space*, *add a user*… |
 | **`lore explain`** | `lore explain "tar -xzvf a.tgz"` says what every word and flag means, from the man pages, offline. |
+| **The beacon** | What people use most and what is rising this month, from Debian's and Homebrew's public numbers: trending, most used, and most used per category, installed here or not. |
 | **Your own use** | Bookmarks, the pages you opened last, and the commands your shell history runs most sit at the top. |
 | **Your language** | Pages in 41 languages when a translation exists, picked from `$LANG`. |
 | **Colour palettes** | 15 palettes (Catppuccin, Dracula, Nord, Gruvbox, Solarized, Tokyo Night, One, Rosé Pine…), or your terminal's own colours. |
 | **Tab completion** | `lore git <Tab>` offers git's subcommands, in bash, zsh and fish. |
 
 Everything is built into one binary: no folder to install, nothing to
-download, and it works with no network at all.
+download, and it works with no network at all. Newer pages come only when
+you ask: `lore --update-pages`.
 
 ---
 
@@ -109,14 +111,32 @@ To build it yourself, see [Build from source](#build-from-source).
 | `lore explain "tar -xzvf a.tgz"` | What each word of a command line means. |
 | `lore check NAME.md` | Checks a page before you ship it (see [Add your own pages](#add-your-own-pages)). |
 | `lore --completions bash` | Prints the Tab completion script for bash, zsh or fish. |
+| `lore --update-pages` | Downloads newer pages for commands lore has no page for (see below). |
 | `lore --help`, `lore --version` | What they say. |
 
 **Topics.** A bar under the search bar holds the topics, each its own
 list: **commands** (every command here, A to Z under letter headers, `#`
-for names starting with a digit or symbol), **recipes**, and your own
-**most used**, **recent** and **bookmarks** once they have anything. ← and
-→ switch topics. Each name shows its categories, such as
+for names starting with a digit or symbol), **recipes**, the **beacon**,
+and your own **most used**, **recent** and **bookmarks** once they have
+anything. ← and → switch topics. Each name shows its categories, such as
 `[archives files]`; `danger` is in red.
+
+**The beacon** lists what is trending this month, the most used commands,
+then the most used per category (*most used for archives*…), each with its
+rank, its rise and `not installed` when it is not on your machine: lore
+still has its page, to read before you install it. The numbers are public:
+the machines that use a package regularly, from
+[Debian's popularity contest](https://popcon.debian.org/), and the
+installs asked for by name, from
+[Homebrew's analytics](https://formulae.brew.sh/analytics/). A table is
+built in, so it works offline; with Internet on, a newer one is fetched at
+most once a week.
+
+**Newer pages.** `lore --update-pages` downloads, only when you run it,
+lore's weekly pages (every tldr page in lore's format), or tldr-pages' own
+files if those cannot be had. It keeps only pages and translations lore
+lacks, each checked like any page lore did not write, in
+`~/.local/share/lore/updates/`. They never change a page lore has.
 
 **A page** opens beside the list and fits the space left. A command with no
 page explains why that may be.
@@ -137,9 +157,9 @@ The keys you can press are always shown on the bottom line.
 | Key | Does |
 | --- | --- |
 | ↑ ↓ | Move |
-| ← → | Switch the topic: commands, recipes, most used, recent, bookmarks |
+| ← → | Switch the topic: commands, recipes, beacon, most used, recent, bookmarks |
 | Enter | Open the page |
-| Tab, Shift+Tab | Jump to the next or previous letter, round at either end |
+| Tab, Shift+Tab | Jump to the next or previous letter (or beacon heading), round at either end |
 | `/` | Search |
 | `b` | Bookmark (press again to remove) |
 | `+` | About lore, and settings |
@@ -183,7 +203,9 @@ Where lore keeps things (each follows the XDG variables when they are set):
 | `~/.config/lore/palettes/` | Your own palettes ([how](../palettes/README.md)). |
 | `~/.local/share/lore/` | Your bookmarks and recent pages. |
 | `~/.local/share/lore/content/` | Your own pages, which can replace built-in ones. |
+| `~/.local/share/lore/updates/` | The pages `lore --update-pages` fetched, replaced whole each time. |
 | `~/.cache/lore/internet/` | Cheat sheets fetched from the internet, kept for a day. |
+| `~/.cache/lore/beacon.tsv` | The newest beacon table fetched, used at the next start. |
 
 `LORE_PALETTE=nord lore` uses another palette for one run.
 
@@ -200,8 +222,12 @@ Where lore keeps things (each follows the XDG variables when they are set):
   **INTERNET** section with the command's community cheat sheet from
   [cht.sh](https://cht.sh). That text is written by anyone, so lore shows it
   as raw text, strips anything that could control your terminal, never
-  copies it for you and never runs it. Read it with care. Turn Internet off
-  on the `+` screen and lore makes no network request at all.
+  copies it for you and never runs it. Read it with care.
+- **The beacon** fetches a newer table of public numbers at most once a
+  week, when Internet is on. It sends nothing about you or your use.
+- **Turn Internet off** on the `+` screen and lore makes no network request
+  on its own. Only `lore --update-pages` still downloads, because you typed
+  it.
 
 More in [SECURITY.md](SECURITY.md).
 
@@ -245,11 +271,12 @@ lore/
 ├── content/        the command pages, built into the binary
 ├── recipes/        the task pages
 ├── palettes/       the colour palettes
+├── beacon/         the beacon's built-in table (scripts/beacon/ makes it)
 ├── completions/    Tab completion for bash, zsh and fish
 ├── man/            lore's own manual page
 ├── tests/          the tests
 ├── packaging/      the Arch (AUR) build file and the Homebrew formula
-├── scripts/        the page generators and the release scripts
+├── scripts/        the page generators, the beacon's data, the release scripts
 └── cli/            make and clean
 ```
 

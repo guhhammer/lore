@@ -39,8 +39,8 @@ runs only these, each with a plain argument and never through a shell:
 - your shell history (bash, zsh, fish, `$HISTFILE`), to count which
   commands you use most. It is only counted, never kept or sent. History
   off on the `+` screen stops this;
-- pages from `~/.local/share/lore/content/` and
-  `/usr/share/lore/content/`;
+- pages from `~/.local/share/lore/content/`,
+  `~/.local/share/lore/updates/` and `/usr/share/lore/content/`;
 - its own settings and lists (below).
 
 ### What it writes
@@ -52,6 +52,8 @@ Only its own files, and only when you change something:
 | `~/.config/lore/config` | You change a setting on the `+` screen. |
 | `~/.local/share/lore/bookmarks`, `recent` | You bookmark or open a page. |
 | `~/.cache/lore/internet/NAME.txt` | A cheat sheet arrives from the internet (kept a day). |
+| `~/.cache/lore/beacon.tsv` | A newer beacon table arrives (at most once a week). |
+| `~/.local/share/lore/updates/` | You run `lore --update-pages` (replaced whole each time). |
 
 It reads no passwords, keys or tokens.
 
@@ -64,10 +66,19 @@ Nothing, unless the internet is on (it is by default):
 - when you open a command's page, one https request to
   `https://cht.sh/NAME?T`, made by lore itself (rustls), never by running a
   program. It carries the command's name, and lore's name and version as
-  its user agent; nothing about you.
+  its user agent; nothing about you;
+- at start, at most once a week, the beacon's table: one https request to
+  lore's own release
+  (`https://github.com/guhhammer/lore/releases/download/content/beacon.tsv`),
+  or, when that fails, to Debian's popcon (`https://popcon.debian.org/by_inst`)
+  and Homebrew's analytics (`https://formulae.brew.sh/api/analytics/…`).
+  Public numbers are read; nothing about your own use is sent.
 
 Turn **Internet off** on the `+` screen (`internet = off` in the settings
-file), and lore makes no network request at all.
+file), and lore makes no network request on its own. The one exception is
+a command you type for it: `lore --update-pages` downloads newer pages
+(lore's weekly `pages.zst` from the same release, else tldr-pages' zip
+files from GitHub) whatever the setting, because you asked.
 
 ### The clipboard
 
@@ -87,7 +98,12 @@ terminal (the OSC 52 escape). Nothing else is ever copied.
   answer is not checked. lore shows it as raw lines behind a bar, never
   turns it into links, never copies it and never runs it, and the section
   says so. Text from it that does more, or any request made with the
-  internet off, is in scope.
+  internet off (other than `lore --update-pages`), is in scope.
+- **Downloaded pages** (`lore --update-pages`). Each must pass the same
+  check before it is written, may only fill in a command or translation
+  lore has no page for, and is checked again when read. A record or zip
+  entry that writes outside `~/.local/share/lore/updates/`, or a page that
+  gets past the check, is in scope.
 - **Pages from other programs** (`/usr/share/lore/content/`). Each must
   pass `lore check`, and may only fill in a command lore has no page for,
   never replace one. A page that gets past the check with escape codes,

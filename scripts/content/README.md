@@ -27,6 +27,19 @@ python3 scripts/content/enrich.py     # 7. See also, categories, translations
 cli/make                              #    the tests check every built-in page
 ```
 
+## The weekly pages
+
+`bundle.py` packs every tldr page (English and translated) in lore's
+format into one zstd file, the one `lore --update-pages` fetches first.
+The `content` workflow runs it each week; by hand, with the tldr checkout
+above and the `zstd` program:
+
+```bash
+python3 scripts/content/bundle.py pages.zst
+```
+
+It writes only that file, never into `content/`.
+
 ## Good to know
 
 - **Nothing is overwritten.** `merge.py` keeps every page already in
@@ -45,3 +58,4 @@ cli/make                              #    the tests check every built-in page
 | `common.py` | Paths, lore's page format (one writer), the tldr reader. |
 | `extra_pages.py` | Pages written for lore directly. |
 | `categories.py` | Category keywords, categories set by hand, the `danger` list. |
+| `bundle.py` | The weekly pages for `lore --update-pages` (see above). |

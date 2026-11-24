@@ -42,6 +42,14 @@ pub fn run() -> io::Result<()> {
         Start::Explain(line) => return explain(&line),
         Start::Complete(words) => return complete(&words),
         Start::Check(files) => return check_files(&files),
+        Start::UpdatePages => {
+            // asked for by name, so it runs even with Internet off: the
+            // setting is about what lore does on its own
+            let done =
+                info::updates::run(&mut |line| eprintln!("{line}")).map_err(io::Error::other)?;
+            println!("{done}");
+            return Ok(());
+        }
         Start::Completions(shell) => {
             let script = compile_config::COMPLETION_SCRIPTS
                 .iter()
@@ -63,7 +71,9 @@ pub fn run() -> io::Result<()> {
         == Some(compile_config::SETTING_OFF);
     if !internet_off {
         app.internet = utils::internet::Internet::start();
+        info::beacon::refresh(); // a newer table for the next start, if due
     }
+    app.set_beacon(info::beacon::load());
     app.history = !history_off;
     app.set_personal(
         settings::read_list(compile_config::BOOKMARKS_FILE),

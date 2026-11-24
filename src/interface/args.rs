@@ -4,6 +4,7 @@
 use crate::compile_config::{
     CHECK_WORD, COMPLETE_FLAG, COMPLETIONS_FLAG, ERROR_CHECK_FILES, ERROR_COMPLETIONS_SHELL,
     ERROR_EXPLAIN_LINE, ERROR_OPTIONS_ALONE, ERROR_PRINT_NAME, ERROR_UNKNOWN_OPTION, EXPLAIN_WORD,
+    UPDATE_PAGES_FLAG,
 };
 
 /// What lore was asked to do.
@@ -24,6 +25,9 @@ pub enum Start {
     Completions(String),
     /// Check page files another program ships (`check FILE…`).
     Check(Vec<String>),
+    /// Download newer pages, the only time lore asks for them
+    /// (`--update-pages`).
+    UpdatePages,
     Help,
     Version,
 }
@@ -36,6 +40,7 @@ pub fn parse(args: impl IntoIterator<Item = String>) -> Result<Start, String> {
         [] => Ok(Start::List),
         [flag] if flag == "-h" || flag == "--help" => Ok(Start::Help),
         [flag] if flag == "-V" || flag == "--version" => Ok(Start::Version),
+        [flag] if flag == UPDATE_PAGES_FLAG => Ok(Start::UpdatePages),
         [flag, words @ ..] if flag == COMPLETE_FLAG => Ok(Start::Complete(words.to_vec())),
         [flag, shell] if flag == COMPLETIONS_FLAG => Ok(Start::Completions(shell.clone())),
         [flag] if flag == COMPLETIONS_FLAG => Err(ERROR_COMPLETIONS_SHELL.to_owned()),

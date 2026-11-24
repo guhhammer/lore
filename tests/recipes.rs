@@ -54,6 +54,7 @@ fn recipes_are_a_topic_of_their_own_a_to_z_and_not_among_the_commands() {
             .iter()
             .map(|row| match row {
                 Row::Header(section) => format!("[{section}]"),
+                Row::Title(title) => format!("[{title}]"),
                 Row::Command(c) => c.name.clone(),
             })
             .collect()

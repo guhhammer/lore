@@ -13,8 +13,34 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+### Added
+
+- **The beacon topic:** what people use most and what is rising, between
+  recipes and most used. It lists the commands trending this month, the
+  most used ones, then the most used per category (for archives, for
+  network…), each with its rank, its rise and whether it is installed
+  here. A command lore has a page for is listed even when it is not
+  installed, to read about before installing it. The numbers are public:
+  Debian's popularity contest and Homebrew's installs asked for by name. A
+  table of them is built in (`beacon/beacon.tsv`, from
+  `scripts/beacon/snapshot.py`), so the topic works offline. With Internet
+  on, a newer one is fetched at most once a week for the next start: lore's
+  own copy first, else from the two sources.
+- **`lore --update-pages`:** downloads newer pages, only when you ask. First
+  lore's weekly pages (`pages.zst`, every tldr page in lore's format, from
+  `scripts/content/bundle.py`), else tldr-pages' own zip files, converted
+  on your machine. It keeps only pages and translations lore lacks, each
+  passing `lore check`, in `~/.local/share/lore/updates/`, read after the
+  built-in pages: they never change a page lore has.
+- **The `content` workflow** publishes `pages.zst` and `beacon.tsv` each
+  week as the assets of a pre-release tagged `content`, so the README's
+  latest-release link stays on lore's newest version.
+
 ### Fixed
 
+- A translated tldr page whose summary holds a link no longer loses its
+  summary (the link was taken for the "more information" line).
+- `lore --help` described old keys (p in the list, → to open a page).
 - The release workflow's macOS builds ask for `macos-latest`: GitHub no
   longer has `macos-14`, so v0.1.6's release never finished.
 - The crate's package now holds `recipes/`, `palettes/` and `completions/`,

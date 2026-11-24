@@ -382,9 +382,13 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
         .rows
         .iter()
         .map(|row| match row {
-            Row::Header(section) => {
+            Row::Header(_) | Row::Title(_) => {
                 let indent = if narrow { "" } else { LIST_HEADER_INDENT };
-                let header = format!("{indent}{section}");
+                let header = match row {
+                    Row::Title(title) => format!("{indent}{title}"),
+                    Row::Header(section) => format!("{indent}{section}"),
+                    Row::Command(_) => String::new(),
+                };
                 ListItem::new(Line::from(Span::styled(
                     text::fit(&header, width),
                     app.palette().section(),

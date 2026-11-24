@@ -8,6 +8,8 @@ use crate::interface::section::Section;
 pub enum Row {
     /// A section letter, like `A` or `#`; the cursor skips it.
     Header(Section),
+    /// A heading in words (the beacon's "trending this month"); skipped too.
+    Title(String),
     Command(Command),
 }
 

@@ -2,7 +2,8 @@ name: scripts
 
 # Checks the scripts on every push to main and every pull request that
 # touches them: shellcheck on the shell ones (cli/, the release scripts,
-# the bash completion, packaging/update.sh), and that every content script is valid Python.
+# the bash completion, packaging/update.sh), and that every content and
+# beacon script is valid Python.
 
 on:
   push:
@@ -44,4 +45,4 @@ jobs:
         run: |
           python3 -c 'import ast, sys
           for f in sys.argv[1:]:
-              ast.parse(open(f).read(), f)' scripts/content/*.py
+              ast.parse(open(f).read(), f)' scripts/content/*.py scripts/beacon/*.py

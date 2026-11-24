@@ -1,8 +1,9 @@
 //! A command's written page: a short Markdown file, `<command>.md`. The
 //! default pages are built into lore (from the repository's content/ folder,
 //! by build.rs), so no folder is needed to use them; a page in one of
-//! `USER_CONTENT_DIRS` adds or replaces pages; `SYSTEM_CONTENT_DIRS` (other
-//! programs' pages) only adds them. Pages from folders must pass `info::check`.
+//! `USER_CONTENT_DIRS` adds or replaces pages; `UPDATED_CONTENT_DIRS`
+//! (`lore --update-pages`) and `SYSTEM_CONTENT_DIRS` (other programs' pages)
+//! only add them. Pages from folders must pass `info::check`.
 //!
 //! The format (content/README.md has it for writers):
 //!
@@ -27,7 +28,7 @@ use std::io::Read;
 
 use crate::compile_config::{
     CHECK_INVISIBLE, FORBIDDEN_FILE_CHARS, LOCALE_VARS, NO_TRANSLATION_LOCALES, PAGE_MAX_BYTES,
-    SYSTEM_CONTENT_DIRS, USER_CONTENT_DIRS,
+    SYSTEM_CONTENT_DIRS, UPDATED_CONTENT_DIRS, USER_CONTENT_DIRS,
 };
 use crate::info::check;
 use crate::interface::paths;
@@ -77,9 +78,11 @@ pub fn find(name: &str) -> Option<Content> {
     if name.is_empty() || name.contains('/') || name.starts_with('.') {
         return None; // a page name must stay inside the folder
     }
-    // yours, then lore's own, then a page another program installed
+    // yours, then lore's own, then one --update-pages fetched, then a page
+    // another program installed
     let text = folder_page(USER_CONTENT_DIRS, None, name)
         .or_else(|| built_in(name).map(str::to_owned))
+        .or_else(|| folder_page(UPDATED_CONTENT_DIRS, None, name))
         .or_else(|| folder_page(SYSTEM_CONTENT_DIRS, None, name))?;
     let mut content = parse(&text);
     // in the reader's language when there is a translation: its summary and
@@ -88,6 +91,7 @@ pub fn find(name: &str) -> Option<Content> {
     let translated = languages().iter().find_map(|lang| {
         folder_page(USER_CONTENT_DIRS, Some(lang), name)
             .or_else(|| translation(lang, name).map(str::to_owned))
+            .or_else(|| folder_page(UPDATED_CONTENT_DIRS, Some(lang), name))
             .or_else(|| folder_page(SYSTEM_CONTENT_DIRS, Some(lang), name))
     });
     if let Some(translated) = translated {
@@ -221,6 +225,7 @@ pub fn names() -> HashSet<String> {
     let mut names: HashSet<String> = built_in_names().map(str::to_owned).collect();
     for dir in USER_CONTENT_DIRS
         .iter()
+        .chain(UPDATED_CONTENT_DIRS)
         .chain(SYSTEM_CONTENT_DIRS)
         .flat_map(|dir| paths::expand(dir, home.as_deref()))
     {

@@ -8,6 +8,9 @@ lore \- every command you can type, and what each one does, offline
 .I NAME
 .br
 .B lore
+.B \-\-update\-pages
+.br
+.B lore
 .BR \-\-help " | " \-\-version
 .SH DESCRIPTION
 .B lore
@@ -127,6 +130,20 @@ more than 64 KB, or text that is not UTF-8. Warnings: risky examples
 links that are not https, have a user or a password, a punycode or a bare
 address for a host, or are too long to show whole.
 .TP
+.B \-\-update\-pages
+Download newer pages, the only time lore fetches pages: first lore's weekly
+pages (every tldr page in lore's format, from lore's
+.I content
+release on GitHub), else tldr-pages' own zip files, converted here, in
+English and in your language. Only pages and translations lore has none
+of are kept, each must pass
+.BR "lore check" ,
+and they go in ~/.local/share/lore/updates/, replaced whole each time and
+read after the built-in pages, so they never change a page lore has. It
+says what it fetches on standard error, and runs even with
+.IR "internet = off" ,
+because you asked for it.
+.TP
 .BR \-h ", " \-\-help
 Print a short usage text.
 .TP
@@ -140,7 +157,7 @@ Move through the commands; the letter headers are skipped.
 .TP
 .B Left, Right
 Switch the topic, in the bar under the search bar: commands, recipes,
-most used, recent, bookmarks (see
+beacon, most used, recent, bookmarks (see
 .BR TOPICS ).
 Round at either end.
 .TP
@@ -252,6 +269,9 @@ is every command on this machine, A to Z;
 .B recipes
 the task pages (see
 .BR RECIPES );
+.B beacon
+what people use most and what is rising (see
+.BR BEACON );
 .BR "most used" ,
 .B recent
 and
@@ -259,6 +279,26 @@ and
 your own (see
 .BR "YOUR OWN USE" ).
 A topic with nothing in it yet is not shown. A search looks in every topic.
+.SH BEACON
+The
+.B beacon
+topic lists the commands trending this month, the most used ones, then
+the most used per category
+.RI ( "most used for archives" ),
+with Tab and Shift+Tab between these headings. After each name: its rank,
+its rise (\(ua 2.4\(mu this month) and
+.I not installed
+when it is not on this machine; such a command is listed when lore has a
+page for it, to read before installing it.
+.PP
+The numbers are public, and nothing about your own use is sent: the
+machines that use a package regularly, from Debian's popularity contest
+(the base system, on nearly every machine, left out), and Homebrew's
+installs asked for by name over a year and over the last 30 days (their
+ratio is the rise). A table of them is built into lore, so the topic works
+offline. With Internet on, a newer one is fetched at most once a week,
+for the next start: lore's own copy first, else from the two sources, and
+kept in ~/.cache/lore/beacon.tsv.
 .SH RECIPES
 The
 .B recipes
@@ -354,7 +394,10 @@ from it with care.
 .PP
 .I "internet = off"
 in the settings file, or Internet turned off on the + screen: lore makes
-no request at all, and the dot is red.
+no request on its own (no cheat sheet, no beacon table), and the dot is
+red. Only
+.B lore \-\-update\-pages
+still downloads, when you type it.
 .SH LINKS
 Every URL is shown whole, on a line of its own, so the terminal can open
 it: Ctrl+click in Konsole and most terminals. lore never opens a link
@@ -382,6 +425,10 @@ cht.sh's answer for
 kept for a day
 .RB ( $XDG_CACHE_HOME ).
 .TP
+.I ~/.cache/lore/beacon.tsv
+The newest beacon table fetched, used at the next start
+.RB ( $XDG_CACHE_HOME ).
+.TP
 .I $XDG_DATA_HOME/lore/bookmarks
 .TQ
 .I ~/.local/share/lore/bookmarks
@@ -391,6 +438,8 @@ Your bookmarks and recently opened pages, one name a line.
 .TP
 .I ~/.local/share/lore/content/NAME.md
 .TQ
+.I ~/.local/share/lore/updates/NAME.md
+.TQ
 .I /usr/local/share/lore/content/NAME.md
 .TQ
 .I /usr/share/lore/content/NAME.md
@@ -399,7 +448,10 @@ A page for
 and its translations in
 .IR i18n/LANG/NAME.md
 under the same folders. Yours, in ~/.local/share/lore/content, come first
-and may replace a page built into lore. The other two are where programs
+and may replace a page built into lore. The updates folder is what
+.B lore \-\-update\-pages
+fetched: used only for a command, or a translation, lore has none of. The
+other two are where programs
 install a page for their own command: lore uses them only for a command it
 has no page for, so no package can rewrite another command's page. Every
 one must pass

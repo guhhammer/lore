@@ -7,8 +7,12 @@ use ratatui::widgets::ListState;
 
 use crate::commands::{self, Command, Kind};
 use crate::compile_config::{
-    COPIED, MAN_PROBE_WIDTH, MOST_USED_MAX, NOTHING_TO_COPY, RECENT_MAX, TOPIC_NAMES,
+    BEACON_CATEGORIES_MAX, BEACON_CATEGORY_POOL, BEACON_FOR, BEACON_NOT_HERE, BEACON_PER_CATEGORY,
+    BEACON_POPULAR, BEACON_POPULAR_MAX, BEACON_RANK, BEACON_RISE, BEACON_TRENDING,
+    BEACON_TRENDING_MAX, COPIED, DANGER, MAN_PROBE_WIDTH, MOST_USED_MAX, NOTHING_TO_COPY,
+    RECENT_MAX, TOPIC_NAMES,
 };
+use crate::info::beacon;
 use crate::info::page::{self, Facts, PageLine};
 use crate::info::{content, recipes};
 use crate::interface::palette::{self, Palette};
@@ -45,6 +49,9 @@ pub enum Topic {
     Commands,
     /// The task pages, A to Z.
     Recipes,
+    /// What people use most and what is rising (`info::beacon`), installed
+    /// here or not: trending, most used, then most used per category.
+    Beacon,
     /// The commands your shell history runs most, most first.
     MostUsed,
     /// The pages you opened last, the last first.
@@ -55,10 +62,11 @@ pub enum Topic {
 
 impl Topic {
     /// Every topic, in the bar's order (`TOPIC_NAMES` holds their names).
-    pub fn all() -> [Self; 5] {
+    pub fn all() -> [Self; 6] {
         [
             Self::Commands,
             Self::Recipes,
+            Self::Beacon,
             Self::MostUsed,
             Self::Recent,
             Self::Bookmarks,
@@ -172,6 +180,10 @@ pub struct App {
     pub setting: usize,
     /// Whether the shell's history is read (`history = off`: not).
     pub history: bool,
+    /// The beacon's numbers (empty: no beacon topic), and the categories
+    /// of the most used among them, read once from their pages.
+    pub beacon: Vec<beacon::Entry>,
+    pub beacon_categories: HashMap<String, Vec<String>>,
     /// The connection and the cheat sheets fetched (off in tests; lib.rs
     /// starts it unless `internet = off`).
     pub internet: std::sync::Arc<crate::utils::internet::Internet>,
@@ -225,6 +237,8 @@ impl App {
             scroll_max: 0,
             setting: 0,
             history: true,
+            beacon: Vec::new(),
+            beacon_categories: HashMap::new(),
             internet: crate::utils::internet::Internet::off(),
         };
         app.refilter(); // builds the rows from the empty query
@@ -425,7 +439,7 @@ impl App {
     pub fn selected(&self) -> Option<&Command> {
         match self.rows.get(self.list.selected()?)? {
             Row::Command(command) => Some(command),
-            Row::Header(_) => None,
+            Row::Header(_) | Row::Title(_) => None,
         }
     }
 
@@ -480,9 +494,13 @@ impl App {
         self.bookmarks.iter().any(|n| n == name)
     }
 
-    /// A command your shell history never ran; never true without a history.
+    /// A command on this machine your shell history never ran; never true
+    /// without a history, nor for one not installed (the beacon's), which
+    /// says so itself.
     pub fn is_unused(&self, name: &str) -> bool {
-        !self.uses.is_empty() && !self.uses.contains_key(name)
+        !self.uses.is_empty()
+            && !self.uses.contains_key(name)
+            && self.commands.iter().any(|c| c.name == name)
     }
 
     /// The commands of `topic`, among `allowed` (on this machine, `@`
@@ -523,6 +541,8 @@ impl App {
             }
             Topic::Recent => named(&self.recent),
             Topic::Bookmarks => named(&self.bookmarks),
+            // headed rows of its own: `beacon_rows`
+            Topic::Beacon => Vec::new(),
         }
     }
 
@@ -533,10 +553,96 @@ impl App {
         match topic {
             Topic::Commands => true,
             Topic::Recipes => allowed.iter().any(|c| c.kind == Kind::Recipe),
+            Topic::Beacon => !self.beacon.is_empty(),
             Topic::MostUsed => allowed.iter().any(|c| self.uses.contains_key(&c.name)),
             Topic::Recent => self.recent.iter().any(on_machine),
             Topic::Bookmarks => self.bookmarks.iter().any(on_machine),
         }
+    }
+
+    /// Sets the beacon's numbers, and reads the categories of the most used
+    /// among them from their pages, once.
+    pub fn set_beacon(&mut self, entries: Vec<beacon::Entry>) {
+        self.beacon_categories = beacon::popular(&entries)
+            .into_iter()
+            .take(BEACON_CATEGORY_POOL)
+            .filter_map(|e| Some((e.name.clone(), content::find(&e.name)?.categories)))
+            .collect();
+        self.beacon = entries;
+        self.refilter();
+    }
+
+    /// The beacon's rows, under their headings, and what follows each name
+    /// (its rank, its rise, "not installed"). A command not on this machine
+    /// is listed when lore has a page for it, to read about before
+    /// installing it.
+    fn beacon_rows(&self, allowed: &[&Command]) -> (Vec<Row>, HashMap<String, String>) {
+        let listed = |name: &str| -> Option<Command> {
+            match allowed.iter().find(|c| c.name == name) {
+                Some(command) => Some((*command).clone()),
+                None => self
+                    .pages
+                    .contains(&content::page_key(name))
+                    .then(|| Command::new(name, Kind::Program)),
+            }
+        };
+        let popular: Vec<&beacon::Entry> = beacon::popular(&self.beacon)
+            .into_iter()
+            .filter(|e| listed(&e.name).is_some())
+            .collect();
+        let mut snippets = HashMap::new();
+        for (rank, entry) in popular.iter().enumerate() {
+            let mut parts = vec![BEACON_RANK.replace("{rank}", &(rank + 1).to_string())];
+            if let Some(rise) = beacon::rise(entry) {
+                parts.push(BEACON_RISE.replace("{rise}", &format!("{rise:.1}")));
+            }
+            if !allowed.iter().any(|c| c.name == entry.name) {
+                parts.push(BEACON_NOT_HERE.to_owned());
+            }
+            snippets.insert(entry.name.clone(), parts.join("  "));
+        }
+        let mut rows = Vec::new();
+        let mut section = |title: String, names: Vec<&str>| {
+            let commands: Vec<Command> = names.into_iter().filter_map(listed).collect();
+            if !commands.is_empty() {
+                rows.push(Row::Title(title));
+                rows.extend(commands.into_iter().map(Row::Command));
+            }
+        };
+        let trending = beacon::trending(&self.beacon)
+            .into_iter()
+            .filter(|(e, _)| listed(&e.name).is_some())
+            .take(BEACON_TRENDING_MAX)
+            .map(|(e, _)| e.name.as_str())
+            .collect();
+        section(BEACON_TRENDING.to_owned(), trending);
+        let most = popular
+            .iter()
+            .take(BEACON_POPULAR_MAX)
+            .map(|e| e.name.as_str());
+        section(BEACON_POPULAR.to_owned(), most.collect());
+        // per category, in the order their most used command comes
+        let mut groups: Vec<(&str, Vec<&str>)> = Vec::new();
+        for entry in &popular {
+            let categories = self.beacon_categories.get(&entry.name);
+            for category in categories.into_iter().flatten().filter(|c| *c != DANGER) {
+                match groups.iter_mut().find(|(c, _)| c == category) {
+                    Some((_, names)) if names.len() < BEACON_PER_CATEGORY => {
+                        names.push(&entry.name);
+                    }
+                    Some(_) => {}
+                    None => groups.push((category, vec![&entry.name])),
+                }
+            }
+        }
+        for (category, names) in groups
+            .into_iter()
+            .filter(|(_, names)| names.len() == BEACON_PER_CATEGORY)
+            .take(BEACON_CATEGORIES_MAX)
+        {
+            section(BEACON_FOR.replace("{category}", category), names);
+        }
+        (rows, snippets)
     }
 
     /// Shows the topic `steps` away in the bar, wrapping round, its list
@@ -801,10 +907,16 @@ impl App {
         if query.trim().is_empty() {
             // no search: the topic's list; A to Z under its letters for the
             // big ones, in its own order for yours
-            let list = self.topic_list(self.topic, &allowed);
             self.rows = match self.topic {
-                Topic::Commands | Topic::Recipes => rows::build(list),
-                _ => rows::ranked(list),
+                Topic::Beacon => {
+                    let (rows, snippets) = self.beacon_rows(&allowed);
+                    self.snippets = snippets;
+                    rows
+                }
+                Topic::Commands | Topic::Recipes => {
+                    rows::build(self.topic_list(self.topic, &allowed))
+                }
+                _ => rows::ranked(self.topic_list(self.topic, &allowed)),
             };
         } else {
             // a search: best first, never alphabetical. Names that match come

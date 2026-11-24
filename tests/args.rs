@@ -97,3 +97,9 @@ fn check_takes_the_files_to_check() {
     );
     assert!(args(&["check"]).is_err());
 }
+
+#[test]
+fn update_pages_is_an_option_of_its_own() {
+    assert_eq!(args(&["--update-pages"]), Ok(Start::UpdatePages));
+    assert!(args(&["--update-pages", "tar"]).is_err());
+}

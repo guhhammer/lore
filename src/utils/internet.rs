@@ -217,26 +217,34 @@ pub fn url(name: &str) -> String {
     INTERNET_URL.replace("{name}", &key)
 }
 
-/// Asks the site, at most `INTERNET_MAX_BYTES` of answer, within the
-/// timeout; keeps a good answer in the cache.
-fn fetch(name: &str) -> Answer {
+/// `url`'s body, at most `max` bytes of it (the rest is cut), within
+/// `timeout`; the error says why not. Only https addresses are asked.
+pub fn download(url: &str, max: usize, timeout: Duration) -> Result<Vec<u8>, String> {
+    if !url.starts_with("https://") {
+        return Err(format!("not https: {url}"));
+    }
     let agent = ureq::Agent::config_builder()
-        .timeout_global(Some(INTERNET_TIMEOUT * 4))
+        .timeout_global(Some(timeout))
         .user_agent(INTERNET_USER_AGENT.replace("{version}", env!("CARGO_PKG_VERSION")))
         .build()
         .new_agent();
-    let Ok(response) = agent.get(&url(name)).call() else {
-        return Answer::Failed;
-    };
+    let response = agent.get(url).call().map_err(|e| e.to_string())?;
     let mut bytes = Vec::new();
-    let read = response
+    response
         .into_body()
         .into_reader()
-        .take(INTERNET_MAX_BYTES as u64)
-        .read_to_end(&mut bytes);
-    if read.is_err() {
+        .take(max as u64)
+        .read_to_end(&mut bytes)
+        .map_err(|e| e.to_string())?;
+    Ok(bytes)
+}
+
+/// Asks the site, at most `INTERNET_MAX_BYTES` of answer, within the
+/// timeout; keeps a good answer in the cache.
+fn fetch(name: &str) -> Answer {
+    let Ok(bytes) = download(&url(name), INTERNET_MAX_BYTES, INTERNET_TIMEOUT * 4) else {
         return Answer::Failed;
-    }
+    };
     let text = String::from_utf8_lossy(&bytes);
     let answer = answer_of(&text);
     if let (Answer::Lines(_), Some(dir)) = (&answer, cache_dir()) {
@@ -249,10 +257,7 @@ fn fetch(name: &str) -> Answer {
 /// A cached answer under a day old.
 fn cached(name: &str) -> Option<Answer> {
     let path = cache_dir()?.join(format!("{}.txt", page_key(name)));
-    let age = SystemTime::now()
-        .duration_since(fs::metadata(&path).ok()?.modified().ok()?)
-        .ok()?;
-    if age > Duration::from_secs(INTERNET_CACHE_HOURS * 3600) {
+    if age(&path)? > Duration::from_secs(INTERNET_CACHE_HOURS * 3600) {
         return None;
     }
     let bytes = fs::read(&path).ok()?;
@@ -261,11 +266,22 @@ fn cached(name: &str) -> Option<Answer> {
 
 /// `$XDG_CACHE_HOME/lore/internet`, or `~/.cache/lore/internet`.
 fn cache_dir() -> Option<PathBuf> {
-    let base = std::env::var_os(CACHE_HOME_VAR)
+    Some(cache_home()?.join(INTERNET_CACHE_DIR))
+}
+
+/// `$XDG_CACHE_HOME`, or `~/.cache`.
+pub fn cache_home() -> Option<PathBuf> {
+    std::env::var_os(CACHE_HOME_VAR)
         .map(PathBuf::from)
         .filter(|dir| dir.is_absolute())
-        .or_else(|| paths::home().map(|home| home.join(CACHE_HOME_FALLBACK)))?;
-    Some(base.join(INTERNET_CACHE_DIR))
+        .or_else(|| paths::home().map(|home| home.join(CACHE_HOME_FALLBACK)))
+}
+
+/// How long ago `path` was written; None if it is not there.
+pub fn age(path: &std::path::Path) -> Option<Duration> {
+    SystemTime::now()
+        .duration_since(fs::metadata(path).ok()?.modified().ok()?)
+        .ok()
 }
 
 /// The site's text as lines to show: every character a terminal could obey
