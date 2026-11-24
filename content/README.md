@@ -1,29 +1,14 @@
 # lore's pages
 
-One file per command, named after it: `ls.md` is the page for `ls`. Every
-page here is built into lore when it is compiled, so lore needs no folder
-to show them. To add or change a page on your own machine without
-rebuilding, put it in `~/.local/share/lore/content/` (or, for every user,
-`/usr/local/share/lore/content/`); a page there wins over the built-in one.
+Every command page lore shows is a small Markdown file here: `ls.md` is the
+page for `ls`. They are built into lore when it is compiled, so lore needs
+no folder to show them.
 
-## Where the pages came from
+- [Write or fix a page](#the-format)
+- [A page for your own program](#a-page-for-your-own-program)
+- [Where the pages came from](#where-the-pages-came-from)
 
-- Hand-written: `cd`, `chmod`, `cp`, `find`, `grep`, `lore`, `ls`, `mkdir`, `mv`, `rm`, `ssh`, `sudo`, `systemctl`, `tar`.
-- Most usage examples are adapted from [tldr-pages](https://github.com/tldr-pages/tldr)
-  (commit c90cc0b), licensed under
-  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Changes: the
-  pages were converted to lore's format, placeholders such as
-  `{{path/to/file}}` became plain words, pointer pages were filled from the
-  page they point to, and long pages were cut to 8 examples.
-- The translations in `i18n/` are tldr-pages' own (41 languages), in
-  lore's format.
-- tldr's Windows, FreeBSD, OpenBSD, NetBSD, SunOS and Android pages are
-  included too, for names no other page already uses.
-- Pages for commands tldr does not cover were written from each command's
-  local manual page, and a few were written for lore directly.
-
-Corrections are welcome: a page is one small Markdown file. The scripts
-that made them are in [`scripts/content/`](../scripts/content/).
+---
 
 ## The format
 
@@ -51,75 +36,93 @@ files
 - GNU manual: https://www.gnu.org/software/coreutils/ls
 ```
 
-- **Usage:** one line each, `` - `what to type` : what it does ``. Put the
-  most common uses first.
-- **Links:** one line each, `- label: https://…`. Only `https://` links are
-  shown. Keep a URL short: one wider than the reader's screen is cut, and
-  the terminal would open the cut one. Link the program's own site and
-  documentation; lore adds Stack Overflow, GeeksforGeeks and Google
-  searches to every page by itself.
-- **See also:** related commands, one per line (`- tree`). lore adds the
-  man page's SEE ALSO to them.
-- **Categories:** one line, comma-separated, from this set: files, text,
-  archives, network, processes, system, disks, users, packages,
-  development, version-control, containers, cloud, security, media,
-  shell, editors, monitoring, hardware, databases, desktop, documents;
-  `danger` for a command that can destroy data or stop the system (it is
-  shown in red, and the page warns); and macos, windows, android, bsd or
-  sunos for a command of that system only. Categories show after the name
-  in the list, and the search finds commands by them. Most were set by a
-  keyword classifier: corrections are welcome.
-- Any other `##` section is ignored.
-- **Translations:** `i18n/<language>/<name>.md` (`i18n/pt_BR/tar.md`) holds
-  a page's summary, usage and links in another language. lore picks the
-  language from `LC_ALL`, `LC_MESSAGES` or `LANG`; the rest of the page
-  comes from the English one.
-- **Subcommands:** `git-commit.md` holds `git commit`, and its first line
-  is `# git commit`. A title with a space makes the page a subcommand: it
-  is listed under its program when that program is installed, opens with
-  `lore git commit`, and is named on its program's page.
-- **Other systems:** a page for a Windows, BSD, SunOS or Android command
-  says so in its Notes. Those pages open with `lore NAME` but are not
-  listed, since the command does not run here.
+| Section | How to write it |
+| --- | --- |
+| `# name` | The command, exactly as typed. A subcommand has a space: `# git commit`, in the file `git-commit.md`. |
+| Summary | A few plain sentences under the title. |
+| `## Usage` | One example a line: `` - `what to type` : what it does ``. Most common first. |
+| `## Notes` | What can go wrong, what cannot be undone, differences between systems. |
+| `## See also` | Related commands, one a line. lore adds the man page's SEE ALSO. |
+| `## Categories` | One line, from the list below. |
+| `## Links` | One a line: `- label: https://…`. The program's own site and docs. lore adds Stack Overflow, GeeksforGeeks and Google searches by itself. |
 
-The version, the package and the manual page are not written here: lore
-reads them from the machine.
+Any other `##` section is ignored. The version, the package and the manual
+are not written here: lore reads them from the machine.
+
+**Categories:** files, text, archives, network, processes, system, disks,
+users, packages, development, version-control, containers, cloud, security,
+media, shell, editors, monitoring, hardware, databases, desktop, documents.
+Add `danger` for a command that can destroy data or stop the system: it is
+shown in red and the page warns. Add macos, windows, android, bsd or sunos
+for a command of that system only. Most categories were set automatically,
+so corrections are welcome.
+
+**Good to know**
+
+- **Links** must be `https://`; others are not shown. Keep them short: a
+  link wider than the screen gets cut.
+- **Translations** go in `i18n/<language>/<name>.md` (`i18n/pt_BR/tar.md`)
+  with the summary, usage and links in that language. lore picks the
+  language from `LC_ALL`, `LC_MESSAGES` or `LANG`; the rest comes from the
+  English page.
+- **Pages for other systems** (Windows, BSD, SunOS, Android) say so in
+  their Notes. They open with `lore NAME` but are not listed, since the
+  command doesn't run here.
+
+**Before you send a page**
+
+- Every link goes where it says, over https, with no tracking.
+- Nothing asks the reader to log in, sign up or pay.
+- Examples are safe to try, or say plainly when they are not. lore marks
+  risky ones (`rm -rf`, `dd`…) with `!` by itself.
+
+---
 
 ## A page for your own program
 
-A program can ship a page for its command: install it as
-`/usr/share/lore/content/NAME.md` (`/usr/local/share/lore/content/` for a
-local install), in this format. Translations go in
-`/usr/share/lore/content/i18n/<lang>/NAME.md` (`pt_BR`, `de`…). lore uses
-such a page only for a command it has no page of its own for; the
-reader's `~/.local/share/lore/content/` may replace any.
+Ship a page with your program and lore shows it for your command.
 
-**Run `lore check NAME.md` before you ship it** (in your build, for
-example: it exits with 1 on an error). A page that fails is not shown. It
-must be plain text that a terminal shows and does not obey:
+| Where | Used how |
+| --- | --- |
+| `/usr/share/lore/content/NAME.md` (or `/usr/local/share/…` for a local install) | Shown only when lore has no page of its own for `NAME`: a package can add a page, never replace one. |
+| `/usr/share/lore/content/i18n/<lang>/NAME.md` | Its translations. |
+| `~/.local/share/lore/content/NAME.md` | The reader's own pages, which can replace any page, built-in ones too. |
+
+**Run `lore check NAME.md` before you ship it.** It exits with 1 on an
+error, so you can run it in your build. A page that fails is not shown,
+because a page must be plain text that a terminal shows and does not obey.
 
 | Error: the page is not shown | Why |
 | --- | --- |
-| a title other than `# NAME` | a page may not pose as another command's |
-| control characters, escape sequences | a terminal obeys them: clear the screen, set the clipboard, change the title |
-| invisible characters (zero-width, bidirectional overrides) | they hide text or reorder what is shown ("Trojan Source") |
-| HTML or script (`<script`, `javascript:`…) | lore shows text; nothing in a page is ever run |
-| an example that runs what it downloads (`curl … \| sh`, `bash <(wget …)`) | no page may hand the reader a command that runs a server's code |
-| more than 64 KB, or not UTF-8 | a page is a short text |
+| A title other than `# NAME` | A page may not pose as another command's. |
+| Control characters, escape sequences | A terminal obeys them: it could clear the screen, set the clipboard, change the title. |
+| Invisible characters (zero-width, bidirectional) | They hide text or reorder what is shown ("Trojan Source"). |
+| HTML or script (`<script>`, `javascript:`…) | lore shows text; nothing in a page is ever run. |
+| An example that runs a download (`curl … \| sh`, `bash <(wget …)`) | No page may hand the reader a command that runs a server's code. |
+| Over 64 KB, or not UTF-8 | A page is a short text. |
 
 | Warning: shown, but check it | |
 | --- | --- |
-| a risky example (`rm -rf`, `dd`…) | lore marks it with `!` |
-| a link that is not https | lore does not show it |
-| a user or password in a link, a punycode (`xn--`) or bare-address host | it can hide where the link really goes |
-| a link over 76 characters | a narrow screen cuts it |
+| A risky example (`rm -rf`, `dd`…) | lore marks it with `!`. |
+| A link that isn't https | lore doesn't show it. |
+| A user or password in a link, a punycode (`xn--`) or bare-address host | It can hide where the link really goes. |
+| A link over 76 characters | A narrow screen cuts it. |
 
-lore never runs, opens or writes anything a page says, and shows only
-https links, which the reader's terminal opens.
+---
 
-## Before you send a page
+## Where the pages came from
 
-- Every link goes to the page it says, over https, with no tracking.
-- Nothing asks the reader to log in, sign up or pay. lore never does, and
-  every page says so under its links.
-- Examples are safe to try, or say plainly when they are not (`rm`, `dd`).
+- **Written for lore:** `cd`, `chmod`, `cp`, `find`, `grep`, `lore`, `ls`,
+  `mkdir`, `mv`, `rm`, `ssh`, `sudo`, `systemctl`, `tar`.
+- **Most examples** are adapted from
+  [tldr-pages](https://github.com/tldr-pages/tldr) (commit c90cc0b), under
+  [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). What changed:
+  converted to lore's format, placeholders such as `{{path/to/file}}`
+  became plain words, pointer pages were filled from the page they point
+  to, and long pages were cut to 8 examples. tldr's Windows, BSD, SunOS and
+  Android pages are included for names no other page uses.
+- **The translations** in `i18n/` are tldr-pages' own, in 41 languages.
+- **Commands tldr doesn't cover** got pages written from their local manual
+  pages.
+
+The scripts that made them are in [`scripts/content/`](../scripts/content/).

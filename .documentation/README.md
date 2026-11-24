@@ -1,30 +1,33 @@
-# lore: project documentation
+# lore: developer documentation
 
-Notes for whoever works on lore: how it is built, where things are, and what
-each version contained. The user-facing page is
-[`.github/README.md`](../.github/README.md); lore's own manual is
-[`man/lore.1`](../man/lore.1) (`man -l man/lore.1`).
+How lore is built and where things are, for anyone working on the code.
 
-Names: the app, its binary and its packages (`.deb`, `.rpm`) are `lore`;
-the Rust crate, as named on crates.io, is `lore-tui` (`Cargo.toml`'s
-`name`, with `[[bin]] name = "lore"`).
-
-| Page | What it holds |
+| Looking for… | Read |
 | --- | --- |
-| this file | the map: layout, how a page is made, rules, how to build |
-| [`versions/`](versions/) | one record per version: what it contains, how it was checked, what is open |
-| [`../CHANGELOG.md`](../CHANGELOG.md) | the short list of changes per version |
-| [`../content/README.md`](../content/README.md) | the page format, for people who write pages |
+| What lore is and how to use it | [`.github/README.md`](../.github/README.md) |
+| The full manual | [`man/lore.1`](../man/lore.1) (`man -l man/lore.1`) |
+| What changed in each version | [`CHANGELOG.md`](../CHANGELOG.md) |
+| A version in depth: contents, checks, open issues | [`versions/`](versions/) |
+| Writing pages, recipes, palettes | [`content/`](../content/README.md), [`recipes/`](../recipes/README.md), [`palettes/`](../palettes/README.md) |
+| How code changes are expected to look | [`CONTRIBUTING.md`](../.github/CONTRIBUTING.md) |
 
-## What lore is
+**This page:** [Names](#names) · [Layout](#layout) ·
+[How it runs](#how-it-runs) · [How a page is made](#how-a-page-is-made) ·
+[Search](#search) · [What lore keeps](#what-lore-keeps) ·
+[Rules](#rules) · [Build and check](#build-and-check) ·
+[Releases](#releases) · [Versions](#versions) · [Licences](#licences)
 
-A terminal program that lists every command you can type on this machine,
-A to Z, and shows a page for each: what it does, its package and version,
-its most common uses, related commands, links and its manual. The pages
-are built into the binary, so everything works offline; when there is a
-connection, an INTERNET section adds cht.sh's cheat sheet, as raw text
-(Internet off on the `+` screen, `internet = off`, stops every request). Linux and macOS; bash, zsh and
-fish.
+---
+
+## Names
+
+| | |
+| --- | --- |
+| The app, its binary, its `.deb` and `.rpm` | `lore` |
+| The Rust crate (crates.io) | `lore-tui` (`Cargo.toml`'s `name`, with `[[bin]] name = "lore"`) |
+| The Arch (AUR) package | `lore-tui`: `lore` there is another program |
+
+---
 
 ## Layout
 
@@ -32,145 +35,192 @@ fish.
 lore/
 ├── src/
 │   ├── main.rs             calls lore_tui::run()
-│   ├── lib.rs              run(): arguments, the terminal, the event loop
-│   ├── app.rs              the state: list, search, page, modes
-│   ├── compile_config.rs   every hardcoded value and text (see "Rules")
-│   ├── settings.rs         ~/.config/lore/config (settings) and ~/.local/share/lore/ (bookmarks, recent)
+│   ├── lib.rs              run(): arguments, the terminal, the event loop, the settings changes
+│   ├── app.rs              the state: list, search, page, modes, settings, jumper
+│   ├── compile_config.rs   every hardcoded value and text (see Rules)
+│   ├── settings.rs         the settings file and the kept lists
 │   ├── commands/           finding the commands
 │   │   ├── mod.rs          Command, Kind, collect(), merge()
 │   │   ├── path.rs         executables in $PATH and the program folders
 │   │   ├── shell.rs        the user's shell, its builtins and keywords
 │   │   ├── aliases.rs      aliases, read as text from the startup files
 │   │   └── functions.rs    fish functions
-│   ├── info/               the page beside the list
+│   ├── info/               what a page says
 │   │   ├── content.rs      the written pages: built in, folders, translations
-│   │   ├── page.rs         the whole page as styled lines
+│   │   ├── page.rs         the whole page as styled lines (and the INTERNET section)
 │   │   ├── package.rs      package and version from dpkg/apt, rpm, pacman, Homebrew
-│   │   ├── links.rs        the search links
-│   │   ├── check.rs        the check of pages other programs ship (`lore check`)
+│   │   ├── links.rs        the search links every page gets
+│   │   ├── check.rs        `lore check`: the check of pages lore did not write
 │   │   ├── danger.rs       what can destroy data or stop the system
-│   │   ├── explain.rs      `lore explain LINE`: words, flags from the man page's options
-│   │   └── recipes.rs      the recipes: list entries (Kind::Recipe), their content
+│   │   ├── explain.rs      `lore explain LINE`
+│   │   └── recipes.rs      the recipes as list entries (Kind::Recipe)
 │   ├── interface/          what the user sees and types
-│   │   ├── args.rs         `lore`, `lore NAME`, --print NAME, explain, --complete, --help, --version
-│   │   ├── complete.rs     what can come after `lore …`, for the completion scripts
+│   │   ├── args.rs         the command line
+│   │   ├── complete.rs     Tab completion's answers (`lore --complete`)
 │   │   ├── input.rs        keys to actions, per mode
-│   │   ├── palette.rs      the palettes: reads the .palette files (built in, ~/.config/lore/palettes/), their styles
 │   │   ├── ui.rs           drawing
+│   │   ├── palette.rs      the palettes and their styles
 │   │   ├── search.rs       name ranking, search by content, snippets
 │   │   ├── rows.rs         the list's rows
-│   │   ├── section.rs      `#` and A-Z
+│   │   ├── section.rs      the list's groups: bookmarks, recent, most used, recipes, # and A–Z
 │   │   └── paths.rs        `~/` and `*` in configured paths
 │   └── utils/
-│       ├── clipboard.rs    copying through the terminal (OSC 52), so over ssh too
-│       ├── history.rs      uses per command, read from the shell's history files
-│       ├── internet.rs     the connection dot, cht.sh's cheat sheets (background, cached, cleaned)
+│       ├── clipboard.rs    copying through the terminal (OSC 52)
+│       ├── history.rs      uses per command, from the shell's history
+│       ├── internet.rs     the connection dot and cht.sh's cheat sheets
 │       ├── manual.rs       running man and whatis, cleaning their output
-│       └── text.rs         fitting text to columns (`...`, wrapping)
-├── build.rs                packs content/ into the binary (zstd), embeds and checks palettes/ and recipes/
-├── content/                the pages (~9,100) and i18n/<language>/ (~32,200)
-├── palettes/               the colour palettes, one .palette file each (its README has the format)
-├── completions/            bash, zsh and fish scripts; they ask `lore --complete WORDS`
-├── recipes/                task pages that chain commands, one .md each (its README has the format)
+│       └── text.rs         fitting text to columns
+├── build.rs                packs content/ into the binary (zstd); embeds and checks palettes/ and recipes/
+├── content/                9,109 pages, and 32,226 translations in i18n/<language>/ (41 languages)
+├── recipes/                100 task pages
+├── palettes/               15 colour palettes
+├── completions/            bash, zsh and fish scripts (they ask `lore --complete`)
 ├── man/lore.1              lore's own manual
-├── scripts/content/        the scripts that make content/ (their README has the order)
-├── scripts/release/        the release tarball and notes, for .github/workflows/release.yml
-├── packaging/              AUR PKGBUILD (lore-tui), Homebrew formula, update.sh for a release
+├── tests/                  every test (29 files), through src/lib.rs
 ├── examples/commands.rs    prints every command lore lists, for scripts/content
-├── tests/                  every test, through src/lib.rs
-├── cli/make, cli/clean     the build gate and cleaning
+├── scripts/content/        the scripts that made content/
+├── scripts/release/        the release tarball and notes
+├── packaging/              the AUR build file, the Homebrew formula, update.sh
+├── cli/make, cli/clean     the build gate, and cleaning
+├── .github/workflows/      ci, docs, scripts, release
 └── app/                    where cli/make copies the release binary (ignored)
 ```
 
-## How a command's page is made
+---
+
+## How it runs
+
+```text
+main.rs → lib.rs::run()
+            ├─ a command-line job (--print, explain, check, --complete…): prints, exits
+            └─ the app:
+                 commands::collect() + recipes  →  App (app.rs)
+                 loop:  ui::draw(App)  →  input::next_action(mode)  →  lib.rs applies it to App
+```
+
+The app is always in one **mode**, and each mode has its own keys
+(`interface/input.rs`):
+
+| Mode | What is on screen | Keys |
+| --- | --- | --- |
+| Browse | The list | ↑↓, → / Enter, Space (next letter), `/`, `b`, `+`, Esc quits |
+| Search | Typing in the search bar | text, Backspace, ↑↓, Enter, Esc |
+| Info | A page beside the list | ↑↓ PgUp PgDn, Space (next section), `/`, `c`, `b`, ← / Esc |
+| Copy | The page's examples, over it | ↑↓, Enter copies, Esc |
+| About | The `+` screen and its settings | ↑↓ choose, Enter changes, `p`, + / ← / Esc |
+| Palette | The palette picker, over `+` | ↑↓ try, Enter keeps, Esc cancels |
+
+Ctrl+C quits in every mode. The background (the internet) never changes
+the state itself: `next_action` checks every 250 ms whether something
+arrived, and asks for a redraw.
+
+---
+
+## How a page is made
 
 1. **The list.** `commands::collect()` scans the program folders
    (`PROGRAM_DIRS`, `$PATH`, macOS's `/etc/paths`), adds the shell's
-   builtins and keywords, the user's aliases, and the subcommands that have
-   a page when their program is installed (`git commit`), then keeps each
-   name once, the way bash would resolve it.
-2. **The written page.** `info::content::find` looks for `<name>.md` in
-   the reader's folder (`USER_CONTENT_DIRS`), then in the pages built into
-   the binary, then in the folders other programs install pages in
-   (`SYSTEM_CONTENT_DIRS`, for commands lore has no page for). A folder's
-   page must pass `info::check`, or it is passed over. A
+   builtins and keywords, the user's aliases, and the subcommands that
+   have a page when their program is installed (`git commit`). Each name
+   is kept once, the way bash would resolve it.
+2. **The written page.** `info::content::find` looks for `<name>.md`:
+   1. in the reader's own folder (`USER_CONTENT_DIRS`), which may replace
+      anything;
+   2. in the pages built into the binary;
+   3. in the folders other programs install pages in
+      (`SYSTEM_CONTENT_DIRS`), only for a command lore has no page for.
+
+   A page from a folder must pass `info::check`, or it is skipped. A
    subcommand's spaces become dashes in the file name (`git-commit.md`);
-   characters Windows forbids become `%XX` (`:` is `%3A.md`). In the
-   reader's language (`LC_ALL`, `LC_MESSAGES`, `LANG`), a translation's
-   summary and examples replace the English ones.
+   characters Windows forbids become `%XX`. In the reader's language
+   (`LC_ALL`, `LC_MESSAGES`, `LANG`), a translation's summary and examples
+   replace the English ones.
 3. **The facts.** `info::page::facts` adds what the machine knows: the
-   `whatis` line, the program's file, its package and version. These are
-   looked up once per command.
-4. **The layout.** `info::page::render` lays it all out for the panel's
-   width, in this order: name, categories, summary, danger warning,
-   VERSION, HOW TO USE, RELATED, SUBCOMMANDS, NOTES, FILES (the paths under
-   the manual's FILES headings), LINKS (and the note
-   under them), MANUAL (`man` at the panel's width). It runs again on every
-   resize; the facts are not looked up again.
+   `whatis` line, the program's file, its package and version. Looked up
+   once per command.
+4. **The layout.** `info::page::render` lays it out for the panel's width:
+
+   > name · categories · summary · danger warning · VERSION · HOW TO USE ·
+   > RELATED · SUBCOMMANDS · NOTES · FILES · LINKS · *INTERNET* · MANUAL
+
+   It runs again on every resize, without looking the facts up again.
+   **INTERNET** is added at each draw by `ui::draw_page` (just before
+   MANUAL), because its answer arrives in the background. A **recipe's**
+   page is STEPS · USES · NOTES instead.
+
+---
 
 ## Search
 
-- With no search, the list is A to Z under its letters, after three groups
-  when they have anything: bookmarks, recent pages, most used (from the
-  shell's history). Their commands are also under their letters.
-- With a search, it is ranked best first, with no headers. Names come first:
-  exact, then starting with the text, then at a word start inside the name,
-  then anywhere. Then pages that match by content (from three characters):
-  categories count most, then summary, then the examples' descriptions,
-  then the examples. Words match at word starts; `SYNONYMS` and plurals
-  count as the same word; a command named by one of the words goes first.
-- Among names that match the same way (or pages with the same score), the
-  commands the history ran most go first.
+- **No search:** the groups that have anything (bookmarks, recent pages,
+  most used, recipes), then A to Z under its letters. A command in a group
+  is also under its letter.
+- **A search** is ranked best first, with no headers:
+  1. names: exact, then starting with the text, then a word inside the
+     name starting with it, then anywhere;
+  2. pages that match by content (from three characters): categories count
+     most, then the summary, then the examples' descriptions, then the
+     examples. Words match at word starts, `SYNONYMS` and plurals count as
+     the same word, and a command named by one of the words goes first.
+- Ties go to the commands your history runs most.
 - Each result shows the page line that matched, then its categories.
 - `@` first keeps only commands with a page.
+
+---
+
+## What lore keeps
+
+| File | Written by | Holds |
+| --- | --- | --- |
+| `$XDG_CONFIG_HOME/lore/config` (`~/.config/lore/config`) | the `+` settings (`lib.rs::change_setting`) | `palette`, `internet`, `history` |
+| `$XDG_CONFIG_HOME/lore/palettes/` | the user | their own palettes |
+| `$XDG_DATA_HOME/lore/` (`~/.local/share/lore/`) | `b`, opening a page | `bookmarks`, `recent` |
+| `$XDG_CACHE_HOME/lore/internet/` (`~/.cache/lore/internet/`) | `utils::internet` | cheat sheets, a day |
+
+---
 
 ## Rules
 
 - **Every hardcoded value and fixed text goes in `src/compile_config.rs`**,
-  and only there: no `const` or `static` anywhere else. That covers paths,
-  builtins and keywords, every text the user reads (help, errors, headings,
-  key bar, hints), colours and styles (the palettes are data, in `palettes/`), widths and indents, search weights
-  and limits, synonyms, danger rules, search sites and update commands.
-  What stays in the code is the format of what lore reads (page sections,
-  alias syntax, the package managers' output and flags), next to its parser.
-- **Nothing is ever an error for a missing path or file**: it is skipped.
-- **lore never runs the commands it lists.** It runs only `man`, `whatis`
-  and the package managers' read-only queries, with the name or path as a
-  plain argument, never through a shell.
+  and only there: no `const` or `static` anywhere else (CI checks it). That
+  covers paths, builtins and keywords, every text the user reads, colours
+  and styles, widths, search weights, synonyms, danger rules, links and
+  update commands. Only the format of what lore *reads* (page sections,
+  alias syntax, package managers' output) stays next to its parser.
+- **A missing path or file is skipped**, never an error.
+- **lore never runs the commands it lists.** Only `man`, `whatis` and the
+  package managers' read-only queries, with a plain argument, never through
+  a shell.
 - **Only `https://` links** are shown, and lore never opens one itself.
-  Every page ends its links with the same warning.
 - **Text is measured in columns**, not characters (`utils::text`): Chinese,
   Japanese and Korean characters take two.
 - **Tests live in `tests/`**, reach the code through `src/lib.rs`, and are
   named as sentences that state the rule they defend.
+- **Every new feature** comes with tests, a CHANGELOG line and docs.
 - **Comments explain why**, short, for someone new to the code.
 
-## Building and checking
+---
+
+## Build and check
 
 ```bash
-cli/make      # cargo fmt, clippy (warnings fail), test, build, build --release, copy to app/lore
-cli/clean     # removes all of target/, dist/ and .content-draft/ (drafts and the tldr download)
+cli/make      # cargo fmt, clippy (warnings fail), test, build, build --release → app/lore
+cli/clean     # removes target/, dist/ and .content-draft/
 ```
 
-**Releases.** Pushing a tag that matches `Cargo.toml`'s version
-(`git tag v0.1.3 && git push origin v0.1.3`) runs `.github/workflows/release.yml`:
-the tests, then static musl binaries for x86_64 and aarch64 Linux with a
-`.deb` and an `.rpm` each (`[package.metadata.deb]` and `generate-rpm` in
-`Cargo.toml`), macOS binaries for Apple Silicon and Intel, and a GitHub
-release with all of them, `SHA256SUMS`, and the version's CHANGELOG section
-as notes (the Unreleased section when the version has none yet, so a
-release is just a tag).
+Rust 1.88 or newer (ratatui 0.30.2 needs it), edition 2024.
 
-**AUR and Homebrew** are published by hand, after a release:
-`packaging/update.sh 0.1.6` puts the version and checksums into
-`packaging/aur/PKGBUILD` (the `lore-tui` package, built from source;
-"lore" on the AUR is another program, so they conflict) and
-`packaging/homebrew/lore.rb` (from the release binaries, for a tap
-`guhhammer/homebrew-tap`; Homebrew does not quarantine them, so the
-unsigned macOS binary runs). The script prints the rest. `ci.yml` checks the code (as `cli/make` does, plus the constants rule and a run of the release binary), `docs.yml` the links between the docs and the manual page, `scripts.yml` the shell and Python scripts; each on pushes to main and pull requests that touch what it checks.
+**On GitHub**, on pushes to `main` and pull requests that touch what each
+one checks:
 
-The drawing and the keys are not covered by the tests. Check them by hand
-in a real terminal, or with tmux:
+| Workflow | Checks |
+| --- | --- |
+| `ci.yml` | What `cli/make` does, the constants rule, and a run of the release binary (`--print`, `explain`, `--complete`) |
+| `docs.yml` | Links between the repository's own docs (offline), and `man/lore.1` through `groff -ww` |
+| `scripts.yml` | shellcheck on the shell scripts, and that the Python scripts parse |
+
+**The screen** is not covered by the tests. Check it by hand, in a real
+terminal or with tmux:
 
 ```bash
 tmux new-session -d -x 100 -y 30 app/lore
@@ -178,17 +228,40 @@ tmux send-keys / t a r
 tmux capture-pane -p
 ```
 
-lore needs a terminal. Started from a pipe it says so and exits with 1, so
-never run it inside another tool's output.
+lore needs a terminal: started from a pipe, it says so and exits with 1.
+
+---
+
+## Releases
+
+1. Make sure `Cargo.toml`'s version is the one to release, and the
+   CHANGELOG has its changes (under its own `## [x.y.z]` heading, or still
+   under `## [Unreleased]`).
+2. Tag and push: `git tag vX.Y.Z && git push origin vX.Y.Z`.
+3. `release.yml` checks that the tag matches `Cargo.toml` and runs the
+   tests, then builds:
+   - static musl binaries for x86_64 and aarch64 Linux, each with a `.deb`
+     and an `.rpm` (`[package.metadata.deb]` and `generate-rpm` in
+     `Cargo.toml`);
+   - macOS binaries for Apple Silicon and Intel (not signed);
+   - a GitHub release with all of them, `SHA256SUMS`, and the notes from
+     `scripts/release/notes.sh`.
+4. **AUR and Homebrew,** by hand: `packaging/update.sh X.Y.Z` puts the new
+   version and checksums into `packaging/aur/PKGBUILD` and
+   `packaging/homebrew/lore.rb`, then prints what to push where.
+
+---
 
 ## Versions
 
 From 0.1.0 on, every commit raises the version in `Cargo.toml`, and its
-subject starts with that version. A version that adds or changes something
-users see gets a record in [`versions/`](versions/), named after the
-version with dashes (`0-1-0.md`), and a section in the CHANGELOG.
+subject starts with it: `v0.1.6 - root: …`. A version users will notice
+gets a record in [`versions/`](versions/), named with dashes (`0-1-6.md`),
+and a section in the CHANGELOG.
 
-## Content sources and licences
+---
+
+## Licences
 
 The code is MIT ([`LICENSE`](../LICENSE)). Most usage examples, and every
 translation, are adapted from [tldr-pages](https://github.com/tldr-pages/tldr)

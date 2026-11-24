@@ -24,7 +24,7 @@ jobs:
   check:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: The tag matches Cargo.toml
         run: |
           version=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
@@ -48,7 +48,7 @@ jobs:
       CC_x86_64_unknown_linux_musl: clang
       CC_aarch64_unknown_linux_musl: clang
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: rustup target add ${{ matrix.target }}
       - run: cargo install --locked cargo-deb@3.8.0 cargo-generate-rpm@0.21.1
       - run: cargo build --release --locked --target ${{ matrix.target }}
@@ -67,12 +67,12 @@ jobs:
 
   macos:
     needs: check
-    runs-on: macos-14
+    runs-on: macos-latest # Apple Silicon; builds both Mac targets
     strategy:
       matrix:
         target: [aarch64-apple-darwin, x86_64-apple-darwin]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: rustup target add ${{ matrix.target }}
       - run: cargo build --release --locked --target ${{ matrix.target }}
       - name: Tarball
@@ -88,7 +88,7 @@ jobs:
     permissions:
       contents: write # to create the release
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/download-artifact@v4
         with:
           path: dist

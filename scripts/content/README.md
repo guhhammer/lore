@@ -1,9 +1,14 @@
 # Generating content/
 
-The scripts that make lore's pages, kept so the pages can be refreshed from
-a newer tldr-pages, or a deleted page made again. Python 3, standard library
-only. They draft in `.content-draft/` (gitignored, removed by `cli/clean`);
-`merge.py`, `platforms.py` and `enrich.py` then write into `content/`.
+The scripts that made lore's command pages. You only need them to refresh
+the pages from a newer tldr-pages, or to make a deleted page again; to fix
+a page, just edit it in `content/`.
+
+Python 3, standard library only. They draft in `.content-draft/`
+(gitignored, removed by `cli/clean`); only `merge.py`, `platforms.py` and
+`enrich.py` write into `content/`.
+
+## Run them
 
 From the repository root, in order:
 
@@ -22,18 +27,21 @@ python3 scripts/content/enrich.py     # 7. See also, categories, translations
 cli/make                              #    the tests check every built-in page
 ```
 
-| File | What it holds |
-| --- | --- |
-| `common.py` | paths, lore's page format (one writer), the tldr reader |
-| `extra_pages.py` | pages written for lore directly |
-| `categories.py` | category keywords, categories set by hand, the `danger` list |
+## Good to know
 
 - **Nothing is overwritten.** `merge.py` keeps every page already in
   `content/`, so edits made there survive; delete a page to have it made
-  again. `enrich.py` rewrites only a page's `## See also` and
+  again. `enrich.py` changes only a page's `## See also` and
   `## Categories`, and never replaces a translation.
-- **Python imports only from this folder**, never from the downloaded data.
-- **Record the tldr commit** used in `content/README.md`, where tldr-pages is
-  credited (CC BY 4.0). The pages in the repository were made from commit
+- **Record the tldr commit you used** in `content/README.md`, where
+  tldr-pages is credited (CC BY 4.0). The current pages come from commit
   c90cc0b; the man-based ones also depend on the man pages of the machine
   they were made on.
+- **The scripts import only from this folder**, never from the downloaded
+  data.
+
+| File | What it holds |
+| --- | --- |
+| `common.py` | Paths, lore's page format (one writer), the tldr reader. |
+| `extra_pages.py` | Pages written for lore directly. |
+| `categories.py` | Category keywords, categories set by hand, the `danger` list. |

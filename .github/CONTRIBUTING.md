@@ -1,45 +1,57 @@
 # Contributing to lore
 
-Short, because the rules are few.
+Thanks for helping. The rules are few, and most contributions are a single
+file.
+
+## The easiest ways to help
+
+| You want to… | Do this | Guide |
+| --- | --- | --- |
+| Fix or improve a command's page | Edit `content/NAME.md` | [content/README.md](../content/README.md) |
+| Add a task page ("free disk space") | Add a file to `recipes/` | [recipes/README.md](../recipes/README.md) |
+| Add a colour palette | Add a file to `palettes/` | [palettes/README.md](../palettes/README.md) |
+| Report a bug or ask for something | Open an issue from a template | — |
+| Report a security problem | **Not** an issue: report it privately | [SECURITY.md](SECURITY.md) |
 
 ## Before you open a pull request
+
+Run the checks:
 
 ```bash
 cli/make
 ```
 
-It runs `cargo fmt`, `cargo clippy` (any warning fails), `cargo test`,
-`cargo build` and `cargo build --release`, and stops at the first failure.
-Green means every step passed.
+It runs `cargo fmt`, `cargo clippy` (any warning fails), the tests, and the
+debug and release builds, and stops at the first failure. Green means it is
+ready. The same checks run on GitHub for every pull request.
 
-## What a change looks like
+## What a good change looks like
 
-- **One logical change per pull request.** A refactor and a behaviour change
-  are two.
-- **Commit subjects:** `v<x.y>.<N> - <area>: <lowercase imperative>` —
-  `v0.1.12 - make: fail on a stale lockfile`. `N` is one more than the last
-  commit on `main`; if you cannot know it, write the series and an `X`
-  (`v0.1.X - …`) and it is numbered at the merge. The body says why.
-- **Tests are named as sentences** that state the rule they defend:
-  `a_symlinked_command_is_listed`.
+- **One change per pull request.** A refactor and a behaviour change are
+  two. Pages: one per command, or a small related set.
+- **Commit subjects** follow `v<x.y>.<N> - <area>: <lowercase imperative>`,
+  for example `v0.1.12 - make: fail on a stale lockfile`. `N` is one more
+  than the last commit on `main`; if you can't know it, write `X`
+  (`v0.1.X - …`) and it is numbered when merged. The body says *why*.
+- **Every new feature comes with tests and docs**, and a line in
+  `CHANGELOG.md` under `## [Unreleased]`.
+- **Tests live in `tests/`** and are named as sentences that state the rule
+  they defend: `a_symlinked_command_is_listed`.
+- **Every constant and fixed text lives in `src/compile_config.rs`**, not
+  scattered through the code.
 - **Comments say why, not what.**
-- **`CHANGELOG.md`** gets a line under `## [Unreleased]`.
 
-## Adding or improving a command's page
+## Rules lore keeps
 
-The pages lore shows beside the list are Markdown files in
-[`content/`](../content/), one per command, built into lore when it is
-compiled. [`content/README.md`](../content/README.md) has the format and
-what a page must meet before it is sent: links over https only, no log-in
-or sign-up asked of anyone, and examples that are safe or say plainly when
-they are not. A pull request that adds pages is one change per command, or
-one for a small related set.
+These protect the people who use lore; a change that breaks one will not be
+merged.
 
-## Reporting a bug, asking for a change
-
-Open an issue from one of the two templates. A vulnerability is not an
-issue: [SECURITY.md](SECURITY.md) says where it goes.
+- lore **never runs the commands it lists**. It only runs `man`, `whatis`
+  and package-manager queries, with plain arguments, never through a shell.
+- **A missing file or folder is skipped**, never an error.
+- **Links are `https://` only**, and lore never opens them itself.
+- **No page asks anyone to log in** or sign up anywhere.
 
 ## Conduct
 
-[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+Be kind: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).

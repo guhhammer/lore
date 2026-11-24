@@ -1,170 +1,258 @@
 # lore
 
-A terminal list of every command you can type, grouped A to Z. For Linux
-and macOS, with bash, zsh or fish.
+**Every command you can type, A to Z, and a page for each one — in your
+terminal, offline.**
 
-The app and its command are **lore**. On crates.io its Rust crate is named
-**`lore-tui`** (`lore` was taken there); it still installs the `lore`
-command.
-
-`lore` lists every command you can type, each name once, in one scrollable
-list sorted alphabetically under the section letters `A` to `Z` (names that
-start with a digit or a symbol go under `#`). It is for anyone who wants to
-see what commands their machine has, with no internet needed (and, when
-there is one, a page's INTERNET section adds cht.sh's cheat sheet):
-
-- **Programs:** the executables on your `$PATH`, plus the places a `$PATH`
-  often leaves out — `/usr/sbin` (where `reboot`, `fdisk` and `useradd` live),
-  Homebrew, MacPorts, Nix, Snap, Flatpak, `~/bin`, `~/.cargo/bin`, `~/go/bin`
-  and `/opt/*/bin` — and, on macOS, the directories in `/etc/paths`.
-- **Your shell's own commands:** the builtins and keywords of bash, zsh or
-  fish (`cd`, `export`, `if`…), for the shell in your `$SHELL`.
-- **Categories** after each name (`[archives files]`), with `danger` in red
-  for commands that can destroy data; on those pages, the risky examples
-  are marked.
-- **Pages in your language** when tldr-pages has a translation (41
-  languages, picked from `$LANG`).
-- **Subcommands** with a page, such as `git commit` or `docker run`, under
-  their program when it is installed.
-- **Your own use:** your bookmarks (`b`), the pages you opened last and the
-  commands your shell history runs most head the list; in a search, the
-  ones you run most come first, and a dim dot marks those you never ran.
-  The history is only read, on your machine (History on the `+` screen, or `history = off` in
-  `~/.config/lore/config`, turns it off); the lists are kept in
-  `~/.local/share/lore/`.
-- **Recipes:** 100 short task pages that chain commands, under their own
-  header, most of them the terminal tasks with the most-viewed Stack
-  Overflow questions: find files containing a text, copy files to a
-  server, free disk space, what is using a port, add a user, and more. Each is a Markdown file in
-  [`recipes/`](../recipes/).
-- **Internet:** a green or red `● internet` on top says whether there is a
-  connection. Then each page has an INTERNET section, before the manual,
-  with the command's community cheat sheet from cht.sh: raw text, written
-  by anyone, never copied or run by lore; the section reminds you to copy
-  from it with care. Turning Internet off on the `+` screen (`internet = off`
-  in `~/.config/lore/config`) stops every request.
-- **Your program's page in lore:** install `NAME.md` in
-  `/usr/share/lore/content/` and run `lore check NAME.md` first: see
-  [content/README.md](../content/README.md).
-- **Tab completion** in bash, zsh and fish: `lore git <Tab>` offers git's
-  subcommands; installed by the packages, or `lore --completions bash`.
-- **`lore explain "tar -xzvf a.tgz"`** says what each word of a command
-  line does, from the man pages, offline.
-- **FILES** on each page: the configuration files, logs and data its manual
-  names.
-- **Colour palettes:** Colours on the `+` screen (or `p` there) picks one; the arrows try it on the whole
-  screen, Enter keeps it, and it is saved in `~/.config/lore/config` for the
-  next time (`LORE_PALETTE=nord lore` uses another for one run). Eight
-  themes, most with a dark and a light variant: `catppuccin-mocha`, `catppuccin-latte`,
-  `dracula`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`,
-  `solarized-light`, `tokyo-night`, `tokyo-night-day`, `one-dark`,
-  `one-light`, `rose-pine`, `rose-pine-dawn`. The default, `terminal`, uses
-  your terminal's own colours. Each is a small file in
-  [`palettes/`](../palettes/): a new one is a pull request with one file,
-  or drop it in `~/.config/lore/palettes/` for yourself.
-- **Your aliases,** from your shell's startup files, system-wide and your
-  own, each shown with what it runs and, when it shares a name with a
-  command, the fact that it hides it. Fish users' functions are listed too.
-
-The pages are Markdown files in [`content/`](../content/), about 8,800 of
-them, built into the binary, so `lore` needs no folder of its own to show them. Anyone can add
-one: [`content/README.md`](../content/README.md) has the format. Every page
-ends its links with the same note: check a link before you open it, and
-`lore` will never ask you to log in anywhere or for any account.
-
-None of these places has to exist: a missing one is skipped. Every path and
-list lives in `src/compile_config.rs`.
-
-It is one Rust binary built on [ratatui](https://ratatui.rs). Aliases are read
-from the startup files as text, not by running the shell, so one defined in
-a file they load from elsewhere (an oh-my-zsh plugin, say) is not seen; bash
-and zsh functions are not listed.
+`lore` lists every command on your machine (programs, your shell's
+builtins, your aliases) and opens a short, practical page for any of them:
+what it does, the examples you actually need, which package it came from,
+and what can go wrong. For Linux and macOS, with bash, zsh or fish.
 
 ```text
-lore/
-├── src/                 the program: lib.rs runs it, commands/ finds the commands
-├── content/             the command pages, built into the binary
-├── palettes/            the colour palettes, one file each; add yours
-├── recipes/             task pages that chain commands, one file each
-├── completions/         Tab completion for bash, zsh and fish
-├── man/                 lore.1, lore's own manual page
-├── tests/               the tests, which reach the program through src/lib.rs
-├── cli/                 make (fmt, clippy, test, build, release → app/) and clean
-├── app/                 where cli/make copies the release binary
-└── .github/             this page, the policies, the templates, the workflows
+  ▀██
+   ██   ▄█▀▀▀█▄  ██▄▀▀▀ ▄█▀▀▀█▄  ┌ search ───────────────────────────────── ● internet ┐
+   ██   ██   ██  ██     ██▀▀▀▀▀  │press / to search                                    │
+ ▀▀▀▀▀▀  ▀▀▀▀▀   ▀▀      ▀▀▀▀▀   └─────────────────────────────────────────────────────┘
+┌───────┐┌ tar  7/1374 ────────────────────────────────────────────────────────────────┐
+│ tail  ││VERSION                                                                      │
+│ tai...││  Package    tar (dpkg)                                                      │
+│ tai...││  Installed  1.35+dfsg-3.1                                                   │
+│ tai...││  Update     sudo apt update && sudo apt install --only-upgrade tar          │
+│ tai...││                                                                             │
+│ tap   ││HOW TO USE                                                                   │
+│ tap...││  $ tar -xf archive.tar.gz                                                   │
+│ tape  ││      unpack an archive (the compression is detected)                        │
+│ tar   ││  $ tar -czf backup.tar.gz folder/                                           │
+└───────┘└─────────────────────────────────────────────────────────────────────────────┘
+↑↓ PgUp/PgDn Scroll   Space Next section   / Search   c Copy   b Bookmark   ←/Esc Back
 ```
 
-## Install
+> The app and its command are **lore**. The Rust crate is **`lore-tui`**,
+> because `lore` was already taken on crates.io; it still installs `lore`.
 
-Each [release](https://github.com/guhhammer/lore/releases) has a `.deb`
-(Debian, Ubuntu, Mint, Pop!_OS), an `.rpm` (Fedora, RHEL, Rocky, Alma,
-openSUSE) and a static binary that runs on any Linux, for x86_64 and ARM,
-and binaries for macOS (Apple Silicon and Intel). The release page says how
-to install each one.
+---
 
-## Quick start
+## Contents
 
-```bash
-cargo run --release          # the list
-cargo run --release -- tar   # tar's page straight away, like `man tar`
-```
+- [What you get](#what-you-get)
+- [Install](#install)
+- [Using lore](#using-lore)
+- [Keys](#keys)
+- [Settings and files](#settings-and-files)
+- [Privacy and the internet](#privacy-and-the-internet)
+- [Add your own pages](#add-your-own-pages)
+- [Build from source](#build-from-source)
+- [More reading](#more-reading)
+- [Licence](#licence)
 
-`lore git commit` opens a subcommand's page the same way, and `lore --print
-tar` writes the page out as plain text, for pipes and scripts. `lore NAME` opens NAME's page directly, as with `man`, and the whole app
-is there: ← goes back to the list, Esc there quits. `lore --help` and `lore --version` do what they say. lore's own
-manual is `man/lore.1`: `man -l man/lore.1` reads it from the checkout, and
-a package installs it so that `man lore` works.
+---
 
-A search bar sits on top, the list below it, and the keys you can press are
-always shown on the bottom line:
-
-- ↑ and ↓ move through the commands (the letter headers are skipped).
-- → or Enter opens the selected command's page beside the list: what it
-  is, its package and version (and whether an update is known), how to use
-  it with its most common uses, links (its own site, and Stack Overflow,
-  GeeksforGeeks and Google searches; Ctrl+click opens one in the browser,
-  in Konsole and most terminals), then its manual page, all laid out to fit
-  the space left; the list narrows to a tenth of the
-  width, and names too long for it end in `...`. ↑ and ↓ scroll the page a
-  line, PgUp and PgDn a screen; `/` searches other commands with the page still
-  beside the list, and Enter opens the one you pick in its place; ← or Esc close it, and the arrows move
-  through the commands again. A command with no page shows the likely reasons why.
-- `/` opens the search bar; typing keeps the names that contain what you
-  typed, ignoring case, ranked best first (the exact name always on top,
-  then names starting with it), and from three characters on also
-  searches what the pages say: "compress folder" finds tar and zip after
-  any name matches, each showing the page line that matched (`cut
-  [Cut out fields from stdin or files.] [text]`). With no search, the list
-  is A to Z; start with `@` to keep only the commands that
-  have a lore page (`@gr`). Esc leaves the search
-  bar but keeps its text and its filter; `/` goes back to it, and Backspace
-  empties it.
-- `c`, on a page, copies one of its examples to the clipboard (over ssh
-  too: the terminal does the copy).
-- `+` shows what lore is and where it keeps things, and its settings:
-  Colours, Internet on or off, History read or not. ↑ and ↓ choose one,
-  Enter changes it, and it is saved for the next runs.
-- `b`, in the list or on a page, bookmarks the command (again: takes it out).
-- Space is the jumper: in the list, to the next letter (A, B, C, … and
-  back to A); on a page, to the next section, and back to the top.
-- Esc, when not searching or reading, quits. Ctrl+C quits at any time.
-
-## Building
-
-```bash
-cli/make     # cargo fmt, clippy, test, build, build --release, then copies app/lore
-cli/clean    # removes all of target/ and the page drafts
-```
-
-Needs Rust stable, edition 2024 (rustc 1.88 or newer).
-
-## Where to read next
+## What you get
 
 | | |
 | --- | --- |
-| [CHANGELOG.md](../CHANGELOG.md) | every release |
-| [SECURITY.md](SECURITY.md) | reporting a vulnerability |
-| [CONTRIBUTING.md](CONTRIBUTING.md) | before a pull request |
+| **Every command, in one list** | Programs on your `$PATH`, plus the folders it often leaves out (`/usr/sbin`, Homebrew, Nix, Snap, Flatpak, `~/.cargo/bin`…); your shell's builtins and keywords; your aliases, with what they run. |
+| **A page for each** | About 9,100 built-in pages: a summary, the common examples, its package and version (and whether an update is known), related commands, subcommands, config files, links and the full manual. Risky commands are marked in red, and their dangerous examples with `!`. |
+| **Search by name or by task** | Type `tar`, or type `compress folder`: lore searches names first, then what the pages say. |
+| **100 recipes** | Short task pages that chain commands, mostly the terminal tasks with the most-viewed Stack Overflow questions: *find files containing a text*, *what is using port 80*, *free disk space*, *add a user*… |
+| **`lore explain`** | `lore explain "tar -xzvf a.tgz"` says what every word and flag means, from the man pages, offline. |
+| **Your own use** | Bookmarks, the pages you opened last, and the commands your shell history runs most sit at the top. |
+| **Your language** | Pages in 41 languages when a translation exists, picked from `$LANG`. |
+| **Colour palettes** | 15 palettes (Catppuccin, Dracula, Nord, Gruvbox, Solarized, Tokyo Night, One, Rosé Pine…), or your terminal's own colours. |
+| **Tab completion** | `lore git <Tab>` offers git's subcommands, in bash, zsh and fish. |
+
+Everything is built into one binary: no folder to install, nothing to
+download, and it works with no network at all.
+
+---
+
+## Install
+
+Download a file from the
+[latest release](https://github.com/guhhammer/lore/releases/latest):
+
+| System | File | Install |
+| --- | --- | --- |
+| Debian, Ubuntu, Mint, Pop!_OS | `lore_<version>-1_amd64.deb` (ARM: `_arm64`) | `sudo apt install ./lore_<version>-1_amd64.deb` |
+| Fedora, RHEL, Rocky, Alma, openSUSE | `lore-<version>-1.x86_64.rpm` (ARM: `.aarch64`) | `sudo dnf install ./lore-<version>-1.x86_64.rpm` |
+| Any Linux | `lore-v<version>-x86_64-unknown-linux-musl.tar.gz` | unpack, copy `lore` into `~/.local/bin` |
+| macOS, Apple Silicon | `lore-v<version>-aarch64-apple-darwin.tar.gz` | unpack, copy `lore` into your `PATH` |
+| macOS, Intel | `lore-v<version>-x86_64-apple-darwin.tar.gz` | the same |
+
+The packages also install the manual (`man lore`) and Tab completion. On
+macOS the binary is not signed yet: the first time, run
+`xattr -d com.apple.quarantine lore`. Each release has a `SHA256SUMS`
+file to check your download with `sha256sum -c SHA256SUMS`.
+
+To build it yourself, see [Build from source](#build-from-source).
+
+---
+
+## Using lore
+
+| Command | What it does |
+| --- | --- |
+| `lore` | Opens the list. |
+| `lore tar` | Opens tar's page straight away, like `man tar`. Every key works from there; ← goes back to the list. |
+| `lore git commit` | A subcommand's page. |
+| `lore --print tar` | The page as plain text, for pipes and scripts (`-p` for short). |
+| `lore explain "tar -xzvf a.tgz"` | What each word of a command line means. |
+| `lore check NAME.md` | Checks a page before you ship it (see [Add your own pages](#add-your-own-pages)). |
+| `lore --completions bash` | Prints the Tab completion script for bash, zsh or fish. |
+| `lore --help`, `lore --version` | What they say. |
+
+**The list.** With no search it is A to Z under letter headers (names
+starting with a digit or symbol go under `#`). Your bookmarks, recent pages
+and most-used commands are on top, then the recipes. Each name shows its
+categories, such as `[archives files]`; `danger` is in red.
+
+**A page** opens beside the list and fits the space left. A command with no
+page explains why that may be.
+
+**Searching.** `/` opens the search bar. Results come best first: the exact
+name, then names starting with what you typed, then names containing it,
+then pages that mention it (from three letters on). Start with `@` to keep
+only commands that have a page (`@gr`).
+
+---
+
+## Keys
+
+The keys you can press are always shown on the bottom line.
+
+**In the list**
+
+| Key | Does |
+| --- | --- |
+| ↑ ↓ | Move |
+| → or Enter | Open the page |
+| Space | Jump to the next letter: A → B → C … → back to the top |
+| `/` | Search |
+| `b` | Bookmark (press again to remove) |
+| `+` | About lore, and settings |
+| Esc | Quit |
+
+**On a page**
+
+| Key | Does |
+| --- | --- |
+| ↑ ↓, PgUp PgDn | Scroll |
+| Space | Jump to the next section, then back to the top |
+| `c` | Copy one of the examples to the clipboard (works over ssh too) |
+| `/` | Search other commands; the page stays beside the list |
+| `b` | Bookmark |
+| ← or Esc | Back to the list |
+
+**In the search bar:** type to filter, Backspace to erase, Esc to leave the
+bar (your search stays). **Anywhere:** Ctrl+C quits.
+
+Links on a page open with your terminal's Ctrl+click (in Konsole and most
+terminals). lore never opens a link itself.
+
+---
+
+## Settings and files
+
+Press `+` for the about screen. Its **Settings** are changed right there
+(↑↓ to choose, Enter to change) and saved for the next time:
+
+| Setting | Choices |
+| --- | --- |
+| Colours | 15 palettes, or `terminal` (your terminal's own colours). Enter opens a picker: ↑↓ try one live, Enter keeps it, Esc goes back. |
+| Internet | On or off (see [Privacy and the internet](#privacy-and-the-internet)). |
+| History | Whether lore reads your shell history to rank your most-used commands. |
+
+Where lore keeps things (each follows the XDG variables when they are set):
+
+| Path | What |
+| --- | --- |
+| `~/.config/lore/config` | The settings: `palette = nord`, `internet = off`, `history = off`. Plain text; edit it by hand if you like. |
+| `~/.config/lore/palettes/` | Your own palettes ([how](../palettes/README.md)). |
+| `~/.local/share/lore/` | Your bookmarks and recent pages. |
+| `~/.local/share/lore/content/` | Your own pages, which can replace built-in ones. |
+| `~/.cache/lore/internet/` | Cheat sheets fetched from the internet, kept for a day. |
+
+`LORE_PALETTE=nord lore` uses another palette for one run.
+
+---
+
+## Privacy and the internet
+
+- **Your shell history is only read**, on your machine, and nothing from it
+  is kept or sent anywhere. Turn it off with History on the `+` screen.
+- **lore never runs the commands it lists.** It only runs `man`, `whatis`
+  and your package manager's query commands, to read about them.
+- **The internet is optional.** When on, the `● internet` dot on top is
+  green when there is a connection and red when not, and each page gets an
+  **INTERNET** section with the command's community cheat sheet from
+  [cht.sh](https://cht.sh). That text is written by anyone, so lore shows it
+  as raw text, strips anything that could control your terminal, never
+  copies it for you and never runs it. Read it with care. Turn Internet off
+  on the `+` screen and lore makes no network request at all.
+
+More in [SECURITY.md](SECURITY.md).
+
+---
+
+## Add your own pages
+
+Pages are plain Markdown. You can:
+
+- **write one for yourself** in `~/.local/share/lore/content/NAME.md`;
+- **ship one with your program:** install it as
+  `/usr/share/lore/content/NAME.md`, and lore shows it when it has no page
+  of its own for that command. Run `lore check NAME.md` first: every page
+  lore did not write must pass it, or it is not shown;
+- **improve the built-in ones** with a pull request.
+
+The format, with an example, is in [content/README.md](../content/README.md).
+New recipes and palettes are one file each: see
+[recipes/README.md](../recipes/README.md) and
+[palettes/README.md](../palettes/README.md).
+
+---
+
+## Build from source
+
+You need Rust 1.88 or newer (edition 2024).
+
+```bash
+git clone https://github.com/guhhammer/lore && cd lore
+cargo run --release              # the list
+cargo run --release -- tar       # tar's page
+```
+
+For development, `cli/make` runs everything the checks on GitHub run
+(format, clippy, tests, debug and release builds) and copies the binary to
+`app/lore`. `cli/clean` removes the build files.
+
+```text
+lore/
+├── src/            the program (start at src/lib.rs)
+├── content/        the command pages, built into the binary
+├── recipes/        the task pages
+├── palettes/       the colour palettes
+├── completions/    Tab completion for bash, zsh and fish
+├── man/            lore's own manual page
+├── tests/          the tests
+├── packaging/      the Arch (AUR) build file and the Homebrew formula
+├── scripts/        the page generators and the release scripts
+└── cli/            make and clean
+```
+
+---
+
+## More reading
+
+| | |
+| --- | --- |
+| [`man lore`](../man/lore.1) | The full manual (from a checkout: `man -l man/lore.1`). |
+| [CHANGELOG.md](../CHANGELOG.md) | What changed in each version. |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Before you open a pull request. |
+| [SECURITY.md](SECURITY.md) | What lore does and doesn't do, and how to report a problem. |
+| [.documentation/](../.documentation/README.md) | How the code works, for developers. |
+
+---
 
 ## Licence
 

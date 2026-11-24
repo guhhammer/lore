@@ -33,13 +33,13 @@ jobs:
   shell:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: shellcheck cli/make cli/clean scripts/release/*.sh completions/lore.bash packaging/update.sh
 
   python:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: The content scripts parse
         run: |
           python3 -c 'import ast, sys

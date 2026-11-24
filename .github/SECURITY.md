@@ -1,83 +1,109 @@
-# Security Policy
+# Security policy
 
 ## Reporting a vulnerability
 
-**Do not open a public issue.** Report privately: GitHub → the **Security**
-tab → *Report a vulnerability* (a private advisory).
+**Please do not open a public issue.** Report it privately instead:
+GitHub → the **Security** tab → **Report a vulnerability**.
 
-Include what you did, what happened, and what you expected. A proof of
-concept helps. You'll get an acknowledgement within 7 days.
+Say what you did, what happened and what you expected; a proof of concept
+helps. You'll get a reply within 7 days. Please allow a reasonable time for
+a fix before telling others.
 
-Please give a fix a reasonable window before disclosing publicly.
+**Supported versions:** only the latest release and `main`. There are no
+release branches, so fixes land on `main` and in the next release.
 
-## Supported versions
+---
 
-Only `main`. Versions are recorded in `CHANGELOG.md`, not as release
-branches, so there are no backports — fixes land on the tip.
+## What lore is
 
-## Scope
+A terminal program that each person runs on their own machine, as
+themselves. Nothing else can reach it: **it listens on no port**. A
+vulnerability is anything that makes it do more than what this page
+describes.
 
-`lore` is a terminal program each user runs on their own machine, as
-themselves. Nobody else reaches it. Its one use of the network is the
-INTERNET section: a TCP check of `cht.sh:443` for the dot, and an https
-request to `https://cht.sh/NAME?T` when a page opens, made by lore itself
-(rustls), never by running a program, and none at all with
-`internet = off` (Internet off on the `+` screen). So a vulnerability here is something that makes it do
-more than read directory listings, its pages and the package records, ask
-cht.sh, and draw them.
+### What it runs
 
-**In scope:**
+lore **never runs, opens or changes the commands and files it lists.** It
+runs only these, each with a plain argument and never through a shell:
 
-- The names of files in the program directories, and the aliases in the
-  shell's startup files: they are drawn to the terminal as they are, so a
-  name or an alias holding terminal escape sequences is in scope.
-- The command pages (built in from `content/`, or read from the folders in
-  `USER_CONTENT_DIRS` and `SYSTEM_CONTENT_DIRS`) and the output of `man`
-  and `whatis`: drawn as text, with control characters and invisible
-  (bidirectional, zero-width) characters removed, so one that reaches the
-  terminal is in scope.
-- **The INTERNET section's text** is anyone's: cheat.sh is written by its
-  community and the answer is not checked. lore takes out every control,
-  escape and invisible character, shows it as raw lines behind a bar,
-  never parses links from it, never offers it to copy (`c` copies only the
-  page's own examples) and never runs it, and the section says so. Text
-  from cht.sh that reaches the terminal as something other than text, that
-  lore copies or runs, or a request lore makes with `internet = off`, is in
-  scope. The answer is cached in `~/.cache/lore/internet/` for a day.
-- Pages other programs install (`/usr/share/lore/content/`): each must pass
-  `info::check` (`lore check`) or it is not shown, and one may only add a
-  page for a command lore has none for, never replace one. A page that gets
-  past the check with an escape sequence, hidden text, HTML or script, or
-  an example that runs a download, or that replaces another command's
-  page, is in scope.
-- A page's links: lore shows only `https://` links and never opens one
-  itself (the terminal does, on the user's Ctrl+click). A page that leads
-  to a log-in or to collecting anything from the reader is in scope; lore
-  never asks anyone to log in or for any account.
-- `lore` must never run, open or write any of the files it lists. It runs
-  only `man`, `whatis` and the package managers' read-only queries
-  (`dpkg-query`, `apt-cache policy`, `rpm -qf`, `pacman -Qo`), each with a
-  command's name or path as a plain argument, never through a shell.
+- `man` and `whatis`, to read a command's manual;
+- read-only package queries: `dpkg-query`, `apt-cache policy`, `rpm -qf`
+  and `pacman -Qo`. Homebrew is read from its folders, without running it.
 
-**Out of scope:**
+### What it reads
 
-- Vulnerabilities in ratatui, crossterm or the Rust standard library —
-  report those upstream.
-- Anything requiring the attacker to already control the user's account or
-  the host.
+- `$PATH`, `$HOME`, `$SHELL`, `$LANG` and the XDG folder variables;
+- the names of the files in the program folders (`/usr/bin`, `/usr/sbin`,
+  Homebrew, Nix…), and on macOS `/etc/paths` and `/etc/paths.d/*`;
+- your shell's startup files, keeping only their `alias` lines;
+- your shell history (bash, zsh, fish, `$HISTFILE`), to count which
+  commands you use most. It is only counted, never kept or sent. History
+  off on the `+` screen stops this;
+- pages from `~/.local/share/lore/content/` and
+  `/usr/share/lore/content/`;
+- its own settings and lists (below).
 
-## What listens
+### What it writes
 
-Nothing in it listens on a port.
+Only its own files, and only when you change something:
 
-## Handling secrets
+| File | When |
+| --- | --- |
+| `~/.config/lore/config` | You change a setting on the `+` screen. |
+| `~/.local/share/lore/bookmarks`, `recent` | You bookmark or open a page. |
+| `~/.cache/lore/internet/NAME.txt` | A cheat sheet arrives from the internet (kept a day). |
 
-`lore` reads no credentials and writes nothing. What it reads: `$PATH`,
-`$HOME` and `$SHELL`; the listings of the program directories; `/etc/paths`
-and `/etc/paths.d/*` (macOS); the shell's startup files (system-wide and the
-user's), of which it keeps only the `alias` lines; for fish, the names of the files
-in `~/.config/fish/functions/`; command pages in the `CONTENT_DIRS`
-folders; and what `man`, `whatis` and the package managers answer about the
-selected command. Every path is listed in
-`src/compile_config.rs`. If a change ever makes it read a secret, this
-section says where it lives and how it is kept out of the repository.
+It reads no passwords, keys or tokens.
+
+### What it sends
+
+Nothing, unless the internet is on (it is by default):
+
+- a connection test to `cht.sh` on port 443 every 30 seconds, for the
+  green or red dot;
+- when you open a command's page, one https request to
+  `https://cht.sh/NAME?T`, made by lore itself (rustls), never by running a
+  program. It carries the command's name, and lore's name and version as
+  its user agent; nothing about you.
+
+Turn **Internet off** on the `+` screen (`internet = off` in the settings
+file), and lore makes no network request at all.
+
+### The clipboard
+
+`c` on a page copies one of **that page's own examples**, by asking the
+terminal (the OSC 52 escape). Nothing else is ever copied.
+
+---
+
+## What is in scope
+
+- **Text that drives your terminal.** Everything lore draws is meant to be
+  plain text: command names, aliases, pages, `man` output and the internet
+  text all have control, escape and invisible (bidirectional, zero-width)
+  characters removed. Any of them reaching the terminal as something other
+  than text is in scope.
+- **The INTERNET section.** cheat.sh is written by its community and its
+  answer is not checked. lore shows it as raw lines behind a bar, never
+  turns it into links, never copies it and never runs it, and the section
+  says so. Text from it that does more, or any request made with the
+  internet off, is in scope.
+- **Pages from other programs** (`/usr/share/lore/content/`). Each must
+  pass `lore check`, and may only fill in a command lore has no page for,
+  never replace one. A page that gets past the check with escape codes,
+  hidden text, HTML, script, an example that runs a download
+  (`curl … | sh`), or that replaces another command's page, is in scope.
+- **Links.** lore shows only `https://` links and never opens one; your
+  terminal does, when you Ctrl+click. A page that leads to a log-in or
+  collects anything from the reader is in scope: lore never asks anyone to
+  log in.
+- **Anything lore runs, opens or writes** beyond the lists above.
+
+## Out of scope
+
+- Bugs in ratatui, crossterm, rustls or the Rust standard library: please
+  report those to their projects.
+- Attacks that need the attacker to already control your account or
+  machine.
+- Your own folder `~/.local/share/lore/content/` replacing built-in pages:
+  that is a feature, and only you can write there.
