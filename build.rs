@@ -5,6 +5,11 @@
 //! `$OUT_DIR/content.rs` holds the tables: EMBEDDED, (command name, where its
 //! page sits in that text), and EMBEDDED_I18N, (language, name, where) from
 //! `content/i18n/<language>/`, both sorted for binary search.
+//!
+//! It also puts in the colour palettes of `palettes/` (`$OUT_DIR/palettes.rs`:
+//! BUILT_IN_PALETTES, (name, the file's text), `terminal` first), and checks
+//! each one, so a palette with a missing key or a bad colour fails the build
+//! with the file and the key named, not lore at run time.
 
 use std::env;
 use std::fs;
@@ -40,6 +45,99 @@ fn pages(dir: &Path) -> Vec<(String, String)> {
     }
     found.sort(); // binary search needs it; also the same binary every time
     found
+}
+
+/// The keys every palette file has; `interface::palette` reads them (and
+/// compile_config.rs's `PALETTE_KEYS` lists them again, for the run time).
+const PALETTE_KEYS: [&str; 10] = [
+    "background",
+    "text",
+    "muted",
+    "selection",
+    "primary",
+    "secondary",
+    "accent",
+    "danger",
+    "code",
+    "warning",
+];
+
+/// The colour names a palette can use besides `#rrggbb` (compile_config.rs's
+/// `COLOUR_NAMES`, by name).
+const COLOUR_NAMES: [&str; 17] = [
+    "reset",
+    "black",
+    "red",
+    "green",
+    "yellow",
+    "blue",
+    "magenta",
+    "cyan",
+    "gray",
+    "darkgray",
+    "lightred",
+    "lightgreen",
+    "lightyellow",
+    "lightblue",
+    "lightmagenta",
+    "lightcyan",
+    "white",
+];
+
+/// Checks one palette file: every key there, every colour one lore knows.
+fn check_palette(file: &str, text: &str) {
+    for key in PALETTE_KEYS {
+        let value = text
+            .lines()
+            .map(str::trim)
+            .filter(|line| !line.starts_with('#'))
+            .filter_map(|line| line.split_once('='))
+            .rfind(|(k, _)| k.trim() == key)
+            .map(|(_, v)| v.trim())
+            .unwrap_or_else(|| panic!("{file}: `{key}` is missing"));
+        let hex = value.len() == 7
+            && value.starts_with('#')
+            && value[1..].chars().all(|c| c.is_ascii_hexdigit());
+        assert!(
+            hex || COLOUR_NAMES.contains(&value),
+            "{file}: `{key} = {value}` is not #rrggbb or one of {COLOUR_NAMES:?}"
+        );
+    }
+}
+
+/// `$OUT_DIR/palettes.rs`: every `palettes/*.palette`, checked, `terminal`
+/// first (the default), then by name.
+fn palettes(out: &Path) {
+    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("palettes");
+    println!("cargo:rerun-if-changed={}", dir.display());
+    let mut found: Vec<(String, String)> = fs::read_dir(&dir)
+        .expect("palettes/ is there")
+        .flatten()
+        .filter_map(|entry| {
+            let path = entry.path();
+            let name = path
+                .file_name()?
+                .to_str()?
+                .strip_suffix(".palette")?
+                .to_owned();
+            Some((name, path.display().to_string()))
+        })
+        .collect();
+    found.sort_by_key(|(name, _)| (name != "terminal", name.clone()));
+    assert!(
+        found.first().is_some_and(|(name, _)| name == "terminal"),
+        "palettes/terminal.palette, the default, is missing"
+    );
+    let mut table = String::from("pub static BUILT_IN_PALETTES: &[(&str, &str)] = &[\n");
+    for (name, path) in &found {
+        check_palette(
+            path,
+            &fs::read_to_string(path).expect("a palette is UTF-8 text"),
+        );
+        table.push_str(&format!("    ({name:?}, include_str!({path:?})),\n"));
+    }
+    table.push_str("];\n");
+    fs::write(out.join("palettes.rs"), table).expect("OUT_DIR is writable");
 }
 
 fn main() {
@@ -89,4 +187,5 @@ fn main() {
         "unpack(include_bytes!(concat!(env!(\"OUT_DIR\"), \"/pages.zst\"))));\n",
     ));
     fs::write(out.join("content.rs"), table).expect("OUT_DIR is writable");
+    palettes(&out);
 }

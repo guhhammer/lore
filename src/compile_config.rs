@@ -6,7 +6,7 @@
 //! Path syntax: `~/` is the user's home (skipped if `$HOME` is unset), and a
 //! `*` stands for any name within one path component (`/opt/*/bin`).
 
-use ratatui::style::{Color, Modifier, Style};
+use ratatui::style::{Color, Modifier};
 
 // ── texts ───────────────────────────────────────────────────────────────────
 
@@ -18,14 +18,51 @@ Usage:
   lore               the list of every command, A to Z
   lore NAME          NAME's page straight away (like `man NAME`)
   lore git commit    a subcommand's page
+  lore --print NAME  NAME's page as plain text, for pipes and scripts (-p)
   lore --help        this text
   lore --version     lore's version
+
+Colours: press p in the list or on a page to pick a palette; the choice is
+saved in ~/.config/lore/config ($XDG_CONFIG_HOME/lore/config) for the next
+runs. LORE_PALETTE=NAME lore uses another one for one run. Your own
+palettes go in ~/.config/lore/palettes/NAME.palette (`man lore`, COLOURS).
+
+On a page, c copies one of its examples to the clipboard, through the
+terminal, so over ssh too (OSC 52: most terminals, tmux with set-clipboard).
+
++ shows what lore is, where it keeps things and what it found here.
+
+Your own use: b bookmarks a command; with the search empty, the list starts
+with your bookmarks, the pages you opened last and the commands your shell
+history ran most (a dim dot marks the ones it never ran). Kept in
+~/.local/share/lore/; `history = off` in the config file stops reading it.
 
 In the list: arrows move, / searches (start with @ for only the commands
 that have a lore page), right arrow or Enter opens a page, Esc quits.
 On a page: arrows and PgUp/PgDn scroll, / finds another command, left
 arrow or Esc close it.
 `man lore` has the rest.";
+
+/// Under FILES: where the paths come from.
+pub const FILES_HINT: &str = "From its manual: the configuration, logs and data it uses.";
+
+/// The most paths FILES lists; a manual can name dozens.
+pub const FILES_MAX: usize = 20;
+
+/// How a path starts in a manual's FILES section: absolute, or under the
+/// home or an XDG folder (`~/.ssh/config`, `$HOME/.bashrc`).
+pub const FILES_PATH_STARTS: &[&str] = &[
+    "/",
+    "~/",
+    "$HOME/",
+    "${HOME}/",
+    "$XDG_CONFIG_HOME/",
+    "${XDG_CONFIG_HOME}/",
+    "$XDG_DATA_HOME/",
+    "${XDG_DATA_HOME}/",
+    "$XDG_STATE_HOME/",
+    "${XDG_STATE_HOME}/",
+];
 
 /// How to open a link; the terminal does it, not lore.
 pub const LINK_HINT: &str = "Ctrl+click a link to open it in your browser.";
@@ -54,14 +91,14 @@ pub const NO_PAGE_REASONS: &[&str] = &[
     "`man` itself is not installed",
 ];
 
-/// The app's name, first on the key bar.
-pub const KEY_BAR_NAME: &str = "lore";
-
 /// The key bar, per mode: (key, what it does).
 pub const KEYS_BROWSE: &[(&str, &str)] = &[
     ("↑↓", "Move"),
     ("→/Enter", "Page"),
     ("/", "Search"),
+    ("b", "Bookmark"),
+    ("p", "Colours"),
+    ("+", "About"),
     ("Esc", "Quit"),
     ("^C", "Quit"),
 ];
@@ -77,6 +114,9 @@ pub const KEYS_SEARCH: &[(&str, &str)] = &[
 pub const KEYS_PAGE: &[(&str, &str)] = &[
     ("↑↓ PgUp/PgDn", "Scroll"),
     ("/", "Search"),
+    ("c", "Copy"),
+    ("b", "Bookmark"),
+    ("p", "Colours"),
     ("←/Esc", "Back"),
     ("^C", "Quit"),
 ];
@@ -84,7 +124,24 @@ pub const KEYS_PAGE: &[(&str, &str)] = &[
 pub const KEYS_PAGE_DIRECT: &[(&str, &str)] = &[
     ("↑↓ PgUp/PgDn", "Scroll"),
     ("/", "Search"),
+    ("c", "Copy"),
+    ("b", "Bookmark"),
+    ("p", "Colours"),
     ("←/Esc", "Quit"),
+    ("^C", "Quit"),
+];
+/// The list of a page's examples to copy.
+pub const KEYS_COPY: &[(&str, &str)] = &[
+    ("↑↓", "Choose"),
+    ("Enter", "Copy"),
+    ("Esc", "Cancel"),
+    ("^C", "Quit"),
+];
+/// The palette picker.
+pub const KEYS_PALETTE: &[(&str, &str)] = &[
+    ("↑↓", "Try"),
+    ("Enter", "Keep"),
+    ("Esc", "Cancel"),
     ("^C", "Quit"),
 ];
 
@@ -106,6 +163,11 @@ pub const ERROR_NO_TERMINAL: &str =
 pub const ERROR_NOTHING_NAMED: &str = "no command or page named {name}";
 pub const ERROR_UNKNOWN_OPTION: &str = "unknown option {option}; see lore --help";
 pub const ERROR_OPTIONS_ALONE: &str = "options go alone: lore NAME, or see lore --help";
+pub const ERROR_PRINT_NAME: &str = "--print needs a name: lore --print NAME";
+
+/// `lore --print NAME` into a pipe or a file, where there is no terminal to
+/// take the width from: columns to lay the page out at.
+pub const PRINT_WIDTH: u16 = 80;
 
 // ── page texts ──────────────────────────────────────────────────────────────
 
@@ -115,6 +177,7 @@ pub const HEADING_USAGE: &str = "HOW TO USE";
 pub const HEADING_RELATED: &str = "RELATED";
 pub const HEADING_SUBCOMMANDS: &str = "SUBCOMMANDS";
 pub const HEADING_NOTES: &str = "NOTES";
+pub const HEADING_FILES: &str = "FILES";
 pub const HEADING_LINKS: &str = "LINKS";
 pub const HEADING_MANUAL: &str = "MANUAL";
 
@@ -194,22 +257,175 @@ pub const KEY_BAR_HEIGHT: u16 = 1;
 /// The ending that marks text cut short.
 pub const ELLIPSIS: &str = "...";
 
-/// Colours and styles, plain for now (they will be restyled).
-pub const STYLE_CATEGORY: Style = Style::new().fg(Color::Magenta);
-pub const STYLE_SNIPPET: Style = Style::new().fg(Color::Cyan);
-pub const STYLE_DANGER: Style = Style::new().fg(Color::Red).add_modifier(Modifier::BOLD);
-pub const STYLE_HEADING: Style = Style::new().add_modifier(Modifier::BOLD);
-pub const STYLE_CODE: Style = Style::new().fg(Color::Green);
-pub const STYLE_DIM: Style = Style::new().add_modifier(Modifier::DIM);
-pub const STYLE_URL: Style = Style::new().fg(Color::Cyan);
-pub const STYLE_WARNING: Style = Style::new().fg(Color::Yellow);
-/// A letter header in the list.
-pub const STYLE_SECTION: Style = Style::new().fg(Color::Cyan).add_modifier(Modifier::BOLD);
-/// The search bar's border while typing goes to it.
-pub const STYLE_SEARCHING: Style = Style::new().fg(Color::Yellow);
-/// The selected row, and each key on the key bar.
-pub const STYLE_SELECTED: Style = Style::new().add_modifier(Modifier::REVERSED);
-pub const STYLE_KEY: Style = Style::new().add_modifier(Modifier::REVERSED);
+/// Bold: headings, letter headers, `danger`.
+pub const MODIFIER_HEADING: Modifier = Modifier::BOLD;
+pub const MODIFIER_SECTION: Modifier = Modifier::BOLD;
+pub const MODIFIER_DANGER: Modifier = Modifier::BOLD;
+
+// ── the name, drawn ─────────────────────────────────────────────────────────
+
+/// lore's orange (guhhammer.dev's `--color-flare-500`): the logo and the
+/// about screen's banner are always in it, whatever the palette.
+pub const LORE_ORANGE: Color = Color::Rgb(0xe8, 0x79, 0x3a);
+
+/// "lore" in Press Start 2P, the 8-bit font, from its own 8×8 pixels: two
+/// pixel rows a line, in half blocks. On every screen, left of the search
+/// bar.
+pub const LOGO: [&str; 4] = [
+    "  ▀██",
+    "   ██   ▄█▀▀▀█▄  ██▄▀▀▀ ▄█▀▀▀█▄",
+    "   ██   ██   ██  ██     ██▀▀▀▀▀",
+    " ▀▀▀▀▀▀  ▀▀▀▀▀   ▀▀      ▀▀▀▀▀",
+];
+
+/// Columns between the logo and the search bar.
+pub const LOGO_GAP: u16 = 2;
+
+/// The key that opens the about screen, from the list or a page.
+pub const ABOUT_KEY: char = '+';
+
+/// The about screen: its title, the line under the banner, its fields.
+pub const ABOUT_TITLE: &str = " about ";
+pub const ABOUT_TAGLINE: &str =
+    "lore {version}: every command you can type, and what each one does. Offline.";
+pub const ABOUT_COMMANDS: &str = "{total} on this machine, {pages} with a lore page";
+pub const ABOUT_PAGES: &str = "{pages} built in, translations in {languages} languages";
+pub const ABOUT_PALETTE: &str = "{name} ({count} palettes; p picks one)";
+pub const ABOUT_KEPT: &str = "{bookmarks} bookmarks, {recent} recent pages";
+pub const ABOUT_HISTORY_ON: &str = "{seen} commands seen in your shell's history (only read, here)";
+pub const ABOUT_HISTORY_OFF: &str = "not read (no history, or `history = off`)";
+pub const ABOUT_LICENCE: &str = "MIT; examples and translations from tldr-pages, CC BY 4.0";
+pub const ABOUT_SOURCE: &str = "https://github.com/guhhammer/lore";
+pub const ABOUT_MANUAL: &str = "man lore, lore --help";
+pub const ABOUT_FIELDS: [&str; 10] = [
+    "Commands", "Pages", "Palette", "Settings", "Palettes", "Kept", "History", "Licence", "Source",
+    "Manual",
+];
+/// Width of the field names' column on the about screen.
+pub const ABOUT_LABEL_WIDTH: usize = 10;
+
+/// The about screen's keys.
+pub const KEYS_ABOUT: &[(&str, &str)] = &[("+/←/Esc", "Back"), ("^C", "Quit")];
+
+/// The key that opens the list of a page's examples to copy.
+pub const COPY_KEY: char = 'c';
+
+/// That list's title, and what the key bar says after a copy (until the
+/// next key) or when a page has nothing to copy.
+pub const COPY_TITLE: &str = " copy an example ";
+pub const COPIED: &str = "copied: {text}";
+pub const NOTHING_TO_COPY: &str = "this page has no examples to copy";
+
+/// Columns the copy list leaves free on each side of the page.
+pub const COPY_PICKER_MARGIN: u16 = 2;
+
+/// The key that opens the palette picker, in the list and on a page.
+pub const PALETTE_KEY: char = 'p';
+
+/// The picker's title, and its title when the choice could not be saved.
+pub const PALETTE_TITLE: &str = " colours ";
+pub const PALETTE_NOT_SAVED: &str = " not saved: {why} ";
+
+/// Columns the picker adds around the longest name: borders and margins.
+pub const PALETTE_PICKER_MARGIN: u16 = 6;
+
+/// The environment variable that names a palette for one run
+/// (`LORE_PALETTE=nord lore`), over the one saved in the settings file.
+pub const PALETTE_VAR: &str = "LORE_PALETTE";
+
+// ── settings file (src/settings.rs) ─────────────────────────────────────────
+
+/// `$XDG_CONFIG_HOME/lore/config`; without it, `~/.config/lore/config`.
+pub const CONFIG_HOME_VAR: &str = "XDG_CONFIG_HOME";
+pub const CONFIG_HOME_FALLBACK: &str = ".config";
+pub const CONFIG_FILE: &str = "lore/config";
+
+/// The first lines of a settings file lore makes.
+pub const CONFIG_HEADER: &str = "\
+# lore's settings. lore writes this file when a setting is changed in the
+# app (p: colours); it can be edited by hand too. One `key = value` a line.
+";
+
+/// The palette's name in the settings file (`palette = nord`).
+pub const SETTING_PALETTE: &str = "palette";
+
+/// `history = off` in the settings file: lore does not read the shell's
+/// history (no most-used group, no never-used marks).
+pub const SETTING_HISTORY: &str = "history";
+pub const SETTING_OFF: &str = "off";
+
+/// Lists lore keeps between runs, one name a line, in
+/// `$XDG_DATA_HOME/lore/`, or `~/.local/share/lore/` when that is unset.
+pub const DATA_HOME_VAR: &str = "XDG_DATA_HOME";
+pub const DATA_HOME_FALLBACK: &str = ".local/share";
+pub const DATA_DIR: &str = "lore";
+pub const BOOKMARKS_FILE: &str = "bookmarks";
+pub const RECENT_FILE: &str = "recent";
+
+// ── your own use ────────────────────────────────────────────────────────────
+
+/// The key that adds or removes a bookmark, in the list and on a page.
+pub const BOOKMARK_KEY: char = 'b';
+
+/// How many recently opened pages, and most-used commands, head the list.
+pub const RECENT_MAX: usize = 10;
+pub const MOST_USED_MAX: usize = 10;
+
+/// The headers of the groups above A to Z, when the search is empty.
+pub const GROUP_BOOKMARKS: &str = "★ bookmarks";
+pub const GROUP_RECENT: &str = "recent";
+pub const GROUP_MOST_USED: &str = "most used";
+
+/// Before the title of a bookmarked command's page.
+pub const BOOKMARK_MARK: &str = "★ ";
+
+/// After the name of a command your shell history never ran (only when
+/// there is a history to go by).
+pub const UNUSED_MARK: &str = " ·";
+
+/// The shell history files read for the most-used group, besides
+/// `$HISTFILE`: bash, zsh (two usual names), fish.
+pub const HISTORY_FILES: &[&str] = &[
+    "~/.bash_history",
+    "~/.zsh_history",
+    "~/.histfile",
+    "~/.local/share/fish/fish_history",
+];
+
+/// Words in front of the command that ran: `sudo apt install` ran apt.
+pub const HISTORY_WRAPPERS: &[&str] = &[
+    "sudo", "doas", "time", "nohup", "exec", "command", "builtin", "env", "nice", "then", "do",
+    "else", "!", "(", "{",
+];
+
+/// The colour palettes are files: `palettes/<name>.palette` in the
+/// repository, built in by build.rs, and yours in this folder of the
+/// settings folder (`~/.config/lore/palettes/`). Format: palettes/README.md.
+pub const PALETTE_DIR: &str = "palettes";
+pub const PALETTE_FILE_END: &str = ".palette";
+
+/// The colour names a palette file can use besides `#rrggbb`: the
+/// terminal's 16 ANSI colours, which follow its own theme, and `reset`, the
+/// terminal's default (build.rs checks the files against these names too).
+pub const COLOUR_NAMES: &[(&str, Color)] = &[
+    ("reset", Color::Reset),
+    ("black", Color::Black),
+    ("red", Color::Red),
+    ("green", Color::Green),
+    ("yellow", Color::Yellow),
+    ("blue", Color::Blue),
+    ("magenta", Color::Magenta),
+    ("cyan", Color::Cyan),
+    ("gray", Color::Gray),
+    ("darkgray", Color::DarkGray),
+    ("lightred", Color::LightRed),
+    ("lightgreen", Color::LightGreen),
+    ("lightyellow", Color::LightYellow),
+    ("lightblue", Color::LightBlue),
+    ("lightmagenta", Color::LightMagenta),
+    ("lightcyan", Color::LightCyan),
+    ("white", Color::White),
+];
 
 // ── content pages ───────────────────────────────────────────────────────────
 

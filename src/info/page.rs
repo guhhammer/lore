@@ -13,11 +13,12 @@ use crate::commands::{self, Command, Kind};
 use crate::compile_config::{
     DANGER_EXAMPLE_NOTE, DANGER_MARK, DANGER_WARNING, EXAMPLE_INDENT, EXAMPLE_PROMPT,
     FIELD_INSTALLED, FIELD_LABEL_WIDTH, FIELD_LOCATION, FIELD_NEWEST, FIELD_PACKAGE, FIELD_UPDATE,
-    HEADING_LINKS, HEADING_MANUAL, HEADING_NOTES, HEADING_RELATED, HEADING_SUBCOMMANDS,
-    HEADING_USAGE, HEADING_VERSION, IS_ALIAS, IS_BUILTIN, IS_FUNCTION, IS_KEYWORD, IS_SUBCOMMAND,
-    LINK_HINT, LINK_WARNING, NEWEST_SAME, NEWEST_UPDATE, NO_EXAMPLES, NO_PAGE, NO_PAGE_REASONS,
-    NO_SUMMARY, PAGE_INDENT, REASON_INDENT, RELATED_HINT, SUBCOMMANDS_HINT, VERSION_ALIAS,
-    VERSION_FUNCTION, VERSION_NOT_FOUND, VERSION_SHELL, VERSION_UNPACKAGED,
+    FILES_HINT, FILES_MAX, FILES_PATH_STARTS, HEADING_FILES, HEADING_LINKS, HEADING_MANUAL,
+    HEADING_NOTES, HEADING_RELATED, HEADING_SUBCOMMANDS, HEADING_USAGE, HEADING_VERSION, IS_ALIAS,
+    IS_BUILTIN, IS_FUNCTION, IS_KEYWORD, IS_SUBCOMMAND, LINK_HINT, LINK_WARNING, NEWEST_SAME,
+    NEWEST_UPDATE, NO_EXAMPLES, NO_PAGE, NO_PAGE_REASONS, NO_SUMMARY, PAGE_INDENT, REASON_INDENT,
+    RELATED_HINT, SUBCOMMANDS_HINT, VERSION_ALIAS, VERSION_FUNCTION, VERSION_NOT_FOUND,
+    VERSION_SHELL, VERSION_UNPACKAGED,
 };
 use crate::utils::manual;
 use crate::utils::text::{self, wrap};
@@ -196,6 +197,15 @@ pub fn render(
         }
     }
 
+    let files = man.map(files_in_man).unwrap_or_default();
+    if !files.is_empty() {
+        page.heading(HEADING_FILES);
+        page.wrapped(FILES_HINT, Style::Dim, PAGE_INDENT);
+        for path in &files {
+            page.add(&format!("{PAGE_INDENT}{path}"), Style::Code); // whole, like a URL
+        }
+    }
+
     page.heading(HEADING_LINKS);
     page.wrapped(LINK_HINT, Style::Dim, PAGE_INDENT);
     for (label, url) in content.links.iter().cloned().chain(links::searches(name)) {
@@ -365,5 +375,38 @@ pub fn see_also_in_man(lines: &[String]) -> Vec<String> {
             }
         }
     }
+    found
+}
+
+/// The paths named under a man page's FILES heading (or any heading with
+/// FILES in it: "CONFIGURATION FILES", "FILES AND DIRECTORIES"): each once,
+/// in order, at most `FILES_MAX`.
+pub fn files_in_man(lines: &[String]) -> Vec<String> {
+    let mut found: Vec<String> = Vec::new();
+    let mut inside = false;
+    for line in lines {
+        let heading = !line.starts_with(' ') && !line.trim().is_empty();
+        if heading {
+            inside = line.split_whitespace().any(|word| word == HEADING_FILES);
+            continue;
+        }
+        if !inside {
+            continue;
+        }
+        for token in line.split_whitespace() {
+            // "(/etc/foo.conf)," → /etc/foo.conf
+            let path = token
+                .trim_start_matches(['(', '[', '"', '\'', '`'])
+                .trim_end_matches([')', ']', '"', '\'', '`', ',', ';', ':', '.']);
+            let is_path = FILES_PATH_STARTS.iter().any(|start| path.starts_with(start))
+                && path.len() > 1
+                && !path.starts_with("//") // a URL's tail, not a path
+                && !found.iter().any(|f| f == path);
+            if is_path {
+                found.push(path.to_owned());
+            }
+        }
+    }
+    found.truncate(FILES_MAX);
     found
 }

@@ -3,11 +3,16 @@
 
 use std::fmt;
 
-use crate::compile_config::SYMBOL_SECTION;
+use crate::compile_config::{GROUP_BOOKMARKS, GROUP_MOST_USED, GROUP_RECENT, SYMBOL_SECTION};
 
 /// A section. `Symbol` is declared first, so it sorts before every letter.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub enum Section {
+    /// The groups above A to Z, with the search empty; a command in one is
+    /// also under its letter.
+    Bookmarks,
+    Recent,
+    MostUsed,
     /// Shown as `#`: names like `7z`, `[`, `!`.
     Symbol,
     /// Always upper case: `ls` and `Xorg` go under `L` and `X`.
@@ -28,6 +33,9 @@ impl Section {
 impl fmt::Display for Section {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
+            Self::Bookmarks => write!(f, "{GROUP_BOOKMARKS}"),
+            Self::Recent => write!(f, "{GROUP_RECENT}"),
+            Self::MostUsed => write!(f, "{GROUP_MOST_USED}"),
             Self::Symbol => write!(f, "{SYMBOL_SECTION}"),
             Self::Letter(c) => write!(f, "{c}"),
         }

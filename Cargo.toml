@@ -1,6 +1,6 @@
 [package]
 name = "lore-tui"
-version = "0.1.3"
+version = "0.1.5"
 edition = "2024"
 rust-version = "1.85"
 description = "A terminal list of every command you can type (programs, shell builtins, aliases), grouped A to Z. Linux and macOS; bash, zsh, fish."
@@ -34,3 +34,28 @@ codegen-units = 1
 
 [build-dependencies]
 zstd = "0.14.4"
+
+# `cargo deb --target <triple>`: the .deb the release workflow builds. The
+# binary is static (musl), so it depends on nothing.
+[package.metadata.deb]
+name = "lore"
+maintainer = "guhhammer (https://github.com/guhhammer/lore)"
+copyright = "guhhammer"
+section = "utils"
+priority = "optional"
+extended-description = "Every command you can type, A to Z (programs, shell builtins, aliases), with an offline page for each: what it does, how to use it, what can go wrong."
+assets = [
+    ["target/release/lore", "usr/bin/", "755"],
+    ["man/lore.1", "usr/share/man/man1/", "644"],
+    [".github/README.md", "usr/share/doc/lore/README.md", "644"],
+]
+
+# `cargo generate-rpm --target <triple>`: the .rpm, the same files.
+[package.metadata.generate-rpm]
+name = "lore"
+auto-req = "no"
+assets = [
+    { source = "target/release/lore", dest = "/usr/bin/lore", mode = "755" },
+    { source = "man/lore.1", dest = "/usr/share/man/man1/lore.1", mode = "644", doc = true },
+    { source = "LICENSE", dest = "/usr/share/licenses/lore/LICENSE", mode = "644", doc = true },
+]

@@ -42,3 +42,22 @@ fn an_unknown_option_or_an_option_among_names_is_an_error() {
     assert!(args(&["--frobnicate"]).is_err());
     assert!(args(&["git", "--help"]).is_err());
 }
+
+#[test]
+fn print_writes_a_page_out_with_or_without_a_subcommand() {
+    assert_eq!(args(&["--print", "tar"]), Ok(Start::Print("tar".into())));
+    assert_eq!(
+        args(&["-p", "git", "commit"]),
+        Ok(Start::Print("git commit".into()))
+    );
+    assert_eq!(
+        args(&["--print", "--", "-x"]),
+        Ok(Start::Print("-x".into()))
+    );
+}
+
+#[test]
+fn print_without_a_name_is_an_error() {
+    assert!(args(&["--print"]).is_err());
+    assert!(args(&["--print", "-x"]).is_err());
+}

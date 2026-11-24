@@ -147,6 +147,13 @@ pub fn languages() -> Vec<String> {
     languages_of(&value)
 }
 
+/// How many languages the built-in translations are in (the about screen).
+pub fn translated_languages() -> usize {
+    let mut seen: Vec<&str> = EMBEDDED_I18N.iter().map(|(lang, _, _)| *lang).collect();
+    seen.dedup(); // the table is sorted by language
+    seen.len()
+}
+
 /// `languages` for one locale value; separate so it can be tested.
 pub fn languages_of(locale: &str) -> Vec<String> {
     // "pt_BR.UTF-8@euro" → "pt_BR"

@@ -6,6 +6,7 @@ use std::io;
 use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, KeyModifiers};
 
 use crate::app::Mode;
+use crate::compile_config::{ABOUT_KEY, BOOKMARK_KEY, COPY_KEY, PALETTE_KEY};
 
 /// Something the app should do; the loop in lib.rs applies it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -31,6 +32,27 @@ pub enum Action {
     Erase,
     /// The terminal changed size; nothing to do but draw again.
     Resize,
+    /// Adds the command in view to the bookmarks, or takes it out (`b`).
+    ToggleBookmark,
+    /// On a page: opens the list of its examples to copy (`c`).
+    OpenCopy,
+    /// In that list: the example above or below; copy it; close the list.
+    PreviousExample,
+    NextExample,
+    CopyExample,
+    CloseCopy,
+    /// Opens the about screen (`+`), and goes back from it.
+    OpenAbout,
+    CloseAbout,
+    /// Opens the palette picker (`p`).
+    OpenPalettes,
+    /// In the picker: try the palette above or below.
+    PreviousPalette,
+    NextPalette,
+    /// In the picker: keep the palette tried (and save it), or go back to
+    /// the one before.
+    KeepPalette,
+    CancelPalette,
 }
 
 /// Waits for the next event that means something in `mode`.
@@ -63,6 +85,30 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
     match (mode, key.code) {
         (_, KeyCode::Char('c')) if key.modifiers.contains(KeyModifiers::CONTROL) => {
             Some(Action::Quit)
+        }
+        // the picker takes the arrows, Enter and Esc while it is open
+        (Mode::Palette, KeyCode::Up) => Some(Action::PreviousPalette),
+        (Mode::Palette, KeyCode::Down) => Some(Action::NextPalette),
+        (Mode::Palette, KeyCode::Enter) => Some(Action::KeepPalette),
+        (Mode::Palette, KeyCode::Esc) => Some(Action::CancelPalette),
+        (Mode::Palette, _) => None,
+        (Mode::About, KeyCode::Esc | KeyCode::Left | KeyCode::Char(ABOUT_KEY)) => {
+            Some(Action::CloseAbout)
+        }
+        (Mode::About, _) => None,
+        (Mode::Browse | Mode::Info, KeyCode::Char(ABOUT_KEY)) if plain => Some(Action::OpenAbout),
+        (Mode::Copy, KeyCode::Up) => Some(Action::PreviousExample),
+        (Mode::Copy, KeyCode::Down) => Some(Action::NextExample),
+        (Mode::Copy, KeyCode::Enter) => Some(Action::CopyExample),
+        (Mode::Copy, KeyCode::Esc) => Some(Action::CloseCopy),
+        (Mode::Copy, _) => None,
+        (Mode::Info, KeyCode::Char(COPY_KEY)) if plain => Some(Action::OpenCopy),
+        // not in Search, where `p` is typed
+        (Mode::Browse | Mode::Info, KeyCode::Char(PALETTE_KEY)) if plain => {
+            Some(Action::OpenPalettes)
+        }
+        (Mode::Browse | Mode::Info, KeyCode::Char(BOOKMARK_KEY)) if plain => {
+            Some(Action::ToggleBookmark)
         }
         // reading a page, the arrows scroll it; the list moves again once
         // the page is closed

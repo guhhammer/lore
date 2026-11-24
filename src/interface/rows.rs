@@ -41,3 +41,15 @@ pub fn build(mut commands: Vec<Command>) -> Vec<Row> {
 pub fn ranked(commands: Vec<Command>) -> Vec<Row> {
     commands.into_iter().map(Row::Command).collect()
 }
+
+/// `rows` with groups above them (bookmarks, recent, most used), each under
+/// its header; an empty group is left out.
+pub fn with_groups(groups: Vec<(Section, Vec<Command>)>, rows: Vec<Row>) -> Vec<Row> {
+    let mut all = Vec::new();
+    for (section, commands) in groups.into_iter().filter(|(_, c)| !c.is_empty()) {
+        all.push(Row::Header(section));
+        all.extend(commands.into_iter().map(Row::Command));
+    }
+    all.extend(rows);
+    all
+}

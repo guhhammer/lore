@@ -120,6 +120,7 @@ always shown on the bottom line:
   empties it.
 - `c`, on a page, copies one of its examples to the clipboard (over ssh
   too: the terminal does the copy).
+- `+` shows what lore is and where it keeps things.
 - `b`, in the list or on a page, bookmarks the command (again: takes it out).
 - `p`, in the list or on a page, opens the colour palettes.
 - Esc, when not searching or reading, quits. Ctrl+C quits at any time.

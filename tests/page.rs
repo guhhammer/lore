@@ -208,3 +208,27 @@ fn related_commands_come_from_the_page_and_the_manuals_see_also() {
         ["zip", "gzip", "xz"]
     );
 }
+
+#[test]
+fn files_come_from_the_manuals_files_section_each_once_without_punctuation() {
+    use lore_tui::info::page::files_in_man;
+    let man: Vec<String> = [
+        "NAME",
+        "       x - /not/this",
+        "FILES",
+        "       ~/.xrc (see /etc/xrc).",
+        "       /etc/xrc",
+        "              The system-wide file, from https://x.org/doc.",
+        "CONFIGURATION FILES",
+        "       $XDG_CONFIG_HOME/x/config",
+        "SEE ALSO",
+        "       /not/this/either",
+    ]
+    .iter()
+    .map(|s| (*s).to_owned())
+    .collect();
+    assert_eq!(
+        files_in_man(&man),
+        ["~/.xrc", "/etc/xrc", "$XDG_CONFIG_HOME/x/config"]
+    );
+}

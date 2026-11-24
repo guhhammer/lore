@@ -13,6 +13,46 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+### Added
+
+- Releases: pushing a version tag (`v0.1.3`) builds lore for Linux (static
+  x86_64 and ARM binaries that run on any distro, a `.deb` and an `.rpm` for
+  each) and macOS (Apple Silicon and Intel), and publishes them, with
+  checksums, as a GitHub release (`.github/workflows/release.yml`).
+- Colour palettes: `p` in the list or on a page opens a picker of eight
+  themes, most in a dark and a light variant (Catppuccin Mocha/Latte,
+  Dracula, Nord, Gruvbox dark/light, Solarized dark/light, Tokyo Night/Day,
+  One Dark/Light, Rosé Pine/Dawn); the arrows try one on the whole screen,
+  Enter keeps it, Esc goes back. They paint their own background, and each
+  theme has its own primary colour (headers, headings, the active border)
+  and secondary one (categories) from its signature tones. The default,
+  `terminal`, keeps the terminal's colours.
+- `lore --print NAME` (`-p`): a page as plain text on standard output, with
+  the same sections, for pipes and scripts; it needs no terminal.
+- FILES on a page: the configuration files, logs and data a command's
+  manual names (`~/.ssh/config` for ssh).
+- Bookmarks (`b`) and recently opened pages, kept in `~/.local/share/lore/`,
+  head the list with the search empty, with the commands your shell history
+  ran most. In a search, the commands you run most come first among equal
+  matches, and a dim dot marks the commands your history never ran. The
+  history (bash, zsh, fish) is only read, locally; `history = off` in the
+  settings file stops it.
+- Palettes are files, `palettes/<name>.palette` (`key = value`, one per
+  colour role), built in and checked by `build.rs`: a new palette is one
+  file in a pull request (`palettes/README.md`). Your own go in
+  `~/.config/lore/palettes/`, read at start.
+- `c` on a page copies one of its examples to the clipboard: a list of them
+  opens, Enter copies, and the key bar says what. The terminal does the copy
+  (OSC 52), so it works over ssh and inside tmux, with no clipboard tool.
+- The name drawn: "lore" in the 8-bit Press Start 2P letters, from the
+  font's own pixels, beside the search bar on every screen, always in
+  lore's orange (#e8793a) whatever the palette, and an about screen (`+`).
+  The key bar shows only the keys. The about screen shows the
+  version, what lore found here, where it keeps things, licence and source.
+- A settings file, `~/.config/lore/config` (`$XDG_CONFIG_HOME/lore/config`),
+  where lore saves the palette for the next runs. `LORE_PALETTE=NAME` uses
+  another palette for one run.
+
 ### Changed
 
 - The built-in pages are packed with zstd at build time and unpacked once
