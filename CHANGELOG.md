@@ -15,6 +15,11 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **The `+` screen scrolls** on a window too small for it: PgUp, PgDn, `w`
+  and `s` scroll it, and choosing a setting with ↑↓ scrolls to it.
+- **`scripts/content/wikipedia.py`:** adds a Wikipedia link, last under
+  `## Links`, to a command page whose program has an article about software
+  on English Wikipedia (the pages get their links once it has run).
 - **The docs topic:** every documentation set DevDocs offers (850, for
   languages, frameworks and tools), the 50 most asked about on Stack
   Overflow first, then every set A to Z. `d` downloads a set in the

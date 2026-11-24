@@ -231,6 +231,11 @@ pub struct App {
     pub choice: Option<Choice>,
     /// Reset all was pressed once: Enter again resets, anything else keeps.
     pub reset_armed: bool,
+    /// How far the about screen is scrolled, on a window too small for it
+    /// (ui.rs keeps the chosen setting in view).
+    pub about_scroll: usize,
+    /// The chosen setting just changed: ui.rs scrolls to show it.
+    pub about_follow: bool,
     /// The docs topic: every set there is, the downloads under way, and the
     /// set whose pages are listed (Enter on a downloaded set; Esc leaves).
     pub docsets: Vec<docs::Docset>,
@@ -304,6 +309,8 @@ impl App {
             favourite: None,
             choice: None,
             reset_armed: false,
+            about_scroll: 0,
+            about_follow: false,
             docsets: docs::catalog(),
             downloads: std::sync::Arc::default(),
             docset: None,
@@ -345,6 +352,8 @@ impl App {
         if matches!(self.mode, Mode::Browse | Mode::Info) {
             self.about_from = self.mode;
             self.mode = Mode::About;
+            self.about_scroll = 0; // from the top
+            self.about_follow = false;
         }
     }
 
@@ -362,6 +371,7 @@ impl App {
     /// Chooses the setting `steps` away on the about screen, wrapping round.
     pub fn step_setting(&mut self, steps: isize) {
         self.reset_armed = false; // moving away from Reset all keeps everything
+        self.about_follow = true;
         let count = Setting::all().len();
         let forward = steps.rem_euclid(isize::try_from(count).unwrap_or(isize::MAX));
         self.setting = (self.setting + usize::try_from(forward).unwrap_or(0)) % count;

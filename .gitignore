@@ -11,8 +11,6 @@
 
 # The owner's open-work notes stay out of the public repository.
 .todo
-.todo.distros
-.todo.context
 
 # AI tooling stays local: the agents' instruction files and their folders.
 CLAUDE.md

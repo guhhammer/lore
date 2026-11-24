@@ -152,7 +152,7 @@ fn draw_choice(frame: &mut Frame, app: &App, area: Rect) {
 
 /// The about screen: what lore is, and what it has and keeps here (the
 /// logo is already on top, as on every screen).
-fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
+fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
     let muted = app.palette().muted();
     let home = paths::home();
     // `~/.config/lore/config`: shorter, and what the user would type
@@ -192,6 +192,7 @@ fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
         ABOUT_SOURCE.to_owned(),
         ABOUT_MANUAL.to_owned(),
     ];
+    let mut chosen_line = 0;
     let mut lines: Vec<Line> = vec![Line::raw("")];
     lines.push(Line::raw(format!(
         "  {}",
@@ -297,6 +298,9 @@ fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
             ),
         };
         let chosen = i == app.setting;
+        if chosen {
+            chosen_line = lines.len(); // kept in view below
+        }
         let (mark, label_style) = if chosen {
             (ABOUT_SETTING_MARK, app.palette().selected())
         } else {
@@ -309,8 +313,24 @@ fn draw_about(frame: &mut Frame, app: &App, area: Rect) {
             Span::styled(value, style),
         ]));
     }
+    // a small window: the screen scrolls (PgUp/PgDn, w/s), and to the
+    // chosen setting when ↑↓ choose another
+    let height = usize::from(area.height.saturating_sub(2));
+    let most = lines.len().saturating_sub(height);
+    let mut scroll = app.about_scroll.min(most);
+    if std::mem::take(&mut app.about_follow) {
+        if chosen_line < scroll {
+            scroll = chosen_line;
+        } else if height > 0 && chosen_line >= scroll + height {
+            scroll = chosen_line + 1 - height;
+        }
+    }
+    app.about_scroll = scroll;
     let block = Block::bordered().title(ABOUT_TITLE);
-    frame.render_widget(Paragraph::new(lines).block(block), area);
+    let paragraph = Paragraph::new(lines)
+        .block(block)
+        .scroll((u16::try_from(scroll).unwrap_or(u16::MAX), 0));
+    frame.render_widget(paragraph, area);
 }
 
 /// The page's examples, over the page, to copy one: each as typed, cut to

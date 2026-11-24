@@ -574,10 +574,13 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
                 } else {
                     lines
                 };
-                if app.mode == app::Mode::Info {
-                    app.scroll_by(lines);
-                } else {
-                    app.move_by(lines);
+                match app.mode {
+                    app::Mode::Info => app.scroll_by(lines),
+                    // the about screen on a small window (ui.rs clamps it)
+                    app::Mode::About => {
+                        app.about_scroll = app.about_scroll.saturating_add_signed(lines);
+                    }
+                    _ => app.move_by(lines),
                 }
             }
             Action::Type(c) => app.type_char(c),

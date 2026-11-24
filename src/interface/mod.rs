@@ -10,4 +10,4 @@ pub mod rows; // commands grouped under section headers
 pub mod search; // what matches the search text
 pub mod section; // which letter a name goes under
 
-pub(crate) mod ui; // drawing; only run() needs it
+pub mod ui; // drawing (tests draw on a test backend too)

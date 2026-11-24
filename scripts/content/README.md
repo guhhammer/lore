@@ -59,3 +59,4 @@ It writes only that file, never into `content/`.
 | `extra_pages.py` | Pages written for lore directly. |
 | `categories.py` | Category keywords, categories set by hand, the `danger` list. |
 | `bundle.py` | The weekly pages for `lore --update-pages` (see above). |
+| `wikipedia.py` | Adds `- Wikipedia: URL` under `## Links` where English Wikipedia has an article about the program (cached in `.content-draft/`; lists its matches in `wikipedia-review.tsv` to check). |

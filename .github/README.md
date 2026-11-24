@@ -206,8 +206,9 @@ terminals). lore never opens a link itself.
 
 ## Settings and files
 
-Press `+` for the about screen. Its **Settings** are changed right there
-(↑↓ to choose, Enter to change) and saved for the next time:
+Press `+` for the about screen (on a small window, PgUp/PgDn or `w`/`s`
+scroll it). Its **Settings** are changed right there (↑↓ to choose, Enter
+to change) and saved for the next time:
 
 | Setting | Choices |
 | --- | --- |

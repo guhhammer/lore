@@ -237,3 +237,43 @@ fn the_about_screen_asks_to_follow_the_author() {
     let sites: Vec<&str> = ABOUT_FOLLOW.iter().map(|(site, _)| *site).collect();
     assert_eq!(sites, ["GitHub", "LinkedIn", "X"]);
 }
+
+/// The about screen drawn on a terminal `height` rows tall, as text.
+fn about_screen(app: &mut App, height: u16) -> String {
+    let mut terminal =
+        ratatui::Terminal::new(ratatui::backend::TestBackend::new(100, height)).unwrap();
+    terminal
+        .draw(|frame| lore_tui::interface::ui::draw(frame, app))
+        .unwrap();
+    let buffer = terminal.backend().buffer().clone();
+    buffer
+        .content()
+        .chunks(usize::from(buffer.area.width))
+        .map(|row| row.iter().map(|cell| cell.symbol()).collect::<String>())
+        .collect::<Vec<_>>()
+        .join("\n")
+}
+
+#[test]
+fn on_a_small_window_the_about_screen_scrolls_to_the_chosen_setting() {
+    let mut app = App::new(vec![Command::new("ls", Kind::Program)]);
+    app.open_about();
+    let top = about_screen(&mut app, 20);
+    assert!(top.contains("Commands"), "opens at the top");
+    assert!(
+        !top.contains("Reset all"),
+        "the window is too small for all of it"
+    );
+    app.step_setting(-1); // Reset all, the last
+    let moved = about_screen(&mut app, 20);
+    assert!(
+        moved.contains("Reset all"),
+        "scrolled to the chosen setting"
+    );
+    app.about_scroll = 0; // PgUp, far enough
+    let back = about_screen(&mut app, 20);
+    assert!(
+        back.contains("Commands"),
+        "and back up, without snapping back"
+    );
+}
