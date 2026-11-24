@@ -8,6 +8,10 @@ builtins, your aliases) and opens a short, practical page for any of them:
 what it does, the examples you actually need, which package it came from,
 and what can go wrong. For Linux and macOS, with bash, zsh or fish.
 
+[![lore in 20 seconds: search "compress folder" and tar comes first](media/lore.jpg)](media/lore.mp4)
+
+*▶ Click the picture for the 20-second video.* Here is the same app as text:
+
 ```text
   ▀██
    ██   ▄█▀▀▀█▄  ██▄▀▀▀ ▄█▀▀▀█▄  ┌ search ───────────────────────────────── ● internet ┐

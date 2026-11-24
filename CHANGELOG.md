@@ -13,6 +13,18 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+### Fixed
+
+- The release workflow's macOS builds ask for `macos-latest`: GitHub no
+  longer has `macos-14`, so v0.1.6's release never finished.
+- The crate's package now holds `recipes/`, `palettes/` and `completions/`,
+  which the build needs (`cargo package` verifies it builds alone).
+
+### Changed
+
+- `Cargo.toml` names the homepage, https://lore.guhhammer.dev, and better
+  crates.io keywords and categories.
+
 ## [0.1.6] - 2026-11-24
 
 The first release published on GitHub: a static binary for any Linux
