@@ -1,0 +1,12 @@
+# one-light, from https://github.com/atom/atom/tree/master/packages/one-dark-ui
+
+background = #fafafa
+text       = #383a42
+muted      = #a0a1a7
+selection  = #e5e5e6
+primary    = #4078f2
+secondary  = #986801
+accent     = #0184bc
+danger     = #e45649
+code       = #50a14f
+warning    = #c18401

@@ -30,7 +30,8 @@ and your aliases, each shown with what it runs.
 A command's page shows, top to bottom: what it is and does; VERSION, its
 package, the installed and the newest known version and how to update it,
 read offline from the package manager (dpkg and apt, rpm, pacman or
-Homebrew's folders); HOW TO USE, its most common uses; NOTES; LINKS, to its
+Homebrew's folders); HOW TO USE, its most common uses; NOTES; FILES, the
+configuration, logs and data its manual names; LINKS, to its
 own site and to Stack Overflow, GeeksforGeeks and Google searches; and its
 manual page.
 .SH OPTIONS
@@ -49,6 +50,15 @@ has a page for it.
 .I "PROGRAM SUBCOMMAND"
 Open a subcommand's page, such as
 .BR "lore git commit" .
+.TP
+.BR \-p ", " \-\-print " " \fINAME\fR
+Write
+.IR NAME 's
+page to standard output as plain text, with the same sections, and quit;
+for pipes and scripts
+.RB ( "lore --print tar | less" ).
+It is laid out at the terminal's width, or 80 columns in a pipe or a file,
+and needs no terminal.
 .TP
 .BR \-h ", " \-\-help
 Print a short usage text.
@@ -84,6 +94,14 @@ to keep only the commands that have a lore page
 .RB ( @gr ).
 Esc leaves the search bar and keeps its text; Backspace erases it.
 .TP
+.B b
+Bookmark the selected command, or take its bookmark away (see
+.BR "YOUR OWN USE" ).
+.TP
+.B p
+Pick a colour palette (see
+.BR COLOURS ).
+.TP
 .B Esc
 Quit.
 .SS On a page
@@ -100,6 +118,31 @@ place. Esc leaves the search for the full list.
 Back to the list, or quit when the page was opened as
 .B lore
 .IR NAME .
+.TP
+.B c
+Copy one of the page's examples: a list of them opens over the page, Up and
+Down choose, Enter copies (the key bar says what), Esc closes. lore asks
+the terminal to copy it (the OSC 52 escape), so it works over ssh and with
+no clipboard tool installed; most terminals do it, tmux with
+.BR "set-clipboard on" ,
+and one that does not simply ignores it.
+.TP
+.B b
+Bookmark this page's command, or take its bookmark away; a bookmarked
+page's title starts with \(**.
+.TP
+.B p
+Pick a colour palette, the page staying behind it.
+.SS In the palette picker
+.TP
+.B Up, Down
+Try the palette above or below on the whole screen.
+.TP
+.B Enter
+Keep it, and save it for the next runs.
+.TP
+.B Esc
+Go back to the palette from before.
 .SS Anywhere
 .TP
 .B Ctrl+C
@@ -119,12 +162,96 @@ or
 .B LANG
 when lore has a translation (from tldr-pages, 41 languages); otherwise in
 English.
+.SH YOUR OWN USE
+With the search empty, the list starts with three groups, above
+.BR # :
+.B bookmarks
+(added and removed with
+.BR b ),
+.B recent
+(the last 10 pages opened) and
+.B most used
+(the 10 commands your shell history ran most). Their commands are also
+under their letters. In a search, among names that match the same way,
+the ones you run most come first. A dim dot after a name marks a command
+your history never ran.
+.PP
+The history is read from ~/.bash_history, ~/.zsh_history, ~/.histfile,
+~/.local/share/fish/fish_history and
+.BR $HISTFILE ,
+whichever exist. lore only reads it, keeps nothing from it, and sends
+nothing anywhere;
+.I "history = off"
+in the settings file stops it reading it.
+.SH COLOURS
+Press
+.B p
+to pick a palette; Enter saves it in the settings file (see
+.BR FILES ).
+.B LORE_PALETTE
+names one for a single run, over the saved one.
+.PP
+Built in:
+.B terminal
+(the default, the terminal's own colours), Catppuccin, Dracula, Nord,
+Gruvbox, Solarized, Tokyo Night, One and Ros\('e Pine, most in a dark and a
+light variant. Every palette but
+.B terminal
+paints its own background. An unknown name gives the default; case does
+not matter.
+.PP
+Your own: a file
+.I NAME.palette
+in
+.I ~/.config/lore/palettes/
+.RI ( $XDG_CONFIG_HOME/lore/palettes/ ),
+read at start; one with a built-in palette's name takes its place, and one
+that does not read is skipped. One
+.I "key = value"
+a line:
+.BR background ,
+.BR text ,
+.BR muted ,
+.BR selection ,
+.BR primary ,
+.BR secondary ,
+.BR accent ,
+.BR danger ,
+.B code
+and
+.BR warning ,
+each
+.I #rrggbb
+or a terminal colour name
+.RB ( cyan ,
+.BR reset ...).
+The palettes/ folder of lore's repository has the built-in ones and the
+format in full.
 .SH LINKS
 Every URL is shown whole, on a line of its own, so the terminal can open
 it: Ctrl+click in Konsole and most terminals. lore never opens a link
 itself, shows only https links, and never asks you to log in anywhere or
 for any account. Check a link before you open it: anyone can add pages.
 .SH FILES
+.TP
+.I $XDG_CONFIG_HOME/lore/config
+.TQ
+.I ~/.config/lore/config
+lore's settings, written when a setting is changed in the app: one
+.I "key = value"
+a line,
+.B #
+starts a comment:
+.I "palette = NAME"
+and
+.IR "history = off" .
+.TP
+.I $XDG_DATA_HOME/lore/bookmarks
+.TQ
+.I ~/.local/share/lore/bookmarks
+.TQ
+.I ~/.local/share/lore/recent
+Your bookmarks and recently opened pages, one name a line.
 .TP
 .I ~/.local/share/lore/content/NAME.md
 .TQ

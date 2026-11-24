@@ -3,6 +3,10 @@
 A terminal list of every command you can type, grouped A to Z. For Linux
 and macOS, with bash, zsh or fish.
 
+The app and its command are **lore**. On crates.io its Rust crate is named
+**`lore-tui`** (`lore` was taken there); it still installs the `lore`
+command.
+
 `lore` lists every command you can type, each name once, in one scrollable
 list sorted alphabetically under the section letters `A` to `Z` (names that
 start with a digit or a symbol go under `#`). It is for anyone who wants to
@@ -21,6 +25,24 @@ see what commands their machine has, with no internet needed:
   languages, picked from `$LANG`).
 - **Subcommands** with a page, such as `git commit` or `docker run`, under
   their program when it is installed.
+- **Your own use:** your bookmarks (`b`), the pages you opened last and the
+  commands your shell history runs most head the list; in a search, the
+  ones you run most come first, and a dim dot marks those you never ran.
+  The history is only read, on your machine (`history = off` in
+  `~/.config/lore/config` turns it off); the lists are kept in
+  `~/.local/share/lore/`.
+- **FILES** on each page: the configuration files, logs and data its manual
+  names.
+- **Colour palettes:** press `p` to pick one; the arrows try it on the whole
+  screen, Enter keeps it, and it is saved in `~/.config/lore/config` for the
+  next time (`LORE_PALETTE=nord lore` uses another for one run). Eight
+  themes, most with a dark and a light variant: `catppuccin-mocha`, `catppuccin-latte`,
+  `dracula`, `nord`, `gruvbox-dark`, `gruvbox-light`, `solarized-dark`,
+  `solarized-light`, `tokyo-night`, `tokyo-night-day`, `one-dark`,
+  `one-light`, `rose-pine`, `rose-pine-dawn`. The default, `terminal`, uses
+  your terminal's own colours. Each is a small file in
+  [`palettes/`](../palettes/): a new one is a pull request with one file,
+  or drop it in `~/.config/lore/palettes/` for yourself.
 - **Your aliases,** from your shell's startup files, system-wide and your
   own, each shown with what it runs and, when it shares a name with a
   command, the fact that it hides it. Fish users' functions are listed too.
@@ -43,12 +65,21 @@ and zsh functions are not listed.
 lore/
 ├── src/                 the program: lib.rs runs it, commands/ finds the commands
 ├── content/             the command pages, built into the binary
+├── palettes/            the colour palettes, one file each; add yours
 ├── man/                 lore.1, lore's own manual page
 ├── tests/               the tests, which reach the program through src/lib.rs
 ├── cli/                 make (fmt, clippy, test, build, release → app/) and clean
 ├── app/                 where cli/make copies the release binary
-└── .github/             this page, the policies, the templates, the workflows (paused)
+└── .github/             this page, the policies, the templates, the workflows
 ```
+
+## Install
+
+Each [release](https://github.com/guhhammer/lore/releases) has a `.deb`
+(Debian, Ubuntu, Mint, Pop!_OS), an `.rpm` (Fedora, RHEL, Rocky, Alma,
+openSUSE) and a static binary that runs on any Linux, for x86_64 and ARM,
+and binaries for macOS (Apple Silicon and Intel). The release page says how
+to install each one.
 
 ## Quick start
 
@@ -57,7 +88,8 @@ cargo run --release          # the list
 cargo run --release -- tar   # tar's page straight away, like `man tar`
 ```
 
-`lore git commit` opens a subcommand's page the same way. `lore NAME` opens NAME's page directly, and closing it quits, as with
+`lore git commit` opens a subcommand's page the same way, and `lore --print
+tar` writes the page out as plain text, for pipes and scripts. `lore NAME` opens NAME's page directly, and closing it quits, as with
 `man`. `lore --help` and `lore --version` do what they say. lore's own
 manual is `man/lore.1`: `man -l man/lore.1` reads it from the checkout, and
 a package installs it so that `man lore` works.
@@ -86,6 +118,10 @@ always shown on the bottom line:
   have a lore page (`@gr`). Esc leaves the search
   bar but keeps its text and its filter; `/` goes back to it, and Backspace
   empties it.
+- `c`, on a page, copies one of its examples to the clipboard (over ssh
+  too: the terminal does the copy).
+- `b`, in the list or on a page, bookmarks the command (again: takes it out).
+- `p`, in the list or on a page, opens the colour palettes.
 - Esc, when not searching or reading, quits. Ctrl+C quits at any time.
 
 ## Building

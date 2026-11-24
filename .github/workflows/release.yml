@@ -1,0 +1,100 @@
+name: release
+
+# Runs when a version tag is pushed:
+#
+#   git tag v0.1.3 && git push origin v0.1.3
+#
+# The tag must match the version in Cargo.toml. The tests run first, then lore
+# is built for every target below, and everything is attached to a GitHub
+# release named after the tag. A new release is just a new tag.
+#
+#   Linux: static (musl) binaries, so the same file runs on any distro, plus a
+#          .deb (Debian, Ubuntu, Mint, Pop!_OS…) and an .rpm (Fedora, RHEL,
+#          Rocky, Alma, openSUSE), for x86_64 and ARM (aarch64).
+#   macOS: Apple Silicon and Intel binaries.
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: The tag matches Cargo.toml
+        run: |
+          version=$(cargo metadata --no-deps --format-version 1 | jq -r '.packages[0].version')
+          if [ "$GITHUB_REF_NAME" != "v$version" ]; then
+            echo "::error::tag $GITHUB_REF_NAME, but Cargo.toml says $version"
+            exit 1
+          fi
+      - run: cargo test --locked
+
+  linux:
+    needs: check
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        target: [x86_64-unknown-linux-musl, aarch64-unknown-linux-musl]
+    env:
+      # Rust's own linker links the ARM build, so no cross compiler is needed
+      CARGO_TARGET_AARCH64_UNKNOWN_LINUX_MUSL_LINKER: rust-lld
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup target add ${{ matrix.target }}
+      - run: cargo install --locked cargo-deb@3.8.0 cargo-generate-rpm@0.21.1
+      - run: cargo build --release --locked --target ${{ matrix.target }}
+      - name: Packages
+        run: |
+          mkdir -p dist
+          # --no-strip: the host's strip cannot read an ARM binary
+          cargo deb --target ${{ matrix.target }} --no-build --no-strip --output dist/
+          cargo generate-rpm --target ${{ matrix.target }} --output dist/
+      - name: Tarball
+        run: scripts/release/tarball.sh ${{ matrix.target }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lore-${{ matrix.target }}
+          path: dist/*
+
+  macos:
+    needs: check
+    runs-on: macos-14
+    strategy:
+      matrix:
+        target: [aarch64-apple-darwin, x86_64-apple-darwin]
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup target add ${{ matrix.target }}
+      - run: cargo build --release --locked --target ${{ matrix.target }}
+      - name: Tarball
+        run: scripts/release/tarball.sh ${{ matrix.target }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lore-${{ matrix.target }}
+          path: dist/*
+
+  release:
+    needs: [linux, macos]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write # to create the release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Checksums
+        run: cd dist && sha256sum -- * > SHA256SUMS
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          scripts/release/notes.sh "$GITHUB_REF_NAME" > notes.md
+          gh release create "$GITHUB_REF_NAME" dist/* \
+            --title "lore $GITHUB_REF_NAME" --notes-file notes.md --verify-tag

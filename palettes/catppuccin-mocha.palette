@@ -1,0 +1,12 @@
+# catppuccin-mocha, from https://catppuccin.com/palette
+
+background = #1e1e2e
+text       = #cdd6f4
+muted      = #6c7086
+selection  = #45475a
+primary    = #cba6f7
+secondary  = #94e2d5
+accent     = #89b4fa
+danger     = #f38ba8
+code       = #a6e3a1
+warning    = #f9e2af

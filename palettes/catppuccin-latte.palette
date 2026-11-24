@@ -1,0 +1,12 @@
+# catppuccin-latte, from https://catppuccin.com/palette
+
+background = #eff1f5
+text       = #4c4f69
+muted      = #9ca0b0
+selection  = #ccd0da
+primary    = #8839ef
+secondary  = #179299
+accent     = #1e66f5
+danger     = #d20f39
+code       = #40a02b
+warning    = #df8e1d

@@ -1,0 +1,12 @@
+# solarized-light, from https://ethanschoonover.com/solarized/
+
+background = #fdf6e3
+text       = #657b83
+muted      = #93a1a1
+selection  = #eee8d5
+primary    = #268bd2
+secondary  = #b58900
+accent     = #2aa198
+danger     = #dc322f
+code       = #859900
+warning    = #cb4b16

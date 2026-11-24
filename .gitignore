@@ -48,3 +48,6 @@ entities.json
 
 # Python bytecode from scripts/content.
 __pycache__/
+
+# release files (scripts/release/tarball.sh)
+/dist/

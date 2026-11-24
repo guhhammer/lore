@@ -1,0 +1,12 @@
+# solarized-dark, from https://ethanschoonover.com/solarized/
+
+background = #002b36
+text       = #839496
+muted      = #586e75
+selection  = #073642
+primary    = #268bd2
+secondary  = #b58900
+accent     = #2aa198
+danger     = #dc322f
+code       = #859900
+warning    = #cb4b16

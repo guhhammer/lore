@@ -1,0 +1,14 @@
+# lore's default: the terminal's own colours. `reset` leaves a colour to
+# the terminal (muted text is dimmed, the selected row reversed), and the
+# names are the terminal's 16 ANSI colours, so this follows its theme.
+
+background = reset
+text       = reset
+muted      = reset
+selection  = reset
+primary    = cyan
+secondary  = blue
+accent     = cyan
+danger     = red
+code       = green
+warning    = yellow

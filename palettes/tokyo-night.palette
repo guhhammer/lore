@@ -1,0 +1,12 @@
+# tokyo-night, from https://github.com/folke/tokyonight.nvim
+
+background = #1a1b26
+text       = #c0caf5
+muted      = #565f89
+selection  = #283457
+primary    = #7aa2f7
+secondary  = #73daca
+accent     = #7dcfff
+danger     = #f7768e
+code       = #9ece6a
+warning    = #e0af68

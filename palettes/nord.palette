@@ -1,0 +1,12 @@
+# nord, from https://www.nordtheme.com/docs/colors-and-palettes
+
+background = #2e3440
+text       = #d8dee9
+muted      = #616e88
+selection  = #434c5e
+primary    = #88c0d0
+secondary  = #81a1c1
+accent     = #8fbcbb
+danger     = #bf616a
+code       = #a3be8c
+warning    = #ebcb8b

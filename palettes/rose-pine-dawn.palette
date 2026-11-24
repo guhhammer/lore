@@ -1,0 +1,12 @@
+# rose-pine-dawn, from https://rosepinetheme.com/palette/
+
+background = #faf4ed
+text       = #575279
+muted      = #9893a5
+selection  = #dfdad9
+primary    = #d7827e
+secondary  = #56949f
+accent     = #907aa9
+danger     = #b4637a
+code       = #286983
+warning    = #ea9d34
