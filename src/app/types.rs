@@ -26,6 +26,12 @@ pub enum Mode {
     /// (Pages in, Favourite): ↑↓ choose, a letter jumps, Enter keeps, Esc
     /// goes back.
     Choose,
+    /// The help over the screen (`?`): every key. ↑↓ scroll it, any other
+    /// key closes it.
+    Help,
+    /// A page's first link alone in a box (`o`), to Ctrl+click; any key
+    /// closes it.
+    Link,
 }
 
 /// The open picker of `Mode::Choose`: for which setting, its choices, and

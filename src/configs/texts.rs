@@ -105,6 +105,7 @@ pub const KEYS_BROWSE: &[(&str, &str)] = &[
     ("PgUp/PgDn w/s", "Fast"),
     ("b", "Bookmark"),
     ("+", "About"),
+    ("?", "Keys"),
     ("Esc/^C", "Quit"),
 ];
 pub const KEYS_SEARCH: &[(&str, &str)] = &[
@@ -122,6 +123,7 @@ pub const KEYS_PAGE: &[(&str, &str)] = &[
     ("/", "Search"),
     ("c", "Copy"),
     ("b", "Bookmark"),
+    ("?", "Keys"),
     ("←/Esc", "Back"),
     ("^C", "Quit"),
 ];

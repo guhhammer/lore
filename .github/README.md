@@ -34,7 +34,7 @@ and what can go wrong. For Linux and macOS, with bash, zsh or fish.
 │ tap...││  $ tar -czf backup.tar.gz folder/                                           │
 │ tar   ││      pack a folder, gzip-compressed                                         │
 └───────┘└─────────────────────────────────────────────────────────────────────────────┘
-↑↓ PgUp/PgDn Scroll   Tab/ShiftTab Jump   / Search   c Copy   b Bookmark   ←/Esc Back
+↑↓ PgUp/PgDn Scroll   Tab/ShiftTab Jump   / Search   c Copy   b Bookmark   ? Keys   ←/Esc Back
 ```
 
 > The app and its command are **lore**. The Rust crate is **`lore-tui`**,
@@ -189,7 +189,11 @@ one shows its size and what is needed instead.
 | Tab, Shift+Tab | Jump to the next or previous letter (or beacon heading), round at either end |
 | `/` | Search |
 | `b` | Bookmark (press again to remove) |
+| `g` `G` | The top or the bottom of the list |
+| `1`–`9` | Go to that topic in the bar |
+| `B` `r` | Go to your bookmarks, your recent pages |
 | `+` | About lore, and settings |
+| `?` | Every key, in a box over the screen (↑↓ scroll it, any other key closes it) |
 | Esc or Ctrl+C | Quit |
 
 **On a page**
@@ -202,10 +206,17 @@ one shows its size and what is needed instead.
 | `c` | Copy one of the examples, or a doc's code block, to the clipboard: only the text (works over ssh too). A language's page has nothing to copy: type its code by hand to learn it. |
 | `/` | Search other commands; the page stays beside the list |
 | `b` | Bookmark |
+| `g` `G` | The top or the bottom of the page |
+| `n` `N` | The next or previous line with the search's text: search a word with `/`, open a page, then `n` jumps to it |
+| `y` | Copy the first example (a doc's first code block, else the page's name) at once, without the list; nothing on a language's page |
+| `o` | The page's first link alone in a box, easy to Ctrl+click |
+| `B` `r`, `1`–`9` | Go to bookmarks, recent pages, or a topic (the page closes) |
+| `?` | Every key |
 | ← or Esc | Back to the list |
 
 **In the search bar:** type to filter, Backspace to erase, Esc to leave the
-bar (your search stays). **Anywhere:** Ctrl+C quits.
+bar (your search stays). **Anywhere:** Ctrl+C quits, Ctrl+L draws the
+screen again (after another program printed over it).
 
 Links on a page open with your terminal's Ctrl+click (in Konsole and most
 terminals). lore never opens a link itself.

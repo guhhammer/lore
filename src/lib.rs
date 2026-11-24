@@ -612,6 +612,27 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
                     Err(error) => app.palette_failed(&error.to_string()),
                 }
             }
+            Action::Top => app.go_top(),
+            Action::Bottom => app.go_bottom(),
+            Action::FindNext => app.find(true),
+            Action::FindPrevious => app.find(false),
+            Action::QuickCopy => {
+                if let Some(text) = app.quick_copy() {
+                    // as with `c`: the terminal copies, or quietly cannot
+                    if utils::clipboard::copy(&text).is_ok() {
+                        app.note = Some(configs::COPIED.replace("{text}", &app::copy_label(&text)));
+                    }
+                }
+            }
+            Action::OpenLink => app.open_link(),
+            Action::OpenHelp => app.open_help(),
+            Action::ScrollHelp(lines) => app.scroll_help(lines),
+            Action::CloseOverlay => app.close_overlay(),
+            Action::JumpTopic(place) => app.jump_topic(place),
+            Action::JumpBookmarks => app.jump_to(app::Topic::Bookmarks),
+            Action::JumpRecent => app.jump_to(app::Topic::Recent),
+            // what another program printed over the screen goes away
+            Action::Repaint => terminal.clear()?,
             // nothing to change: the loop draws again (a new size, news)
             Action::Resize => {}
             // a download ended: the docs topic shows its new state
@@ -619,6 +640,8 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
         }
         // More keys already waiting (an arrow held down): apply them before
         // drawing, so a held key does not lag behind on a slow terminal.
-        draw = !event::poll(Duration::ZERO)?;
+        // A page just opened is drawn at once all the same: drawing lays it
+        // out, and the keys after (n, y, o, G) need its lines.
+        draw = !event::poll(Duration::ZERO)? || action == Action::OpenInfo;
     }
 }

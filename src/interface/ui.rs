@@ -32,6 +32,9 @@ use crate::configs::{
     ABOUT_FOLLOW, ABOUT_FOLLOW_HEADING, ABOUT_FOLLOW_HINT, ABOUT_RESET, ABOUT_RESET_ARMED,
     TOOLS_EMPTY,
 };
+use crate::configs::{
+    HELP_KEYS, HELP_TITLE, KEYS_HELP, KEYS_LINK, LINK_HINT, LINK_TITLE, OVERLAY_MARGIN,
+};
 use crate::info::content;
 use crate::info::page::{self, PageLine, Style as PageStyle};
 use crate::interface::palette::Palette;
@@ -112,6 +115,92 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
     if app.mode == Mode::Choose {
         draw_choice(frame, app, body);
     }
+    if app.mode == Mode::Help {
+        draw_help(frame, app, body);
+    }
+    if app.mode == Mode::Link {
+        draw_link(frame, app, body);
+    }
+}
+
+/// A box in the middle of `area`, `width` × `height` at most (margins kept),
+/// cleared for what goes in it.
+fn overlay(frame: &mut Frame, area: Rect, width: usize, height: usize) -> Rect {
+    let room = area.width.saturating_sub(2 * OVERLAY_MARGIN);
+    let width = u16::try_from(width).unwrap_or(u16::MAX).min(room);
+    let height = u16::try_from(height).unwrap_or(u16::MAX).min(area.height);
+    let [middle] = Layout::horizontal([Constraint::Length(width)])
+        .flex(Flex::Center)
+        .areas(area);
+    let [popup] = Layout::vertical([Constraint::Length(height)])
+        .flex(Flex::Center)
+        .areas(middle);
+    frame.render_widget(Clear, popup);
+    popup
+}
+
+/// The help (`?`): every key and what it does, under headings; scrolls on
+/// a window too short for it.
+fn draw_help(frame: &mut Frame, app: &mut App, area: Rect) {
+    let keys_width = HELP_KEYS
+        .iter()
+        .map(|(k, _)| text::width(k))
+        .max()
+        .unwrap_or(0);
+    let lines: Vec<Line> = HELP_KEYS
+        .iter()
+        .map(|(keys, what)| {
+            if keys.is_empty() {
+                Line::styled(format!(" {what}"), app.palette().heading())
+            } else {
+                let pad = " ".repeat(keys_width - text::width(keys));
+                Line::from(vec![
+                    Span::raw("   "),
+                    Span::styled(*keys, app.palette().key()),
+                    Span::raw(format!("{pad}  {what}")),
+                ])
+            }
+        })
+        .collect();
+    let widest = lines.iter().map(Line::width).max().unwrap_or(0);
+    // + borders and a column of room on the right
+    let popup = overlay(frame, area, widest + 3, lines.len() + 2);
+    let inside = usize::from(popup.height.saturating_sub(2));
+    app.help_scroll = app.help_scroll.min(lines.len().saturating_sub(inside));
+    let help = Paragraph::new(lines)
+        .block(
+            Block::bordered()
+                .title(HELP_TITLE)
+                .border_style(app.palette().active()),
+        )
+        .style(app.palette().base())
+        .scroll((u16::try_from(app.help_scroll).unwrap_or(u16::MAX), 0));
+    frame.render_widget(help, popup);
+}
+
+/// The link box (`o`): the page's first link alone, whole, with room
+/// around it, so it is easy to Ctrl+click.
+fn draw_link(frame: &mut Frame, app: &App, area: Rect) {
+    let Some(url) = &app.link else {
+        return;
+    };
+    let lines = vec![
+        Line::raw(""),
+        Line::styled(format!("  {url}  "), app.palette().accent()),
+        Line::raw(""),
+        Line::styled(format!("  {LINK_HINT}  "), app.palette().muted()),
+        Line::raw(""),
+    ];
+    let widest = lines.iter().map(Line::width).max().unwrap_or(0);
+    let popup = overlay(frame, area, widest + 2, lines.len() + 2);
+    let link = Paragraph::new(lines)
+        .block(
+            Block::bordered()
+                .title(LINK_TITLE)
+                .border_style(app.palette().active()),
+        )
+        .style(app.palette().base());
+    frame.render_widget(link, popup);
 }
 
 /// A setting's picker (Pages in, Favourite), over the about screen: its
@@ -750,6 +839,17 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
         .scroll((u16::try_from(app.scroll).unwrap_or(u16::MAX), 0));
     frame.render_widget(paragraph, area);
     app.sections = sections;
+    // the lines holding the search's text, for `n` and `N`
+    let find = app.query.trim().to_lowercase();
+    app.matches = if find.is_empty() {
+        Vec::new()
+    } else {
+        all.iter()
+            .enumerate()
+            .filter(|(_, l)| l.text.to_lowercase().contains(&find))
+            .map(|(i, _)| i)
+            .collect()
+    };
     app.scroll_max = rows.saturating_sub(height);
 }
 
@@ -785,6 +885,8 @@ fn keys_of(mode: Mode) -> &'static [(&'static str, &'static str)] {
         Mode::Choose => KEYS_CHOOSE,
         Mode::Copy => KEYS_COPY,
         Mode::About => KEYS_ABOUT,
+        Mode::Help => KEYS_HELP,
+        Mode::Link => KEYS_LINK,
     }
 }
 

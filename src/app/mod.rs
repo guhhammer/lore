@@ -2,6 +2,7 @@
 //! interface/ui.rs and interface/input.rs.
 
 mod about;
+mod keys;
 mod page_view;
 mod topics;
 mod types;
@@ -85,6 +86,14 @@ pub struct App {
     /// A line for the key bar in place of the keys, until the next key
     /// (`copied: tar -cf …`).
     pub note: Option<String>,
+    /// The mode the help or the link box was opened from, to go back to.
+    pub overlay_from: Mode,
+    /// How far the help is scrolled, and the link the box shows.
+    pub help_scroll: usize,
+    pub link: Option<String>,
+    /// The page's lines (as drawn) holding the search bar's text, for `n`
+    /// and `N`: ui.rs sets them at each draw, like `sections`.
+    pub matches: Vec<usize>,
     /// The mode the about screen was opened from, to go back to.
     pub about_from: Mode,
     /// Where the page's sections start, as drawn (the INTERNET section
@@ -179,6 +188,10 @@ impl App {
             topic_scroll: 0,
             note: None,
             about_from: Mode::Browse,
+            overlay_from: Mode::Browse,
+            help_scroll: 0,
+            link: None,
+            matches: Vec::new(),
             sections: Vec::new(),
             topic: Topic::Commands,
             topics: vec![Topic::Commands],

@@ -21,6 +21,7 @@ impl App {
             // the picker sits over whatever was on screen
             Mode::Palette => self.picker_from(Mode::Info),
             Mode::Copy => true,
+            Mode::Help | Mode::Link => self.overlay_from == Mode::Info,
             Mode::About | Mode::Choose => false,
             Mode::Browse => false,
         }

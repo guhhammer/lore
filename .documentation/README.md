@@ -41,7 +41,8 @@ lore/
 │   │   ├── types.rs        Mode, Topic, Setting, Choice, Picker
 │   │   ├── topics.rs       what each topic lists; beacon and docs rows; own lists
 │   │   ├── page_view.rs    the page on show: open, lay out, scroll, copy (`c`)
-│   │   └── about.rs        the + screen's settings, the palette and choice pickers
+│   │   ├── about.rs        the + screen's settings, the palette and choice pickers
+│   │   └── keys.rs         the quick keys: g/G, n/N, y, o, 1–9, B, r, ?
 │   ├── configs/            every hardcoded value and text (see Rules), one file
 │   │                       per part (texts, screen, languages, shells…); mod.rs
 │   │                       re-exports them all as crate::configs::NAME
@@ -126,15 +127,18 @@ The app is always in one **mode**, and each mode has its own keys
 
 | Mode | What is on screen | Keys |
 | --- | --- | --- |
-| Browse | The topic bar and its list | ↑↓, PgUp PgDn, `w` `s` (fast scroll), ←→ (topic), Enter, Tab / Shift+Tab (letter), `/`, `b`, `+`, Esc quits |
+| Browse | The topic bar and its list | ↑↓, PgUp PgDn, `w` `s` (fast scroll), ←→ (topic), Enter, Tab / Shift+Tab (letter), `/`, `b`, `+`, `g` `G`, `1`–`9` `B` `r` (topic), `?`, Esc quits |
 | Search | Typing in the search bar | text, Backspace, ↑↓, Enter, Esc |
-| Info | A page beside the list | ↑↓ PgUp PgDn, `w` `s`, Tab / Shift+Tab (section), `/`, `c`, `b`, ← / Esc |
+| Info | A page beside the list | ↑↓ PgUp PgDn, `w` `s`, Tab / Shift+Tab (section), `/`, `c`, `y`, `o`, `n` `N` (find), `g` `G`, `b`, `B` `r` `1`–`9`, `?`, ← / Esc |
 | Copy | The page's examples, over it | ↑↓, Enter copies, Esc |
 | About | The `+` screen and its settings | ↑↓ choose, Enter changes, `p`, + / ← / Esc |
 | Palette | The palette picker, over `+` | ↑↓ try, Enter keeps, Esc cancels |
 | Choose | The picker of Pages in or Favourite, over `+` (`App::choice`) | ↑↓ PgUp PgDn, a letter jumps, Enter keeps, Esc |
+| Help | Every key, over the list or page (`?`, `HELP_KEYS`) | ↑↓ PgUp PgDn scroll, any other key closes |
+| Link | The page's first link in a box (`o`) | any key closes |
 
-Ctrl+C quits in every mode. The background (the internet) never changes
+Ctrl+C quits and Ctrl+L redraws in every mode. The quick keys live in
+`app/keys.rs` and `configs/keys.rs`. The background (the internet) never changes
 the state itself: `next_action` checks every 250 ms whether something
 arrived, and asks for a redraw.
 

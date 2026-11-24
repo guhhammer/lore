@@ -7,8 +7,9 @@ use ratatui::crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind, Ke
 
 use crate::app::Mode;
 use crate::configs::{
-    ABOUT_KEY, BOOKMARK_KEY, CHOOSE_PAGE, COPY_KEY, DELETE_KEY, DOWNLOAD_KEY, FAST_DOWN_KEY,
-    FAST_UP_KEY, PALETTE_KEY, WAKE_EVERY,
+    ABOUT_KEY, BOOKMARK_KEY, BOOKMARKS_KEY, BOTTOM_KEY, CHOOSE_PAGE, COPY_KEY, DELETE_KEY,
+    DOWNLOAD_KEY, FAST_DOWN_KEY, FAST_UP_KEY, FIND_NEXT_KEY, FIND_PREVIOUS_KEY, HELP_KEY, LINK_KEY,
+    PAGE_STEP, PALETTE_KEY, QUICK_COPY_KEY, RECENT_KEY, TOP_KEY, WAKE_EVERY,
 };
 
 /// Something the app should do; the loop in lib.rs applies it.
@@ -90,6 +91,28 @@ pub enum Action {
     JumpChoice(char),
     KeepChoice,
     CancelChoice,
+    /// `g` and `G`: the top or the bottom of the list or the page.
+    Top,
+    Bottom,
+    /// `n` and `N` on a page: the next or previous line with the search's text.
+    FindNext,
+    FindPrevious,
+    /// `y` on a page: copies its first example (else its name) at once.
+    QuickCopy,
+    /// `o` on a page: its first link alone in a box.
+    OpenLink,
+    /// `?`: the help, every key; in it, scroll by this many lines; close it
+    /// (or the link box).
+    OpenHelp,
+    ScrollHelp(isize),
+    CloseOverlay,
+    /// `1`–`9`: the topic at that place in the bar.
+    JumpTopic(usize),
+    /// `B` and `r`: the bookmarks, the recent pages.
+    JumpBookmarks,
+    JumpRecent,
+    /// Ctrl+L: clears the terminal and draws everything again.
+    Repaint,
 }
 
 /// Waits for the next event that means something in `mode`; while
@@ -129,6 +152,30 @@ pub fn action_for(key: KeyEvent, mode: Mode) -> Option<Action> {
         (_, KeyCode::Char('c')) if key.modifiers.contains(KeyModifiers::CONTROL) => {
             Some(Action::Quit)
         }
+        (_, KeyCode::Char('l')) if key.modifiers.contains(KeyModifiers::CONTROL) => {
+            Some(Action::Repaint)
+        }
+        // the help scrolls with the arrows; any other key closes it, as
+        // any key closes the link box
+        (Mode::Help, KeyCode::Up) => Some(Action::ScrollHelp(-1)),
+        (Mode::Help, KeyCode::Down) => Some(Action::ScrollHelp(1)),
+        (Mode::Help, KeyCode::PageUp) => Some(Action::ScrollHelp(-PAGE_STEP)),
+        (Mode::Help, KeyCode::PageDown) => Some(Action::ScrollHelp(PAGE_STEP)),
+        (Mode::Help | Mode::Link, _) => Some(Action::CloseOverlay),
+        (Mode::Browse | Mode::Info, KeyCode::Char(HELP_KEY)) if plain => Some(Action::OpenHelp),
+        (Mode::Browse | Mode::Info, KeyCode::Char(TOP_KEY)) if plain => Some(Action::Top),
+        (Mode::Browse | Mode::Info, KeyCode::Char(BOTTOM_KEY)) if plain => Some(Action::Bottom),
+        (Mode::Browse | Mode::Info, KeyCode::Char(BOOKMARKS_KEY)) if plain => {
+            Some(Action::JumpBookmarks)
+        }
+        (Mode::Browse | Mode::Info, KeyCode::Char(RECENT_KEY)) if plain => Some(Action::JumpRecent),
+        (Mode::Browse | Mode::Info, KeyCode::Char(c @ '1'..='9')) if plain => {
+            Some(Action::JumpTopic(usize::from(c as u8 - b'0')))
+        }
+        (Mode::Info, KeyCode::Char(FIND_NEXT_KEY)) if plain => Some(Action::FindNext),
+        (Mode::Info, KeyCode::Char(FIND_PREVIOUS_KEY)) if plain => Some(Action::FindPrevious),
+        (Mode::Info, KeyCode::Char(QUICK_COPY_KEY)) if plain => Some(Action::QuickCopy),
+        (Mode::Info, KeyCode::Char(LINK_KEY)) if plain => Some(Action::OpenLink),
         // the picker takes the arrows, Enter and Esc while it is open
         (Mode::Palette, KeyCode::Up) => Some(Action::PreviousPalette),
         (Mode::Palette, KeyCode::Down) => Some(Action::NextPalette),

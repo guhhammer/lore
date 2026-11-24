@@ -223,6 +223,24 @@ starting with it, Enter keeps, Esc goes back. Up and Down choose
 one, Enter changes it, and it is saved at once for the next runs. +, Left or
 Esc go back; p opens the palette picker too.
 .TP
+.B g, G
+The first or the last command of the list.
+.TP
+.B 1 \(en 9
+Go to the topic at that place in the bar.
+.TP
+.B B, r
+Go to your bookmarks, or your recent pages; a topic with nothing in it yet
+says so.
+.TP
+.B ?
+Every key, in a box over the screen: Up, Down, PgUp and PgDn scroll it,
+any other key closes it.
+.TP
+.B Ctrl+L
+Clear the terminal and draw the screen again (after another program
+printed over it). Works everywhere.
+.TP
 .B Esc
 Quit.
 .SS On a page
@@ -261,6 +279,26 @@ page's title starts with \(**.
 .B Tab, Shift+Tab
 Jump to the next or the previous section (VERSION, HOW TO USE, RELATED,
 \&...), round at either end.
+.TP
+.B g, G
+The top or the bottom of the page.
+.TP
+.B n, N
+The next or the previous line holding the search bar's text, round at
+either end; the key bar says which of how many. Search a word with /,
+open a page, and n jumps to it.
+.TP
+.B y
+Copy at once, without the list: the first example (a doc's first code
+block), else the page's name. Nothing on a language's page.
+.TP
+.B o
+The page's first link (the first under LINKS) alone in a box, whole, so
+the terminal's Ctrl+click opens it easily. Any key closes the box.
+.TP
+.B B, r, 1 \(en 9, ?
+As in the list: bookmarks, recent pages, a topic (the page closes), every
+key.
 .SS In the palette picker
 .TP
 .B Up, Down

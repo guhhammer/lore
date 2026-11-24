@@ -15,6 +15,14 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **Quick keys:** `g`/`G` go to the top or the bottom of the list or the
+  page; `n`/`N` on a page jump to the next or previous line with the
+  search's text; `y` copies a page's first example at once (its name when
+  it has none; nothing on a language's page); `o` shows a page's first link
+  alone in a box to Ctrl+click; `1`–`9` go to a topic, `B` to the
+  bookmarks, `r` to the recent pages; `?` shows every key; Ctrl+L draws the
+  screen again.
+
 - **Palettes for colour blindness and low vision:** `modus-vivendi`,
   `modus-operandi` and their `-deuteranopia` and `-tritanopia` versions
   (every colour at least 7:1, WCAG AAA), `github-dark-colorblind`,
