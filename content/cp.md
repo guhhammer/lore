@@ -15,3 +15,4 @@ files
 
 ## Links
 - GNU manual: https://www.gnu.org/software/coreutils/cp
+- Wikipedia: https://en.wikipedia.org/wiki/Cp_(Unix)

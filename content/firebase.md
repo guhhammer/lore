@@ -16,3 +16,4 @@ development, network
 ## Links
 - More information: https://github.com/firebase/firebase-tools
 - tldr page: https://tldr.inbrowser.app/pages/common/firebase
+- Wikipedia: https://en.wikipedia.org/wiki/Firebase

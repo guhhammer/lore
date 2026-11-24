@@ -14,3 +14,4 @@ packages, text, version-control
 ## Links
 - More information: https://bun.com/docs/pm/cli/pm#version
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-pm-version
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

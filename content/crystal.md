@@ -18,3 +18,4 @@ development, files
 ## Links
 - More information: https://crystal-lang.org/reference/using_the_compiler
 - tldr page: https://tldr.inbrowser.app/pages/common/crystal
+- Wikipedia: https://en.wikipedia.org/wiki/CRYSTAL_(software)

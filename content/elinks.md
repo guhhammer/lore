@@ -13,3 +13,4 @@ text, network
 ## Links
 - More information: https://github.com/rkd77/elinks
 - tldr page: https://tldr.inbrowser.app/pages/common/elinks
+- Wikipedia: https://en.wikipedia.org/wiki/ELinks

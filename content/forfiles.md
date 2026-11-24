@@ -18,3 +18,4 @@ files, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/forfiles
+- Wikipedia: https://en.wikipedia.org/wiki/Forfiles

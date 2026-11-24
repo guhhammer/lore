@@ -17,3 +17,4 @@ editors, text, files
 ## Links
 - More information: https://www.vim.org/
 - tldr page: https://tldr.inbrowser.app/pages/common/ex
+- Wikipedia: https://en.wikipedia.org/wiki/Ex_(text_editor)

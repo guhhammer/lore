@@ -16,3 +16,4 @@ monitoring
 ## Links
 - More information: https://github.com/brndnmtthws/conky
 - tldr page: https://tldr.inbrowser.app/pages/linux/conky
+- Wikipedia: https://en.wikipedia.org/wiki/Conky_(software)

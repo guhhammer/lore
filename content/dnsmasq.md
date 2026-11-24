@@ -16,3 +16,4 @@ network, files
 ## Links
 - More information: https://manned.org/dnsmasq
 - tldr page: https://tldr.inbrowser.app/pages/common/dnsmasq
+- Wikipedia: https://en.wikipedia.org/wiki/Dnsmasq

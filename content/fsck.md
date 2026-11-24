@@ -13,3 +13,4 @@ disks, users
 ## Links
 - More information: https://manned.org/fsck
 - tldr page: https://tldr.inbrowser.app/pages/linux/fsck
+- Wikipedia: https://en.wikipedia.org/wiki/Fsck

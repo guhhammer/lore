@@ -18,3 +18,4 @@ danger, disks, files
 ## Links
 - More information: https://manned.org/dd.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/dd
+- Wikipedia: https://en.wikipedia.org/wiki/Dd_(Unix)

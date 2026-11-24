@@ -12,3 +12,4 @@ packages, documents
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-pkgid.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-pkgid
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

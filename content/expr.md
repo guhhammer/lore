@@ -17,3 +17,4 @@ text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/expr-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/expr
+- Wikipedia: https://en.wikipedia.org/wiki/Expr

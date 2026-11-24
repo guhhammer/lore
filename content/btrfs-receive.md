@@ -7,3 +7,4 @@ The examples for this command have been moved together with `btrfs send`.
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/btrfs-receive
+- Wikipedia: https://en.wikipedia.org/wiki/Btrfs

@@ -14,3 +14,4 @@ users, containers, monitoring
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/login/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-login
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

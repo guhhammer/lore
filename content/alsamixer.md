@@ -12,3 +12,4 @@ Graphical mixer for ALSA soundcard driver.
 ## Links
 - More information: https://manned.org/alsamixer
 - tldr page: https://tldr.inbrowser.app/pages/linux/alsamixer
+- Wikipedia: https://en.wikipedia.org/wiki/Alsamixer

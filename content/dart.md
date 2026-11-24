@@ -17,3 +17,4 @@ development, files, network
 ## Links
 - More information: https://dart.dev/tools/dart-tool
 - tldr page: https://tldr.inbrowser.app/pages/common/dart
+- Wikipedia: https://en.wikipedia.org/wiki/Dart_(programming_language)

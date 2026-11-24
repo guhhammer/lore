@@ -14,3 +14,4 @@ network
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-owner.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-owner
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

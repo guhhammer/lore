@@ -14,3 +14,4 @@ version-control, files, packages
 ## Links
 - More information: https://fossil-scm.org/home/help/commit
 - tldr page: https://tldr.inbrowser.app/pages/common/fossil-commit
+- Wikipedia: https://en.wikipedia.org/wiki/Fossil_(software)

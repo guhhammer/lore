@@ -12,3 +12,4 @@ development, files
 ## Links
 - More information: https://manned.org/elixir
 - tldr page: https://tldr.inbrowser.app/pages/common/elixir
+- Wikipedia: https://en.wikipedia.org/wiki/Elixir_(programming_language)

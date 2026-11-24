@@ -16,3 +16,4 @@ shell, monitoring
 ## Links
 - More information: https://zsh.sourceforge.io/Doc/Release/Shell-Builtin-Commands.html
 - tldr page: https://tldr.inbrowser.app/pages/common/autoload
+- Wikipedia: https://en.wikipedia.org/wiki/Autoload

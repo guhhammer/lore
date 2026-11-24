@@ -18,3 +18,4 @@ packages, users
 ## Links
 - More information: https://manned.org/aptitude
 - tldr page: https://tldr.inbrowser.app/pages/linux/aptitude
+- Wikipedia: https://en.wikipedia.org/wiki/Aptitude_(software)

@@ -15,3 +15,4 @@ disks, users, files
 ## Links
 - More information: https://btrfs.readthedocs.io/en/latest/btrfs-rescue.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/btrfs-rescue
+- Wikipedia: https://en.wikipedia.org/wiki/Btrfs

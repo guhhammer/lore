@@ -14,3 +14,4 @@ users, shell
 ## Links
 - More information: https://manned.org/chsh
 - tldr page: https://tldr.inbrowser.app/pages/linux/chsh
+- Wikipedia: https://en.wikipedia.org/wiki/Chsh

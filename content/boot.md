@@ -16,3 +16,4 @@ system, development
 ## Links
 - More information: https://github.com/boot-clj/boot
 - tldr page: https://tldr.inbrowser.app/pages/common/boot
+- Wikipedia: https://en.wikipedia.org/wiki/Boot_(software)

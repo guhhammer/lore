@@ -42,7 +42,9 @@ the version in `Cargo.toml`, and its subject starts with that version
   and `s` scroll it, and choosing a setting with ↑↓ scrolls to it.
 - **`scripts/content/wikipedia.py`:** adds a Wikipedia link, last under
   `## Links`, to a command page whose program has an article about software
-  on English Wikipedia (the pages get their links once it has run).
+  on English Wikipedia. It has run: 1,571 pages link their program's
+  article (a subcommand its parent's); 59 matches that named another
+  article were taken out by hand.
 - **The docs topic:** every documentation set DevDocs offers (850, for
   languages, frameworks and tools), the 50 most asked about on Stack
   Overflow first, then every set A to Z. `d` downloads a set in the

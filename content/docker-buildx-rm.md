@@ -13,3 +13,4 @@ containers
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/buildx/rm/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-buildx-rm
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

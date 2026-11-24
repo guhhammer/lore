@@ -16,3 +16,4 @@ files, version-control
 ## Links
 - More information: https://fossil-scm.org/home/help/delete
 - tldr page: https://tldr.inbrowser.app/pages/common/fossil-delete
+- Wikipedia: https://en.wikipedia.org/wiki/Fossil_(software)

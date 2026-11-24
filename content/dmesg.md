@@ -21,3 +21,4 @@ system, hardware
 ## Links
 - More information: https://manned.org/dmesg
 - tldr page: https://tldr.inbrowser.app/pages/linux/dmesg
+- Wikipedia: https://en.wikipedia.org/wiki/Dmesg

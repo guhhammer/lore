@@ -16,3 +16,4 @@ hardware
 ## Links
 - More information: https://manned.org/acpi
 - tldr page: https://tldr.inbrowser.app/pages/linux/acpi
+- Wikipedia: https://en.wikipedia.org/wiki/ACPI

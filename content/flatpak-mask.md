@@ -9,3 +9,4 @@ Mask out updates and automatic installation.
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-mask
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

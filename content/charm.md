@@ -17,3 +17,4 @@ users, network, shell
 ## Links
 - More information: https://manned.org/charm
 - tldr page: https://tldr.inbrowser.app/pages/common/charm
+- Wikipedia: https://en.wikipedia.org/wiki/Charm_(programming_language)

@@ -11,3 +11,4 @@ Manage configuration for Flatpak.
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-config
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

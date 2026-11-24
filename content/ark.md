@@ -13,3 +13,4 @@ files, archives, desktop
 ## Links
 - More information: https://docs.kde.org/stable_kf6/en/ark/ark/
 - tldr page: https://tldr.inbrowser.app/pages/linux/ark
+- Wikipedia: https://en.wikipedia.org/wiki/Ark_(software)

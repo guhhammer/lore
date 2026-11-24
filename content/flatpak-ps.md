@@ -11,3 +11,4 @@ List running Flatpak instances.
 ## Links
 - More information: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-ps
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-ps
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

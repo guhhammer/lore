@@ -15,3 +15,4 @@ development, packages
 ## Links
 - More information: https://gribnau.dev/cargo-msrv/
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-msrv
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

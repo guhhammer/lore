@@ -11,3 +11,4 @@ Multi base interactive calculator supporting dynamic base conversion and bit man
 ## Links
 - More information: https://github.com/mellowcandle/bitwise
 - tldr page: https://tldr.inbrowser.app/pages/linux/bitwise
+- Wikipedia: https://en.wikipedia.org/wiki/Bitwise_operation

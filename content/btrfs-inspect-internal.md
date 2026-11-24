@@ -16,3 +16,4 @@ disks, documents, files
 ## Links
 - More information: https://btrfs.readthedocs.io/en/latest/btrfs-inspect-internal.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/btrfs-inspect-internal
+- Wikipedia: https://en.wikipedia.org/wiki/Btrfs

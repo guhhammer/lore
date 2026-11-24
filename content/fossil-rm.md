@@ -10,3 +10,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/fossil-rm
+- Wikipedia: https://en.wikipedia.org/wiki/Fossil_(software)

@@ -20,3 +20,4 @@ users
 ## Links
 - More information: https://man.openbsd.org/doas
 - tldr page: https://tldr.inbrowser.app/pages/common/doas
+- Wikipedia: https://en.wikipedia.org/wiki/Doas

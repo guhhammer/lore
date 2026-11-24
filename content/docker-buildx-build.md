@@ -18,3 +18,4 @@ containers, development, media
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/buildx/build
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-buildx-build
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

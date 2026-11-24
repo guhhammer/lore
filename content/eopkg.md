@@ -13,3 +13,4 @@ packages, users
 ## Links
 - More information: https://help.getsol.us/docs/user/package-management/basics/
 - tldr page: https://tldr.inbrowser.app/pages/linux/eopkg
+- Wikipedia: https://en.wikipedia.org/wiki/Solus_(operating_system)

@@ -17,3 +17,4 @@ files
 ## Links
 - More information: https://github.com/adrianlopezroche/fdupes#introduction
 - tldr page: https://tldr.inbrowser.app/pages/common/fdupes
+- Wikipedia: https://en.wikipedia.org/wiki/Fdupes

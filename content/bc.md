@@ -21,3 +21,4 @@ development
 ## Links
 - More information: https://manned.org/bc
 - tldr page: https://tldr.inbrowser.app/pages/common/bc
+- Wikipedia: https://en.wikipedia.org/wiki/Bc_(programming_language)

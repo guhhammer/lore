@@ -16,3 +16,4 @@ files, desktop, text, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/clip
+- Wikipedia: https://en.wikipedia.org/wiki/Clipboard_(computing)

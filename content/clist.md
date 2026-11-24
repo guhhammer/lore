@@ -13,3 +13,4 @@ shell, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/clist
+- Wikipedia: https://en.wikipedia.org/wiki/CLIST

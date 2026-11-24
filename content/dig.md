@@ -23,3 +23,4 @@ network
 ## Links
 - More information: https://manned.org/dig
 - tldr page: https://tldr.inbrowser.app/pages/common/dig
+- Wikipedia: https://en.wikipedia.org/wiki/Dig_(command)

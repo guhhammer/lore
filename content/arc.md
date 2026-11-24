@@ -14,3 +14,4 @@ version-control
 ## Links
 - More information: https://secure.phabricator.com/book/phabricator/article/arcanist/
 - tldr page: https://tldr.inbrowser.app/pages/common/arc
+- Wikipedia: https://en.wikipedia.org/wiki/Arc_(programming_language)

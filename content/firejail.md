@@ -18,3 +18,4 @@ network, containers, files
 ## Links
 - More information: https://manned.org/firejail
 - tldr page: https://tldr.inbrowser.app/pages/linux/firejail
+- Wikipedia: https://en.wikipedia.org/wiki/Firejail

@@ -15,3 +15,4 @@ cloud, databases
 ## Links
 - More information: https://cloudinit.readthedocs.io/en/latest/reference/cli.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/cloud-init
+- Wikipedia: https://en.wikipedia.org/wiki/Cloud-init

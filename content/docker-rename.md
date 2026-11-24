@@ -15,3 +15,4 @@ files, containers, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-rename
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

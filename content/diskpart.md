@@ -19,3 +19,4 @@ danger, disks, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/diskpart
+- Wikipedia: https://en.wikipedia.org/wiki/Diskpart

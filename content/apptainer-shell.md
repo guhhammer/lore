@@ -22,3 +22,4 @@ shell, containers, files
 ## Links
 - More information: https://apptainer.org/docs/user/main/cli/apptainer_shell.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/apptainer-shell
+- Wikipedia: https://en.wikipedia.org/wiki/Apptainer

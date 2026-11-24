@@ -15,3 +15,4 @@ shell, development
 ## Links
 - More information: https://bun.com/docs/runtime/shell
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-exec
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

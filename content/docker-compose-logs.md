@@ -18,3 +18,4 @@ containers, system
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/compose/logs/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-compose-logs
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

@@ -22,3 +22,4 @@ network
 ## Links
 - More information: https://curl.se/docs/manpage.html
 - tldr page: https://tldr.inbrowser.app/pages/common/curl
+- Wikipedia: https://en.wikipedia.org/wiki/CURL

@@ -14,3 +14,4 @@ shell
 ## Links
 - More information: https://docs.darlinghq.org/darling-shell.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/darling
+- Wikipedia: https://en.wikipedia.org/wiki/Darling_(software)

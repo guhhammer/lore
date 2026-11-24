@@ -12,3 +12,4 @@ packages, network
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-fetch.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-fetch
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

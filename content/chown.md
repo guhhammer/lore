@@ -19,3 +19,4 @@ files, users
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/chown
+- Wikipedia: https://en.wikipedia.org/wiki/Chown

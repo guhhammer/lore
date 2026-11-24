@@ -16,3 +16,4 @@ packages, text, development
 ## Links
 - More information: https://bun.com/docs/pm/cli/install
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-install
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

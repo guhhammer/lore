@@ -13,3 +13,4 @@ network, editors, system
 ## Links
 - More information: https://manned.org/alpine
 - tldr page: https://tldr.inbrowser.app/pages/linux/alpine
+- Wikipedia: https://en.wikipedia.org/wiki/Alpine_(email_client)

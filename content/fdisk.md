@@ -23,3 +23,4 @@ danger, disks
 ## Links
 - More information: https://manned.org/fdisk
 - tldr page: https://tldr.inbrowser.app/pages/linux/fdisk
+- Wikipedia: https://en.wikipedia.org/wiki/Fdisk

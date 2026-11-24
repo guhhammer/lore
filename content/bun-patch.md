@@ -15,3 +15,4 @@ version-control, files, packages
 ## Links
 - More information: https://bun.com/docs/pm/cli/patch
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-patch
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

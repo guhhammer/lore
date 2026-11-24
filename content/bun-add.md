@@ -17,3 +17,4 @@ packages, files, development
 ## Links
 - More information: https://bun.com/docs
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-add
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

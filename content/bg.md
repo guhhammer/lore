@@ -17,3 +17,4 @@ processes, shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-bg
 - tldr page: https://tldr.inbrowser.app/pages/common/bg
+- Wikipedia: https://en.wikipedia.org/wiki/Job_control_(Unix)

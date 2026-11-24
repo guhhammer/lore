@@ -12,3 +12,4 @@ List installed Flatpak applications and runtimes.
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-list
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

@@ -17,3 +17,4 @@ desktop
 ## Links
 - More information: https://developer.pidgin.im/wiki/Using%20Finch
 - tldr page: https://tldr.inbrowser.app/pages/linux/finch
+- Wikipedia: https://en.wikipedia.org/wiki/Finch_(software)

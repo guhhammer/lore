@@ -12,3 +12,4 @@ shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-command
 - tldr page: https://tldr.inbrowser.app/pages/common/command
+- Wikipedia: https://en.wikipedia.org/wiki/Command_(Unix)

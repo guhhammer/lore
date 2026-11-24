@@ -16,3 +16,4 @@ cloud, development, network
 ## Links
 - More information: https://learn.microsoft.com/azure/azure-functions/functions-run-local
 - tldr page: https://tldr.inbrowser.app/pages/common/func
+- Wikipedia: https://en.wikipedia.org/wiki/Function_(computer_programming)

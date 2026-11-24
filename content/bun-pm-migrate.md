@@ -11,3 +11,4 @@ packages
 ## Links
 - More information: https://bun.com/docs/pm/cli/pm#migrate
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-pm-migrate
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

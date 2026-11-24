@@ -16,3 +16,4 @@ desktop, files, shell
 ## Links
 - More information: https://manned.org/alacritty
 - tldr page: https://tldr.inbrowser.app/pages/common/alacritty
+- Wikipedia: https://en.wikipedia.org/wiki/Alacritty

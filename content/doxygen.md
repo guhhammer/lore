@@ -14,3 +14,4 @@ files, documents, development
 ## Links
 - More information: https://manned.org/doxygen
 - tldr page: https://tldr.inbrowser.app/pages/common/doxygen
+- Wikipedia: https://en.wikipedia.org/wiki/Doxygen

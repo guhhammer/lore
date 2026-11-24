@@ -14,3 +14,4 @@ files, development
 ## Links
 - More information: https://xiph.org/flac/documentation_tools_flac.html
 - tldr page: https://tldr.inbrowser.app/pages/common/flac
+- Wikipedia: https://en.wikipedia.org/wiki/FLAC

@@ -14,3 +14,4 @@ desktop, shell
 ## Links
 - More information: https://manned.org/clear
 - tldr page: https://tldr.inbrowser.app/pages/common/clear
+- Wikipedia: https://en.wikipedia.org/wiki/Clear_(Unix)

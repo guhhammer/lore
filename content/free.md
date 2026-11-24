@@ -15,3 +15,4 @@ monitoring
 ## Links
 - More information: https://manned.org/free
 - tldr page: https://tldr.inbrowser.app/pages/linux/free
+- Wikipedia: https://en.wikipedia.org/wiki/Free_software

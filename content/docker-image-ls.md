@@ -16,3 +16,4 @@ containers, media
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/image/ls/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-image-ls
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

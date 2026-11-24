@@ -10,3 +10,4 @@ containers, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-stats
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

@@ -15,3 +15,4 @@ network, files, development
 ## Links
 - More information: https://docs.doppler.com/docs/accessing-secrets
 - tldr page: https://tldr.inbrowser.app/pages/common/doppler-secrets
+- Wikipedia: https://en.wikipedia.org/wiki/Doppler_effect

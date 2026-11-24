@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://manned.org/flex
 - tldr page: https://tldr.inbrowser.app/pages/linux/flex
+- Wikipedia: https://en.wikipedia.org/wiki/Flex_(programming_language)

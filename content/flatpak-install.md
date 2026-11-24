@@ -22,3 +22,4 @@ packages, files, network
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-install
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

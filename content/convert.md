@@ -10,3 +10,4 @@ media
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/convert
+- Wikipedia: https://en.wikipedia.org/wiki/Convert_(command)

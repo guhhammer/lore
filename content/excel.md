@@ -16,3 +16,4 @@ files, documents, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/excel
+- Wikipedia: https://en.wikipedia.org/wiki/Microsoft_Excel

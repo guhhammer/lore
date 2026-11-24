@@ -16,3 +16,4 @@ files, processes, network
 ## Links
 - More information: https://manned.org/fuser
 - tldr page: https://tldr.inbrowser.app/pages/linux/fuser
+- Wikipedia: https://en.wikipedia.org/wiki/Fuser_(Unix)

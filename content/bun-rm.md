@@ -10,3 +10,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-rm
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

@@ -15,3 +15,4 @@ media, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/color
+- Wikipedia: https://en.wikipedia.org/wiki/Color_(software)

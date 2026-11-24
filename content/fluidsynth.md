@@ -13,3 +13,4 @@ files, media
 ## Links
 - More information: https://github.com/FluidSynth/fluidsynth/wiki/UserManual
 - tldr page: https://tldr.inbrowser.app/pages/linux/fluidsynth
+- Wikipedia: https://en.wikipedia.org/wiki/FluidSynth

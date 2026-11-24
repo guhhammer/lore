@@ -15,3 +15,4 @@ containers, media, databases
 ## Links
 - More information: https://apptainer.org/docs/user/main/cli/apptainer_search.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/apptainer-search
+- Wikipedia: https://en.wikipedia.org/wiki/Apptainer

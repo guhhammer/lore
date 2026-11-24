@@ -16,3 +16,4 @@ processes
 ## Links
 - More information: https://manned.org/foreman
 - tldr page: https://tldr.inbrowser.app/pages/linux/foreman
+- Wikipedia: https://en.wikipedia.org/wiki/Foreman_(software)

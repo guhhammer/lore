@@ -16,3 +16,4 @@ network, desktop
 ## Links
 - More information: https://manned.org/ethtool
 - tldr page: https://tldr.inbrowser.app/pages/linux/ethtool
+- Wikipedia: https://en.wikipedia.org/wiki/Ethtool

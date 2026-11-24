@@ -12,3 +12,4 @@ containers
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/buildx/ls/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-buildx-ls
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

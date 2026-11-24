@@ -17,3 +17,4 @@ processes, shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-disown
 - tldr page: https://tldr.inbrowser.app/pages/common/disown
+- Wikipedia: https://en.wikipedia.org/wiki/Disown_(Unix)

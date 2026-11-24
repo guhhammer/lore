@@ -18,3 +18,4 @@ network, shell
 ## Links
 - More information: https://www.brow.sh/docs/keybindings/
 - tldr page: https://tldr.inbrowser.app/pages/common/browsh
+- Wikipedia: https://en.wikipedia.org/wiki/Browsh

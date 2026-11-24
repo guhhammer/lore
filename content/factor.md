@@ -11,3 +11,4 @@ documents
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/factor
+- Wikipedia: https://en.wikipedia.org/wiki/Factor_(Unix)

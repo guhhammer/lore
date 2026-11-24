@@ -16,3 +16,4 @@ development, packages, files
 ## Links
 - More information: https://guide.elm-lang.org/install/elm.html
 - tldr page: https://tldr.inbrowser.app/pages/common/elm
+- Wikipedia: https://en.wikipedia.org/wiki/Elm_(email_client)

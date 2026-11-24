@@ -17,3 +17,4 @@ files, monitoring, system
 ## Links
 - More information: https://manned.org/collectd
 - tldr page: https://tldr.inbrowser.app/pages/linux/collectd
+- Wikipedia: https://en.wikipedia.org/wiki/Collectd

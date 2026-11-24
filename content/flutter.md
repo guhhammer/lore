@@ -18,3 +18,4 @@ development, documents, monitoring
 ## Links
 - More information: https://github.com/flutter/flutter/blob/master/docs/tool/README.md
 - tldr page: https://tldr.inbrowser.app/pages/common/flutter
+- Wikipedia: https://en.wikipedia.org/wiki/Flutter_(software)

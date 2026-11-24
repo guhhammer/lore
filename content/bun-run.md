@@ -14,3 +14,4 @@ files, development, packages
 ## Links
 - More information: https://bun.com/docs/runtime
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-run
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

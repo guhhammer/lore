@@ -16,3 +16,4 @@ files, network, users
 ## Links
 - More information: https://duplicity.gitlab.io/stable/duplicity.1.html#name
 - tldr page: https://tldr.inbrowser.app/pages/common/duplicity
+- Wikipedia: https://en.wikipedia.org/wiki/Duplicity_(software)

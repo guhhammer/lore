@@ -18,3 +18,4 @@ packages, development, files
 ## Links
 - More information: https://bun.com/docs
 - tldr page: https://tldr.inbrowser.app/pages/common/bun
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

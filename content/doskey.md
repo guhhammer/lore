@@ -19,3 +19,4 @@ files, text, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/doskey
+- Wikipedia: https://en.wikipedia.org/wiki/DOSKEY

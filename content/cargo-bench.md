@@ -18,3 +18,4 @@ monitoring, development
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-bench.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-bench
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

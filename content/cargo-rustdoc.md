@@ -20,3 +20,4 @@ documents, development, packages
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-rustdoc.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-rustdoc
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

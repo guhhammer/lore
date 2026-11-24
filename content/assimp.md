@@ -17,3 +17,4 @@ files, development, desktop
 ## Links
 - More information: https://manned.org/assimp
 - tldr page: https://tldr.inbrowser.app/pages/common/assimp
+- Wikipedia: https://en.wikipedia.org/wiki/Open_Asset_Import_Library

@@ -15,3 +15,4 @@ media, containers, files
 ## Links
 - More information: https://graphviz.org/doc/info/command.html
 - tldr page: https://tldr.inbrowser.app/pages/common/dot
+- Wikipedia: https://en.wikipedia.org/wiki/Dot_(command)

@@ -11,3 +11,4 @@ Show information about an installed Flatpak application or runtime.
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-info
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

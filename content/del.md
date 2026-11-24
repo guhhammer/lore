@@ -20,3 +20,4 @@ danger, shell, documents, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/del
+- Wikipedia: https://en.wikipedia.org/wiki/Del_(command)

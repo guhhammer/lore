@@ -17,3 +17,4 @@ containers, desktop, media
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/inspect/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-inspect
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

@@ -12,3 +12,4 @@ files
 ## Links
 - More information: https://manned.org/dconf
 - tldr page: https://tldr.inbrowser.app/pages/linux/dconf-reset
+- Wikipedia: https://en.wikipedia.org/wiki/Dconf

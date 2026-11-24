@@ -12,3 +12,4 @@ files, hardware, containers
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/ddrescue
+- Wikipedia: https://en.wikipedia.org/wiki/Ddrescue

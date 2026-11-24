@@ -20,3 +20,4 @@ files, media, users
 ## Links
 - More information: https://www.figlet.org/figlet-man.html
 - tldr page: https://tldr.inbrowser.app/pages/common/figlet
+- Wikipedia: https://en.wikipedia.org/wiki/FIGlet

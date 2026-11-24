@@ -16,3 +16,4 @@ files, disks, shell
 ## Links
 - More information: https://fossil-scm.org/home/help/forget
 - tldr page: https://tldr.inbrowser.app/pages/common/fossil-forget
+- Wikipedia: https://en.wikipedia.org/wiki/Fossil_(software)

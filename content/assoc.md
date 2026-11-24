@@ -16,3 +16,4 @@ files, desktop, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/assoc
+- Wikipedia: https://en.wikipedia.org/wiki/File_association

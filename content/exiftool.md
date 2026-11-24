@@ -18,3 +18,4 @@ files, media
 ## Links
 - More information: https://exiftool.org/exiftool_pod.html
 - tldr page: https://tldr.inbrowser.app/pages/common/exiftool
+- Wikipedia: https://en.wikipedia.org/wiki/ExifTool

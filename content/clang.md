@@ -18,3 +18,4 @@ files, development
 ## Links
 - More information: https://clang.llvm.org/docs/ClangCommandLineReference.html
 - tldr page: https://tldr.inbrowser.app/pages/common/clang
+- Wikipedia: https://en.wikipedia.org/wiki/Clang

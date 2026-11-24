@@ -12,3 +12,4 @@ shell
 ## Links
 - More information: https://manned.org/exit.1posix
 - tldr page: https://tldr.inbrowser.app/pages/common/exit
+- Wikipedia: https://en.wikipedia.org/wiki/Exit_(command)

@@ -19,3 +19,4 @@ shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-alias
 - tldr page: https://tldr.inbrowser.app/pages/common/alias
+- Wikipedia: https://en.wikipedia.org/wiki/Alias_(command)

@@ -16,3 +16,4 @@ development, desktop
 ## Links
 - More information: https://bazel.build/reference/command-line-reference
 - tldr page: https://tldr.inbrowser.app/pages/common/bazel
+- Wikipedia: https://en.wikipedia.org/wiki/Bazel_(software)

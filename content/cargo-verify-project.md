@@ -12,3 +12,4 @@ development, documents, files
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/deprecated-and-removed.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-verify-project
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

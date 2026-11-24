@@ -15,3 +15,4 @@ packages
 ## Links
 - More information: https://bun.com/docs/pm/cli/outdated
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-outdated
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

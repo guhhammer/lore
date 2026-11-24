@@ -16,3 +16,4 @@ files, network
 ## Links
 - More information: https://manned.org/fastapi
 - tldr page: https://tldr.inbrowser.app/pages/common/fastapi
+- Wikipedia: https://en.wikipedia.org/wiki/FastAPI

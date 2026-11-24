@@ -14,3 +14,4 @@ development, files, desktop
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-locate-project.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-locate-project
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

@@ -18,3 +18,4 @@ files, development
 ## Links
 - More information: https://bun.com/docs/bundler
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-build
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

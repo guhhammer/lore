@@ -17,3 +17,4 @@ archives, files
 ## Links
 - More information: https://bun.com/docs/pm/cli/pm#pack
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-pm-pack
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

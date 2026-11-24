@@ -18,3 +18,4 @@ files, development, network
 ## Links
 - More information: https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
 - tldr page: https://tldr.inbrowser.app/pages/common/arduino
+- Wikipedia: https://en.wikipedia.org/wiki/Arduino

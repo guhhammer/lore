@@ -14,3 +14,4 @@ text
 ## Links
 - More information: https://joeyh.name/code/moreutils/
 - tldr page: https://tldr.inbrowser.app/pages/common/errno
+- Wikipedia: https://en.wikipedia.org/wiki/Errno.h

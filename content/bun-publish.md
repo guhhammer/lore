@@ -18,3 +18,4 @@ packages
 ## Links
 - More information: https://bun.com/docs/pm/cli/publish
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-publish
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

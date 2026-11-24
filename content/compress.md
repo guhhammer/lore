@@ -16,3 +16,4 @@ archives, files
 ## Links
 - More information: https://manned.org/compress
 - tldr page: https://tldr.inbrowser.app/pages/linux/compress
+- Wikipedia: https://en.wikipedia.org/wiki/Compress_(software)

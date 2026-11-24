@@ -18,3 +18,4 @@ containers, media, files
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/compose/down/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-compose-down
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

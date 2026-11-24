@@ -17,3 +17,4 @@ users, network, development
 ## Links
 - More information: https://docs.ansible.com/projects/ansible/latest/cli/ansible.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ansible
+- Wikipedia: https://en.wikipedia.org/wiki/Ansible_(software)

@@ -15,3 +15,4 @@ network, databases, processes
 ## Links
 - More information: https://manned.org/couchdb
 - tldr page: https://tldr.inbrowser.app/pages/common/couchdb
+- Wikipedia: https://en.wikipedia.org/wiki/Apache_CouchDB

@@ -18,3 +18,4 @@ files, packages, version-control
 ## Links
 - More information: https://fossil-scm.org/home/help
 - tldr page: https://tldr.inbrowser.app/pages/common/fossil
+- Wikipedia: https://en.wikipedia.org/wiki/Fossil_(software)

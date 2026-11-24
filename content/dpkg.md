@@ -17,3 +17,4 @@ packages
 ## Links
 - More information: https://manned.org/dpkg
 - tldr page: https://tldr.inbrowser.app/pages/linux/dpkg
+- Wikipedia: https://en.wikipedia.org/wiki/Dpkg

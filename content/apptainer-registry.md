@@ -22,3 +22,4 @@ users, containers, monitoring
 ## Links
 - More information: https://apptainer.org/docs/user/main/cli/apptainer_registry.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/apptainer-registry
+- Wikipedia: https://en.wikipedia.org/wiki/Apptainer

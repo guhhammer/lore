@@ -18,3 +18,4 @@ containers, disks, files
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/container/ls/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-container-ls
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

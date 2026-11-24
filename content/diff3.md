@@ -12,3 +12,4 @@ files, text
 ## Links
 - More information: https://www.gnu.org/software/diffutils/manual/diffutils.html#Invoking-diff3
 - tldr page: https://tldr.inbrowser.app/pages/linux/diff3
+- Wikipedia: https://en.wikipedia.org/wiki/Diff3

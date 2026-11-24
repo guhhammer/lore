@@ -13,3 +13,4 @@ containers, media
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/image/tag/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-image-tag
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

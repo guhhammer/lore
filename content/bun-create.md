@@ -17,3 +17,4 @@ development, files, packages
 ## Links
 - More information: https://bun.com/docs/runtime/templating/create
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-create
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

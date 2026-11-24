@@ -17,3 +17,4 @@ development, packages
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-build.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-build
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

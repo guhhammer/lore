@@ -17,3 +17,4 @@ files, packages
 ## Links
 - More information: https://bun.com/docs/pm/cli/link#unlinking
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-unlink
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

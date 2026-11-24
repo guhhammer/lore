@@ -17,3 +17,4 @@ files, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/dir
+- Wikipedia: https://en.wikipedia.org/wiki/Ls

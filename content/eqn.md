@@ -16,3 +16,4 @@ documents, files, media
 ## Links
 - More information: https://manned.org/eqn
 - tldr page: https://tldr.inbrowser.app/pages/common/eqn
+- Wikipedia: https://en.wikipedia.org/wiki/Eqn_(software)

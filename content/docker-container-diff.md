@@ -12,3 +12,4 @@ containers, version-control, disks
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/container/diff/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-container-diff
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

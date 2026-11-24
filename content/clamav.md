@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://www.clamav.net/
 - tldr page: https://tldr.inbrowser.app/pages/common/clamav
+- Wikipedia: https://en.wikipedia.org/wiki/ClamAV

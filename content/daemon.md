@@ -16,3 +16,4 @@ system, files, processes
 ## Links
 - More information: https://manned.org/daemon.1
 - tldr page: https://tldr.inbrowser.app/pages/linux/daemon
+- Wikipedia: https://en.wikipedia.org/wiki/Daemon_(computing)

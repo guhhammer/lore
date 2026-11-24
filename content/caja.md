@@ -21,3 +21,4 @@ files, desktop
 ## Links
 - More information: https://manned.org/caja
 - tldr page: https://tldr.inbrowser.app/pages/linux/caja
+- Wikipedia: https://en.wikipedia.org/wiki/Caja_project

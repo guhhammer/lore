@@ -16,3 +16,4 @@ files, disks, hardware
 ## Links
 - More information: https://btrfs.readthedocs.io/en/latest/btrfs-property.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/btrfs-property
+- Wikipedia: https://en.wikipedia.org/wiki/Btrfs

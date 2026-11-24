@@ -14,3 +14,4 @@ archives, files, media
 ## Links
 - More information: https://xiph.org/paranoia/manual.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cdparanoia
+- Wikipedia: https://en.wikipedia.org/wiki/Cdparanoia

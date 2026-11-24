@@ -16,3 +16,4 @@ containers, development, media
 ## Links
 - More information: https://apptainer.org/docs/user/main/cli/apptainer_delete.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/apptainer-delete
+- Wikipedia: https://en.wikipedia.org/wiki/Apptainer

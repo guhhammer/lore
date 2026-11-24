@@ -14,3 +14,4 @@ packages, network, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-x
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

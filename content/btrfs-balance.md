@@ -17,3 +17,4 @@ users, files, disks
 ## Links
 - More information: https://btrfs.readthedocs.io/en/latest/btrfs-balance.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/btrfs-balance
+- Wikipedia: https://en.wikipedia.org/wiki/Btrfs

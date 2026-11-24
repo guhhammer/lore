@@ -12,3 +12,4 @@ packages
 ## Links
 - More information: https://bun.com/docs/pm/cli/pm#ls
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-pm-ls
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

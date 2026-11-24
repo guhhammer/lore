@@ -17,3 +17,4 @@ Uninstall flatpak applications and runtimes.
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-uninstall
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

@@ -15,3 +15,4 @@ files, packages, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-i
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

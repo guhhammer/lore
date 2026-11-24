@@ -16,3 +16,4 @@ disks, users, development
 ## Links
 - More information: https://manned.org/badblocks
 - tldr page: https://tldr.inbrowser.app/pages/common/badblocks
+- Wikipedia: https://en.wikipedia.org/wiki/Badblocks

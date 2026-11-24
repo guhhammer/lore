@@ -15,3 +15,4 @@ hardware, disks, files
 ## Links
 - More information: https://btrfs.readthedocs.io/en/latest/btrfs-device.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/btrfs-device
+- Wikipedia: https://en.wikipedia.org/wiki/Btrfs

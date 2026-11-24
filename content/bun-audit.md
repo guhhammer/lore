@@ -15,3 +15,4 @@ packages
 ## Links
 - More information: https://bun.com/docs/pm/cli/audit
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-audit
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

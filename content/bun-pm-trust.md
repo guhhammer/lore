@@ -12,3 +12,4 @@ packages
 ## Links
 - More information: https://bun.com/docs/pm/cli/pm#trust
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-pm-trust
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

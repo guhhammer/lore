@@ -15,3 +15,4 @@ files, archives
 ## Links
 - More information: https://wiki.factorio.com/Multiplayer
 - tldr page: https://tldr.inbrowser.app/pages/linux/factorio
+- Wikipedia: https://en.wikipedia.org/wiki/Factorio

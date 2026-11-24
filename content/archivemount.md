@@ -11,3 +11,4 @@ disks, archives
 ## Links
 - More information: https://manned.org/archivemount
 - tldr page: https://tldr.inbrowser.app/pages/linux/archivemount
+- Wikipedia: https://en.wikipedia.org/wiki/Archivemount

@@ -18,3 +18,4 @@ documents
 ## Links
 - More information: https://github.com/burntsushi/biff
 - tldr page: https://tldr.inbrowser.app/pages/common/biff
+- Wikipedia: https://en.wikipedia.org/wiki/Biff_(Unix)

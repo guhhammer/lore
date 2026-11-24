@@ -15,3 +15,4 @@ files, users
 
 ## Links
 - GNU manual: https://www.gnu.org/software/coreutils/chmod
+- Wikipedia: https://en.wikipedia.org/wiki/Chmod

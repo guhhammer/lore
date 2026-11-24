@@ -13,3 +13,4 @@ hardware, disks, files
 ## Links
 - More information: https://bcachefs-docs.readthedocs.io/en/latest/mgmt-devicemanagement.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/bcachefs-device
+- Wikipedia: https://en.wikipedia.org/wiki/Bcachefs

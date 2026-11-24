@@ -14,3 +14,4 @@ system, containers, media
 ## Links
 - More information: https://github.com/dracut-ng/dracut-ng/blob/main/man/dracut.8.adoc
 - tldr page: https://tldr.inbrowser.app/pages/linux/dracut
+- Wikipedia: https://en.wikipedia.org/wiki/Dracut_(software)

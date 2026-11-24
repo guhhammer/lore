@@ -18,3 +18,4 @@ files, development
 ## Links
 - More information: https://manned.org/chkrootkit
 - tldr page: https://tldr.inbrowser.app/pages/common/chkrootkit
+- Wikipedia: https://en.wikipedia.org/wiki/Chkrootkit

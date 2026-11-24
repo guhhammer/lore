@@ -15,3 +15,4 @@ processes, users, system
 ## Links
 - More information: https://www.kernel.org/doc/Documentation/cgroup-v2.txt
 - tldr page: https://tldr.inbrowser.app/pages/linux/cgroups
+- Wikipedia: https://en.wikipedia.org/wiki/Cgroups

@@ -21,3 +21,4 @@ text
 ## Links
 - More information: https://github.com/onetrueawk/awk
 - tldr page: https://tldr.inbrowser.app/pages/common/awk
+- Wikipedia: https://en.wikipedia.org/wiki/AWK

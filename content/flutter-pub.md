@@ -14,3 +14,4 @@ packages, network
 ## Links
 - More information: https://docs.flutter.dev/packages-and-plugins/using-packages
 - tldr page: https://tldr.inbrowser.app/pages/common/flutter-pub
+- Wikipedia: https://en.wikipedia.org/wiki/Flutter_(software)

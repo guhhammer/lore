@@ -18,3 +18,4 @@ disks
 ## Links
 - More information: https://manned.org/df.1posix
 - tldr page: https://tldr.inbrowser.app/pages/common/df
+- Wikipedia: https://en.wikipedia.org/wiki/Df_(Unix)

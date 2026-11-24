@@ -16,3 +16,4 @@ disks, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/chkdsk
+- Wikipedia: https://en.wikipedia.org/wiki/CHKDSK

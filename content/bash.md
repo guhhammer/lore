@@ -22,3 +22,4 @@ development, shell, files
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#Invoking-Bash
 - tldr page: https://tldr.inbrowser.app/pages/common/bash
+- Wikipedia: https://en.wikipedia.org/wiki/Bash_(Unix_shell)

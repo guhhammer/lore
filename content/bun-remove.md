@@ -15,3 +15,4 @@ packages, text
 ## Links
 - More information: https://bun.com/docs/pm/cli/remove
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-remove
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

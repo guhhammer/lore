@@ -12,3 +12,4 @@ files, users, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/chroot
+- Wikipedia: https://en.wikipedia.org/wiki/Chroot

@@ -21,3 +21,4 @@ media
 ## Links
 - More information: https://ffmpeg.org/ffmpeg.html#Options
 - tldr page: https://tldr.inbrowser.app/pages/common/ffmpeg
+- Wikipedia: https://en.wikipedia.org/wiki/FFmpeg

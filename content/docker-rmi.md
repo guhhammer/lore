@@ -15,3 +15,4 @@ files, containers, media
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-rmi
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

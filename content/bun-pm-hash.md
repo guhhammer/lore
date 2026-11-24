@@ -13,3 +13,4 @@ security, documents
 ## Links
 - More information: https://bun.com/docs/pm/cli/pm#hash
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-pm-hash
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

@@ -18,3 +18,4 @@ files
 
 ## Links
 - GNU manual: https://www.gnu.org/software/findutils/find
+- Wikipedia: https://en.wikipedia.org/wiki/Find_(Unix)

@@ -15,3 +15,4 @@ files
 ## Links
 - More information: https://www.dosbox.com/wiki/Usage
 - tldr page: https://tldr.inbrowser.app/pages/common/dosbox
+- Wikipedia: https://en.wikipedia.org/wiki/DOSBox

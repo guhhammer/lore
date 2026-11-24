@@ -15,3 +15,4 @@ danger, disks
 ## Links
 - More information: https://manned.org/cfdisk
 - tldr page: https://tldr.inbrowser.app/pages/linux/cfdisk
+- Wikipedia: https://en.wikipedia.org/wiki/Cfdisk

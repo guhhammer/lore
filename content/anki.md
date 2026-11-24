@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://manned.org/anki
 - tldr page: https://tldr.inbrowser.app/pages/common/anki
+- Wikipedia: https://en.wikipedia.org/wiki/Anki

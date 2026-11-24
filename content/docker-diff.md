@@ -17,3 +17,4 @@ files, version-control, containers
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-diff
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

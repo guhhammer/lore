@@ -15,3 +15,4 @@ text, files, documents
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/comm-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/comm
+- Wikipedia: https://en.wikipedia.org/wiki/Comm

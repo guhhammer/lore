@@ -18,3 +18,4 @@ network, users
 ## Links
 - More information: https://github.com/jpillora/chisel#usage
 - tldr page: https://tldr.inbrowser.app/pages/common/chisel
+- Wikipedia: https://en.wikipedia.org/wiki/Chisel

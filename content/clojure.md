@@ -15,3 +15,4 @@ shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/clojure
+- Wikipedia: https://en.wikipedia.org/wiki/Clojure

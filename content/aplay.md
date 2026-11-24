@@ -14,3 +14,4 @@ files, media
 ## Links
 - More information: https://manned.org/aplay
 - tldr page: https://tldr.inbrowser.app/pages/linux/aplay
+- Wikipedia: https://en.wikipedia.org/wiki/Aplay

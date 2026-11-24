@@ -16,3 +16,4 @@ files, text
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/csplit
+- Wikipedia: https://en.wikipedia.org/wiki/Csplit

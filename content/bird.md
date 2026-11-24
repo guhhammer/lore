@@ -12,3 +12,4 @@ system, network, users
 ## Links
 - More information: https://bird.network.cz/?get_doc&v=30&f=bird-1.html#ss1.3
 - tldr page: https://tldr.inbrowser.app/pages/common/bird
+- Wikipedia: https://en.wikipedia.org/wiki/Bird

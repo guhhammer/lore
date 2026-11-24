@@ -20,3 +20,4 @@ files, desktop, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/comp
+- Wikipedia: https://en.wikipedia.org/wiki/Comp_(command)

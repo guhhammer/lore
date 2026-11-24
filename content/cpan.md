@@ -14,3 +14,4 @@ development, network, databases
 ## Links
 - More information: https://manned.org/cpan
 - tldr page: https://tldr.inbrowser.app/pages/common/cpan
+- Wikipedia: https://en.wikipedia.org/wiki/CPAN

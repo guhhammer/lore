@@ -10,3 +10,4 @@ A Mail Transfer Agent.
 
 ## Links
 - Documentation: https://www.jetmore.org/john/code/swaks/
+- Wikipedia: https://en.wikipedia.org/wiki/Exim

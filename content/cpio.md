@@ -13,3 +13,4 @@ archives, files
 ## Links
 - More information: https://www.gnu.org/software/cpio/manual/cpio.html#Invoking-cpio
 - tldr page: https://tldr.inbrowser.app/pages/common/cpio
+- Wikipedia: https://en.wikipedia.org/wiki/Cpio

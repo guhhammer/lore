@@ -21,3 +21,4 @@ users, hardware, databases
 ## Links
 - More information: https://manned.org/dmidecode
 - tldr page: https://tldr.inbrowser.app/pages/linux/dmidecode
+- Wikipedia: https://en.wikipedia.org/wiki/Dmidecode

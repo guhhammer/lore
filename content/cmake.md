@@ -18,3 +18,4 @@ development, files, packages
 ## Links
 - More information: https://cmake.org/cmake/help/latest/manual/cmake.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cmake
+- Wikipedia: https://en.wikipedia.org/wiki/CMake

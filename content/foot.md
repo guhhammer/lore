@@ -18,3 +18,4 @@ shell, desktop
 ## Links
 - More information: https://manned.org/foot
 - tldr page: https://tldr.inbrowser.app/pages/common/foot
+- Wikipedia: https://en.wikipedia.org/wiki/Foot

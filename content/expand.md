@@ -14,3 +14,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/expand
+- Wikipedia: https://en.wikipedia.org/wiki/Expand_(Unix)

@@ -16,3 +16,4 @@ text
 ## Links
 - More information: https://manned.org/apropos
 - tldr page: https://tldr.inbrowser.app/pages/common/apropos
+- Wikipedia: https://en.wikipedia.org/wiki/Apropos_(Unix)

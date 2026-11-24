@@ -15,3 +15,4 @@ desktop, shell
 ## Links
 - More information: https://github.com/tallguyjenks/fla.sh
 - tldr page: https://tldr.inbrowser.app/pages/linux/flash
+- Wikipedia: https://en.wikipedia.org/wiki/Adobe_Flash

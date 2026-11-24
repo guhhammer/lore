@@ -18,3 +18,4 @@ containers
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

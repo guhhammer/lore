@@ -15,3 +15,4 @@ packages, users
 ## Links
 - More information: https://checkinstall.izto.org/docs.php
 - tldr page: https://tldr.inbrowser.app/pages/linux/checkinstall
+- Wikipedia: https://en.wikipedia.org/wiki/CheckInstall

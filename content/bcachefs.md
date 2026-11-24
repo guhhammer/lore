@@ -18,3 +18,4 @@ files, disks, hardware
 ## Links
 - More information: https://bcachefs-docs.readthedocs.io/en/latest/index.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/bcachefs
+- Wikipedia: https://en.wikipedia.org/wiki/Bcachefs

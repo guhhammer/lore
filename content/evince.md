@@ -15,3 +15,4 @@ files, documents, media
 ## Links
 - More information: https://manned.org/evince
 - tldr page: https://tldr.inbrowser.app/pages/linux/evince
+- Wikipedia: https://en.wikipedia.org/wiki/Evince

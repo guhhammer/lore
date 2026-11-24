@@ -13,3 +13,4 @@ containers, files, media
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-tag
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

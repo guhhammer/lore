@@ -11,3 +11,4 @@ Run a command with Doppler secrets injected into the environment.
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/doppler-run
+- Wikipedia: https://en.wikipedia.org/wiki/Doppler_effect

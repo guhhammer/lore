@@ -15,3 +15,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/dirname
+- Wikipedia: https://en.wikipedia.org/wiki/Dirname

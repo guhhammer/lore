@@ -18,3 +18,4 @@ shell, desktop
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-history
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

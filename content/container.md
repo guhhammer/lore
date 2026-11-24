@@ -18,3 +18,4 @@ containers, media, files, macos
 ## Links
 - More information: https://github.com/apple/container
 - tldr page: https://tldr.inbrowser.app/pages/osx/container
+- Wikipedia: https://en.wikipedia.org/wiki/Containerization_(computing)

@@ -14,3 +14,4 @@ containers, development
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/buildx/prune/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-buildx-prune
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

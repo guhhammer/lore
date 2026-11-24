@@ -18,3 +18,4 @@ text, files
 ## Links
 - More information: https://manned.org/cat.1posix
 - tldr page: https://tldr.inbrowser.app/pages/common/cat
+- Wikipedia: https://en.wikipedia.org/wiki/Cat_(Unix)

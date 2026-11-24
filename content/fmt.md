@@ -14,3 +14,4 @@ files, text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/fmt-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/fmt
+- Wikipedia: https://en.wikipedia.org/wiki/Fmt_(Unix)

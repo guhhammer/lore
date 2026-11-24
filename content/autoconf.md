@@ -13,3 +13,4 @@ development, packages
 ## Links
 - More information: https://manned.org/autoconf
 - tldr page: https://tldr.inbrowser.app/pages/common/autoconf
+- Wikipedia: https://en.wikipedia.org/wiki/Autoconf

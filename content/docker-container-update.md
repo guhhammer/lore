@@ -16,3 +16,4 @@ containers, disks, monitoring
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/container/update/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-container-update
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

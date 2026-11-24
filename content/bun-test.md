@@ -14,3 +14,4 @@ development, files
 ## Links
 - More information: https://bun.com/docs/test
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-test
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

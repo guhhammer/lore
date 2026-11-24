@@ -17,3 +17,4 @@ files, containers, disks, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/autopsy
+- Wikipedia: https://en.wikipedia.org/wiki/Autopsy_(software)

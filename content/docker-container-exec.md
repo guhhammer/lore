@@ -16,3 +16,4 @@ containers, files
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/container/exec/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-container-exec
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

@@ -15,3 +15,4 @@ users, desktop
 ## Links
 - More information: https://manned.org/finger
 - tldr page: https://tldr.inbrowser.app/pages/common/finger
+- Wikipedia: https://en.wikipedia.org/wiki/Finger_(protocol)

@@ -14,3 +14,4 @@ network, macos
 ## Links
 - More information: https://ss64.com/mac/airport.html
 - tldr page: https://tldr.inbrowser.app/pages/osx/airport
+- Wikipedia: https://en.wikipedia.org/wiki/Airport

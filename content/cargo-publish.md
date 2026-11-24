@@ -13,3 +13,4 @@ network, packages, users
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-publish.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-publish
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

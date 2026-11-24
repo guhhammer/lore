@@ -15,3 +15,4 @@ shell
 ## Links
 - More information: https://www.gnu.org/software/bash/manual/bash.html#index-false
 - tldr page: https://tldr.inbrowser.app/pages/common/false
+- Wikipedia: https://en.wikipedia.org/wiki/True_and_false_(commands)

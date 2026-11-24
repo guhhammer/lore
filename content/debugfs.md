@@ -16,3 +16,4 @@ disks, development
 ## Links
 - More information: https://manned.org/debugfs
 - tldr page: https://tldr.inbrowser.app/pages/linux/debugfs
+- Wikipedia: https://en.wikipedia.org/wiki/Debugfs

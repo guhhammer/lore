@@ -16,3 +16,4 @@ documents
 ## Links
 - More information: https://manned.org/cowsay
 - tldr page: https://tldr.inbrowser.app/pages/common/cowsay
+- Wikipedia: https://en.wikipedia.org/wiki/Cowsay

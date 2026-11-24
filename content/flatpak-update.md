@@ -12,3 +12,4 @@ version-control
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-update
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

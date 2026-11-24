@@ -14,3 +14,4 @@ packages, documents, text
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-metadata.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-metadata
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

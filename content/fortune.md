@@ -17,3 +17,4 @@ documents
 ## Links
 - More information: https://manned.org/fortune
 - tldr page: https://tldr.inbrowser.app/pages/common/fortune
+- Wikipedia: https://en.wikipedia.org/wiki/Fortune_(Unix)

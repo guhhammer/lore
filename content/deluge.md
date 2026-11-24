@@ -14,3 +14,4 @@ files, network
 ## Links
 - More information: https://manned.org/deluge
 - tldr page: https://tldr.inbrowser.app/pages/common/deluge
+- Wikipedia: https://en.wikipedia.org/wiki/Deluge_(software)

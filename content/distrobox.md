@@ -18,3 +18,4 @@ containers, network, packages
 ## Links
 - More information: https://github.com/89luca89/distrobox
 - tldr page: https://tldr.inbrowser.app/pages/linux/distrobox
+- Wikipedia: https://en.wikipedia.org/wiki/Distrobox

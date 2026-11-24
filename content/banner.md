@@ -13,3 +13,4 @@ documents
 ## Links
 - More information: https://manned.org/banner
 - tldr page: https://tldr.inbrowser.app/pages/common/banner
+- Wikipedia: https://en.wikipedia.org/wiki/Banner_(Unix)

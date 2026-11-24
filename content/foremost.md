@@ -16,3 +16,4 @@ files
 ## Links
 - More information: https://manned.org/foremost
 - tldr page: https://tldr.inbrowser.app/pages/linux/foremost
+- Wikipedia: https://en.wikipedia.org/wiki/Foremost_(software)

@@ -17,3 +17,4 @@ files, disks, users
 ## Links
 - More information: https://btrfs.readthedocs.io/en/latest/btrfs-filesystem.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/btrfs-filesystem
+- Wikipedia: https://en.wikipedia.org/wiki/Btrfs

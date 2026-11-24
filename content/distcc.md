@@ -16,3 +16,4 @@ development, files
 ## Links
 - More information: https://manned.org/distcc
 - tldr page: https://tldr.inbrowser.app/pages/common/distcc
+- Wikipedia: https://en.wikipedia.org/wiki/Distcc

@@ -17,3 +17,4 @@ packages, development
 ## Links
 - More information: https://bun.com/docs/pm/cli/update
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-update
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

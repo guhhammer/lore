@@ -10,3 +10,4 @@ containers, version-control, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-commit
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

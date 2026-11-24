@@ -20,3 +20,4 @@ shell, text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/echo-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/echo
+- Wikipedia: https://en.wikipedia.org/wiki/Echo_(command)

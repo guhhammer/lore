@@ -14,3 +14,4 @@ documents
 
 ## Links
 - Documentation: https://savannah.gnu.org/support/?group=autoconf
+- Wikipedia: https://en.wikipedia.org/wiki/Autoconf

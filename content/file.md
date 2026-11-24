@@ -19,3 +19,4 @@ files
 ## Links
 - More information: https://manned.org/file
 - tldr page: https://tldr.inbrowser.app/pages/common/file
+- Wikipedia: https://en.wikipedia.org/wiki/File_(command)

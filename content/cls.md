@@ -14,3 +14,4 @@ shell, network, desktop, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/cls
+- Wikipedia: https://en.wikipedia.org/wiki/CLS_(command)

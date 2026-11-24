@@ -15,3 +15,4 @@ containers, media, network
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/image/pull/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-image-pull
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

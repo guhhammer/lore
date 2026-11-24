@@ -11,3 +11,4 @@ processes, shell
 ## Links
 - More information: https://manned.org/exec.1posix
 - tldr page: https://tldr.inbrowser.app/pages/common/exec
+- Wikipedia: https://en.wikipedia.org/wiki/Exec_(system_call)

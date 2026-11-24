@@ -18,3 +18,4 @@ desktop, shell
 ## Links
 - More information: https://manned.org/dialog
 - tldr page: https://tldr.inbrowser.app/pages/linux/dialog
+- Wikipedia: https://en.wikipedia.org/wiki/Dialog_(software)

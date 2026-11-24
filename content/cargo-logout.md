@@ -12,3 +12,4 @@ network, packages, users
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-logout.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-logout
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://www.gnu.org/software/diffutils/manual/diffutils.html#Invoking-cmp
 - tldr page: https://tldr.inbrowser.app/pages/common/cmp
+- Wikipedia: https://en.wikipedia.org/wiki/Cmp_(Unix)

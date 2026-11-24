@@ -15,3 +15,4 @@ files, disks
 ## Links
 - More information: https://manned.org/attr
 - tldr page: https://tldr.inbrowser.app/pages/common/attr
+- Wikipedia: https://en.wikipedia.org/wiki/ATTRIB

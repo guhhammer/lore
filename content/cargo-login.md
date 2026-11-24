@@ -12,3 +12,4 @@ users, network, packages
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-login.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-login
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

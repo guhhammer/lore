@@ -12,3 +12,4 @@ packages, files
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-package.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-package
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

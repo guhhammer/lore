@@ -15,3 +15,4 @@ text
 ## Links
 - More information: https://manned.org/dict
 - tldr page: https://tldr.inbrowser.app/pages/common/dict
+- Wikipedia: https://en.wikipedia.org/wiki/DICT

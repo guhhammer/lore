@@ -18,3 +18,4 @@ network, files
 ## Links
 - More information: https://manned.org/ftp
 - tldr page: https://tldr.inbrowser.app/pages/common/ftp
+- Wikipedia: https://en.wikipedia.org/wiki/File_Transfer_Protocol

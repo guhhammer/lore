@@ -14,3 +14,4 @@ files, network
 ## Links
 - More information: https://eslint.org/docs/latest/use/command-line-interface
 - tldr page: https://tldr.inbrowser.app/pages/common/eslint
+- Wikipedia: https://en.wikipedia.org/wiki/ESLint

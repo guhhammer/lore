@@ -16,3 +16,4 @@ packages, development, network
 ## Links
 - More information: https://cabal.readthedocs.io/en/latest/getting-started.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cabal
+- Wikipedia: https://en.wikipedia.org/wiki/Cabal_(software)

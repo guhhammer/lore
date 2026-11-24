@@ -15,3 +15,4 @@ packages, version-control, development
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-install.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-install
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

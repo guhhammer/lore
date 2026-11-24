@@ -13,3 +13,4 @@ packages
 ## Links
 - More information: https://bun.com/docs/installation#upgrading
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-upgrade
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

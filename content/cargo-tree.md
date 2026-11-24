@@ -15,3 +15,4 @@ packages, desktop, development
 ## Links
 - More information: https://doc.rust-lang.org/cargo/commands/cargo-tree.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-tree
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

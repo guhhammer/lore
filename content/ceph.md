@@ -17,3 +17,4 @@ containers
 ## Links
 - More information: https://docs.ceph.com/en/latest/man/8/ceph/
 - tldr page: https://tldr.inbrowser.app/pages/linux/ceph
+- Wikipedia: https://en.wikipedia.org/wiki/Ceph_(software)

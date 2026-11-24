@@ -14,3 +14,4 @@ files, text, development
 ## Links
 - More information: https://docs.ctags.io/en/latest/man/ctags.1.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ctags
+- Wikipedia: https://en.wikipedia.org/wiki/Ctags

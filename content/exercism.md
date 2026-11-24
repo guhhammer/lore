@@ -15,3 +15,4 @@ files, network, development
 ## Links
 - More information: https://exercism.org/docs/using/solving-exercises/working-locally
 - tldr page: https://tldr.inbrowser.app/pages/common/exercism
+- Wikipedia: https://en.wikipedia.org/wiki/Exercism

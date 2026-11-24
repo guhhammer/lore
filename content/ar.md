@@ -18,3 +18,4 @@ files, archives, packages
 ## Links
 - More information: https://manned.org/ar
 - tldr page: https://tldr.inbrowser.app/pages/common/ar
+- Wikipedia: https://en.wikipedia.org/wiki/Ar_(Unix)

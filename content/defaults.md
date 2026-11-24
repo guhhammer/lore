@@ -16,3 +16,4 @@ users, macos
 ## Links
 - More information: https://keith.github.io/xcode-man-pages/defaults.1.html
 - tldr page: https://tldr.inbrowser.app/pages/osx/defaults
+- Wikipedia: https://en.wikipedia.org/wiki/Defaults_(software)

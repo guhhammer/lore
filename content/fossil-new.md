@@ -14,3 +14,4 @@ shell, users
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/fossil-new
+- Wikipedia: https://en.wikipedia.org/wiki/Fossil_(software)

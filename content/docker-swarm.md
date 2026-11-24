@@ -17,3 +17,4 @@ containers, desktop, security
 ## Links
 - More information: https://docs.docker.com/engine/swarm/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-swarm
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

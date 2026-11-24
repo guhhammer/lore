@@ -16,3 +16,4 @@ files, network, text
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/blender
+- Wikipedia: https://en.wikipedia.org/wiki/Blender_(software)

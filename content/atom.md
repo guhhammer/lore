@@ -16,3 +16,4 @@ files, editors, desktop
 ## Links
 - More information: https://atom.io/
 - tldr page: https://tldr.inbrowser.app/pages/common/atom
+- Wikipedia: https://en.wikipedia.org/wiki/Atom_(text_editor)

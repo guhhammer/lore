@@ -13,3 +13,4 @@ disks, files, processes, macos
 ## Links
 - More information: https://keith.github.io/xcode-man-pages/automount.8.html
 - tldr page: https://tldr.inbrowser.app/pages/osx/automount
+- Wikipedia: https://en.wikipedia.org/wiki/Automounter

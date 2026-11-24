@@ -16,3 +16,4 @@ network, users
 ## Links
 - More information: https://manned.org/arping
 - tldr page: https://tldr.inbrowser.app/pages/common/arping
+- Wikipedia: https://en.wikipedia.org/wiki/Arping

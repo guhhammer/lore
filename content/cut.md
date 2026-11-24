@@ -17,3 +17,4 @@ text
 ## Links
 - More information: https://www.gnu.org/software/coreutils/manual/html_node/cut-invocation.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cut
+- Wikipedia: https://en.wikipedia.org/wiki/Cut_(Unix)

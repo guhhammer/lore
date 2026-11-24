@@ -18,3 +18,4 @@ containers, desktop, text
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/system/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-system
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

@@ -13,3 +13,4 @@ development, files, users
 ## Links
 - More information: https://manned.org/expect
 - tldr page: https://tldr.inbrowser.app/pages/linux/expect
+- Wikipedia: https://en.wikipedia.org/wiki/Expect

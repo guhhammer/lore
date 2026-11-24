@@ -18,3 +18,4 @@ files, packages, development
 ## Links
 - More information: https://bun.com/docs/pm/cli/link
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-link
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

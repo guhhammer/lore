@@ -14,3 +14,4 @@ files
 ## Links
 - More information: https://manned.org/as
 - tldr page: https://tldr.inbrowser.app/pages/linux/as
+- Wikipedia: https://en.wikipedia.org/wiki/As_(Unix)

@@ -22,3 +22,4 @@ text, version-control
 ## Links
 - More information: https://manned.org/diff
 - tldr page: https://tldr.inbrowser.app/pages/common/diff
+- Wikipedia: https://en.wikipedia.org/wiki/Diff

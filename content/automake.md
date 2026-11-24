@@ -11,3 +11,4 @@ Automated Makefile generation for software projects using GNU standards.
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/automake
+- Wikipedia: https://en.wikipedia.org/wiki/Automake

@@ -17,3 +17,4 @@ text, files
 ## Links
 - More information: https://manned.org/espeak
 - tldr page: https://tldr.inbrowser.app/pages/common/espeak
+- Wikipedia: https://en.wikipedia.org/wiki/ESpeak

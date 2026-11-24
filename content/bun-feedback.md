@@ -13,3 +13,4 @@ files, text
 ## Links
 - More information: https://bun.com/docs/feedback#use-bun-feedback
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-feedback
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

@@ -18,3 +18,4 @@ containers, files, documents
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/compose/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-compose
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

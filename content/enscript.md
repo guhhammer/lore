@@ -15,3 +15,4 @@ files, text
 ## Links
 - More information: https://manned.org/enscript
 - tldr page: https://tldr.inbrowser.app/pages/common/enscript
+- Wikipedia: https://en.wikipedia.org/wiki/Enscript

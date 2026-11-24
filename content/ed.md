@@ -22,3 +22,4 @@ editors, text, files
 ## Links
 - More information: https://www.gnu.org/software/ed/manual/ed_manual.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ed
+- Wikipedia: https://en.wikipedia.org/wiki/Ed_(text_editor)

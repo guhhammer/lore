@@ -14,3 +14,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/aspell
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Aspell

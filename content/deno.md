@@ -18,3 +18,4 @@ development, files, packages
 ## Links
 - More information: https://docs.deno.com/runtime/reference/cli/
 - tldr page: https://tldr.inbrowser.app/pages/common/deno
+- Wikipedia: https://en.wikipedia.org/wiki/Deno_(software)

@@ -11,3 +11,4 @@ packages, files
 ## Links
 - More information: https://doc.rust-lang.org/stable/cargo/commands/cargo-generate-lockfile.html
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-generate-lockfile
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

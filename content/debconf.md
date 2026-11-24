@@ -8,3 +8,6 @@ Run a debconf-using program.
 - `debconf -ftype` : select the frontend to use
 - `debconf -pvalue` : specify the minimum priority of question that will be displayed
 - `debconf --terse` : enables terse output mode
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Debian_configuration_system

@@ -16,3 +16,4 @@ development
 ## Links
 - More information: https://github.com/rust-lang/rustfmt
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-fmt
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

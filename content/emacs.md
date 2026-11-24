@@ -21,3 +21,4 @@ editors
 ## Links
 - More information: https://www.gnu.org/software/emacs
 - tldr page: https://tldr.inbrowser.app/pages/common/emacs
+- Wikipedia: https://en.wikipedia.org/wiki/Emacs

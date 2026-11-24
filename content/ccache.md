@@ -14,3 +14,4 @@ files, development, packages
 ## Links
 - More information: https://ccache.dev/manual/latest.html
 - tldr page: https://tldr.inbrowser.app/pages/common/ccache
+- Wikipedia: https://en.wikipedia.org/wiki/Ccache

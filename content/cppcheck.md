@@ -17,3 +17,4 @@ files, development
 ## Links
 - More information: https://manned.org/cppcheck
 - tldr page: https://tldr.inbrowser.app/pages/common/cppcheck
+- Wikipedia: https://en.wikipedia.org/wiki/Cppcheck

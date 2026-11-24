@@ -15,3 +15,4 @@ containers, files, shell
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-container-remove
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

@@ -13,3 +13,4 @@ desktop
 ## Links
 - More information: https://manned.org/cpuid.1
 - tldr page: https://tldr.inbrowser.app/pages/linux/cpuid
+- Wikipedia: https://en.wikipedia.org/wiki/CPUID

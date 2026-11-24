@@ -10,3 +10,4 @@ files
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/cksum
+- Wikipedia: https://en.wikipedia.org/wiki/Cksum

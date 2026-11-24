@@ -8,3 +8,4 @@ Run Android applications on any Linux operating system.
 ## Links
 - More information: https://manned.org/anbox
 - tldr page: https://tldr.inbrowser.app/pages/linux/anbox
+- Wikipedia: https://en.wikipedia.org/wiki/Anbox

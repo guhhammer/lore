@@ -17,3 +17,4 @@ development, files
 ## Links
 - More information: https://bun.com/docs/runtime/templating/init
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-init
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

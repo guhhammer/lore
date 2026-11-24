@@ -14,3 +14,4 @@ containers, media, archives
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/image/save/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-image-save
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

@@ -22,3 +22,4 @@ files, archives
 ## Links
 - More information: https://manned.org/bzip2
 - tldr page: https://tldr.inbrowser.app/pages/common/bzip2
+- Wikipedia: https://en.wikipedia.org/wiki/Bzip2

@@ -15,3 +15,4 @@ files, packages, version-control
 ## Links
 - More information: https://manned.org/bup
 - tldr page: https://tldr.inbrowser.app/pages/common/bup
+- Wikipedia: https://en.wikipedia.org/wiki/Bup

@@ -16,3 +16,4 @@ files, network, users
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak-override
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

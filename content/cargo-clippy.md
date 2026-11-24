@@ -18,3 +18,4 @@ packages, network
 ## Links
 - More information: https://github.com/rust-lang/rust-clippy
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-clippy
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

@@ -14,3 +14,4 @@ containers, media
 ## Links
 - More information: https://docs.docker.com/reference/cli/docker/image/rm/
 - tldr page: https://tldr.inbrowser.app/pages/common/docker-image-rm
+- Wikipedia: https://en.wikipedia.org/wiki/Docker_(software)

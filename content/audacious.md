@@ -24,3 +24,4 @@ media, files
 ## Links
 - More information: https://manned.org/audacious
 - tldr page: https://tldr.inbrowser.app/pages/common/audacious
+- Wikipedia: https://en.wikipedia.org/wiki/Audacious_(software)

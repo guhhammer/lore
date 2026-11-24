@@ -14,3 +14,4 @@ Cross-platform reimplementation of the GNU coreutils in Rust Language. Includes 
 ## Links
 - More information: https://uutils.github.io/coreutils/docs/multicall.html
 - tldr page: https://tldr.inbrowser.app/pages/common/coreutils
+- Wikipedia: https://en.wikipedia.org/wiki/GNU_Core_Utilities

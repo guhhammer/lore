@@ -18,3 +18,4 @@ packages, text, development
 ## Links
 - More information: https://getcomposer.org/doc/03-cli.md
 - tldr page: https://tldr.inbrowser.app/pages/common/composer
+- Wikipedia: https://en.wikipedia.org/wiki/Composer_(software)

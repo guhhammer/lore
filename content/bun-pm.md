@@ -18,3 +18,4 @@ packages, documents, monitoring
 ## Links
 - More information: https://bun.com/docs/pm/cli/pm
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-pm
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

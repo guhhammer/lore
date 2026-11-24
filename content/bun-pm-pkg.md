@@ -17,3 +17,4 @@ packages, text
 ## Links
 - More information: https://bun.com/docs/pm/cli/pm#pkg
 - tldr page: https://tldr.inbrowser.app/pages/common/bun-pm-pkg
+- Wikipedia: https://en.wikipedia.org/wiki/Bun_(software)

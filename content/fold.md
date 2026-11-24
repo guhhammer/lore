@@ -13,3 +13,4 @@ files, text, documents
 ## Links
 - More information: https://manned.org/fold.1p
 - tldr page: https://tldr.inbrowser.app/pages/common/fold
+- Wikipedia: https://en.wikipedia.org/wiki/Fold_(Unix)

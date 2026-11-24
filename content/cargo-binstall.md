@@ -13,3 +13,4 @@ packages, development, network
 ## Links
 - More information: https://github.com/cargo-bins/cargo-binstall
 - tldr page: https://tldr.inbrowser.app/pages/common/cargo-binstall
+- Wikipedia: https://en.wikipedia.org/wiki/Rust_(programming_language)

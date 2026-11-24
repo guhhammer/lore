@@ -14,3 +14,4 @@ files, disks, containers, macos
 ## Links
 - More information: https://keith.github.io/xcode-man-pages/asr.8.html
 - tldr page: https://tldr.inbrowser.app/pages/osx/asr
+- Wikipedia: https://en.wikipedia.org/wiki/Apple_Software_Restore

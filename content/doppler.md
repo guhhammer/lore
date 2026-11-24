@@ -15,3 +15,4 @@ development, documents, monitoring
 ## Links
 - More information: https://docs.doppler.com/docs/cli
 - tldr page: https://tldr.inbrowser.app/pages/common/doppler
+- Wikipedia: https://en.wikipedia.org/wiki/Doppler_effect

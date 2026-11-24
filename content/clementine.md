@@ -24,3 +24,4 @@ media, files, development
 ## Links
 - More information: https://manned.org/clementine
 - tldr page: https://tldr.inbrowser.app/pages/common/clementine
+- Wikipedia: https://en.wikipedia.org/wiki/Clementine_(software)

@@ -15,3 +15,4 @@ packages, development, text
 ## Links
 - More information: https://getcomposer.org/doc/03-cli.md#audit
 - tldr page: https://tldr.inbrowser.app/pages/common/composer-audit
+- Wikipedia: https://en.wikipedia.org/wiki/Composer_(software)

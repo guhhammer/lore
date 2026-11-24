@@ -17,3 +17,4 @@ files, network, desktop
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/common/brave
+- Wikipedia: https://en.wikipedia.org/wiki/Brave_(web_browser)

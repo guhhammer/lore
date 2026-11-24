@@ -14,3 +14,4 @@ Ergonomic Bitcoin wallet and private key management.
 ## Links
 - More information: https://manned.org/electrum
 - tldr page: https://tldr.inbrowser.app/pages/common/electrum
+- Wikipedia: https://en.wikipedia.org/wiki/Electrum_(software)

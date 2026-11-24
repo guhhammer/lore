@@ -18,3 +18,4 @@ files, shell, documents, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/copy
+- Wikipedia: https://en.wikipedia.org/wiki/Copy_(command)

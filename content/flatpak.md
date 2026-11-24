@@ -18,3 +18,4 @@ packages
 ## Links
 - More information: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak
 - tldr page: https://tldr.inbrowser.app/pages/linux/flatpak
+- Wikipedia: https://en.wikipedia.org/wiki/Flatpak

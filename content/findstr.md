@@ -20,3 +20,4 @@ text, windows
 
 ## Links
 - tldr page: https://tldr.inbrowser.app/pages/windows/findstr
+- Wikipedia: https://en.wikipedia.org/wiki/Findstr

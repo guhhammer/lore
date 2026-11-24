@@ -14,3 +14,4 @@ Run and manage telephone and exchange (phone) server instances.
 ## Links
 - More information: https://docs.asterisk.org/Operation/
 - tldr page: https://tldr.inbrowser.app/pages/linux/asterisk
+- Wikipedia: https://en.wikipedia.org/wiki/Asterisk_(software)

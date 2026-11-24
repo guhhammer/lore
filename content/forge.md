@@ -6,3 +6,6 @@ Training program for SNAP.
 - `forge [options] <ann> <dna> [options]` : the general form, as the manual gives it
 - `forge -pseudocount <float>` : [1]   (absolute number for all models)
 - `forge -boost <file>` : (file of ID <int>)
+
+## Links
+- Wikipedia: https://en.wikipedia.org/wiki/Forge_(software)

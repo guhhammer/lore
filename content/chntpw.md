@@ -13,3 +13,4 @@ users, files, system
 ## Links
 - More information: https://pogostick.net/~pnh/ntpasswd/MANUAL.txt
 - tldr page: https://tldr.inbrowser.app/pages/linux/chntpw
+- Wikipedia: https://en.wikipedia.org/wiki/Chntpw

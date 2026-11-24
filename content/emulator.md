@@ -18,3 +18,4 @@ network
 ## Links
 - More information: https://developer.android.com/studio/run/emulator-commandline
 - tldr page: https://tldr.inbrowser.app/pages/common/emulator
+- Wikipedia: https://en.wikipedia.org/wiki/Emulator

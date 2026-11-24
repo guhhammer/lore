@@ -21,3 +21,4 @@ desktop, shell
 ## Links
 - More information: https://manned.org/byobu
 - tldr page: https://tldr.inbrowser.app/pages/common/byobu
+- Wikipedia: https://en.wikipedia.org/wiki/Byobu_(software)

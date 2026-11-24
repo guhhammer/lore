@@ -13,3 +13,4 @@ containers, desktop, files
 ## Links
 - More information: https://apptainer.org/docs/user/main/cli/apptainer_run-help.html
 - tldr page: https://tldr.inbrowser.app/pages/linux/apptainer-run-help
+- Wikipedia: https://en.wikipedia.org/wiki/Apptainer

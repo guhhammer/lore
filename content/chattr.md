@@ -18,3 +18,4 @@ files, users
 ## Links
 - More information: https://manned.org/chattr
 - tldr page: https://tldr.inbrowser.app/pages/linux/chattr
+- Wikipedia: https://en.wikipedia.org/wiki/Chattr
