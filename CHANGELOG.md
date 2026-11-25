@@ -13,6 +13,8 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-11-24
+
 ### Added
 
 - **A new demo that plays in the README:** `.github/media/lore.svg`, an
