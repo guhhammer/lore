@@ -22,7 +22,7 @@ lore {version}: every command you can type, and what each one does. Offline.	lor
 {total} on this machine, {pages} with a lore page	इस मशीन पर {total}, जिनमें से {pages} का lore पेज है
 {pages} built in, translations in {languages} languages	{pages} अंतर्निहित, {languages} भाषाओं में अनुवाद
 {bookmarks} bookmarks, {recent} recent pages	{bookmarks} बुकमार्क, {recent} हाल के पेज
-MIT; examples and translations from tldr-pages, CC BY 4.0	MIT; उदाहरण और अनुवाद tldr-pages से, CC BY 4.0
+free to use; no changes or sale without consent (LICENSE); tldr-pages: CC BY 4.0	मुफ़्त उपयोग; सहमति के बिना बदलाव या बिक्री नहीं (LICENSE); tldr-pages: CC BY 4.0
 man lore, lore --help	man lore, lore --help
 FOLLOW	फ़ॉलो करें
 like lore? follow guhhammer for what comes next (Ctrl+click)	lore पसंद आया? आगे क्या आ रहा है, यह जानने के लिए guhhammer को फ़ॉलो करें (Ctrl+क्लिक)

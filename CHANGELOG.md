@@ -15,6 +15,15 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Changed
 
+- **lore's own licence replaces MIT, from 0.4.7 on** (`LICENSE`): anyone
+  may use lore for free, at home or at work, and share unchanged copies at
+  no charge; changes go in only as contributions to the GitHub repository,
+  and a changed version or a sale needs the author's written consent.
+  Contributors give the author a licence to their work (CONTRIBUTING.md).
+  Versions up to 0.4.6 stay MIT; tldr-pages' and Learn X in Y minutes'
+  material keeps its CC licences. `Cargo.toml` names `license-file`; the
+  AUR, Homebrew and plugin files say so too.
+
 - **The AUR and Homebrew files point at the v0.4.4 release**
   (`packaging/update.sh 0.4.4`): its version, and the checksums of its
   source archive and binaries.

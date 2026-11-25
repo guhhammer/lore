@@ -67,4 +67,6 @@ other tools that read skills can use it as it is.
 
 - [lore's README](.github/README.md): the app, its keys, settings and pages.
 - [CHANGELOG.md](CHANGELOG.md): what changed in each version.
-- Licence: MIT, see [LICENSE](LICENSE).
+- Licence: free to use and to share unchanged; changes only as
+  contributions to this repository, and no selling, without the author's
+  consent. See [LICENSE](LICENSE).

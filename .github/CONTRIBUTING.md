@@ -13,6 +13,15 @@ file.
 | Report a bug or ask for something | Open an issue from a template | — |
 | Report a security problem | **Not** an issue: report it privately | [SECURITY.md](SECURITY.md) |
 
+## Your contribution and the licence
+
+lore's [licence](../LICENSE) lets anyone use it and share it unchanged, and
+lets changes in only as contributions here. By opening a pull request (or
+sending a page, a translation, a patch) you confirm you have the right to
+send it, and you give the author a perpetual, free licence to use, change,
+relicense and distribute it (section 5 of the licence). You keep the
+copyright to your work.
+
 ## Before you open a pull request
 
 Run the checks:

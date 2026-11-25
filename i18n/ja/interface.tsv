@@ -22,7 +22,7 @@ lore {version}: every command you can type, and what each one does. Offline.	lor
 {total} on this machine, {pages} with a lore page	このマシンに {total} 個、うち {pages} 個に lore のページ
 {pages} built in, translations in {languages} languages	{pages} ページ内蔵、{languages} 言語の翻訳
 {bookmarks} bookmarks, {recent} recent pages	ブックマーク {bookmarks} 件、最近のページ {recent} 件
-MIT; examples and translations from tldr-pages, CC BY 4.0	MIT；例と翻訳は tldr-pages より、CC BY 4.0
+free to use; no changes or sale without consent (LICENSE); tldr-pages: CC BY 4.0	無料で利用可；同意なく改変・販売は不可（LICENSE）；tldr-pages：CC BY 4.0
 man lore, lore --help	man lore、lore --help
 FOLLOW	フォロー
 like lore? follow guhhammer for what comes next (Ctrl+click)	lore が気に入ったら guhhammer をフォローして今後をチェック（Ctrl+クリック）

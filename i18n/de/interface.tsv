@@ -22,7 +22,7 @@ lore {version}: every command you can type, and what each one does. Offline.	lor
 {total} on this machine, {pages} with a lore page	{total} auf diesem Rechner, {pages} mit einer lore-Seite
 {pages} built in, translations in {languages} languages	{pages} eingebaut, Übersetzungen in {languages} Sprachen
 {bookmarks} bookmarks, {recent} recent pages	{bookmarks} Lesezeichen, {recent} letzte Seiten
-MIT; examples and translations from tldr-pages, CC BY 4.0	MIT; Beispiele und Übersetzungen von tldr-pages, CC BY 4.0
+free to use; no changes or sale without consent (LICENSE); tldr-pages: CC BY 4.0	frei nutzbar; keine Änderung und kein Verkauf ohne Zustimmung (LICENSE); tldr-pages: CC BY 4.0
 man lore, lore --help	man lore, lore --help
 FOLLOW	FOLGEN
 like lore? follow guhhammer for what comes next (Ctrl+click)	gefällt dir lore? folge guhhammer für das, was kommt (Strg+Klick)

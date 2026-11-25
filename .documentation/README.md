@@ -321,7 +321,9 @@ what comes next, and what never will (a native Windows version).
 
 ## Licences
 
-The code is MIT ([`LICENSE`](../LICENSE)). Most usage examples, and every
+lore's own code and writing are under its own licence ([`LICENSE`](../LICENSE)):
+free to use and to share unchanged, changes only as contributions, no
+selling without consent (MIT up to 0.4.6). Most usage examples, and every
 translation, are adapted from [tldr-pages](https://github.com/tldr-pages/tldr)
 under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); see
 [`content/README.md`](../content/README.md) for the commit used and what was

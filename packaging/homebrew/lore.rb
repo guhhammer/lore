@@ -7,7 +7,7 @@ class Lore < Formula
   desc "Every command you can type, A to Z, with an offline page for each"
   homepage "https://github.com/guhhammer/lore"
   version "0.4.4"
-  license "MIT"
+  license :cannot_represent
 
   on_macos do
     on_arm do

@@ -31,5 +31,5 @@ repository, so every reader gets them.
 These pages are © their contributors (named in each file's header) and
 licensed under
 [Creative Commons Attribution-ShareAlike 3.0](https://creativecommons.org/licenses/by-sa/3.0/)
-([LICENSE.txt](LICENSE.txt)), not under lore's MIT licence. They are
+([LICENSE.txt](LICENSE.txt)), not under lore's own licence. They are
 unchanged; lore only shows them.

@@ -1,10 +1,10 @@
 [package]
 name = "lore-tui"
-version = "0.4.6"
+version = "0.4.7"
 edition = "2024"
 rust-version = "1.88"
 description = "A terminal list of every command you can type (programs, shell builtins, aliases), grouped A to Z. Linux and macOS; bash, zsh, fish."
-license = "MIT"
+license-file = "LICENSE"
 readme = ".github/README.md"
 homepage = "https://lore.guhhammer.dev"
 repository = "https://github.com/guhhammer/lore"
@@ -63,6 +63,8 @@ assets = [
 # `cargo generate-rpm --target <triple>`: the .rpm, the same files.
 [package.metadata.generate-rpm]
 name = "lore"
+# not an SPDX licence: lore's own, in LICENSE
+license = "LicenseRef-lore"
 auto-req = "no"
 assets = [
     { source = "target/release/lore", dest = "/usr/bin/lore", mode = "755" },

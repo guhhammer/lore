@@ -392,7 +392,12 @@ other tools that read skills can use it as it is.
 
 ## Licence
 
-MIT. See [LICENSE](../LICENSE).
+lore is free to use, at home or at work, and to share unchanged copies of
+at no charge. Changing it is open only to contributions to this repository
+(pull requests are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md)); a
+changed version, or selling lore, needs the author's written consent. See
+[LICENSE](../LICENSE). Versions up to 0.4.6 were released under the MIT
+licence and stay under it.
 
 The pages in `languages/` are from
 [Learn X in Y minutes](https://learnxinyminutes.com), © their contributors,

@@ -22,7 +22,7 @@ lore {version}: every command you can type, and what each one does. Offline.	lor
 {total} on this machine, {pages} with a lore page	이 컴퓨터에 {total}개, 그중 {pages}개에 lore 페이지
 {pages} built in, translations in {languages} languages	내장 {pages}개, {languages}개 언어로 번역
 {bookmarks} bookmarks, {recent} recent pages	북마크 {bookmarks}개, 최근 페이지 {recent}개
-MIT; examples and translations from tldr-pages, CC BY 4.0	MIT; 예시와 번역은 tldr-pages에서, CC BY 4.0
+free to use; no changes or sale without consent (LICENSE); tldr-pages: CC BY 4.0	자유롭게 사용; 동의 없이 수정·판매 불가 (LICENSE); tldr-pages: CC BY 4.0
 man lore, lore --help	man lore, lore --help
 FOLLOW	팔로우
 like lore? follow guhhammer for what comes next (Ctrl+click)	lore가 마음에 드나요? 다음 소식을 보려면 guhhammer를 팔로우하세요 (Ctrl+클릭)

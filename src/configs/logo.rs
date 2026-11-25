@@ -29,7 +29,8 @@ pub const ABOUT_TAGLINE: &str =
 pub const ABOUT_COMMANDS: &str = "{total} on this machine, {pages} with a lore page";
 pub const ABOUT_PAGES: &str = "{pages} built in, translations in {languages} languages";
 pub const ABOUT_KEPT: &str = "{bookmarks} bookmarks, {recent} recent pages";
-pub const ABOUT_LICENCE: &str = "MIT; examples and translations from tldr-pages, CC BY 4.0";
+pub const ABOUT_LICENCE: &str =
+    "free to use; no changes or sale without consent (LICENSE); tldr-pages: CC BY 4.0";
 pub const ABOUT_SOURCE: &str = "https://github.com/guhhammer/lore";
 pub const ABOUT_MANUAL: &str = "man lore, lore --help";
 pub const ABOUT_FIELDS: [&str; 8] = [

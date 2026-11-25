@@ -1,21 +1,54 @@
-MIT License
+lore licence
 
-Copyright (c) 2026 guhhammer
+Copyright (c) 2026 guhhammer. All rights reserved, except as granted below.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This licence covers lore: its code, documentation and own writing in this
+repository, from version 0.4.7 on. Versions up to 0.4.6 were released under
+the MIT licence and stay under it. Material made by others keeps its own
+licence (section 6).
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. Use. Anyone may install and run lore, free of charge, for any purpose,
+   at home or at work.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. Sharing copies. You may share exact, unchanged copies of lore (its source
+   as published in https://github.com/guhhammer/lore, or the files of its
+   releases), as long as you charge nothing for them and keep this licence
+   with them. Package managers and registries may carry such copies on the
+   same terms.
+
+3. Changes. You may change lore only to contribute the change to this
+   project through its GitHub repository, for example in a pull request.
+   You may not publish, share or distribute a changed version of lore, or a
+   work based on it, without the copyright holder's written consent.
+
+4. Selling. You may not sell lore, a changed version of it, or access to
+   it, nor include it in something you sell, without the copyright holder's
+   written consent.
+
+5. Contributions. By sending a contribution to this project (a pull
+   request, a patch, a page, a translation), you confirm that you have the
+   right to send it, and you give the copyright holder a perpetual,
+   worldwide, free, irrevocable licence to use, change, relicense and
+   distribute it, as part of lore or otherwise. You keep the copyright to
+   your contribution.
+
+6. Other people's material. These keep their own licences, which this one
+   does not restrict:
+   - the usage examples and translations adapted from tldr-pages
+     (content/), under CC BY 4.0;
+   - the pages from Learn X in Y minutes (languages/), under CC BY-SA 3.0;
+   - the libraries lore is built with, under their own licences.
+   Their notices are in the README and in the folders that hold them.
+
+7. Consent. To ask for consent to change, share or sell lore beyond this
+   licence, open an issue in the GitHub repository above.
+
+8. Ending. If you break this licence, the rights it gives you end. They come
+   back if you stop within 30 days of being told.
+
+9. No warranty. lore is provided "as is", without warranty of any kind,
+   express or implied, including the warranties of merchantability, fitness
+   for a particular purpose and noninfringement. In no event shall the
+   copyright holder or the contributors be liable for any claim, damages or
+   other liability, whether in an action of contract, tort or otherwise,
+   arising from, out of or in connection with lore or its use.

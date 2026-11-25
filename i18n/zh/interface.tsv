@@ -22,7 +22,7 @@ lore {version}: every command you can type, and what each one does. Offline.	lor
 {total} on this machine, {pages} with a lore page	本机 {total} 个，{pages} 个有 lore 页面
 {pages} built in, translations in {languages} languages	内置 {pages} 页，翻译涵盖 {languages} 种语言
 {bookmarks} bookmarks, {recent} recent pages	{bookmarks} 个书签，{recent} 个最近页面
-MIT; examples and translations from tldr-pages, CC BY 4.0	MIT；示例和翻译来自 tldr-pages，CC BY 4.0
+free to use; no changes or sale without consent (LICENSE); tldr-pages: CC BY 4.0	免费使用；未经同意不得修改或出售（LICENSE）；tldr-pages：CC BY 4.0
 man lore, lore --help	man lore，lore --help
 FOLLOW	关注
 like lore? follow guhhammer for what comes next (Ctrl+click)	喜欢 lore？关注 guhhammer，看看接下来有什么（Ctrl+点击）
