@@ -39,8 +39,13 @@ wait for keys. Use only the forms below, which print plain text and exit.
 `lore search WORDS` prints the best matches first, at most 25, one a line:
 the name, the page line that matched (or its summary), and its categories,
 separated by tabs. Names can have spaces (`git commit`, `docker compose`);
-pass them to `lore -p` whole. It exits 1 when nothing matches: try other
-words (lore knows that folder means directory, delete means remove).
+pass them to `lore -p` whole.
+
+Search with two or three key words, not a sentence: every word has to be
+found, so `compress folder` finds tar but `which tool compresses a folder`
+finds nothing, and `port 80` finds "what is using a port" where the whole
+question does not. It exits 1 when nothing matches: drop a word or try
+another (lore knows that folder means directory, delete means remove).
 
 ## How to answer
 1. For "which tool", run `lore search`, then `lore -p` on the two or three
