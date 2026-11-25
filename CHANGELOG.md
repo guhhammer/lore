@@ -15,6 +15,9 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **`lore search WORDS`:** the search bar's results as plain text, the best
+  first (at most 25): name, the line that matched, categories, tab apart.
+  Exits 1 when nothing matches. Tab completion offers it.
 - **Quick keys:** `g`/`G` go to the top or the bottom of the list or the
   page; `n`/`N` on a page jump to the next or previous line with the
   search's text; `y` copies a page's first example at once (its name when

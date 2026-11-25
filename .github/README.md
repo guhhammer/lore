@@ -111,6 +111,7 @@ To build it yourself, see [Build from source](#build-from-source).
 | `lore git commit` | A subcommand's page. |
 | `lore --print tar` | The page as plain text, for pipes and scripts (`-p` for short). |
 | `lore explain "tar -xzvf a.tgz"` | What each word of a command line means. |
+| `lore search compress folder` | The search's results as plain text, the best first: name, the line that matched, categories (tab apart). Exits 1 when nothing matches. |
 | `lore check NAME.md` | Checks a page before you ship it (see [Add your own pages](#add-your-own-pages)). |
 | `lore --completions bash` | Prints the Tab completion script for bash, zsh or fish. |
 | `lore --update-pages` | Downloads newer pages for commands lore has no page for (see below). |

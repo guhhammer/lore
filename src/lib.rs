@@ -40,6 +40,7 @@ pub fn run() -> io::Result<()> {
         }
         Start::Print(name) => return print_page(&name),
         Start::Explain(line) => return explain(&line),
+        Start::Search(query) => return search(&query),
         Start::Complete(words) => return complete(&words),
         Start::Check(files) => return check_files(&files),
         Start::UpdatePages => {
@@ -153,6 +154,28 @@ fn print_page(name: &str) -> io::Result<()> {
     for line in lines {
         match writeln!(out, "{}", line.text.trim_end()) {
             // `lore --print tar | head`: the reader has gone, which is fine
+            Err(error) if error.kind() == io::ErrorKind::BrokenPipe => return Ok(()),
+            result => result?,
+        }
+    }
+    Ok(())
+}
+
+/// `lore search WORDS`: the search bar's results, one a line, for scripts
+/// and agents; needs no terminal. Fails (exit 1) when nothing matches.
+fn search(query: &str) -> io::Result<()> {
+    saved_reading();
+    let mut app = App::new(everything());
+    app.search(query);
+    let lines = app.result_lines(configs::SEARCH_PRINT_MAX);
+    if lines.is_empty() {
+        return Err(io::Error::other(
+            configs::ERROR_NOTHING_FOUND.replace("{query}", query),
+        ));
+    }
+    let mut out = io::stdout().lock();
+    for line in lines {
+        match writeln!(out, "{line}") {
             Err(error) if error.kind() == io::ErrorKind::BrokenPipe => return Ok(()),
             result => result?,
         }

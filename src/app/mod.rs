@@ -216,6 +216,47 @@ impl App {
         app
     }
 
+    /// Searches for `query` across every topic, as typed in the search bar.
+    pub fn search(&mut self, query: &str) {
+        self.topic = Topic::Commands;
+        self.query = query.to_owned();
+        self.refilter();
+    }
+
+    /// The search's results as plain lines, the best first, at most `max`:
+    /// name, the page line that matched (else the summary), categories,
+    /// tab apart (`lore search`).
+    pub fn result_lines(&self, max: usize) -> Vec<String> {
+        self.rows
+            .iter()
+            .filter_map(|row| match row {
+                Row::Command(c) => Some(c),
+                _ => None,
+            })
+            .take(max)
+            .map(|c| {
+                let content = recipes::content_of(c);
+                // the list shows a matched line in [brackets]; plain here
+                let snippet = self.snippets.get(&c.name).map(|s| {
+                    let s = s.strip_prefix('[').unwrap_or(s);
+                    s.strip_suffix(']').unwrap_or(s).to_owned()
+                });
+                let line = snippet.unwrap_or_else(|| {
+                    content
+                        .as_ref()
+                        .and_then(|p| p.summary.first().cloned())
+                        .unwrap_or_default()
+                });
+                let categories = self
+                    .docs
+                    .get(&c.name)
+                    .map(|d| d.categories.join(" "))
+                    .unwrap_or_default();
+                format!("{}\t{}\t{}", c.name, line.replace('\t', " "), categories)
+            })
+            .collect()
+    }
+
     /// How many commands are shown (headers not counted).
     pub fn shown_count(&self) -> usize {
         self.rows.iter().filter(|r| r.is_selectable()).count()

@@ -12,7 +12,7 @@
 //!
 //! Nothing to offer: the scripts complete file names instead.
 
-use crate::configs::{COMPLETE_OPTIONS, EXPLAIN_WORD};
+use crate::configs::{COMPLETE_OPTIONS, EXPLAIN_WORD, SEARCH_WORD};
 use crate::info::explain::ManOption;
 
 /// One candidate: the word, and what it is (empty when not known).
@@ -40,8 +40,10 @@ pub fn candidates(words: &[String], sources: &Sources) -> Vec<Candidate> {
             .collect(),
         [] => {
             let mut words = next_words(&[], current, sources);
-            if EXPLAIN_WORD.starts_with(current) {
-                words.push((EXPLAIN_WORD.to_owned(), explain_line()));
+            for word in [EXPLAIN_WORD, SEARCH_WORD] {
+                if word.starts_with(current) {
+                    words.push((word.to_owned(), word_line(word)));
+                }
             }
             words
         }
@@ -62,19 +64,24 @@ pub fn candidates(words: &[String], sources: &Sources) -> Vec<Candidate> {
                 .filter(|(name, _)| name.starts_with(current))
                 .collect()
         }
-        [first, ..] if first.starts_with('-') || first == EXPLAIN_WORD => Vec::new(),
+        // after `search`, free words: nothing to offer
+        [first, ..] if first.starts_with('-') || first == EXPLAIN_WORD || first == SEARCH_WORD => {
+            Vec::new()
+        }
         before => next_words(before, current, sources),
     };
-    found.sort();
+    // one of each word, the one described kept (`search` the word, not
+    // a program of that name with no description)
+    found.sort_by(|a, b| a.0.cmp(&b.0).then(b.1.len().cmp(&a.1.len())));
     found.dedup_by(|a, b| a.0 == b.0);
     found
 }
 
-/// `explain`'s description, from the options' list.
-fn explain_line() -> String {
+/// A first word's description (`explain`, `search`), from the options' list.
+fn word_line(word: &str) -> String {
     COMPLETE_OPTIONS
         .iter()
-        .find(|(option, _)| *option == EXPLAIN_WORD)
+        .find(|(option, _)| *option == word)
         .map(|(_, what)| (*what).to_owned())
         .unwrap_or_default()
 }

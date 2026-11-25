@@ -98,3 +98,12 @@ fn there_is_a_script_for_bash_zsh_and_fish_and_each_asks_lore() {
             .all(|(_, script)| script.contains("lore --complete"))
     );
 }
+
+#[test]
+fn search_completes_as_a_first_word_and_takes_free_words_after() {
+    assert!(complete(&["sea"]).contains(&"search".to_owned()));
+    assert!(
+        complete(&["search", "gi"]).is_empty(),
+        "free words, not names"
+    );
+}

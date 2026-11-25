@@ -92,11 +92,11 @@ lore/
 ├── recipes/                100 task pages
 ├── tools/                  a cheat sheet per tool: `## Tasks` with `### Group` titles
 ├── languages/              201 learnxinyminutes pages + 678 translations (CC BY-SA 3.0), packed like content/
-├── palettes/               15 colour palettes
+├── palettes/               33 colour palettes
 ├── beacon/beacon.tsv       the beacon's built-in table (BEACON_SNAPSHOT)
 ├── completions/            bash, zsh and fish scripts (they ask `lore --complete`)
 ├── man/lore.1              lore's own manual
-├── tests/                  every test (35 files), through src/lib.rs
+├── tests/                  every test (39 files), through src/lib.rs
 ├── examples/commands.rs    prints every command lore lists, for scripts/content
 ├── scripts/content/        the scripts that made content/, and bundle.py (the weekly pages)
 ├── devdocs/catalog.tsv      every DevDocs set, ranked by Stack Overflow (DOCS_CATALOG)
@@ -116,7 +116,7 @@ lore/
 
 ```text
 main.rs → lib.rs::run()
-            ├─ a command-line job (--print, explain, check, --complete…): prints, exits
+            ├─ a command-line job (--print, explain, search, check, --complete…): prints, exits
             └─ the app:
                  commands::collect() + recipes  →  App (src/app/)
                  loop:  ui::draw(App)  →  input::next_action(mode)  →  lib.rs applies it to App

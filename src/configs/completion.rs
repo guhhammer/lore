@@ -6,7 +6,7 @@ pub const COMPLETE_FLAG: &str = "--complete";
 pub const COMPLETIONS_FLAG: &str = "--completions";
 
 /// What can start the command line, offered after `lore -` (and `explain`
-/// after `lore e`).
+/// after `lore e`, `search` after `lore s`).
 pub const COMPLETE_OPTIONS: &[(&str, &str)] = &[
     ("--print", "a page as plain text, for pipes and scripts"),
     ("-p", "a page as plain text, for pipes and scripts"),
@@ -19,6 +19,7 @@ pub const COMPLETE_OPTIONS: &[(&str, &str)] = &[
         "print the completion script for bash, zsh or fish",
     ),
     ("explain", "each word of a command line, from the man pages"),
+    ("search", "the search's results as plain text, best first"),
     (
         "--update-pages",
         "download newer pages (the only time lore asks for them)",

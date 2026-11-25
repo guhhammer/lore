@@ -11,6 +11,8 @@ Usage:
   lore --print NAME  NAME's page as plain text, for pipes and scripts (-p)
   lore explain LINE  each word of a command line, from the man pages:
                      lore explain \"tar -xzvf a.tgz\"
+  lore search WORDS  the search bar's results as plain text, best first:
+                     name, the line that matched, categories (tab apart)
   lore --completions SHELL   the completion script for bash, zsh or fish
   lore check FILE    check a page file another program ships (see man lore)
   lore --update-pages  download newer pages, for commands lore has no page
@@ -163,5 +165,7 @@ pub const ERROR_UNKNOWN_OPTION: &str = "unknown option {option}; see lore --help
 pub const ERROR_OPTIONS_ALONE: &str = "options go alone: lore NAME, or see lore --help";
 pub const ERROR_PRINT_NAME: &str = "--print needs a name: lore --print NAME";
 
+pub const ERROR_SEARCH_WORDS: &str = "search needs words: lore search compress folder";
+pub const ERROR_NOTHING_FOUND: &str = "nothing found for {query}";
 pub const ERROR_EXPLAIN_LINE: &str =
     "explain needs a command line: lore explain \"tar -xzvf a.tgz\"";

@@ -2,6 +2,11 @@
 
 /// `lore explain LINE`: the word that starts it.
 pub const EXPLAIN_WORD: &str = "explain";
+/// `lore search WORDS`: the search bar's results as plain text, one a line
+/// (`name<TAB>matched line or summary<TAB>categories`), the best first, at
+/// most this many.
+pub const SEARCH_WORD: &str = "search";
+pub const SEARCH_PRINT_MAX: usize = 25;
 
 /// What the words of a command line mean when the man page does not say.
 pub const EXPLAIN_NO_SUMMARY: &str = "no description found on this machine";

@@ -3,8 +3,8 @@
 
 use crate::configs::{
     CHECK_WORD, COMPLETE_FLAG, COMPLETIONS_FLAG, ERROR_CHECK_FILES, ERROR_COMPLETIONS_SHELL,
-    ERROR_EXPLAIN_LINE, ERROR_OPTIONS_ALONE, ERROR_PRINT_NAME, ERROR_UNKNOWN_OPTION, EXPLAIN_WORD,
-    UPDATE_PAGES_FLAG,
+    ERROR_EXPLAIN_LINE, ERROR_OPTIONS_ALONE, ERROR_PRINT_NAME, ERROR_SEARCH_WORDS,
+    ERROR_UNKNOWN_OPTION, EXPLAIN_WORD, SEARCH_WORD, UPDATE_PAGES_FLAG,
 };
 
 /// What lore was asked to do.
@@ -18,6 +18,8 @@ pub enum Start {
     Print(String),
     /// Each word of a command line and what it means (`explain LINE`).
     Explain(String),
+    /// The search's results as plain text (`search WORDS`).
+    Search(String),
     /// What can come next on the command line, for the completion scripts
     /// (`--complete WORDS`, the last one being typed).
     Complete(Vec<String>),
@@ -55,6 +57,11 @@ pub fn parse(args: impl IntoIterator<Item = String>) -> Result<Start, String> {
             line => Ok(Start::Explain(line.join(" "))),
         },
         // `lore --print git commit`: the same names, printed
+        // `lore search compress folder`: what the search bar would list
+        [word, words @ ..] if word == SEARCH_WORD => match words {
+            [] => Err(ERROR_SEARCH_WORDS.to_owned()),
+            words => Ok(Start::Search(words.join(" "))),
+        },
         [flag, names @ ..] if flag == "-p" || flag == "--print" => match names {
             [] => Err(ERROR_PRINT_NAME.to_owned()),
             [dashes, name] if dashes == "--" => Ok(Start::Print(name.clone())),
