@@ -82,3 +82,50 @@ fn the_topic_bar_slides_to_keep_the_chosen_topic_in_sight() {
     assert_eq!(app.topic_scroll, 0);
     assert!(shown.contains(" commands "), "{shown}");
 }
+
+#[test]
+fn a_box_over_wide_characters_keeps_its_border_whole() {
+    // names in two-column characters, starting one column apart, so one of
+    // them always straddles the help box's left edge
+    let wide = "压缩文件夹".repeat(8);
+    let mut app = App::new(vec![
+        Command::new(&wide, Kind::Program),
+        Command::new(format!("a{wide}"), Kind::Program),
+    ]);
+    app.open_help();
+    let mut terminal = ratatui::Terminal::new(ratatui::backend::TestBackend::new(100, 30)).unwrap();
+    terminal.draw(|frame| draw(frame, &mut app)).unwrap();
+    let buffer = terminal.backend().buffer().clone();
+    let width = usize::from(buffer.area.width);
+    let rows: Vec<&[ratatui::buffer::Cell]> = buffer.content().chunks(width).collect();
+    // the help box's corners: its top row is the one with its title
+    let (top, left) = rows
+        .iter()
+        .enumerate()
+        .find_map(|(y, row)| {
+            let line: Vec<&str> = row.iter().map(|c| c.symbol()).collect();
+            let at = line.join("").find("keys")?;
+            let x = line[..at].iter().rposition(|s| *s == "┌")?;
+            Some((y, x))
+        })
+        .expect("the help box is drawn");
+    let right = (left + 1..width)
+        .find(|&x| rows[top][x].symbol() == "┐")
+        .unwrap();
+    let bottom = (top + 1..rows.len())
+        .find(|&y| rows[y][left].symbol() == "└")
+        .expect("the help box's bottom corner");
+    for row in &rows[top..=bottom] {
+        assert!(
+            ["┌", "│", "└"].contains(&row[left].symbol()),
+            "the box's left border is whole"
+        );
+        for x in [left - 1, right + 1] {
+            assert_eq!(
+                unicode_width::UnicodeWidthStr::width(row[x].symbol()),
+                1,
+                "a character wider than a column beside the box spills over its border"
+            );
+        }
+    }
+}

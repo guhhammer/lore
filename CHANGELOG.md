@@ -37,6 +37,13 @@ the version in `Cargo.toml`, and its subject starts with that version
   `lore.jpg`) as an animated SVG, silent, since GitHub plays no video from
   the repository; it replaces `lore.svg` in the README.
 
+### Fixed
+
+- **A box over Chinese, Japanese or Korean text keeps its border:** the
+  help, the copy list and the pickers blank one column on each side, so a
+  two-column character just outside a box no longer spills over its
+  border and shifts its line.
+
 ## [0.3.3] - 2026-11-24
 
 ### Added

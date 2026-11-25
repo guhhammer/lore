@@ -128,6 +128,18 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
     }
 }
 
+/// Blanks the room of a box drawn over the screen, and one column on each
+/// side of it: a character two columns wide (Chinese, Japanese, Korean)
+/// that starts just outside the box would else spill over its border, and
+/// one that starts on the border would leave a hole past it.
+fn clear(frame: &mut Frame, popup: Rect) {
+    let screen = frame.area();
+    let left = popup.x.saturating_sub(1).max(screen.x);
+    let right = popup.right().saturating_add(1).min(screen.right());
+    let room = Rect::new(left, popup.y, right.saturating_sub(left), popup.height);
+    frame.render_widget(Clear, room);
+}
+
 /// A box in the middle of `area`, `width` × `height` at most (margins kept),
 /// cleared for what goes in it.
 fn overlay(frame: &mut Frame, area: Rect, width: usize, height: usize) -> Rect {
@@ -140,7 +152,7 @@ fn overlay(frame: &mut Frame, area: Rect, width: usize, height: usize) -> Rect {
     let [popup] = Layout::vertical([Constraint::Length(height)])
         .flex(Flex::Center)
         .areas(middle);
-    frame.render_widget(Clear, popup);
+    clear(frame, popup);
     popup
 }
 
@@ -249,7 +261,7 @@ fn draw_choice(frame: &mut Frame, app: &App, area: Rect) {
         .style(app.palette().base())
         .highlight_style(app.palette().selected());
     let mut state = ListState::default().with_selected(Some(choice.at));
-    frame.render_widget(Clear, popup);
+    clear(frame, popup);
     frame.render_stateful_widget(list, popup, &mut state);
 }
 
@@ -487,7 +499,7 @@ fn draw_copy(frame: &mut Frame, app: &App, area: Rect) {
         .style(app.palette().base())
         .highlight_style(app.palette().selected());
     let mut state = ListState::default().with_selected(Some(app.example));
-    frame.render_widget(Clear, popup);
+    clear(frame, popup);
     frame.render_stateful_widget(list, popup, &mut state);
 }
 
@@ -531,7 +543,7 @@ fn draw_picker(frame: &mut Frame, app: &App, area: Rect) {
         .style(app.palette().base())
         .highlight_style(app.palette().selected());
     let mut state = ListState::default().with_selected(Some(app.chosen));
-    frame.render_widget(Clear, popup); // the list or page under it, blanked
+    clear(frame, popup); // the list or page under it, blanked
     frame.render_stateful_widget(list, popup, &mut state);
 }
 
