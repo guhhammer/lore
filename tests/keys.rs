@@ -189,3 +189,48 @@ fn digits_b_and_r_jump_to_a_topic_and_an_empty_one_says_so() {
     app.jump_topic(9);
     assert_eq!(app.topic, app.topics[0], "past the last topic: nothing");
 }
+
+#[test]
+fn n_finds_the_words_of_a_search_when_they_are_never_side_by_side() {
+    let mut app = on_curl();
+    // "download" is on curl's page, "zzqqxx" nowhere: the lines with
+    // "download" are found, as many as for "download" alone
+    app.query = "download".to_owned();
+    screen(&mut app);
+    let alone = app.matches.clone();
+    app.query = "download zzqqxx".to_owned();
+    screen(&mut app);
+    assert_eq!(app.matches, alone);
+    app.find(true);
+    assert_eq!(app.scroll, alone[0]);
+    // a word shorter than a search reads (`CONTENT_MIN_CHARS`) is left out
+    app.query = "zzqqxx a".to_owned();
+    screen(&mut app);
+    assert!(app.matches.is_empty());
+}
+
+#[test]
+fn b_and_r_show_their_list_even_with_a_search_kept() {
+    let mut app = on_curl();
+    app.set_personal(
+        vec!["ls".to_owned()],
+        vec!["curl".to_owned()],
+        HashMap::new(),
+    );
+    app.refresh_rows();
+    app.close_info();
+    // a search left with its text kept spans every topic
+    for c in "curl".chars() {
+        app.type_char(c);
+    }
+    app.leave_search();
+    app.jump_to(Topic::Bookmarks);
+    assert!(app.query.is_empty(), "the kept search is dropped");
+    assert_eq!(app.selected().map(|c| c.name.as_str()), Some("ls"));
+    for c in "ls".chars() {
+        app.type_char(c);
+    }
+    app.leave_search();
+    app.jump_to(Topic::Recent);
+    assert_eq!(app.selected().map(|c| c.name.as_str()), Some("curl"));
+}

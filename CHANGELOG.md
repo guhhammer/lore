@@ -33,6 +33,13 @@ the version in `Cargo.toml`, and its subject starts with that version
 - **A setting too long for the about screen ends in `...`:** a longer
   translation (Portuguese's Reset all) was cut at the border with no sign.
   Links stay whole.
+- **`B`, `r` and `1`–`9` show their topic with a search kept:** a search
+  left with its text kept spans every topic, so the bookmarks or the recent
+  pages never showed; the jump now drops it.
+- **`n` finds the words of a search that are never side by side:** after
+  searching `compress folder`, tar's page said "not on this page"; `n` now
+  goes to the lines holding any of the words (three letters or more) when
+  the whole text is nowhere.
 
 ## [0.4.4] - 2026-11-25
 

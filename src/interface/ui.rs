@@ -16,13 +16,14 @@ use crate::configs::{
     ABOUT_INTERNET_OFFLINE, ABOUT_INTERNET_ON, ABOUT_KEPT, ABOUT_LABEL_WIDTH, ABOUT_LICENCE,
     ABOUT_MANUAL, ABOUT_PAGES, ABOUT_SETTING_MARK, ABOUT_SETTING_NAMES, ABOUT_SETTINGS_HEADING,
     ABOUT_SETTINGS_HINT, ABOUT_SOURCE, ABOUT_TAGLINE, ABOUT_TITLE, BOOKMARK_MARK, BOOKMARKS_FILE,
-    COPY_PICKER_MARGIN, COPY_TITLE, DANGER, HEADING_MANUAL, INFO_LIST_PERCENT, INTERNET_DOT,
-    INTERNET_OFF, INTERNET_ON, INTERNET_WORD, KEY_BAR_HEIGHT, KEY_BAR_ROWS_MAX, KEY_GAP,
-    KEYS_ABOUT, KEYS_BROWSE, KEYS_COPY, KEYS_PAGE, KEYS_PALETTE, KEYS_SEARCH, LANGUAGE_CATEGORY,
-    LIST_HEADER_INDENT, LIST_INDENT, LIST_INDENT_NARROW, LIST_TITLE, LIST_TITLE_SEARCHING, LOGO,
-    LOGO_GAP, LORE_ORANGE, MIN_HEIGHT, MIN_WIDTH, NO_MATCH, PALETTE_DIR, PALETTE_NOT_SAVED,
-    PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT, SEARCH_HINT, SEARCH_KEPT_HINT,
-    SEARCH_TITLE, TOO_SMALL, TOPIC_BAR_HEIGHT, TOPIC_GAP, TOPIC_HINT, UNUSED_MARK,
+    CONTENT_MIN_CHARS, COPY_PICKER_MARGIN, COPY_TITLE, DANGER, HEADING_MANUAL, INFO_LIST_PERCENT,
+    INTERNET_DOT, INTERNET_OFF, INTERNET_ON, INTERNET_WORD, KEY_BAR_HEIGHT, KEY_BAR_ROWS_MAX,
+    KEY_GAP, KEYS_ABOUT, KEYS_BROWSE, KEYS_COPY, KEYS_PAGE, KEYS_PALETTE, KEYS_SEARCH,
+    LANGUAGE_CATEGORY, LIST_HEADER_INDENT, LIST_INDENT, LIST_INDENT_NARROW, LIST_TITLE,
+    LIST_TITLE_SEARCHING, LOGO, LOGO_GAP, LORE_ORANGE, MIN_HEIGHT, MIN_WIDTH, NO_MATCH,
+    PALETTE_DIR, PALETTE_NOT_SAVED, PALETTE_PICKER_MARGIN, PALETTE_TITLE, SEARCH_BAR_HEIGHT,
+    SEARCH_HINT, SEARCH_KEPT_HINT, SEARCH_TITLE, TOO_SMALL, TOPIC_BAR_HEIGHT, TOPIC_GAP,
+    TOPIC_HINT, UNUSED_MARK,
 };
 use crate::configs::{
     ABOUT_FAVOURITE, ABOUT_READING, ABOUT_READING_SYSTEM, CHOOSE_MARGIN, CHOOSE_TITLE_FAVOURITE,
@@ -884,16 +885,30 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
         .scroll((u16::try_from(app.scroll).unwrap_or(u16::MAX), 0));
     frame.render_widget(paragraph, area);
     app.sections = sections;
-    // the lines holding the search's text, for `n` and `N`
+    // the lines holding the search's text, for `n` and `N`; when the
+    // words are never side by side on the page ("compress folder" on tar's),
+    // the lines holding any of them (of `CONTENT_MIN_CHARS` or more)
     let find = app.query.trim().to_lowercase();
+    let holding = |wanted: &dyn Fn(&str) -> bool| -> Vec<usize> {
+        all.iter()
+            .enumerate()
+            .filter(|(_, l)| wanted(&l.text.to_lowercase()))
+            .map(|(i, _)| i)
+            .collect()
+    };
     app.matches = if find.is_empty() {
         Vec::new()
     } else {
-        all.iter()
-            .enumerate()
-            .filter(|(_, l)| l.text.to_lowercase().contains(&find))
-            .map(|(i, _)| i)
-            .collect()
+        let whole = holding(&|line| line.contains(&find));
+        if whole.is_empty() {
+            let words: Vec<&str> = find
+                .split_whitespace()
+                .filter(|w| w.chars().count() >= CONTENT_MIN_CHARS)
+                .collect();
+            holding(&|line| words.iter().any(|w| line.contains(w)))
+        } else {
+            whole
+        }
     };
     app.scroll_max = rows.saturating_sub(height);
 }

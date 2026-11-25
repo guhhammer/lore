@@ -146,8 +146,10 @@ impl App {
         }
     }
 
-    /// `B` and `r`: that topic's list, from the list or a page (which
-    /// closes); a topic with nothing in it yet says so.
+    /// `B`, `r` and `1`–`9`: that topic's list, from the list or a page
+    /// (which closes); a topic with nothing in it yet says so. A search
+    /// left with its text kept is dropped: it spans every topic, so the
+    /// topic asked for would never show.
     pub fn jump_to(&mut self, topic: Topic) {
         if !self.topics.contains(&topic) {
             self.note = Some(tr(TOPIC_EMPTY).replace("{topic}", topic.name()));
@@ -155,6 +157,7 @@ impl App {
         }
         if matches!(self.mode, Mode::Browse | Mode::Info) {
             self.mode = Mode::Browse;
+            self.query.clear();
             self.show_topic(topic);
         }
     }

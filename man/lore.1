@@ -299,8 +299,9 @@ The top or the bottom of the page.
 .TP
 .B n, N
 The next or the previous line holding the search bar's text, round at
-either end; the key bar says which of how many. Search a word with /,
-open a page, and n jumps to it.
+either end; the key bar says which of how many. When the words are
+never side by side on the page, the lines holding any of them (of three
+letters or more). Search a word with /, open a page, and n jumps to it.
 .TP
 .B y
 Copy at once, without the list: the first example (a doc's first code
@@ -312,7 +313,8 @@ the terminal's Ctrl+click opens it easily. Any key closes the box.
 .TP
 .B B, r, 1 \(en 9, ?
 As in the list: bookmarks, recent pages, a topic (the page closes), every
-key.
+key. A search left with its text kept is dropped, so that topic's own list
+shows.
 .SS In the palette picker
 .TP
 .B Up, Down

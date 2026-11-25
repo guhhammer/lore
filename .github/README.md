@@ -229,10 +229,10 @@ one shows its size and what is needed instead.
 | `/` | Search other commands; the page stays beside the list |
 | `b` | Bookmark |
 | `g` `G` | The top or the bottom of the page |
-| `n` `N` | The next or previous line with the search's text: search a word with `/`, open a page, then `n` jumps to it |
+| `n` `N` | The next or previous line with the search's text (or, when its words are never side by side, with any of them): search with `/`, open a page, then `n` jumps to it |
 | `y` | Copy the first example (a doc's first code block, else the page's name) at once, without the list; nothing on a language's page |
 | `o` | The page's first link alone in a box, easy to Ctrl+click |
-| `B` `r`, `1`–`9` | Go to bookmarks, recent pages, or a topic (the page closes) |
+| `B` `r`, `1`–`9` | Go to bookmarks, recent pages, or a topic (the page closes); a kept search is dropped |
 | `?` | Every key |
 | ← or Esc | Back to the list |
 
