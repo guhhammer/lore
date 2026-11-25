@@ -99,6 +99,26 @@ macOS the binary is not signed yet: the first time, run
 `xattr -d com.apple.quarantine lore`. Each release has a `SHA256SUMS`
 file to check your download with `sha256sum -c SHA256SUMS`.
 
+### Windows (WSL)
+
+lore runs on Windows inside WSL, the Linux that Windows ships:
+
+1. In PowerShell as administrator, run `wsl --install`, restart, and open
+   **Ubuntu** from the Start menu to make your Linux user.
+2. In Ubuntu, download the `.deb` of the
+   [latest release](https://github.com/guhhammer/lore/releases/latest)
+   and install it: `sudo apt install ./lore_<version>-1_amd64.deb`.
+3. Run `lore` in an Ubuntu tab of Windows Terminal. To start it from
+   PowerShell too, add this to your profile (`notepad $PROFILE`):
+
+   ```powershell
+   function lore { wsl.exe -e lore @args }
+   ```
+
+lore lists and explains the commands of that Linux, not Windows programs.
+A native Windows version is never happening: lore is a program dedicated to
+Linux, and WSL is the way to use it from Windows.
+
 To build it yourself, see [Build from source](#build-from-source).
 
 ---

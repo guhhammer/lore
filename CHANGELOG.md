@@ -15,6 +15,10 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **Windows (WSL) in the README:** how to use lore from Windows, inside
+  WSL's Ubuntu, with a PowerShell function that starts it. A native Windows
+  version is never happening: lore is dedicated to Linux.
+
 - **The interface in your language:** the whole screen (the key bar, the
   help, the about screen and its settings, the topics, a page's headings,
   fields and hints, the notes) and the 100 recipes' names follow Pages in
