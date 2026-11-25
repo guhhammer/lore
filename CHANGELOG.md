@@ -13,6 +13,13 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+### Changed
+
+- **The README's demo is the launch video:** `.github/media/lore-2.svg`
+  plays the 21-second launch video (`.github/media/lore.mp4`, poster
+  `lore.jpg`) as an animated SVG, silent, since GitHub plays no video from
+  the repository; it replaces `lore.svg` in the README.
+
 ## [0.3.3] - 2026-11-24
 
 ### Added

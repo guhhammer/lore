@@ -8,7 +8,7 @@ builtins, your aliases) and opens a short, practical page for any of them:
 what it does, the examples you actually need, which package it came from,
 and what can go wrong. For Linux and macOS, with bash, zsh or fish.
 
-![lore in 30 seconds: search "compress folder" and tar comes first, its page, a tool's cheat sheet, every key, the languages](media/lore.svg)
+![lore in 20 seconds: search "compress folder" and tar comes first, its page, a tool's cheat sheet, the languages, and the agent plugin](media/lore-2.svg)
 
 Here is the same app as text:
 
