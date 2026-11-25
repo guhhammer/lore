@@ -1,0 +1,226 @@
+# lore's screen in 日本語: English<TAB>translation (format: i18n/README.md)
+From its manual: the configuration, logs and data it uses.	マニュアルより：このコマンドが使う設定、ログ、データ。
+Ctrl+click a link to open it in your browser.	Ctrl+クリックでリンクをブラウザで開きます。
+Check every link before you open it: anyone can add pages to lore. lore will never ask you to log in anywhere, or for any account.	開く前にリンクを必ず確認してください：lore には誰でもページを追加できます。lore がどこかへのログインやアカウントを求めることは決してありません。
+! Can destroy data or stop the system, with no undo. Read each example, and check what it acts on, before you run it.	! データを壊したりシステムを止めたりする可能性があり、元に戻せません。実行する前に各例を読み、何に作用するか確認してください。
+No manual page for this command. Probable reasons:	このコマンドのマニュアルページはありません。考えられる理由：
+ search 	 検索 
+press / to search	/ で検索
+   (/ to edit)	   （/ で編集）
+ {topic} ({total}) 	 {topic}（{total}） 
+ every topic: {shown} of {total} 	 すべてのトピック：{total} 件中 {shown} 件 
+ no command matches "{query}"	 「{query}」に一致するコマンドはありません
+nothing to find: search a word with / first, then n jumps to it	検索するものがありません：まず / で語を検索すると、n でそこへ移動します
+"{text}" is not on this page	「{text}」はこのページにありません
+"{text}": {at} of {count}	「{text}」：{count} 件中 {at} 件目
+ link 	 リンク 
+this page has no link	このページにはリンクがありません
+nothing in {topic} yet	{topic} にはまだ何もありません
+ keys 	 キー 
+ about 	 lore について 
+lore {version}: every command you can type, and what each one does. Offline.	lore {version}：入力できるすべてのコマンドと、それぞれの働き。オフラインで。
+{total} on this machine, {pages} with a lore page	このマシンに {total} 個、うち {pages} 個に lore のページ
+{pages} built in, translations in {languages} languages	{pages} ページ内蔵、{languages} 言語の翻訳
+{bookmarks} bookmarks, {recent} recent pages	ブックマーク {bookmarks} 件、最近のページ {recent} 件
+MIT; examples and translations from tldr-pages, CC BY 4.0	MIT；例と翻訳は tldr-pages より、CC BY 4.0
+man lore, lore --help	man lore、lore --help
+FOLLOW	フォロー
+like lore? follow guhhammer for what comes next (Ctrl+click)	lore が気に入ったら guhhammer をフォローして今後をチェック（Ctrl+クリック）
+SETTINGS	設定
+↑↓ choose, Enter changes; saved for the next runs	↑↓ で選択、Enter で変更；次回以降も保存されます
+Enter: settings back to default, bookmarks, recent, downloads and caches erased	Enter：設定を初期状態に戻し、ブックマーク、最近、ダウンロード、キャッシュを消去
+Enter again to erase it all for good; ↑↓ or Esc keep everything	もう一度 Enter ですべて完全に消去；↑↓ か Esc ですべて残します
+reset: every setting is back to its default, and lore's saved things are erased	リセットしました：すべての設定が初期状態に戻り、lore が保存したものは消去されました
+reset, but some could not be erased: {why}	リセットしましたが、一部を消去できませんでした：{why}
+{code}  (Enter picks one of {count})	{code}  （Enter で {count} 個から選択）
+system: from LANG ({code})	システム：LANG から（{code}）
+{name}  (Enter picks one; first in the languages topic)	{name}  （Enter で選択；言語トピックの先頭に表示）
+favourite	お気に入り
+ pages in 	 ページの言語 
+ favourite language 	 お気に入りの言語 
+{lines} lines a press of w or s  (Enter: 5, 10, 15, 20 or 30)	w か s で 1 回 {lines} 行  （Enter：5、10、15、20、30）
+{name}  ({count} palettes: Enter picks one; p does too)	{name}  （{count} 種のパレット：Enter で選択；p でも可）
+on, online: pages show cht.sh's cheat sheets	オン、オンライン：ページに cht.sh のチートシートを表示
+on, offline: no connection right now	オン、オフライン：今は接続がありません
+off: lore makes no request	オフ：lore は一切リクエストしません
+on, checking…	オン、確認中…
+on: {seen} commands seen in your shell's history (only read, here)	オン：シェルの履歴に {seen} 個のコマンド（ここで読むだけ）
+on: no shell history found	オン：シェルの履歴が見つかりません
+off: your shell's history is not read	オフ：シェルの履歴は読みません
+not saved for the next runs: {why}	次回以降は保存されません：{why}
+ copy 	 コピー 
+copied: {text}	コピーしました：{text}
+this page has nothing to copy	このページにはコピーするものがありません
+nothing to copy here: type the code by hand, that is how it is learnt	ここではコピーできません：コードは手で打ってください、それが覚え方です
+  (+{n} lines)	  （ほか {n} 行）
+  (+1 line)	  （ほか 1 行）
+ colours 	 配色 
+ not saved: {why} 	 保存されません：{why} 
+VERSION	バージョン
+HOW TO USE	使い方
+RELATED	関連
+SUBCOMMANDS	サブコマンド
+NOTES	メモ
+FILES	ファイル
+STEPS	手順
+TASKS	タスク
+Everyday tasks, in groups (Tab jumps between them); c copies one. Read each before you run it.	日々のタスクをグループごとに（Tab でグループ間を移動）；c で一つコピー。実行前にそれぞれ読んでください。
+A cheat sheet of lore's: the tasks this tool is used for every day.	lore のチートシート：このツールで毎日行うタスク。
+USES	使うコマンド
+A recipe: a task done in steps, with the commands for each.	レシピ：手順に分けたタスクと、各手順のコマンド。
+In order; c copies a step's command. Read each before you run it.	順番どおりに；c で手順のコマンドをコピー。実行前にそれぞれ読んでください。
+The commands it uses, each with its own page (/ to find one).	使うコマンド。それぞれにページがあります（/ で検索）。
+LINKS	リンク
+MANUAL	マニュアル
+Your alias: typing it runs `{runs}`.	あなたのエイリアス：入力すると `{runs}` を実行します。
+Built into your shell.	シェルに組み込まれています。
+A word of your shell's language.	シェルの言語の単語です。
+A shell function you defined.	あなたが定義したシェル関数です。
+A subcommand of {program}.	{program} のサブコマンドです。
+No summary yet for {name}.	{name} の概要はまだありません。
+No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository.	{name} の例はまだありません。誰でも追加できます：lore のリポジトリの content/README.md を参照。
+! marks an example that can destroy data or stop the system: check what it acts on first.	! はデータを壊したりシステムを止めたりしうる例の印です：まず何に作用するか確認してください。
+Open one with / or `lore NAME`.	/ か `lore 名前` で開きます。
+Each has its own page: find it in the list, or run `lore {first}`.	それぞれにページがあります：一覧で探すか、`lore {first}` を実行。
+An alias has no version of its own: it is the one of the command it runs.	エイリアスに独自のバージョンはありません：実行するコマンドのバージョンです。
+A function you wrote has no version.	あなたが書いた関数にバージョンはありません。
+Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`).	シェルの一部なので、シェルのバージョンです（`bash --version`、`zsh --version`、`fish --version`）。
+Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.	lore が知っているパッケージマネージャーのものではありません：手動、言語のツール（cargo、pip、npm…）、またはスクリプトでインストールされました。バージョンは `--version` を試してください。
+Not installed on this machine, or not in a folder lore looks in.	このマシンにインストールされていないか、lore が探すフォルダーにありません。
+Package	パッケージ
+Installed	インストール済み
+Newest	最新
+Update	更新
+Location	場所
+{newest}, up to date as of your last package list update	{newest}、前回パッケージ一覧を更新した時点で最新
+{newest}: an update is available	{newest}：更新があります
+  ← → topics	  ← → トピック
+This window is {width}×{height}.\nlore needs at least {min_width}×{min_height}:\nmake it bigger.	このウィンドウは {width}×{height} です。\nlore には最低 {min_width}×{min_height} が必要です：\n大きくしてください。
+trending this month	今月のトレンド
+most used	よく使われる
+most used for {category}	{category} でよく使われる
+↑ {rise}× this month	↑ 今月 {rise}×
+not installed	未インストール
+downloaded	ダウンロード済み
+most searched (Stack Overflow)	よく検索される（Stack Overflow）
+every set on devdocs.io	devdocs.io のすべてのセット
+on this machine · x deletes	このマシンにあり · x で削除
+{size} MB · d downloads	{size} MB · d でダウンロード
+downloading…	ダウンロード中…
+failed: {why}	失敗：{why}
+{size} MB of documentation from devdocs.io, to read offline.	devdocs.io のドキュメント {size} MB、オフラインで読めます。
+Press d to download it; Enter on it then lists its pages.	d でダウンロード；その後 Enter でページを一覧表示。
+On this machine: Enter lists its pages, x deletes it.	このマシンにあり：Enter でページ一覧、x で削除。
+From devdocs.io. {who}	devdocs.io より。{who}
+This page is not in the download.	このページはダウンロードに含まれていません。
+downloading {name} in the background…	{name} をバックグラウンドでダウンロード中…
+deleted {name} from this machine	{name} をこのマシンから削除しました
+could not delete {name}: {why}	{name} を削除できませんでした：{why}
+No tool pages here.	ここにはツールのページがありません。
+internet	インターネット
+INTERNET	インターネット
+online: the cheat sheet for {name} from cht.sh	オンライン：cht.sh の {name} のチートシート
+Raw text from the internet, written by anyone: it can be changed or altered at any time without any check, and lore does not check it either. Read it as text; copy from it carefully, and never paste a command you have not understood. lore will not copy it for you.	インターネットの生のテキストで、誰でも書けます：いつでも何の確認もなく変更・改ざんされることがあり、lore も確認しません。テキストとして読み、コピーは慎重に、理解していないコマンドは決して貼り付けないでください。lore が代わりにコピーすることはありません。
+Fetching it…	取得中…
+cht.sh has nothing for {name}.	cht.sh には {name} の情報がありません。
+It could not be fetched (slow or refused); it is tried again next time lore starts.	取得できませんでした（遅いか拒否されました）；次に lore を起動したとき再試行します。
+offline: no connection, so nothing was fetched	オフライン：接続がないので何も取得していません
+off: turned off on the about screen (+), so lore asks nothing	オフ：lore についての画面（+）でオフにしたので、lore は何も要求しません
+checking the connection…	接続を確認中…
+… more at {url}	… 続きは {url}
+From learnxinyminutes.com, CC BY-SA 3.0, by {who}	learnxinyminutes.com より、CC BY-SA 3.0、作者 {who}
+ and others	 ほか
+ON THE WEB	ウェブ
+File: {file}	ファイル：{file}
+  (hides {what})	  （{what}を隠しています）
+another alias	別のエイリアス
+a keyword	キーワード
+a function	関数
+a builtin	組み込みコマンド
+a program	プログラム
+a subcommand	サブコマンド
+a recipe	レシピ
+a tool page	ツールのページ
+a language	言語
+documentation	ドキュメント
+Commands	コマンド
+Pages	ページ
+Config	設定
+Palettes	パレット
+Kept	保存先
+Licence	ライセンス
+Source	ソース
+Manual	マニュアル
+Colours	配色
+Internet	インターネット
+History	履歴
+Fast scroll	高速スクロール
+Pages in	ページの言語
+Favourite	お気に入り
+Reset all	すべてリセット
+it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)	シェルの一部です（組み込みコマンドかキーワード）：bash で `help <名前>` を試すか、シェル自体のマニュアル（`man bash`、`man zshbuiltins`）を見てください
+it is one of your aliases: its page is the one of the command it runs	あなたのエイリアスの一つです：そのページは実行するコマンドのページです
+the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)	プログラムにマニュアルページが付いていないか、ドキュメントのパッケージがインストールされていません（Debian と Ubuntu では別の `-doc` パッケージのものもあります）
+manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)	容量節約のためマニュアルページが削除されています（最小構成やコンテナのイメージ；Ubuntu では `unminimize` で戻せます）
+`man` itself is not installed	`man` 自体がインストールされていません
+commands	コマンド
+recipes	レシピ
+languages	言語
+docs	ドキュメント
+tools	ツール
+beacon	beacon
+recent	最近
+bookmarks	ブックマーク
+Move	移動
+Page	ページ
+Search	検索
+Jump	ジャンプ
+Fast	高速
+Bookmark	ブックマーク
+About	情報
+Keys	キー
+Quit	終了
+type	入力
+Filter	絞り込み
+Erase	消去
+Lore pages	lore のページ
+Leave search	検索をやめる
+Scroll	スクロール
+Copy	コピー
+Back	戻る
+Choose	選択
+Cancel	キャンセル
+Try	試す
+Keep	決定
+Change	変更
+any key	任意のキー
+Close	閉じる
+Open	開く
+Everywhere	どこでも
+this help	このヘルプ
+draw the screen again	画面を描き直す
+quit	終了
+The list	一覧
+move	移動
+move faster	速く移動
+top / bottom	先頭 / 末尾
+topic before / after	前 / 次のトピック
+go to that topic in the bar	バーのそのトピックへ
+bookmarks / recent pages	ブックマーク / 最近のページ
+next / previous letter	次 / 前の文字
+open the page	ページを開く
+search (Esc keeps the text)	検索（Esc で文字を残す）
+bookmark, or take it out	ブックマークする、または外す
+docs: download / delete a set	ドキュメント：セットをダウンロード / 削除
+about and settings	情報と設定
+quit (or leave a docs set)	終了（またはドキュメントのセットを出る）
+A page	ページ
+scroll	スクロール
+next / previous section	次 / 前のセクション
+search other pages, this one kept	このページを残して他のページを検索
+next / previous line with the search's text	検索文字を含む次 / 前の行
+choose something to copy	コピーするものを選ぶ
+copy the first example (else the name) at once	最初の例（なければ名前）をすぐコピー
+the first link, big, to Ctrl+click	最初のリンクを大きく表示、Ctrl+クリック用
+back to the list	一覧に戻る
+none	なし

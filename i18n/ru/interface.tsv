@@ -1,0 +1,226 @@
+# lore's screen in Русский: English<TAB>translation (format: i18n/README.md)
+From its manual: the configuration, logs and data it uses.	Из его руководства: настройки, журналы и данные, которые он использует.
+Ctrl+click a link to open it in your browser.	Ctrl+щелчок по ссылке открывает её в браузере.
+Check every link before you open it: anyone can add pages to lore. lore will never ask you to log in anywhere, or for any account.	Проверяйте каждую ссылку перед открытием: страницы в lore может добавить кто угодно. lore никогда не попросит вас никуда войти и не спросит ни о какой учётной записи.
+! Can destroy data or stop the system, with no undo. Read each example, and check what it acts on, before you run it.	! Может уничтожить данные или остановить систему без возможности отмены. Прочтите каждый пример и проверьте, на что он действует, прежде чем запускать.
+No manual page for this command. Probable reasons:	Для этой команды нет страницы руководства. Вероятные причины:
+ search 	 поиск 
+press / to search	нажмите / для поиска
+   (/ to edit)	   (/ — изменить)
+ {topic} ({total}) 	 {topic} ({total}) 
+ every topic: {shown} of {total} 	 все разделы: {shown} из {total} 
+ no command matches "{query}"	 ни одна команда не подходит под «{query}»
+nothing to find: search a word with / first, then n jumps to it	нечего искать: сначала найдите слово через /, потом n переходит к нему
+"{text}" is not on this page	«{text}» нет на этой странице
+"{text}": {at} of {count}	«{text}»: {at} из {count}
+ link 	 ссылка 
+this page has no link	на этой странице нет ссылок
+nothing in {topic} yet	в разделе {topic} пока ничего нет
+ keys 	 клавиши 
+ about 	 о программе 
+lore {version}: every command you can type, and what each one does. Offline.	lore {version}: все команды, которые можно набрать, и что делает каждая. Без интернета.
+{total} on this machine, {pages} with a lore page	{total} на этой машине, {pages} со страницей lore
+{pages} built in, translations in {languages} languages	{pages} встроено, переводы на {languages} языков
+{bookmarks} bookmarks, {recent} recent pages	закладок: {bookmarks}, недавних страниц: {recent}
+MIT; examples and translations from tldr-pages, CC BY 4.0	MIT; примеры и переводы из tldr-pages, CC BY 4.0
+man lore, lore --help	man lore, lore --help
+FOLLOW	ПОДПИСАТЬСЯ
+like lore? follow guhhammer for what comes next (Ctrl+click)	нравится lore? подпишитесь на guhhammer, чтобы следить за новым (Ctrl+щелчок)
+SETTINGS	НАСТРОЙКИ
+↑↓ choose, Enter changes; saved for the next runs	↑↓ выбор, Enter меняет; сохраняется на следующие запуски
+Enter: settings back to default, bookmarks, recent, downloads and caches erased	Enter: настройки по умолчанию, закладки, недавние, загрузки и кэши стёрты
+Enter again to erase it all for good; ↑↓ or Esc keep everything	Enter ещё раз — стереть всё навсегда; ↑↓ или Esc сохраняют всё
+reset: every setting is back to its default, and lore's saved things are erased	сброшено: все настройки по умолчанию, а сохранённое lore стёрто
+reset, but some could not be erased: {why}	сброшено, но кое-что стереть не удалось: {why}
+{code}  (Enter picks one of {count})	{code}  (Enter выбирает один из {count})
+system: from LANG ({code})	система: из LANG ({code})
+{name}  (Enter picks one; first in the languages topic)	{name}  (Enter выбирает; первым в разделе языков)
+favourite	избранный
+ pages in 	 страницы на 
+ favourite language 	 избранный язык 
+{lines} lines a press of w or s  (Enter: 5, 10, 15, 20 or 30)	{lines} строк за нажатие w или s  (Enter: 5, 10, 15, 20 или 30)
+{name}  ({count} palettes: Enter picks one; p does too)	{name}  ({count} палитр: Enter выбирает; p тоже)
+on, online: pages show cht.sh's cheat sheets	вкл., онлайн: на страницах шпаргалки cht.sh
+on, offline: no connection right now	вкл., офлайн: сейчас нет соединения
+off: lore makes no request	выкл.: lore не делает запросов
+on, checking…	вкл., проверка…
+on: {seen} commands seen in your shell's history (only read, here)	вкл.: {seen} команд в истории вашей оболочки (только чтение, здесь)
+on: no shell history found	вкл.: история оболочки не найдена
+off: your shell's history is not read	выкл.: история вашей оболочки не читается
+not saved for the next runs: {why}	не сохранено на следующие запуски: {why}
+ copy 	 копировать 
+copied: {text}	скопировано: {text}
+this page has nothing to copy	на этой странице нечего копировать
+nothing to copy here: type the code by hand, that is how it is learnt	здесь нечего копировать: наберите код вручную, так его и учат
+  (+{n} lines)	  (+{n} строк)
+  (+1 line)	  (+1 строка)
+ colours 	 цвета 
+ not saved: {why} 	 не сохранено: {why} 
+VERSION	ВЕРСИЯ
+HOW TO USE	КАК ПОЛЬЗОВАТЬСЯ
+RELATED	СВЯЗАННЫЕ
+SUBCOMMANDS	ПОДКОМАНДЫ
+NOTES	ЗАМЕТКИ
+FILES	ФАЙЛЫ
+STEPS	ШАГИ
+TASKS	ЗАДАЧИ
+Everyday tasks, in groups (Tab jumps between them); c copies one. Read each before you run it.	Повседневные задачи по группам (Tab переходит между ними); c копирует одну. Прочтите каждую перед запуском.
+A cheat sheet of lore's: the tasks this tool is used for every day.	Шпаргалка lore: задачи, для которых этот инструмент используют каждый день.
+USES	ИСПОЛЬЗУЕТ
+A recipe: a task done in steps, with the commands for each.	Рецепт: задача по шагам, с командами для каждого.
+In order; c copies a step's command. Read each before you run it.	По порядку; c копирует команду шага. Прочтите каждую перед запуском.
+The commands it uses, each with its own page (/ to find one).	Команды, которые он использует, у каждой своя страница (/ — найти).
+LINKS	ССЫЛКИ
+MANUAL	РУКОВОДСТВО
+Your alias: typing it runs `{runs}`.	Ваш псевдоним: при вводе запускает `{runs}`.
+Built into your shell.	Встроена в вашу оболочку.
+A word of your shell's language.	Слово языка вашей оболочки.
+A shell function you defined.	Функция оболочки, которую вы определили.
+A subcommand of {program}.	Подкоманда {program}.
+No summary yet for {name}.	Пока нет описания для {name}.
+No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository.	Пока нет примеров для {name}. Добавить их может каждый: см. content/README.md в репозитории lore.
+! marks an example that can destroy data or stop the system: check what it acts on first.	! отмечает пример, который может уничтожить данные или остановить систему: сначала проверьте, на что он действует.
+Open one with / or `lore NAME`.	Откройте через / или `lore ИМЯ`.
+Each has its own page: find it in the list, or run `lore {first}`.	У каждой своя страница: найдите её в списке или запустите `lore {first}`.
+An alias has no version of its own: it is the one of the command it runs.	У псевдонима нет своей версии: это версия команды, которую он запускает.
+A function you wrote has no version.	У написанной вами функции нет версии.
+Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`).	Часть вашей оболочки, поэтому версия у неё как у оболочки (`bash --version`, `zsh --version`, `fish --version`).
+Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.	Не из известного lore менеджера пакетов: установлено вручную, инструментом языка (cargo, pip, npm…) или скриптом. Версию попробуйте узнать через `--version`.
+Not installed on this machine, or not in a folder lore looks in.	Не установлено на этой машине или лежит не в той папке, где ищет lore.
+Package	Пакет
+Installed	Установлено
+Newest	Новейшая
+Update	Обновить
+Location	Место
+{newest}, up to date as of your last package list update	{newest}, актуально на момент последнего обновления списка пакетов
+{newest}: an update is available	{newest}: доступно обновление
+  ← → topics	  ← → разделы
+This window is {width}×{height}.\nlore needs at least {min_width}×{min_height}:\nmake it bigger.	Это окно {width}×{height}.\nlore нужно не меньше {min_width}×{min_height}:\nувеличьте его.
+trending this month	в тренде в этом месяце
+most used	самые используемые
+most used for {category}	самые используемые для {category}
+↑ {rise}× this month	↑ {rise}× в этом месяце
+not installed	не установлено
+downloaded	загруженные
+most searched (Stack Overflow)	чаще всего ищут (Stack Overflow)
+every set on devdocs.io	все наборы devdocs.io
+on this machine · x deletes	на этой машине · x удаляет
+{size} MB · d downloads	{size} МБ · d загружает
+downloading…	загрузка…
+failed: {why}	ошибка: {why}
+{size} MB of documentation from devdocs.io, to read offline.	{size} МБ документации с devdocs.io для чтения без интернета.
+Press d to download it; Enter on it then lists its pages.	Нажмите d, чтобы загрузить; затем Enter на нём покажет его страницы.
+On this machine: Enter lists its pages, x deletes it.	На этой машине: Enter показывает страницы, x удаляет.
+From devdocs.io. {who}	С devdocs.io. {who}
+This page is not in the download.	Этой страницы нет в загрузке.
+downloading {name} in the background…	{name} загружается в фоне…
+deleted {name} from this machine	{name} удалён с этой машины
+could not delete {name}: {why}	не удалось удалить {name}: {why}
+No tool pages here.	Здесь нет страниц инструментов.
+internet	интернет
+INTERNET	ИНТЕРНЕТ
+online: the cheat sheet for {name} from cht.sh	онлайн: шпаргалка по {name} с cht.sh
+Raw text from the internet, written by anyone: it can be changed or altered at any time without any check, and lore does not check it either. Read it as text; copy from it carefully, and never paste a command you have not understood. lore will not copy it for you.	Сырой текст из интернета, написанный кем угодно: его могут изменить или подменить в любой момент без всякой проверки, и lore его тоже не проверяет. Читайте его как текст; копируйте из него осторожно и никогда не вставляйте команду, которую не поняли. lore не будет копировать его за вас.
+Fetching it…	Загружается…
+cht.sh has nothing for {name}.	У cht.sh ничего нет для {name}.
+It could not be fetched (slow or refused); it is tried again next time lore starts.	Загрузить не удалось (медленно или отказано); попробуем снова при следующем запуске lore.
+offline: no connection, so nothing was fetched	офлайн: соединения нет, поэтому ничего не загружено
+off: turned off on the about screen (+), so lore asks nothing	выкл.: отключено на экране «о программе» (+), поэтому lore ничего не запрашивает
+checking the connection…	проверка соединения…
+… more at {url}	… дальше на {url}
+From learnxinyminutes.com, CC BY-SA 3.0, by {who}	С learnxinyminutes.com, CC BY-SA 3.0, авторы: {who}
+ and others	 и другие
+ON THE WEB	В СЕТИ
+File: {file}	Файл: {file}
+  (hides {what})	  (скрывает {what})
+another alias	другой псевдоним
+a keyword	ключевое слово
+a function	функцию
+a builtin	встроенную команду
+a program	программу
+a subcommand	подкоманду
+a recipe	рецепт
+a tool page	страницу инструмента
+a language	язык
+documentation	документацию
+Commands	Команды
+Pages	Страницы
+Config	Настройки
+Palettes	Палитры
+Kept	Хранится
+Licence	Лицензия
+Source	Исходники
+Manual	Руководство
+Colours	Цвета
+Internet	Интернет
+History	История
+Fast scroll	Быстрая прокрутка
+Pages in	Страницы на
+Favourite	Избранный
+Reset all	Сбросить всё
+it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)	она часть оболочки (встроенная команда или ключевое слово): попробуйте `help <имя>` в bash или руководство самой оболочки (`man bash`, `man zshbuiltins`)
+it is one of your aliases: its page is the one of the command it runs	это один из ваших псевдонимов: его страница — это страница команды, которую он запускает
+the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)	программа не поставляет страницу руководства, или её пакет документации не установлен (в Debian и Ubuntu некоторые идут отдельным пакетом `-doc`)
+manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)	страницы руководства удалены для экономии места (минимальные образы и образы контейнеров; в Ubuntu их вернёт `unminimize`)
+`man` itself is not installed	не установлен сам `man`
+commands	команды
+recipes	рецепты
+languages	языки
+docs	документация
+tools	инструменты
+beacon	beacon
+recent	недавние
+bookmarks	закладки
+Move	Движение
+Page	Страница
+Search	Поиск
+Jump	Переход
+Fast	Быстро
+Bookmark	Закладка
+About	О программе
+Keys	Клавиши
+Quit	Выход
+type	набор
+Filter	Фильтр
+Erase	Стереть
+Lore pages	Страницы lore
+Leave search	Выйти из поиска
+Scroll	Прокрутка
+Copy	Копировать
+Back	Назад
+Choose	Выбор
+Cancel	Отмена
+Try	Примерить
+Keep	Оставить
+Change	Изменить
+any key	любая клавиша
+Close	Закрыть
+Open	Открыть
+Everywhere	Везде
+this help	эта справка
+draw the screen again	перерисовать экран
+quit	выйти
+The list	Список
+move	двигаться
+move faster	двигаться быстрее
+top / bottom	начало / конец
+topic before / after	предыдущий / следующий раздел
+go to that topic in the bar	перейти к этому разделу на панели
+bookmarks / recent pages	закладки / недавние страницы
+next / previous letter	следующая / предыдущая буква
+open the page	открыть страницу
+search (Esc keeps the text)	поиск (Esc сохраняет текст)
+bookmark, or take it out	добавить или убрать закладку
+docs: download / delete a set	документация: загрузить / удалить набор
+about and settings	о программе и настройки
+quit (or leave a docs set)	выйти (или покинуть набор документации)
+A page	Страница
+scroll	прокрутка
+next / previous section	следующая / предыдущая секция
+search other pages, this one kept	искать другие страницы, оставив эту
+next / previous line with the search's text	следующая / предыдущая строка с текстом поиска
+choose something to copy	выбрать, что копировать
+copy the first example (else the name) at once	сразу скопировать первый пример (или имя)
+the first link, big, to Ctrl+click	первая ссылка, крупно, для Ctrl+щелчка
+back to the list	назад к списку
+none	нет

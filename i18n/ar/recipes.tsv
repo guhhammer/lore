@@ -1,0 +1,101 @@
+# the recipes' names in العربية: English<TAB>translation
+add a folder to the path	إضافة مجلد إلى PATH
+add a user	إضافة مستخدم
+add to the end of a file	الإضافة إلى نهاية ملف
+add up numbers in a file	جمع الأرقام في ملف
+argument list too long	قائمة الوسائط طويلة جدًا
+ask for input in a script	طلب إدخال في سكربت
+back up and restore postgresql	النسخ الاحتياطي لـ postgresql واستعادته
+change permissions of a folder and everything in it	تغيير صلاحيات مجلد وكل ما فيه
+check a certificate	فحص شهادة
+check a file's permissions	معرفة صلاحيات ملف
+check if a file or folder exists	التحقق من وجود ملف أو مجلد
+check if a program is installed	التحقق من تثبيت برنامج
+check if a string contains a text	التحقق من احتواء نص على نص آخر
+command not found after installing	الأمر غير موجود بعد التثبيت
+compare two folders	مقارنة مجلدين
+compress a folder	ضغط مجلد
+copy a folder	نسخ مجلد
+copy files to and from a server	نسخ الملفات من الخادم وإليه
+copy, overwriting or not	النسخ مع الاستبدال أو دونه
+copy to the clipboard from the terminal	النسخ إلى الحافظة من الطرفية
+copy without some folders	النسخ دون بعض المجلدات
+count lines of code	عدّ أسطر الشيفرة
+count lines, words and files	عدّ الأسطر والكلمات والملفات
+count the processors	عدّ المعالجات
+create a large file	إنشاء ملف كبير
+create an empty file	إنشاء ملف فارغ
+create nested folders	إنشاء مجلدات متداخلة
+dates and timestamps	التواريخ والطوابع الزمنية
+delete empty lines	حذف الأسطر الفارغة
+delete files and folders	حذف الملفات والمجلدات
+delete lines containing a text	حذف الأسطر التي تحتوي على نص
+disk full but df says there is room	القرص ممتلئ لكن df يقول إن هناك مساحة
+docker cannot connect to the daemon	docker لا يستطيع الاتصال بالخدمة
+download a whole folder from a website	تنزيل مجلد كامل من موقع
+environment variables	متغيرات البيئة
+exclude a folder from find	استثناء مجلد من find
+find a file	العثور على ملف
+find a file's encoding	معرفة ترميز ملف
+find big files	العثور على الملفات الكبيرة
+find files containing a text	العثور على الملفات التي تحتوي على نص
+find recently changed files	العثور على الملفات المعدّلة حديثًا
+find the script's own folder	العثور على مجلد السكربت نفسه
+find this machine's ip address	معرفة عنوان ip لهذا الجهاز
+find what killed a process	معرفة ما الذي أنهى عملية
+fix error while loading shared libraries	إصلاح error while loading shared libraries
+fix windows line endings	إصلاح نهايات أسطر windows
+free disk space	تحرير مساحة القرص
+get a file's name, folder and extension	الحصول على اسم ملف ومجلده وامتداده
+get inside a docker container	الدخول إلى حاوية docker
+get the full path of a file	الحصول على المسار الكامل لملف
+import and export a mysql database	استيراد قاعدة بيانات mysql وتصديرها
+keep a command running after logout	إبقاء أمر يعمل بعد تسجيل الخروج
+list and close tmux or screen sessions	عرض جلسات tmux أو screen وإغلاقها
+list only folders	عرض المجلدات فقط
+list users and groups	عرض المستخدمين والمجموعات
+loop over files, numbers and lists	التكرار على الملفات والأرقام والقوائم
+make a script take options	جعل سكربت يقبل خيارات
+make a symbolic link	إنشاء رابط رمزي
+make web requests with curl	إرسال طلبات ويب بـ curl
+merge pdf files	دمج ملفات pdf
+pack a folder without some files	حزم مجلد دون بعض الملفات
+pretty-print json	عرض json بشكل مقروء
+print colors and new lines	طباعة الألوان والأسطر الجديدة
+print or remove lines of a file	طباعة أسطر ملف أو حذفها
+read a file line by line	قراءة ملف سطرًا سطرًا
+read the system logs	قراءة سجلات النظام
+rename many files	إعادة تسمية ملفات كثيرة
+replace text in a file	استبدال نص في ملف
+replace text in many files	استبدال نص في ملفات كثيرة
+run a script	تشغيل سكربت
+run commands on a server over ssh	تشغيل أوامر على خادم عبر ssh
+save a command's output in a variable	حفظ مخرجات أمر في متغير
+schedule a command with cron	جدولة أمر بـ cron
+search but skip some files	البحث مع تخطي بعض الملفات
+see a program's memory use	معرفة استهلاك برنامج للذاكرة
+see each command a script runs	رؤية كل أمر يشغّله سكربت
+see the size of files and folders	معرفة حجم الملفات والمجلدات
+send output and errors to a file	إرسال المخرجات والأخطاء إلى ملف
+set up an ssh key	إعداد مفتاح ssh
+show a folder tree	عرض شجرة مجلد
+sort and remove duplicate lines	الترتيب وحذف الأسطر المكررة
+split a big file	تقسيم ملف كبير
+split a string in bash	تقسيم نص في bash
+stop a frozen program	إيقاف برنامج متجمّد
+stop a script on errors	إيقاف سكربت عند الأخطاء
+sync two folders	مزامنة مجلدين
+the internet does not work	الإنترنت لا يعمل
+time a command	قياس وقت أمر
+undo changes in git	التراجع عن التغييرات في git
+undo the last git commit	التراجع عن آخر commit في git
+unmount a busy drive	فصل قرص مشغول
+unpack an archive	فك أرشيف
+what is slowing the machine	ما الذي يبطئ الجهاز
+what is using a port	ما الذي يستخدم منفذًا
+which linux version is this	ما إصدار linux هذا
+which package a file came from	من أي حزمة جاء ملف
+which shell is running	أي صدفة تعمل
+who is logged in	من سجّل الدخول
+why won't a service start	لماذا لا تبدأ خدمة
+work with strings in bash	العمل مع النصوص في bash

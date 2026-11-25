@@ -1,0 +1,101 @@
+# the recipes' names in 中文: English<TAB>translation
+add a folder to the path	把文件夹加入 PATH
+add a user	添加用户
+add to the end of a file	追加到文件末尾
+add up numbers in a file	对文件中的数字求和
+argument list too long	参数列表太长
+ask for input in a script	在脚本中请求输入
+back up and restore postgresql	备份和恢复 postgresql
+change permissions of a folder and everything in it	修改文件夹及其所有内容的权限
+check a certificate	检查证书
+check a file's permissions	查看文件权限
+check if a file or folder exists	检查文件或文件夹是否存在
+check if a program is installed	检查程序是否已安装
+check if a string contains a text	检查字符串是否包含某段文字
+command not found after installing	安装后找不到命令
+compare two folders	比较两个文件夹
+compress a folder	压缩文件夹
+copy a folder	复制文件夹
+copy files to and from a server	在服务器之间复制文件
+copy, overwriting or not	复制时覆盖或不覆盖
+copy to the clipboard from the terminal	从终端复制到剪贴板
+copy without some folders	复制时排除某些文件夹
+count lines of code	统计代码行数
+count lines, words and files	统计行数、单词和文件
+count the processors	统计处理器数量
+create a large file	创建大文件
+create an empty file	创建空文件
+create nested folders	创建多层文件夹
+dates and timestamps	日期和时间戳
+delete empty lines	删除空行
+delete files and folders	删除文件和文件夹
+delete lines containing a text	删除包含某段文字的行
+disk full but df says there is room	磁盘满了但 df 显示有空间
+docker cannot connect to the daemon	docker 无法连接到守护进程
+download a whole folder from a website	从网站下载整个文件夹
+environment variables	环境变量
+exclude a folder from find	在 find 中排除文件夹
+find a file	查找文件
+find a file's encoding	查看文件编码
+find big files	查找大文件
+find files containing a text	查找包含某段文字的文件
+find recently changed files	查找最近修改的文件
+find the script's own folder	找到脚本自己所在的文件夹
+find this machine's ip address	查看本机 ip 地址
+find what killed a process	查明是什么杀掉了进程
+fix error while loading shared libraries	修复 error while loading shared libraries
+fix windows line endings	修复 windows 换行符
+free disk space	释放磁盘空间
+get a file's name, folder and extension	获取文件名、文件夹和扩展名
+get inside a docker container	进入 docker 容器
+get the full path of a file	获取文件的完整路径
+import and export a mysql database	导入和导出 mysql 数据库
+keep a command running after logout	退出登录后让命令继续运行
+list and close tmux or screen sessions	列出和关闭 tmux 或 screen 会话
+list only folders	只列出文件夹
+list users and groups	列出用户和组
+loop over files, numbers and lists	遍历文件、数字和列表
+make a script take options	让脚本接受选项
+make a symbolic link	创建符号链接
+make web requests with curl	用 curl 发送网络请求
+merge pdf files	合并 pdf 文件
+pack a folder without some files	打包文件夹时排除某些文件
+pretty-print json	美化输出 json
+print colors and new lines	输出颜色和换行
+print or remove lines of a file	输出或删除文件中的行
+read a file line by line	逐行读取文件
+read the system logs	查看系统日志
+rename many files	批量重命名文件
+replace text in a file	替换文件中的文字
+replace text in many files	替换多个文件中的文字
+run a script	运行脚本
+run commands on a server over ssh	通过 ssh 在服务器上运行命令
+save a command's output in a variable	把命令输出保存到变量
+schedule a command with cron	用 cron 定时运行命令
+search but skip some files	搜索时跳过某些文件
+see a program's memory use	查看程序的内存占用
+see each command a script runs	查看脚本运行的每个命令
+see the size of files and folders	查看文件和文件夹大小
+send output and errors to a file	把输出和错误写入文件
+set up an ssh key	设置 ssh 密钥
+show a folder tree	显示文件夹树
+sort and remove duplicate lines	排序并去除重复行
+split a big file	拆分大文件
+split a string in bash	在 bash 中拆分字符串
+stop a frozen program	停止卡死的程序
+stop a script on errors	出错时停止脚本
+sync two folders	同步两个文件夹
+the internet does not work	上不了网
+time a command	给命令计时
+undo changes in git	撤销 git 中的改动
+undo the last git commit	撤销上一次 git 提交
+unmount a busy drive	卸载忙碌的磁盘
+unpack an archive	解压归档文件
+what is slowing the machine	是什么让机器变慢
+what is using a port	是什么占用了端口
+which linux version is this	这是哪个 linux 版本
+which package a file came from	文件来自哪个软件包
+which shell is running	正在运行哪个 shell
+who is logged in	谁登录了
+why won't a service start	服务为什么无法启动
+work with strings in bash	在 bash 中处理字符串

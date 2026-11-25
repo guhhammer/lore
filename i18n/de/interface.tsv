@@ -1,0 +1,226 @@
+# lore's screen in Deutsch: English<TAB>translation (format: i18n/README.md)
+From its manual: the configuration, logs and data it uses.	Aus seinem Handbuch: die Konfiguration, Logs und Daten, die es benutzt.
+Ctrl+click a link to open it in your browser.	Strg+Klick auf einen Link öffnet ihn im Browser.
+Check every link before you open it: anyone can add pages to lore. lore will never ask you to log in anywhere, or for any account.	Prüfe jeden Link, bevor du ihn öffnest: Jeder kann lore Seiten hinzufügen. lore wird dich nie bitten, dich irgendwo anzumelden, und nie nach einem Konto fragen.
+! Can destroy data or stop the system, with no undo. Read each example, and check what it acts on, before you run it.	! Kann Daten zerstören oder das System anhalten, ohne Rückgängig. Lies jedes Beispiel und prüfe, worauf es wirkt, bevor du es ausführst.
+No manual page for this command. Probable reasons:	Keine Handbuchseite für diesen Befehl. Wahrscheinliche Gründe:
+ search 	 Suche 
+press / to search	/ drücken zum Suchen
+   (/ to edit)	   (/ zum Bearbeiten)
+ {topic} ({total}) 	 {topic} ({total}) 
+ every topic: {shown} of {total} 	 alle Themen: {shown} von {total} 
+ no command matches "{query}"	 kein Befehl passt zu „{query}“
+nothing to find: search a word with / first, then n jumps to it	nichts zu finden: erst mit / ein Wort suchen, dann springt n dorthin
+"{text}" is not on this page	„{text}“ ist nicht auf dieser Seite
+"{text}": {at} of {count}	„{text}“: {at} von {count}
+ link 	 Link 
+this page has no link	diese Seite hat keinen Link
+nothing in {topic} yet	noch nichts in {topic}
+ keys 	 Tasten 
+ about 	 Über 
+lore {version}: every command you can type, and what each one does. Offline.	lore {version}: jeder Befehl, den du tippen kannst, und was er tut. Offline.
+{total} on this machine, {pages} with a lore page	{total} auf diesem Rechner, {pages} mit einer lore-Seite
+{pages} built in, translations in {languages} languages	{pages} eingebaut, Übersetzungen in {languages} Sprachen
+{bookmarks} bookmarks, {recent} recent pages	{bookmarks} Lesezeichen, {recent} letzte Seiten
+MIT; examples and translations from tldr-pages, CC BY 4.0	MIT; Beispiele und Übersetzungen von tldr-pages, CC BY 4.0
+man lore, lore --help	man lore, lore --help
+FOLLOW	FOLGEN
+like lore? follow guhhammer for what comes next (Ctrl+click)	gefällt dir lore? folge guhhammer für das, was kommt (Strg+Klick)
+SETTINGS	EINSTELLUNGEN
+↑↓ choose, Enter changes; saved for the next runs	↑↓ wählt, Enter ändert; für die nächsten Starts gespeichert
+Enter: settings back to default, bookmarks, recent, downloads and caches erased	Enter: Einstellungen zurück auf Standard, Lesezeichen, letzte Seiten, Downloads und Caches gelöscht
+Enter again to erase it all for good; ↑↓ or Esc keep everything	Noch einmal Enter löscht alles endgültig; ↑↓ oder Esc behalten alles
+reset: every setting is back to its default, and lore's saved things are erased	zurückgesetzt: jede Einstellung steht wieder auf Standard, und was lore gespeichert hatte, ist gelöscht
+reset, but some could not be erased: {why}	zurückgesetzt, aber einiges ließ sich nicht löschen: {why}
+{code}  (Enter picks one of {count})	{code}  (Enter wählt eine von {count})
+system: from LANG ({code})	System: aus LANG ({code})
+{name}  (Enter picks one; first in the languages topic)	{name}  (Enter wählt eine; zuerst im Thema Sprachen)
+favourite	Favorit
+ pages in 	 Seiten auf 
+ favourite language 	 Lieblingssprache 
+{lines} lines a press of w or s  (Enter: 5, 10, 15, 20 or 30)	{lines} Zeilen pro Druck auf w oder s  (Enter: 5, 10, 15, 20 oder 30)
+{name}  ({count} palettes: Enter picks one; p does too)	{name}  ({count} Paletten: Enter wählt eine; p auch)
+on, online: pages show cht.sh's cheat sheets	an, online: Seiten zeigen die Spickzettel von cht.sh
+on, offline: no connection right now	an, offline: gerade keine Verbindung
+off: lore makes no request	aus: lore stellt keine Anfragen
+on, checking…	an, prüfe…
+on: {seen} commands seen in your shell's history (only read, here)	an: {seen} Befehle im Verlauf deiner Shell gesehen (nur gelesen, hier)
+on: no shell history found	an: kein Shell-Verlauf gefunden
+off: your shell's history is not read	aus: der Verlauf deiner Shell wird nicht gelesen
+not saved for the next runs: {why}	nicht für die nächsten Starts gespeichert: {why}
+ copy 	 kopieren 
+copied: {text}	kopiert: {text}
+this page has nothing to copy	diese Seite hat nichts zum Kopieren
+nothing to copy here: type the code by hand, that is how it is learnt	hier gibt es nichts zu kopieren: tippe den Code von Hand, so lernt man ihn
+  (+{n} lines)	  (+{n} Zeilen)
+  (+1 line)	  (+1 Zeile)
+ colours 	 Farben 
+ not saved: {why} 	 nicht gespeichert: {why} 
+VERSION	VERSION
+HOW TO USE	BENUTZUNG
+RELATED	VERWANDT
+SUBCOMMANDS	UNTERBEFEHLE
+NOTES	HINWEISE
+FILES	DATEIEN
+STEPS	SCHRITTE
+TASKS	AUFGABEN
+Everyday tasks, in groups (Tab jumps between them); c copies one. Read each before you run it.	Alltägliche Aufgaben, in Gruppen (Tab springt zwischen ihnen); c kopiert eine. Lies jede, bevor du sie ausführst.
+A cheat sheet of lore's: the tasks this tool is used for every day.	Ein Spickzettel von lore: die Aufgaben, für die dieses Werkzeug jeden Tag benutzt wird.
+USES	BENUTZT
+A recipe: a task done in steps, with the commands for each.	Ein Rezept: eine Aufgabe in Schritten, mit den Befehlen für jeden.
+In order; c copies a step's command. Read each before you run it.	Der Reihe nach; c kopiert den Befehl eines Schritts. Lies jeden, bevor du ihn ausführst.
+The commands it uses, each with its own page (/ to find one).	Die Befehle, die es benutzt, jeder mit eigener Seite (/ findet einen).
+LINKS	LINKS
+MANUAL	HANDBUCH
+Your alias: typing it runs `{runs}`.	Dein Alias: ihn zu tippen führt `{runs}` aus.
+Built into your shell.	In deine Shell eingebaut.
+A word of your shell's language.	Ein Wort der Sprache deiner Shell.
+A shell function you defined.	Eine Shell-Funktion, die du definiert hast.
+A subcommand of {program}.	Ein Unterbefehl von {program}.
+No summary yet for {name}.	Noch keine Zusammenfassung für {name}.
+No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository.	Noch keine Beispiele für {name}. Jeder kann welche hinzufügen: siehe content/README.md im Repository von lore.
+! marks an example that can destroy data or stop the system: check what it acts on first.	! markiert ein Beispiel, das Daten zerstören oder das System anhalten kann: erst prüfen, worauf es wirkt.
+Open one with / or `lore NAME`.	Öffne einen mit / oder `lore NAME`.
+Each has its own page: find it in the list, or run `lore {first}`.	Jeder hat eine eigene Seite: finde ihn in der Liste, oder führe `lore {first}` aus.
+An alias has no version of its own: it is the one of the command it runs.	Ein Alias hat keine eigene Version: es ist die des Befehls, den er ausführt.
+A function you wrote has no version.	Eine Funktion, die du geschrieben hast, hat keine Version.
+Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`).	Teil deiner Shell, hat also die Version der Shell (`bash --version`, `zsh --version`, `fish --version`).
+Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.	Nicht aus einer Paketverwaltung, die lore kennt: von Hand installiert, mit dem Werkzeug einer Sprache (cargo, pip, npm…) oder per Skript. Zur Version: versuche `--version`.
+Not installed on this machine, or not in a folder lore looks in.	Nicht auf diesem Rechner installiert, oder nicht in einem Ordner, in dem lore sucht.
+Package	Paket
+Installed	Installiert
+Newest	Neueste
+Update	Update
+Location	Ort
+{newest}, up to date as of your last package list update	{newest}, aktuell seit dem letzten Update der Paketliste
+{newest}: an update is available	{newest}: ein Update ist verfügbar
+  ← → topics	  ← → Themen
+This window is {width}×{height}.\nlore needs at least {min_width}×{min_height}:\nmake it bigger.	Dieses Fenster ist {width}×{height}.\nlore braucht mindestens {min_width}×{min_height}:\nbitte größer machen.
+trending this month	im Trend diesen Monat
+most used	am meisten benutzt
+most used for {category}	am meisten benutzt für {category}
+↑ {rise}× this month	↑ {rise}× diesen Monat
+not installed	nicht installiert
+downloaded	heruntergeladen
+most searched (Stack Overflow)	am meisten gesucht (Stack Overflow)
+every set on devdocs.io	alle Sets auf devdocs.io
+on this machine · x deletes	auf diesem Rechner · x löscht
+{size} MB · d downloads	{size} MB · d lädt herunter
+downloading…	lädt herunter…
+failed: {why}	fehlgeschlagen: {why}
+{size} MB of documentation from devdocs.io, to read offline.	{size} MB Dokumentation von devdocs.io, zum Offline-Lesen.
+Press d to download it; Enter on it then lists its pages.	d drücken zum Herunterladen; danach listet Enter darauf seine Seiten.
+On this machine: Enter lists its pages, x deletes it.	Auf diesem Rechner: Enter listet seine Seiten, x löscht es.
+From devdocs.io. {who}	Von devdocs.io. {who}
+This page is not in the download.	Diese Seite ist nicht im Download.
+downloading {name} in the background…	lade {name} im Hintergrund herunter…
+deleted {name} from this machine	{name} von diesem Rechner gelöscht
+could not delete {name}: {why}	{name} konnte nicht gelöscht werden: {why}
+No tool pages here.	Hier keine Werkzeugseiten.
+internet	Internet
+INTERNET	INTERNET
+online: the cheat sheet for {name} from cht.sh	online: der Spickzettel für {name} von cht.sh
+Raw text from the internet, written by anyone: it can be changed or altered at any time without any check, and lore does not check it either. Read it as text; copy from it carefully, and never paste a command you have not understood. lore will not copy it for you.	Rohtext aus dem Internet, von irgendwem geschrieben: Er kann jederzeit ohne jede Prüfung geändert oder verfälscht werden, und auch lore prüft ihn nicht. Lies ihn als Text; kopiere vorsichtig daraus, und füge nie einen Befehl ein, den du nicht verstanden hast. lore kopiert ihn nicht für dich.
+Fetching it…	Wird geholt…
+cht.sh has nothing for {name}.	cht.sh hat nichts für {name}.
+It could not be fetched (slow or refused); it is tried again next time lore starts.	Konnte nicht geholt werden (langsam oder abgelehnt); beim nächsten Start von lore wird es erneut versucht.
+offline: no connection, so nothing was fetched	offline: keine Verbindung, also wurde nichts geholt
+off: turned off on the about screen (+), so lore asks nothing	aus: auf dem Über-Bildschirm (+) ausgeschaltet, also fragt lore nichts an
+checking the connection…	prüfe die Verbindung…
+… more at {url}	… mehr unter {url}
+From learnxinyminutes.com, CC BY-SA 3.0, by {who}	Von learnxinyminutes.com, CC BY-SA 3.0, von {who}
+ and others	 und andere
+ON THE WEB	IM WEB
+File: {file}	Datei: {file}
+  (hides {what})	  (verdeckt {what})
+another alias	einen anderen Alias
+a keyword	ein Schlüsselwort
+a function	eine Funktion
+a builtin	einen Builtin
+a program	ein Programm
+a subcommand	einen Unterbefehl
+a recipe	ein Rezept
+a tool page	eine Werkzeugseite
+a language	eine Sprache
+documentation	Dokumentation
+Commands	Befehle
+Pages	Seiten
+Config	Konfig
+Palettes	Paletten
+Kept	Gemerkt
+Licence	Lizenz
+Source	Quelle
+Manual	Handbuch
+Colours	Farben
+Internet	Internet
+History	Verlauf
+Fast scroll	Schnell scrollen
+Pages in	Seiten auf
+Favourite	Favorit
+Reset all	Alles zurücksetzen
+it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)	er gehört zur Shell (ein Builtin oder Schlüsselwort): versuche `help <name>` in bash, oder das Handbuch der Shell selbst (`man bash`, `man zshbuiltins`)
+it is one of your aliases: its page is the one of the command it runs	er ist einer deiner Aliase: seine Seite ist die des Befehls, den er ausführt
+the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)	das Programm bringt keine Handbuchseite mit, oder sein Dokumentationspaket ist nicht installiert (bei Debian und Ubuntu kommen manche in einem eigenen `-doc`-Paket)
+manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)	Handbuchseiten wurden entfernt, um Platz zu sparen (minimale und Container-Images; bei Ubuntu holt `unminimize` sie zurück)
+`man` itself is not installed	`man` selbst ist nicht installiert
+commands	Befehle
+recipes	Rezepte
+languages	Sprachen
+docs	Docs
+tools	Werkzeuge
+beacon	Beacon
+recent	Zuletzt
+bookmarks	Lesezeichen
+Move	Bewegen
+Page	Seite
+Search	Suchen
+Jump	Springen
+Fast	Schnell
+Bookmark	Lesezeichen
+About	Über
+Keys	Tasten
+Quit	Beenden
+type	tippen
+Filter	Filtern
+Erase	Löschen
+Lore pages	lore-Seiten
+Leave search	Suche verlassen
+Scroll	Scrollen
+Copy	Kopieren
+Back	Zurück
+Choose	Wählen
+Cancel	Abbrechen
+Try	Testen
+Keep	Behalten
+Change	Ändern
+any key	beliebige Taste
+Close	Schließen
+Open	Öffnen
+Everywhere	Überall
+this help	diese Hilfe
+draw the screen again	den Bildschirm neu zeichnen
+quit	beenden
+The list	Die Liste
+move	bewegen
+move faster	schneller bewegen
+top / bottom	Anfang / Ende
+topic before / after	Thema davor / danach
+go to that topic in the bar	zu diesem Thema der Leiste gehen
+bookmarks / recent pages	Lesezeichen / letzte Seiten
+next / previous letter	nächster / vorheriger Buchstabe
+open the page	die Seite öffnen
+search (Esc keeps the text)	suchen (Esc behält den Text)
+bookmark, or take it out	Lesezeichen setzen oder entfernen
+docs: download / delete a set	Docs: ein Set herunterladen / löschen
+about and settings	Über und Einstellungen
+quit (or leave a docs set)	beenden (oder ein Docs-Set verlassen)
+A page	Eine Seite
+scroll	scrollen
+next / previous section	nächster / vorheriger Abschnitt
+search other pages, this one kept	andere Seiten suchen, diese bleibt
+next / previous line with the search's text	nächste / vorherige Zeile mit dem Suchtext
+choose something to copy	etwas zum Kopieren wählen
+copy the first example (else the name) at once	das erste Beispiel (sonst den Namen) sofort kopieren
+the first link, big, to Ctrl+click	der erste Link, groß, für Strg+Klick
+back to the list	zurück zur Liste
+none	keine

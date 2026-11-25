@@ -82,21 +82,23 @@ lore/
 │       ├── clipboard.rs    copying through the terminal (OSC 52)
 │       ├── highlight.rs    code in colours (comments, strings, numbers, keywords)
 │       ├── html.rs         HTML as page lines (docs pages)
+│       ├── i18n.rs         the screen and the recipes' names in the reader's language
 │       ├── history.rs      uses per command, from the shell's history
 │       ├── internet.rs     the connection dot and cht.sh's cheat sheets
 │       ├── manual.rs       running man and whatis, cleaning their output
 │       ├── text.rs         fitting text to columns
 │       └── zip.rs          the files in a zip archive (stored or deflated)
-├── build.rs                packs content/ into the binary (zstd); embeds and checks palettes/, recipes/ and tools/
+├── build.rs                packs content/ into the binary (zstd); embeds and checks palettes/, recipes/, tools/ and i18n/
 ├── content/                9,109 pages, and 32,226 translations in i18n/<language>/ (41 languages)
 ├── recipes/                100 task pages
+├── i18n/                   the interface and the recipes' names, per language (12): README.md has the format
 ├── tools/                  a cheat sheet per tool: `## Tasks` with `### Group` titles
 ├── languages/              201 learnxinyminutes pages + 678 translations (CC BY-SA 3.0), packed like content/
 ├── palettes/               33 colour palettes
 ├── beacon/beacon.tsv       the beacon's built-in table (BEACON_SNAPSHOT)
 ├── completions/            bash, zsh and fish scripts (they ask `lore --complete`)
 ├── man/lore.1              lore's own manual
-├── tests/                  every test (39 files), through src/lib.rs
+├── tests/                  every test (40 files), through src/lib.rs
 ├── examples/commands.rs    prints every command lore lists, for scripts/content
 ├── scripts/content/        the scripts that made content/, and bundle.py (the weekly pages)
 ├── devdocs/catalog.tsv      every DevDocs set, ranked by Stack Overflow (DOCS_CATALOG)

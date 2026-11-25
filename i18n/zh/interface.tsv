@@ -1,0 +1,226 @@
+# lore's screen in 中文: English<TAB>translation (format: i18n/README.md)
+From its manual: the configuration, logs and data it uses.	来自它的手册：它用到的配置、日志和数据。
+Ctrl+click a link to open it in your browser.	Ctrl+点击链接，在浏览器中打开。
+Check every link before you open it: anyone can add pages to lore. lore will never ask you to log in anywhere, or for any account.	打开每个链接前先检查：任何人都能给 lore 添加页面。lore 绝不会让你登录任何地方，也不会索要任何账号。
+! Can destroy data or stop the system, with no undo. Read each example, and check what it acts on, before you run it.	! 可能销毁数据或让系统停止，且无法撤销。运行前请读懂每个示例，并检查它作用于什么。
+No manual page for this command. Probable reasons:	这个命令没有手册页。可能的原因：
+ search 	 搜索 
+press / to search	按 / 搜索
+   (/ to edit)	   （/ 编辑）
+ {topic} ({total}) 	 {topic}（{total}） 
+ every topic: {shown} of {total} 	 所有主题：{total} 中的 {shown} 
+ no command matches "{query}"	 没有命令匹配“{query}”
+nothing to find: search a word with / first, then n jumps to it	没有可查找的：先用 / 搜索一个词，然后 n 跳到它
+"{text}" is not on this page	“{text}”不在此页
+"{text}": {at} of {count}	“{text}”：第 {at} 处，共 {count} 处
+ link 	 链接 
+this page has no link	此页没有链接
+nothing in {topic} yet	{topic} 中还没有内容
+ keys 	 按键 
+ about 	 关于 
+lore {version}: every command you can type, and what each one does. Offline.	lore {version}：你能输入的每个命令，以及它们各自的作用。离线可用。
+{total} on this machine, {pages} with a lore page	本机 {total} 个，{pages} 个有 lore 页面
+{pages} built in, translations in {languages} languages	内置 {pages} 页，翻译涵盖 {languages} 种语言
+{bookmarks} bookmarks, {recent} recent pages	{bookmarks} 个书签，{recent} 个最近页面
+MIT; examples and translations from tldr-pages, CC BY 4.0	MIT；示例和翻译来自 tldr-pages，CC BY 4.0
+man lore, lore --help	man lore，lore --help
+FOLLOW	关注
+like lore? follow guhhammer for what comes next (Ctrl+click)	喜欢 lore？关注 guhhammer，看看接下来有什么（Ctrl+点击）
+SETTINGS	设置
+↑↓ choose, Enter changes; saved for the next runs	↑↓ 选择，Enter 更改；下次运行时仍然保留
+Enter: settings back to default, bookmarks, recent, downloads and caches erased	Enter：设置恢复默认，书签、最近、下载和缓存全部清除
+Enter again to erase it all for good; ↑↓ or Esc keep everything	再按 Enter 永久清除全部；↑↓ 或 Esc 保留一切
+reset: every setting is back to its default, and lore's saved things are erased	已重置：所有设置恢复默认，lore 保存的内容已清除
+reset, but some could not be erased: {why}	已重置，但有些内容无法清除：{why}
+{code}  (Enter picks one of {count})	{code}  （Enter 从 {count} 个中选择）
+system: from LANG ({code})	系统：来自 LANG（{code}）
+{name}  (Enter picks one; first in the languages topic)	{name}  （Enter 选择；显示在语言主题的最前面）
+favourite	最爱
+ pages in 	 页面语言 
+ favourite language 	 最爱的编程语言 
+{lines} lines a press of w or s  (Enter: 5, 10, 15, 20 or 30)	w 或 s 每按一次 {lines} 行  （Enter：5、10、15、20 或 30）
+{name}  ({count} palettes: Enter picks one; p does too)	{name}  （{count} 套配色：Enter 选择；p 也可以）
+on, online: pages show cht.sh's cheat sheets	开启，在线：页面显示 cht.sh 的速查表
+on, offline: no connection right now	开启，离线：现在没有网络连接
+off: lore makes no request	关闭：lore 不发出任何请求
+on, checking…	开启，检查中…
+on: {seen} commands seen in your shell's history (only read, here)	开启：在你的 shell 历史中看到 {seen} 个命令（只在这里读取）
+on: no shell history found	开启：没有找到 shell 历史
+off: your shell's history is not read	关闭：不读取你的 shell 历史
+not saved for the next runs: {why}	下次运行时不会保留：{why}
+ copy 	 复制 
+copied: {text}	已复制：{text}
+this page has nothing to copy	此页没有可复制的内容
+nothing to copy here: type the code by hand, that is how it is learnt	这里没有可复制的：亲手输入代码，这样才学得会
+  (+{n} lines)	  （另有 {n} 行）
+  (+1 line)	  （另有 1 行）
+ colours 	 配色 
+ not saved: {why} 	 未保存：{why} 
+VERSION	版本
+HOW TO USE	用法
+RELATED	相关
+SUBCOMMANDS	子命令
+NOTES	备注
+FILES	文件
+STEPS	步骤
+TASKS	任务
+Everyday tasks, in groups (Tab jumps between them); c copies one. Read each before you run it.	日常任务，分组列出（Tab 在组间跳转）；c 复制一条。运行前请逐条阅读。
+A cheat sheet of lore's: the tasks this tool is used for every day.	lore 的速查表：这个工具每天最常做的任务。
+USES	用到
+A recipe: a task done in steps, with the commands for each.	配方：分步完成的任务，每一步都有对应的命令。
+In order; c copies a step's command. Read each before you run it.	按顺序；c 复制某一步的命令。运行前请逐条阅读。
+The commands it uses, each with its own page (/ to find one).	它用到的命令，各有自己的页面（/ 查找）。
+LINKS	链接
+MANUAL	手册
+Your alias: typing it runs `{runs}`.	你的别名：输入它会运行 `{runs}`。
+Built into your shell.	内置于你的 shell。
+A word of your shell's language.	你的 shell 语言中的一个词。
+A shell function you defined.	你定义的 shell 函数。
+A subcommand of {program}.	{program} 的子命令。
+No summary yet for {name}.	{name} 还没有简介。
+No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository.	{name} 还没有示例。任何人都可以添加：见 lore 仓库中的 content/README.md。
+! marks an example that can destroy data or stop the system: check what it acts on first.	! 标记可能销毁数据或让系统停止的示例：先检查它作用于什么。
+Open one with / or `lore NAME`.	用 / 或 `lore 名称` 打开。
+Each has its own page: find it in the list, or run `lore {first}`.	每个都有自己的页面：在列表中找到它，或运行 `lore {first}`。
+An alias has no version of its own: it is the one of the command it runs.	别名没有自己的版本：就是它所运行命令的版本。
+A function you wrote has no version.	你写的函数没有版本。
+Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`).	属于你的 shell，所以版本就是 shell 的版本（`bash --version`、`zsh --version`、`fish --version`）。
+Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.	不是来自 lore 认识的包管理器：手动安装、由某种语言的工具（cargo、pip、npm…）安装，或由脚本安装。查看版本：试试 `--version`。
+Not installed on this machine, or not in a folder lore looks in.	本机未安装，或不在 lore 查找的文件夹中。
+Package	软件包
+Installed	已安装
+Newest	最新
+Update	更新
+Location	位置
+{newest}, up to date as of your last package list update	{newest}，截至上次更新软件包列表时为最新
+{newest}: an update is available	{newest}：有可用更新
+  ← → topics	  ← → 主题
+This window is {width}×{height}.\nlore needs at least {min_width}×{min_height}:\nmake it bigger.	此窗口为 {width}×{height}。\nlore 至少需要 {min_width}×{min_height}：\n请把窗口调大。
+trending this month	本月热门
+most used	最常用
+most used for {category}	{category} 最常用
+↑ {rise}× this month	↑ 本月 {rise}×
+not installed	未安装
+downloaded	已下载
+most searched (Stack Overflow)	最常搜索（Stack Overflow）
+every set on devdocs.io	devdocs.io 上的所有文档集
+on this machine · x deletes	在本机 · x 删除
+{size} MB · d downloads	{size} MB · d 下载
+downloading…	下载中…
+failed: {why}	失败：{why}
+{size} MB of documentation from devdocs.io, to read offline.	来自 devdocs.io 的 {size} MB 文档，可离线阅读。
+Press d to download it; Enter on it then lists its pages.	按 d 下载；之后在它上面按 Enter 列出其页面。
+On this machine: Enter lists its pages, x deletes it.	在本机：Enter 列出其页面，x 删除它。
+From devdocs.io. {who}	来自 devdocs.io。{who}
+This page is not in the download.	此页面不在下载内容中。
+downloading {name} in the background…	正在后台下载 {name}…
+deleted {name} from this machine	已从本机删除 {name}
+could not delete {name}: {why}	无法删除 {name}：{why}
+No tool pages here.	这里没有工具页面。
+internet	网络
+INTERNET	网络
+online: the cheat sheet for {name} from cht.sh	在线：来自 cht.sh 的 {name} 速查表
+Raw text from the internet, written by anyone: it can be changed or altered at any time without any check, and lore does not check it either. Read it as text; copy from it carefully, and never paste a command you have not understood. lore will not copy it for you.	来自互联网的原始文本，任何人都能写：它随时可能被更改或篡改，没有任何审核，lore 也不检查它。请把它当作文本阅读；复制时要小心，绝不要粘贴你没看懂的命令。lore 不会替你复制它。
+Fetching it…	获取中…
+cht.sh has nothing for {name}.	cht.sh 没有 {name} 的内容。
+It could not be fetched (slow or refused); it is tried again next time lore starts.	无法获取（太慢或被拒绝）；下次启动 lore 时会再试。
+offline: no connection, so nothing was fetched	离线：没有网络连接，所以什么都没获取
+off: turned off on the about screen (+), so lore asks nothing	关闭：已在关于界面（+）中关闭，所以 lore 不发出请求
+checking the connection…	检查网络连接中…
+… more at {url}	… 更多见 {url}
+From learnxinyminutes.com, CC BY-SA 3.0, by {who}	来自 learnxinyminutes.com，CC BY-SA 3.0，作者 {who}
+ and others	 等人
+ON THE WEB	网上
+File: {file}	文件：{file}
+  (hides {what})	  （遮住了{what}）
+another alias	另一个别名
+a keyword	一个关键字
+a function	一个函数
+a builtin	一个内置命令
+a program	一个程序
+a subcommand	一个子命令
+a recipe	一个配方
+a tool page	一个工具页面
+a language	一种语言
+documentation	文档
+Commands	命令
+Pages	页面
+Config	配置
+Palettes	配色
+Kept	保存位置
+Licence	许可证
+Source	源代码
+Manual	手册
+Colours	配色
+Internet	网络
+History	历史
+Fast scroll	快速滚动
+Pages in	页面语言
+Favourite	最爱
+Reset all	全部重置
+it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)	它是 shell 的一部分（内置命令或关键字）：在 bash 中试试 `help <名称>`，或看 shell 自己的手册（`man bash`、`man zshbuiltins`）
+it is one of your aliases: its page is the one of the command it runs	它是你的一个别名：它的页面就是它所运行命令的页面
+the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)	程序没有附带手册页，或者它的文档包没有安装（在 Debian 和 Ubuntu 上，有些放在单独的 `-doc` 包里）
+manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)	为了节省空间删除了手册页（精简镜像和容器镜像；在 Ubuntu 上，`unminimize` 可以恢复）
+`man` itself is not installed	`man` 本身没有安装
+commands	命令
+recipes	配方
+languages	语言
+docs	文档
+tools	工具
+beacon	beacon
+recent	最近
+bookmarks	书签
+Move	移动
+Page	页面
+Search	搜索
+Jump	跳转
+Fast	快速
+Bookmark	书签
+About	关于
+Keys	按键
+Quit	退出
+type	输入
+Filter	筛选
+Erase	删除
+Lore pages	lore 页面
+Leave search	离开搜索
+Scroll	滚动
+Copy	复制
+Back	返回
+Choose	选择
+Cancel	取消
+Try	试用
+Keep	保留
+Change	更改
+any key	任意键
+Close	关闭
+Open	打开
+Everywhere	任何地方
+this help	本帮助
+draw the screen again	重绘屏幕
+quit	退出
+The list	列表
+move	移动
+move faster	快速移动
+top / bottom	顶部 / 底部
+topic before / after	上一个 / 下一个主题
+go to that topic in the bar	转到栏中的那个主题
+bookmarks / recent pages	书签 / 最近页面
+next / previous letter	下一个 / 上一个字母
+open the page	打开页面
+search (Esc keeps the text)	搜索（Esc 保留文字）
+bookmark, or take it out	加入书签，或移除
+docs: download / delete a set	文档：下载 / 删除文档集
+about and settings	关于和设置
+quit (or leave a docs set)	退出（或离开文档集）
+A page	页面
+scroll	滚动
+next / previous section	下一节 / 上一节
+search other pages, this one kept	搜索其他页面，保留当前页
+next / previous line with the search's text	下一行 / 上一行搜索文字
+choose something to copy	选择要复制的内容
+copy the first example (else the name) at once	立即复制第一个示例（否则复制名称）
+the first link, big, to Ctrl+click	第一个链接，放大显示，方便 Ctrl+点击
+back to the list	返回列表
+none	无

@@ -1,0 +1,101 @@
+# the recipes' names in 한국어: English<TAB>translation
+add a folder to the path	PATH에 폴더 추가하기
+add a user	사용자 추가하기
+add to the end of a file	파일 끝에 덧붙이기
+add up numbers in a file	파일의 숫자 합계 내기
+argument list too long	인수 목록이 너무 김
+ask for input in a script	스크립트에서 입력 받기
+back up and restore postgresql	postgresql 백업과 복원
+change permissions of a folder and everything in it	폴더와 그 안의 모든 것의 권한 바꾸기
+check a certificate	인증서 확인하기
+check a file's permissions	파일 권한 확인하기
+check if a file or folder exists	파일이나 폴더가 있는지 확인하기
+check if a program is installed	프로그램이 설치됐는지 확인하기
+check if a string contains a text	문자열에 텍스트가 있는지 확인하기
+command not found after installing	설치 후 명령을 찾을 수 없음
+compare two folders	두 폴더 비교하기
+compress a folder	폴더 압축하기
+copy a folder	폴더 복사하기
+copy files to and from a server	서버와 파일 주고받기
+copy, overwriting or not	덮어쓰거나 덮어쓰지 않고 복사하기
+copy to the clipboard from the terminal	터미널에서 클립보드로 복사하기
+copy without some folders	일부 폴더를 빼고 복사하기
+count lines of code	코드 줄 수 세기
+count lines, words and files	줄, 단어, 파일 수 세기
+count the processors	프로세서 수 세기
+create a large file	큰 파일 만들기
+create an empty file	빈 파일 만들기
+create nested folders	중첩 폴더 만들기
+dates and timestamps	날짜와 타임스탬프
+delete empty lines	빈 줄 지우기
+delete files and folders	파일과 폴더 지우기
+delete lines containing a text	텍스트가 있는 줄 지우기
+disk full but df says there is room	디스크가 꽉 찼는데 df는 공간이 있다고 함
+docker cannot connect to the daemon	docker가 데몬에 연결할 수 없음
+download a whole folder from a website	웹사이트에서 폴더 통째로 내려받기
+environment variables	환경 변수
+exclude a folder from find	find에서 폴더 제외하기
+find a file	파일 찾기
+find a file's encoding	파일 인코딩 알아내기
+find big files	큰 파일 찾기
+find files containing a text	텍스트가 있는 파일 찾기
+find recently changed files	최근에 바뀐 파일 찾기
+find the script's own folder	스크립트 자신의 폴더 찾기
+find this machine's ip address	이 컴퓨터의 ip 주소 찾기
+find what killed a process	무엇이 프로세스를 죽였는지 찾기
+fix error while loading shared libraries	error while loading shared libraries 고치기
+fix windows line endings	windows 줄바꿈 고치기
+free disk space	디스크 공간 확보하기
+get a file's name, folder and extension	파일의 이름, 폴더, 확장자 얻기
+get inside a docker container	docker 컨테이너 안으로 들어가기
+get the full path of a file	파일의 전체 경로 얻기
+import and export a mysql database	mysql 데이터베이스 가져오기와 내보내기
+keep a command running after logout	로그아웃 뒤에도 명령 계속 실행하기
+list and close tmux or screen sessions	tmux나 screen 세션 보기와 닫기
+list only folders	폴더만 나열하기
+list users and groups	사용자와 그룹 나열하기
+loop over files, numbers and lists	파일, 숫자, 목록 반복하기
+make a script take options	스크립트가 옵션을 받게 하기
+make a symbolic link	심볼릭 링크 만들기
+make web requests with curl	curl로 웹 요청 보내기
+merge pdf files	pdf 파일 합치기
+pack a folder without some files	일부 파일을 빼고 폴더 묶기
+pretty-print json	json 보기 좋게 출력하기
+print colors and new lines	색과 줄바꿈 출력하기
+print or remove lines of a file	파일의 줄 출력하거나 지우기
+read a file line by line	파일을 한 줄씩 읽기
+read the system logs	시스템 로그 읽기
+rename many files	여러 파일 이름 바꾸기
+replace text in a file	파일의 텍스트 바꾸기
+replace text in many files	여러 파일의 텍스트 바꾸기
+run a script	스크립트 실행하기
+run commands on a server over ssh	ssh로 서버에서 명령 실행하기
+save a command's output in a variable	명령 출력을 변수에 저장하기
+schedule a command with cron	cron으로 명령 예약하기
+search but skip some files	일부 파일을 건너뛰고 검색하기
+see a program's memory use	프로그램의 메모리 사용량 보기
+see each command a script runs	스크립트가 실행하는 명령 하나하나 보기
+see the size of files and folders	파일과 폴더 크기 보기
+send output and errors to a file	출력과 오류를 파일로 보내기
+set up an ssh key	ssh 키 설정하기
+show a folder tree	폴더 트리 보기
+sort and remove duplicate lines	정렬하고 중복 줄 없애기
+split a big file	큰 파일 나누기
+split a string in bash	bash에서 문자열 나누기
+stop a frozen program	멈춘 프로그램 끝내기
+stop a script on errors	오류가 나면 스크립트 멈추기
+sync two folders	두 폴더 동기화하기
+the internet does not work	인터넷이 안 됨
+time a command	명령 시간 재기
+undo changes in git	git에서 변경 되돌리기
+undo the last git commit	마지막 git 커밋 되돌리기
+unmount a busy drive	사용 중인 드라이브 마운트 해제하기
+unpack an archive	압축 파일 풀기
+what is slowing the machine	컴퓨터를 느리게 하는 것
+what is using a port	포트를 쓰고 있는 것
+which linux version is this	이 linux의 버전
+which package a file came from	파일이 어느 패키지에서 왔는지
+which shell is running	실행 중인 셸
+who is logged in	로그인한 사람
+why won't a service start	서비스가 시작되지 않는 이유
+work with strings in bash	bash에서 문자열 다루기

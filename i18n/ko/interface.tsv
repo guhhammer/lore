@@ -1,0 +1,226 @@
+# lore's screen in 한국어: English<TAB>translation (format: i18n/README.md)
+From its manual: the configuration, logs and data it uses.	매뉴얼에서: 이 명령이 쓰는 설정, 로그, 데이터.
+Ctrl+click a link to open it in your browser.	Ctrl+클릭하면 링크가 브라우저에서 열립니다.
+Check every link before you open it: anyone can add pages to lore. lore will never ask you to log in anywhere, or for any account.	링크를 열기 전에 꼭 확인하세요: 누구나 lore에 페이지를 추가할 수 있습니다. lore는 어디에도 로그인하라고 하거나 계정을 묻지 않습니다.
+! Can destroy data or stop the system, with no undo. Read each example, and check what it acts on, before you run it.	! 데이터를 파괴하거나 시스템을 멈출 수 있으며 되돌릴 수 없습니다. 실행하기 전에 각 예시를 읽고 무엇에 작용하는지 확인하세요.
+No manual page for this command. Probable reasons:	이 명령의 매뉴얼 페이지가 없습니다. 가능한 이유:
+ search 	 검색 
+press / to search	/ 를 눌러 검색
+   (/ to edit)	   (/ 로 편집)
+ {topic} ({total}) 	 {topic} ({total}) 
+ every topic: {shown} of {total} 	 모든 주제: {total}개 중 {shown}개 
+ no command matches "{query}"	 "{query}"와 일치하는 명령이 없습니다
+nothing to find: search a word with / first, then n jumps to it	찾을 것이 없습니다: 먼저 / 로 단어를 검색하면 n 이 그곳으로 이동합니다
+"{text}" is not on this page	"{text}"은(는) 이 페이지에 없습니다
+"{text}": {at} of {count}	"{text}": {count}개 중 {at}번째
+ link 	 링크 
+this page has no link	이 페이지에는 링크가 없습니다
+nothing in {topic} yet	{topic}에 아직 아무것도 없습니다
+ keys 	 키 
+ about 	 정보 
+lore {version}: every command you can type, and what each one does. Offline.	lore {version}: 입력할 수 있는 모든 명령과 각각이 하는 일. 오프라인.
+{total} on this machine, {pages} with a lore page	이 컴퓨터에 {total}개, 그중 {pages}개에 lore 페이지
+{pages} built in, translations in {languages} languages	내장 {pages}개, {languages}개 언어로 번역
+{bookmarks} bookmarks, {recent} recent pages	북마크 {bookmarks}개, 최근 페이지 {recent}개
+MIT; examples and translations from tldr-pages, CC BY 4.0	MIT; 예시와 번역은 tldr-pages에서, CC BY 4.0
+man lore, lore --help	man lore, lore --help
+FOLLOW	팔로우
+like lore? follow guhhammer for what comes next (Ctrl+click)	lore가 마음에 드나요? 다음 소식을 보려면 guhhammer를 팔로우하세요 (Ctrl+클릭)
+SETTINGS	설정
+↑↓ choose, Enter changes; saved for the next runs	↑↓ 선택, Enter 변경; 다음 실행에도 저장됩니다
+Enter: settings back to default, bookmarks, recent, downloads and caches erased	Enter: 설정을 기본값으로, 북마크, 최근, 다운로드, 캐시 삭제
+Enter again to erase it all for good; ↑↓ or Esc keep everything	Enter를 한 번 더 누르면 모두 영구 삭제; ↑↓ 또는 Esc는 모두 유지
+reset: every setting is back to its default, and lore's saved things are erased	초기화됨: 모든 설정이 기본값으로 돌아갔고 lore가 저장한 것은 삭제되었습니다
+reset, but some could not be erased: {why}	초기화됐지만 일부를 지울 수 없었습니다: {why}
+{code}  (Enter picks one of {count})	{code}  (Enter로 {count}개 중 선택)
+system: from LANG ({code})	시스템: LANG에서 ({code})
+{name}  (Enter picks one; first in the languages topic)	{name}  (Enter로 선택; 언어 주제의 맨 위에 표시)
+favourite	즐겨찾기
+ pages in 	 페이지 언어 
+ favourite language 	 즐겨찾는 언어 
+{lines} lines a press of w or s  (Enter: 5, 10, 15, 20 or 30)	w 또는 s 한 번에 {lines}줄  (Enter: 5, 10, 15, 20, 30)
+{name}  ({count} palettes: Enter picks one; p does too)	{name}  (팔레트 {count}개: Enter로 선택; p도 가능)
+on, online: pages show cht.sh's cheat sheets	켜짐, 온라인: 페이지에 cht.sh 치트 시트 표시
+on, offline: no connection right now	켜짐, 오프라인: 지금은 연결이 없습니다
+off: lore makes no request	꺼짐: lore는 요청을 보내지 않습니다
+on, checking…	켜짐, 확인 중…
+on: {seen} commands seen in your shell's history (only read, here)	켜짐: 셸 기록에서 명령 {seen}개 확인 (여기서 읽기만 함)
+on: no shell history found	켜짐: 셸 기록을 찾지 못했습니다
+off: your shell's history is not read	꺼짐: 셸 기록을 읽지 않습니다
+not saved for the next runs: {why}	다음 실행에는 저장되지 않음: {why}
+ copy 	 복사 
+copied: {text}	복사됨: {text}
+this page has nothing to copy	이 페이지에는 복사할 것이 없습니다
+nothing to copy here: type the code by hand, that is how it is learnt	여기서는 복사할 것이 없습니다: 코드는 직접 입력하세요, 그래야 배웁니다
+  (+{n} lines)	  (+{n}줄)
+  (+1 line)	  (+1줄)
+ colours 	 색상 
+ not saved: {why} 	 저장되지 않음: {why} 
+VERSION	버전
+HOW TO USE	사용법
+RELATED	관련
+SUBCOMMANDS	하위 명령
+NOTES	메모
+FILES	파일
+STEPS	단계
+TASKS	작업
+Everyday tasks, in groups (Tab jumps between them); c copies one. Read each before you run it.	일상 작업을 그룹별로 (Tab으로 그룹 간 이동); c로 하나 복사. 실행 전에 각각 읽으세요.
+A cheat sheet of lore's: the tasks this tool is used for every day.	lore의 치트 시트: 이 도구로 매일 하는 작업.
+USES	사용 명령
+A recipe: a task done in steps, with the commands for each.	레시피: 단계별로 하는 작업과 각 단계의 명령.
+In order; c copies a step's command. Read each before you run it.	순서대로; c로 단계의 명령 복사. 실행 전에 각각 읽으세요.
+The commands it uses, each with its own page (/ to find one).	사용하는 명령, 각각 자기 페이지가 있습니다 (/ 로 찾기).
+LINKS	링크
+MANUAL	매뉴얼
+Your alias: typing it runs `{runs}`.	당신의 별칭: 입력하면 `{runs}`을(를) 실행합니다.
+Built into your shell.	셸에 내장되어 있습니다.
+A word of your shell's language.	셸 언어의 단어입니다.
+A shell function you defined.	당신이 정의한 셸 함수입니다.
+A subcommand of {program}.	{program}의 하위 명령입니다.
+No summary yet for {name}.	{name}의 요약이 아직 없습니다.
+No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository.	{name}의 예시가 아직 없습니다. 누구나 추가할 수 있습니다: lore 저장소의 content/README.md를 보세요.
+! marks an example that can destroy data or stop the system: check what it acts on first.	! 는 데이터를 파괴하거나 시스템을 멈출 수 있는 예시 표시입니다: 먼저 무엇에 작용하는지 확인하세요.
+Open one with / or `lore NAME`.	/ 또는 `lore 이름`으로 엽니다.
+Each has its own page: find it in the list, or run `lore {first}`.	각각 자기 페이지가 있습니다: 목록에서 찾거나 `lore {first}`을(를) 실행하세요.
+An alias has no version of its own: it is the one of the command it runs.	별칭에는 자체 버전이 없습니다: 실행하는 명령의 버전입니다.
+A function you wrote has no version.	직접 작성한 함수에는 버전이 없습니다.
+Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`).	셸의 일부이므로 셸의 버전을 따릅니다 (`bash --version`, `zsh --version`, `fish --version`).
+Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.	lore가 아는 패키지 관리자에서 온 것이 아닙니다: 직접, 언어 도구(cargo, pip, npm…)로, 또는 스크립트로 설치되었습니다. 버전은 `--version`을 시도해 보세요.
+Not installed on this machine, or not in a folder lore looks in.	이 컴퓨터에 설치되어 있지 않거나 lore가 찾는 폴더에 없습니다.
+Package	패키지
+Installed	설치됨
+Newest	최신
+Update	업데이트
+Location	위치
+{newest}, up to date as of your last package list update	{newest}, 마지막 패키지 목록 업데이트 기준 최신
+{newest}: an update is available	{newest}: 업데이트가 있습니다
+  ← → topics	  ← → 주제
+This window is {width}×{height}.\nlore needs at least {min_width}×{min_height}:\nmake it bigger.	이 창은 {width}×{height}입니다.\nlore에는 최소 {min_width}×{min_height}이 필요합니다:\n창을 키워 주세요.
+trending this month	이번 달 인기 상승
+most used	가장 많이 사용
+most used for {category}	{category}에서 가장 많이 사용
+↑ {rise}× this month	↑ 이번 달 {rise}×
+not installed	설치 안 됨
+downloaded	다운로드됨
+most searched (Stack Overflow)	가장 많이 검색됨 (Stack Overflow)
+every set on devdocs.io	devdocs.io의 모든 세트
+on this machine · x deletes	이 컴퓨터에 있음 · x 삭제
+{size} MB · d downloads	{size} MB · d 다운로드
+downloading…	다운로드 중…
+failed: {why}	실패: {why}
+{size} MB of documentation from devdocs.io, to read offline.	devdocs.io의 문서 {size} MB, 오프라인으로 읽기.
+Press d to download it; Enter on it then lists its pages.	d를 눌러 다운로드; 그다음 Enter로 페이지 목록을 봅니다.
+On this machine: Enter lists its pages, x deletes it.	이 컴퓨터에 있음: Enter로 페이지 목록, x로 삭제.
+From devdocs.io. {who}	devdocs.io 제공. {who}
+This page is not in the download.	이 페이지는 다운로드에 없습니다.
+downloading {name} in the background…	{name} 백그라운드에서 다운로드 중…
+deleted {name} from this machine	이 컴퓨터에서 {name} 삭제됨
+could not delete {name}: {why}	{name}을(를) 삭제할 수 없습니다: {why}
+No tool pages here.	여기에는 도구 페이지가 없습니다.
+internet	인터넷
+INTERNET	인터넷
+online: the cheat sheet for {name} from cht.sh	온라인: cht.sh의 {name} 치트 시트
+Raw text from the internet, written by anyone: it can be changed or altered at any time without any check, and lore does not check it either. Read it as text; copy from it carefully, and never paste a command you have not understood. lore will not copy it for you.	인터넷의 원본 텍스트로, 누구나 쓸 수 있습니다: 아무 검사 없이 언제든 바뀌거나 변조될 수 있으며 lore도 확인하지 않습니다. 텍스트로 읽고 조심해서 복사하며, 이해하지 못한 명령은 절대 붙여 넣지 마세요. lore는 대신 복사해 주지 않습니다.
+Fetching it…	가져오는 중…
+cht.sh has nothing for {name}.	cht.sh에 {name} 항목이 없습니다.
+It could not be fetched (slow or refused); it is tried again next time lore starts.	가져올 수 없었습니다 (느리거나 거부됨); 다음에 lore를 시작할 때 다시 시도합니다.
+offline: no connection, so nothing was fetched	오프라인: 연결이 없어 아무것도 가져오지 않았습니다
+off: turned off on the about screen (+), so lore asks nothing	꺼짐: 정보 화면(+)에서 껐으므로 lore는 아무것도 요청하지 않습니다
+checking the connection…	연결 확인 중…
+… more at {url}	… 더 보기: {url}
+From learnxinyminutes.com, CC BY-SA 3.0, by {who}	learnxinyminutes.com 제공, CC BY-SA 3.0, 작성자 {who}
+ and others	 외
+ON THE WEB	웹에서
+File: {file}	파일: {file}
+  (hides {what})	  ({what}을(를) 가림)
+another alias	다른 별칭
+a keyword	키워드
+a function	함수
+a builtin	내장 명령
+a program	프로그램
+a subcommand	하위 명령
+a recipe	레시피
+a tool page	도구 페이지
+a language	언어
+documentation	문서
+Commands	명령
+Pages	페이지
+Config	설정
+Palettes	팔레트
+Kept	보관
+Licence	라이선스
+Source	소스
+Manual	매뉴얼
+Colours	색상
+Internet	인터넷
+History	기록
+Fast scroll	빠른 스크롤
+Pages in	페이지 언어
+Favourite	즐겨찾기
+Reset all	모두 초기화
+it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)	셸의 일부입니다 (내장 명령 또는 키워드): bash에서 `help <이름>`을 시도하거나 셸 자체의 매뉴얼(`man bash`, `man zshbuiltins`)을 보세요
+it is one of your aliases: its page is the one of the command it runs	당신의 별칭 중 하나입니다: 그 페이지는 실행하는 명령의 페이지입니다
+the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)	프로그램에 매뉴얼 페이지가 없거나 문서 패키지가 설치되지 않았습니다 (Debian과 Ubuntu에서는 일부가 별도의 `-doc` 패키지로 제공됩니다)
+manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)	공간 절약을 위해 매뉴얼 페이지가 제거되었습니다 (최소 이미지와 컨테이너 이미지; Ubuntu에서는 `unminimize`로 되돌립니다)
+`man` itself is not installed	`man` 자체가 설치되어 있지 않습니다
+commands	명령
+recipes	레시피
+languages	언어
+docs	문서
+tools	도구
+beacon	beacon
+recent	최근
+bookmarks	북마크
+Move	이동
+Page	페이지
+Search	검색
+Jump	점프
+Fast	빠르게
+Bookmark	북마크
+About	정보
+Keys	키
+Quit	종료
+type	입력
+Filter	필터
+Erase	지우기
+Lore pages	lore 페이지
+Leave search	검색 나가기
+Scroll	스크롤
+Copy	복사
+Back	뒤로
+Choose	선택
+Cancel	취소
+Try	미리보기
+Keep	유지
+Change	변경
+any key	아무 키
+Close	닫기
+Open	열기
+Everywhere	어디서나
+this help	이 도움말
+draw the screen again	화면 다시 그리기
+quit	종료
+The list	목록
+move	이동
+move faster	빠르게 이동
+top / bottom	맨 위 / 맨 아래
+topic before / after	이전 / 다음 주제
+go to that topic in the bar	바의 그 주제로 이동
+bookmarks / recent pages	북마크 / 최근 페이지
+next / previous letter	다음 / 이전 글자
+open the page	페이지 열기
+search (Esc keeps the text)	검색 (Esc는 글자를 유지)
+bookmark, or take it out	북마크 추가 또는 제거
+docs: download / delete a set	문서: 세트 다운로드 / 삭제
+about and settings	정보와 설정
+quit (or leave a docs set)	종료 (또는 문서 세트 나가기)
+A page	페이지
+scroll	스크롤
+next / previous section	다음 / 이전 섹션
+search other pages, this one kept	이 페이지를 둔 채 다른 페이지 검색
+next / previous line with the search's text	검색어가 있는 다음 / 이전 줄
+choose something to copy	복사할 것 고르기
+copy the first example (else the name) at once	첫 예시(없으면 이름)를 바로 복사
+the first link, big, to Ctrl+click	첫 링크를 크게, Ctrl+클릭용으로
+back to the list	목록으로 돌아가기
+none	없음

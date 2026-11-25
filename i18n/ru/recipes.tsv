@@ -1,0 +1,101 @@
+# the recipes' names in Русский: English<TAB>translation
+add a folder to the path	добавить папку в PATH
+add a user	добавить пользователя
+add to the end of a file	дописать в конец файла
+add up numbers in a file	сложить числа из файла
+argument list too long	слишком длинный список аргументов
+ask for input in a script	запросить ввод в скрипте
+back up and restore postgresql	резервная копия и восстановление postgresql
+change permissions of a folder and everything in it	изменить права папки и всего в ней
+check a certificate	проверить сертификат
+check a file's permissions	посмотреть права файла
+check if a file or folder exists	проверить, существует ли файл или папка
+check if a program is installed	проверить, установлена ли программа
+check if a string contains a text	проверить, содержит ли строка текст
+command not found after installing	команда не найдена после установки
+compare two folders	сравнить две папки
+compress a folder	сжать папку
+copy a folder	скопировать папку
+copy files to and from a server	копировать файлы на сервер и с сервера
+copy, overwriting or not	копировать с перезаписью или без
+copy to the clipboard from the terminal	скопировать в буфер обмена из терминала
+copy without some folders	копировать без некоторых папок
+count lines of code	посчитать строки кода
+count lines, words and files	посчитать строки, слова и файлы
+count the processors	посчитать процессоры
+create a large file	создать большой файл
+create an empty file	создать пустой файл
+create nested folders	создать вложенные папки
+dates and timestamps	даты и метки времени
+delete empty lines	удалить пустые строки
+delete files and folders	удалить файлы и папки
+delete lines containing a text	удалить строки с текстом
+disk full but df says there is room	диск полон, но df говорит, что место есть
+docker cannot connect to the daemon	docker не может подключиться к демону
+download a whole folder from a website	скачать целую папку с сайта
+environment variables	переменные окружения
+exclude a folder from find	исключить папку из find
+find a file	найти файл
+find a file's encoding	узнать кодировку файла
+find big files	найти большие файлы
+find files containing a text	найти файлы с текстом
+find recently changed files	найти недавно изменённые файлы
+find the script's own folder	найти папку самого скрипта
+find this machine's ip address	узнать ip-адрес этой машины
+find what killed a process	узнать, что убило процесс
+fix error while loading shared libraries	исправить error while loading shared libraries
+fix windows line endings	исправить переводы строк windows
+free disk space	освободить место на диске
+get a file's name, folder and extension	получить имя, папку и расширение файла
+get inside a docker container	войти в контейнер docker
+get the full path of a file	получить полный путь к файлу
+import and export a mysql database	импорт и экспорт базы mysql
+keep a command running after logout	оставить команду работать после выхода
+list and close tmux or screen sessions	список и закрытие сессий tmux или screen
+list only folders	показать только папки
+list users and groups	список пользователей и групп
+loop over files, numbers and lists	цикл по файлам, числам и спискам
+make a script take options	научить скрипт принимать опции
+make a symbolic link	создать символическую ссылку
+make web requests with curl	веб-запросы через curl
+merge pdf files	объединить pdf-файлы
+pack a folder without some files	упаковать папку без некоторых файлов
+pretty-print json	красиво вывести json
+print colors and new lines	вывод цветов и переводов строк
+print or remove lines of a file	вывести или удалить строки файла
+read a file line by line	читать файл построчно
+read the system logs	читать системные журналы
+rename many files	переименовать много файлов
+replace text in a file	заменить текст в файле
+replace text in many files	заменить текст во многих файлах
+run a script	запустить скрипт
+run commands on a server over ssh	выполнить команды на сервере по ssh
+save a command's output in a variable	сохранить вывод команды в переменную
+schedule a command with cron	запланировать команду через cron
+search but skip some files	искать, пропуская некоторые файлы
+see a program's memory use	посмотреть, сколько памяти ест программа
+see each command a script runs	видеть каждую команду, которую запускает скрипт
+see the size of files and folders	посмотреть размер файлов и папок
+send output and errors to a file	направить вывод и ошибки в файл
+set up an ssh key	настроить ssh-ключ
+show a folder tree	показать дерево папки
+sort and remove duplicate lines	отсортировать и убрать повторяющиеся строки
+split a big file	разбить большой файл
+split a string in bash	разбить строку в bash
+stop a frozen program	остановить зависшую программу
+stop a script on errors	останавливать скрипт при ошибках
+sync two folders	синхронизировать две папки
+the internet does not work	не работает интернет
+time a command	замерить время команды
+undo changes in git	отменить изменения в git
+undo the last git commit	отменить последний коммит git
+unmount a busy drive	отмонтировать занятый диск
+unpack an archive	распаковать архив
+what is slowing the machine	что тормозит машину
+what is using a port	что занимает порт
+which linux version is this	какая это версия linux
+which package a file came from	из какого пакета файл
+which shell is running	какая оболочка запущена
+who is logged in	кто вошёл в систему
+why won't a service start	почему не запускается служба
+work with strings in bash	работа со строками в bash

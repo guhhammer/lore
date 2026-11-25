@@ -71,7 +71,7 @@ Here is the same app as text:
 | **Docs** | Every documentation set of [DevDocs](https://devdocs.io) (850), the most asked about on Stack Overflow first: download one to read it offline, delete it when done. |
 | **The beacon** | What people use most and what is rising this month, from Debian's and Homebrew's public numbers: trending, most used, and most used per category, installed here or not. |
 | **Your own use** | Bookmarks, the pages you opened last, and the commands your shell history runs most sit at the top. |
-| **Your language** | Pages in 41 languages when a translation exists, picked from `$LANG`. |
+| **Your language** | Pages in 41 languages when a translation exists, picked from `$LANG`; the screen itself and the recipes' names in 12 of them. |
 | **Colour palettes** | 33 palettes (Catppuccin, Dracula, Nord, Gruvbox, Solarized, Tokyo Night, One, Rosé Pine, Monokai, GitHub, Everforest, Kanagawa, Ayu, and ones made for colour blindness and low vision: Modus, GitHub colour-blind and high-contrast, Okabe-Ito), or your terminal's own colours. |
 | **Tab completion** | `lore git <Tab>` offers git's subcommands, in bash, zsh and fish. |
 
@@ -237,7 +237,7 @@ to change) and saved for the next time:
 | Internet | On or off (see [Privacy and the internet](#privacy-and-the-internet)). |
 | History | Whether lore reads your shell history to rank your most-used commands. |
 | Fast scroll | How many lines `w` and `s` move: 5, 10, 15, 20 or 30 (Enter goes to the next). |
-| Pages in | The language pages are shown in: `system` (your `LANG`), English, or any language there is a translation in. Enter opens a picker. |
+| Pages in | The language pages are shown in: `system` (your `LANG`), English, or any language there is a translation in. Enter opens a picker. The screen follows it too, in 12 languages (`i18n/`); `lore -p`, `search` and `explain` stay English. |
 | Favourite | A programming language shown first in the languages topic. Enter opens a picker. |
 | Reset all | Enter, then Enter again: every setting back to its default, and bookmarks, recent pages, downloads and caches erased. Your own pages and palettes stay. |
 

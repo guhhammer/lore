@@ -1,0 +1,101 @@
+# the recipes' names in 日本語: English<TAB>translation
+add a folder to the path	フォルダーを PATH に追加する
+add a user	ユーザーを追加する
+add to the end of a file	ファイルの末尾に追記する
+add up numbers in a file	ファイル内の数値を合計する
+argument list too long	引数リストが長すぎる
+ask for input in a script	スクリプトで入力を求める
+back up and restore postgresql	postgresql のバックアップと復元
+change permissions of a folder and everything in it	フォルダーと中身すべての権限を変える
+check a certificate	証明書を確認する
+check a file's permissions	ファイルの権限を確認する
+check if a file or folder exists	ファイルやフォルダーがあるか確認する
+check if a program is installed	プログラムがインストール済みか確認する
+check if a string contains a text	文字列にテキストが含まれるか確認する
+command not found after installing	インストール後にコマンドが見つからない
+compare two folders	二つのフォルダーを比較する
+compress a folder	フォルダーを圧縮する
+copy a folder	フォルダーをコピーする
+copy files to and from a server	サーバーとの間でファイルをコピーする
+copy, overwriting or not	上書きする・しないでコピーする
+copy to the clipboard from the terminal	ターミナルからクリップボードにコピーする
+copy without some folders	一部のフォルダーを除いてコピーする
+count lines of code	コードの行数を数える
+count lines, words and files	行、単語、ファイルを数える
+count the processors	プロセッサーの数を数える
+create a large file	大きなファイルを作る
+create an empty file	空のファイルを作る
+create nested folders	入れ子のフォルダーを作る
+dates and timestamps	日付とタイムスタンプ
+delete empty lines	空行を削除する
+delete files and folders	ファイルとフォルダーを削除する
+delete lines containing a text	テキストを含む行を削除する
+disk full but df says there is room	ディスクが一杯なのに df では空きがある
+docker cannot connect to the daemon	docker がデーモンに接続できない
+download a whole folder from a website	ウェブサイトからフォルダーを丸ごとダウンロードする
+environment variables	環境変数
+exclude a folder from find	find からフォルダーを除外する
+find a file	ファイルを探す
+find a file's encoding	ファイルの文字コードを調べる
+find big files	大きなファイルを探す
+find files containing a text	テキストを含むファイルを探す
+find recently changed files	最近変更されたファイルを探す
+find the script's own folder	スクリプト自身のフォルダーを調べる
+find this machine's ip address	このマシンの ip アドレスを調べる
+find what killed a process	プロセスを止めたものを調べる
+fix error while loading shared libraries	error while loading shared libraries を直す
+fix windows line endings	windows の改行コードを直す
+free disk space	ディスクの空きを作る
+get a file's name, folder and extension	ファイルの名前、フォルダー、拡張子を得る
+get inside a docker container	docker コンテナーの中に入る
+get the full path of a file	ファイルのフルパスを得る
+import and export a mysql database	mysql データベースのインポートとエクスポート
+keep a command running after logout	ログアウト後もコマンドを動かし続ける
+list and close tmux or screen sessions	tmux や screen のセッションを一覧・終了する
+list only folders	フォルダーだけを一覧する
+list users and groups	ユーザーとグループを一覧する
+loop over files, numbers and lists	ファイル、数値、リストでループする
+make a script take options	スクリプトにオプションを受け付けさせる
+make a symbolic link	シンボリックリンクを作る
+make web requests with curl	curl で web リクエストを送る
+merge pdf files	pdf ファイルを結合する
+pack a folder without some files	一部のファイルを除いてフォルダーをまとめる
+pretty-print json	json を見やすく表示する
+print colors and new lines	色と改行を出力する
+print or remove lines of a file	ファイルの行を表示・削除する
+read a file line by line	ファイルを 1 行ずつ読む
+read the system logs	システムのログを読む
+rename many files	たくさんのファイルの名前を変える
+replace text in a file	ファイル内のテキストを置換する
+replace text in many files	多くのファイルのテキストを置換する
+run a script	スクリプトを実行する
+run commands on a server over ssh	ssh でサーバー上のコマンドを実行する
+save a command's output in a variable	コマンドの出力を変数に保存する
+schedule a command with cron	cron でコマンドを予約する
+search but skip some files	一部のファイルを飛ばして検索する
+see a program's memory use	プログラムのメモリ使用量を見る
+see each command a script runs	スクリプトが実行する各コマンドを見る
+see the size of files and folders	ファイルとフォルダーのサイズを見る
+send output and errors to a file	出力とエラーをファイルに送る
+set up an ssh key	ssh 鍵を設定する
+show a folder tree	フォルダーのツリーを表示する
+sort and remove duplicate lines	並べ替えて重複行を消す
+split a big file	大きなファイルを分割する
+split a string in bash	bash で文字列を分割する
+stop a frozen program	固まったプログラムを止める
+stop a script on errors	エラーでスクリプトを止める
+sync two folders	二つのフォルダーを同期する
+the internet does not work	インターネットにつながらない
+time a command	コマンドの時間を計る
+undo changes in git	git の変更を取り消す
+undo the last git commit	直前の git コミットを取り消す
+unmount a busy drive	使用中のドライブをアンマウントする
+unpack an archive	アーカイブを展開する
+what is slowing the machine	マシンを遅くしているもの
+what is using a port	ポートを使っているもの
+which linux version is this	この linux のバージョン
+which package a file came from	ファイルがどのパッケージ由来か
+which shell is running	動いているシェル
+who is logged in	ログインしている人
+why won't a service start	サービスが起動しない理由
+work with strings in bash	bash で文字列を扱う

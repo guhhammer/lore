@@ -18,8 +18,9 @@ the version in `Cargo.toml`, and its subject starts with that version
 - **The interface in your language:** the whole screen (the key bar, the
   help, the about screen and its settings, the topics, a page's headings,
   fields and hints, the notes) and the 100 recipes' names follow Pages in
-  (or `LANG`), in Brazilian Portuguese for a start. Other languages stay in
-  English. The recipes are listed A to Z
+  (or `LANG`), in 12 languages: Arabic, Chinese, French, German, Hindi,
+  Italian, Japanese, Korean, Portuguese (Brazil and Portugal), Russian and
+  Spanish. Other languages stay in English. The recipes are listed A to Z
   by their translated names and found by them too. What lore prints for
   scripts and agents (`-p`, `search`, `explain`, `--help`, the errors) stays
   in English. The translations are files, `i18n/<language>/`, one line a

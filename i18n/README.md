@@ -41,4 +41,4 @@ recipe, and that every English text is still one of lore's: when a text of
 
 ## Languages
 
-pt_BR.
+ar, de, es, fr, hi, it, ja, ko, pt_BR, pt_PT, ru, zh.

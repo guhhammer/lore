@@ -1,0 +1,101 @@
+# the recipes' names in Français: English<TAB>translation
+add a folder to the path	ajouter un dossier au path
+add a user	ajouter un utilisateur
+add to the end of a file	ajouter à la fin d'un fichier
+add up numbers in a file	additionner les nombres d'un fichier
+argument list too long	liste d'arguments trop longue
+ask for input in a script	demander une saisie dans un script
+back up and restore postgresql	sauvegarder et restaurer postgresql
+change permissions of a folder and everything in it	changer les droits d'un dossier et de tout son contenu
+check a certificate	vérifier un certificat
+check a file's permissions	voir les droits d'un fichier
+check if a file or folder exists	vérifier si un fichier ou un dossier existe
+check if a program is installed	vérifier si un programme est installé
+check if a string contains a text	vérifier si une chaîne contient un texte
+command not found after installing	commande introuvable après installation
+compare two folders	comparer deux dossiers
+compress a folder	compresser un dossier
+copy a folder	copier un dossier
+copy files to and from a server	copier des fichiers vers et depuis un serveur
+copy, overwriting or not	copier, en écrasant ou non
+copy to the clipboard from the terminal	copier dans le presse-papiers depuis le terminal
+copy without some folders	copier sans certains dossiers
+count lines of code	compter les lignes de code
+count lines, words and files	compter lignes, mots et fichiers
+count the processors	compter les processeurs
+create a large file	créer un gros fichier
+create an empty file	créer un fichier vide
+create nested folders	créer des dossiers imbriqués
+dates and timestamps	dates et horodatages
+delete empty lines	supprimer les lignes vides
+delete files and folders	supprimer des fichiers et des dossiers
+delete lines containing a text	supprimer les lignes contenant un texte
+disk full but df says there is room	disque plein mais df dit qu'il reste de la place
+docker cannot connect to the daemon	docker ne peut pas se connecter au démon
+download a whole folder from a website	télécharger tout un dossier d'un site
+environment variables	variables d'environnement
+exclude a folder from find	exclure un dossier de find
+find a file	trouver un fichier
+find a file's encoding	trouver l'encodage d'un fichier
+find big files	trouver les gros fichiers
+find files containing a text	trouver les fichiers contenant un texte
+find recently changed files	trouver les fichiers modifiés récemment
+find the script's own folder	trouver le dossier du script lui-même
+find this machine's ip address	trouver l'adresse ip de cette machine
+find what killed a process	trouver ce qui a tué un processus
+fix error while loading shared libraries	corriger error while loading shared libraries
+fix windows line endings	corriger les fins de ligne windows
+free disk space	libérer de l'espace disque
+get a file's name, folder and extension	obtenir le nom, le dossier et l'extension d'un fichier
+get inside a docker container	entrer dans un conteneur docker
+get the full path of a file	obtenir le chemin complet d'un fichier
+import and export a mysql database	importer et exporter une base mysql
+keep a command running after logout	garder une commande active après la déconnexion
+list and close tmux or screen sessions	lister et fermer les sessions tmux ou screen
+list only folders	lister seulement les dossiers
+list users and groups	lister les utilisateurs et les groupes
+loop over files, numbers and lists	boucler sur des fichiers, des nombres et des listes
+make a script take options	faire accepter des options à un script
+make a symbolic link	créer un lien symbolique
+make web requests with curl	faire des requêtes web avec curl
+merge pdf files	fusionner des fichiers pdf
+pack a folder without some files	archiver un dossier sans certains fichiers
+pretty-print json	afficher du json lisible
+print colors and new lines	afficher des couleurs et des retours à la ligne
+print or remove lines of a file	afficher ou supprimer des lignes d'un fichier
+read a file line by line	lire un fichier ligne par ligne
+read the system logs	lire les journaux du système
+rename many files	renommer beaucoup de fichiers
+replace text in a file	remplacer du texte dans un fichier
+replace text in many files	remplacer du texte dans beaucoup de fichiers
+run a script	lancer un script
+run commands on a server over ssh	lancer des commandes sur un serveur par ssh
+save a command's output in a variable	garder la sortie d'une commande dans une variable
+schedule a command with cron	planifier une commande avec cron
+search but skip some files	chercher en ignorant certains fichiers
+see a program's memory use	voir la mémoire utilisée par un programme
+see each command a script runs	voir chaque commande que lance un script
+see the size of files and folders	voir la taille des fichiers et des dossiers
+send output and errors to a file	envoyer la sortie et les erreurs dans un fichier
+set up an ssh key	configurer une clé ssh
+show a folder tree	afficher l'arborescence d'un dossier
+sort and remove duplicate lines	trier et supprimer les lignes en double
+split a big file	découper un gros fichier
+split a string in bash	découper une chaîne en bash
+stop a frozen program	arrêter un programme bloqué
+stop a script on errors	arrêter un script en cas d'erreur
+sync two folders	synchroniser deux dossiers
+the internet does not work	internet ne marche pas
+time a command	chronométrer une commande
+undo changes in git	annuler des changements dans git
+undo the last git commit	annuler le dernier commit git
+unmount a busy drive	démonter un disque occupé
+unpack an archive	extraire une archive
+what is slowing the machine	ce qui ralentit la machine
+what is using a port	ce qui utilise un port
+which linux version is this	quelle version de linux est-ce
+which package a file came from	de quel paquet vient un fichier
+which shell is running	quel shell tourne
+who is logged in	qui est connecté
+why won't a service start	pourquoi un service ne démarre pas
+work with strings in bash	manipuler des chaînes en bash

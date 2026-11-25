@@ -74,14 +74,30 @@ fn the_screen_follows_the_language_and_what_lore_prints_stays_english() {
         "found by its English name"
     );
 
+    // pt_PT falls back to nothing else: it has its own file
+    *READING_LANGUAGE.write().unwrap() = Some("pt_PT".to_owned());
+    assert_eq!(tr("FILES"), "FICHEIROS");
     // a language with no interface file, and English: English
     *READING_LANGUAGE.write().unwrap() = Some("sw".to_owned());
     assert_eq!(tr(HEADING_VERSION), "VERSION");
     *READING_LANGUAGE.write().unwrap() = Some("en".to_owned());
     assert_eq!(tr(HEADING_VERSION), "VERSION");
+    // zh_CN finds zh
+    *READING_LANGUAGE.write().unwrap() = Some("zh_CN".to_owned());
+    assert_eq!(tr(HEADING_VERSION), "版本");
 
     TRANSLATE_INTERFACE.store(false, Ordering::Relaxed);
     *READING_LANGUAGE.write().unwrap() = None;
+}
+
+#[test]
+fn twelve_languages_have_the_interface_and_the_recipes() {
+    let found = codes();
+    for code in [
+        "ar", "de", "es", "fr", "hi", "it", "ja", "ko", "pt_BR", "pt_PT", "ru", "zh",
+    ] {
+        assert!(found.contains(&code), "{code} missing from {found:?}");
+    }
 }
 
 #[test]

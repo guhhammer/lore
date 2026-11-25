@@ -1,0 +1,226 @@
+# lore's screen in العربية: English<TAB>translation (format: i18n/README.md)
+From its manual: the configuration, logs and data it uses.	من دليله: الإعدادات والسجلات والبيانات التي يستخدمها.
+Ctrl+click a link to open it in your browser.	Ctrl+نقرة على رابط لفتحه في المتصفح.
+Check every link before you open it: anyone can add pages to lore. lore will never ask you to log in anywhere, or for any account.	افحص كل رابط قبل فتحه: يمكن لأي شخص إضافة صفحات إلى lore. لن يطلب منك lore أبدًا تسجيل الدخول في أي مكان، ولا أي حساب.
+! Can destroy data or stop the system, with no undo. Read each example, and check what it acts on, before you run it.	! قد يدمّر البيانات أو يوقف النظام، بلا تراجع. اقرأ كل مثال وتحقق مما يعمل عليه قبل تشغيله.
+No manual page for this command. Probable reasons:	لا توجد صفحة دليل لهذا الأمر. أسباب محتملة:
+ search 	 بحث 
+press / to search	اضغط / للبحث
+   (/ to edit)	   (/ للتعديل)
+ {topic} ({total}) 	 {topic} ({total}) 
+ every topic: {shown} of {total} 	 كل المواضيع: {shown} من {total} 
+ no command matches "{query}"	 لا يوجد أمر يطابق "{query}"
+nothing to find: search a word with / first, then n jumps to it	لا شيء للبحث عنه: ابحث عن كلمة بـ / أولًا، ثم n يقفز إليها
+"{text}" is not on this page	"{text}" ليس في هذه الصفحة
+"{text}": {at} of {count}	"{text}": {at} من {count}
+ link 	 رابط 
+this page has no link	لا رابط في هذه الصفحة
+nothing in {topic} yet	لا شيء في {topic} بعد
+ keys 	 المفاتيح 
+ about 	 حول 
+lore {version}: every command you can type, and what each one does. Offline.	lore {version}: كل أمر يمكنك كتابته، وما يفعله كل واحد. دون اتصال.
+{total} on this machine, {pages} with a lore page	{total} على هذا الجهاز، {pages} منها لها صفحة في lore
+{pages} built in, translations in {languages} languages	{pages} مدمجة، وترجمات بـ {languages} لغة
+{bookmarks} bookmarks, {recent} recent pages	{bookmarks} إشارات مرجعية، {recent} صفحات حديثة
+MIT; examples and translations from tldr-pages, CC BY 4.0	MIT؛ الأمثلة والترجمات من tldr-pages، CC BY 4.0
+man lore, lore --help	man lore، lore --help
+FOLLOW	تابع
+like lore? follow guhhammer for what comes next (Ctrl+click)	أعجبك lore؟ تابع guhhammer لترى ما هو قادم (Ctrl+نقرة)
+SETTINGS	الإعدادات
+↑↓ choose, Enter changes; saved for the next runs	↑↓ اختيار، Enter تغيير؛ يُحفظ للمرات القادمة
+Enter: settings back to default, bookmarks, recent, downloads and caches erased	Enter: الإعدادات إلى الافتراضي، ومسح الإشارات والحديثة والتنزيلات والذاكرة المؤقتة
+Enter again to erase it all for good; ↑↓ or Esc keep everything	Enter مرة أخرى لمسح كل شيء نهائيًا؛ ↑↓ أو Esc تبقي كل شيء
+reset: every setting is back to its default, and lore's saved things are erased	أُعيد الضبط: عاد كل إعداد إلى الافتراضي، ومُسح ما حفظه lore
+reset, but some could not be erased: {why}	أُعيد الضبط، لكن تعذّر مسح بعض الأشياء: {why}
+{code}  (Enter picks one of {count})	{code}  (Enter يختار واحدة من {count})
+system: from LANG ({code})	النظام: من LANG ({code})
+{name}  (Enter picks one; first in the languages topic)	{name}  (Enter يختار واحدة؛ الأولى في موضوع اللغات)
+favourite	المفضلة
+ pages in 	 الصفحات بلغة 
+ favourite language 	 لغة البرمجة المفضلة 
+{lines} lines a press of w or s  (Enter: 5, 10, 15, 20 or 30)	{lines} سطرًا لكل ضغطة على w أو s  (Enter: 5 أو 10 أو 15 أو 20 أو 30)
+{name}  ({count} palettes: Enter picks one; p does too)	{name}  ({count} لوحة ألوان: Enter يختار واحدة؛ وp أيضًا)
+on, online: pages show cht.sh's cheat sheets	مفعّل، متصل: تعرض الصفحات أوراق الغش من cht.sh
+on, offline: no connection right now	مفعّل، غير متصل: لا اتصال الآن
+off: lore makes no request	معطّل: لا يرسل lore أي طلب
+on, checking…	مفعّل، جارٍ التحقق…
+on: {seen} commands seen in your shell's history (only read, here)	مفعّل: {seen} أمرًا في سجل الصدفة لديك (قراءة فقط، هنا)
+on: no shell history found	مفعّل: لم يُعثر على سجل للصدفة
+off: your shell's history is not read	معطّل: لا يُقرأ سجل الصدفة لديك
+not saved for the next runs: {why}	لم يُحفظ للمرات القادمة: {why}
+ copy 	 نسخ 
+copied: {text}	نُسخ: {text}
+this page has nothing to copy	لا شيء للنسخ في هذه الصفحة
+nothing to copy here: type the code by hand, that is how it is learnt	لا شيء للنسخ هنا: اكتب الشيفرة بيدك، فهكذا تُتعلّم
+  (+{n} lines)	  (+{n} أسطر)
+  (+1 line)	  (+سطر واحد)
+ colours 	 الألوان 
+ not saved: {why} 	 لم يُحفظ: {why} 
+VERSION	الإصدار
+HOW TO USE	طريقة الاستخدام
+RELATED	ذات صلة
+SUBCOMMANDS	الأوامر الفرعية
+NOTES	ملاحظات
+FILES	الملفات
+STEPS	الخطوات
+TASKS	المهام
+Everyday tasks, in groups (Tab jumps between them); c copies one. Read each before you run it.	مهام يومية، في مجموعات (Tab يتنقل بينها)؛ c ينسخ واحدة. اقرأ كل واحدة قبل تشغيلها.
+A cheat sheet of lore's: the tasks this tool is used for every day.	ورقة غش من lore: المهام التي تُستخدم لها هذه الأداة كل يوم.
+USES	يستخدم
+A recipe: a task done in steps, with the commands for each.	وصفة: مهمة تُنجز على خطوات، مع أوامر كل خطوة.
+In order; c copies a step's command. Read each before you run it.	بالترتيب؛ c ينسخ أمر خطوة. اقرأ كل واحدة قبل تشغيلها.
+The commands it uses, each with its own page (/ to find one).	الأوامر التي تستخدمها، ولكل منها صفحتها (/ للعثور على واحد).
+LINKS	الروابط
+MANUAL	الدليل
+Your alias: typing it runs `{runs}`.	اسمك المستعار: كتابته تشغّل `{runs}`.
+Built into your shell.	مدمج في صدفتك.
+A word of your shell's language.	كلمة من لغة صدفتك.
+A shell function you defined.	دالة صدفة عرّفتها أنت.
+A subcommand of {program}.	أمر فرعي لـ {program}.
+No summary yet for {name}.	لا ملخص بعد لـ {name}.
+No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository.	لا أمثلة بعد لـ {name}. يمكن لأي شخص إضافتها: انظر content/README.md في مستودع lore.
+! marks an example that can destroy data or stop the system: check what it acts on first.	! تعلّم مثالًا قد يدمّر البيانات أو يوقف النظام: تحقق أولًا مما يعمل عليه.
+Open one with / or `lore NAME`.	افتح واحدًا بـ / أو `lore الاسم`.
+Each has its own page: find it in the list, or run `lore {first}`.	لكل واحد صفحته: ابحث عنه في القائمة، أو شغّل `lore {first}`.
+An alias has no version of its own: it is the one of the command it runs.	ليس للاسم المستعار إصدار خاص: إصداره هو إصدار الأمر الذي يشغّله.
+A function you wrote has no version.	الدالة التي كتبتها ليس لها إصدار.
+Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`).	جزء من صدفتك، لذا إصداره هو إصدار الصدفة (`bash --version`، `zsh --version`، `fish --version`).
+Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.	ليس من مدير حزم يعرفه lore: مثبّت يدويًا، أو بأداة لغة (cargo، pip، npm…) أو بسكربت. لمعرفة إصداره: جرّب `--version`.
+Not installed on this machine, or not in a folder lore looks in.	غير مثبّت على هذا الجهاز، أو ليس في مجلد يبحث فيه lore.
+Package	الحزمة
+Installed	المثبّت
+Newest	الأحدث
+Update	التحديث
+Location	المكان
+{newest}, up to date as of your last package list update	{newest}، محدّث منذ آخر تحديث لقائمة الحزم
+{newest}: an update is available	{newest}: يتوفر تحديث
+  ← → topics	  ← → المواضيع
+This window is {width}×{height}.\nlore needs at least {min_width}×{min_height}:\nmake it bigger.	هذه النافذة {width}×{height}.\nيحتاج lore على الأقل {min_width}×{min_height}:\nكبّرها.
+trending this month	الأكثر صعودًا هذا الشهر
+most used	الأكثر استخدامًا
+most used for {category}	الأكثر استخدامًا في {category}
+↑ {rise}× this month	↑ {rise}× هذا الشهر
+not installed	غير مثبّت
+downloaded	المنزّلة
+most searched (Stack Overflow)	الأكثر بحثًا (Stack Overflow)
+every set on devdocs.io	كل المجموعات على devdocs.io
+on this machine · x deletes	على هذا الجهاز · x يحذف
+{size} MB · d downloads	{size} م.ب · d ينزّل
+downloading…	جارٍ التنزيل…
+failed: {why}	فشل: {why}
+{size} MB of documentation from devdocs.io, to read offline.	{size} م.ب من توثيق devdocs.io، للقراءة دون اتصال.
+Press d to download it; Enter on it then lists its pages.	اضغط d لتنزيلها؛ ثم Enter عليها يعرض صفحاتها.
+On this machine: Enter lists its pages, x deletes it.	على هذا الجهاز: Enter يعرض صفحاتها، x يحذفها.
+From devdocs.io. {who}	من devdocs.io. {who}
+This page is not in the download.	هذه الصفحة ليست في التنزيل.
+downloading {name} in the background…	جارٍ تنزيل {name} في الخلفية…
+deleted {name} from this machine	حُذف {name} من هذا الجهاز
+could not delete {name}: {why}	تعذّر حذف {name}: {why}
+No tool pages here.	لا صفحات أدوات هنا.
+internet	الإنترنت
+INTERNET	الإنترنت
+online: the cheat sheet for {name} from cht.sh	متصل: ورقة غش {name} من cht.sh
+Raw text from the internet, written by anyone: it can be changed or altered at any time without any check, and lore does not check it either. Read it as text; copy from it carefully, and never paste a command you have not understood. lore will not copy it for you.	نص خام من الإنترنت، كتبه أي شخص: قد يُغيَّر أو يُحرَّف في أي وقت دون أي فحص، ولا يفحصه lore أيضًا. اقرأه كنص؛ انسخ منه بحذر، ولا تلصق أبدًا أمرًا لم تفهمه. لن ينسخه lore لك.
+Fetching it…	جارٍ الجلب…
+cht.sh has nothing for {name}.	ليس لدى cht.sh شيء عن {name}.
+It could not be fetched (slow or refused); it is tried again next time lore starts.	تعذّر جلبه (بطيء أو مرفوض)؛ ستُعاد المحاولة عند تشغيل lore في المرة القادمة.
+offline: no connection, so nothing was fetched	غير متصل: لا اتصال، فلم يُجلب شيء
+off: turned off on the about screen (+), so lore asks nothing	معطّل: أُطفئ في شاشة حول (+)، فلا يطلب lore شيئًا
+checking the connection…	جارٍ التحقق من الاتصال…
+… more at {url}	… المزيد على {url}
+From learnxinyminutes.com, CC BY-SA 3.0, by {who}	من learnxinyminutes.com، CC BY-SA 3.0، بقلم {who}
+ and others	 وآخرين
+ON THE WEB	على الويب
+File: {file}	الملف: {file}
+  (hides {what})	  (يخفي {what})
+another alias	اسمًا مستعارًا آخر
+a keyword	كلمة مفتاحية
+a function	دالة
+a builtin	أمرًا مدمجًا
+a program	برنامجًا
+a subcommand	أمرًا فرعيًا
+a recipe	وصفة
+a tool page	صفحة أداة
+a language	لغة
+documentation	توثيقًا
+Commands	الأوامر
+Pages	الصفحات
+Config	الإعدادات
+Palettes	لوحات الألوان
+Kept	المحفوظ
+Licence	الرخصة
+Source	المصدر
+Manual	الدليل
+Colours	الألوان
+Internet	الإنترنت
+History	السجل
+Fast scroll	التمرير السريع
+Pages in	الصفحات بلغة
+Favourite	المفضلة
+Reset all	إعادة ضبط الكل
+it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)	هو جزء من الصدفة (أمر مدمج أو كلمة مفتاحية): جرّب `help <الاسم>` في bash، أو دليل الصدفة نفسها (`man bash`، `man zshbuiltins`)
+it is one of your aliases: its page is the one of the command it runs	هو أحد أسمائك المستعارة: صفحته هي صفحة الأمر الذي يشغّله
+the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)	البرنامج لا يأتي بصفحة دليل، أو حزمة توثيقه غير مثبّتة (في Debian وUbuntu يأتي بعضها في حزمة `-doc` منفصلة)
+manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)	حُذفت صفحات الدليل لتوفير المساحة (الصور المصغّرة وصور الحاويات؛ في Ubuntu يعيدها `unminimize`)
+`man` itself is not installed	`man` نفسه غير مثبّت
+commands	الأوامر
+recipes	الوصفات
+languages	اللغات
+docs	التوثيق
+tools	الأدوات
+beacon	beacon
+recent	الحديثة
+bookmarks	الإشارات
+Move	تحريك
+Page	صفحة
+Search	بحث
+Jump	قفز
+Fast	سريع
+Bookmark	إشارة
+About	حول
+Keys	المفاتيح
+Quit	خروج
+type	اكتب
+Filter	تصفية
+Erase	مسح
+Lore pages	صفحات lore
+Leave search	مغادرة البحث
+Scroll	تمرير
+Copy	نسخ
+Back	رجوع
+Choose	اختيار
+Cancel	إلغاء
+Try	تجربة
+Keep	إبقاء
+Change	تغيير
+any key	أي مفتاح
+Close	إغلاق
+Open	فتح
+Everywhere	في كل مكان
+this help	هذه المساعدة
+draw the screen again	إعادة رسم الشاشة
+quit	خروج
+The list	القائمة
+move	تحريك
+move faster	تحريك أسرع
+top / bottom	الأعلى / الأسفل
+topic before / after	الموضوع السابق / التالي
+go to that topic in the bar	الذهاب إلى ذلك الموضوع في الشريط
+bookmarks / recent pages	الإشارات / الصفحات الحديثة
+next / previous letter	الحرف التالي / السابق
+open the page	فتح الصفحة
+search (Esc keeps the text)	بحث (Esc يبقي النص)
+bookmark, or take it out	إضافة إشارة أو إزالتها
+docs: download / delete a set	التوثيق: تنزيل / حذف مجموعة
+about and settings	حول والإعدادات
+quit (or leave a docs set)	خروج (أو مغادرة مجموعة توثيق)
+A page	صفحة
+scroll	تمرير
+next / previous section	القسم التالي / السابق
+search other pages, this one kept	البحث في صفحات أخرى مع إبقاء هذه
+next / previous line with the search's text	السطر التالي / السابق الذي فيه نص البحث
+choose something to copy	اختيار شيء للنسخ
+copy the first example (else the name) at once	نسخ أول مثال (وإلا الاسم) فورًا
+the first link, big, to Ctrl+click	أول رابط، كبيرًا، لنقرة Ctrl
+back to the list	العودة إلى القائمة
+none	لا شيء

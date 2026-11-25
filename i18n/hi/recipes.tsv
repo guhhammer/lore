@@ -1,0 +1,101 @@
+# the recipes' names in हिन्दी: English<TAB>translation
+add a folder to the path	PATH में फ़ोल्डर जोड़ना
+add a user	उपयोगकर्ता जोड़ना
+add to the end of a file	फ़ाइल के अंत में जोड़ना
+add up numbers in a file	फ़ाइल की संख्याएँ जोड़ना
+argument list too long	आर्ग्युमेंट सूची बहुत लंबी
+ask for input in a script	स्क्रिप्ट में इनपुट माँगना
+back up and restore postgresql	postgresql का बैकअप और रीस्टोर
+change permissions of a folder and everything in it	फ़ोल्डर और उसके अंदर सब की अनुमतियाँ बदलना
+check a certificate	सर्टिफ़िकेट जाँचना
+check a file's permissions	फ़ाइल की अनुमतियाँ देखना
+check if a file or folder exists	फ़ाइल या फ़ोल्डर है या नहीं जाँचना
+check if a program is installed	प्रोग्राम इंस्टॉल है या नहीं जाँचना
+check if a string contains a text	स्ट्रिंग में कोई पाठ है या नहीं जाँचना
+command not found after installing	इंस्टॉल के बाद कमांड नहीं मिली
+compare two folders	दो फ़ोल्डरों की तुलना
+compress a folder	फ़ोल्डर कंप्रेस करना
+copy a folder	फ़ोल्डर कॉपी करना
+copy files to and from a server	सर्वर से और सर्वर पर फ़ाइलें कॉपी करना
+copy, overwriting or not	ओवरराइट करके या बिना कॉपी करना
+copy to the clipboard from the terminal	टर्मिनल से क्लिपबोर्ड में कॉपी करना
+copy without some folders	कुछ फ़ोल्डरों के बिना कॉपी करना
+count lines of code	कोड की पंक्तियाँ गिनना
+count lines, words and files	पंक्तियाँ, शब्द और फ़ाइलें गिनना
+count the processors	प्रोसेसर गिनना
+create a large file	बड़ी फ़ाइल बनाना
+create an empty file	खाली फ़ाइल बनाना
+create nested folders	नेस्टेड फ़ोल्डर बनाना
+dates and timestamps	तारीखें और टाइमस्टैम्प
+delete empty lines	खाली पंक्तियाँ मिटाना
+delete files and folders	फ़ाइलें और फ़ोल्डर मिटाना
+delete lines containing a text	कोई पाठ वाली पंक्तियाँ मिटाना
+disk full but df says there is room	डिस्क भरी है पर df कहता है जगह है
+docker cannot connect to the daemon	docker डेमन से नहीं जुड़ पाता
+download a whole folder from a website	वेबसाइट से पूरा फ़ोल्डर डाउनलोड करना
+environment variables	एनवायरनमेंट वेरिएबल
+exclude a folder from find	find से फ़ोल्डर बाहर रखना
+find a file	फ़ाइल ढूँढना
+find a file's encoding	फ़ाइल की एन्कोडिंग पता करना
+find big files	बड़ी फ़ाइलें ढूँढना
+find files containing a text	कोई पाठ वाली फ़ाइलें ढूँढना
+find recently changed files	हाल में बदली फ़ाइलें ढूँढना
+find the script's own folder	स्क्रिप्ट का अपना फ़ोल्डर ढूँढना
+find this machine's ip address	इस मशीन का ip पता ढूँढना
+find what killed a process	पता करना कि प्रोसेस को किसने खत्म किया
+fix error while loading shared libraries	error while loading shared libraries ठीक करना
+fix windows line endings	windows की लाइन एंडिंग ठीक करना
+free disk space	डिस्क में जगह खाली करना
+get a file's name, folder and extension	फ़ाइल का नाम, फ़ोल्डर और एक्सटेंशन पाना
+get inside a docker container	docker कंटेनर के अंदर जाना
+get the full path of a file	फ़ाइल का पूरा पाथ पाना
+import and export a mysql database	mysql डेटाबेस इम्पोर्ट और एक्सपोर्ट करना
+keep a command running after logout	लॉग आउट के बाद भी कमांड चलाए रखना
+list and close tmux or screen sessions	tmux या screen सत्र देखना और बंद करना
+list only folders	केवल फ़ोल्डर दिखाना
+list users and groups	उपयोगकर्ता और समूह दिखाना
+loop over files, numbers and lists	फ़ाइलों, संख्याओं और सूचियों पर लूप
+make a script take options	स्क्रिप्ट से विकल्प स्वीकार करवाना
+make a symbolic link	सिम्बॉलिक लिंक बनाना
+make web requests with curl	curl से वेब अनुरोध भेजना
+merge pdf files	pdf फ़ाइलें जोड़ना
+pack a folder without some files	कुछ फ़ाइलों के बिना फ़ोल्डर पैक करना
+pretty-print json	json को पढ़ने लायक दिखाना
+print colors and new lines	रंग और नई पंक्तियाँ छापना
+print or remove lines of a file	फ़ाइल की पंक्तियाँ छापना या हटाना
+read a file line by line	फ़ाइल को पंक्ति दर पंक्ति पढ़ना
+read the system logs	सिस्टम लॉग पढ़ना
+rename many files	कई फ़ाइलों के नाम बदलना
+replace text in a file	फ़ाइल में पाठ बदलना
+replace text in many files	कई फ़ाइलों में पाठ बदलना
+run a script	स्क्रिप्ट चलाना
+run commands on a server over ssh	ssh से सर्वर पर कमांड चलाना
+save a command's output in a variable	कमांड का आउटपुट वेरिएबल में रखना
+schedule a command with cron	cron से कमांड शेड्यूल करना
+search but skip some files	कुछ फ़ाइलें छोड़कर खोजना
+see a program's memory use	प्रोग्राम की मेमोरी खपत देखना
+see each command a script runs	स्क्रिप्ट की चलाई हर कमांड देखना
+see the size of files and folders	फ़ाइलों और फ़ोल्डरों का आकार देखना
+send output and errors to a file	आउटपुट और त्रुटियाँ फ़ाइल में भेजना
+set up an ssh key	ssh कुंजी सेट करना
+show a folder tree	फ़ोल्डर ट्री दिखाना
+sort and remove duplicate lines	क्रम में लगाना और दोहराई पंक्तियाँ हटाना
+split a big file	बड़ी फ़ाइल बाँटना
+split a string in bash	bash में स्ट्रिंग बाँटना
+stop a frozen program	अटका प्रोग्राम रोकना
+stop a script on errors	त्रुटि पर स्क्रिप्ट रोकना
+sync two folders	दो फ़ोल्डर सिंक करना
+the internet does not work	इंटरनेट काम नहीं कर रहा
+time a command	कमांड का समय मापना
+undo changes in git	git में बदलाव पलटना
+undo the last git commit	git का पिछला commit पलटना
+unmount a busy drive	व्यस्त ड्राइव अनमाउंट करना
+unpack an archive	आर्काइव खोलना
+what is slowing the machine	मशीन को क्या धीमा कर रहा है
+what is using a port	पोर्ट को क्या इस्तेमाल कर रहा है
+which linux version is this	यह कौन सा linux संस्करण है
+which package a file came from	फ़ाइल किस पैकेज से आई
+which shell is running	कौन सा शेल चल रहा है
+who is logged in	कौन लॉग इन है
+why won't a service start	सर्विस शुरू क्यों नहीं होती
+work with strings in bash	bash में स्ट्रिंग के साथ काम

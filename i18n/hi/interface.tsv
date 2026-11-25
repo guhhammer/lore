@@ -1,0 +1,226 @@
+# lore's screen in हिन्दी: English<TAB>translation (format: i18n/README.md)
+From its manual: the configuration, logs and data it uses.	इसके मैनुअल से: यह जो कॉन्फ़िगरेशन, लॉग और डेटा इस्तेमाल करता है।
+Ctrl+click a link to open it in your browser.	किसी लिंक को ब्राउज़र में खोलने के लिए Ctrl+क्लिक करें।
+Check every link before you open it: anyone can add pages to lore. lore will never ask you to log in anywhere, or for any account.	हर लिंक खोलने से पहले जाँचें: कोई भी lore में पेज जोड़ सकता है। lore आपसे कभी कहीं लॉग इन करने या कोई खाता देने को नहीं कहेगा।
+! Can destroy data or stop the system, with no undo. Read each example, and check what it acts on, before you run it.	! डेटा नष्ट कर सकता है या सिस्टम रोक सकता है, बिना वापसी के। चलाने से पहले हर उदाहरण पढ़ें और देखें कि वह किस पर काम करता है।
+No manual page for this command. Probable reasons:	इस कमांड का कोई मैनुअल पेज नहीं है। संभावित कारण:
+ search 	 खोज 
+press / to search	खोजने के लिए / दबाएँ
+   (/ to edit)	   (/ से बदलें)
+ {topic} ({total}) 	 {topic} ({total}) 
+ every topic: {shown} of {total} 	 सभी विषय: {total} में से {shown} 
+ no command matches "{query}"	 "{query}" से कोई कमांड मेल नहीं खाती
+nothing to find: search a word with / first, then n jumps to it	ढूँढने को कुछ नहीं: पहले / से कोई शब्द खोजें, फिर n उस पर जाता है
+"{text}" is not on this page	"{text}" इस पेज पर नहीं है
+"{text}": {at} of {count}	"{text}": {count} में से {at}
+ link 	 लिंक 
+this page has no link	इस पेज पर कोई लिंक नहीं है
+nothing in {topic} yet	{topic} में अभी कुछ नहीं है
+ keys 	 कुंजियाँ 
+ about 	 परिचय 
+lore {version}: every command you can type, and what each one does. Offline.	lore {version}: हर कमांड जो आप टाइप कर सकते हैं, और हर एक क्या करती है। ऑफ़लाइन।
+{total} on this machine, {pages} with a lore page	इस मशीन पर {total}, जिनमें से {pages} का lore पेज है
+{pages} built in, translations in {languages} languages	{pages} अंतर्निहित, {languages} भाषाओं में अनुवाद
+{bookmarks} bookmarks, {recent} recent pages	{bookmarks} बुकमार्क, {recent} हाल के पेज
+MIT; examples and translations from tldr-pages, CC BY 4.0	MIT; उदाहरण और अनुवाद tldr-pages से, CC BY 4.0
+man lore, lore --help	man lore, lore --help
+FOLLOW	फ़ॉलो करें
+like lore? follow guhhammer for what comes next (Ctrl+click)	lore पसंद आया? आगे क्या आ रहा है, यह जानने के लिए guhhammer को फ़ॉलो करें (Ctrl+क्लिक)
+SETTINGS	सेटिंग्स
+↑↓ choose, Enter changes; saved for the next runs	↑↓ चुनें, Enter बदलें; अगली बार के लिए सहेजा जाता है
+Enter: settings back to default, bookmarks, recent, downloads and caches erased	Enter: सेटिंग्स डिफ़ॉल्ट पर, बुकमार्क, हाल के, डाउनलोड और कैश मिटाए जाएँगे
+Enter again to erase it all for good; ↑↓ or Esc keep everything	सब कुछ हमेशा के लिए मिटाने के लिए फिर से Enter; ↑↓ या Esc सब कुछ रखते हैं
+reset: every setting is back to its default, and lore's saved things are erased	रीसेट हुआ: हर सेटिंग डिफ़ॉल्ट पर लौटी, और lore का सहेजा सब मिटा दिया गया
+reset, but some could not be erased: {why}	रीसेट हुआ, पर कुछ चीज़ें मिटाई नहीं जा सकीं: {why}
+{code}  (Enter picks one of {count})	{code}  (Enter {count} में से एक चुनता है)
+system: from LANG ({code})	सिस्टम: LANG से ({code})
+{name}  (Enter picks one; first in the languages topic)	{name}  (Enter एक चुनता है; भाषाएँ विषय में सबसे ऊपर)
+favourite	पसंदीदा
+ pages in 	 पेजों की भाषा 
+ favourite language 	 पसंदीदा भाषा 
+{lines} lines a press of w or s  (Enter: 5, 10, 15, 20 or 30)	w या s के हर दबाव पर {lines} पंक्तियाँ  (Enter: 5, 10, 15, 20 या 30)
+{name}  ({count} palettes: Enter picks one; p does too)	{name}  ({count} पैलेट: Enter एक चुनता है; p भी)
+on, online: pages show cht.sh's cheat sheets	चालू, ऑनलाइन: पेज cht.sh की चीट शीट दिखाते हैं
+on, offline: no connection right now	चालू, ऑफ़लाइन: अभी कोई कनेक्शन नहीं
+off: lore makes no request	बंद: lore कोई अनुरोध नहीं भेजता
+on, checking…	चालू, जाँच हो रही है…
+on: {seen} commands seen in your shell's history (only read, here)	चालू: आपके शेल इतिहास में {seen} कमांड दिखीं (केवल पढ़ी गईं, यहीं)
+on: no shell history found	चालू: कोई शेल इतिहास नहीं मिला
+off: your shell's history is not read	बंद: आपका शेल इतिहास पढ़ा नहीं जाता
+not saved for the next runs: {why}	अगली बार के लिए सहेजा नहीं गया: {why}
+ copy 	 कॉपी 
+copied: {text}	कॉपी हुआ: {text}
+this page has nothing to copy	इस पेज पर कॉपी करने को कुछ नहीं है
+nothing to copy here: type the code by hand, that is how it is learnt	यहाँ कॉपी करने को कुछ नहीं: कोड हाथ से टाइप करें, ऐसे ही सीखा जाता है
+  (+{n} lines)	  (+{n} पंक्तियाँ)
+  (+1 line)	  (+1 पंक्ति)
+ colours 	 रंग 
+ not saved: {why} 	 सहेजा नहीं गया: {why} 
+VERSION	संस्करण
+HOW TO USE	इस्तेमाल कैसे करें
+RELATED	संबंधित
+SUBCOMMANDS	उप-कमांड
+NOTES	टिप्पणियाँ
+FILES	फ़ाइलें
+STEPS	चरण
+TASKS	काम
+Everyday tasks, in groups (Tab jumps between them); c copies one. Read each before you run it.	रोज़ के काम, समूहों में (Tab समूहों के बीच जाता है); c एक को कॉपी करता है। चलाने से पहले हर एक पढ़ें।
+A cheat sheet of lore's: the tasks this tool is used for every day.	lore की चीट शीट: वे काम जिनके लिए यह टूल रोज़ इस्तेमाल होता है।
+USES	इस्तेमाल करता है
+A recipe: a task done in steps, with the commands for each.	एक रेसिपी: चरणों में किया जाने वाला काम, हर चरण की कमांड के साथ।
+In order; c copies a step's command. Read each before you run it.	क्रम से; c किसी चरण की कमांड कॉपी करता है। चलाने से पहले हर एक पढ़ें।
+The commands it uses, each with its own page (/ to find one).	जिन कमांडों का यह इस्तेमाल करती है, हर एक का अपना पेज है (/ से ढूँढें)।
+LINKS	लिंक
+MANUAL	मैनुअल
+Your alias: typing it runs `{runs}`.	आपका एलियास: इसे टाइप करने पर `{runs}` चलता है।
+Built into your shell.	आपके शेल में अंतर्निहित।
+A word of your shell's language.	आपके शेल की भाषा का एक शब्द।
+A shell function you defined.	आपकी परिभाषित एक शेल फ़ंक्शन।
+A subcommand of {program}.	{program} की एक उप-कमांड।
+No summary yet for {name}.	{name} का अभी कोई सारांश नहीं है।
+No examples yet for {name}. Anyone can add them: see content/README.md in lore's repository.	{name} के अभी कोई उदाहरण नहीं हैं। कोई भी जोड़ सकता है: lore के रिपॉज़िटरी में content/README.md देखें।
+! marks an example that can destroy data or stop the system: check what it acts on first.	! उस उदाहरण को चिह्नित करता है जो डेटा नष्ट कर सकता है या सिस्टम रोक सकता है: पहले देखें कि वह किस पर काम करता है।
+Open one with / or `lore NAME`.	/ या `lore नाम` से एक खोलें।
+Each has its own page: find it in the list, or run `lore {first}`.	हर एक का अपना पेज है: सूची में ढूँढें, या `lore {first}` चलाएँ।
+An alias has no version of its own: it is the one of the command it runs.	एलियास का अपना कोई संस्करण नहीं होता: यह उस कमांड का है जिसे यह चलाता है।
+A function you wrote has no version.	आपकी लिखी फ़ंक्शन का कोई संस्करण नहीं होता।
+Part of your shell, so it has the shell's version (`bash --version`, `zsh --version`, `fish --version`).	आपके शेल का हिस्सा है, इसलिए इसका संस्करण शेल का ही है (`bash --version`, `zsh --version`, `fish --version`)।
+Not from a package manager lore knows: installed by hand, by a language's tool (cargo, pip, npm…) or by a script. Its version: try `--version`.	lore जिसे जानता है ऐसे पैकेज मैनेजर से नहीं: हाथ से, किसी भाषा के टूल (cargo, pip, npm…) से या किसी स्क्रिप्ट से इंस्टॉल किया गया। संस्करण के लिए: `--version` आज़माएँ।
+Not installed on this machine, or not in a folder lore looks in.	इस मशीन पर इंस्टॉल नहीं है, या ऐसे फ़ोल्डर में नहीं है जहाँ lore देखता है।
+Package	पैकेज
+Installed	इंस्टॉल
+Newest	नवीनतम
+Update	अपडेट
+Location	स्थान
+{newest}, up to date as of your last package list update	{newest}, पैकेज सूची के पिछले अपडेट के अनुसार नवीनतम
+{newest}: an update is available	{newest}: एक अपडेट उपलब्ध है
+  ← → topics	  ← → विषय
+This window is {width}×{height}.\nlore needs at least {min_width}×{min_height}:\nmake it bigger.	यह विंडो {width}×{height} है।\nlore को कम से कम {min_width}×{min_height} चाहिए:\nइसे बड़ा करें।
+trending this month	इस महीने ट्रेंडिंग
+most used	सबसे ज़्यादा इस्तेमाल
+most used for {category}	{category} के लिए सबसे ज़्यादा इस्तेमाल
+↑ {rise}× this month	↑ इस महीने {rise}×
+not installed	इंस्टॉल नहीं
+downloaded	डाउनलोड किए गए
+most searched (Stack Overflow)	सबसे ज़्यादा खोजे गए (Stack Overflow)
+every set on devdocs.io	devdocs.io के सभी सेट
+on this machine · x deletes	इस मशीन पर · x मिटाता है
+{size} MB · d downloads	{size} MB · d डाउनलोड करता है
+downloading…	डाउनलोड हो रहा है…
+failed: {why}	विफल: {why}
+{size} MB of documentation from devdocs.io, to read offline.	devdocs.io से {size} MB दस्तावेज़, ऑफ़लाइन पढ़ने के लिए।
+Press d to download it; Enter on it then lists its pages.	डाउनलोड करने के लिए d दबाएँ; फिर उस पर Enter उसके पेज दिखाता है।
+On this machine: Enter lists its pages, x deletes it.	इस मशीन पर: Enter उसके पेज दिखाता है, x उसे मिटाता है।
+From devdocs.io. {who}	devdocs.io से। {who}
+This page is not in the download.	यह पेज डाउनलोड में नहीं है।
+downloading {name} in the background…	{name} पृष्ठभूमि में डाउनलोड हो रहा है…
+deleted {name} from this machine	{name} इस मशीन से मिटाया गया
+could not delete {name}: {why}	{name} मिटाया नहीं जा सका: {why}
+No tool pages here.	यहाँ कोई टूल पेज नहीं है।
+internet	इंटरनेट
+INTERNET	इंटरनेट
+online: the cheat sheet for {name} from cht.sh	ऑनलाइन: cht.sh से {name} की चीट शीट
+Raw text from the internet, written by anyone: it can be changed or altered at any time without any check, and lore does not check it either. Read it as text; copy from it carefully, and never paste a command you have not understood. lore will not copy it for you.	इंटरनेट का कच्चा पाठ, जिसे कोई भी लिख सकता है: इसे कभी भी बिना किसी जाँच के बदला या बिगाड़ा जा सकता है, और lore भी इसकी जाँच नहीं करता। इसे पाठ की तरह पढ़ें; सावधानी से कॉपी करें, और ऐसी कमांड कभी पेस्ट न करें जो आप समझे नहीं। lore इसे आपके लिए कॉपी नहीं करेगा।
+Fetching it…	लाया जा रहा है…
+cht.sh has nothing for {name}.	cht.sh के पास {name} के लिए कुछ नहीं है।
+It could not be fetched (slow or refused); it is tried again next time lore starts.	इसे लाया नहीं जा सका (धीमा या अस्वीकृत); अगली बार lore शुरू होने पर फिर कोशिश होगी।
+offline: no connection, so nothing was fetched	ऑफ़लाइन: कोई कनेक्शन नहीं, इसलिए कुछ नहीं लाया गया
+off: turned off on the about screen (+), so lore asks nothing	बंद: परिचय स्क्रीन (+) पर बंद किया गया, इसलिए lore कुछ नहीं माँगता
+checking the connection…	कनेक्शन की जाँच हो रही है…
+… more at {url}	… और {url} पर
+From learnxinyminutes.com, CC BY-SA 3.0, by {who}	learnxinyminutes.com से, CC BY-SA 3.0, {who} द्वारा
+ and others	 और अन्य
+ON THE WEB	वेब पर
+File: {file}	फ़ाइल: {file}
+  (hides {what})	  ({what} को छिपाता है)
+another alias	दूसरे एलियास
+a keyword	एक कीवर्ड
+a function	एक फ़ंक्शन
+a builtin	एक बिल्टइन
+a program	एक प्रोग्राम
+a subcommand	एक उप-कमांड
+a recipe	एक रेसिपी
+a tool page	एक टूल पेज
+a language	एक भाषा
+documentation	दस्तावेज़
+Commands	कमांड
+Pages	पेज
+Config	कॉन्फ़िग
+Palettes	पैलेट
+Kept	सहेजा
+Licence	लाइसेंस
+Source	स्रोत
+Manual	मैनुअल
+Colours	रंग
+Internet	इंटरनेट
+History	इतिहास
+Fast scroll	तेज़ स्क्रॉल
+Pages in	पेजों की भाषा
+Favourite	पसंदीदा
+Reset all	सब रीसेट करें
+it is part of the shell (a builtin or a keyword): try `help <name>` in bash, or the shell's own manual (`man bash`, `man zshbuiltins`)	यह शेल का हिस्सा है (बिल्टइन या कीवर्ड): bash में `help <नाम>` आज़माएँ, या शेल का अपना मैनुअल (`man bash`, `man zshbuiltins`)
+it is one of your aliases: its page is the one of the command it runs	यह आपके एलियास में से एक है: इसका पेज उस कमांड का है जिसे यह चलाता है
+the program ships no manual page, or its documentation package is not installed (on Debian and Ubuntu some come as a separate `-doc` package)	प्रोग्राम के साथ कोई मैनुअल पेज नहीं आता, या उसका दस्तावेज़ पैकेज इंस्टॉल नहीं है (Debian और Ubuntu पर कुछ अलग `-doc` पैकेज में आते हैं)
+manual pages were removed to save space (minimal and container images; on Ubuntu, `unminimize` brings them back)	जगह बचाने के लिए मैनुअल पेज हटा दिए गए (मिनिमल और कंटेनर इमेज; Ubuntu पर `unminimize` उन्हें वापस लाता है)
+`man` itself is not installed	`man` खुद इंस्टॉल नहीं है
+commands	कमांड
+recipes	रेसिपी
+languages	भाषाएँ
+docs	दस्तावेज़
+tools	टूल
+beacon	beacon
+recent	हाल के
+bookmarks	बुकमार्क
+Move	चलें
+Page	पेज
+Search	खोज
+Jump	छलाँग
+Fast	तेज़
+Bookmark	बुकमार्क
+About	परिचय
+Keys	कुंजियाँ
+Quit	बाहर
+type	टाइप करें
+Filter	छानें
+Erase	मिटाएँ
+Lore pages	lore पेज
+Leave search	खोज छोड़ें
+Scroll	स्क्रॉल
+Copy	कॉपी
+Back	वापस
+Choose	चुनें
+Cancel	रद्द
+Try	आज़माएँ
+Keep	रखें
+Change	बदलें
+any key	कोई भी कुंजी
+Close	बंद करें
+Open	खोलें
+Everywhere	हर जगह
+this help	यह सहायता
+draw the screen again	स्क्रीन फिर से बनाएँ
+quit	बाहर निकलें
+The list	सूची
+move	चलें
+move faster	तेज़ी से चलें
+top / bottom	ऊपर / नीचे
+topic before / after	पिछला / अगला विषय
+go to that topic in the bar	बार में उस विषय पर जाएँ
+bookmarks / recent pages	बुकमार्क / हाल के पेज
+next / previous letter	अगला / पिछला अक्षर
+open the page	पेज खोलें
+search (Esc keeps the text)	खोज (Esc पाठ रखता है)
+bookmark, or take it out	बुकमार्क करें, या हटाएँ
+docs: download / delete a set	दस्तावेज़: सेट डाउनलोड / मिटाएँ
+about and settings	परिचय और सेटिंग्स
+quit (or leave a docs set)	बाहर निकलें (या दस्तावेज़ सेट छोड़ें)
+A page	एक पेज
+scroll	स्क्रॉल
+next / previous section	अगला / पिछला खंड
+search other pages, this one kept	दूसरे पेज खोजें, यह वाला रखते हुए
+next / previous line with the search's text	खोज के पाठ वाली अगली / पिछली पंक्ति
+choose something to copy	कॉपी करने के लिए कुछ चुनें
+copy the first example (else the name) at once	पहला उदाहरण (वरना नाम) तुरंत कॉपी करें
+the first link, big, to Ctrl+click	पहला लिंक, बड़ा, Ctrl+क्लिक के लिए
+back to the list	सूची पर वापस
+none	कोई नहीं
