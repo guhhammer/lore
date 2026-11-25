@@ -49,3 +49,6 @@ __pycache__/
 
 # release files (scripts/release/tarball.sh)
 /dist/
+
+# crates.io gets content/ packed in one file; scripts/release/crate.sh makes it.
+/content.zst

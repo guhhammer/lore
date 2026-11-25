@@ -13,6 +13,16 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+## [0.4.4] - 2026-11-25
+
+### Fixed
+
+- **The crate fits crates.io:** crates.io takes at most 30,000 files, and
+  `content/` has about 41,000, so 0.4.3 was refused. The crate now carries
+  the pages packed in one file, `content.zst` (3 MB), which `build.rs`
+  unpacks when there is no `content/`; `scripts/release/crate.sh` packs it
+  and publishes. The crate: 1,177 files, 7 MiB. The pages are the same.
+
 ## [0.4.3] - 2026-11-25
 
 Everything since 0.3.3: the screen in 12 languages, Windows (WSL) in the

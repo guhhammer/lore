@@ -284,8 +284,36 @@ fn placeholders(text: &str) -> Vec<&str> {
     found
 }
 
+/// The pages' folder: `content/` in a checkout, else (the crate on
+/// crates.io, which takes at most 30,000 files) `content.zst` unpacked into
+/// `OUT_DIR`. `scripts/release/crate.sh` packs it: records of a 0x1E
+/// character, the path under content/, a newline, the page.
+fn content_dir() -> std::path::PathBuf {
+    let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+    let dir = root.join("content");
+    if dir.is_dir() {
+        return dir;
+    }
+    let packed = root.join("content.zst");
+    println!("cargo:rerun-if-changed={}", packed.display());
+    let file = fs::File::open(&packed).expect("content/ or content.zst is there");
+    let text = String::from_utf8(zstd::decode_all(file).expect("content.zst is zstd"))
+        .expect("the pages are UTF-8 text");
+    let out = Path::new(&env::var("OUT_DIR").expect("cargo sets OUT_DIR")).join("content");
+    for record in text.split('\u{1e}').skip(1) {
+        let (path, page) = record
+            .split_once('\n')
+            .expect("a record is path, newline, page");
+        let path = out.join(path);
+        fs::create_dir_all(path.parent().expect("a page is in a folder"))
+            .expect("OUT_DIR is writable");
+        fs::write(path, page).expect("OUT_DIR is writable");
+    }
+    out
+}
+
 fn main() {
-    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("content");
+    let dir = content_dir();
     // cargo watches every file under a folder named here: a page added,
     // removed or edited rebuilds the tables
     println!("cargo:rerun-if-changed={}", dir.display());

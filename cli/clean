@@ -3,6 +3,7 @@
 # clean — remove everything built or downloaded that can be made again:
 #   target/          all of it (cargo clean, then whatever cargo left behind)
 #   dist/            release files made by scripts/release/tarball.sh
+#   content.zst      the pages packed for crates.io (scripts/release/crate.sh)
 #   .content-draft/  the page drafts and the tldr download (scripts/content
 #                    makes them again)
 # app/ and every tracked file stay.
@@ -26,6 +27,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 # cargo can leave files behind (cargo package's output, a lock), and a
 # missing cargo must not stop the clean
 cargo clean 2>/dev/null || true
+rm -f -- content.zst
 for dir in target dist .content-draft; do
   if [ -e "$dir" ]; then
     rm -rf -- "$dir"

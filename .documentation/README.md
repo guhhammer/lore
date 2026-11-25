@@ -301,6 +301,11 @@ lore needs a terminal: started from a pipe, it says so and exits with 1.
 5. **AUR and Homebrew,** by hand: `packaging/update.sh X.Y.Z` puts the new
    version and checksums into `packaging/aur/PKGBUILD` and
    `packaging/homebrew/lore.rb`, then prints what to push where.
+6. **crates.io,** after the release is green: `scripts/release/crate.sh
+   --dry-run`, then `scripts/release/crate.sh`. crates.io takes at most
+   30,000 files and `content/` has about 41,000, so the script packs it into
+   `content.zst` (gitignored) and runs `cargo publish`; `build.rs` unpacks it
+   when there is no `content/`, as in the published crate.
 
 ---
 
