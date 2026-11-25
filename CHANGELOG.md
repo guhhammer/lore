@@ -15,6 +15,10 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **ROADMAP.md:** what lore has done, release by release, what comes next
+  (the public repository, crates.io, the AUR, more interface languages),
+  and what never will: a native Windows version.
+
 - **Windows (WSL) in the README:** how to use lore from Windows, inside
   WSL's Ubuntu, with a PowerShell function that starts it. A native Windows
   version is never happening: lore is dedicated to Linux.

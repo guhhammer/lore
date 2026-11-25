@@ -383,6 +383,7 @@ other tools that read skills can use it as it is.
 | --- | --- |
 | [`man lore`](../man/lore.1) | The full manual (from a checkout: `man -l man/lore.1`). |
 | [CHANGELOG.md](../CHANGELOG.md) | What changed in each version. |
+| [ROADMAP.md](../ROADMAP.md) | What is done, what comes next, and what never will. |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Before you open a pull request. |
 | [SECURITY.md](SECURITY.md) | What lore does and doesn't do, and how to report a problem. |
 | [.documentation/](../.documentation/README.md) | How the code works, for developers. |
