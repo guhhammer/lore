@@ -13,9 +13,14 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+## [0.4.3] - 2026-11-25
+
+Everything since 0.3.3: the screen in 12 languages, Windows (WSL) in the
+README, a roadmap, and the crate ready for crates.io (`lore-tui`).
+
 ### Added
 
-- **ROADMAP.md:** what lore has done, release by release, what comes next
+- **A roadmap,** `.documentation/versions/0-4-2.md`: what lore has done, release by release, what comes next
   (the public repository, crates.io, the AUR, more interface languages),
   and what never will: a native Windows version.
 

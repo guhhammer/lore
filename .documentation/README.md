@@ -309,7 +309,8 @@ lore needs a terminal: started from a pipe, it says so and exits with 1.
 From 0.1.0 on, every commit raises the version in `Cargo.toml`, and its
 subject starts with it: `v0.1.6 - root: …`. A version users will notice
 gets a record in [`versions/`](versions/), named with dashes (`0-1-6.md`),
-and a section in the CHANGELOG.
+and a section in the CHANGELOG. `0-4-2.md` is the roadmap: what is done,
+what comes next, and what never will (a native Windows version).
 
 ---
 
