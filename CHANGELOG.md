@@ -13,6 +13,11 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+## [0.4.9] - 2026-11-25
+
+lore's own licence in place of MIT, three fixes found in a use test, and
+the AUR and Homebrew files brought up to date.
+
 ### Changed
 
 - **lore's own licence replaces MIT, from 0.4.7 on** (`LICENSE`): anyone
