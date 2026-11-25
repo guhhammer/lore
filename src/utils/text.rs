@@ -68,3 +68,9 @@ pub fn wrap(text: &str, columns: usize) -> Vec<String> {
     }
     lines
 }
+
+/// `text` then spaces up to `columns` columns (none when it is wider):
+/// labels lined up, in any script.
+pub fn pad(text: &str, columns: usize) -> String {
+    format!("{text}{}", " ".repeat(columns.saturating_sub(width(text))))
+}

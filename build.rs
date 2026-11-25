@@ -222,6 +222,68 @@ fn language_pages(out: &Path) {
     fs::write(out.join("languages.rs"), table).expect("OUT_DIR is writable");
 }
 
+/// `$OUT_DIR/i18n.rs`: every `i18n/<language>/interface.tsv` and
+/// `recipes.tsv` (INTERFACE_I18N and RECIPE_I18N, (language, the file's
+/// text)), each line checked: blank, a `#` comment, or `English<TAB>text`
+/// with the same `{placeholders}` on both sides, or the build stops.
+fn interface_i18n(out: &Path) {
+    let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("i18n");
+    println!("cargo:rerun-if-changed={}", dir.display());
+    let mut codes: Vec<String> = fs::read_dir(&dir)
+        .map(|entries| {
+            entries
+                .flatten()
+                .filter(|e| e.path().is_dir())
+                .filter_map(|e| e.file_name().to_str().map(str::to_owned))
+                .collect()
+        })
+        .unwrap_or_default();
+    codes.sort();
+    let mut table = String::new();
+    for (file, table_name) in [
+        ("interface.tsv", "INTERFACE_I18N"),
+        ("recipes.tsv", "RECIPE_I18N"),
+    ] {
+        table.push_str(&format!("pub static {table_name}: &[(&str, &str)] = &[\n"));
+        for code in &codes {
+            let path = dir.join(code).join(file);
+            let Ok(text) = fs::read_to_string(&path) else {
+                continue; // a language may have one file and not the other
+            };
+            for (i, line) in text.lines().enumerate() {
+                if line.trim().is_empty() || line.starts_with('#') {
+                    continue;
+                }
+                let at = format!("{}:{}", path.display(), i + 1);
+                let parts: Vec<&str> = line.split('\t').collect();
+                assert!(
+                    parts.len() == 2 && !parts[0].is_empty() && !parts[1].is_empty(),
+                    "{at}: a line is `English<TAB>translation`"
+                );
+                assert_eq!(
+                    placeholders(parts[0]),
+                    placeholders(parts[1]),
+                    "{at}: the translation keeps the English text's {{placeholders}}"
+                );
+            }
+            let path = path.display().to_string();
+            table.push_str(&format!("    ({code:?}, include_str!({path:?})),\n"));
+        }
+        table.push_str("];\n");
+    }
+    fs::write(out.join("i18n.rs"), table).expect("OUT_DIR is writable");
+}
+
+/// The `{name}`s in a text, sorted: a translation must have the same ones.
+fn placeholders(text: &str) -> Vec<&str> {
+    let mut found: Vec<&str> = text
+        .match_indices('{')
+        .filter_map(|(i, _)| text[i..].find('}').map(|end| &text[i..=i + end]))
+        .collect();
+    found.sort_unstable();
+    found
+}
+
 fn main() {
     let dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("content");
     // cargo watches every file under a folder named here: a page added,
@@ -272,4 +334,5 @@ fn main() {
     palettes(&out);
     recipes(&out);
     language_pages(&out);
+    interface_i18n(&out);
 }

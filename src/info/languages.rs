@@ -28,6 +28,7 @@ use crate::configs::{
 use crate::info::content::{self, Content, unpack};
 use crate::info::page::{PageLine, Style};
 use crate::utils::highlight::{self, Syntax};
+use crate::utils::i18n::tr;
 use crate::utils::text;
 
 // LANGUAGE_PAGES: (file name, range in LANGUAGE_TEXT), sorted; LANGUAGE_I18N:
@@ -174,9 +175,9 @@ pub fn render(name: &str, width: usize) -> Vec<PageLine> {
         .collect::<Vec<_>>()
         .join(", ");
     if people.len() > LANGUAGE_CONTRIBUTORS_MAX {
-        who.push_str(LANGUAGE_AND_MORE);
+        who.push_str(tr(LANGUAGE_AND_MORE));
     }
-    for line in text::wrap(&LANGUAGE_SOURCE.replace("{who}", &who), width) {
+    for line in text::wrap(&tr(LANGUAGE_SOURCE).replace("{who}", &who), width) {
         lines.push(plain(&line, Style::Dim));
     }
     lines.push(plain("", Style::Text));
@@ -211,7 +212,7 @@ pub fn render(name: &str, width: usize) -> Vec<PageLine> {
         code_block(&mut lines, &block, tag, filename, None, width);
     }
     lines.push(plain("", Style::Text));
-    lines.push(plain(LANGUAGE_LINK_HEADING, Style::Heading));
+    lines.push(plain(tr(LANGUAGE_LINK_HEADING), Style::Heading));
     let stem = file.strip_suffix(".md").unwrap_or(file);
     lines.push(plain(&LANGUAGE_URL.replace("{name}", stem), Style::Url));
     lines
@@ -290,12 +291,12 @@ fn code_block(
         lines.push(PageLine {
             text: format!(
                 "{blank}{LANGUAGE_BAR}{}",
-                LANGUAGE_FILE.replace("{file}", &name)
+                tr(LANGUAGE_FILE).replace("{file}", &name)
             ),
             style: Style::Text,
             spans: vec![
                 (format!("{blank}{LANGUAGE_BAR}"), Style::Gutter),
-                (LANGUAGE_FILE.replace("{file}", &name), Style::Text),
+                (tr(LANGUAGE_FILE).replace("{file}", &name), Style::Text),
             ],
         });
         lines.push(rule(LANGUAGE_RULE_MIDDLE));

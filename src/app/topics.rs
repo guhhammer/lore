@@ -14,6 +14,7 @@ use crate::info::content;
 use crate::info::{beacon, docs};
 use crate::interface::rows::Row;
 use crate::interface::search;
+use crate::utils::i18n::tr;
 
 use super::{App, Mode, Topic, docs_of};
 
@@ -166,10 +167,10 @@ impl App {
         for (rank, entry) in popular.iter().enumerate() {
             let mut parts = vec![BEACON_RANK.replace("{rank}", &(rank + 1).to_string())];
             if let Some(rise) = beacon::rise(entry) {
-                parts.push(BEACON_RISE.replace("{rise}", &format!("{rise:.1}")));
+                parts.push(tr(BEACON_RISE).replace("{rise}", &format!("{rise:.1}")));
             }
             if !allowed.iter().any(|c| c.name == entry.name) {
-                parts.push(BEACON_NOT_HERE.to_owned());
+                parts.push(tr(BEACON_NOT_HERE).to_owned());
             }
             snippets.insert(entry.name.clone(), parts.join("  "));
         }
@@ -187,12 +188,12 @@ impl App {
             .take(BEACON_TRENDING_MAX)
             .map(|(e, _)| e.name.as_str())
             .collect();
-        section(BEACON_TRENDING.to_owned(), trending);
+        section(tr(BEACON_TRENDING).to_owned(), trending);
         let most = popular
             .iter()
             .take(BEACON_POPULAR_MAX)
             .map(|e| e.name.as_str());
-        section(BEACON_POPULAR.to_owned(), most.collect());
+        section(tr(BEACON_POPULAR).to_owned(), most.collect());
         // per category, in the order their most used command comes
         let mut groups: Vec<(&str, Vec<&str>)> = Vec::new();
         for entry in &popular {
@@ -212,7 +213,7 @@ impl App {
             .filter(|(_, names)| names.len() == BEACON_PER_CATEGORY)
             .take(BEACON_CATEGORIES_MAX)
         {
-            section(BEACON_FOR.replace("{category}", category), names);
+            section(tr(BEACON_FOR).replace("{category}", category), names);
         }
         (rows, snippets)
     }
@@ -290,12 +291,11 @@ impl App {
         };
         for set in &self.docsets {
             let state = match self.downloads.progress(&set.slug) {
-                Some(docs::Progress::Downloading) => DOCS_DOWNLOADING.to_owned(),
-                Some(docs::Progress::Failed(why)) => DOCS_FAILED.replace("{why}", &why),
-                None if docs::is_downloaded(&set.slug) => DOCS_HERE.to_owned(),
-                None => {
-                    DOCS_SIZE.replace("{size}", &format!("{:.1}", set.bytes as f64 / 1_048_576.0))
-                }
+                Some(docs::Progress::Downloading) => tr(DOCS_DOWNLOADING).to_owned(),
+                Some(docs::Progress::Failed(why)) => tr(DOCS_FAILED).replace("{why}", &why),
+                None if docs::is_downloaded(&set.slug) => tr(DOCS_HERE).to_owned(),
+                None => tr(DOCS_SIZE)
+                    .replace("{size}", &format!("{:.1}", set.bytes as f64 / 1_048_576.0)),
             };
             snippets.insert(set.title(), state);
         }
@@ -320,14 +320,14 @@ impl App {
                 rows.extend(sets.into_iter().map(|s| Row::Command(row(s))));
             }
         };
-        section(DOCS_DOWNLOADED, here);
+        section(tr(DOCS_DOWNLOADED), here);
         section(
-            DOCS_MOST,
+            tr(DOCS_MOST),
             docs::most_searched(&self.docsets, DOCS_MOST_SEARCHED),
         );
         let mut all: Vec<&docs::Docset> = self.docsets.iter().collect();
         all.sort_by_key(|s| s.title().to_lowercase());
-        section(DOCS_ALL, all);
+        section(tr(DOCS_ALL), all);
         (rows, snippets)
     }
 

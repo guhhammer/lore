@@ -28,6 +28,7 @@ use crate::configs::{
 };
 use crate::info::page::{PageLine, Style};
 use crate::settings;
+use crate::utils::i18n::tr;
 use crate::utils::{html, internet, text};
 
 /// One documentation set of the catalogue.
@@ -191,11 +192,11 @@ pub fn set_page(set: &Docset, width: usize) -> Vec<PageLine> {
     let mut lines = vec![line(&set.title(), Style::Title), line("", Style::Text)];
     let size = format!("{:.1}", set.bytes as f64 / 1_048_576.0);
     for text in [
-        DOCS_INFO_SIZE.replace("{size}", &size),
+        tr(DOCS_INFO_SIZE).replace("{size}", &size),
         if is_downloaded(&set.slug) {
-            DOCS_INFO_HERE.to_owned()
+            tr(DOCS_INFO_HERE).to_owned()
         } else {
-            DOCS_INFO_DOWNLOAD.to_owned()
+            tr(DOCS_INFO_DOWNLOAD).to_owned()
         },
     ] {
         lines.extend(
@@ -208,7 +209,7 @@ pub fn set_page(set: &Docset, width: usize) -> Vec<PageLine> {
     if set.home.starts_with("https://") {
         lines.push(line(&set.home, Style::Url));
     }
-    for text in text::wrap(&DOCS_FROM.replace("{who}", &set.attribution), width) {
+    for text in text::wrap(&tr(DOCS_FROM).replace("{who}", &set.attribution), width) {
         lines.push(line(&text, Style::Dim));
     }
     lines
@@ -226,10 +227,10 @@ pub fn entry_page(set: &Docset, entry: &Entry, width: usize) -> Vec<PageLine> {
     ];
     match page_html(&set.slug, &entry.path) {
         Some(page) => lines.extend(html::to_lines(from_anchor(&page, &entry.path), width)),
-        None => lines.push(line(DOCS_NO_PAGE, Style::Dim)),
+        None => lines.push(line(tr(DOCS_NO_PAGE), Style::Dim)),
     }
     lines.push(line("", Style::Text));
-    for text in text::wrap(&DOCS_FROM.replace("{who}", &set.attribution), width) {
+    for text in text::wrap(&tr(DOCS_FROM).replace("{who}", &set.attribution), width) {
         lines.push(line(&text, Style::Dim));
     }
     lines

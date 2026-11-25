@@ -1,0 +1,101 @@
+# the recipes' names in Português (Brasil): English<TAB>translation
+add a folder to the path	adicionar uma pasta ao path
+add a user	adicionar um usuário
+add to the end of a file	adicionar ao fim de um arquivo
+add up numbers in a file	somar números de um arquivo
+argument list too long	lista de argumentos longa demais
+ask for input in a script	pedir uma entrada num script
+back up and restore postgresql	fazer backup e restaurar o postgresql
+change permissions of a folder and everything in it	mudar as permissões de uma pasta e tudo dentro dela
+check a certificate	verificar um certificado
+check a file's permissions	ver as permissões de um arquivo
+check if a file or folder exists	ver se um arquivo ou pasta existe
+check if a program is installed	ver se um programa está instalado
+check if a string contains a text	ver se uma string contém um texto
+command not found after installing	comando não encontrado depois de instalar
+compare two folders	comparar duas pastas
+compress a folder	compactar uma pasta
+copy a folder	copiar uma pasta
+copy files to and from a server	copiar arquivos de e para um servidor
+copy, overwriting or not	copiar, sobrescrevendo ou não
+copy to the clipboard from the terminal	copiar para a área de transferência pelo terminal
+copy without some folders	copiar sem algumas pastas
+count lines of code	contar linhas de código
+count lines, words and files	contar linhas, palavras e arquivos
+count the processors	contar os processadores
+create a large file	criar um arquivo grande
+create an empty file	criar um arquivo vazio
+create nested folders	criar pastas aninhadas
+dates and timestamps	datas e timestamps
+delete empty lines	apagar linhas vazias
+delete files and folders	apagar arquivos e pastas
+delete lines containing a text	apagar linhas que contêm um texto
+disk full but df says there is room	disco cheio mas o df diz que há espaço
+docker cannot connect to the daemon	o docker não conecta ao daemon
+download a whole folder from a website	baixar uma pasta inteira de um site
+environment variables	variáveis de ambiente
+exclude a folder from find	excluir uma pasta do find
+find a file	achar um arquivo
+find a file's encoding	descobrir a codificação de um arquivo
+find big files	achar arquivos grandes
+find files containing a text	achar arquivos que contêm um texto
+find recently changed files	achar arquivos mudados recentemente
+find the script's own folder	achar a pasta do próprio script
+find this machine's ip address	achar o endereço ip desta máquina
+find what killed a process	descobrir o que matou um processo
+fix error while loading shared libraries	corrigir error while loading shared libraries
+fix windows line endings	corrigir finais de linha do windows
+free disk space	liberar espaço em disco
+get a file's name, folder and extension	pegar o nome, a pasta e a extensão de um arquivo
+get inside a docker container	entrar num contêiner docker
+get the full path of a file	pegar o caminho completo de um arquivo
+import and export a mysql database	importar e exportar um banco mysql
+keep a command running after logout	manter um comando rodando depois de sair
+list and close tmux or screen sessions	listar e fechar sessões do tmux ou do screen
+list only folders	listar só as pastas
+list users and groups	listar usuários e grupos
+loop over files, numbers and lists	percorrer arquivos, números e listas
+make a script take options	fazer um script aceitar opções
+make a symbolic link	criar um link simbólico
+make web requests with curl	fazer requisições web com curl
+merge pdf files	juntar arquivos pdf
+pack a folder without some files	empacotar uma pasta sem alguns arquivos
+pretty-print json	formatar json bonito
+print colors and new lines	imprimir cores e quebras de linha
+print or remove lines of a file	imprimir ou remover linhas de um arquivo
+read a file line by line	ler um arquivo linha por linha
+read the system logs	ler os logs do sistema
+rename many files	renomear muitos arquivos
+replace text in a file	substituir texto num arquivo
+replace text in many files	substituir texto em muitos arquivos
+run a script	rodar um script
+run commands on a server over ssh	rodar comandos num servidor via ssh
+save a command's output in a variable	guardar a saída de um comando numa variável
+schedule a command with cron	agendar um comando com o cron
+search but skip some files	buscar pulando alguns arquivos
+see a program's memory use	ver o uso de memória de um programa
+see each command a script runs	ver cada comando que um script roda
+see the size of files and folders	ver o tamanho de arquivos e pastas
+send output and errors to a file	mandar a saída e os erros para um arquivo
+set up an ssh key	configurar uma chave ssh
+show a folder tree	mostrar a árvore de uma pasta
+sort and remove duplicate lines	ordenar e remover linhas duplicadas
+split a big file	dividir um arquivo grande
+split a string in bash	dividir uma string no bash
+stop a frozen program	parar um programa travado
+stop a script on errors	parar um script em caso de erro
+sync two folders	sincronizar duas pastas
+the internet does not work	a internet não funciona
+time a command	cronometrar um comando
+undo changes in git	desfazer mudanças no git
+undo the last git commit	desfazer o último commit do git
+unmount a busy drive	desmontar um disco ocupado
+unpack an archive	descompactar um arquivo
+what is slowing the machine	o que está deixando a máquina lenta
+what is using a port	o que está usando uma porta
+which linux version is this	que versão do linux é esta
+which package a file came from	de que pacote veio um arquivo
+which shell is running	que shell está rodando
+who is logged in	quem está logado
+why won't a service start	por que um serviço não inicia
+work with strings in bash	trabalhar com strings no bash

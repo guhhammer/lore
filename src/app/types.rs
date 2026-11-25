@@ -87,7 +87,7 @@ impl Topic {
     /// The name shown in the bar and the list's title.
     pub fn name(self) -> &'static str {
         let at = Self::all().iter().position(|t| *t == self).unwrap_or(0);
-        TOPIC_NAMES[at]
+        crate::utils::i18n::tr(TOPIC_NAMES[at])
     }
 }
 

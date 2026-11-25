@@ -7,6 +7,7 @@ use crate::configs::{
     FIND_AT, FIND_NO_TEXT, FIND_NOT_HERE, HEADING_LINKS, LANGUAGE_NO_COPY, LINK_NONE, TOPIC_EMPTY,
 };
 use crate::info::page::Style;
+use crate::utils::i18n::tr;
 
 use super::{App, Mode, Topic};
 
@@ -45,11 +46,11 @@ impl App {
     pub fn find(&mut self, forward: bool) {
         let text = self.query.trim().to_owned();
         if text.is_empty() {
-            self.note = Some(FIND_NO_TEXT.to_owned());
+            self.note = Some(tr(FIND_NO_TEXT).to_owned());
             return;
         }
         if self.matches.is_empty() {
-            self.note = Some(FIND_NOT_HERE.replace("{text}", &text));
+            self.note = Some(tr(FIND_NOT_HERE).replace("{text}", &text));
             return;
         }
         let at = if forward {
@@ -65,7 +66,7 @@ impl App {
         };
         self.scroll = self.matches[at];
         self.note = Some(
-            FIND_AT
+            tr(FIND_AT)
                 .replace("{text}", &text)
                 .replace("{at}", &(at + 1).to_string())
                 .replace("{count}", &self.matches.len().to_string()),
@@ -78,7 +79,7 @@ impl App {
     pub fn quick_copy(&mut self) -> Option<String> {
         let page = self.page.as_ref().filter(|_| self.mode == Mode::Info)?;
         if page.command.kind == Kind::Language {
-            self.note = Some(LANGUAGE_NO_COPY.to_owned());
+            self.note = Some(tr(LANGUAGE_NO_COPY).to_owned());
             return None;
         }
         let name = page.command.name.clone();
@@ -93,7 +94,7 @@ impl App {
         let links = page
             .lines
             .iter()
-            .position(|l| l.style == Style::Heading && l.text == HEADING_LINKS)?;
+            .position(|l| l.style == Style::Heading && l.text == tr(HEADING_LINKS))?;
         page.lines[links..].iter().find_map(|line| {
             let at = line.text.find("https://")?;
             let url = line.text[at..].split_whitespace().next()?;
@@ -112,7 +113,7 @@ impl App {
                 self.overlay_from = self.mode;
                 self.mode = Mode::Link;
             }
-            None => self.note = Some(LINK_NONE.to_owned()),
+            None => self.note = Some(tr(LINK_NONE).to_owned()),
         }
     }
 
@@ -149,7 +150,7 @@ impl App {
     /// closes); a topic with nothing in it yet says so.
     pub fn jump_to(&mut self, topic: Topic) {
         if !self.topics.contains(&topic) {
-            self.note = Some(TOPIC_EMPTY.replace("{topic}", topic.name()));
+            self.note = Some(tr(TOPIC_EMPTY).replace("{topic}", topic.name()));
             return;
         }
         if matches!(self.mode, Mode::Browse | Mode::Info) {

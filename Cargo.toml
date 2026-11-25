@@ -1,6 +1,6 @@
 [package]
 name = "lore-tui"
-version = "0.3.7"
+version = "0.3.8"
 edition = "2024"
 rust-version = "1.88"
 description = "A terminal list of every command you can type (programs, shell builtins, aliases), grouped A to Z. Linux and macOS; bash, zsh, fish."
@@ -12,7 +12,7 @@ keywords = ["terminal", "tui", "commands", "man", "cheatsheet"]
 categories = ["command-line-utilities", "development-tools"]
 # Only what builds the crate goes into the package, whatever else sits in the
 # checkout.
-include = ["/src/**", "/build.rs", "/content/**", "/recipes/**", "/tools/**", "/palettes/**", "/beacon/**", "/languages/**", "/devdocs/**", "/completions/**", "/man/**", "/Cargo.toml", "/Cargo.lock", "/LICENSE", "/CHANGELOG.md", "/.github/README.md"]
+include = ["/src/**", "/build.rs", "/content/**", "/recipes/**", "/tools/**", "/palettes/**", "/beacon/**", "/languages/**", "/devdocs/**", "/i18n/**", "/completions/**", "/man/**", "/Cargo.toml", "/Cargo.lock", "/LICENSE", "/CHANGELOG.md", "/.github/README.md"]
 # Not yet: remove this line when the first version is ready for crates.io.
 publish = false
 

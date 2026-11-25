@@ -8,6 +8,7 @@ use crate::configs::{
 use crate::info::content;
 use crate::info::docs;
 use crate::info::page::{self};
+use crate::utils::i18n::tr;
 use crate::utils::manual;
 
 use super::{App, Mode, Page};
@@ -81,9 +82,9 @@ impl App {
             .as_ref()
             .is_some_and(|p| p.command.kind == Kind::Language);
         if language {
-            self.note = Some(LANGUAGE_NO_COPY.to_owned());
+            self.note = Some(tr(LANGUAGE_NO_COPY).to_owned());
         } else if self.copies.is_empty() {
-            self.note = Some(NOTHING_TO_COPY.to_owned());
+            self.note = Some(tr(NOTHING_TO_COPY).to_owned());
         } else {
             self.example = 0;
             self.mode = Mode::Copy;
@@ -108,7 +109,7 @@ impl App {
         if self.mode == Mode::Copy {
             self.mode = Mode::Info;
         }
-        self.note = copied.map(|text| COPIED.replace("{text}", &copy_label(text)));
+        self.note = copied.map(|text| tr(COPIED).replace("{text}", &copy_label(text)));
     }
 
     /// Opens the selected command's page, and puts it first among the
@@ -227,10 +228,10 @@ pub fn copy_label(text: &str) -> String {
     let first = lines.next().unwrap_or_default().trim_end();
     match lines.count() {
         0 => first.to_owned(),
-        1 => format!("{first}{COPY_ONE_MORE_LINE}"),
+        1 => format!("{first}{}", tr(COPY_ONE_MORE_LINE)),
         more => format!(
             "{first}{}",
-            COPY_MORE_LINES.replace("{n}", &more.to_string())
+            tr(COPY_MORE_LINES).replace("{n}", &more.to_string())
         ),
     }
 }

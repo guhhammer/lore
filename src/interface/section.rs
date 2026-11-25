@@ -15,11 +15,16 @@ pub enum Section {
 }
 
 impl Section {
-    /// The section a name goes under: its first letter upper-cased, or `Symbol`.
+    /// The section a name goes under: its first letter upper-cased (`é` and
+    /// `я` too, for a recipe's translated name), or `Symbol`.
     pub fn of(name: &str) -> Self {
         match name.chars().next() {
             Some(c) if c.is_ascii_alphabetic() => Self::Letter(c.to_ascii_uppercase()),
-            _ => Self::Symbol, // digit, symbol, non-ASCII letter, or empty name
+            // a letter with a capital: Latin with accents, Greek, Cyrillic
+            Some(c) if c.is_lowercase() || c.is_uppercase() => {
+                Self::Letter(c.to_uppercase().next().unwrap_or(c))
+            }
+            _ => Self::Symbol, // digit, symbol, a script with no capitals, or empty
         }
     }
 }

@@ -22,6 +22,7 @@ use app::App;
 use interface::args::{self, Start};
 use interface::input::{self, Action};
 use interface::ui;
+use utils::i18n::tr;
 
 /// Runs lore as the command line asks (`lore`, `lore NAME`, `--help`,
 /// `--version`) until Esc or Ctrl+C, then gives the terminal back. Fails,
@@ -65,6 +66,8 @@ pub fn run() -> io::Result<()> {
     };
     // before the list is read, so its pages' summaries are in that language
     let reading = saved_reading();
+    // the screen in that language too (what lore prints stays English)
+    configs::TRANSLATE_INTERFACE.store(true, std::sync::atomic::Ordering::Relaxed);
     let mut app = App::new(everything());
     app.palettes = interface::palette::all();
     app.chosen = interface::palette::at_start(&app.palettes);
@@ -398,7 +401,7 @@ fn change_setting(app: &mut App) {
         }
     };
     if let Err(error) = saved {
-        app.note = Some(configs::SETTING_NOT_SAVED.replace("{why}", &error.to_string()));
+        app.note = Some(tr(configs::SETTING_NOT_SAVED).replace("{why}", &error.to_string()));
     }
 }
 
@@ -462,8 +465,8 @@ fn reset_all(app: &mut App) {
     app.set_favourite(None);
     app.set_beacon(info::beacon::load());
     app.note = Some(match failed.first() {
-        None => configs::RESET_DONE.to_owned(),
-        Some(error) => configs::RESET_FAILED.replace("{why}", &error.to_string()),
+        None => tr(configs::RESET_DONE).to_owned(),
+        Some(error) => tr(configs::RESET_FAILED).replace("{why}", &error.to_string()),
     });
 }
 
@@ -489,7 +492,7 @@ fn docs_key(app: &mut App, action: Action) {
     let name = set.title();
     if action == Action::Download {
         app.downloads.start(set);
-        app.note = Some(DOCS_STARTED.replace("{name}", &name));
+        app.note = Some(tr(DOCS_STARTED).replace("{name}", &name));
     } else {
         if app
             .docset
@@ -499,8 +502,8 @@ fn docs_key(app: &mut App, action: Action) {
             app.close_docset();
         }
         app.note = Some(match info::docs::delete(&set.slug) {
-            Ok(()) => DOCS_DELETED.replace("{name}", &name),
-            Err(why) => DOCS_NOT_DELETED
+            Ok(()) => tr(DOCS_DELETED).replace("{name}", &name),
+            Err(why) => tr(DOCS_NOT_DELETED)
                 .replace("{name}", &name)
                 .replace("{why}", &why.to_string()),
         });
@@ -527,7 +530,7 @@ fn keep_choice(app: &mut App) {
         }
     };
     if let Err(error) = saved {
-        app.note = Some(configs::SETTING_NOT_SAVED.replace("{why}", &error.to_string()));
+        app.note = Some(tr(configs::SETTING_NOT_SAVED).replace("{why}", &error.to_string()));
     }
 }
 
@@ -643,7 +646,8 @@ fn event_loop(terminal: &mut DefaultTerminal, app: &mut App) -> io::Result<()> {
                 if let Some(text) = app.quick_copy() {
                     // as with `c`: the terminal copies, or quietly cannot
                     if utils::clipboard::copy(&text).is_ok() {
-                        app.note = Some(configs::COPIED.replace("{text}", &app::copy_label(&text)));
+                        app.note =
+                            Some(tr(configs::COPIED).replace("{text}", &app::copy_label(&text)));
                     }
                 }
             }

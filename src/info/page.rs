@@ -24,6 +24,7 @@ use crate::configs::{
     PAGE_INDENT, REASON_INDENT, RELATED_HINT, STEPS_HINT, SUBCOMMANDS_HINT, TASKS_HINT, USES_HINT,
     VERSION_ALIAS, VERSION_FUNCTION, VERSION_NOT_FOUND, VERSION_SHELL, VERSION_UNPACKAGED,
 };
+use crate::utils::i18n::tr;
 use crate::utils::internet::{self, Answer, Status};
 use crate::utils::manual;
 use crate::utils::text::{self, wrap};
@@ -154,11 +155,11 @@ pub fn render(
 
     // what it is
     let what = match command.kind {
-        Kind::Alias => Some(IS_ALIAS.replace("{runs}", command.runs.as_deref().unwrap_or(""))),
-        Kind::Builtin => Some(IS_BUILTIN.to_owned()),
-        Kind::Keyword => Some(IS_KEYWORD.to_owned()),
-        Kind::Function => Some(IS_FUNCTION.to_owned()),
-        Kind::Subcommand => Some(IS_SUBCOMMAND.replace("{program}", command.program())),
+        Kind::Alias => Some(tr(IS_ALIAS).replace("{runs}", command.runs.as_deref().unwrap_or(""))),
+        Kind::Builtin => Some(tr(IS_BUILTIN).to_owned()),
+        Kind::Keyword => Some(tr(IS_KEYWORD).to_owned()),
+        Kind::Function => Some(tr(IS_FUNCTION).to_owned()),
+        Kind::Subcommand => Some(tr(IS_SUBCOMMAND).replace("{program}", command.program())),
         Kind::Program
         | Kind::Recipe
         | Kind::Tool
@@ -179,21 +180,21 @@ pub fn render(
     } else if let Some(line) = &facts.whatis {
         page.wrapped(&capitalized(line), Style::Text, "");
     } else if is_program(command) {
-        page.wrapped(&NO_SUMMARY.replace("{name}", name), Style::Dim, "");
+        page.wrapped(&tr(NO_SUMMARY).replace("{name}", name), Style::Dim, "");
     }
 
     if danger::command(content) {
         page.blank();
-        page.wrapped(DANGER_WARNING, Style::Danger, "");
+        page.wrapped(tr(DANGER_WARNING), Style::Danger, "");
     }
 
-    page.heading(HEADING_VERSION);
+    page.heading(tr(HEADING_VERSION));
     version(&mut page, command, facts);
 
-    page.heading(HEADING_USAGE);
+    page.heading(tr(HEADING_USAGE));
     if content.usage.is_empty() {
         page.wrapped(
-            &NO_EXAMPLES.replace("{name}", name),
+            &tr(NO_EXAMPLES).replace("{name}", name),
             Style::Dim,
             PAGE_INDENT,
         );
@@ -217,20 +218,20 @@ pub fn render(
         page.wrapped(what, Style::Text, EXAMPLE_INDENT);
     }
     if any_dangerous {
-        page.wrapped(DANGER_EXAMPLE_NOTE, Style::Dim, PAGE_INDENT);
+        page.wrapped(tr(DANGER_EXAMPLE_NOTE), Style::Dim, PAGE_INDENT);
     }
 
     let related = related(command, facts, man);
     if !related.is_empty() {
-        page.heading(HEADING_RELATED);
-        page.wrapped(RELATED_HINT, Style::Dim, PAGE_INDENT);
+        page.heading(tr(HEADING_RELATED));
+        page.wrapped(tr(RELATED_HINT), Style::Dim, PAGE_INDENT);
         page.wrapped(&related.join(", "), Style::Text, PAGE_INDENT);
     }
 
     if !facts.subcommands.is_empty() {
-        page.heading(HEADING_SUBCOMMANDS);
+        page.heading(tr(HEADING_SUBCOMMANDS));
         page.wrapped(
-            &SUBCOMMANDS_HINT.replace("{first}", &facts.subcommands[0]),
+            &tr(SUBCOMMANDS_HINT).replace("{first}", &facts.subcommands[0]),
             Style::Dim,
             PAGE_INDENT,
         );
@@ -238,7 +239,7 @@ pub fn render(
     }
 
     if !content.notes.is_empty() {
-        page.heading(HEADING_NOTES);
+        page.heading(tr(HEADING_NOTES));
         for note in &content.notes {
             page.wrapped(note, Style::Text, PAGE_INDENT);
         }
@@ -246,29 +247,29 @@ pub fn render(
 
     let files = man.map(files_in_man).unwrap_or_default();
     if !files.is_empty() {
-        page.heading(HEADING_FILES);
-        page.wrapped(FILES_HINT, Style::Dim, PAGE_INDENT);
+        page.heading(tr(HEADING_FILES));
+        page.wrapped(tr(FILES_HINT), Style::Dim, PAGE_INDENT);
         for path in &files {
             page.add(&format!("{PAGE_INDENT}{path}"), Style::Code); // whole, like a URL
         }
     }
 
-    page.heading(HEADING_LINKS);
-    page.wrapped(LINK_HINT, Style::Dim, PAGE_INDENT);
+    page.heading(tr(HEADING_LINKS));
+    page.wrapped(tr(LINK_HINT), Style::Dim, PAGE_INDENT);
     for (label, url) in content.links.iter().cloned().chain(links::searches(name)) {
         page.blank();
         page.wrapped(&label, Style::Text, PAGE_INDENT);
         page.add(&format!("{PAGE_INDENT}{url}"), Style::Url); // whole, or the terminal opens half
     }
     page.blank();
-    page.wrapped(LINK_WARNING, Style::Warning, PAGE_INDENT);
+    page.wrapped(tr(LINK_WARNING), Style::Warning, PAGE_INDENT);
 
-    page.heading(HEADING_MANUAL);
+    page.heading(tr(HEADING_MANUAL));
     match man {
         Some(lines) => lines.iter().for_each(|l| page.add(l, Style::Text)),
         None => {
-            page.wrapped(NO_PAGE, Style::Dim, PAGE_INDENT);
-            for reason in NO_PAGE_REASONS {
+            page.wrapped(tr(NO_PAGE), Style::Dim, PAGE_INDENT);
+            for reason in NO_PAGE_REASONS.iter().map(|r| tr(r)) {
                 page.wrapped(&format!("- {reason}"), Style::Dim, REASON_INDENT);
             }
         }
@@ -280,9 +281,9 @@ pub fn render(
 fn version(page: &mut Page, command: &Command, facts: &Facts) {
     if !is_program(command) {
         let why = match command.kind {
-            Kind::Alias => VERSION_ALIAS,
-            Kind::Function => VERSION_FUNCTION,
-            _ => VERSION_SHELL,
+            Kind::Alias => tr(VERSION_ALIAS),
+            Kind::Function => tr(VERSION_FUNCTION),
+            _ => tr(VERSION_SHELL),
         };
         page.wrapped(why, Style::Text, PAGE_INDENT);
         return;
@@ -290,30 +291,34 @@ fn version(page: &mut Page, command: &Command, facts: &Facts) {
     match &facts.package {
         Some(package) => {
             page.field(
-                FIELD_PACKAGE,
+                tr(FIELD_PACKAGE),
                 &format!("{} ({})", package.name, package.manager),
             );
             if let Some(installed) = &package.installed {
-                page.field(FIELD_INSTALLED, installed);
+                page.field(tr(FIELD_INSTALLED), installed);
             }
             match (&package.installed, &package.newest) {
                 (Some(installed), Some(newest)) if installed == newest => {
-                    page.field(FIELD_NEWEST, &NEWEST_SAME.replace("{newest}", newest));
+                    page.field(
+                        tr(FIELD_NEWEST),
+                        &tr(NEWEST_SAME).replace("{newest}", newest),
+                    );
                 }
-                (_, Some(newest)) => {
-                    page.field(FIELD_NEWEST, &NEWEST_UPDATE.replace("{newest}", newest))
-                }
+                (_, Some(newest)) => page.field(
+                    tr(FIELD_NEWEST),
+                    &tr(NEWEST_UPDATE).replace("{newest}", newest),
+                ),
                 _ => {}
             }
-            page.field(FIELD_UPDATE, &package.update);
+            page.field(tr(FIELD_UPDATE), &package.update);
         }
         None if facts.location.is_some() => {
-            page.wrapped(VERSION_UNPACKAGED, Style::Text, PAGE_INDENT)
+            page.wrapped(tr(VERSION_UNPACKAGED), Style::Text, PAGE_INDENT)
         }
-        None => page.wrapped(VERSION_NOT_FOUND, Style::Dim, PAGE_INDENT),
+        None => page.wrapped(tr(VERSION_NOT_FOUND), Style::Dim, PAGE_INDENT),
     }
     if let Some(location) = &facts.location {
-        page.field(FIELD_LOCATION, &location.display().to_string());
+        page.field(tr(FIELD_LOCATION), &location.display().to_string());
     }
 }
 
@@ -345,7 +350,7 @@ fn docs_page(command: &Command, width: usize) -> Vec<PageLine> {
 pub fn starts_a_section(line: &PageLine) -> bool {
     match line.style {
         Style::Heading => true,
-        Style::Online | Style::Offline => line.text.starts_with(HEADING_INTERNET),
+        Style::Online | Style::Offline => line.text.starts_with(tr(HEADING_INTERNET)),
         _ => false,
     }
 }
@@ -399,7 +404,20 @@ impl Page {
 
     /// "  Label      value", the values lined up, wrapped under themselves.
     fn field(&mut self, label: &str, value: &str) {
-        let label = format!("{PAGE_INDENT}{label:<FIELD_LABEL_WIDTH$}");
+        // as wide as the widest label, in the reader's language
+        let widest = [
+            FIELD_PACKAGE,
+            FIELD_INSTALLED,
+            FIELD_NEWEST,
+            FIELD_UPDATE,
+            FIELD_LOCATION,
+        ]
+        .iter()
+        .map(|label| text::width(tr(label)) + 1)
+        .max()
+        .unwrap_or(0)
+        .max(FIELD_LABEL_WIDTH);
+        let label = format!("{PAGE_INDENT}{}", text::pad(label, widest));
         let room = self.width.saturating_sub(text::width(&label));
         for (i, line) in wrap(value, room).into_iter().enumerate() {
             let lead = if i == 0 {
@@ -432,12 +450,12 @@ pub fn internet_lines(
         Style::Offline
     };
     page.blank();
-    page.add(&format!("{HEADING_INTERNET} {INTERNET_DOT}"), style);
+    page.add(&format!("{} {INTERNET_DOT}", tr(HEADING_INTERNET)), style);
     let state = match status {
-        Status::Online => INTERNET_SOURCE.replace("{name}", name),
-        Status::Offline => INTERNET_OFFLINE.to_owned(),
-        Status::Off => INTERNET_DISABLED.to_owned(),
-        Status::Checking => INTERNET_CHECKING.to_owned(),
+        Status::Online => tr(INTERNET_SOURCE).replace("{name}", name),
+        Status::Offline => tr(INTERNET_OFFLINE).to_owned(),
+        Status::Off => tr(INTERNET_DISABLED).to_owned(),
+        Status::Checking => tr(INTERNET_CHECKING).to_owned(),
     };
     let state_style = if status == Status::Checking {
         Style::Dim
@@ -448,7 +466,7 @@ pub fn internet_lines(
     if status == Status::Off {
         return page.lines; // turned off: nothing fetched is shown either
     }
-    page.wrapped(INTERNET_REMINDER, Style::Warning, PAGE_INDENT);
+    page.wrapped(tr(INTERNET_REMINDER), Style::Warning, PAGE_INDENT);
     match answer {
         Some(Answer::Lines(lines)) => {
             page.blank();
@@ -456,7 +474,7 @@ pub fn internet_lines(
             for (shown, line) in lines.iter().enumerate() {
                 if shown >= INTERNET_MAX_LINES {
                     page.wrapped(
-                        &INTERNET_CUT.replace("{url}", &internet::url(name)),
+                        &tr(INTERNET_CUT).replace("{url}", &internet::url(name)),
                         Style::Dim,
                         PAGE_INDENT,
                     );
@@ -467,15 +485,15 @@ pub fn internet_lines(
                 }
             }
         }
-        Some(Answer::Loading) => page.wrapped(INTERNET_LOADING, Style::Dim, PAGE_INDENT),
+        Some(Answer::Loading) => page.wrapped(tr(INTERNET_LOADING), Style::Dim, PAGE_INDENT),
         Some(Answer::NotFound) => {
             page.wrapped(
-                &INTERNET_NOTHING.replace("{name}", name),
+                &tr(INTERNET_NOTHING).replace("{name}", name),
                 Style::Dim,
                 PAGE_INDENT,
             );
         }
-        Some(Answer::Failed) => page.wrapped(INTERNET_FAILED, Style::Dim, PAGE_INDENT),
+        Some(Answer::Failed) => page.wrapped(tr(INTERNET_FAILED), Style::Dim, PAGE_INDENT),
         None => {}
     }
     page.lines
@@ -487,7 +505,7 @@ pub fn internet_lines(
 fn recipe(page: &mut Page, command: &Command, facts: &Facts) {
     let empty = Content::default();
     let content = facts.content.as_ref().unwrap_or(&empty);
-    page.add(&command.name, Style::Title);
+    page.add(crate::utils::i18n::shown(command), Style::Title);
     if !content.categories.is_empty() {
         page.add(
             &format!("[{}]", content.categories.join(" ")),
@@ -495,13 +513,13 @@ fn recipe(page: &mut Page, command: &Command, facts: &Facts) {
         );
     }
     page.blank();
-    page.wrapped(IS_RECIPE, Style::Dim, "");
+    page.wrapped(tr(IS_RECIPE), Style::Dim, "");
     page.blank();
     for paragraph in &content.summary {
         page.wrapped(paragraph, Style::Text, "");
     }
-    page.heading(HEADING_STEPS);
-    page.wrapped(STEPS_HINT, Style::Dim, PAGE_INDENT);
+    page.heading(tr(HEADING_STEPS));
+    page.wrapped(tr(STEPS_HINT), Style::Dim, PAGE_INDENT);
     for (i, (typed, what)) in content.usage.iter().enumerate() {
         page.blank();
         page.wrapped(&format!("{}. {what}", i + 1), Style::Text, PAGE_INDENT);
@@ -523,12 +541,12 @@ fn recipe(page: &mut Page, command: &Command, facts: &Facts) {
         }
     }
     if !uses.is_empty() {
-        page.heading(HEADING_USES);
-        page.wrapped(USES_HINT, Style::Dim, PAGE_INDENT);
+        page.heading(tr(HEADING_USES));
+        page.wrapped(tr(USES_HINT), Style::Dim, PAGE_INDENT);
         page.wrapped(&uses.join(", "), Style::Text, PAGE_INDENT);
     }
     if !content.notes.is_empty() {
-        page.heading(HEADING_NOTES);
+        page.heading(tr(HEADING_NOTES));
         for note in &content.notes {
             page.wrapped(note, Style::Text, PAGE_INDENT);
         }
@@ -541,7 +559,7 @@ fn recipe(page: &mut Page, command: &Command, facts: &Facts) {
 fn tool(page: &mut Page, command: &Command, facts: &Facts) {
     let empty = Content::default();
     let content = facts.content.as_ref().unwrap_or(&empty);
-    page.add(&command.name, Style::Title);
+    page.add(crate::utils::i18n::shown(command), Style::Title);
     if !content.categories.is_empty() {
         page.add(
             &format!("[{}]", content.categories.join(" ")),
@@ -549,7 +567,7 @@ fn tool(page: &mut Page, command: &Command, facts: &Facts) {
         );
     }
     page.blank();
-    page.wrapped(IS_TOOL, Style::Dim, "");
+    page.wrapped(tr(IS_TOOL), Style::Dim, "");
     page.blank();
     for (i, paragraph) in content.summary.iter().enumerate() {
         if i > 0 {
@@ -557,8 +575,8 @@ fn tool(page: &mut Page, command: &Command, facts: &Facts) {
         }
         page.wrapped(paragraph, Style::Text, "");
     }
-    page.heading(HEADING_TASKS);
-    page.wrapped(TASKS_HINT, Style::Dim, PAGE_INDENT);
+    page.heading(tr(HEADING_TASKS));
+    page.wrapped(tr(TASKS_HINT), Style::Dim, PAGE_INDENT);
     for (i, (typed, what)) in content.usage.iter().enumerate() {
         for (_, group) in content.groups.iter().filter(|(at, _)| *at == i) {
             page.heading(group);
@@ -577,18 +595,18 @@ fn tool(page: &mut Page, command: &Command, facts: &Facts) {
         );
     }
     if !content.notes.is_empty() {
-        page.heading(HEADING_NOTES);
+        page.heading(tr(HEADING_NOTES));
         for note in &content.notes {
             page.wrapped(note, Style::Text, PAGE_INDENT);
         }
     }
     if !content.see_also.is_empty() {
-        page.heading(HEADING_RELATED);
+        page.heading(tr(HEADING_RELATED));
         page.wrapped(&content.see_also.join(", "), Style::Text, PAGE_INDENT);
     }
     if !content.links.is_empty() {
-        page.heading(HEADING_LINKS);
-        page.wrapped(LINK_HINT, Style::Dim, PAGE_INDENT);
+        page.heading(tr(HEADING_LINKS));
+        page.wrapped(tr(LINK_HINT), Style::Dim, PAGE_INDENT);
         for (label, url) in &content.links {
             page.blank();
             page.wrapped(label, Style::Text, PAGE_INDENT);

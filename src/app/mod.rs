@@ -22,6 +22,7 @@ use crate::info::{content, recipes};
 use crate::interface::palette::{self, Palette};
 use crate::interface::rows::{self, Row};
 use crate::interface::search;
+use crate::utils::i18n::tr;
 use crate::utils::manual;
 
 /// The page on show, kept so a redraw does not look things up again: the
@@ -502,13 +503,19 @@ impl App {
                         .and_then(|name| list.iter().find(|c| c.name == *name).cloned());
                     let mut rows = Vec::new();
                     if let Some(favourite) = favourite {
-                        rows.push(Row::Title(LANGUAGE_FAVOURITE_TITLE.to_owned()));
+                        rows.push(Row::Title(tr(LANGUAGE_FAVOURITE_TITLE).to_owned()));
                         rows.push(Row::Command(favourite));
                     }
                     rows.extend(rows::build(list));
                     rows
                 }
-                Topic::Commands | Topic::Recipes | Topic::Tools => {
+                Topic::Recipes => {
+                    // A to Z by the names shown, in the reader's language
+                    let mut list = self.topic_list(self.topic, &allowed);
+                    list.sort_by_cached_key(|c| crate::utils::i18n::shown(c).to_lowercase());
+                    rows::build(list)
+                }
+                Topic::Commands | Topic::Tools => {
                     rows::build(self.topic_list(self.topic, &allowed))
                 }
                 _ => rows::ranked(self.topic_list(self.topic, &allowed)),
@@ -522,7 +529,13 @@ impl App {
             // query ("cut files") goes first among the page matches
             let mut by_page: Vec<((bool, u32), &Command)> = Vec::new();
             for command in allowed {
-                if let Some(rank) = search::name_rank(&command.name, query) {
+                // a recipe is found by its name in the reader's language too
+                let rank = search::name_rank(&command.name, query).or_else(|| {
+                    (command.kind == Kind::Recipe)
+                        .then(|| search::name_rank(crate::utils::i18n::shown(command), query))
+                        .flatten()
+                });
+                if let Some(rank) = rank {
                     by_name.push((rank, command));
                 } else if let (Some(terms), Some(doc)) = (&terms, self.docs.get(&command.name)) {
                     let score = search::content_score(doc, terms);

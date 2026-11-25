@@ -26,7 +26,9 @@ use crate::configs::{
 };
 use crate::configs::{
     ABOUT_FAVOURITE, ABOUT_READING, ABOUT_READING_SYSTEM, CHOOSE_MARGIN, CHOOSE_TITLE_FAVOURITE,
-    CHOOSE_TITLE_READING, FAVOURITE_NONE, KEYS_CHOOSE, READING_ENGLISH,
+    CHOOSE_TITLE_READING, FAVOURITE_NONE, HIDES, HIDES_ALIAS, HIDES_BUILTIN, HIDES_DOCS,
+    HIDES_FUNCTION, HIDES_KEYWORD, HIDES_LANGUAGE, HIDES_PROGRAM, HIDES_RECIPE, HIDES_SUBCOMMAND,
+    HIDES_TOOL, KEYS_CHOOSE, READING_ENGLISH,
 };
 use crate::configs::{
     ABOUT_FOLLOW, ABOUT_FOLLOW_HEADING, ABOUT_FOLLOW_HINT, ABOUT_RESET, ABOUT_RESET_ARMED,
@@ -41,6 +43,8 @@ use crate::interface::palette::Palette;
 use crate::interface::paths;
 use crate::interface::rows::Row;
 use crate::settings;
+use crate::utils::i18n;
+use crate::utils::i18n::tr;
 use crate::utils::internet::Status;
 use crate::utils::text;
 
@@ -53,9 +57,10 @@ pub fn draw(frame: &mut Frame, app: &mut App) {
         draw_too_small(frame, app.palette(), area);
         return;
     }
+    let bar = i18n::keys(keys_of(app.mode));
     let key_rows = match &app.note {
         Some(_) => Vec::new(),
-        None => key_rows(keys_of(app.mode), usize::from(area.width)),
+        None => key_rows(&bar, usize::from(area.width)),
     };
     let key_height = u16::try_from(key_rows.len())
         .unwrap_or(u16::MAX)
@@ -142,12 +147,9 @@ fn overlay(frame: &mut Frame, area: Rect, width: usize, height: usize) -> Rect {
 /// The help (`?`): every key and what it does, under headings; scrolls on
 /// a window too short for it.
 fn draw_help(frame: &mut Frame, app: &mut App, area: Rect) {
-    let keys_width = HELP_KEYS
-        .iter()
-        .map(|(k, _)| text::width(k))
-        .max()
-        .unwrap_or(0);
-    let lines: Vec<Line> = HELP_KEYS
+    let help: Vec<(&str, &str)> = i18n::keys(HELP_KEYS);
+    let keys_width = help.iter().map(|(k, _)| text::width(k)).max().unwrap_or(0);
+    let lines: Vec<Line> = help
         .iter()
         .map(|(keys, what)| {
             if keys.is_empty() {
@@ -170,7 +172,7 @@ fn draw_help(frame: &mut Frame, app: &mut App, area: Rect) {
     let help = Paragraph::new(lines)
         .block(
             Block::bordered()
-                .title(HELP_TITLE)
+                .title(tr(HELP_TITLE))
                 .border_style(app.palette().active()),
         )
         .style(app.palette().base())
@@ -188,7 +190,7 @@ fn draw_link(frame: &mut Frame, app: &App, area: Rect) {
         Line::raw(""),
         Line::styled(format!("  {url}  "), app.palette().accent()),
         Line::raw(""),
-        Line::styled(format!("  {LINK_HINT}  "), app.palette().muted()),
+        Line::styled(format!("  {}  ", tr(LINK_HINT)), app.palette().muted()),
         Line::raw(""),
     ];
     let widest = lines.iter().map(Line::width).max().unwrap_or(0);
@@ -196,7 +198,7 @@ fn draw_link(frame: &mut Frame, app: &App, area: Rect) {
     let link = Paragraph::new(lines)
         .block(
             Block::bordered()
-                .title(LINK_TITLE)
+                .title(tr(LINK_TITLE))
                 .border_style(app.palette().active()),
         )
         .style(app.palette().base());
@@ -210,8 +212,8 @@ fn draw_choice(frame: &mut Frame, app: &App, area: Rect) {
         return;
     };
     let title = match choice.setting {
-        Setting::Reading => CHOOSE_TITLE_READING,
-        _ => CHOOSE_TITLE_FAVOURITE,
+        Setting::Reading => tr(CHOOSE_TITLE_READING),
+        _ => tr(CHOOSE_TITLE_FAVOURITE),
     };
     let longest = choice
         .items
@@ -274,10 +276,10 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
         settings::list_path(BOOKMARKS_FILE).and_then(|p| p.parent().map(|d| d.to_path_buf()));
     let count = |n: usize| n.to_string();
     let values = [
-        ABOUT_COMMANDS
+        tr(ABOUT_COMMANDS)
             .replace("{total}", &count(app.commands.len()))
             .replace("{pages}", &count(app.docs.len())),
-        ABOUT_PAGES
+        tr(ABOUT_PAGES)
             .replace("{pages}", &count(app.pages.len()))
             .replace("{languages}", &count(content::translated_languages())),
         tilde(config),
@@ -285,21 +287,31 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
         format!(
             "{}  ({})",
             tilde(kept),
-            ABOUT_KEPT
+            tr(ABOUT_KEPT)
                 .replace("{bookmarks}", &count(app.bookmarks.len()))
                 .replace("{recent}", &count(app.recent.len()))
         ),
-        ABOUT_LICENCE.to_owned(),
+        tr(ABOUT_LICENCE).to_owned(),
         ABOUT_SOURCE.to_owned(),
-        ABOUT_MANUAL.to_owned(),
+        tr(ABOUT_MANUAL).to_owned(),
     ];
     let mut chosen_line = 0;
     let mut lines: Vec<Line> = vec![Line::raw("")];
     lines.push(Line::raw(format!(
         "  {}",
-        ABOUT_TAGLINE.replace("{version}", env!("CARGO_PKG_VERSION"))
+        tr(ABOUT_TAGLINE).replace("{version}", env!("CARGO_PKG_VERSION"))
     )));
     lines.push(Line::raw(""));
+    // the labels' column: as wide as the widest, in the reader's language
+    let label_width = ABOUT_FIELDS
+        .iter()
+        .chain(&ABOUT_SETTING_NAMES)
+        .chain(ABOUT_FOLLOW.iter().map(|(site, _)| site))
+        .map(|label| text::width(tr(label)) + 1)
+        .max()
+        .unwrap_or(0)
+        .max(ABOUT_LABEL_WIDTH);
+    let padded = |label: &str| text::pad(tr(label), label_width);
     for (label, value) in ABOUT_FIELDS.iter().zip(values) {
         let style = if value.starts_with("https://") {
             app.palette().accent()
@@ -307,7 +319,7 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
             Style::new()
         };
         lines.push(Line::from(vec![
-            Span::styled(format!("  {label:<ABOUT_LABEL_WIDTH$}"), muted),
+            Span::styled(format!("  {}", padded(label)), muted),
             Span::styled(value, style),
         ]));
     }
@@ -315,12 +327,15 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
     // the author's profiles, to follow
     lines.push(Line::raw(""));
     lines.push(Line::from(vec![
-        Span::styled(format!("  {ABOUT_FOLLOW_HEADING}"), app.palette().heading()),
-        Span::styled(format!("   {ABOUT_FOLLOW_HINT}"), muted),
+        Span::styled(
+            format!("  {}", tr(ABOUT_FOLLOW_HEADING)),
+            app.palette().heading(),
+        ),
+        Span::styled(format!("   {}", tr(ABOUT_FOLLOW_HINT)), muted),
     ]));
     for (site, link) in ABOUT_FOLLOW {
         lines.push(Line::from(vec![
-            Span::styled(format!("  {site:<ABOUT_LABEL_WIDTH$}"), muted),
+            Span::styled(format!("  {}", padded(site)), muted),
             Span::styled(*link, app.palette().accent()),
         ]));
     }
@@ -329,35 +344,35 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
     lines.push(Line::raw(""));
     lines.push(Line::from(vec![
         Span::styled(
-            format!("  {ABOUT_SETTINGS_HEADING}"),
+            format!("  {}", tr(ABOUT_SETTINGS_HEADING)),
             app.palette().heading(),
         ),
-        Span::styled(format!("   {ABOUT_SETTINGS_HINT}"), muted),
+        Span::styled(format!("   {}", tr(ABOUT_SETTINGS_HINT)), muted),
     ]));
     let pad = " ".repeat(text::width(ABOUT_SETTING_MARK));
     for (i, (setting, name)) in Setting::all().iter().zip(ABOUT_SETTING_NAMES).enumerate() {
         let (value, style) = match setting {
             Setting::Colours => (
-                ABOUT_COLOURS
+                tr(ABOUT_COLOURS)
                     .replace("{name}", &app.palette().name)
                     .replace("{count}", &count(app.palettes.len())),
                 Style::new(),
             ),
             Setting::Internet => {
                 let (state, style) = match app.internet.status() {
-                    Status::Online => (ABOUT_INTERNET_ON, Style::new().fg(INTERNET_ON)),
-                    Status::Offline => (ABOUT_INTERNET_OFFLINE, Style::new().fg(INTERNET_OFF)),
-                    Status::Off => (ABOUT_INTERNET_OFF, Style::new().fg(INTERNET_OFF)),
-                    Status::Checking => (ABOUT_INTERNET_CHECKING, muted),
+                    Status::Online => (tr(ABOUT_INTERNET_ON), Style::new().fg(INTERNET_ON)),
+                    Status::Offline => (tr(ABOUT_INTERNET_OFFLINE), Style::new().fg(INTERNET_OFF)),
+                    Status::Off => (tr(ABOUT_INTERNET_OFF), Style::new().fg(INTERNET_OFF)),
+                    Status::Checking => (tr(ABOUT_INTERNET_CHECKING), muted),
                 };
                 (format!("{INTERNET_DOT} {state}"), style)
             }
             Setting::Reading => (
                 match &app.reading {
-                    Some(code) => ABOUT_READING
+                    Some(code) => tr(ABOUT_READING)
                         .replace("{code}", code)
                         .replace("{count}", &count(crate::reading_choices().len())),
-                    None => ABOUT_READING_SYSTEM.replace(
+                    None => tr(ABOUT_READING_SYSTEM).replace(
                         "{code}",
                         &crate::info::content::languages()
                             .first()
@@ -368,15 +383,17 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
                 Style::new(),
             ),
             Setting::Favourite => (
-                ABOUT_FAVOURITE
-                    .replace("{name}", app.favourite.as_deref().unwrap_or(FAVOURITE_NONE)),
+                tr(ABOUT_FAVOURITE).replace(
+                    "{name}",
+                    app.favourite.as_deref().unwrap_or(tr(FAVOURITE_NONE)),
+                ),
                 Style::new(),
             ),
             Setting::Reset => (
                 if app.reset_armed {
-                    ABOUT_RESET_ARMED
+                    tr(ABOUT_RESET_ARMED)
                 } else {
-                    ABOUT_RESET
+                    tr(ABOUT_RESET)
                 }
                 .to_owned(),
                 if app.reset_armed {
@@ -386,14 +403,14 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
                 },
             ),
             Setting::FastScroll => (
-                ABOUT_FAST_SCROLL.replace("{lines}", &app.fast_scroll.to_string()),
+                tr(ABOUT_FAST_SCROLL).replace("{lines}", &app.fast_scroll.to_string()),
                 Style::new(),
             ),
             Setting::History => (
                 match (app.history, app.uses.len()) {
-                    (false, _) => ABOUT_HISTORY_OFF.to_owned(),
-                    (true, 0) => ABOUT_HISTORY_EMPTY.to_owned(),
-                    (true, seen) => ABOUT_HISTORY_ON.replace("{seen}", &count(seen)),
+                    (false, _) => tr(ABOUT_HISTORY_OFF).to_owned(),
+                    (true, 0) => tr(ABOUT_HISTORY_EMPTY).to_owned(),
+                    (true, seen) => tr(ABOUT_HISTORY_ON).replace("{seen}", &count(seen)),
                 },
                 Style::new(),
             ),
@@ -409,7 +426,7 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
         };
         lines.push(Line::from(vec![
             Span::raw(format!("  {mark}")),
-            Span::styled(format!("{name:<ABOUT_LABEL_WIDTH$}"), label_style),
+            Span::styled(padded(name), label_style),
             Span::raw(" "),
             Span::styled(value, style),
         ]));
@@ -427,7 +444,7 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
         }
     }
     app.about_scroll = scroll;
-    let block = Block::bordered().title(ABOUT_TITLE);
+    let block = Block::bordered().title(tr(ABOUT_TITLE));
     let paragraph = Paragraph::new(lines)
         .block(block)
         .scroll((u16::try_from(scroll).unwrap_or(u16::MAX), 0));
@@ -464,7 +481,7 @@ fn draw_copy(frame: &mut Frame, app: &App, area: Rect) {
     let list = List::new(items)
         .block(
             Block::bordered()
-                .title(COPY_TITLE)
+                .title(tr(COPY_TITLE))
                 .border_style(app.palette().active()),
         )
         .style(app.palette().base())
@@ -495,10 +512,10 @@ fn draw_picker(frame: &mut Frame, app: &App, area: Rect) {
         .areas(middle);
     let title = match app.picker.as_ref().and_then(|p| p.note.as_deref()) {
         Some(why) => Line::styled(
-            PALETTE_NOT_SAVED.replace("{why}", why),
+            tr(PALETTE_NOT_SAVED).replace("{why}", why),
             app.palette().danger(),
         ),
-        None => Line::from(PALETTE_TITLE),
+        None => Line::from(tr(PALETTE_TITLE)),
     };
     let items: Vec<ListItem> = app
         .palettes
@@ -528,13 +545,13 @@ fn internet_dot(app: &App) -> Line<'static> {
         Status::Offline | Status::Off => Style::new().fg(INTERNET_OFF),
         Status::Checking => app.palette().muted(),
     };
-    Line::styled(format!(" {INTERNET_DOT} {INTERNET_WORD} "), style)
+    Line::styled(format!(" {INTERNET_DOT} {} ", tr(INTERNET_WORD)), style)
 }
 
 fn draw_search(frame: &mut Frame, app: &App, area: Rect) {
     let searching = app.mode == Mode::Search;
     let block = Block::bordered()
-        .title(SEARCH_TITLE)
+        .title(tr(SEARCH_TITLE))
         .title_top(internet_dot(app).right_aligned())
         .border_style(if searching {
             app.palette().active() // keys go to the search bar
@@ -543,11 +560,11 @@ fn draw_search(frame: &mut Frame, app: &App, area: Rect) {
         });
     let text = match (searching, app.query.is_empty()) {
         (true, _) => Line::from(app.query.as_str()),
-        (false, true) => Line::from(Span::styled(SEARCH_HINT, app.palette().muted())),
+        (false, true) => Line::from(Span::styled(tr(SEARCH_HINT), app.palette().muted())),
         // left with text in it: the filter still applies, `/` goes back to it
         (false, false) => Line::from(vec![
             Span::raw(app.query.as_str()),
-            Span::styled(SEARCH_KEPT_HINT, app.palette().muted()),
+            Span::styled(tr(SEARCH_KEPT_HINT), app.palette().muted()),
         ]),
     };
     frame.render_widget(Paragraph::new(text).block(block), area);
@@ -583,8 +600,8 @@ fn draw_topics(frame: &mut Frame, app: &mut App, area: Rect) {
         spans.push(Span::styled(name, style));
     }
     if app.topics.len() > 1 {
-        spans.push(Span::styled(TOPIC_HINT, palette.muted()));
-        at += text::width(TOPIC_HINT);
+        spans.push(Span::styled(tr(TOPIC_HINT), palette.muted()));
+        at += text::width(tr(TOPIC_HINT));
     }
     // a bar wider than the window slides, only as far as it takes to keep
     // the chosen topic in sight (a column of room on each side)
@@ -609,13 +626,13 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
     } else if app.query.is_empty() || app.topic == crate::app::Topic::Docs {
         // the docs topic searches only itself: its own title, its count
         Block::bordered().title(
-            LIST_TITLE
+            tr(LIST_TITLE)
                 .replace("{topic}", app.topic.name())
                 .replace("{total}", &app.shown_count().to_string()),
         )
     } else {
         Block::bordered().title(
-            LIST_TITLE_SEARCHING
+            tr(LIST_TITLE_SEARCHING)
                 .replace("{shown}", &app.shown_count().to_string())
                 .replace("{total}", &total.to_string()),
         )
@@ -623,9 +640,9 @@ fn draw_list(frame: &mut Frame, app: &mut App, area: Rect, narrow: bool) {
     if app.rows.is_empty() {
         // the tools topic, empty for now, says so
         let note = if app.query.is_empty() && app.topic == crate::app::Topic::Tools {
-            TOOLS_EMPTY.to_owned()
+            tr(TOOLS_EMPTY).to_owned()
         } else {
-            NO_MATCH.replace("{query}", &app.query)
+            tr(NO_MATCH).replace("{query}", &app.query)
         };
         let none = Line::from(Span::styled(note, app.palette().muted()));
         frame.render_widget(Paragraph::new(none).block(block), area);
@@ -693,7 +710,7 @@ fn command_line(
     } else {
         LIST_INDENT
     };
-    let mut parts = vec![(format!("{indent}{}", command.name), Style::new())];
+    let mut parts = vec![(format!("{indent}{}", i18n::shown(command)), Style::new())];
     if !narrow {
         if unused {
             parts.push((UNUSED_MARK.to_owned(), palette.muted())); // your history never ran it
@@ -730,18 +747,18 @@ fn command_line(
         }
         if let Some(hidden) = command.hides {
             let what = match hidden {
-                Kind::Alias => "another alias",
-                Kind::Keyword => "a keyword",
-                Kind::Function => "a function",
-                Kind::Builtin => "a builtin",
-                Kind::Program => "a program",
-                Kind::Subcommand => "a subcommand",
-                Kind::Recipe => "a recipe",
-                Kind::Tool => "a tool page",
-                Kind::Language => "a language",
-                Kind::Docset | Kind::DocEntry => "documentation",
+                Kind::Alias => HIDES_ALIAS,
+                Kind::Keyword => HIDES_KEYWORD,
+                Kind::Function => HIDES_FUNCTION,
+                Kind::Builtin => HIDES_BUILTIN,
+                Kind::Program => HIDES_PROGRAM,
+                Kind::Subcommand => HIDES_SUBCOMMAND,
+                Kind::Recipe => HIDES_RECIPE,
+                Kind::Tool => HIDES_TOOL,
+                Kind::Language => HIDES_LANGUAGE,
+                Kind::Docset | Kind::DocEntry => HIDES_DOCS,
             };
-            parts.push((format!("  (hides {what})"), dim));
+            parts.push((tr(HIDES).replace("{what}", tr(what)), dim));
         }
     }
     // the parts in order until the width runs out; the one that overflows
@@ -784,7 +801,7 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
     if let Some(manual) = page
         .lines
         .iter()
-        .rposition(|l| l.style == PageStyle::Heading && l.text == HEADING_MANUAL)
+        .rposition(|l| l.style == PageStyle::Heading && l.text == tr(HEADING_MANUAL))
     {
         let name = &page.command.name;
         internet = page::internet_lines(
@@ -830,7 +847,7 @@ fn draw_page(frame: &mut Frame, app: &mut App, area: Rect) {
     };
     let title = format!(
         " {mark}{}  {}/{} ",
-        page.command.name,
+        i18n::shown(&page.command),
         app.scroll + 1,
         rows.max(1)
     );
@@ -935,7 +952,7 @@ fn draw_keys(frame: &mut Frame, rows: &[Vec<(&str, &str)>], palette: &Palette, a
 
 /// What a window too small for lore shows: its size and the size needed.
 fn draw_too_small(frame: &mut Frame, palette: &Palette, area: Rect) {
-    let note = TOO_SMALL
+    let note = tr(TOO_SMALL)
         .replace("{width}", &area.width.to_string())
         .replace("{height}", &area.height.to_string())
         .replace("{min_width}", &MIN_WIDTH.to_string())
