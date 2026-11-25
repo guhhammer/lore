@@ -6,7 +6,7 @@
 # version and the checksum for a release.
 
 pkgname=lore-tui
-pkgver=0.1.6
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Every command you can type, A to Z, with an offline page for each'
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ optdepends=('man-db: the MANUAL section, and flags for lore explain')
 provides=('lore')
 conflicts=('lore' 'lore-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0343b963cd5f0d2c907f5d510b7aa03f3ad6e619ecd1362905ab826a96bdf186')
 
 prepare() {
   cd "lore-$pkgver"

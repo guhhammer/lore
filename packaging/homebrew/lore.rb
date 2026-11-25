@@ -6,28 +6,28 @@
 class Lore < Formula
   desc "Every command you can type, A to Z, with an offline page for each"
   homepage "https://github.com/guhhammer/lore"
-  version "0.1.6"
+  version "0.3.3"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/guhhammer/lore/releases/download/v0.1.6/lore-v0.1.6-aarch64-apple-darwin.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      url "https://github.com/guhhammer/lore/releases/download/v0.3.3/lore-v0.3.3-aarch64-apple-darwin.tar.gz"
+      sha256 "5626f6400e76e24068836cd2e49fe4a87d4e8334bb4639745112a6693bdddeba"
     end
     on_intel do
-      url "https://github.com/guhhammer/lore/releases/download/v0.1.6/lore-v0.1.6-x86_64-apple-darwin.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      url "https://github.com/guhhammer/lore/releases/download/v0.3.3/lore-v0.3.3-x86_64-apple-darwin.tar.gz"
+      sha256 "3f7ecb43a135eed236b254d988d443306693c1d55d1d877e3c30e1bde9e2383f"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/guhhammer/lore/releases/download/v0.1.6/lore-v0.1.6-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      url "https://github.com/guhhammer/lore/releases/download/v0.3.3/lore-v0.3.3-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "cab920e62489f119e1e2f1f5554741cec44cbc435c219ed2a47f48f086207733"
     end
     on_intel do
-      url "https://github.com/guhhammer/lore/releases/download/v0.1.6/lore-v0.1.6-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      url "https://github.com/guhhammer/lore/releases/download/v0.3.3/lore-v0.3.3-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "d467c771c0f96e54b79b9b0f81cb2a4b7fe3eb498cd4604c17eb1964e3ff5977"
     end
   end
 
