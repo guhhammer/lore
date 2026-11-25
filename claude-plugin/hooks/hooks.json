@@ -1,0 +1,16 @@
+{
+  "description": "Gets lore ready when a session starts: installs it (for this user, checksum verified) when it is missing or too old, and gives its path when it is ready.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/scripts/setup.sh\" --session",
+            "timeout": 180
+          }
+        ]
+      }
+    ]
+  }
+}

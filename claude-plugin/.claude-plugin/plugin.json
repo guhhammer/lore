@@ -1,0 +1,10 @@
+{
+  "name": "lore",
+  "version": "0.3.1",
+  "description": "Offline answers about command-line tools: what a command does, which tool does a task, what each flag of a line means. Needs lore installed.",
+  "author": {
+    "name": "guhhammer"
+  },
+  "homepage": "https://github.com/guhhammer/lore",
+  "license": "MIT"
+}

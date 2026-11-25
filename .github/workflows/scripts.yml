@@ -2,7 +2,7 @@ name: scripts
 
 # Checks the scripts on every push to main and every pull request that
 # touches them: shellcheck on the shell ones (cli/, the release scripts,
-# the bash completion, packaging/update.sh), and that every content and
+# the bash completion, packaging/update.sh, the plugin's setup.sh), and that every content and
 # beacon script is valid Python.
 
 on:
@@ -13,6 +13,7 @@ on:
       - "scripts/**"
       - "completions/**"
       - "packaging/**"
+      - "claude-plugin/scripts/**"
       - ".github/workflows/scripts.yml"
   pull_request:
     paths:
@@ -20,6 +21,7 @@ on:
       - "scripts/**"
       - "completions/**"
       - "packaging/**"
+      - "claude-plugin/scripts/**"
       - ".github/workflows/scripts.yml"
   workflow_dispatch:
 
@@ -35,7 +37,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
-      - run: shellcheck cli/make cli/clean scripts/release/*.sh completions/lore.bash packaging/update.sh
+      - run: shellcheck cli/make cli/clean scripts/release/*.sh completions/lore.bash packaging/update.sh claude-plugin/scripts/setup.sh
 
   python:
     runs-on: ubuntu-24.04

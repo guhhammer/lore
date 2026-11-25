@@ -1,0 +1,14 @@
+{
+  "name": "lore",
+  "description": "lore's plugin: offline answers about command-line tools.",
+  "owner": {
+    "name": "guhhammer"
+  },
+  "plugins": [
+    {
+      "name": "lore",
+      "source": "./claude-plugin",
+      "description": "Offline answers about command-line tools, from the lore command."
+    }
+  ]
+}

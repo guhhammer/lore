@@ -105,6 +105,9 @@ lore/
 ├── scripts/beacon/         snapshot.py: the beacon's table, from popcon and Homebrew
 ├── scripts/release/        the release tarball and notes
 ├── packaging/              the AUR build file, the Homebrew formula, update.sh
+├── claude-plugin/          the plugin: manifest, skills/lore/SKILL.md (lore search, -p, explain),
+│                           scripts/setup.sh (installs lore at session start, hooks/hooks.json; /lore:setup)
+├── .claude-plugin/         marketplace.json: makes the repository installable as that plugin
 ├── cli/make, cli/clean     the build gate, and cleaning
 ├── .github/workflows/      ci, docs, scripts, release, content (weekly data)
 └── app/                    where cli/make copies the release binary (ignored)

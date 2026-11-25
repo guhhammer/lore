@@ -52,6 +52,7 @@ and what can go wrong. For Linux and macOS, with bash, zsh or fish.
 - [Privacy and the internet](#privacy-and-the-internet)
 - [Add your own pages](#add-your-own-pages)
 - [Build from source](#build-from-source)
+- [Use lore from an agent](#use-lore-from-an-agent)
 - [More reading](#more-reading)
 - [Licence](#licence)
 
@@ -328,6 +329,31 @@ lore/
 ├── scripts/        the page generators, the beacon's data, the release scripts
 └── cli/            make and clean
 ```
+
+---
+
+## Use lore from an agent
+
+The repository is also a plugin with a skill that answers questions about
+command-line tools from lore, offline: which tool does a task, what a
+command or a flag does, whether it is installed. In Claude Code:
+
+```
+/plugin marketplace add guhhammer/lore
+/plugin install lore@lore
+```
+
+That is all: when a session starts, the plugin installs lore if it is
+missing or too old (the latest release for your system, checked against its
+`SHA256SUMS`, for you only, into `~/.local/bin` and its manual into
+`~/.local/share/man`, no sudo), and tells the skill where it is. A lore you
+installed from a package (see [Install](#install)) is used as it is.
+`/lore:setup` installs it by hand, `/lore:setup --update` gets the latest
+release. The skill runs only `lore search`, `lore -p` and `lore explain`.
+
+The skill itself is one Markdown file,
+[`claude-plugin/skills/lore/SKILL.md`](../claude-plugin/skills/lore/SKILL.md);
+other tools that read skills can use it as it is.
 
 ---
 
