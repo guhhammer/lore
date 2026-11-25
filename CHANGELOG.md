@@ -13,6 +13,12 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+### Added
+
+- **A README at the root for Claude Code:** what the plugin installs and
+  adds, the commands its skill runs, and privacy, for Claude's plugin
+  directory; GitHub's front page still shows `.github/README.md`.
+
 ### Changed
 
 - **The README's demo is the launch video:** `.github/media/lore-2.svg`
