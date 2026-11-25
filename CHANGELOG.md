@@ -15,6 +15,12 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ### Added
 
+- **A new demo that plays in the README:** `.github/media/lore.svg`, an
+  animated SVG of the app itself (search, a page, a tool's cheat sheet, the
+  keys, the languages), 310 KB, in place of the 4.6 MB video GitHub could
+  not play. `scripts/demo/demo.py` makes it again from `app/lore`, in an
+  empty home folder.
+
 - **`lore search WORDS`:** the search bar's results as plain text, the best
   first (at most 25): name, the line that matched, categories, tab apart.
   Exits 1 when nothing matches. Tab completion offers it.

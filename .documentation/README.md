@@ -104,6 +104,7 @@ lore/
 ├── scripts/languages/      sync.py: languages/ from a learnxinyminutes-docs checkout
 ├── scripts/beacon/         snapshot.py: the beacon's table, from popcon and Homebrew
 ├── scripts/release/        the release tarball and notes
+├── scripts/demo/           demo.py: the README's animated .github/media/lore.svg, from app/lore in tmux
 ├── packaging/              the AUR build file, the Homebrew formula, update.sh
 ├── claude-plugin/          the plugin: manifest, skills/lore/SKILL.md (lore search, -p, explain),
 │                           scripts/setup.sh (installs lore at session start, hooks/hooks.json; /lore:setup)
