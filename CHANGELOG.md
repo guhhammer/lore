@@ -13,6 +13,12 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+### Changed
+
+- **The AUR and Homebrew files point at the v0.4.4 release**
+  (`packaging/update.sh 0.4.4`): its version, and the checksums of its
+  source archive and binaries.
+
 ### Fixed
 
 - **A setting too long for the about screen ends in `...`:** a longer
