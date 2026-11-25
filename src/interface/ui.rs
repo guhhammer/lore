@@ -324,6 +324,16 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
         .unwrap_or(0)
         .max(ABOUT_LABEL_WIDTH);
     let padded = |label: &str| text::pad(tr(label), label_width);
+    // a value longer than the room left ends in `...`, as in the list (a
+    // longer translation would else be cut with no sign); links stay whole
+    let inside = usize::from(area.width.saturating_sub(2));
+    let fitted = |value: String, room: usize| {
+        if value.starts_with("https://") {
+            value
+        } else {
+            text::fit(&value, room)
+        }
+    };
     for (label, value) in ABOUT_FIELDS.iter().zip(values) {
         let style = if value.starts_with("https://") {
             app.palette().accent()
@@ -332,7 +342,7 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
         };
         lines.push(Line::from(vec![
             Span::styled(format!("  {}", padded(label)), muted),
-            Span::styled(value, style),
+            Span::styled(fitted(value, inside.saturating_sub(2 + label_width)), style),
         ]));
     }
 
@@ -440,7 +450,13 @@ fn draw_about(frame: &mut Frame, app: &mut App, area: Rect) {
             Span::raw(format!("  {mark}")),
             Span::styled(padded(name), label_style),
             Span::raw(" "),
-            Span::styled(value, style),
+            Span::styled(
+                fitted(
+                    value,
+                    inside.saturating_sub(3 + text::width(ABOUT_SETTING_MARK) + label_width),
+                ),
+                style,
+            ),
         ]));
     }
     // a small window: the screen scrolls (PgUp/PgDn, w/s), and to the

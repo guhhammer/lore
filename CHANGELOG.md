@@ -13,6 +13,12 @@ the version in `Cargo.toml`, and its subject starts with that version
 
 ## [Unreleased]
 
+### Fixed
+
+- **A setting too long for the about screen ends in `...`:** a longer
+  translation (Portuguese's Reset all) was cut at the border with no sign.
+  Links stay whole.
+
 ## [0.4.4] - 2026-11-25
 
 ### Fixed

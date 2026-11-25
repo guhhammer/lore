@@ -129,3 +129,24 @@ fn a_box_over_wide_characters_keeps_its_border_whole() {
         }
     }
 }
+
+#[test]
+fn an_about_value_too_long_for_the_window_ends_in_dots_and_links_stay_whole() {
+    let mut app = app();
+    app.open_about();
+    let shown = screen(&mut app, 60, 40);
+    // the reset hint is longer than 60 columns: cut, with the sign
+    let reset = shown
+        .lines()
+        .find(|l| l.contains("Reset all"))
+        .expect("the reset setting is on screen");
+    assert!(
+        reset.trim_end_matches('│').trim_end().ends_with("..."),
+        "{reset}"
+    );
+    // a link is never cut: the terminal opens it whole
+    assert!(
+        shown.contains("https://github.com/guhhammer/lore"),
+        "{shown}"
+    );
+}
